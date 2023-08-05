@@ -1,0 +1,18 @@
+.switch__btn {
+	background-color: #6ff3ef;
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+	margin-right: 5rem;
+	font-size: 1.5rem;
+	text-align: center;
+	font-weight: 600;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border: solid black 1px;
+	border-radius: 0.5rem;
+	cursor: pointer;
+
+	text-align: center;
+
+	width: 75%;
+}

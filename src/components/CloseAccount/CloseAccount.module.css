@@ -1,0 +1,41 @@
+.form {
+	display: grid;
+	grid-template-columns: 2.5fr 2.5fr 1fr;
+	grid-template-rows: auto auto;
+	gap: 0.4rem 1rem;
+}
+
+.form__input {
+	width: 100%;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.4);
+	font-family: inherit;
+	font-size: 1.5rem;
+	text-align: center;
+	color: #333;
+	padding: 0.3rem 0.3rem;
+	border-radius: 0.7rem;
+	transition: all 0.3s;
+}
+
+.operation {
+	background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+	margin-top: 2rem;
+	margin-right: 5rem;
+	border: solid black 1px;
+	border-radius: 1rem;
+	padding: 1.8rem 3.5rem;
+	color: #333;
+	border-radius: 1rem;
+	padding: 1.8rem 3.5rem;
+	color: #333;
+}
+
+.form__btn {
+	border-radius: 0.7rem;
+	font-size: 2rem;
+}
+
+.form__btn:hover {
+	cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.balance {
+	font-size: 1.2rem;
+	font-weight: 600;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: solid black 1px;
+	border-radius: 1rem;
+}
+
+.balance__label {
+	display: flex;
+	align-items: center;
+	margin-left: 2rem;
+	/* padding: 0.2rem; */
+	font-size: 1.5rem;
+}
+
+.balance__value__USD,
+.balance__value__EUR {
+	margin-right: 2rem;
+	/* padding: 0.2rem; */
+	font-size: 1.5rem;
+}

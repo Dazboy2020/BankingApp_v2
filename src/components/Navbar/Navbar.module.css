@@ -1,0 +1,23 @@
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.logOut__btn {
+	font-size: 1.2rem;
+	font-weight: 600;
+	border: solid black 1px;
+	background: none;
+	padding: 0.6rem;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+	background-color: burlywood;
+}
+
+.logOut__btn:hover {
+	background-color: #e8a058;
+}
