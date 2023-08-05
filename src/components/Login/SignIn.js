@@ -14,6 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 
+import { useState } from 'react';
+
 function Copyright(props) {
 	return (
 		<Typography
@@ -23,10 +25,7 @@ function Copyright(props) {
 			{...props}
 		>
 			{'Copyright © '}
-			<Link color="inherit" href="https://mui.com/">
-				DazBoy
-			</Link>{' '}
-			{new Date().getFullYear()}
+			<Link color="inherit">DazBoy</Link> {new Date().getFullYear()}
 			{'.'}
 		</Typography>
 	);
@@ -43,28 +42,34 @@ export default function SignIn({
 	setIsLoggedIn,
 	setAccountMovements,
 }) {
+	const [error, setError] = useState(false);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(loggedInAccount);
-
-		if (!loggedInAccount || !pin) return;
 
 		if (loggedInAccount && loggedInAccount[0].pin === +pin) {
 			setAccountMovements(loggedInAccount);
-			setIsLoggedIn((cur) => !cur);
+			setIsLoggedIn(true);
+		} else {
+			setError(true);
+			setPin('');
+			setUser('');
 		}
 	};
 
+	function onBlurHandler() {
+		setError(false);
+
+		if (user.length > 0) setError(false);
+	}
+
 	return (
 		<ThemeProvider theme={defaultTheme}>
-			<Container
-				component="main"
-				maxWidth="xs"
-				// style={{ backgroundColor: 'whitesmoke' }}
-			>
+			<Container component="main" maxWidth="xs">
 				<CssBaseline />
 				<Box
 					sx={{
+						backgroundColor: 'white',
 						marginTop: 8,
 						display: 'flex',
 						flexDirection: 'column',
@@ -84,7 +89,7 @@ export default function SignIn({
 					<Box
 						component="form"
 						onSubmit={handleSubmit}
-						noValidate
+						// noValidate
 						sx={{ mt: 1 }}
 					>
 						<TextField
@@ -98,6 +103,7 @@ export default function SignIn({
 							autoFocus
 							value={user}
 							onChange={(e) => setUser(e.target.value)}
+							onBlur={onBlurHandler}
 						/>
 						<TextField
 							margin="normal"
@@ -110,7 +116,13 @@ export default function SignIn({
 							autoComplete="current-pin"
 							value={pin}
 							onChange={(e) => setPin(e.target.value)}
+							onBlur={onBlurHandler}
 						/>
+						{error ? (
+							<p style={{ color: 'red' }}>Something went wrong!</p>
+						) : (
+							<p style={{ color: 'white' }}>Something went wrong!</p>
+						)}
 						<FormControlLabel
 							sx={{ mt: 5 }}
 							control={<Checkbox value="remember" color="primary" />}

@@ -194,18 +194,6 @@ function App() {
 		setAmountFX('');
 	}
 
-	// function handleLogin(event) {
-	// 	event.preventDefault();
-	// 	console.log(loggedInAccount);
-
-	// 	if (!loggedInAccount || !pin) return;
-
-	// 	if (loggedInAccount && loggedInAccount[0].pin === +pin) {
-	// 		setAccountMovements(loggedInAccount);
-	// 		setIsLoggedIn((cur) => !cur);
-	// 	}
-	// }
-
 	function handleTransfer(e) {
 		e.preventDefault();
 
