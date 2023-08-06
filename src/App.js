@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import MainWrapper from './UI/MainWrapper';
-import Balance from './components/Balance/Balance';
+// import Balance from './components/Balance/Balance';
 import MovementList from './components/Movements/MovementList';
 import Movements from './components/Movements/Movements';
-import Summary from './components/Summary/Summary';
+// import Summary from './components/Summary/Summary';
 // import TransferPanelSection from './UI/TransferPanelSection';
 // import OperationFx from './components/OperationFX/OperationFx';
 // import CloseAccount from './components/CloseAccount/CloseAccount';
@@ -289,6 +289,10 @@ function App() {
 		}
 	}
 
+	function LogUserOut() {
+		setIsLoggedIn(false);
+	}
+
 	return (
 		<>
 			{!isLoggedIn ? (
@@ -313,18 +317,20 @@ function App() {
 							currency={currency}
 							open={open}
 							setOpen={setOpen}
+							LogUserOut={LogUserOut}
 						/>
 						<AlertDialogSlide
 							open={open}
 							setOpen={setOpen}
-							setIsLoggedIn={setIsLoggedIn}
+							LogUserOut={LogUserOut}
 						/>
-						<Balance accountMovements={accountMovements} />
+						{/* <Balance accountMovements={accountMovements} /> */}
 						<Box
 							sx={{
 								display: 'flex',
 								justifyContent: 'space-between',
 								mb: 2,
+								mt: 2,
 							}}
 						>
 							<BasicCard
@@ -382,11 +388,11 @@ function App() {
 								/>
 							</TransferPanelSection> */}
 						</MovementList>
-						<Summary
+						{/* <Summary
 							accountMovements={accountMovements}
 							currency={currency}
 							onSort={handleSort}
-						/>
+						/> */}
 					</MainWrapper>
 				</>
 			)}

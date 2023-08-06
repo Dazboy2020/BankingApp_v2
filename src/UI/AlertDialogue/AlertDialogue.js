@@ -11,14 +11,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({ open, setOpen, setIsLoggedIn }) {
+export default function AlertDialogSlide({ open, setOpen, LogUserOut }) {
 	function handleCancel() {
 		setOpen(false);
 	}
 
 	function handleYesLogout() {
 		setOpen(false);
-		setIsLoggedIn(false);
+		// setIsLoggedIn(false);
+		LogUserOut();
 	}
 
 	return (
