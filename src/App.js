@@ -315,7 +315,7 @@ function App() {
 								currency={currency}
 								sort={sort}
 							/>
-							<TransferPanelSection className={styles.transfer__panel__section}>
+							{/* <TransferPanelSection className={styles.transfer__panel__section}>
 								<OperationFx
 									handleFX={handleFX}
 									amountFX={amountFX}
@@ -337,8 +337,7 @@ function App() {
 									closeUser={closeUser}
 									setCloseUser={setCloseUser}
 								/>
-								{/* <SwitchButton onSwitchCurrency={switchCurrency} /> */}
-							</TransferPanelSection>
+							</TransferPanelSection> */}
 						</MovementList>
 						<Summary
 							accountMovements={accountMovements}

@@ -11,13 +11,12 @@ body {
 
 	margin: 0;
 	height: 100vh;
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	/* height: 100vh; */
+	flex-grow: 1; */
+
 	padding: 2rem;
 
 	align-items: center;
 	justify-content: center;
-	/* align-items: center;
-	justify-content: center; */
 }

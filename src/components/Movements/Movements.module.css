@@ -1,6 +1,4 @@
 .main__container__window {
-	display: flex;
-	justify-content: space-between;
 	border: solid black 1px;
 	border-radius: 1rem;
 
@@ -11,14 +9,18 @@
 /* ?MOVEMENTS */
 .movements {
 	display: flex;
+	flex-grow: 1;
 	flex-direction: column;
-	grid-row: 2 / span 3;
+	/* grid-row: 2 / span 3; */
 	background-color: #fff;
 	overflow-y: auto;
-	min-width: 50rem;
+
+	/* min-width: 50rem; */
 }
 
 .movements__row {
+	flex-grow: 1;
+
 	padding: 1rem 1rem;
 	display: flex;
 	align-items: center;
@@ -76,10 +78,8 @@
 ul {
 	display: flex;
 	flex-direction: column;
-
 	list-style-type: none;
 	margin: 0.2rem;
 	padding: 0.2rem;
-
-	align-items: center;
+	align-items: stretch;
 }
