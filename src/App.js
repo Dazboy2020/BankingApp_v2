@@ -8,7 +8,7 @@ import TransferPanelSection from './UI/TransferPanelSection';
 import OperationFx from './components/OperationFX/OperationFx';
 import CloseAccount from './components/CloseAccount/CloseAccount';
 import TransferMoney from './components/TransferMoney/TransferMoney';
-import SwitchButton from './components/SwitchButton/SwitchButton';
+// import SwitchButton from './components/SwitchButton/SwitchButton';
 
 import styles from './UI/TransferPanelSection.module.css';
 import SignIn from './components/Login/SignIn';
@@ -306,6 +306,7 @@ function App() {
 							setUser={setUser}
 							setPin={setPin}
 							switchCurrency={switchCurrency}
+							currency={currency}
 						/>
 						<Balance accountMovements={accountMovements} />
 						<MovementList>
@@ -336,7 +337,7 @@ function App() {
 									closeUser={closeUser}
 									setCloseUser={setCloseUser}
 								/>
-								<SwitchButton onSwitchCurrency={switchCurrency} />
+								{/* <SwitchButton onSwitchCurrency={switchCurrency} /> */}
 							</TransferPanelSection>
 						</MovementList>
 						<Summary

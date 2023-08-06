@@ -9,6 +9,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { AccountBalanceOutlined } from '@mui/icons-material';
 
 const now = new Date();
@@ -21,6 +22,9 @@ const options = {
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar({ accountMovements, switchCurrency }) {
+	function handleLogOut() {
+		console.log('click');
+	}
 	return (
 		<AppBar
 			position="static"
@@ -59,6 +63,15 @@ function ResponsiveAppBar({ accountMovements, switchCurrency }) {
 							Close
 						</Button>
 						<Button
+							onClick={() => switchCurrency()}
+							size="xs"
+							color="inherit"
+							startIcon={<CurrencyExchangeIcon color="white" sx={{ ml: 1 }} />}
+						>
+							Account
+						</Button>
+						<Button
+							onClick={handleLogOut}
 							color="inherit"
 							startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
 						>
