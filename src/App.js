@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import MainWrapper from './UI/MainWrapper';
-import Navbar from './components/Navbar/Navbar';
 import Balance from './components/Balance/Balance';
 import MovementList from './components/Movements/MovementList';
 import Movements from './components/Movements/Movements';
 import Summary from './components/Summary/Summary';
-// import Login from './components/Login/Login';
 import TransferPanelSection from './UI/TransferPanelSection';
 import OperationFx from './components/OperationFX/OperationFx';
 import CloseAccount from './components/CloseAccount/CloseAccount';
@@ -14,6 +12,7 @@ import SwitchButton from './components/SwitchButton/SwitchButton';
 
 import styles from './UI/TransferPanelSection.module.css';
 import SignIn from './components/Login/SignIn';
+import NewNav from './components/Navbar/NewNav';
 
 const account1 = [
 	{
@@ -301,11 +300,12 @@ function App() {
 			) : (
 				<>
 					<MainWrapper classname={MainWrapper}>
-						<Navbar
+						<NewNav
 							accountMovements={accountMovements}
 							setIsLoggedIn={setIsLoggedIn}
 							setUser={setUser}
 							setPin={setPin}
+							switchCurrency={switchCurrency}
 						/>
 						<Balance accountMovements={accountMovements} />
 						<MovementList>
@@ -339,7 +339,6 @@ function App() {
 								<SwitchButton onSwitchCurrency={switchCurrency} />
 							</TransferPanelSection>
 						</MovementList>
-
 						<Summary
 							accountMovements={accountMovements}
 							currency={currency}
