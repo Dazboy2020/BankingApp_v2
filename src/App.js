@@ -4,15 +4,17 @@ import Balance from './components/Balance/Balance';
 import MovementList from './components/Movements/MovementList';
 import Movements from './components/Movements/Movements';
 import Summary from './components/Summary/Summary';
-import TransferPanelSection from './UI/TransferPanelSection';
-import OperationFx from './components/OperationFX/OperationFx';
-import CloseAccount from './components/CloseAccount/CloseAccount';
-import TransferMoney from './components/TransferMoney/TransferMoney';
-// import SwitchButton from './components/SwitchButton/SwitchButton';
+// import TransferPanelSection from './UI/TransferPanelSection';
+// import OperationFx from './components/OperationFX/OperationFx';
+// import CloseAccount from './components/CloseAccount/CloseAccount';
+// import TransferMoney from './components/TransferMoney/TransferMoney';
+// // import SwitchButton from './components/SwitchButton/SwitchButton';
 
-import styles from './UI/TransferPanelSection.module.css';
+// import styles from './UI/TransferPanelSection.module.css';
 import SignIn from './components/Login/SignIn';
 import NewNav from './components/Navbar/NewNav';
+import { Box } from '@mui/material';
+import BasicCard from './components/Outline-Card/OutlinedCard';
 
 const account1 = [
 	{
@@ -309,6 +311,18 @@ function App() {
 							currency={currency}
 						/>
 						<Balance accountMovements={accountMovements} />
+						<Box
+							sx={{
+								display: 'flex',
+								justifyContent: 'space-between',
+								mb: 2,
+							}}
+						>
+							<BasicCard accountMovements={accountMovements} />
+							<BasicCard accountMovements={accountMovements} />
+							<BasicCard accountMovements={accountMovements} />
+							<BasicCard accountMovements={accountMovements} />
+						</Box>
 						<MovementList>
 							<Movements
 								accountMovements={accountMovements}

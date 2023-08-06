@@ -1,9 +1,6 @@
 .main__container__window {
 	border: solid black 1px;
-	border-radius: 1rem;
-
-	margin-left: 5rem;
-	margin-right: 5rem;
+	/* border-radius: 1rem; */
 }
 
 /* ?MOVEMENTS */
