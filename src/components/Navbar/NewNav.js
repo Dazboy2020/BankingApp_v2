@@ -24,7 +24,6 @@ const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 function ResponsiveAppBar({
 	accountMovements,
 	switchCurrency,
-	open,
 	setOpen,
 	setIsLoggedIn,
 }) {

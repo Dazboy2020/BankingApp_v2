@@ -82,7 +82,7 @@ export const account3 = [
 			[-642.21, '2020-05-08'],
 			[-133.9, '2020-05-27'],
 			[79.97, '2022-12-16'],
-			[1300, '2022-12-17'],
+			[1300.56, '2022-12-17'],
 		],
 	},
 	{
@@ -327,10 +327,30 @@ function App() {
 								mb: 2,
 							}}
 						>
-							<BasicCard accountMovements={accountMovements} />
-							<BasicCard accountMovements={accountMovements} />
-							<BasicCard accountMovements={accountMovements} />
-							<BasicCard accountMovements={accountMovements} />
+							<BasicCard
+								accountMovements={accountMovements}
+								balanceUSD={balanceUSD}
+								balanceEUR={balanceEUR}
+								currency={currency}
+							/>
+							<BasicCard
+								accountMovements={accountMovements}
+								currency={currency}
+								balanceUSD={balanceUSD}
+								balanceEUR={balanceEUR}
+							/>
+							<BasicCard
+								accountMovements={accountMovements}
+								currency={currency}
+								balanceUSD={balanceUSD}
+								balanceEUR={balanceEUR}
+							/>
+							<BasicCard
+								accountMovements={accountMovements}
+								currency={currency}
+								balanceUSD={balanceUSD}
+								balanceEUR={balanceEUR}
+							/>
 						</Box>
 						<MovementList>
 							<Movements

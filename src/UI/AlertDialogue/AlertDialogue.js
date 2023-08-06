@@ -23,9 +23,6 @@ export default function AlertDialogSlide({ open, setOpen, setIsLoggedIn }) {
 
 	return (
 		<div>
-			{/* <Button variant="outlined" onClick={handleClickOpen}>
-				Slide in alert dialog
-			</Button> */}
 			<Dialog
 				open={open}
 				TransitionComponent={Transition}
