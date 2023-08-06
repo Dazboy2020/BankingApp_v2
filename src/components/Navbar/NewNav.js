@@ -32,10 +32,13 @@ function ResponsiveAppBar({ accountMovements, switchCurrency }) {
 				backgroundColor: '#585054',
 			}}
 		>
-			<Container maxWidth="xl">
+			<Container maxWidth="xxl">
 				<Toolbar>
 					<AccountBalanceOutlined
-						sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+						sx={{
+							display: { xs: 'none', md: 'flex' },
+							mr: 1,
+						}}
 					/>
 					<Typography variant="h6" noWrap>
 						Welcome, {accountMovements[0].owner.toUpperCase()}

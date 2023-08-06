@@ -6,32 +6,19 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const bull = (
-	<Box
-		component="span"
-		sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-	>
-		•
-	</Box>
-);
-
 export default function BasicCard({ accountMovements }) {
 	const balanceEUR = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
 
-	console.log(balanceEUR);
-
 	return (
-		<Card sx={{ minWidth: 275 }}>
+		<Card sx={{ display: 'flex', flexGrow: 1, m: 1 }}>
 			<CardContent>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
 					Word of the Day {balanceEUR.toFixed(2)}
 				</Typography>
-				<Typography variant="h5" component="div">
-					be{bull}nev{bull}o{bull}lent
-				</Typography>
+
 				<Typography sx={{ mb: 1.5 }} color="text.secondary">
 					adjective
 				</Typography>
@@ -41,9 +28,9 @@ export default function BasicCard({ accountMovements }) {
 					{'"a benevolent smile"'}
 				</Typography>
 			</CardContent>
-			<CardActions>
+			{/* <CardActions>
 				<Button size="small">Learn More</Button>
-			</CardActions>
+			</CardActions> */}
 		</Card>
 	);
 }
