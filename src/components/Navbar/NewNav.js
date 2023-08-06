@@ -21,10 +21,18 @@ const options = {
 
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
-function ResponsiveAppBar({ accountMovements, switchCurrency }) {
+function ResponsiveAppBar({
+	accountMovements,
+	switchCurrency,
+	open,
+	setOpen,
+	setIsLoggedIn,
+}) {
 	function handleLogOut() {
-		console.log('click');
+		setOpen(true);
+		// setIsLoggedIn(false);
 	}
+
 	return (
 		<AppBar
 			position="static"
@@ -75,6 +83,7 @@ function ResponsiveAppBar({ accountMovements, switchCurrency }) {
 						</Button>
 						<Button
 							onClick={handleLogOut}
+							setIsLoggedIn={setIsLoggedIn}
 							color="inherit"
 							startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
 						>

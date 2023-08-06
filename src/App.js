@@ -15,6 +15,7 @@ import SignIn from './components/Login/SignIn';
 import NewNav from './components/Navbar/NewNav';
 import { Box } from '@mui/material';
 import BasicCard from './components/Outline-Card/OutlinedCard';
+import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 
 const account1 = [
 	{
@@ -114,6 +115,7 @@ function App() {
 	const [transferRecipient, setTransferRecipient] = useState('');
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
+	const [open, setOpen] = React.useState(false);
 
 	const updatedMovementsEUR = accountMovements[0].movements.map(
 		(movement) => movement
@@ -309,6 +311,13 @@ function App() {
 							setPin={setPin}
 							switchCurrency={switchCurrency}
 							currency={currency}
+							open={open}
+							setOpen={setOpen}
+						/>
+						<AlertDialogSlide
+							open={open}
+							setOpen={setOpen}
+							setIsLoggedIn={setIsLoggedIn}
 						/>
 						<Balance accountMovements={accountMovements} />
 						<Box
