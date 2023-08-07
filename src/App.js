@@ -145,10 +145,6 @@ function App() {
 		setSort(false);
 	}
 
-	function handleSort() {
-		setSort((sort) => !sort);
-	}
-
 	function handleFX(e) {
 		e.preventDefault();
 
@@ -324,7 +320,6 @@ function App() {
 							setOpen={setOpen}
 							LogUserOut={LogUserOut}
 						/>
-						{/* <Balance accountMovements={accountMovements} /> */}
 						<Box
 							sx={{
 								display: 'flex',
@@ -338,24 +333,28 @@ function App() {
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
 								currency={currency}
+								setSort={setSort}
 							/>
 							<BasicCard
 								accountMovements={accountMovements}
 								currency={currency}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
+								setSort={setSort}
 							/>
 							<BasicCard
 								accountMovements={accountMovements}
 								currency={currency}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
+								setSort={setSort}
 							/>
 							<BasicCard
 								accountMovements={accountMovements}
 								currency={currency}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
+								setSort={setSort}
 							/>
 						</Box>
 						<MovementList>

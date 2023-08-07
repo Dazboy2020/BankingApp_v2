@@ -2,14 +2,18 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
-
+import { Box, Button } from '@mui/material';
+import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 export default function BasicCard({
 	accountMovements,
 	currency,
 	balanceUSD,
 	balanceEUR,
+	setSort,
 }) {
+	function handleSort() {
+		setSort((sort) => !sort);
+	}
 	const totalDepositEuro = accountMovements[0].movements
 		.filter((mov) => mov[0] > 0)
 		.reduce((acc, mov) => acc + mov[0], 0);
@@ -60,6 +64,16 @@ export default function BasicCard({
 						{currency === 'euro' ? ' €' : ' $'}
 						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
 					</Typography>
+				</Box>
+				<Box>
+					<Button
+						onClick={handleSort}
+						size="xs"
+						color="inherit"
+						startIcon={<SouthOutlinedIcon />}
+					>
+						Sort
+					</Button>
 				</Box>
 			</CardContent>
 		</Card>
