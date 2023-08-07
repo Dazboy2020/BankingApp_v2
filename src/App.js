@@ -336,6 +336,7 @@ function App() {
 								balanceEUR={balanceEUR}
 								currency={currency}
 								setSort={setSort}
+								accounts={accounts}
 							/>
 							<BasicCardCreditCard
 								accountMovements={accountMovements}
@@ -343,6 +344,7 @@ function App() {
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
 								setSort={setSort}
+								accounts={accounts}
 							/>
 							<BasicCardTransaction
 								accountMovements={accountMovements}
@@ -350,6 +352,7 @@ function App() {
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
 								setSort={setSort}
+								accounts={accounts}
 							/>
 							{/* <BasicCardSummary
 								accountMovements={accountMovements}
