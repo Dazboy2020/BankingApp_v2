@@ -17,6 +17,7 @@ import { Box } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCard';
 import BasicCardCreditCard from './components/Outline-Card/OutlinedCard2';
+import BasicCardTransaction from './components/Outline-Card/OutlineCard3';
 
 const account1 = [
 	{
@@ -343,20 +344,20 @@ function App() {
 								balanceEUR={balanceEUR}
 								setSort={setSort}
 							/>
-							<BasicCardSummary
+							<BasicCardTransaction
 								accountMovements={accountMovements}
 								currency={currency}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
 								setSort={setSort}
 							/>
-							<BasicCardSummary
+							{/* <BasicCardSummary
 								accountMovements={accountMovements}
 								currency={currency}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
 								setSort={setSort}
-							/>
+							/> */}
 						</Box>
 						<MovementList>
 							<Movements

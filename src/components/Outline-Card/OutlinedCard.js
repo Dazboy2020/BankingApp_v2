@@ -23,10 +23,12 @@ export default function BasicCardSummary({
 		.reduce((acc, mov) => acc + mov[0], 0)
 		.toFixed(2);
 
-	const totalWithdrawalEuro = accountMovements[0].movements
-		.filter((mov) => mov[0] < 0)
-		.reduce((acc, mov) => acc + mov[0], 0)
-		.toFixed(2);
+	const totalWithdrawalEuro = Math.abs(
+		accountMovements[0].movements
+			.filter((mov) => mov[0] < 0)
+			.reduce((acc, mov) => acc + mov[0], 0)
+			.toFixed(2)
+	);
 
 	const totalWithdrawalUSD = Math.abs(
 		accountMovements[1].movementsUSD
@@ -43,9 +45,7 @@ export default function BasicCardSummary({
 					color="black"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
-					{currency === 'euro'
-						? 'Euro Account Details'
-						: 'Dollar Account Details'}
+					{currency === 'euro' ? 'EUR Account Details' : 'USD Account Details'}
 				</Typography>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{currency === 'euro'
@@ -55,12 +55,11 @@ export default function BasicCardSummary({
 
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Typography variant="h6">
-						Deposits:
-						{currency === 'euro' ? ' €' : ' $'}
+						In :{currency === 'euro' ? ' €' : ' $'}
 						{currency === 'euro' ? totalDepositEuro : totalDepositUSD}
 					</Typography>
 					<Typography variant="h6">
-						Withdrawals:
+						Out:
 						{currency === 'euro' ? ' €' : ' $'}
 						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
 					</Typography>
@@ -76,6 +75,7 @@ export default function BasicCardSummary({
 							},
 							bgcolor: '#585054',
 							color: 'white',
+							mt: 2,
 						}}
 						size="xs"
 						color="inherit"
