@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Box, Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
-export default function BasicCard({
+export default function BasicCardSummary({
 	accountMovements,
 	currency,
 	balanceUSD,
@@ -67,7 +67,16 @@ export default function BasicCard({
 				</Box>
 				<Box>
 					<Button
+						variant="contained"
 						onClick={handleSort}
+						sx={{
+							'&:hover': {
+								backgroundColor: 'black',
+								cursor: 'default',
+							},
+							bgcolor: '#585054',
+							color: 'white',
+						}}
 						size="xs"
 						color="inherit"
 						startIcon={<SouthOutlinedIcon />}
