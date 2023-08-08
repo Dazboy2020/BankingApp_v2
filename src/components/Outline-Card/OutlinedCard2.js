@@ -18,7 +18,7 @@ const currencies = [
 	},
 ];
 
-const OutlinedCard2 = () => {
+const BasicCardFX = () => {
 	const [amountFx, setAmountFX] = useState('');
 	const [fxFrom, setFxFrom] = useState('');
 	const [fxTo, setFxTo] = useState('');
@@ -164,4 +164,4 @@ const OutlinedCard2 = () => {
 	);
 };
 
-export default OutlinedCard2;
+export default BasicCardFX;

@@ -16,8 +16,9 @@ import NewNav from './components/Navbar/NewNav';
 import { Box } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCard';
-import BasicCardCreditCard from './components/Outline-Card/OutlinedCard2';
+import BasicCardFX from './components/Outline-Card/OutlinedCard2';
 import BasicCardTransaction from './components/Outline-Card/OutlineCard3';
+import BasicCardCreditCard from './components/Outline-Card/OutLineCreditCard';
 
 const account1 = [
 	{
@@ -263,7 +264,7 @@ function App() {
 								accounts={accounts}
 								user={user}
 							/>
-							<BasicCardCreditCard />
+							<BasicCardFX />
 							<BasicCardTransaction
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
@@ -274,6 +275,7 @@ function App() {
 								accounts={accounts}
 								user={user}
 							/>
+							{/* <BasicCardCreditCard /> */}
 						</Box>
 						<MovementList>
 							<Movements

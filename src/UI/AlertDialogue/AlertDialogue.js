@@ -40,8 +40,12 @@ export default function AlertDialogSlide({ open, setOpen, LogUserOut }) {
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleYesLogout}>Yes</Button>
-					<Button onClick={handleCancel}>Cancel</Button>
+					<Button color="secondary" onClick={handleYesLogout}>
+						Yes
+					</Button>
+					<Button color="secondary" onClick={handleCancel}>
+						Cancel
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</div>
