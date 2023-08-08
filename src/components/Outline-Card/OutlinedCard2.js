@@ -18,10 +18,27 @@ const currencies = [
 	},
 ];
 
-const BasicCardFX = () => {
+const BasicCardFX = ({
+	accountMovements,
+	balanceUSD,
+	balanceEUR,
+	setAccountMovements,
+}) => {
 	const [amountFx, setAmountFX] = useState('');
 	const [fxFrom, setFxFrom] = useState('');
 	const [fxTo, setFxTo] = useState('');
+
+	const updatedMovementsEUR = accountMovements[0].movements.map(
+		(movement) => movement
+	);
+	const updatedMovementsUSD = accountMovements[1].movementsUSD.map(
+		(movement) => movement
+	);
+
+	function handleReturn(e) {
+		e.preventDefault();
+		return;
+	}
 
 	function handleAmountFx(e) {
 		setAmountFX(+e.target.value);
@@ -38,6 +55,53 @@ const BasicCardFX = () => {
 	useEffect(() => {
 		fxFrom === 'EUR' ? setFxTo('USD') : setFxTo('EUR');
 	}, [fxFrom]);
+
+	function handleFxSubmit(e) {
+		e.preventDefault();
+		if (+amountFx <= 0) return;
+
+		if (fxFrom === 'EUR' && +amountFx < balanceEUR) {
+			updatedMovementsEUR.push([-amountFx, new Date().toLocaleDateString()]) &&
+				updatedMovementsUSD.push([
+					+amountFx * 1.06,
+					new Date().toLocaleDateString(),
+				]);
+		}
+
+		if (fxFrom !== 'EUR' && +amountFx < balanceUSD) {
+			updatedMovementsUSD.push([-amountFx, new Date().toLocaleDateString()]);
+			updatedMovementsEUR.push([
+				+amountFx * 0.94,
+				new Date().toLocaleDateString(),
+			]);
+		}
+
+		let updatedAccount;
+		fxFrom === 'EUR'
+			? (updatedAccount = [
+					{
+						...accountMovements[0],
+						movements: updatedMovementsEUR,
+					},
+					{
+						...accountMovements[1],
+						movementsUSD: updatedMovementsUSD,
+					},
+			  ])
+			: (updatedAccount = [
+					{
+						...accountMovements[0],
+						movements: updatedMovementsEUR,
+					},
+					{
+						...accountMovements[1],
+						movementsUSD: updatedMovementsUSD,
+					},
+			  ]);
+
+		setAccountMovements(updatedAccount);
+		setAmountFX('');
+	}
 
 	return (
 		<Card
@@ -73,7 +137,7 @@ const BasicCardFX = () => {
 							noValidate
 							autoComplete="off"
 						>
-							<form component="form">
+							<form component="form" onSubmit={handleReturn}>
 								<TextField
 									onChange={handleAmountFx}
 									id="outlined-select-currency"
@@ -144,7 +208,6 @@ const BasicCardFX = () => {
 				</Box>
 				<Box>
 					<Button
-						// onClick={handleTransferSubmit}
 						startIcon={<CachedIcon color="white" sx={{ ml: 1 }} />}
 						sx={{
 							'&:hover': {
@@ -155,6 +218,7 @@ const BasicCardFX = () => {
 							color: 'white',
 							mt: 4,
 						}}
+						onClick={handleFxSubmit}
 					>
 						Exchange
 					</Button>

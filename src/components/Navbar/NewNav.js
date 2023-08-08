@@ -44,19 +44,19 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 						Welcome, {accountMovements[0].owner.toUpperCase()}
 					</Typography>
 					<Box>
-						<Button
+						{/* <Button
 							size="xs"
 							color="inherit"
 							startIcon={<CachedIcon color="white" sx={{ ml: 3 }} />}
 						>
 							Exchange
-						</Button>
+						</Button> */}
 						<Button
 							size="xs"
 							color="inherit"
 							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
 						>
-							Close
+							Close Account
 						</Button>
 						<Button
 							onClick={() => switchCurrency()}
@@ -64,7 +64,7 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 							color="inherit"
 							startIcon={<CurrencyExchangeIcon color="white" sx={{ ml: 1 }} />}
 						>
-							Account
+							Switch Account
 						</Button>
 						<Button
 							size="xs"

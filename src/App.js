@@ -264,7 +264,16 @@ function App() {
 								accounts={accounts}
 								user={user}
 							/>
-							<BasicCardFX />
+							<BasicCardFX
+								accountMovements={accountMovements}
+								setAccountMovements={setAccountMovements}
+								currency={currency}
+								balanceUSD={balanceUSD}
+								balanceEUR={balanceEUR}
+								setSort={setSort}
+								accounts={accounts}
+								user={user}
+							/>
 							<BasicCardTransaction
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
