@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 // import Typography from '@mui/material/Typography';
 import { TextField, MenuItem, Typography, FormControl } from '@mui/material';
 import { useState } from 'react';
+import SyncAltIcon from '@mui/icons-material/SyncAlt';
 
 const currencies = [
 	{
@@ -47,6 +48,11 @@ export default function BasicCardTransaction({ accounts, user }) {
 	function handleReturn(e) {
 		e.preventDefault();
 		return;
+	}
+
+	function handleTransferSubmit() {
+		console.log('clicked');
+		console.log(targetUser, transferAmount, currency);
 	}
 
 	return (
@@ -148,7 +154,7 @@ export default function BasicCardTransaction({ accounts, user }) {
 									// select
 									label="amount"
 									// defaultValue={transferAmount}
-									helperText="Please select amount"
+									helperText="Select amount"
 								></TextField>
 								{/* <input onSubmit={() => handleReturn}></input> */}
 							</form>
@@ -157,6 +163,8 @@ export default function BasicCardTransaction({ accounts, user }) {
 				</Box>
 				<Box>
 					<Button
+						onClick={handleTransferSubmit}
+						startIcon={<SyncAltIcon color="white" sx={{ ml: 1 }} />}
 						sx={{
 							'&:hover': {
 								backgroundColor: 'black',
