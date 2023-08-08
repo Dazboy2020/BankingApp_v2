@@ -20,7 +20,12 @@ const currencies = [
 	},
 ];
 
-export default function BasicCardTransaction({ accounts, user }) {
+export default function BasicCardTransaction({
+	accounts,
+	user,
+	accountMovements,
+	setAccountMovements,
+}) {
 	const users = accounts.map((user) => {
 		return user[0].owner;
 	});
@@ -28,7 +33,9 @@ export default function BasicCardTransaction({ accounts, user }) {
 	const recipient = users.filter((item) => item !== user);
 
 	const [currency, setCurrency] = useState('EUR');
-	const [targetUser, setTargetUser] = useState(recipient);
+	const [targetUser, setTargetUser] = useState(
+		recipient.length > 1 ? recipient[0] : recipient
+	);
 	const [transferAmount, setTransferAmount] = useState('');
 
 	function handleChange(e) {
@@ -42,7 +49,7 @@ export default function BasicCardTransaction({ accounts, user }) {
 
 	function handleTransferAmount(e) {
 		e.preventDefault();
-		setTransferAmount(e.target.value);
+		setTransferAmount(+e.target.value);
 	}
 
 	function handleReturn(e) {
@@ -50,9 +57,90 @@ export default function BasicCardTransaction({ accounts, user }) {
 		return;
 	}
 
-	function handleTransferSubmit() {
-		console.log('clicked');
-		console.log(targetUser, transferAmount, currency);
+	function handleTransferSubmit(e) {
+		e.preventDefault();
+
+		const balanceEUR = accountMovements[0].movements.reduce(
+			(acc, mov) => acc + mov[0],
+			0
+		);
+		const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
+			(acc, mov) => acc + mov[0],
+			0
+		);
+
+		const updatedMovementsEUR = accountMovements[0].movements.map(
+			(movement) => movement
+		);
+		const updatedMovementsUSD = accountMovements[1].movementsUSD.map(
+			(movement) => movement
+		);
+
+		const recieverAcc = accounts.find((acc) => acc[0].owner === targetUser);
+		console.log(recieverAcc);
+
+		if (
+			currency === 'EUR' &&
+			recieverAcc &&
+			transferAmount &&
+			balanceEUR >= +transferAmount &&
+			+transferAmount > 0
+		) {
+			console.log('conditions for euro transfer met');
+			updatedMovementsEUR.push([
+				-transferAmount,
+				new Date().toLocaleDateString(),
+			]) &&
+				recieverAcc[0].movements.push([
+					+transferAmount,
+					new Date().toLocaleDateString(),
+				]);
+		} else if (
+			currency === 'USD' &&
+			recieverAcc &&
+			+transferAmount &&
+			balanceUSD >= +transferAmount &&
+			+transferAmount > 0
+		) {
+			console.log('conditions for usd transfer met');
+			updatedMovementsUSD.push([
+				-transferAmount,
+				new Date().toLocaleDateString(),
+			]) &&
+				recieverAcc[1].movementsUSD.push([
+					+transferAmount,
+					new Date().toLocaleDateString(),
+				]);
+		} else {
+			return;
+		}
+
+		let updatedAccount;
+		currency === 'EUR'
+			? (updatedAccount = [
+					{
+						...accountMovements[0],
+						movements: updatedMovementsEUR,
+					},
+					{
+						...recieverAcc[1],
+						movementsUSD: updatedMovementsUSD,
+					},
+			  ])
+			: (updatedAccount = [
+					{
+						...accountMovements[0],
+						movements: updatedMovementsEUR,
+					},
+					{
+						...recieverAcc[1],
+						movementsUSD: updatedMovementsUSD,
+					},
+			  ]);
+
+		setAccountMovements(updatedAccount);
+		setTransferAmount('');
+		setTargetUser('');
 	}
 
 	return (
@@ -97,7 +185,7 @@ export default function BasicCardTransaction({ accounts, user }) {
 								id="outlined-select-currency"
 								select
 								label="Select"
-								defaultValue={currency}
+								value={currency}
 								helperText="Select currency"
 								onChange={handleChange}
 							>
@@ -124,8 +212,8 @@ export default function BasicCardTransaction({ accounts, user }) {
 									id="outlined-select-currency"
 									select
 									label="Select"
-									defaultValue={recipient[0]}
-									// value={recipient}
+									// defaultValue=""
+									value={targetUser}
 									helperText="Select reciever"
 									onChange={handleUser}
 								>
@@ -153,7 +241,7 @@ export default function BasicCardTransaction({ accounts, user }) {
 									id="outlined-select-currency"
 									// select
 									label="amount"
-									// defaultValue={transferAmount}
+									value={transferAmount}
 									helperText="Select amount"
 								></TextField>
 								{/* <input onSubmit={() => handleReturn}></input> */}

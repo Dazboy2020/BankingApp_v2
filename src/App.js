@@ -350,6 +350,7 @@ function App() {
 							/>
 							<BasicCardTransaction
 								accountMovements={accountMovements}
+								setAccountMovements={setAccountMovements}
 								currency={currency}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
