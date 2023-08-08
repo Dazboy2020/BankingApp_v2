@@ -2,7 +2,6 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import CachedIcon from '@mui/icons-material/Cached';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
@@ -44,13 +43,6 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 						Welcome, {accountMovements[0].owner.toUpperCase()}
 					</Typography>
 					<Box>
-						{/* <Button
-							size="xs"
-							color="inherit"
-							startIcon={<CachedIcon color="white" sx={{ ml: 3 }} />}
-						>
-							Exchange
-						</Button> */}
 						<Button
 							size="xs"
 							color="inherit"

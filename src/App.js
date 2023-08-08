@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import MainWrapper from './UI/MainWrapper';
-// import Balance from './components/Balance/Balance';
 import MovementList from './components/Movements/MovementList';
 import Movements from './components/Movements/Movements';
-// import Summary from './components/Summary/Summary';
-// import TransferPanelSection from './UI/TransferPanelSection';
-// import OperationFx from './components/OperationFX/OperationFx';
-// import CloseAccount from './components/CloseAccount/CloseAccount';
-// import TransferMoney from './components/TransferMoney/TransferMoney';
-// // import SwitchButton from './components/SwitchButton/SwitchButton';
 
-// import styles from './UI/TransferPanelSection.module.css';
+// import CloseAccount from './components/CloseAccount/CloseAccount';
+
 import SignIn from './components/Login/SignIn';
 import NewNav from './components/Navbar/NewNav';
 import { Box } from '@mui/material';
@@ -18,7 +12,7 @@ import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCard';
 import BasicCardFX from './components/Outline-Card/OutlinedCard2';
 import BasicCardTransaction from './components/Outline-Card/OutlineCard3';
-import BasicCardCreditCard from './components/Outline-Card/OutLineCreditCard';
+// import BasicCardCreditCard from './components/Outline-Card/OutLineCreditCard';
 
 const account1 = [
 	{
@@ -110,20 +104,12 @@ function App() {
 	const [currency, setCurrency] = useState('euro');
 	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
-	const [amountFX, setAmountFX] = useState('');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
 	const [open, setOpen] = React.useState(false);
-
-	const updatedMovementsEUR = accountMovements[0].movements.map(
-		(movement) => movement
-	);
-	const updatedMovementsUSD = accountMovements[1].movementsUSD.map(
-		(movement) => movement
-	);
 
 	const balanceEUR = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
@@ -144,54 +130,6 @@ function App() {
 		);
 
 		setSort(false);
-	}
-
-	function handleFX(e) {
-		e.preventDefault();
-
-		if (+amountFX <= 0) return;
-
-		if (currency === 'euro' && +amountFX < balanceEUR) {
-			updatedMovementsEUR.push([-amountFX, new Date().toLocaleDateString()]) &&
-				updatedMovementsUSD.push([
-					+amountFX * 1.06,
-					new Date().toLocaleDateString(),
-				]);
-		}
-
-		if (currency !== 'euro' && +amountFX < balanceUSD) {
-			updatedMovementsUSD.push([-amountFX, new Date().toLocaleDateString()]);
-			updatedMovementsEUR.push([
-				+amountFX * 0.94,
-				new Date().toLocaleDateString(),
-			]);
-		}
-
-		let updatedAccount;
-		currency === 'euro'
-			? (updatedAccount = [
-					{
-						...accountMovements[0],
-						movements: updatedMovementsEUR,
-					},
-					{
-						...accountMovements[1],
-						movementsUSD: updatedMovementsUSD,
-					},
-			  ])
-			: (updatedAccount = [
-					{
-						...accountMovements[0],
-						movements: updatedMovementsEUR,
-					},
-					{
-						...accountMovements[1],
-						movementsUSD: updatedMovementsUSD,
-					},
-			  ]);
-
-		setAccountMovements(updatedAccount);
-		setAmountFX('');
 	}
 
 	function handleCloseAccount(e) {
@@ -292,35 +230,7 @@ function App() {
 								currency={currency}
 								sort={sort}
 							/>
-							{/* <TransferPanelSection className={styles.transfer__panel__section}>
-								<OperationFx
-									handleFX={handleFX}
-									amountFX={amountFX}
-									setAmountFX={setAmountFX}
-									currency={currency}
-									onAddFX={handleFX}
-								/>
-								<TransferMoney
-									onAddTransfer={handleTransfer}
-									setTransferRecipient={setTransferRecipient}
-									setAmountTransfer={setAmountTransfer}
-									transferRecipient={transferRecipient}
-									amountTransfer={amountTransfer}
-								/>
-								<CloseAccount
-									onAddClose={handleCloseAccount}
-									closePin={closePin}
-									setClosePin={setClosePin}
-									closeUser={closeUser}
-									setCloseUser={setCloseUser}
-								/>
-							</TransferPanelSection> */}
 						</MovementList>
-						{/* <Summary
-							accountMovements={accountMovements}
-							currency={currency}
-							onSort={handleSort}
-						/> */}
 					</MainWrapper>
 				</>
 			)}
