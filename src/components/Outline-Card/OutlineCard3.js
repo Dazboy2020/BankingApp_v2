@@ -256,7 +256,7 @@ export default function BasicCardTransaction({
 							},
 							bgcolor: '#585054',
 							color: 'white',
-							mt: 2,
+							mt: 4,
 						}}
 					>
 						Transfer

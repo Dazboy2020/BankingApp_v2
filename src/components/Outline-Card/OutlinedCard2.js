@@ -1,32 +1,151 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { TextField, MenuItem, Typography } from '@mui/material';
+import { useState } from 'react';
+import CachedIcon from '@mui/icons-material/SyncAlt';
 
-export default function BasicCardCreditCard() {
+const currencies = [
+	{
+		value: 'USD',
+		label: '$',
+	},
+	{
+		value: 'EUR',
+		label: '€',
+	},
+];
+
+const OutlinedCard2 = () => {
+	const [amountFx, setAmountFX] = useState('');
+	const [fxFrom, setFxFrom] = useState('');
+	const [fxTo, setFxTo] = useState('');
+
+	function handleAmountFx(e) {
+		setAmountFX(+e.target.value);
+	}
+
+	function handleFxFrom(e) {
+		setFxFrom(e.target.value);
+
+		if (fxFrom === 'USD') {
+			setFxTo('EUR');
+		}
+	}
+
+	useEffect(() => {
+		fxFrom === 'EUR' ? setFxTo('USD') : setFxTo('EUR');
+	}, [fxFrom]);
+
 	return (
-		<Card sx={{ display: 'flex', flexGrow: 1, m: 1 }}>
+		<Card
+			sx={{
+				display: 'flex',
+				flexGrow: 1,
+				m: 1,
+				// alignItems: 'center',
+				alignItems: 'flex-start',
+			}}
+		>
 			<CardContent>
-				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
-					<Typography sx={{ color: 'red' }} variant="h4" gutterBottom>
-						Credit Card
+				<Box>
+					<Typography
+						variant="h6"
+						color="black"
+						sx={{ mb: 2, fontWeight: 'bold' }}
+					>
+						Currency FX:
 					</Typography>
-					<Typography sx={{ fontWeight: 'bold' }} variant="h5" component="div">
-						A range of credit cards to suit your needs.
-					</Typography>
-					<Typography sx={{ mb: 1.5 }} color="text.secondary">
-						You must be 18 years or older to apply for a credit card.
-					</Typography>
-					<Typography variant="body2">
-						Credit subject to status. Terms and conditions apply.
-					</Typography>
+				</Box>
+				<Box
+					sx={{
+						display: 'flex',
+					}}
+				>
+					<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+						{/* //! Amount */}
+						<Box
+							sx={{
+								'& .MuiTextField-root': { m: 1, width: '25ch' },
+							}}
+							noValidate
+							autoComplete="off"
+						>
+							<form component="form">
+								<TextField
+									onChange={handleAmountFx}
+									id="outlined-select-currency"
+									// select
+									label="amount"
+									value={amountFx}
+									helperText="Select amount"
+									color="secondary"
+								></TextField>
+								{/* <input onSubmit={() => handleReturn}></input> */}
+							</form>
+						</Box>
+						{/* {//! From */}
+
+						<Box
+							component="form"
+							sx={{
+								'& .MuiTextField-root': { m: 1, width: '25ch' },
+							}}
+							noValidate
+							autoComplete="off"
+						>
+							<TextField
+								id="outlined-select-currency"
+								select
+								label="Select"
+								value={fxFrom}
+								helperText="From"
+								onChange={handleFxFrom}
+								color="secondary"
+							>
+								{currencies.map((option) => (
+									<MenuItem key={option.value} value={option.value}>
+										{option.label}
+									</MenuItem>
+								))}
+							</TextField>
+						</Box>
+
+						{/*//! To */}
+
+						<Box
+							component="form"
+							sx={{
+								'& .MuiTextField-root': { m: 1, width: '25ch' },
+							}}
+							noValidate
+							autoComplete="off"
+						>
+							<TextField
+								id="outlined-select-currency"
+								select
+								label="Select"
+								value={fxTo}
+								helperText="To"
+								// onChange={handleChange}
+								color="secondary"
+								// disabled="true"
+							>
+								{currencies.map((option) => (
+									<MenuItem key={option.value} value={option.value}>
+										{option.label}
+									</MenuItem>
+								))}
+							</TextField>
+						</Box>
+					</Box>
 				</Box>
 				<Box>
 					<Button
-						size="xs"
-						variant="contained"
+						// onClick={handleTransferSubmit}
+						startIcon={<CachedIcon color="white" sx={{ ml: 1 }} />}
 						sx={{
 							'&:hover': {
 								backgroundColor: 'black',
@@ -36,14 +155,13 @@ export default function BasicCardCreditCard() {
 							color: 'white',
 							mt: 4,
 						}}
-						color="inherit"
-
-						// startIcon={<SouthOutlinedIcon />}
 					>
-						Find out more
+						Exchange
 					</Button>
 				</Box>
 			</CardContent>
 		</Card>
 	);
-}
+};
+
+export default OutlinedCard2;
