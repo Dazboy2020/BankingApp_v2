@@ -54,7 +54,7 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 						<Button
 							size="xs"
 							color="inherit"
-							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
+							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 3 }} />}
 						>
 							Close Account
 						</Button>
