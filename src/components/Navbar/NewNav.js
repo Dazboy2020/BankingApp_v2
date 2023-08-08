@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import { AccountBalanceOutlined } from '@mui/icons-material';
+import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
 
 const now = new Date();
 const options = {
@@ -51,13 +51,6 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 						>
 							Exchange
 						</Button>
-						{/* <Button
-							size="xs"
-							color="inherit"
-							startIcon={<SyncAltIcon color="white" sx={{ ml: 1 }} />}
-						>
-							Transfer
-						</Button> */}
 						<Button
 							size="xs"
 							color="inherit"
@@ -72,6 +65,13 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 							startIcon={<CurrencyExchangeIcon color="white" sx={{ ml: 1 }} />}
 						>
 							Account
+						</Button>
+						<Button
+							size="xs"
+							color="inherit"
+							startIcon={<GitHub color="white" sx={{ ml: 1 }} />}
+						>
+							About
 						</Button>
 						<Button
 							onClick={handleLogOut}
