@@ -25,6 +25,8 @@ export default function BasicCardTransaction({
 	user,
 	accountMovements,
 	setAccountMovements,
+	balanceUSD,
+	balanceEUR,
 }) {
 	const users = accounts.map((user) => {
 		return user[0].owner;
@@ -59,15 +61,6 @@ export default function BasicCardTransaction({
 
 	function handleTransferSubmit(e) {
 		e.preventDefault();
-
-		const balanceEUR = accountMovements[0].movements.reduce(
-			(acc, mov) => acc + mov[0],
-			0
-		);
-		const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
-			(acc, mov) => acc + mov[0],
-			0
-		);
 
 		const updatedMovementsEUR = accountMovements[0].movements.map(
 			(movement) => movement
@@ -188,6 +181,7 @@ export default function BasicCardTransaction({
 								value={currency}
 								helperText="Select currency"
 								onChange={handleChange}
+								color="secondary"
 							>
 								{currencies.map((option) => (
 									<MenuItem key={option.value} value={option.value}>
@@ -216,6 +210,7 @@ export default function BasicCardTransaction({
 									value={targetUser}
 									helperText="Select reciever"
 									onChange={handleUser}
+									color="secondary"
 								>
 									{recipient.map((user, i) => (
 										<MenuItem key={i} value={user}>
@@ -243,6 +238,7 @@ export default function BasicCardTransaction({
 									label="amount"
 									value={transferAmount}
 									helperText="Select amount"
+									color="secondary"
 								></TextField>
 								{/* <input onSubmit={() => handleReturn}></input> */}
 							</form>

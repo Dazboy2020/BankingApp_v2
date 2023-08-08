@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import CachedIcon from '@mui/icons-material/Cached';
-import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
@@ -52,13 +51,13 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 						>
 							Exchange
 						</Button>
-						<Button
+						{/* <Button
 							size="xs"
 							color="inherit"
 							startIcon={<SyncAltIcon color="white" sx={{ ml: 1 }} />}
 						>
 							Transfer
-						</Button>
+						</Button> */}
 						<Button
 							size="xs"
 							color="inherit"

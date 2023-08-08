@@ -113,8 +113,6 @@ function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
-	const [amountTransfer, setAmountTransfer] = useState('');
-	const [transferRecipient, setTransferRecipient] = useState('');
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
 	const [open, setOpen] = React.useState(false);
@@ -195,80 +193,6 @@ function App() {
 		setAmountFX('');
 	}
 
-	function handleTransfer(e) {
-		e.preventDefault();
-
-		const recieverAcc = accounts.find((acc) => {
-			return acc[0].owner === transferRecipient;
-		});
-
-		if (
-			currency === 'euro' &&
-			recieverAcc &&
-			amountTransfer &&
-			balanceEUR >= +amountTransfer &&
-			+amountTransfer > 0 &&
-			recieverAcc[0].owner !== accountMovements[0].owner
-		) {
-			console.log('conditions for euro transfer met');
-			updatedMovementsEUR.push([
-				-amountTransfer,
-				new Date().toLocaleDateString(),
-			]) &&
-				recieverAcc[0].movements.push([
-					+amountTransfer,
-					new Date().toLocaleDateString(),
-				]);
-		} else if (
-			currency === 'usd' &&
-			recieverAcc &&
-			+amountTransfer &&
-			balanceUSD >= +amountTransfer &&
-			+amountTransfer > 0 &&
-			recieverAcc[0].owner !== accountMovements[0].owner
-		) {
-			console.log('conditions for usd transfer met');
-			updatedMovementsUSD.push([
-				-amountTransfer,
-				new Date().toLocaleDateString(),
-			]) &&
-				recieverAcc[1].movementsUSD.push([
-					+amountTransfer,
-					new Date().toLocaleDateString(),
-				]);
-		} else {
-			return;
-		}
-
-		let updatedAccount;
-		currency === 'euro'
-			? (updatedAccount = [
-					{
-						...accountMovements[0],
-						movements: updatedMovementsEUR,
-					},
-					{
-						...recieverAcc[1],
-						movementsUSD: updatedMovementsUSD,
-					},
-			  ])
-			: (updatedAccount = [
-					{
-						...accountMovements[0],
-						movements: updatedMovementsEUR,
-					},
-					{
-						...recieverAcc[1],
-						movementsUSD: updatedMovementsUSD,
-					},
-			  ]);
-
-		setAccountMovements(updatedAccount);
-		setAmountTransfer('');
-		setTransferRecipient('');
-		console.log(amountTransfer, transferRecipient);
-	}
-
 	function handleCloseAccount(e) {
 		e.preventDefault();
 
@@ -339,15 +263,7 @@ function App() {
 								accounts={accounts}
 								user={user}
 							/>
-							<BasicCardCreditCard
-								accountMovements={accountMovements}
-								currency={currency}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
-								setSort={setSort}
-								accounts={accounts}
-								user={user}
-							/>
+							<BasicCardCreditCard />
 							<BasicCardTransaction
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
@@ -358,13 +274,6 @@ function App() {
 								accounts={accounts}
 								user={user}
 							/>
-							{/* <BasicCardSummary
-								accountMovements={accountMovements}
-								currency={currency}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
-								setSort={setSort}
-							/> */}
 						</Box>
 						<MovementList>
 							<Movements

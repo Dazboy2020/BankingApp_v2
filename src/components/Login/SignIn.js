@@ -104,6 +104,7 @@ export default function SignIn({
 							value={user}
 							onChange={(e) => setUser(e.target.value)}
 							onBlur={onBlurHandler}
+							color="secondary"
 						/>
 						<TextField
 							margin="normal"
@@ -117,6 +118,7 @@ export default function SignIn({
 							value={pin}
 							onChange={(e) => setPin(e.target.value)}
 							onBlur={onBlurHandler}
+							color="secondary"
 						/>
 						{error ? (
 							<p style={{ color: 'red' }}>Something went wrong!</p>
@@ -134,6 +136,7 @@ export default function SignIn({
 							fullWidth
 							variant="contained"
 							sx={{ mt: 1, mb: 2 }}
+							color="secondary"
 						>
 							Sign In
 						</Button>
