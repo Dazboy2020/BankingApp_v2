@@ -79,7 +79,6 @@ export default function BasicCardTransaction({
 			balanceEUR >= +transferAmount &&
 			+transferAmount > 0
 		) {
-			console.log('conditions for euro transfer met');
 			updatedMovementsEUR.unshift([
 				-transferAmount,
 				new Date().toLocaleDateString(),
@@ -95,7 +94,6 @@ export default function BasicCardTransaction({
 			balanceUSD >= +transferAmount &&
 			+transferAmount > 0
 		) {
-			console.log('conditions for usd transfer met');
 			updatedMovementsUSD.unshift([
 				-transferAmount,
 				new Date().toLocaleDateString(),
