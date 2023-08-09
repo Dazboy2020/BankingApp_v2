@@ -114,7 +114,6 @@ const BasicCardFX = ({
 				display: 'flex',
 				flexGrow: 1,
 				m: 1,
-				// alignItems: 'center',
 				alignItems: 'flex-start',
 			}}
 		>

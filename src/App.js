@@ -14,7 +14,6 @@ import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
 import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 import Toast from './UI/AlertDialogue/Toast';
-// import BasicCardCreditCard from './components/Outline-Card/OutLineCreditCard';
 
 const account1 = [
 	{
