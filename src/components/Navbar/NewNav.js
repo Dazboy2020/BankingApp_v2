@@ -19,9 +19,38 @@ const options = {
 
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
-function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
+function ResponsiveAppBar({
+	accountMovements,
+	switchCurrency,
+	setOpen,
+	accounts,
+	setIsLoggedIn,
+	setUser,
+	setPin,
+	closePin,
+	setClosePin,
+	setCloseUser,
+	closeUser,
+	user,
+	loggedInAccount,
+	setOpenModal,
+}) {
 	function handleLogOut() {
 		setOpen(true);
+	}
+
+	function closeAccountHandler(e) {
+		e.preventDefault();
+		console.log('CLICK');
+
+		setOpenModal(true);
+		const index = accounts.findIndex((acc) => acc.owner === user);
+		accounts.splice(index, 1);
+		// setIsLoggedIn(false);
+		setClosePin('');
+		setCloseUser('');
+		setPin('');
+		setUser('');
 	}
 
 	return (
@@ -44,6 +73,7 @@ function ResponsiveAppBar({ accountMovements, switchCurrency, setOpen }) {
 					</Typography>
 					<Box>
 						<Button
+							onClick={closeAccountHandler}
 							size="xs"
 							color="inherit"
 							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 3 }} />}

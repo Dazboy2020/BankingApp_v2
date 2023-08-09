@@ -12,6 +12,7 @@ import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
 import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
 import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
+import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 // import BasicCardCreditCard from './components/Outline-Card/OutLineCreditCard';
 
 const account1 = [
@@ -110,6 +111,7 @@ function App() {
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
 	const [open, setOpen] = React.useState(false);
+	const [openModal, setOpenModal] = useState(false);
 
 	const balanceEUR = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
@@ -132,23 +134,23 @@ function App() {
 		setSort(false);
 	}
 
-	function handleCloseAccount(e) {
-		e.preventDefault();
+	// function handleCloseAccount(e) {
+	// 	e.preventDefault();
 
-		if (
-			closeUser === loggedInAccount[0].owner &&
-			+closePin === loggedInAccount[0].pin
-		) {
-			console.log('match');
-			const index = accounts.findIndex((acc) => acc.owner === user);
-			accounts.splice(index, 1);
-			setIsLoggedIn((cur) => !cur);
-			setClosePin('');
-			setCloseUser('');
-			setPin('');
-			setUser('');
-		}
-	}
+	// 	if (
+	// 		closeUser === loggedInAccount[0].owner &&
+	// 		+closePin === loggedInAccount[0].pin
+	// 	) {
+	// 		console.log('match');
+	// 		const index = accounts.findIndex((acc) => acc.owner === user);
+	// 		accounts.splice(index, 1);
+	// 		setIsLoggedIn((cur) => !cur);
+	// 		setClosePin('');
+	// 		setCloseUser('');
+	// 		setPin('');
+	// 		setUser('');
+	// 	}
+	// }
 
 	function LogUserOut() {
 		setIsLoggedIn(false);
@@ -172,17 +174,31 @@ function App() {
 						<NewNav
 							accountMovements={accountMovements}
 							setIsLoggedIn={setIsLoggedIn}
+							loggedInAccount={loggedInAccount}
 							setUser={setUser}
 							setPin={setPin}
+							setClosePin={setClosePin}
+							closePin={closePin}
 							switchCurrency={switchCurrency}
 							currency={currency}
 							open={open}
 							setOpen={setOpen}
 							LogUserOut={LogUserOut}
+							accounts={accounts}
+							setCloseUser={setCloseUser}
+							closeUser={closeUser}
+							user={user}
+							openModal={openModal}
+							setOpenModal={setOpenModal}
 						/>
 						<AlertDialogSlide
 							open={open}
 							setOpen={setOpen}
+							LogUserOut={LogUserOut}
+						/>
+						<CloseAccountModal
+							openModal={openModal}
+							setOpenModal={setOpenModal}
 							LogUserOut={LogUserOut}
 						/>
 						<Box
