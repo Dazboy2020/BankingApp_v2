@@ -80,11 +80,11 @@ export default function BasicCardTransaction({
 			+transferAmount > 0
 		) {
 			console.log('conditions for euro transfer met');
-			updatedMovementsEUR.push([
+			updatedMovementsEUR.unshift([
 				-transferAmount,
 				new Date().toLocaleDateString(),
 			]) &&
-				recieverAcc[0].movements.push([
+				recieverAcc[0].movements.unshift([
 					+transferAmount,
 					new Date().toLocaleDateString(),
 				]);
@@ -96,11 +96,11 @@ export default function BasicCardTransaction({
 			+transferAmount > 0
 		) {
 			console.log('conditions for usd transfer met');
-			updatedMovementsUSD.push([
+			updatedMovementsUSD.unshift([
 				-transferAmount,
 				new Date().toLocaleDateString(),
 			]) &&
-				recieverAcc[1].movementsUSD.push([
+				recieverAcc[1].movementsUSD.unshift([
 					+transferAmount,
 					new Date().toLocaleDateString(),
 				]);

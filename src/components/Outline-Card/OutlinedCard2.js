@@ -61,16 +61,19 @@ const BasicCardFX = ({
 		if (+amountFx <= 0) return;
 
 		if (fxFrom === 'EUR' && +amountFx < balanceEUR) {
-			updatedMovementsEUR.push([-amountFx, new Date().toLocaleDateString()]) &&
-				updatedMovementsUSD.push([
+			updatedMovementsEUR.unshift([
+				-amountFx,
+				new Date().toLocaleDateString(),
+			]) &&
+				updatedMovementsUSD.unshift([
 					+amountFx * 1.06,
 					new Date().toLocaleDateString(),
 				]);
 		}
 
 		if (fxFrom !== 'EUR' && +amountFx < balanceUSD) {
-			updatedMovementsUSD.push([-amountFx, new Date().toLocaleDateString()]);
-			updatedMovementsEUR.push([
+			updatedMovementsUSD.unshift([-amountFx, new Date().toLocaleDateString()]);
+			updatedMovementsEUR.unshift([
 				+amountFx * 0.94,
 				new Date().toLocaleDateString(),
 			]);
