@@ -23,6 +23,7 @@ const BasicCardFX = ({
 	balanceUSD,
 	balanceEUR,
 	setAccountMovements,
+	setOpenToast,
 }) => {
 	const [amountFx, setAmountFX] = useState('');
 	const [fxFrom, setFxFrom] = useState('');
@@ -104,6 +105,7 @@ const BasicCardFX = ({
 
 		setAccountMovements(updatedAccount);
 		setAmountFX('');
+		setOpenToast(true);
 	}
 
 	return (
@@ -145,13 +147,11 @@ const BasicCardFX = ({
 									onChange={handleAmountFx}
 									id="outlined-select-currency"
 									type="number"
-									// select
 									label="amount"
 									value={amountFx}
 									helperText="Select amount"
 									color="secondary"
 								></TextField>
-								{/* <input onSubmit={() => handleReturn}></input> */}
 							</form>
 						</Box>
 						{/* {//! From */}
@@ -197,7 +197,6 @@ const BasicCardFX = ({
 								label="Select"
 								value={fxTo}
 								helperText="To"
-								// onChange={handleChange}
 								color="secondary"
 								disabled
 							>

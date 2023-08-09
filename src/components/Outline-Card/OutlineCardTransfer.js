@@ -25,6 +25,7 @@ export default function BasicCardTransaction({
 	setAccountMovements,
 	balanceUSD,
 	balanceEUR,
+	setOpenToast,
 }) {
 	const users = accounts.map((user) => {
 		return user[0].owner;
@@ -43,13 +44,12 @@ export default function BasicCardTransaction({
 	}
 
 	function handleUser(e) {
-		// if (e.target.value === user) return;
 		setTargetUser(e.target.value);
 	}
 
 	function handleTransferAmount(e) {
 		e.preventDefault();
-		setTransferAmount(+e.target.value);
+		setTransferAmount(e.target.value);
 	}
 
 	function handleReturn(e) {
@@ -130,6 +130,7 @@ export default function BasicCardTransaction({
 		setAccountMovements(updatedAccount);
 		setTransferAmount('');
 		setTargetUser('');
+		setOpenToast(true);
 	}
 
 	return (

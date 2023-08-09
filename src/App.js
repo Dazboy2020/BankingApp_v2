@@ -13,6 +13,7 @@ import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
 import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
 import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
+import Toast from './UI/AlertDialogue/Toast';
 // import BasicCardCreditCard from './components/Outline-Card/OutLineCreditCard';
 
 const account1 = [
@@ -114,6 +115,7 @@ function App() {
 	const [closeUser, setCloseUser] = useState('');
 	const [open, setOpen] = React.useState(false);
 	const [openModal, setOpenModal] = useState(false);
+	const [openToast, setOpenToast] = useState(false);
 
 	const balanceEUR = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
@@ -181,6 +183,7 @@ function App() {
 							setOpenModal={setOpenModal}
 							LogUserOut={LogUserOut}
 						/>
+						<Toast openToast={openToast} setOpenToast={setOpenToast} />
 						<Box
 							sx={{
 								display: 'flex',
@@ -207,6 +210,7 @@ function App() {
 								setSort={setSort}
 								accounts={accounts}
 								user={user}
+								setOpenToast={setOpenToast}
 							/>
 							<BasicCardTransaction
 								accountMovements={accountMovements}
@@ -217,6 +221,7 @@ function App() {
 								setSort={setSort}
 								accounts={accounts}
 								user={user}
+								setOpenToast={setOpenToast}
 							/>
 							{/* <BasicCardCreditCard /> */}
 						</Box>
