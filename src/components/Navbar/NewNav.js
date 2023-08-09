@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -9,7 +8,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
-import { Link } from '@mui/material';
+import { Link, Stack } from '@mui/material';
 
 const now = new Date();
 const options = {
@@ -58,21 +57,24 @@ function ResponsiveAppBar({
 		>
 			<Container maxWidth="xxl">
 				<Toolbar>
-					<AccountBalanceOutlined
+					{/* <AccountBalanceOutlined
 						sx={{
-							display: { xs: 'none', md: 'flex' },
+							display: { xs: 'none', s: 'flex' },
 							mr: 1,
 						}}
 					/>
 					<Typography variant="h6" noWrap>
 						Welcome, {accountMovements[0].owner.toUpperCase()}
-					</Typography>
-					<Box>
+					</Typography> */}
+					<Stack
+						direction={{ xs: 'column', md: 'row' }}
+						sx={{ alignItems: 'flex-start' }}
+					>
 						<Button
 							onClick={closeAccountHandler}
 							size="xs"
 							color="inherit"
-							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 3 }} />}
+							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
 						>
 							Close Account
 						</Button>
@@ -103,16 +105,20 @@ function ResponsiveAppBar({
 						>
 							LogOut
 						</Button>
-					</Box>
-					<Box
+					</Stack>
+					<Stack
+						direction={'row'}
 						sx={{
 							mr: 2,
 							display: {
-								xs: 'none',
-								md: 'flex',
-								flexGrow: 1,
-								alignContent: 'flex-end',
+								sm: 'none',
+								lg: 'flex',
 								justifyContent: 'flex-end',
+								flexGrow: '1',
+
+								// flexGrow: 1,
+								// alignContent: 'flex-end',
+								// justifyContent: 'flex-end',
 							},
 							fontFamily: 'monospace',
 							fontWeight: 700,
@@ -120,7 +126,7 @@ function ResponsiveAppBar({
 						}}
 					>
 						<Typography variant="h6">{curDate}</Typography>
-					</Box>
+					</Stack>
 				</Toolbar>
 			</Container>
 		</AppBar>
