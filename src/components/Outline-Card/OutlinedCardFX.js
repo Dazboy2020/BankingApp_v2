@@ -41,7 +41,7 @@ const BasicCardFX = ({
 	}
 
 	function handleAmountFx(e) {
-		setAmountFX(+e.target.value);
+		setAmountFX(e.target.value);
 	}
 
 	function handleFxFrom(e) {
@@ -144,6 +144,7 @@ const BasicCardFX = ({
 								<TextField
 									onChange={handleAmountFx}
 									id="outlined-select-currency"
+									type="number"
 									// select
 									label="amount"
 									value={amountFx}

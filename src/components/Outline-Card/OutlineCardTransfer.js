@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
 import { TextField, MenuItem, Typography, FormControl } from '@mui/material';
 import { useState } from 'react';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
@@ -45,7 +43,7 @@ export default function BasicCardTransaction({
 	}
 
 	function handleUser(e) {
-		if (e.target.value === user) return;
+		// if (e.target.value === user) return;
 		setTargetUser(e.target.value);
 	}
 
@@ -140,7 +138,6 @@ export default function BasicCardTransaction({
 				display: 'flex',
 				flexGrow: 1,
 				m: 1,
-				// alignItems: 'center',
 				alignItems: 'flex-start',
 			}}
 		>
@@ -157,8 +154,6 @@ export default function BasicCardTransaction({
 				<Box
 					sx={{
 						display: 'flex',
-						// flexDirection: 'column',
-						// alignItems: 'centre',
 					}}
 				>
 					<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -231,6 +226,7 @@ export default function BasicCardTransaction({
 							<form component="form" onSubmit={handleReturn}>
 								<TextField
 									onChange={handleTransferAmount}
+									type="number"
 									id="outlined-select-currency"
 									// select
 									label="amount"
@@ -238,7 +234,6 @@ export default function BasicCardTransaction({
 									helperText="Select amount"
 									color="secondary"
 								></TextField>
-								{/* <input onSubmit={() => handleReturn}></input> */}
 							</form>
 						</Box>
 					</Box>

@@ -134,24 +134,6 @@ function App() {
 		setSort(false);
 	}
 
-	// function handleCloseAccount(e) {
-	// 	e.preventDefault();
-
-	// 	if (
-	// 		closeUser === loggedInAccount[0].owner &&
-	// 		+closePin === loggedInAccount[0].pin
-	// 	) {
-	// 		console.log('match');
-	// 		const index = accounts.findIndex((acc) => acc.owner === user);
-	// 		accounts.splice(index, 1);
-	// 		setIsLoggedIn((cur) => !cur);
-	// 		setClosePin('');
-	// 		setCloseUser('');
-	// 		setPin('');
-	// 		setUser('');
-	// 	}
-	// }
-
 	function LogUserOut() {
 		setIsLoggedIn(false);
 	}
