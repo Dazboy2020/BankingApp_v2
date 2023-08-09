@@ -24,15 +24,11 @@ function ResponsiveAppBar({
 	switchCurrency,
 	setOpen,
 	accounts,
-	setIsLoggedIn,
 	setUser,
 	setPin,
-	closePin,
 	setClosePin,
 	setCloseUser,
-	closeUser,
 	user,
-	loggedInAccount,
 	setOpenModal,
 }) {
 	function handleLogOut() {
@@ -46,7 +42,6 @@ function ResponsiveAppBar({
 		setOpenModal(true);
 		const index = accounts.findIndex((acc) => acc.owner === user);
 		accounts.splice(index, 1);
-		// setIsLoggedIn(false);
 		setClosePin('');
 		setCloseUser('');
 		setPin('');

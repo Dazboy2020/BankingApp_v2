@@ -108,7 +108,9 @@ function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
+	// eslint-disable-next-line no-unused-vars
 	const [closePin, setClosePin] = useState('');
+	// eslint-disable-next-line no-unused-vars
 	const [closeUser, setCloseUser] = useState('');
 	const [open, setOpen] = React.useState(false);
 	const [openModal, setOpenModal] = useState(false);
@@ -155,12 +157,9 @@ function App() {
 					<MainWrapper classname={MainWrapper}>
 						<NewNav
 							accountMovements={accountMovements}
-							setIsLoggedIn={setIsLoggedIn}
-							loggedInAccount={loggedInAccount}
 							setUser={setUser}
 							setPin={setPin}
 							setClosePin={setClosePin}
-							closePin={closePin}
 							switchCurrency={switchCurrency}
 							currency={currency}
 							open={open}
@@ -168,7 +167,6 @@ function App() {
 							LogUserOut={LogUserOut}
 							accounts={accounts}
 							setCloseUser={setCloseUser}
-							closeUser={closeUser}
 							user={user}
 							openModal={openModal}
 							setOpenModal={setOpenModal}

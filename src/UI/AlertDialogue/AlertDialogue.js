@@ -18,7 +18,6 @@ export default function AlertDialogSlide({ open, setOpen, LogUserOut }) {
 
 	function handleYesLogout() {
 		setOpen(false);
-		// setIsLoggedIn(false);
 		LogUserOut();
 	}
 
