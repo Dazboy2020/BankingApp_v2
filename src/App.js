@@ -7,7 +7,7 @@ import Movements from './components/Movements/Movements';
 
 import SignIn from './components/Login/SignIn';
 import NewNav from './components/Navbar/NewNav';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
 import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
@@ -105,7 +105,7 @@ function App() {
 	const [currency, setCurrency] = useState('euro');
 	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
 	// eslint-disable-next-line no-unused-vars
@@ -183,15 +183,22 @@ function App() {
 							LogUserOut={LogUserOut}
 						/>
 						<Toast openToast={openToast} setOpenToast={setOpenToast} />
-						<Box
+						<Stack
+							direction={{ s: 'column', sm: 'row' }}
 							sx={{
-								display: 'flex',
+								// display: 'flex',
+								// flexDirection: 'column',
 								justifyContent: 'space-between',
 								mb: 2,
 								mt: 2,
 							}}
 						>
 							<BasicCardSummary
+								sx={{
+									width: {
+										lg: 200,
+									},
+								}}
 								accountMovements={accountMovements}
 								balanceUSD={balanceUSD}
 								balanceEUR={balanceEUR}
@@ -201,6 +208,11 @@ function App() {
 								user={user}
 							/>
 							<BasicCardFX
+								sx={{
+									width: {
+										lg: 200,
+									},
+								}}
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
 								currency={currency}
@@ -223,7 +235,7 @@ function App() {
 								setOpenToast={setOpenToast}
 							/>
 							{/* <BasicCardCreditCard /> */}
-						</Box>
+						</Stack>
 						<MovementList>
 							<Movements
 								accountMovements={accountMovements}

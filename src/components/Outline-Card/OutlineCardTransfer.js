@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import { TextField, MenuItem, Typography, FormControl } from '@mui/material';
+import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 
@@ -149,15 +149,23 @@ export default function BasicCardTransaction({
 						color="black"
 						sx={{ mb: 2, fontWeight: 'bold' }}
 					>
-						Transfer Money to another user:
+						Transfer Money:
 					</Typography>
 				</Box>
 				<Box
 					sx={{
 						display: 'flex',
+						flexDirection: 'column',
 					}}
 				>
-					<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+					<Stack
+						direction={{ md: 'column', lg: 'row' }}
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							// flexDirection: 'column',
+						}}
+					>
 						{/* {//! Currency */}
 
 						<Box
@@ -195,24 +203,22 @@ export default function BasicCardTransaction({
 							noValidate
 							autoComplete="off"
 						>
-							<FormControl>
-								<TextField
-									id="outlined-select-currency"
-									select
-									label="Select"
-									// defaultValue=""
-									value={targetUser}
-									helperText="Select reciever"
-									onChange={handleUser}
-									color="secondary"
-								>
-									{recipient.map((user, i) => (
-										<MenuItem key={i} value={user}>
-											{user}
-										</MenuItem>
-									))}
-								</TextField>
-							</FormControl>
+							<TextField
+								id="outlined-select-currency"
+								select
+								label="Select"
+								// defaultValue=""
+								value={targetUser}
+								helperText="Select reciever"
+								onChange={handleUser}
+								color="secondary"
+							>
+								{recipient.map((user, i) => (
+									<MenuItem key={i} value={user}>
+										{user}
+									</MenuItem>
+								))}
+							</TextField>
 						</Box>
 
 						{/* //! Amount */}
@@ -237,7 +243,7 @@ export default function BasicCardTransaction({
 								></TextField>
 							</form>
 						</Box>
-					</Box>
+					</Stack>
 				</Box>
 				<Box>
 					<Button

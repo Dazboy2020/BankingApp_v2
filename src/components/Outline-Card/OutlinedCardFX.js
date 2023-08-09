@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import { TextField, MenuItem, Typography } from '@mui/material';
+import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 import CachedIcon from '@mui/icons-material/SyncAlt';
 
@@ -132,7 +132,14 @@ const BasicCardFX = ({
 						display: 'flex',
 					}}
 				>
-					<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+					<Stack
+						direction={{ md: 'column', lg: 'row' }}
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							// flexDirection: 'column',
+						}}
+					>
 						{/* //! Amount */}
 						<Box
 							sx={{
@@ -206,7 +213,7 @@ const BasicCardFX = ({
 								))}
 							</TextField>
 						</Box>
-					</Box>
+					</Stack>
 				</Box>
 				<Box>
 					<Button
