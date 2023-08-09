@@ -111,8 +111,8 @@ function ResponsiveAppBar({
 						sx={{
 							mr: 2,
 							display: {
-								sm: 'none',
-								lg: 'flex',
+								xs: 'none',
+								md: 'flex',
 								justifyContent: 'flex-end',
 								flexGrow: '1',
 
