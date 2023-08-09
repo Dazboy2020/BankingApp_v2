@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
+import { Link } from '@mui/material';
 
 const now = new Date();
 const options = {
@@ -88,7 +89,12 @@ function ResponsiveAppBar({
 							color="inherit"
 							startIcon={<GitHub color="white" sx={{ ml: 1 }} />}
 						>
-							About
+							<Link
+								sx={{ color: 'white' }}
+								href="https://github.com/Dazboy2020"
+							>
+								About
+							</Link>
 						</Button>
 						<Button
 							onClick={handleLogOut}
