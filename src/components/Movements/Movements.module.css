@@ -6,7 +6,7 @@
 .movements {
 	display: flex;
 	flex-grow: 1;
-	flex-direction: column;
+	/* flex-direction: column; */
 	/* grid-row: 2 / span 3; */
 	background-color: #fff;
 	overflow-y: auto;
@@ -78,4 +78,5 @@ ul {
 	margin: 0.2rem;
 	padding: 0.2rem;
 	align-items: stretch;
+	flex-grow: 1;
 }

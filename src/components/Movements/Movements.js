@@ -1,4 +1,5 @@
 import React from 'react';
+import { Stack } from '@mui/material';
 
 import classes from './Movements.module.css';
 
@@ -13,7 +14,18 @@ const Movements = ({ accountMovements, currency, sort }) => {
 		: movementsToDisplay;
 
 	return (
-		<div className={classes.main__container__window}>
+		<Stack
+			direction={{ s: 'column', sm: 'row' }}
+			sx={{
+				// display: 'flex',
+				// flexDirection: 'column',
+				justifyContent: 'space-between',
+				mb: 2,
+				mt: 2,
+				flexGrow: 1,
+			}}
+			// className={classes.main__container__window}
+		>
 			<ul>
 				{moves.map((item) => (
 					<div
@@ -46,7 +58,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 					</div>
 				))}
 			</ul>
-		</div>
+		</Stack>
 	);
 };
 
