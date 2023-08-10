@@ -76,7 +76,7 @@ function ResponsiveAppBar({
 							color="inherit"
 							startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
 						>
-							Close Account
+							Close
 						</Button>
 						<Button
 							onClick={() => switchCurrency()}
