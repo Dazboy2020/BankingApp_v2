@@ -33,27 +33,36 @@ const Movements = ({ accountMovements, currency, sort }) => {
 						className={classes.movements}
 					>
 						{item[0] > 0 && (
-							<div className={classes.movements__row}>
-								<div className={classes.movements__type__deposit}>deposit</div>
-								<div className={classes.movements__date}>{item[1]}</div>
-								<div className={classes.movements__value}>
+							<Stack
+								// direction={{ xs: 'column', s: 'row' }}
+								sx={{ alignItems: 'flex-start' }}
+								className={classes.movements__row}
+							>
+								<span className={classes.movements__type__deposit}>
+									deposit
+								</span>
+								<span className={classes.movements__date}>{item[1]}</span>
+								<span className={classes.movements__value}>
 									{item[0].toFixed(2)}
 									{currency === 'euro' ? '€' : '$'}
-								</div>
-							</div>
+								</span>
+							</Stack>
 						)}
 
 						{item[0] < 1 && (
-							<div className={classes.movements__row}>
-								<div className={classes.movements__type__withdrawal}>
+							<Stack
+								sx={{ alignItems: 'flex-start' }}
+								className={classes.movements__row}
+							>
+								<span className={classes.movements__type__withdrawal}>
 									withdrawal
-								</div>
-								<div className={classes.movements__date}>{item[1]}</div>
-								<div className={classes.movements__value}>
+								</span>
+								<span className={classes.movements__date}>{item[1]}</span>
+								<span className={classes.movements__value}>
 									{item[0].toFixed(2)}
 									{currency === 'euro' ? '€' : '$'}
-								</div>
-							</div>
+								</span>
+							</Stack>
 						)}
 					</div>
 				))}
