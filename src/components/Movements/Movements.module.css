@@ -62,18 +62,20 @@
 	color: #fff;
 	padding: 0.5rem;
 	min-width: 10rem;
+	margin-bottom: 0.5rem;
 }
 
 .movements__value {
 	font-size: 1.2rem;
 	margin-left: auto;
+	font-weight: bold;
 }
 
 ul {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	list-style-type: none;
-	margin: 0.2rem;
+	/* margin: 0.2rem; */
 	padding: 0.2rem;
 	align-items: stretch;
 	flex-grow: 1;

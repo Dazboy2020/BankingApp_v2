@@ -27,45 +27,48 @@ const Movements = ({ accountMovements, currency, sort }) => {
 			// className={classes.main__container__window}
 		>
 			<ul>
-				{moves.map((item) => (
-					<div
-						key={Math.floor(Math.random() * 10000) + 1}
-						className={classes.movements}
-					>
-						{item[0] > 0 && (
-							<Stack
-								// direction={{ xs: 'column', s: 'row' }}
-								sx={{ alignItems: 'flex-start' }}
-								className={classes.movements__row}
-							>
-								<span className={classes.movements__type__deposit}>
-									deposit
-								</span>
-								<span className={classes.movements__date}>{item[1]}</span>
-								<span className={classes.movements__value}>
-									{item[0].toFixed(2)}
-									{currency === 'euro' ? '€' : '$'}
-								</span>
-							</Stack>
-						)}
+				<Stack>
+					{moves.map((item) => (
+						<div
+							key={Math.floor(Math.random() * 10000) + 1}
+							className={classes.movements}
+						>
+							{item[0] > 0 && (
+								<Stack
+									direction={{ xs: 'column', s: 'row' }}
+									sx={{ alignItems: 'flex-start' }}
+									className={classes.movements__row}
+								>
+									<span className={classes.movements__type__deposit}>
+										deposit
+									</span>
+									<span className={classes.movements__date}>{item[1]}</span>
+									<span className={classes.movements__value}>
+										{item[0].toFixed(2)}
+										{currency === 'euro' ? '€' : '$'}
+									</span>
+								</Stack>
+							)}
 
-						{item[0] < 1 && (
-							<Stack
-								sx={{ alignItems: 'flex-start' }}
-								className={classes.movements__row}
-							>
-								<span className={classes.movements__type__withdrawal}>
-									withdrawal
-								</span>
-								<span className={classes.movements__date}>{item[1]}</span>
-								<span className={classes.movements__value}>
-									{item[0].toFixed(2)}
-									{currency === 'euro' ? '€' : '$'}
-								</span>
-							</Stack>
-						)}
-					</div>
-				))}
+							{item[0] < 1 && (
+								<Stack
+									direction={{ xs: 'column', s: 'row' }}
+									sx={{ alignItems: 'flex-start' }}
+									className={classes.movements__row}
+								>
+									<span className={classes.movements__type__withdrawal}>
+										withdrawal
+									</span>
+									<span className={classes.movements__date}>{item[1]}</span>
+									<span className={classes.movements__value}>
+										{item[0].toFixed(2)}
+										{currency === 'euro' ? '€' : '$'}
+									</span>
+								</Stack>
+							)}
+						</div>
+					))}
+				</Stack>
 			</ul>
 		</Stack>
 	);
