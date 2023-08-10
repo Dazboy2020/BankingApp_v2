@@ -22,3 +22,10 @@ body {
 	/* align-items: center;
 	justify-content: center; */
 }
+
+@media only screen and (max-device-width: 576px) {
+	body {
+		margin: 0;
+		padding: 0;
+	}
+}
