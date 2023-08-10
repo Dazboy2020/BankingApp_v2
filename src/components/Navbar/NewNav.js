@@ -84,7 +84,7 @@ function ResponsiveAppBar({
 							color="inherit"
 							startIcon={<CurrencyExchangeIcon color="white" sx={{ ml: 1 }} />}
 						>
-							Switch Account
+							Switch
 						</Button>
 						<Button
 							size="xs"
