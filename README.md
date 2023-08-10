@@ -1,4 +1,4 @@
-Jonas Schemdtman's Bankist app heavily modified and written in React utilising Materia MUI. Still more work to do but the overall logic works as it should.
+Jonas Schemdtman's Bankist app heavily modified and written in React utilising Material MUI. Still more work to do but the overall logic works as it should.
 
 TODO:<br>
 Login user feedback for incorrect logins.<br>
