@@ -6,7 +6,7 @@
 .movements {
 	display: flex;
 	flex-grow: 1;
-	flex-direction: column;
+	/* flex-direction: column; */
 	/* grid-row: 2 / span 3; */
 	background-color: #fff;
 	overflow-y: auto;
@@ -16,12 +16,13 @@
 
 .movements__row {
 	flex-grow: 1;
+	flex-direction: column;
 
-	padding: 1rem 1rem;
+	padding: 0.5rem;
 	display: flex;
 	align-items: center;
 	border-bottom: 1px solid #eee;
-	margin: 0.2rem;
+	margin: 0.1rem;
 }
 
 .movements__type {
@@ -43,27 +44,44 @@
 
 .movements__type__deposit {
 	background-image: linear-gradient(to top left, #39b385, #9be15d);
+<<<<<<< HEAD
 	/* margin-right: 6rem; */
+=======
+>>>>>>> new-responsiveness
 	/* min-width: 6rem; */
 	font-size: 1.1rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
+<<<<<<< HEAD
 	padding: 0.1rem 1rem;
 	border-radius: 10rem;
 	/* margin-right: 6.6rem; */
+=======
+	padding: 0.5rem;
+	min-width: 10rem;
+	/* border-radius: 10rem; */
+>>>>>>> new-responsiveness
 }
 
 .movements__type__withdrawal {
 	background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+<<<<<<< HEAD
 	/* margin-right: 3.5rem; */
+=======
+>>>>>>> new-responsiveness
 	font-size: 1.1rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
+<<<<<<< HEAD
 	padding: 0.1rem 1rem;
 	border-radius: 10rem;
 	/* margin-right: 4rem; */
+=======
+	padding: 0.5rem;
+	min-width: 10rem;
+>>>>>>> new-responsiveness
 }
 
 .movements__value {
@@ -78,5 +96,9 @@ ul {
 	margin: 0.2rem;
 	padding: 0.2rem;
 	align-items: stretch;
+<<<<<<< HEAD
 	padding-left: 0;
+=======
+	flex-grow: 1;
+>>>>>>> new-responsiveness
 }
