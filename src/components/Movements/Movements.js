@@ -26,7 +26,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 						<>
 							<Grid
 								item
-								md={3}
+								md={2}
 								sm={4}
 								className={classes.movements__type__deposit}
 							>
@@ -48,7 +48,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 						<>
 							<Grid
 								item
-								md={3}
+								md={2}
 								sm={4}
 								className={classes.movements__type__withdrawal}
 							>
