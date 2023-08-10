@@ -7,7 +7,7 @@ import Movements from './components/Movements/Movements';
 
 import SignIn from './components/Login/SignIn';
 import NewNav from './components/Navbar/NewNav';
-import { Box, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
 import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
