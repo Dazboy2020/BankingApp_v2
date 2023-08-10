@@ -68,7 +68,7 @@ function ResponsiveAppBar({
 					</Typography> */}
 					<Stack
 						direction={{ xs: 'column', md: 'row' }}
-						sx={{ alignItems: 'flex-start' }}
+						sx={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}
 					>
 						<Button
 							onClick={closeAccountHandler}
