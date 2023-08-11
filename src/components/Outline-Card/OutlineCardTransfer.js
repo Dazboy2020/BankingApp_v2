@@ -60,6 +60,8 @@ export default function BasicCardTransaction({
 	function handleTransferSubmit(e) {
 		e.preventDefault();
 
+		if (transferAmount < 0) return;
+
 		const updatedMovementsEUR = accountMovements[0].movements.map(
 			(movement) => movement
 		);

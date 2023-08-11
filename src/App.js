@@ -14,6 +14,7 @@ import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
 import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 import Toast from './UI/AlertDialogue/Toast';
+import PieChart from './components/Charts/Pie';
 
 const account1 = [
 	{
@@ -105,7 +106,7 @@ function App() {
 	const [currency, setCurrency] = useState('euro');
 	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
 	// eslint-disable-next-line no-unused-vars
@@ -237,11 +238,18 @@ function App() {
 							{/* <BasicCardCreditCard /> */}
 						</Stack>
 						<MovementList>
-							<Movements
-								accountMovements={accountMovements}
-								currency={currency}
-								sort={sort}
-							/>
+							<div className="pie-wrapper">
+								<Movements
+									accountMovements={accountMovements}
+									currency={currency}
+									sort={sort}
+								/>
+								<PieChart
+									accountMovements={accountMovements}
+									currency={currency}
+									sort={sort}
+								/>
+							</div>
 						</MovementList>
 					</MainWrapper>
 				</>

@@ -23,6 +23,10 @@ body {
 	justify-content: center; */
 }
 
+.pie-wrapper {
+	display: flex;
+}
+
 @media only screen and (max-device-width: 576px) {
 	body {
 		margin: 0;
