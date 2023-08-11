@@ -7,7 +7,7 @@ import {
 	Title,
 } from 'chart.js/auto';
 
-import { Bar, Pie } from 'react-chartjs-2';
+import { Bar, Pie, Doughnut } from 'react-chartjs-2';
 
 function PieChart({ accountMovements, currency, sort }) {
 	// const balanceEUR = accountMovements[0].movements.reduce(
@@ -29,41 +29,48 @@ function PieChart({ accountMovements, currency, sort }) {
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
+
 	let bgColor;
+	let label;
 
 	bgColor = moves.map((item) => (item[0] > 0 ? 'green' : 'red'));
+	label = moves.map((item) => (item[0] > 0 ? 'deposit' : 'Withdrawal'));
 
 	const userData = {
-		labels: moves.map((item) => (item[0] > 0 ? 'Deposit' : 'Withdrawal')),
+		labels: label,
 		datasets: [
 			{
-				type: 'pie',
 				label: 'Deposits vs Withdrawals',
 				data: moves.map((item) => item[0]),
 				backgroundColor: bgColor,
 			},
-			// {
-			// 	options: {
-			// 		responsive: false,
-			// 		plugins: {
-			// 			legend: {
-			// 				position: 'bottom',
-			// 			},
-			// 			title: {
-			// 				display: true,
-			// 				text: 'Chart.js Pie Chart',
-			// 			},
-			// 		},
-			// 	},
-			// },
 		],
+	};
+
+	const options = {
+		plugins: {
+			legend: {
+				position: 'right',
+				rtl: true,
+				labels: {
+					usePointStyle: true,
+					pointStyle: 'circle',
+					padding: 20,
+				},
+			},
+		},
 	};
 
 	// return <PieChart data={userData} />;
 	return (
-		<div style={{ width: '700px', margin: 'auto' }}>
-			<h1 style={{ textAlign: 'center' }}>Deposits Vs. Withdrawals</h1>
-			<Pie data={userData} />
+		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
+			<h1
+				className="title"
+				// style={{ textAlign: 'center' }}
+			>
+				Deposits Vs. Withdrawals
+			</h1>
+			<Doughnut data={userData} options={options} />
 		</div>
 	);
 }

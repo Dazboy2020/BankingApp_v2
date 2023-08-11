@@ -15,6 +15,7 @@ import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer'
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 import Toast from './UI/AlertDialogue/Toast';
 import PieChart from './components/Charts/Pie';
+import PieEuro from './components/Charts/PieEuro';
 
 const account1 = [
 	{
@@ -237,19 +238,30 @@ function App() {
 							/>
 							{/* <BasicCardCreditCard /> */}
 						</Stack>
+						<Stack
+							direction={{ xs: 'column', md: 'row' }}
+							className="pie-wrapper"
+						>
+							<PieChart
+								accountMovements={accountMovements}
+								currency={currency}
+								sort={sort}
+							/>
+							<PieEuro
+								accountMovements={accountMovements}
+								currency={currency}
+								sort={sort}
+							/>
+						</Stack>
 						<MovementList>
-							<div className="pie-wrapper">
-								<Movements
-									accountMovements={accountMovements}
-									currency={currency}
-									sort={sort}
-								/>
-								<PieChart
-									accountMovements={accountMovements}
-									currency={currency}
-									sort={sort}
-								/>
-							</div>
+							{/* <div className="pie-wrapper"> */}
+							<Movements
+								accountMovements={accountMovements}
+								currency={currency}
+								sort={sort}
+							/>
+
+							{/* </div> */}
 						</MovementList>
 					</MainWrapper>
 				</>
