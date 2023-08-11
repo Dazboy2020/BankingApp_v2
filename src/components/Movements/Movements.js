@@ -1,6 +1,5 @@
 import React from 'react';
 import { Stack } from '@mui/material';
-
 import classes from './Movements.module.css';
 
 const Movements = ({ accountMovements, currency, sort }) => {
