@@ -7,18 +7,9 @@ import {
 	Title,
 } from 'chart.js/auto';
 
-import { Bar, Pie, Doughnut } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 function PieChart({ accountMovements, currency, sort }) {
-	// const balanceEUR = accountMovements[0].movements.reduce(
-	// 	(acc, mov) => acc + mov[0],
-	// 	0
-	// );
-	// const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
-	// 	(acc, mov) => acc + mov[0],
-	// 	0
-	// );
-
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	const movementsToDisplay =

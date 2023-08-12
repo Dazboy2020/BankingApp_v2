@@ -107,7 +107,7 @@ function App() {
 	const [currency, setCurrency] = useState('euro');
 	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
 	// eslint-disable-next-line no-unused-vars
@@ -188,8 +188,6 @@ function App() {
 						<Stack
 							direction={{ s: 'column', sm: 'row' }}
 							sx={{
-								// display: 'flex',
-								// flexDirection: 'column',
 								justifyContent: 'space-between',
 								mb: 2,
 								mt: 2,
@@ -236,7 +234,6 @@ function App() {
 								user={user}
 								setOpenToast={setOpenToast}
 							/>
-							{/* <BasicCardCreditCard /> */}
 						</Stack>
 						<Stack
 							direction={{ xs: 'column', md: 'row' }}
@@ -254,14 +251,11 @@ function App() {
 							/>
 						</Stack>
 						<MovementList>
-							{/* <div className="pie-wrapper"> */}
 							<Movements
 								accountMovements={accountMovements}
 								currency={currency}
 								sort={sort}
 							/>
-
-							{/* </div> */}
 						</MovementList>
 					</MainWrapper>
 				</>

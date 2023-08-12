@@ -10,17 +10,7 @@ body {
 	background: #32393c; /* fallback for old browsers */
 
 	background: linear-gradient(to right, #7a838e, #b5babe);
-	/* display: flex; */
-	/* flex-grow: 1; */
 	padding: 2rem;
-
-	/* margin: 0; */
-
-	padding: 2rem;
-	/* max-width: 90%; */
-
-	/* align-items: center;
-	justify-content: center; */
 }
 
 .pie-wrapper {
@@ -57,9 +47,4 @@ body {
 	.pie-wrapper {
 		flex-direction: column;
 	}
-
-	/* h1.title {
-		text-align: left;
-		justify-content: left;
-	} */
 }
