@@ -4,8 +4,6 @@ TODO:<br>
 <s>Login user feedback for incorrect logins.</s><br>
 Correct date formatting on new withdrawals/deposits. <br>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8f1a3edf-def1-4bd6-bea6-8b6b7622b2f1/deploy-status?branch=main)](https://app.netlify.com/sites/bankist-react-v2/deploys/)
-
 --------
 
 Login details:
@@ -16,8 +14,7 @@ jd: 2222<br>
 
 [Live demo](https://bankist-react.netlify.app)
 
-
-![screenshot](https://i.ibb.co/TP1NSXB/bankist.png)
+![screenshot](https://i.ibb.co/pR8NZW9/1691838427.png)
 
 # Getting Started with Create React App
 
