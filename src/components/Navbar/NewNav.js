@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 // import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
 import { Link, Stack } from '@mui/material';
+import { GitHub } from '@mui/icons-material';
 
 const now = new Date();
 const options = {
