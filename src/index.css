@@ -50,10 +50,4 @@ body {
 	.canvas {
 		padding-left: 1.5rem;
 	}
-
-	.MainWrapper {
-		margin: 0;
-		padding: 0;
-		background-color: red;
-	}
 }
