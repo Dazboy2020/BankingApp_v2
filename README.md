@@ -12,7 +12,7 @@ js: 1111<br>
 dd: 4444<br>
 jd: 2222<br>
 
-[Live demo](https://bankist-react.netlify.app)
+[Live demo](https://bankist-continous-deploy.netlify.app/)
 
 ![screenshot](https://i.ibb.co/pR8NZW9/1691838427.png)
 
