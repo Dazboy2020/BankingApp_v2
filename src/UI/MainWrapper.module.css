@@ -11,3 +11,13 @@
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 	margin: auto;
 }
+
+@media (max-width: 576px) {
+	.MainWrapper {
+		margin: 0;
+		padding: 0.2rem;
+		max-width: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+}

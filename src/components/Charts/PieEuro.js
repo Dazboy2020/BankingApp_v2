@@ -47,7 +47,6 @@ function PieEuro({ accountMovements, currency, sort }) {
 		},
 	};
 
-	// return <PieEuro data={userData} />;
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
 			<h1

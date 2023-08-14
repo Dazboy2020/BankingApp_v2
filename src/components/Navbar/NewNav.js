@@ -38,7 +38,6 @@ function ResponsiveAppBar({
 
 	function closeAccountHandler(e) {
 		e.preventDefault();
-		console.log('CLICK');
 
 		setOpenModal(true);
 		const index = accounts.findIndex((acc) => acc.owner === user);
@@ -115,11 +114,7 @@ function ResponsiveAppBar({
 								xs: 'none',
 								md: 'flex',
 								justifyContent: 'flex-end',
-								flexGrow: '1',
-
-								// flexGrow: 1,
-								// alignContent: 'flex-end',
-								// justifyContent: 'flex-end',
+								flexGrow: 1,
 							},
 							fontFamily: 'monospace',
 							fontWeight: 700,

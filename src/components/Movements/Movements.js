@@ -16,14 +16,11 @@ const Movements = ({ accountMovements, currency, sort }) => {
 		<Stack
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
-				// display: 'flex',
-				// flexDirection: 'column',
 				justifyContent: 'space-between',
 				mb: 2,
 				mt: 2,
 				flexGrow: 1,
 			}}
-			// className={classes.main__container__window}
 		>
 			<ul>
 				<Stack>
