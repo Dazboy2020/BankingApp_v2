@@ -52,7 +52,6 @@ function PieChart({ accountMovements, currency, sort }) {
 		},
 	};
 
-	// return <PieChart data={userData} />;
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
 			<h1
