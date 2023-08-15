@@ -46,15 +46,15 @@ export default function BasicCardSummary({
 					color="black"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
-					{currency === 'euro' ? 'EUR Account Details' : 'USD Account Details'}
+					{currency === 'euro' ? 'Total Incomes' : 'Total Expenses'}
 				</Typography>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{currency === 'euro'
 						? `€${totalIncome.toFixed(2)}`
-						: `$${totalExpenses.toFixed(2)}`}
+						: `$${Math.abs(totalExpenses).toFixed(2)}`}
 				</Typography>
 
-				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+				{/* <Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Typography variant="h6">
 						In :{currency === 'euro' ? ' €' : ' $'}
 						{currency === 'euro' ? totalDepositEuro : totalDepositUSD}
@@ -64,7 +64,7 @@ export default function BasicCardSummary({
 						{currency === 'euro' ? ' €' : ' $'}
 						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
 					</Typography>
-				</Box>
+				</Box> */}
 				<Box>
 					<Button
 						variant="contained"
