@@ -57,16 +57,12 @@ export default function BasicCardSummary({
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Typography variant="h6">
 						In :{currency === 'euro' ? ' €' : ' $'}
-						{currency === 'euro'
-							? totalDepositEuro.toFixed(2)
-							: totalDepositUSD.toFixed(2)}
+						{currency === 'euro' ? totalDepositEuro : totalDepositUSD}
 					</Typography>
 					<Typography variant="h6">
 						Out:
 						{currency === 'euro' ? ' €' : ' $'}
-						{currency === 'euro'
-							? totalWithdrawalEuro.toFixed(2)
-							: totalWithdrawalUSD.toFixed(2)}
+						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
 					</Typography>
 				</Box>
 				<Box>
