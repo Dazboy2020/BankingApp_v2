@@ -25,7 +25,7 @@ function PieChart({ accountMovements, currency, sort }) {
 	let label;
 
 	bgColor = moves.map((item) => (item[0] > 0 ? 'green' : 'red'));
-	label = moves.map((item) => (item[0] > 0 ? 'Income' : 'Expense'));
+	label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[0]}`));
 
 	const userData = {
 		labels: label,
@@ -41,12 +41,16 @@ function PieChart({ accountMovements, currency, sort }) {
 	const options = {
 		plugins: {
 			legend: {
-				position: 'right',
+				position: 'left',
 				rtl: true,
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
 					padding: 20,
+					font: {
+						size: 16,
+						weight: 'bold',
+					},
 				},
 			},
 		},
@@ -54,12 +58,7 @@ function PieChart({ accountMovements, currency, sort }) {
 
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
-			<h1
-				className="title"
-				// style={{ textAlign: 'center' }}
-			>
-				Incomes and Expenses
-			</h1>
+			<h1>{currency === 'euro' ? 'Incomes' : 'Expenses'}</h1>
 			<Doughnut data={userData} options={options} />
 		</div>
 	);

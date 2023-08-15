@@ -21,8 +21,11 @@ function PieEuro({ accountMovements, currency, sort }) {
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
+	let incomeData = `${totalIncome.toFixed(2)}`;
+	let expenseData = `${totalExpenses.toFixed(2)}`;
+
 	const userData = {
-		labels: ['Income', 'Expenses'],
+		labels: [incomeData, expenseData],
 		datasets: [
 			{
 				label: 'Income vs Expenses',
@@ -35,12 +38,16 @@ function PieEuro({ accountMovements, currency, sort }) {
 	const options = {
 		plugins: {
 			legend: {
-				position: 'right',
+				position: 'left',
 				rtl: true,
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
 					padding: 20,
+					font: {
+						size: 16,
+						weight: 'bold',
+					},
 				},
 			},
 			maintainAspectRatio: false,
@@ -49,12 +56,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
-			<h1
-				className="title"
-				// style={{ textAlign: 'center' }}
-			>
-				Income Vs. Expenses
-			</h1>
+			<h1>Income Vs. Expenses</h1>
 			<Doughnut data={userData} options={options} />
 		</div>
 	);
