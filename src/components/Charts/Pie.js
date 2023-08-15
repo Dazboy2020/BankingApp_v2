@@ -25,13 +25,13 @@ function PieChart({ accountMovements, currency, sort }) {
 	let label;
 
 	bgColor = moves.map((item) => (item[0] > 0 ? 'green' : 'red'));
-	label = moves.map((item) => (item[0] > 0 ? 'deposit' : 'Withdrawal'));
+	label = moves.map((item) => (item[0] > 0 ? 'Income' : 'Expense'));
 
 	const userData = {
 		labels: label,
 		datasets: [
 			{
-				label: 'Deposits vs Withdrawals',
+				label: 'Incomes and Expenses',
 				data: moves.map((item) => item[0]),
 				backgroundColor: bgColor,
 			},
@@ -58,7 +58,7 @@ function PieChart({ accountMovements, currency, sort }) {
 				className="title"
 				// style={{ textAlign: 'center' }}
 			>
-				Deposits Vs. Withdrawals
+				Incomes and Expenses
 			</h1>
 			<Doughnut data={userData} options={options} />
 		</div>

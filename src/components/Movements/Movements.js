@@ -39,7 +39,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									className={classes.movements__row}
 								>
 									<span className={classes.movements__type__deposit}>
-										deposit
+										Income
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__value}>
@@ -56,7 +56,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									className={classes.movements__row}
 								>
 									<span className={classes.movements__type__withdrawal}>
-										withdrawal
+										Expense
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__value}>

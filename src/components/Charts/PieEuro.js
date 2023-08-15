@@ -22,12 +22,12 @@ function PieEuro({ accountMovements, currency, sort }) {
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	const userData = {
-		labels: ['EUR', 'USD'],
+		labels: ['Income', 'Expenses'],
 		datasets: [
 			{
-				label: 'Euro vs USD',
+				label: 'Income vs Expenses',
 				data: [totalIncome, totalExpenses],
-				backgroundColor: ['orange', 'orangered'],
+				backgroundColor: ['green', 'red'],
 			},
 		],
 	};
@@ -53,7 +53,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 				className="title"
 				// style={{ textAlign: 'center' }}
 			>
-				Euro Vs. USD
+				Income Vs. Expenses
 			</h1>
 			<Doughnut data={userData} options={options} />
 		</div>
