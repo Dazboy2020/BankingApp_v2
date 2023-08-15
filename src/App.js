@@ -10,7 +10,7 @@ import NewNav from './components/Navbar/NewNav';
 import { Stack } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
-// import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
+import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
 // import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 import Toast from './UI/AlertDialogue/Toast';
@@ -209,7 +209,7 @@ function App() {
 								accounts={accounts}
 								user={user}
 							/>
-							{/* <BasicCardFX
+							<BasicCardFX
 								sx={{
 									width: {
 										lg: 200,
@@ -217,15 +217,15 @@ function App() {
 								}}
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
-								currency={currency}
-								totalExpenses={totalExpenses}
-								totalIncome={totalIncome}
-								setSort={setSort}
-								accounts={accounts}
-								user={user}
 								setOpenToast={setOpenToast}
+								// currency={currency}
+								// totalExpenses={totalExpenses}
+								// totalIncome={totalIncome}
+								// setSort={setSort}
+								// accounts={accounts}
+								// user={user}
 							/>
-							<BasicCardTransaction
+							{/* <BasicCardTransaction
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
 								currency={currency}
@@ -235,7 +235,7 @@ function App() {
 								accounts={accounts}
 								user={user}
 								setOpenToast={setOpenToast}
-							/> */}
+							/>  */}
 						</Stack>
 						<Stack
 							direction={{ xs: 'column', md: 'row' }}

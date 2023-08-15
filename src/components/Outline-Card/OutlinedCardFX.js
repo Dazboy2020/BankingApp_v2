@@ -1,38 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
-import CachedIcon from '@mui/icons-material/SyncAlt';
+import AddIcon from '@mui/icons-material/Add';
 
-const currencies = [
+const menuType = [
 	{
-		value: 'USD',
-		label: '$',
+		value: 'deposit',
+		label: 'deposit',
 	},
 	{
-		value: 'EUR',
-		label: '€',
+		value: 'expense',
+		label: 'expense',
 	},
 ];
 
 const BasicCardFX = ({
 	accountMovements,
-	totalExpenses,
-	totalIncome,
 	setAccountMovements,
 	setOpenToast,
 }) => {
-	const [amountFx, setAmountFX] = useState('');
-	const [fxFrom, setFxFrom] = useState('');
+	const [expenseAmount, setExpenseAmount] = useState('');
+	const [expenseType, setExpenseType] = useState('expense');
 	const [fxTo, setFxTo] = useState('');
 
-	const updatedMovementsEUR = accountMovements[0].movements.map(
+	const updatedDeposits = accountMovements[0].movements.map(
 		(movement) => movement
 	);
-	const updatedexpenses = accountMovements[1].expenses.map(
+	const updatedExpenses = accountMovements[1].expenses.map(
 		(movement) => movement
 	);
 
@@ -42,69 +40,64 @@ const BasicCardFX = ({
 	}
 
 	function handleAmountFx(e) {
-		setAmountFX(e.target.value);
+		setExpenseAmount(e.target.value);
 	}
 
 	function handleFxFrom(e) {
-		setFxFrom(e.target.value);
+		setExpenseType(e.target.value);
 
-		if (fxFrom === 'USD') {
-			setFxTo('EUR');
+		if (expenseType === '') {
+			setFxTo('deposit');
 		}
 	}
 
-	useEffect(() => {
-		fxFrom === 'EUR' ? setFxTo('USD') : setFxTo('EUR');
-	}, [fxFrom]);
-
 	function handleFxSubmit(e) {
 		e.preventDefault();
-		if (+amountFx <= 0) return;
+		console.log(updatedDeposits);
+		console.log(updatedExpenses);
+		if (+setExpenseAmount <= 0 || '') return;
 
-		if (fxFrom === 'EUR' && +amountFx < totalIncome) {
-			updatedMovementsEUR.unshift([
-				-amountFx,
+		if (expenseType === 'deposit' && expenseAmount > 0) {
+			updatedDeposits.unshift([
+				+expenseAmount,
 				new Date().toLocaleDateString(),
-			]) &&
-				updatedexpenses.unshift([
-					+amountFx * 1.06,
-					new Date().toLocaleDateString(),
-				]);
+			]);
 		}
 
-		if (fxFrom !== 'EUR' && +amountFx < totalExpenses) {
-			updatedexpenses.unshift([-amountFx, new Date().toLocaleDateString()]);
-			updatedMovementsEUR.unshift([
-				+amountFx * 0.94,
+		if (expenseType === 'expense' && expenseAmount > 0) {
+			updatedExpenses.unshift([
+				-expenseAmount,
 				new Date().toLocaleDateString(),
 			]);
 		}
 
 		let updatedAccount;
-		fxFrom === 'EUR'
+		expenseType === 'deposit'
 			? (updatedAccount = [
 					{
 						...accountMovements[0],
-						movements: updatedMovementsEUR,
+						movements: updatedDeposits,
 					},
 					{
 						...accountMovements[1],
-						expenses: updatedexpenses,
+						expenses: updatedExpenses,
 					},
 			  ])
 			: (updatedAccount = [
 					{
 						...accountMovements[0],
-						movements: updatedMovementsEUR,
+						movements: updatedDeposits,
 					},
 					{
 						...accountMovements[1],
-						expenses: updatedexpenses,
+						expenses: updatedExpenses,
 					},
 			  ]);
 
+		console.log(updatedAccount);
+
 		setAccountMovements(updatedAccount);
-		setAmountFX('');
+		setExpenseAmount('');
 		setOpenToast(true);
 	}
 
@@ -124,7 +117,7 @@ const BasicCardFX = ({
 						color="black"
 						sx={{ mb: 2, fontWeight: 'bold' }}
 					>
-						Currency FX:
+						Add a Transaction:
 					</Typography>
 				</Box>
 				<Box
@@ -137,7 +130,6 @@ const BasicCardFX = ({
 						sx={{
 							display: 'flex',
 							justifyContent: 'space-between',
-							// flexDirection: 'column',
 						}}
 					>
 						{/* //! Amount */}
@@ -154,13 +146,13 @@ const BasicCardFX = ({
 									id="outlined-select-currency"
 									type="number"
 									label="amount"
-									value={amountFx}
+									value={expenseAmount}
 									helperText="Select amount"
 									color="secondary"
 								></TextField>
 							</form>
 						</Box>
-						{/* {//! From */}
+						{/* {//! TYPE */}
 
 						<Box
 							component="form"
@@ -174,12 +166,12 @@ const BasicCardFX = ({
 								id="outlined-select-currency"
 								select
 								label="Select"
-								value={fxFrom}
-								helperText="From"
+								value={expenseType}
+								helperText="Type"
 								onChange={handleFxFrom}
 								color="secondary"
 							>
-								{currencies.map((option) => (
+								{menuType.map((option) => (
 									<MenuItem key={option.value} value={option.value}>
 										{option.label}
 									</MenuItem>
@@ -206,7 +198,7 @@ const BasicCardFX = ({
 								color="secondary"
 								disabled
 							>
-								{currencies.map((option) => (
+								{menuType.map((option) => (
 									<MenuItem key={option.value} value={option.value}>
 										{option.label}
 									</MenuItem>
@@ -217,7 +209,7 @@ const BasicCardFX = ({
 				</Box>
 				<Box>
 					<Button
-						startIcon={<CachedIcon color="white" sx={{ ml: 1 }} />}
+						startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
 						sx={{
 							'&:hover': {
 								backgroundColor: 'black',
@@ -229,7 +221,7 @@ const BasicCardFX = ({
 						}}
 						onClick={handleFxSubmit}
 					>
-						Exchange
+						Add Transaction
 					</Button>
 				</Box>
 			</CardContent>
