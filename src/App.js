@@ -10,12 +10,14 @@ import NewNav from './components/Navbar/NewNav';
 import { Stack } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
-import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
-import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
+// import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
+// import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 import Toast from './UI/AlertDialogue/Toast';
 import PieChart from './components/Charts/Pie';
 import PieEuro from './components/Charts/PieEuro';
+
+import classes from './components/Charts/pie_wrapper.Module.css';
 
 const account1 = [
 	{
@@ -107,7 +109,7 @@ function App() {
 	const [currency, setCurrency] = useState('euro');
 	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
 	// eslint-disable-next-line no-unused-vars
@@ -237,7 +239,12 @@ function App() {
 						</Stack>
 						<Stack
 							direction={{ xs: 'column', md: 'row' }}
-							className="pie-wrapper"
+							sx={{
+								backgroundColor: '#EEEEEE',
+								mt: '1rem',
+								// padding: '1rem',
+							}}
+							className={classes.pie_wrapper}
 						>
 							<PieChart
 								accountMovements={accountMovements}

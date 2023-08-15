@@ -15,28 +15,6 @@ export default function BasicCardSummary({
 	function handleSort() {
 		setSort((sort) => !sort);
 	}
-	const totalDepositEuro = accountMovements[0].movements
-		.filter((mov) => mov[0] > 0)
-		.reduce((acc, mov) => acc + mov[0], 0);
-
-	const totalDepositUSD = accountMovements[1].expenses
-		.filter((mov) => mov[0] > 0)
-		.reduce((acc, mov) => acc + mov[0], 0)
-		.toFixed(2);
-
-	const totalWithdrawalEuro = Math.abs(
-		accountMovements[0].movements
-			.filter((mov) => mov[0] < 0)
-			.reduce((acc, mov) => acc + mov[0], 0)
-			.toFixed(2)
-	);
-
-	const totalWithdrawalUSD = Math.abs(
-		accountMovements[1].expenses
-			.filter((mov) => mov[0] < 0)
-			.reduce((acc, mov) => acc + mov[0], 0)
-			.toFixed(2)
-	);
 
 	return (
 		<Card sx={{ display: 'flex', flexGrow: 1, m: 1 }}>
@@ -46,7 +24,7 @@ export default function BasicCardSummary({
 					color="black"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
-					{currency === 'euro' ? 'Total Incomes' : 'Total Expenses'}
+					{currency === 'euro' ? 'Total Income' : 'Total Expenses'}
 				</Typography>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{currency === 'euro'
@@ -54,17 +32,6 @@ export default function BasicCardSummary({
 						: `$${Math.abs(totalExpenses).toFixed(2)}`}
 				</Typography>
 
-				{/* <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-					<Typography variant="h6">
-						In :{currency === 'euro' ? ' €' : ' $'}
-						{currency === 'euro' ? totalDepositEuro : totalDepositUSD}
-					</Typography>
-					<Typography variant="h6">
-						Out:
-						{currency === 'euro' ? ' €' : ' $'}
-						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
-					</Typography>
-				</Box> */}
 				<Box>
 					<Button
 						variant="contained"

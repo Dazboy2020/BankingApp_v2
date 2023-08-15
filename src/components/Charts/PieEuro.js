@@ -9,6 +9,8 @@ import {
 
 import { Doughnut } from 'react-chartjs-2';
 
+import { Typography } from '@mui/material';
+
 function PieEuro({ accountMovements, currency, sort }) {
 	const totalIncome = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
@@ -22,7 +24,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	let incomeData = `${totalIncome.toFixed(2)}`;
-	let expenseData = `${totalExpenses.toFixed(2)}`;
+	let expenseData = `${Math.abs(totalExpenses).toFixed(2)}`;
 
 	const userData = {
 		labels: [incomeData, expenseData],
@@ -56,7 +58,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
-			<h1>Income Vs. Expenses</h1>
+			<Typography variant="h5">Income Vs. Expenses</Typography>
 			<Doughnut data={userData} options={options} />
 		</div>
 	);

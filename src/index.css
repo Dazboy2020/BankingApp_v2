@@ -13,9 +13,9 @@ body {
 	padding: 2rem;
 }
 
-.pie-wrapper {
+/* .pie-wrapper {
 	display: flex;
-}
+} */
 
 @media (max-width: 1400px) {
 	.canvas {
@@ -26,30 +26,38 @@ body {
 
 @media (max-width: 1025px) {
 	.canvas {
-		height: 350px;
-		width: 350px;
+		height: 375px;
+		width: 375px;
 	}
 }
 
 @media (max-width: 800px) {
-	.canvas {
+	/* .canvas {
 		height: 300px;
 		width: 300px;
-	}
+	} */
 }
 
 @media (max-width: 576px) {
 	body {
 		margin: 0;
 		padding: 0;
-		/* max-width: 100%; */
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}
 
+	.pie_wrapper {
+		/* position: relative; */
+		padding: 0;
+	}
+
 	.canvas {
-		/* padding-left: 1rem; */
-		height: 400px;
-		width: 300px;
+		margin-top: 2rem;
+		padding: 0;
+		margin-left: 0;
+		margin-right: 0.5rem;
+
+		/* height: auto;
+		width: auto; */
 	}
 }
