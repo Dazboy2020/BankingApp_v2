@@ -16,11 +16,14 @@ const Movements = ({ accountMovements, currency, sort }) => {
 		<Stack
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
+				// display: 'flex',
+				// flexDirection: 'column',
 				justifyContent: 'space-between',
 				mb: 2,
 				mt: 2,
 				flexGrow: 1,
 			}}
+			// className={classes.main__container__window}
 		>
 			<ul>
 				<Stack>
@@ -40,7 +43,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__value}>
-										{item[0].toFixed(2)}
+										{item[0]}
 										{currency === 'euro' ? '€' : '$'}
 									</span>
 								</Stack>
@@ -57,7 +60,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__value}>
-										{item[0].toFixed(2)}
+										{item[0]}
 										{currency === 'euro' ? '€' : '$'}
 									</span>
 								</Stack>
