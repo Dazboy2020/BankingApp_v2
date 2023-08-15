@@ -10,11 +10,11 @@ import {
 import { Doughnut } from 'react-chartjs-2';
 
 function PieEuro({ accountMovements, currency, sort }) {
-	const balanceEUR = accountMovements[0].movements.reduce(
+	const totalIncome = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
+	const totalExpenses = accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
@@ -26,7 +26,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 		datasets: [
 			{
 				label: 'Euro vs USD',
-				data: [balanceEUR, balanceUSD],
+				data: [totalIncome, totalExpenses],
 				backgroundColor: ['orange', 'orangered'],
 			},
 		],

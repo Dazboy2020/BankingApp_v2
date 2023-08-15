@@ -8,8 +8,8 @@ import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 export default function BasicCardSummary({
 	accountMovements,
 	currency,
-	balanceUSD,
-	balanceEUR,
+	totalExpenses,
+	totalIncome,
 	setSort,
 }) {
 	function handleSort() {
@@ -19,7 +19,7 @@ export default function BasicCardSummary({
 		.filter((mov) => mov[0] > 0)
 		.reduce((acc, mov) => acc + mov[0], 0);
 
-	const totalDepositUSD = accountMovements[1].movementsUSD
+	const totalDepositUSD = accountMovements[1].expenses
 		.filter((mov) => mov[0] > 0)
 		.reduce((acc, mov) => acc + mov[0], 0)
 		.toFixed(2);
@@ -32,7 +32,7 @@ export default function BasicCardSummary({
 	);
 
 	const totalWithdrawalUSD = Math.abs(
-		accountMovements[1].movementsUSD
+		accountMovements[1].expenses
 			.filter((mov) => mov[0] < 0)
 			.reduce((acc, mov) => acc + mov[0], 0)
 			.toFixed(2)
@@ -50,8 +50,8 @@ export default function BasicCardSummary({
 				</Typography>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{currency === 'euro'
-						? `€${balanceEUR.toFixed(2)}`
-						: `$${balanceUSD.toFixed(2)}`}
+						? `€${totalIncome.toFixed(2)}`
+						: `$${totalExpenses.toFixed(2)}`}
 				</Typography>
 
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>

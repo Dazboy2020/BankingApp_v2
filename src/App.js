@@ -34,7 +34,7 @@ const account1 = [
 		],
 	},
 	{
-		movementsUSD: [
+		expenses: [
 			[100, '2022-11-18'],
 			[45.23, '2022-12-23'],
 			[-250.5, '2022-01-28'],
@@ -60,7 +60,7 @@ const account2 = [
 		],
 	},
 	{
-		movementsUSD: [
+		expenses: [
 			[100, '2019-11-18'],
 			[45, '2019-12-23'],
 			[-25, '2022-12-17'],
@@ -86,7 +86,7 @@ export const account3 = [
 		],
 	},
 	{
-		movementsUSD: [
+		expenses: [
 			[100, '2019-11-18'],
 			[45.23, '2019-12-23'],
 			[-250.5, '2020-01-28'],
@@ -118,11 +118,11 @@ function App() {
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
 
-	const balanceEUR = accountMovements[0].movements.reduce(
+	const totalIncome = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
+	const totalExpenses = accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
@@ -200,8 +200,8 @@ function App() {
 									},
 								}}
 								accountMovements={accountMovements}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
+								totalExpenses={totalExpenses}
+								totalIncome={totalIncome}
 								currency={currency}
 								setSort={setSort}
 								accounts={accounts}
@@ -216,8 +216,8 @@ function App() {
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
 								currency={currency}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
+								totalExpenses={totalExpenses}
+								totalIncome={totalIncome}
 								setSort={setSort}
 								accounts={accounts}
 								user={user}
@@ -227,8 +227,8 @@ function App() {
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
 								currency={currency}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
+								totalExpenses={totalExpenses}
+								totalIncome={totalIncome}
 								setSort={setSort}
 								accounts={accounts}
 								user={user}

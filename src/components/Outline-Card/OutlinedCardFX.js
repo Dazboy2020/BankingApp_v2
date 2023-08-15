@@ -20,8 +20,8 @@ const currencies = [
 
 const BasicCardFX = ({
 	accountMovements,
-	balanceUSD,
-	balanceEUR,
+	totalExpenses,
+	totalIncome,
 	setAccountMovements,
 	setOpenToast,
 }) => {
@@ -32,7 +32,7 @@ const BasicCardFX = ({
 	const updatedMovementsEUR = accountMovements[0].movements.map(
 		(movement) => movement
 	);
-	const updatedMovementsUSD = accountMovements[1].movementsUSD.map(
+	const updatedexpenses = accountMovements[1].expenses.map(
 		(movement) => movement
 	);
 
@@ -61,19 +61,19 @@ const BasicCardFX = ({
 		e.preventDefault();
 		if (+amountFx <= 0) return;
 
-		if (fxFrom === 'EUR' && +amountFx < balanceEUR) {
+		if (fxFrom === 'EUR' && +amountFx < totalIncome) {
 			updatedMovementsEUR.unshift([
 				-amountFx,
 				new Date().toLocaleDateString(),
 			]) &&
-				updatedMovementsUSD.unshift([
+				updatedexpenses.unshift([
 					+amountFx * 1.06,
 					new Date().toLocaleDateString(),
 				]);
 		}
 
-		if (fxFrom !== 'EUR' && +amountFx < balanceUSD) {
-			updatedMovementsUSD.unshift([-amountFx, new Date().toLocaleDateString()]);
+		if (fxFrom !== 'EUR' && +amountFx < totalExpenses) {
+			updatedexpenses.unshift([-amountFx, new Date().toLocaleDateString()]);
 			updatedMovementsEUR.unshift([
 				+amountFx * 0.94,
 				new Date().toLocaleDateString(),
@@ -89,7 +89,7 @@ const BasicCardFX = ({
 					},
 					{
 						...accountMovements[1],
-						movementsUSD: updatedMovementsUSD,
+						expenses: updatedexpenses,
 					},
 			  ])
 			: (updatedAccount = [
@@ -99,7 +99,7 @@ const BasicCardFX = ({
 					},
 					{
 						...accountMovements[1],
-						movementsUSD: updatedMovementsUSD,
+						expenses: updatedexpenses,
 					},
 			  ]);
 

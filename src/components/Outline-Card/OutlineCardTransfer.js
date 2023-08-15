@@ -23,8 +23,8 @@ export default function BasicCardTransaction({
 	user,
 	accountMovements,
 	setAccountMovements,
-	balanceUSD,
-	balanceEUR,
+	totalExpenses,
+	totalIncome,
 	setOpenToast,
 }) {
 	const users = accounts.map((user) => {
@@ -65,7 +65,7 @@ export default function BasicCardTransaction({
 		const updatedMovementsEUR = accountMovements[0].movements.map(
 			(movement) => movement
 		);
-		const updatedMovementsUSD = accountMovements[1].movementsUSD.map(
+		const updatedexpenses = accountMovements[1].expenses.map(
 			(movement) => movement
 		);
 
@@ -76,7 +76,7 @@ export default function BasicCardTransaction({
 			currency === 'EUR' &&
 			recieverAcc &&
 			transferAmount &&
-			balanceEUR >= +transferAmount &&
+			totalIncome >= +transferAmount &&
 			+transferAmount > 0
 		) {
 			updatedMovementsEUR.unshift([
@@ -91,14 +91,14 @@ export default function BasicCardTransaction({
 			currency === 'USD' &&
 			recieverAcc &&
 			+transferAmount &&
-			balanceUSD >= +transferAmount &&
+			totalExpenses >= +transferAmount &&
 			+transferAmount > 0
 		) {
-			updatedMovementsUSD.unshift([
+			updatedexpenses.unshift([
 				-transferAmount,
 				new Date().toLocaleDateString(),
 			]) &&
-				recieverAcc[1].movementsUSD.unshift([
+				recieverAcc[1].expenses.unshift([
 					+transferAmount,
 					new Date().toLocaleDateString(),
 				]);
@@ -115,7 +115,7 @@ export default function BasicCardTransaction({
 					},
 					{
 						...recieverAcc[1],
-						movementsUSD: updatedMovementsUSD,
+						expenses: updatedexpenses,
 					},
 			  ])
 			: (updatedAccount = [
@@ -125,7 +125,7 @@ export default function BasicCardTransaction({
 					},
 					{
 						...recieverAcc[1],
-						movementsUSD: updatedMovementsUSD,
+						expenses: updatedexpenses,
 					},
 			  ]);
 

@@ -6,7 +6,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 	const movementsToDisplay =
 		currency === 'euro'
 			? accountMovements[0].movements
-			: accountMovements[1].movementsUSD;
+			: accountMovements[1].expenses;
 
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
