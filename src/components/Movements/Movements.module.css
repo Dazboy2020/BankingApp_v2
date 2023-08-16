@@ -82,3 +82,36 @@ ul {
 	align-items: stretch;
 	flex-grow: 1;
 }
+
+@media (max-width: 576px) {
+	.movements__type__withdrawal {
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		font-weight: 500;
+		color: #fff;
+		padding: 0.3rem;
+		min-width: 8rem;
+		margin-bottom: 0.3rem;
+	}
+
+	.movements__row {
+		flex-grow: 1;
+		flex-direction: column;
+
+		padding: 0.1rem;
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid #eee;
+		margin: 0.1rem;
+	}
+
+	.movements__type {
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		font-weight: 500;
+		color: #fff;
+		padding: 0.1rem 1rem;
+		border-radius: 10rem;
+		/* margin-right: 2rem; */
+	}
+}
