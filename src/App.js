@@ -221,7 +221,7 @@ function App() {
 								// totalExpenses={totalExpenses}
 								// totalIncome={totalIncome}
 								// setSort={setSort}
-								// accounts={accounts}
+								// accounts={accoun
 								// user={user}
 							/>
 							{/* <BasicCardTransaction
