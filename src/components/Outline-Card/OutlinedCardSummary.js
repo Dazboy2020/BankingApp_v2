@@ -32,20 +32,6 @@ export default function BasicCardSummary({
 						: `$${Math.abs(totalExpenses).toFixed(2)}`}
 				</Typography>
 
-<<<<<<< HEAD
-				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
-					<Typography variant="h6">
-						In :{currency === 'euro' ? ' €' : ' $'}
-						{currency === 'euro' ? totalDepositEuro : totalDepositUSD}
-					</Typography>
-					<Typography variant="h6">
-						Out:
-						{currency === 'euro' ? ' €' : ' $'}
-						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
-					</Typography>
-				</Box>
-=======
->>>>>>> expense-refactor
 				<Box>
 					<Button
 						variant="contained"
