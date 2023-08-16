@@ -191,8 +191,7 @@ function App() {
 							direction={{ s: 'column', sm: 'row' }}
 							sx={{
 								justifyContent: 'space-between',
-								mb: 2,
-								mt: 2,
+								// m: 1,
 							}}
 						>
 							<BasicCardSummary
@@ -241,7 +240,8 @@ function App() {
 							direction={{ xs: 'column', md: 'row' }}
 							sx={{
 								backgroundColor: '#EEEEEE',
-								mt: '1rem',
+								m: 1,
+								mt: 2,
 								display: 'flex',
 								// padding: '1rem',
 							}}

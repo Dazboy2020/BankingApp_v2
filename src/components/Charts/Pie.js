@@ -58,7 +58,7 @@ function PieChart({ accountMovements, currency, sort }) {
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
 			<Typography variant="h5">
-				{currency === 'euro' ? 'Incomes' : 'Expenses'}
+				{currency === 'euro' ? 'Income' : 'Expenses'}
 			</Typography>
 			<Doughnut data={userData} options={options} />
 		</div>
