@@ -8,35 +8,13 @@ import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 export default function BasicCardSummary({
 	accountMovements,
 	currency,
-	balanceUSD,
-	balanceEUR,
+	totalExpenses,
+	totalIncome,
 	setSort,
 }) {
 	function handleSort() {
 		setSort((sort) => !sort);
 	}
-	const totalDepositEuro = accountMovements[0].movements
-		.filter((mov) => mov[0] > 0)
-		.reduce((acc, mov) => acc + mov[0], 0);
-
-	const totalDepositUSD = accountMovements[1].movementsUSD
-		.filter((mov) => mov[0] > 0)
-		.reduce((acc, mov) => acc + mov[0], 0)
-		.toFixed(2);
-
-	const totalWithdrawalEuro = Math.abs(
-		accountMovements[0].movements
-			.filter((mov) => mov[0] < 0)
-			.reduce((acc, mov) => acc + mov[0], 0)
-			.toFixed(2)
-	);
-
-	const totalWithdrawalUSD = Math.abs(
-		accountMovements[1].movementsUSD
-			.filter((mov) => mov[0] < 0)
-			.reduce((acc, mov) => acc + mov[0], 0)
-			.toFixed(2)
-	);
 
 	return (
 		<Card sx={{ display: 'flex', flexGrow: 1, m: 1 }}>
@@ -46,14 +24,15 @@ export default function BasicCardSummary({
 					color="black"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
-					{currency === 'euro' ? 'EUR Account Details' : 'USD Account Details'}
+					{currency === 'euro' ? 'Total Income' : 'Total Expenses'}
 				</Typography>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{currency === 'euro'
-						? `€${balanceEUR.toFixed(2)}`
-						: `$${balanceUSD.toFixed(2)}`}
+						? `€${totalIncome.toFixed(2)}`
+						: `$${Math.abs(totalExpenses).toFixed(2)}`}
 				</Typography>
 
+<<<<<<< HEAD
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Typography variant="h6">
 						In :{currency === 'euro' ? ' €' : ' $'}
@@ -65,6 +44,8 @@ export default function BasicCardSummary({
 						{currency === 'euro' ? totalWithdrawalEuro : totalWithdrawalUSD}
 					</Typography>
 				</Box>
+=======
+>>>>>>> expense-refactor
 				<Box>
 					<Button
 						variant="contained"

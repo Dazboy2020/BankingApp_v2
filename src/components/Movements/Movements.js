@@ -6,7 +6,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 	const movementsToDisplay =
 		currency === 'euro'
 			? accountMovements[0].movements
-			: accountMovements[1].movementsUSD;
+			: accountMovements[1].expenses;
 
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -16,11 +16,14 @@ const Movements = ({ accountMovements, currency, sort }) => {
 		<Stack
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
+				// display: 'flex',
+				// flexDirection: 'column',
 				justifyContent: 'space-between',
 				mb: 2,
 				mt: 2,
 				flexGrow: 1,
 			}}
+			// className={classes.main__container__window}
 		>
 			<ul>
 				<Stack>
@@ -36,11 +39,11 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									className={classes.movements__row}
 								>
 									<span className={classes.movements__type__deposit}>
-										deposit
+										Income
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__value}>
-										{item[0].toFixed(2)}
+										{item[0]}
 										{currency === 'euro' ? '€' : '$'}
 									</span>
 								</Stack>
@@ -53,11 +56,11 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									className={classes.movements__row}
 								>
 									<span className={classes.movements__type__withdrawal}>
-										withdrawal
+										Expense
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__value}>
-										{item[0].toFixed(2)}
+										{item[0]}
 										{currency === 'euro' ? '€' : '$'}
 									</span>
 								</Stack>

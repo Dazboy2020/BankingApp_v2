@@ -8,6 +8,7 @@ import {
 } from 'chart.js/auto';
 
 import { Doughnut } from 'react-chartjs-2';
+import { Typography } from '@mui/material';
 
 function PieChart({ accountMovements, currency, sort }) {
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
@@ -15,23 +16,21 @@ function PieChart({ accountMovements, currency, sort }) {
 	const movementsToDisplay =
 		currency === 'euro'
 			? accountMovements[0].movements
-			: accountMovements[1].movementsUSD;
+			: accountMovements[1].expenses;
 
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
-	let bgColor;
-	let label;
-
-	bgColor = moves.map((item) => (item[0] > 0 ? 'green' : 'red'));
-	label = moves.map((item) => (item[0] > 0 ? 'deposit' : 'Withdrawal'));
+	let bgColor = moves.map((item) => (item[0] > 0 ? 'green' : 'red'));
+	let label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[0]}`));
+	let dataSetLabel = currency === 'euro' ? 'Income' : 'Expense';
 
 	const userData = {
 		labels: label,
 		datasets: [
 			{
-				label: 'Deposits vs Withdrawals',
+				label: dataSetLabel,
 				data: moves.map((item) => item[0]),
 				backgroundColor: bgColor,
 			},
@@ -41,12 +40,16 @@ function PieChart({ accountMovements, currency, sort }) {
 	const options = {
 		plugins: {
 			legend: {
-				position: 'right',
+				position: 'left',
 				rtl: true,
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
 					padding: 20,
+					font: {
+						size: 16,
+						weight: 'bold',
+					},
 				},
 			},
 		},
@@ -54,12 +57,9 @@ function PieChart({ accountMovements, currency, sort }) {
 
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
-			<h1
-				className="title"
-				// style={{ textAlign: 'center' }}
-			>
-				Deposits Vs. Withdrawals
-			</h1>
+			<Typography variant="h5">
+				{currency === 'euro' ? 'Income' : 'Expenses'}
+			</Typography>
 			<Doughnut data={userData} options={options} />
 		</div>
 	);

@@ -9,25 +9,30 @@ import {
 
 import { Doughnut } from 'react-chartjs-2';
 
+import { Typography } from '@mui/material';
+
 function PieEuro({ accountMovements, currency, sort }) {
-	const balanceEUR = accountMovements[0].movements.reduce(
+	const totalIncome = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
+	const totalExpenses = accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
+	let incomeData = `${totalIncome.toFixed(2)}`;
+	let expenseData = `${Math.abs(totalExpenses).toFixed(2)}`;
+
 	const userData = {
-		labels: ['EUR', 'USD'],
+		labels: [incomeData, expenseData],
 		datasets: [
 			{
-				label: 'Euro vs USD',
-				data: [balanceEUR, balanceUSD],
-				backgroundColor: ['orange', 'orangered'],
+				label: 'Income vs Expenses',
+				data: [totalIncome, totalExpenses],
+				backgroundColor: ['green', 'red'],
 			},
 		],
 	};
@@ -35,12 +40,16 @@ function PieEuro({ accountMovements, currency, sort }) {
 	const options = {
 		plugins: {
 			legend: {
-				position: 'right',
+				position: 'left',
 				rtl: true,
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
 					padding: 20,
+					font: {
+						size: 16,
+						weight: 'bold',
+					},
 				},
 			},
 			maintainAspectRatio: false,
@@ -49,12 +58,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 
 	return (
 		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
-			<h1
-				className="title"
-				// style={{ textAlign: 'center' }}
-			>
-				Euro Vs. USD
-			</h1>
+			<Typography variant="h5">Income Vs. Expenses</Typography>
 			<Doughnut data={userData} options={options} />
 		</div>
 	);

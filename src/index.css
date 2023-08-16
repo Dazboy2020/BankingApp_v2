@@ -7,47 +7,62 @@ body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 62.5%;
 	color: #444;
-	background: #32393c; /* fallback for old browsers */
+	/* 	
 
 	background: linear-gradient(to right, #7a838e, #b5babe);
 	padding: 2rem;
+
+	 */
 }
 
-.pie-wrapper {
+/* .pie-wrapper {
 	display: flex;
-}
+} */
 
 @media (max-width: 1400px) {
 	.canvas {
 		height: 450px;
 		width: 450px;
+		margin-top: 1rem;
 	}
 }
 
 @media (max-width: 1025px) {
 	.canvas {
-		height: 350px;
-		width: 350px;
+		height: 375px;
+		width: 375px;
 	}
 }
 
 @media (max-width: 800px) {
-	.canvas {
+	/* .canvas {
 		height: 300px;
 		width: 300px;
-	}
+	} */
 }
 
 @media (max-width: 576px) {
 	body {
 		margin: 0;
 		padding: 0;
-		/* max-width: 100%; */
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}
 
+	.pie_wrapper {
+		/* position: relative; */
+		padding: 0;
+	}
+
 	.canvas {
-		padding-left: 1.5rem;
+		margin-top: 2rem;
+		padding: 0;
+		margin-left: 0;
+		margin-right: 0.5rem;
+		/* height: 330px;
+		width: 330px; */
+
+		/* height: auto;
+		width: auto; */
 	}
 }

@@ -11,11 +11,13 @@ import { Stack } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
 import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
 import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
-import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
+// import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
 import Toast from './UI/AlertDialogue/Toast';
 import PieChart from './components/Charts/Pie';
 import PieEuro from './components/Charts/PieEuro';
+
+import classes from './components/Charts/pie_wrapper.Module.css';
 
 const account1 = [
 	{
@@ -23,26 +25,26 @@ const account1 = [
 		pin: 4444,
 		interestRate: 1.2,
 		movements: [
-			[1200, '2023-11-18'],
-			[4515.23, '2023-12-23'],
-			[-1006.5, '2022-01-28'],
-			[200, '2022-08-01'],
-			[-62.21, '2021-05-08'],
-			[-133.9, '2021-05-27'],
+			// [1200, '2023-11-18'],
+			// [4515.23, '2023-12-23'],
+			// [1006.5, '2022-01-28'],
+			// [200, '2022-08-01'],
+			[62.21, '2021-05-08'],
+			[133.9, '2021-05-27'],
 			[791.97, '2020-07-11'],
 			[130, '2019-07-12'],
 		],
 	},
 	{
-		movementsUSD: [
-			[100, '2022-11-18'],
-			[45.23, '2022-12-23'],
+		expenses: [
+			[-100, '2022-11-18'],
+			[-45.23, '2022-12-23'],
 			[-250.5, '2022-01-28'],
-			[2500, '2020-04-16'],
+			[-2500, '2020-04-16'],
 			[-242.21, '2020-05-08'],
-			[-148.9, '2020-05-27'],
-			[50.97, '2019-12-11'],
-			[1500, '2018-12-16'],
+			// [-148.9, '2020-05-27'],
+			// [-50.97, '2019-12-11'],
+			// [-1500, '2018-12-16'],
 		],
 		locale: 'en-GB',
 	},
@@ -60,9 +62,9 @@ const account2 = [
 		],
 	},
 	{
-		movementsUSD: [
-			[100, '2019-11-18'],
-			[45, '2019-12-23'],
+		expenses: [
+			[-100, '2019-11-18'],
+			[-45, '2019-12-23'],
 			[-25, '2022-12-17'],
 		],
 		locale: 'en-GB',
@@ -77,24 +79,24 @@ export const account3 = [
 		movements: [
 			[200, '2019-11-18'],
 			[455.23, '2019-12-23'],
-			[-306.5, '2020-01-28'],
+			[306.5, '2020-01-28'],
 			[2500, '2020-04-01'],
-			[-642.21, '2020-05-08'],
-			[-133.9, '2020-05-27'],
-			[79.97, '2022-12-16'],
-			[1300.56, '2022-12-17'],
+			[642.21, '2020-05-08'],
+			[133.9, '2020-05-27'],
+			// [79.97, '2022-12-16'],
+			// [1300.56, '2022-12-17'],
 		],
 	},
 	{
-		movementsUSD: [
-			[100, '2019-11-18'],
-			[45.23, '2019-12-23'],
+		expenses: [
+			[-100, '2019-11-18'],
+			[-45.23, '2019-12-23'],
 			[-250.5, '2020-01-28'],
-			[2500, '2020-04-01'],
+			[-2500, '2020-04-01'],
 			[-242.21, '2020-05-08'],
 			[-133.9, '2020-05-27'],
-			[50.97, '2022-12-11'],
-			[1500, '2022-12-12'],
+			// [-50.97, '2022-12-11'],
+			// [-1500, '2022-12-12'],
 		],
 		currency: 'EUR',
 		locale: 'pt-PT', // de-DE
@@ -107,7 +109,7 @@ function App() {
 	const [currency, setCurrency] = useState('euro');
 	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
 	// eslint-disable-next-line no-unused-vars
@@ -118,11 +120,11 @@ function App() {
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
 
-	const balanceEUR = accountMovements[0].movements.reduce(
+	const totalIncome = accountMovements[0].movements.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const balanceUSD = accountMovements[1]?.movementsUSD.reduce(
+	const totalExpenses = accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
@@ -189,8 +191,7 @@ function App() {
 							direction={{ s: 'column', sm: 'row' }}
 							sx={{
 								justifyContent: 'space-between',
-								mb: 2,
-								mt: 2,
+								// m: 1,
 							}}
 						>
 							<BasicCardSummary
@@ -200,8 +201,8 @@ function App() {
 									},
 								}}
 								accountMovements={accountMovements}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
+								totalExpenses={totalExpenses}
+								totalIncome={totalIncome}
 								currency={currency}
 								setSort={setSort}
 								accounts={accounts}
@@ -215,29 +216,36 @@ function App() {
 								}}
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
-								currency={currency}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
-								setSort={setSort}
-								accounts={accounts}
-								user={user}
 								setOpenToast={setOpenToast}
+								// currency={currency}
+								// totalExpenses={totalExpenses}
+								// totalIncome={totalIncome}
+								// setSort={setSort}
+								// accounts={accounts}
+								// user={user}
 							/>
-							<BasicCardTransaction
+							{/* <BasicCardTransaction
 								accountMovements={accountMovements}
 								setAccountMovements={setAccountMovements}
 								currency={currency}
-								balanceUSD={balanceUSD}
-								balanceEUR={balanceEUR}
+								totalExpenses={totalExpenses}
+								totalIncome={totalIncome}
 								setSort={setSort}
 								accounts={accounts}
 								user={user}
 								setOpenToast={setOpenToast}
-							/>
+							/>  */}
 						</Stack>
 						<Stack
 							direction={{ xs: 'column', md: 'row' }}
-							className="pie-wrapper"
+							sx={{
+								backgroundColor: '#EEEEEE',
+								m: 1,
+								mt: 2,
+								display: 'flex',
+								// padding: '1rem',
+							}}
+							className={classes.pie_wrapper}
 						>
 							<PieChart
 								accountMovements={accountMovements}
