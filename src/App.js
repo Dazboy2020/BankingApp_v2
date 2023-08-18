@@ -144,15 +144,16 @@ function App() {
 
 	function LogUserOut() {
 		setIsLoggedIn(false);
+		setUser('');
 	}
-	console.log(isLoggedIn);
+	console.log('LOGGED IN?', isLoggedIn);
 	return (
-		<>
-			<BrowserRouter>
-				<Routes>
-					<Route
-						index
-						element={
+		<BrowserRouter>
+			<Routes>
+				<Route
+					index
+					element={
+						<>
 							<NewNav
 								accountMovements={accountMovements}
 								setUser={setUser}
@@ -171,122 +172,120 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 							/>
-						}
-					/>
-					<Route
-						path="login"
-						element={
-							<SignIn
-								pin={pin}
-								user={user}
-								setUser={setUser}
-								setPin={setPin}
-								loggedInAccount={loggedInAccount}
-								setIsLoggedIn={setIsLoggedIn}
-								setAccountMovements={setAccountMovements}
-							/>
-						}
-					/>
-				</Routes>
 
-				{isLoggedIn && (
-					// <MainWrapper classname={MainWrapper}>
-					<>
-						<AlertDialogSlide
-							open={open}
-							setOpen={setOpen}
-							LogUserOut={LogUserOut}
+							{isLoggedIn && (
+								<>
+									<AlertDialogSlide
+										open={open}
+										setOpen={setOpen}
+										LogUserOut={LogUserOut}
+									/>
+									<CloseAccountModal
+										openModal={openModal}
+										setOpenModal={setOpenModal}
+										LogUserOut={LogUserOut}
+									/>
+									<Toast openToast={openToast} setOpenToast={setOpenToast} />
+									<Stack
+										direction={{ s: 'column', sm: 'row' }}
+										sx={{
+											justifyContent: 'space-between',
+											// m: 1,
+										}}
+									>
+										<BasicCardSummary
+											sx={{
+												width: {
+													lg: 200,
+												},
+											}}
+											accountMovements={accountMovements}
+											totalExpenses={totalExpenses}
+											totalIncome={totalIncome}
+											currency={currency}
+											setSort={setSort}
+											accounts={accounts}
+											user={user}
+										/>
+										<BasicCardFX
+											sx={{
+												width: {
+													lg: 200,
+												},
+											}}
+											accountMovements={accountMovements}
+											setAccountMovements={setAccountMovements}
+											setOpenToast={setOpenToast}
+											// currency={currency}
+											// totalExpenses={totalExpenses}
+											// totalIncome={totalIncome}
+											// setSort={setSort}
+											// accounts={accoun
+											// user={user}
+										/>
+										{/* <BasicCardTransaction
+							accountMovements={accountMovements}
+							setAccountMovements={setAccountMovements}
+							currency={currency}
+							totalExpenses={totalExpenses}
+							totalIncome={totalIncome}
+							setSort={setSort}
+							accounts={accounts}
+							user={user}
+							setOpenToast={setOpenToast}
+						/>  */}
+									</Stack>
+									<Stack
+										direction={{ xs: 'column', md: 'row' }}
+										sx={{
+											backgroundColor: '#EEEEEE',
+											m: 1,
+											mt: 2,
+											display: 'flex',
+											// padding: '1rem',
+										}}
+										className={classes.pie_wrapper}
+									>
+										<PieChart
+											accountMovements={accountMovements}
+											currency={currency}
+											sort={sort}
+										/>
+										<PieEuro
+											accountMovements={accountMovements}
+											currency={currency}
+											sort={sort}
+										/>
+									</Stack>
+									<MovementList>
+										<Movements
+											accountMovements={accountMovements}
+											currency={currency}
+											sort={sort}
+										/>
+									</MovementList>
+								</>
+							)}
+						</>
+					}
+				/>
+				<Route
+					path="login"
+					element={
+						<SignIn
+							pin={pin}
+							user={user}
+							setUser={setUser}
+							setPin={setPin}
+							loggedInAccount={loggedInAccount}
+							setIsLoggedIn={setIsLoggedIn}
+							isLoggedIn={isLoggedIn}
+							setAccountMovements={setAccountMovements}
 						/>
-						<CloseAccountModal
-							openModal={openModal}
-							setOpenModal={setOpenModal}
-							LogUserOut={LogUserOut}
-						/>
-						<Toast openToast={openToast} setOpenToast={setOpenToast} />
-						<Stack
-							direction={{ s: 'column', sm: 'row' }}
-							sx={{
-								justifyContent: 'space-between',
-								// m: 1,
-							}}
-						>
-							<BasicCardSummary
-								sx={{
-									width: {
-										lg: 200,
-									},
-								}}
-								accountMovements={accountMovements}
-								totalExpenses={totalExpenses}
-								totalIncome={totalIncome}
-								currency={currency}
-								setSort={setSort}
-								accounts={accounts}
-								user={user}
-							/>
-							<BasicCardFX
-								sx={{
-									width: {
-										lg: 200,
-									},
-								}}
-								accountMovements={accountMovements}
-								setAccountMovements={setAccountMovements}
-								setOpenToast={setOpenToast}
-								// currency={currency}
-								// totalExpenses={totalExpenses}
-								// totalIncome={totalIncome}
-								// setSort={setSort}
-								// accounts={accoun
-								// user={user}
-							/>
-							{/* <BasicCardTransaction
-								accountMovements={accountMovements}
-								setAccountMovements={setAccountMovements}
-								currency={currency}
-								totalExpenses={totalExpenses}
-								totalIncome={totalIncome}
-								setSort={setSort}
-								accounts={accounts}
-								user={user}
-								setOpenToast={setOpenToast}
-							/>  */}
-						</Stack>
-						<Stack
-							direction={{ xs: 'column', md: 'row' }}
-							sx={{
-								backgroundColor: '#EEEEEE',
-								m: 1,
-								mt: 2,
-								display: 'flex',
-								// padding: '1rem',
-							}}
-							className={classes.pie_wrapper}
-						>
-							<PieChart
-								accountMovements={accountMovements}
-								currency={currency}
-								sort={sort}
-							/>
-							<PieEuro
-								accountMovements={accountMovements}
-								currency={currency}
-								sort={sort}
-							/>
-						</Stack>
-						<MovementList>
-							<Movements
-								accountMovements={accountMovements}
-								currency={currency}
-								sort={sort}
-							/>
-						</MovementList>
-					</>
-					// </MainWrapper>
-				)}
-				{/* )} */}
-			</BrowserRouter>
-		</>
+					}
+				/>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

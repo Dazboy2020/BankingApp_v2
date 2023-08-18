@@ -12,6 +12,9 @@ import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
 import { NavLink } from 'react-router-dom';
 
+import { useEffect } from 'react';
+
+import classes from './Navbar.module.css';
 const now = new Date();
 const options = {
 	weekday: 'long',
@@ -36,10 +39,8 @@ function ResponsiveAppBar({
 	setIsLoggedIn,
 }) {
 	function handleClick() {
-		if (isLoggedin) {
+		if (!isLoggedin) {
 			setOpen(true);
-		} else {
-			setIsLoggedIn((cur) => !cur);
 		}
 	}
 
@@ -54,6 +55,13 @@ function ResponsiveAppBar({
 		setPin('');
 		setUser('');
 	}
+
+	useEffect(
+		function () {
+			console.log('NAVBAR', user);
+		},
+		[user]
+	);
 
 	return (
 		<AppBar
@@ -104,7 +112,13 @@ function ResponsiveAppBar({
 						>
 							Logout
 						</Button>
-						<NavLink to="/login">LOGIN</NavLink>
+						{user ? (
+							<span></span>
+						) : (
+							<NavLink className={classes.link} to="/login">
+								LOGIN
+							</NavLink>
+						)}
 					</Stack>
 					<Stack
 						direction={'row'}
