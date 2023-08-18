@@ -10,11 +10,10 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 // import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
 import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
-import classes from './Navbar.module.css';
 const now = new Date();
 const options = {
 	weekday: 'long',
@@ -25,7 +24,6 @@ const options = {
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar({
-	accountMovements,
 	switchCurrency,
 	setOpen,
 	accounts,
@@ -36,7 +34,6 @@ function ResponsiveAppBar({
 	user,
 	setOpenModal,
 	isLoggedin,
-	setIsLoggedIn,
 }) {
 	const navigate = useNavigate();
 	function handleClick() {
@@ -61,12 +58,12 @@ function ResponsiveAppBar({
 		setUser('');
 	}
 
-	useEffect(
-		function () {
-			console.log('NAVBAR', user);
-		},
-		[user]
-	);
+	// useEffect(
+	// 	function () {
+	// 		console.log('NAVBAR', user);
+	// 	},
+	// 	[user]
+	// );
 
 	return (
 		<AppBar
@@ -110,13 +107,7 @@ function ResponsiveAppBar({
 								About
 							</Link>
 						</Button>
-						{/* <Button
-							onClick={handleClick}
-							color="inherit"
-							startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
-						>
-							Logout
-						</Button> */}
+
 						{user ? (
 							<Button
 								onClick={handleClick}
@@ -126,9 +117,6 @@ function ResponsiveAppBar({
 								Logout
 							</Button>
 						) : (
-							// <NavLink className={classes.link} to="/login">
-							// 	LOGIN
-							// </NavLink>
 							<Button
 								onClick={handleLogin}
 								color="inherit"
