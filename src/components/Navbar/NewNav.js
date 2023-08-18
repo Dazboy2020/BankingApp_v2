@@ -58,15 +58,6 @@ function ResponsiveAppBar({
 		>
 			<Container maxWidth="xxl">
 				<Toolbar>
-					{/* <AccountBalanceOutlined
-						sx={{
-							display: { xs: 'none', s: 'flex' },
-							mr: 1,
-						}}
-					/>
-					<Typography variant="h6" noWrap>
-						Welcome, {accountMovements[0].owner.toUpperCase()}
-					</Typography> */}
 					<Stack
 						direction={{ xs: 'column', md: 'row' }}
 						sx={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}
