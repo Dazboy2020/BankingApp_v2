@@ -105,15 +105,21 @@ function ResponsiveAppBar({
 								About
 							</Link>
 						</Button>
-						<Button
+						{/* <Button
 							onClick={handleClick}
 							color="inherit"
 							startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
 						>
 							Logout
-						</Button>
+						</Button> */}
 						{user ? (
-							<span></span>
+							<Button
+								onClick={handleClick}
+								color="inherit"
+								startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
+							>
+								Logout
+							</Button>
 						) : (
 							<NavLink className={classes.link} to="/login">
 								LOGIN
