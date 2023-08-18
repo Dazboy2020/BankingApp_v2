@@ -10,7 +10,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 // import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
 import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
@@ -38,10 +38,15 @@ function ResponsiveAppBar({
 	isLoggedin,
 	setIsLoggedIn,
 }) {
+	const navigate = useNavigate();
 	function handleClick() {
 		if (!isLoggedin) {
 			setOpen(true);
 		}
+	}
+
+	function handleLogin() {
+		navigate('/login');
 	}
 
 	function closeAccountHandler(e) {
@@ -121,9 +126,16 @@ function ResponsiveAppBar({
 								Logout
 							</Button>
 						) : (
-							<NavLink className={classes.link} to="/login">
-								LOGIN
-							</NavLink>
+							// <NavLink className={classes.link} to="/login">
+							// 	LOGIN
+							// </NavLink>
+							<Button
+								onClick={handleLogin}
+								color="inherit"
+								startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
+							>
+								Login
+							</Button>
 						)}
 					</Stack>
 					<Stack
