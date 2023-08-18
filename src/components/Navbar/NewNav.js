@@ -10,6 +10,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 // import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
 import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
+import { NavLink } from 'react-router-dom';
 
 const now = new Date();
 const options = {
@@ -31,9 +32,15 @@ function ResponsiveAppBar({
 	setCloseUser,
 	user,
 	setOpenModal,
+	isLoggedin,
+	setIsLoggedIn,
 }) {
-	function handleLogOut() {
-		setOpen(true);
+	function handleClick() {
+		if (isLoggedin) {
+			setOpen(true);
+		} else {
+			setIsLoggedIn((cur) => !cur);
+		}
 	}
 
 	function closeAccountHandler(e) {
@@ -91,12 +98,13 @@ function ResponsiveAppBar({
 							</Link>
 						</Button>
 						<Button
-							onClick={handleLogOut}
+							onClick={handleClick}
 							color="inherit"
 							startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
 						>
-							LogOut
+							Logout
 						</Button>
+						<NavLink to="/login">LOGIN</NavLink>
 					</Stack>
 					<Stack
 						direction={'row'}

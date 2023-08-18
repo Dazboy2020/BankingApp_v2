@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function Copyright(props) {
@@ -43,6 +44,7 @@ export default function SignIn({
 	setAccountMovements,
 }) {
 	const [error, setError] = useState(false);
+	const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -50,6 +52,7 @@ export default function SignIn({
 		if (loggedInAccount && loggedInAccount[0].pin === +pin) {
 			setAccountMovements(loggedInAccount);
 			setIsLoggedIn(true);
+			navigate('/');
 		} else {
 			setError(true);
 			setPin('');
@@ -86,11 +89,7 @@ export default function SignIn({
 					<Typography component="h1" variant="h5">
 						Sign in
 					</Typography>
-					<Box
-						component="form"
-						onSubmit={handleSubmit}
-						sx={{ mt: 1 }}
-					>
+					<Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
 						<TextField
 							margin="normal"
 							required

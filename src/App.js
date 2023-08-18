@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MainWrapper from './UI/MainWrapper';
+// import MainWrapper from './UI/MainWrapper';
 import MovementList from './components/Movements/MovementList';
 import Movements from './components/Movements/Movements';
 
@@ -18,6 +18,7 @@ import PieChart from './components/Charts/Pie';
 import PieEuro from './components/Charts/PieEuro';
 
 import classes from './components/Charts/pie_wrapper.Module.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const account1 = [
 	{
@@ -144,38 +145,53 @@ function App() {
 	function LogUserOut() {
 		setIsLoggedIn(false);
 	}
-
+	console.log(isLoggedIn);
 	return (
 		<>
-			{!isLoggedIn ? (
-				<SignIn
-					pin={pin}
-					user={user}
-					setUser={setUser}
-					setPin={setPin}
-					loggedInAccount={loggedInAccount}
-					setIsLoggedIn={setIsLoggedIn}
-					setAccountMovements={setAccountMovements}
-				/>
-			) : (
-				<>
-					<MainWrapper classname={MainWrapper}>
-						<NewNav
-							accountMovements={accountMovements}
-							setUser={setUser}
-							setPin={setPin}
-							setClosePin={setClosePin}
-							switchCurrency={switchCurrency}
-							currency={currency}
-							open={open}
-							setOpen={setOpen}
-							LogUserOut={LogUserOut}
-							accounts={accounts}
-							setCloseUser={setCloseUser}
-							user={user}
-							openModal={openModal}
-							setOpenModal={setOpenModal}
-						/>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						index
+						element={
+							<NewNav
+								accountMovements={accountMovements}
+								setUser={setUser}
+								setPin={setPin}
+								setClosePin={setClosePin}
+								switchCurrency={switchCurrency}
+								currency={currency}
+								open={open}
+								setOpen={setOpen}
+								LogUserOut={LogUserOut}
+								accounts={accounts}
+								setCloseUser={setCloseUser}
+								user={user}
+								openModal={openModal}
+								setOpenModal={setOpenModal}
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
+						}
+					/>
+					<Route
+						path="login"
+						element={
+							<SignIn
+								pin={pin}
+								user={user}
+								setUser={setUser}
+								setPin={setPin}
+								loggedInAccount={loggedInAccount}
+								setIsLoggedIn={setIsLoggedIn}
+								setAccountMovements={setAccountMovements}
+							/>
+						}
+					/>
+				</Routes>
+
+				{isLoggedIn && (
+					// <MainWrapper classname={MainWrapper}>
+					<>
 						<AlertDialogSlide
 							open={open}
 							setOpen={setOpen}
@@ -265,9 +281,11 @@ function App() {
 								sort={sort}
 							/>
 						</MovementList>
-					</MainWrapper>
-				</>
-			)}
+					</>
+					// </MainWrapper>
+				)}
+				{/* )} */}
+			</BrowserRouter>
 		</>
 	);
 }
