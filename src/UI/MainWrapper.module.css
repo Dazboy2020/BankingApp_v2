@@ -12,6 +12,12 @@
 	margin: auto;
 }
 
+@media (max-width: 800px) {
+	.MainWrapper {
+		padding: 0;
+	}
+}
+
 @media (max-width: 576px) {
 	.MainWrapper {
 		margin: 0;
