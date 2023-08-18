@@ -12,8 +12,6 @@ import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
-import { useEffect } from 'react';
-
 const now = new Date();
 const options = {
 	weekday: 'long',
@@ -57,13 +55,6 @@ function ResponsiveAppBar({
 		setPin('');
 		setUser('');
 	}
-
-	// useEffect(
-	// 	function () {
-	// 		console.log('NAVBAR', user);
-	// 	},
-	// 	[user]
-	// );
 
 	return (
 		<AppBar
