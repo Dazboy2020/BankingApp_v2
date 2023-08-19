@@ -55,7 +55,7 @@ export default function SignIn({
 		if (loggedInAccount && loggedInAccount[0].pin === +pin) {
 			setAccountMovements(loggedInAccount);
 			setIsLoggedIn(true);
-			navigate('/');
+			navigate('/application');
 		} else {
 			setError(true);
 			setPin('');

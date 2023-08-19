@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
 // import MainWrapper from './UI/MainWrapper';
-import MovementList from './components/Charts/Movements/MovementList';
-import Movements from './components/Charts/Movements/Movements';
 
 // import CloseAccount from './components/CloseAccount/CloseAccount';
 
 import SignIn from './pages/SignIn';
 import NewNav from './components/Navbar/NewNav';
-import { Stack } from '@mui/material';
-import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
-import BasicCardSummary from './components/Outline-Card/OutlinedCardSummary';
-import BasicCardFX from './components/Outline-Card/OutlinedCardFX';
 // import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
-import CloseAccountModal from './UI/AlertDialogue/CloseAccountModal';
-import Toast from './UI/AlertDialogue/Toast';
-import PieChart from './components/Charts/Pie';
-import PieEuro from './components/Charts/PieEuro';
 
-import classes from './components/Charts/pie_wrapper.Module.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
+import MainApp from './pages/MainApp';
 
 const account1 = [
 	{
@@ -118,7 +108,7 @@ function App() {
 	const [closePin, setClosePin] = useState('');
 	// eslint-disable-next-line no-unused-vars
 	const [closeUser, setCloseUser] = useState('');
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
 
@@ -173,100 +163,47 @@ function App() {
 								setIsLoggedIn={setIsLoggedIn}
 							/>
 							{!isLoggedIn && <Homepage />}
-
-							{isLoggedIn && (
-								<>
-									<AlertDialogSlide
-										open={open}
-										setOpen={setOpen}
-										LogUserOut={LogUserOut}
-									/>
-									<CloseAccountModal
-										openModal={openModal}
-										setOpenModal={setOpenModal}
-										LogUserOut={LogUserOut}
-									/>
-									<Toast openToast={openToast} setOpenToast={setOpenToast} />
-									<Stack
-										direction={{ s: 'column', sm: 'row' }}
-										sx={{
-											justifyContent: 'space-between',
-											// m: 1,
-										}}
-									>
-										<BasicCardSummary
-											sx={{
-												width: {
-													lg: 200,
-												},
-											}}
-											accountMovements={accountMovements}
-											totalExpenses={totalExpenses}
-											totalIncome={totalIncome}
-											currency={currency}
-											setSort={setSort}
-											accounts={accounts}
-											user={user}
-										/>
-										<BasicCardFX
-											sx={{
-												width: {
-													lg: 200,
-												},
-											}}
-											accountMovements={accountMovements}
-											setAccountMovements={setAccountMovements}
-											setOpenToast={setOpenToast}
-											// currency={currency}
-											// totalExpenses={totalExpenses}
-											// totalIncome={totalIncome}
-											// setSort={setSort}
-											// accounts={accoun
-											// user={user}
-										/>
-										{/* <BasicCardTransaction
-							accountMovements={accountMovements}
-							setAccountMovements={setAccountMovements}
-							currency={currency}
-							totalExpenses={totalExpenses}
-							totalIncome={totalIncome}
-							setSort={setSort}
-							accounts={accounts}
-							user={user}
-							setOpenToast={setOpenToast}
-						/>  */}
-									</Stack>
-									<Stack
-										direction={{ xs: 'column', md: 'row' }}
-										sx={{
-											backgroundColor: '#EEEEEE',
-											m: 1,
-											mt: 2,
-											display: 'flex',
-											// padding: '1rem',
-										}}
-										className={classes.pie_wrapper}
-									>
-										<PieChart
-											accountMovements={accountMovements}
-											currency={currency}
-											sort={sort}
-										/>
-										<PieEuro
-											accountMovements={accountMovements}
-											currency={currency}
-											sort={sort}
-										/>
-									</Stack>
-									<MovementList>
-										<Movements
-											accountMovements={accountMovements}
-											currency={currency}
-											sort={sort}
-										/>
-									</MovementList>
-								</>
-							)}
+						</>
+					}
+				/>
+				<Route
+					path="application"
+					element={
+						<>
+							<NewNav
+								accountMovements={accountMovements}
+								setUser={setUser}
+								setPin={setPin}
+								setClosePin={setClosePin}
+								switchCurrency={switchCurrency}
+								currency={currency}
+								open={open}
+								setOpen={setOpen}
+								LogUserOut={LogUserOut}
+								accounts={accounts}
+								setCloseUser={setCloseUser}
+								user={user}
+								openModal={openModal}
+								setOpenModal={setOpenModal}
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
+							<MainApp
+								accountMovements={accountMovements}
+								totalExpenses={totalExpenses}
+								totalIncome={totalIncome}
+								currency={currency}
+								setSort={setSort}
+								sort={sort}
+								accounts={accounts}
+								user={user}
+								setAccountMovements={setAccountMovements}
+								setOpenToast={setOpenToast}
+								open={open}
+								setOpen={setOpen}
+								LogUserOut={LogUserOut}
+								openToast={openToast}
+							/>
 						</>
 					}
 				/>
