@@ -29,7 +29,7 @@ export default function BasicCardSummary({
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{currency === 'euro'
 						? `€${totalIncome.toFixed(2)}`
-						: `$${Math.abs(totalExpenses).toFixed(2)}`}
+						: `€${Math.abs(totalExpenses).toFixed(2)}`}
 				</Typography>
 
 				<Box>
