@@ -80,22 +80,12 @@ function PieEuro({ accountMovements, currency, sort }) {
 				className="canvas"
 				style={{
 					width: '100%',
+					height: 'auto',
 
-					// width: '40rem',
 					margin: 'auto',
 					padding: '1rem',
 				}}
 			>
-				{/* <Typography
-				variant="h5"
-				sx={{
-					maxWidth: '100%',
-					padding: '1rem',
-					backgroundColor: 'indianred',
-				}}
-			>
-				Income Vs. Expenses
-			</Typography> */}
 				<Doughnut data={userData} options={options} />
 			</div>
 		</Box>

@@ -100,12 +100,12 @@ function MainApp({
 					direction={{ xs: 'column', md: 'row' }}
 					sx={{
 						display: 'flex',
-						// flexWrap: 'wrap',
 						backgroundColor: '#EEEEEE',
 						alignItems: 'centre',
 						justifyContent: 'space-around',
 						mt: 2,
 						paddingTop: '1rem',
+						// height: '40vh',
 					}}
 				>
 					<PieChart

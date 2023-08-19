@@ -78,20 +78,11 @@ function PieChart({ accountMovements, currency, sort }) {
 				style={{
 					// width: '40rem',
 					width: '100%',
+					height: 'auto',
 					margin: 'auto',
 					padding: '1rem',
 				}}
 			>
-				{/* <Typography
-				variant="h5"
-				sx={{
-					maxWidth: '100%',
-					padding: '1rem',
-					backgroundColor: 'indianred',
-				}}
-			>
-				{currency === 'euro' ? 'Income' : 'Expenses'}
-			</Typography> */}
 				<Doughnut data={userData} options={options} />
 			</div>
 		</Box>
