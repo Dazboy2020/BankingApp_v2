@@ -12,7 +12,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { Typography } from '@mui/material';
 
 function PieEuro({ accountMovements, currency, sort }) {
-	const totalIncome = accountMovements[0].movements.reduce(
+	const totalIncome = accountMovements[0].deposits.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);

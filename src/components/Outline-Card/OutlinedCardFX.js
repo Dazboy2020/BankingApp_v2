@@ -49,7 +49,7 @@ const BasicCardFX = ({
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 
-	const updatedDeposits = accountMovements[0].movements.map(
+	const updatedDeposits = accountMovements[0].deposits.map(
 		(movement) => movement
 	);
 	const updatedExpenses = accountMovements[1].expenses.map(
@@ -102,7 +102,7 @@ const BasicCardFX = ({
 			? (updatedAccount = [
 					{
 						...accountMovements[0],
-						movements: updatedDeposits,
+						deposits: updatedDeposits,
 					},
 					{
 						...accountMovements[1],
@@ -112,7 +112,7 @@ const BasicCardFX = ({
 			: (updatedAccount = [
 					{
 						...accountMovements[0],
-						movements: updatedDeposits,
+						deposits: updatedDeposits,
 					},
 					{
 						...accountMovements[1],

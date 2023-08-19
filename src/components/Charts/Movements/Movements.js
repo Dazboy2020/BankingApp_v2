@@ -5,7 +5,7 @@ import classes from './Movements.module.css';
 const Movements = ({ accountMovements, currency, sort }) => {
 	const movementsToDisplay =
 		currency === 'euro'
-			? accountMovements[0].movements
+			? accountMovements[0].deposits
 			: accountMovements[1].expenses;
 
 	const moves = sort
@@ -16,7 +16,6 @@ const Movements = ({ accountMovements, currency, sort }) => {
 		<Stack
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
-				
 				justifyContent: 'space-between',
 				mb: 2,
 				mt: 2,

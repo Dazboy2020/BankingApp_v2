@@ -15,7 +15,7 @@ function PieChart({ accountMovements, currency, sort }) {
 
 	const movementsToDisplay =
 		currency === 'euro'
-			? accountMovements[0].movements
+			? accountMovements[0].deposits
 			: accountMovements[1].expenses;
 
 	const moves = sort

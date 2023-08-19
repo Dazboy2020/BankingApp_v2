@@ -15,7 +15,7 @@ const account1 = [
 		owner: 'dd',
 		pin: 4444,
 		interestRate: 1.2,
-		movements: [
+		deposits: [
 			// [1200, '2023-11-18'],
 			// [4515.23, '2023-12-23'],
 			// [1006.5, '2022-01-28'],
@@ -46,7 +46,7 @@ const account2 = [
 		owner: 'jd',
 		interestRate: 1.5,
 		pin: 2222,
-		movements: [
+		deposits: [
 			[1200, '2019-11-18'],
 			[1300, '2019-12-23'],
 			[100, '2022-12-15'],
@@ -67,7 +67,7 @@ export const account3 = [
 		owner: 'js',
 		interestRate: 1.2, // %
 		pin: 1111,
-		movements: [
+		deposits: [
 			[200, '2019-11-18'],
 			[455.23, '2019-12-23'],
 			[306.5, '2020-01-28'],
@@ -111,7 +111,7 @@ function App() {
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
 
-	const totalIncome = accountMovements[0].movements.reduce(
+	const totalIncome = accountMovements[0].deposits.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
