@@ -3,3 +3,9 @@
 	overflow-x: hidden;
 	overflow-y: hidden;
 }
+
+@media (max-width: 576px) {
+	.pie_wrapper {
+		padding: 0;
+	}
+}

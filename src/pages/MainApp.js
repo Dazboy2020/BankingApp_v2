@@ -10,7 +10,7 @@ import Movements from '../components/Movements/Movements';
 import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
-import classes from '../components/Charts/pie_wrapper.Module.css';
+// import classes from '../components/Charts/pie_wrapper.Module.css';
 import styles from './MainApp.module.css';
 
 function MainApp({
@@ -96,16 +96,17 @@ function MainApp({
 						/>  */}
 				</Stack>
 				<Stack
-					direction={{ xs: 'column', md: 'row' }}
+					className={styles.pie_wrapper}
+					direction={{ s: 'column', md: 'row' }}
 					sx={{
 						display: 'flex',
+						// flexWrap: 'wrap',
 						backgroundColor: '#EEEEEE',
 						alignItems: 'flex-start',
-						m: 1,
+						justifyContent: 'space-evenly',
 						mt: 2,
-						// padding: '1rem',
+						paddingTop: '1rem',
 					}}
-					className={classes.pie_wrapper}
 				>
 					<PieChart
 						accountMovements={accountMovements}

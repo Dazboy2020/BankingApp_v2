@@ -8,7 +8,7 @@ import {
 } from 'chart.js/auto';
 
 import { Doughnut } from 'react-chartjs-2';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 function PieChart({ accountMovements, currency, sort }) {
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
@@ -56,13 +56,19 @@ function PieChart({ accountMovements, currency, sort }) {
 	};
 
 	return (
-		<>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+			}}
+		>
 			<Typography
 				variant="h5"
 				sx={{
 					// maxWidth: '100%',
 					padding: '1rem',
 					backgroundColor: 'indianred',
+					// mt: '1rem',
 				}}
 			>
 				{currency === 'euro' ? 'Income' : 'Expenses'}
@@ -87,7 +93,7 @@ function PieChart({ accountMovements, currency, sort }) {
 			</Typography> */}
 				<Doughnut data={userData} options={options} />
 			</div>
-		</>
+		</Box>
 	);
 }
 
