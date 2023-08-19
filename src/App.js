@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 // import MainWrapper from './UI/MainWrapper';
-import MovementList from './components/Movements/MovementList';
-import Movements from './components/Movements/Movements';
+import MovementList from './components/Charts/Movements/MovementList';
+import Movements from './components/Charts/Movements/Movements';
 
 // import CloseAccount from './components/CloseAccount/CloseAccount';
 
-import SignIn from './components/Login/SignIn';
+import SignIn from './pages/SignIn';
 import NewNav from './components/Navbar/NewNav';
 import { Stack } from '@mui/material';
 import AlertDialogSlide from './UI/AlertDialogue/AlertDialogue';
@@ -146,7 +146,6 @@ function App() {
 		setIsLoggedIn(false);
 		setUser('');
 	}
-	console.log('LOGGED IN?', isLoggedIn);
 	return (
 		<BrowserRouter>
 			<Routes>

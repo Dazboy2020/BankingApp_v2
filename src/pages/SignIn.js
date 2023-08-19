@@ -14,12 +14,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 
-import NewNav from '../Navbar/NewNav';
+import NewNav from '../components/Navbar/NewNav';
 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
-import { useEffect } from 'react';
 
 function Copyright(props) {
 	return (
@@ -64,13 +62,6 @@ export default function SignIn({
 			setUser('');
 		}
 	};
-
-	useEffect(
-		function () {
-			console.log('Log in screen', isLoggedIn);
-		},
-		[isLoggedIn, setIsLoggedIn]
-	);
 
 	function onBlurHandler() {
 		setError(false);
