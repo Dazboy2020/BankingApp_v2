@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -19,8 +19,8 @@ const menuType = [
 ];
 const menuCategory = [
 	{
-		value: 'bill',
-		label: 'bill',
+		value: 'utilities',
+		label: 'utilities',
 	},
 	{
 		value: 'leisure',
@@ -35,8 +35,15 @@ const menuCategory = [
 		label: 'travel',
 	},
 	{
-		value: 'other',
-		label: 'other',
+		value: 'debt',
+		label: 'debt',
+	},
+];
+
+const menuNull = [
+	{
+		value: 'N/A',
+		label: 'N/A',
 	},
 ];
 
@@ -44,10 +51,13 @@ const BasicCardFX = ({
 	accountMovements,
 	setAccountMovements,
 	setOpenToast,
+	currency,
+	setCurrency,
 }) => {
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
+	const [label, setLabel] = useState('');
 
 	const updatedDeposits = accountMovements[0].deposits.map(
 		(movement) => movement
@@ -68,10 +78,21 @@ const BasicCardFX = ({
 	function handleExpenseType(e) {
 		setExpenseType(e.target.value);
 
+		if (expenseType === 'expense') setLabel('expense');
+		if (expenseType === 'deposit') setLabel('deposit');
+
 		// if (expenseType === '') {
 		// 	setexpenseCategory('deposit');
 		// }
 	}
+
+	useEffect(
+		function () {
+			if (expenseType === 'expense') setLabel('expense');
+			if (expenseType === 'deposit') setLabel('deposit');
+		},
+		[expenseType]
+	);
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
@@ -213,11 +234,17 @@ const BasicCardFX = ({
 								color="secondary"
 								onChange={handleExpenseCategory}
 							>
-								{menuCategory.map((option) => (
-									<MenuItem key={option.value} value={option.value}>
-										{option.label}
-									</MenuItem>
-								))}
+								{label === 'expense'
+									? menuCategory.map((option) => (
+											<MenuItem key={option.value} value={option.value}>
+												{option.label}
+											</MenuItem>
+									  ))
+									: menuNull.map((option) => (
+											<MenuItem key={option.value} value={option.value}>
+												{option.label}
+											</MenuItem>
+									  ))}
 							</TextField>
 						</Box>
 					</Stack>

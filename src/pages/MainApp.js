@@ -23,6 +23,7 @@ function MainApp({
 	accountMovements,
 	totalExpenses,
 	totalIncome,
+	setCurrency,
 	currency,
 	setSort,
 	setAccountMovements,
@@ -74,7 +75,8 @@ function MainApp({
 						accountMovements={accountMovements}
 						setAccountMovements={setAccountMovements}
 						setOpenToast={setOpenToast}
-						// currency={currency}
+						currency={currency}
+						setCurrency={setCurrency}
 						// totalExpenses={totalExpenses}
 						// totalIncome={totalIncome}
 						// setSort={setSort}

@@ -192,6 +192,7 @@ function App() {
 								totalExpenses={totalExpenses}
 								totalIncome={totalIncome}
 								currency={currency}
+								setCurrency={setCurrency}
 								setSort={setSort}
 								sort={sort}
 								accounts={accounts}
