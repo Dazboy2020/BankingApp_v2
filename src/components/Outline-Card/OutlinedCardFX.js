@@ -79,8 +79,7 @@ const BasicCardFX = ({
 
 	function handleSubmitExpense(e) {
 		e.preventDefault();
-		console.log(updatedDeposits);
-		console.log(updatedExpenses);
+
 		if (+expenseAmount <= 0 || '') return;
 
 		if (expenseType === 'deposit' && expenseAmount > 0) {
@@ -98,27 +97,17 @@ const BasicCardFX = ({
 		}
 
 		let updatedAccount;
-		expenseType === 'deposit'
-			? (updatedAccount = [
-					{
-						...accountMovements[0],
-						deposits: updatedDeposits,
-					},
-					{
-						...accountMovements[1],
-						expenses: updatedExpenses,
-					},
-			  ])
-			: (updatedAccount = [
-					{
-						...accountMovements[0],
-						deposits: updatedDeposits,
-					},
-					{
-						...accountMovements[1],
-						expenses: updatedExpenses,
-					},
-			  ]);
+
+		updatedAccount = [
+			{
+				...accountMovements[0],
+				deposits: updatedDeposits,
+			},
+			{
+				...accountMovements[1],
+				expenses: updatedExpenses,
+			},
+		];
 
 		console.log(updatedAccount);
 
