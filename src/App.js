@@ -19,6 +19,7 @@ import PieEuro from './components/Charts/PieEuro';
 
 import classes from './components/Charts/pie_wrapper.Module.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Homepage from './components/Homepage/Homepage';
 
 const account1 = [
 	{
@@ -171,6 +172,7 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 							/>
+							{!isLoggedIn && <Homepage />}
 
 							{isLoggedIn && (
 								<>

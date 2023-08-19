@@ -60,7 +60,7 @@ function ResponsiveAppBar({
 		<AppBar
 			position="sticky"
 			sx={{
-				backgroundColor: '#585054',
+				backgroundColor: '#BA68C8',
 				mb: '1rem',
 			}}
 		>

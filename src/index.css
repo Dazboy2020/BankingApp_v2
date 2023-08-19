@@ -4,20 +4,23 @@
 }
 
 body {
+	height: 100vh;
 	font-family: 'Poppins', sans-serif;
 	font-size: 62.5%;
 	color: #444;
-	/* 	
+	background-image: linear-gradient(to bottom right, #1d2225, #0e0e0f);
 
-	background: linear-gradient(to right, #7a838e, #b5babe);
-	padding: 2rem;
-
-	 */
+	/* margin: 0.5rem; */
+	/* height: calc(100vh - 6rem); */
+	/* background-image: linear-gradient(
+			rgba(36, 42, 46, 0.8),
+			rgba(36, 42, 46, 0.8)
+		),
+		url('../public/pexels-pixabay-265087.jpg');
+	background-size: cover;
+	background-position: center;
+	padding: 2.5rem 5rem; */
 }
-
-/* .pie-wrapper {
-	display: flex;
-} */
 
 @media (max-width: 1400px) {
 	.canvas {
@@ -51,7 +54,6 @@ body {
 	}
 
 	.pie_wrapper {
-		/* position: relative; */
 		padding: 0;
 	}
 
