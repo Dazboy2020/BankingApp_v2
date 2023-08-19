@@ -3,6 +3,10 @@
 	margin: 0;
 }
 
+body::-webkit-scrollbar {
+	display: none;
+}
+
 body {
 	/* height: 100vh;
 	font-family: 'Poppins', sans-serif;
