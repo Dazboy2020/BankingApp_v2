@@ -17,6 +17,28 @@ const menuType = [
 		label: 'expense',
 	},
 ];
+const menuCategory = [
+	{
+		value: 'bill',
+		label: 'bill',
+	},
+	{
+		value: 'leisure',
+		label: 'leisure',
+	},
+	{
+		value: 'food',
+		label: 'food',
+	},
+	{
+		value: 'travel',
+		label: 'travel',
+	},
+	{
+		value: 'other',
+		label: 'other',
+	},
+];
 
 const BasicCardFX = ({
 	accountMovements,
@@ -25,7 +47,7 @@ const BasicCardFX = ({
 }) => {
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
-	const [fxTo, setFxTo] = useState('');
+	const [expenseCategory, setExpenseCategory] = useState('');
 
 	const updatedDeposits = accountMovements[0].movements.map(
 		(movement) => movement
@@ -39,23 +61,27 @@ const BasicCardFX = ({
 		return;
 	}
 
-	function handleAmountFx(e) {
+	function handleExpenseAmount(e) {
 		setExpenseAmount(e.target.value);
 	}
 
-	function handleFxFrom(e) {
+	function handleExpenseType(e) {
 		setExpenseType(e.target.value);
 
-		if (expenseType === '') {
-			setFxTo('deposit');
-		}
+		// if (expenseType === '') {
+		// 	setexpenseCategory('deposit');
+		// }
 	}
 
-	function handleFxSubmit(e) {
+	function handleExpenseCategory(e) {
+		setExpenseCategory(e.target.value);
+	}
+
+	function handleSubmitExpense(e) {
 		e.preventDefault();
 		console.log(updatedDeposits);
 		console.log(updatedExpenses);
-		if (+setExpenseAmount <= 0 || '') return;
+		if (+expenseAmount <= 0 || '') return;
 
 		if (expenseType === 'deposit' && expenseAmount > 0) {
 			updatedDeposits.unshift([
@@ -142,7 +168,7 @@ const BasicCardFX = ({
 						>
 							<form component="form" onSubmit={handleReturn}>
 								<TextField
-									onChange={handleAmountFx}
+									onChange={handleExpenseAmount}
 									id="outlined-select-currency"
 									type="number"
 									label="amount"
@@ -168,7 +194,7 @@ const BasicCardFX = ({
 								label="Select"
 								value={expenseType}
 								helperText="Type"
-								onChange={handleFxFrom}
+								onChange={handleExpenseType}
 								color="secondary"
 							>
 								{menuType.map((option) => (
@@ -179,7 +205,7 @@ const BasicCardFX = ({
 							</TextField>
 						</Box>
 
-						{/*//! To */}
+						{/*//! EXPENSE CATEGORY */}
 
 						<Box
 							component="form"
@@ -193,12 +219,12 @@ const BasicCardFX = ({
 								id="outlined-select-currency"
 								select
 								label="Select"
-								value={fxTo}
-								helperText="To"
+								value={expenseCategory}
+								helperText="Category"
 								color="secondary"
-								disabled
+								onChange={handleExpenseCategory}
 							>
-								{menuType.map((option) => (
+								{menuCategory.map((option) => (
 									<MenuItem key={option.value} value={option.value}>
 										{option.label}
 									</MenuItem>
@@ -219,7 +245,7 @@ const BasicCardFX = ({
 							color: 'white',
 							mt: 4,
 						}}
-						onClick={handleFxSubmit}
+						onClick={handleSubmitExpense}
 					>
 						Add Transaction
 					</Button>
