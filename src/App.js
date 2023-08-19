@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import MainWrapper from './UI/MainWrapper';
 
 // import CloseAccount from './components/CloseAccount/CloseAccount';
 
@@ -203,6 +202,8 @@ function App() {
 								setOpen={setOpen}
 								LogUserOut={LogUserOut}
 								openToast={openToast}
+								openModal={openModal}
+								setOpenModal={setOpenModal}
 							/>
 						</>
 					}
