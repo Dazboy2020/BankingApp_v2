@@ -57,10 +57,38 @@ function PieEuro({ accountMovements, currency, sort }) {
 	};
 
 	return (
-		<div className="canvas" style={{ width: '40rem', margin: 'auto' }}>
-			<Typography variant="h5">Income Vs. Expenses</Typography>
-			<Doughnut data={userData} options={options} />
-		</div>
+		<>
+			<Typography
+				variant="h5"
+				sx={{
+					// maxWidth: '100%',
+					padding: '1rem',
+					backgroundColor: 'indianred',
+				}}
+			>
+				Income Vs. Expenses
+			</Typography>
+			<div
+				className="canvas"
+				style={{
+					width: '50rem',
+					margin: 'auto',
+					padding: '1rem',
+				}}
+			>
+				{/* <Typography
+				variant="h5"
+				sx={{
+					maxWidth: '100%',
+					padding: '1rem',
+					backgroundColor: 'indianred',
+				}}
+			>
+				Income Vs. Expenses
+			</Typography> */}
+				<Doughnut data={userData} options={options} />
+			</div>
+		</>
 	);
 }
 

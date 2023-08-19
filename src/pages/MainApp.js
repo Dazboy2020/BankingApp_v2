@@ -4,8 +4,9 @@ import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
 import BasicCardSummary from '../components/Outline-Card/OutlinedCardSummary';
 import BasicCardFX from '../components/Outline-Card/OutlinedCardFX';
-import MovementList from '../components/Charts/Movements/MovementList';
-import Movements from '../components/Charts/Movements/Movements';
+import MovementList from '../components/Movements/MovementList';
+import Movements from '../components/Movements/Movements';
+
 import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
@@ -75,8 +76,7 @@ function MainApp({
 						accountMovements={accountMovements}
 						setAccountMovements={setAccountMovements}
 						setOpenToast={setOpenToast}
-						currency={currency}
-						setCurrency={setCurrency}
+
 						// totalExpenses={totalExpenses}
 						// totalIncome={totalIncome}
 						// setSort={setSort}
@@ -98,10 +98,11 @@ function MainApp({
 				<Stack
 					direction={{ xs: 'column', md: 'row' }}
 					sx={{
+						display: 'flex',
 						backgroundColor: '#EEEEEE',
+						alignItems: 'flex-start',
 						m: 1,
 						mt: 2,
-						display: 'flex',
 						// padding: '1rem',
 					}}
 					className={classes.pie_wrapper}

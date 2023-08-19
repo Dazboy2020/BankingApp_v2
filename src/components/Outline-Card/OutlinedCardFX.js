@@ -51,8 +51,6 @@ const BasicCardFX = ({
 	accountMovements,
 	setAccountMovements,
 	setOpenToast,
-	currency,
-	setCurrency,
 }) => {
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
@@ -77,13 +75,6 @@ const BasicCardFX = ({
 
 	function handleExpenseType(e) {
 		setExpenseType(e.target.value);
-
-		if (expenseType === 'expense') setLabel('expense');
-		if (expenseType === 'deposit') setLabel('deposit');
-
-		// if (expenseType === '') {
-		// 	setexpenseCategory('deposit');
-		// }
 	}
 
 	useEffect(
