@@ -1,5 +1,5 @@
 .homepage {
-	margin: 0.5rem;
+	/* margin: 0.5rem;
 	height: calc(100vh - 6rem);
 	background-image: linear-gradient(
 			rgba(36, 42, 46, 0.8),
@@ -8,7 +8,7 @@
 		url('../../../public/pexels-pixabay-265087.jpg');
 	background-size: cover;
 	background-position: center;
-	padding: 2.5rem 5rem;
+	padding: 2.5rem 5rem; */
 }
 
 .homepage section {

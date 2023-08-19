@@ -10,6 +10,7 @@ import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
 import classes from '../components/Charts/pie_wrapper.Module.css';
+import styles from './MainApp.module.css';
 
 function MainApp({
 	open,
@@ -30,7 +31,7 @@ function MainApp({
 	sort,
 }) {
 	return (
-		<div>
+		<div className={styles.body}>
 			<>
 				<AlertDialogSlide
 					open={open}

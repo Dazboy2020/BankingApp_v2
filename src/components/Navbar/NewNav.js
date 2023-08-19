@@ -59,7 +59,7 @@ function ResponsiveAppBar({
 			position="sticky"
 			sx={{
 				backgroundColor: '#BA68C8',
-				mb: '1rem',
+				// mb: '1rem',
 			}}
 		>
 			<Container maxWidth="xxl">
