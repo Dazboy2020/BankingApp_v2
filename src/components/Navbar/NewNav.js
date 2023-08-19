@@ -70,7 +70,7 @@ function ResponsiveAppBar({
 						direction={{ xs: 'column', md: 'row' }}
 						sx={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}
 					>
-						<Button
+						{/* <Button
 							onClick={closeAccountHandler}
 							size="xs"
 							color="inherit"
@@ -97,16 +97,49 @@ function ResponsiveAppBar({
 							>
 								About
 							</Link>
-						</Button>
+						</Button> */}
 
 						{user ? (
-							<Button
-								onClick={handleClick}
-								color="inherit"
-								startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
-							>
-								Logout
-							</Button>
+							<>
+								<Button
+									onClick={closeAccountHandler}
+									size="xs"
+									color="inherit"
+									startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
+								>
+									Close
+								</Button>
+								<Button
+									onClick={() => switchCurrency()}
+									size="xs"
+									color="inherit"
+									startIcon={
+										<CurrencyExchangeIcon color="white" sx={{ ml: 1 }} />
+									}
+								>
+									Switch
+								</Button>
+								<Button
+									size="xs"
+									color="inherit"
+									startIcon={<GitHub color="white" sx={{ ml: 1 }} />}
+								>
+									<Link
+										sx={{ color: 'white' }}
+										href="https://github.com/Dazboy2020"
+									>
+										About
+									</Link>
+								</Button>
+
+								<Button
+									onClick={handleClick}
+									color="inherit"
+									startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
+								>
+									Logout
+								</Button>
+							</>
 						) : (
 							<Button
 								onClick={handleLogin}

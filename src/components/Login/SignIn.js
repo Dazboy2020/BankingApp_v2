@@ -80,7 +80,7 @@ export default function SignIn({
 
 	return (
 		<>
-			{/* <NewNav /> */}
+			<NewNav />
 			<ThemeProvider theme={defaultTheme}>
 				<Container component="main" maxWidth="xs">
 					<CssBaseline />
