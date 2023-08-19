@@ -97,13 +97,13 @@ function MainApp({
 				</Stack>
 				<Stack
 					className={styles.pie_wrapper}
-					direction={{ s: 'column', md: 'row' }}
+					direction={{ xs: 'column', md: 'row' }}
 					sx={{
 						display: 'flex',
 						// flexWrap: 'wrap',
 						backgroundColor: '#EEEEEE',
-						alignItems: 'flex-start',
-						justifyContent: 'space-evenly',
+						alignItems: 'centre',
+						justifyContent: 'space-around',
 						mt: 2,
 						paddingTop: '1rem',
 					}}
