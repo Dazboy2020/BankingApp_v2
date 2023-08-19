@@ -23,7 +23,6 @@ const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar({
 	switchCurrency,
-	open,
 	setOpen,
 	accounts,
 	setUser,
@@ -45,9 +44,7 @@ function ResponsiveAppBar({
 		navigate('/login');
 	}
 
-	function closeAccountHandler(e) {
-		e.preventDefault();
-
+	function closeAccountHandler() {
 		setOpenModal(true);
 		const index = accounts.findIndex((acc) => acc.owner === user);
 		accounts.splice(index, 1);
