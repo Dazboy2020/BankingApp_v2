@@ -12,8 +12,8 @@ const Movements = ({ accountMovements, currency, sort }) => {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
-	const category = accountMovements[1].expenses.map((item) => item[2]);
-	console.log(category);
+	// const category = accountMovements[1].expenses.map((item) => item[2]);
+	// console.log(category);
 
 	return (
 		<Stack
@@ -42,10 +42,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 										Income
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
-									<span className={classes.movements__value}>
-										{item[0]}
-										{currency === 'euro' ? '€' : '$'}
-									</span>
+									<span className={classes.movements__value}>€{item[0]}</span>
 								</Stack>
 							)}
 
@@ -60,10 +57,7 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__category}>{item[2]}</span>
-									<span className={classes.movements__value}>
-										{item[0]}
-										{currency === 'euro' ? '€' : '$'}
-									</span>
+									<span className={classes.movements__value}>€{item[0]}</span>
 								</Stack>
 							)}
 						</div>

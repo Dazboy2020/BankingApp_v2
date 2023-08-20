@@ -22,6 +22,9 @@ function PieChart({ accountMovements, currency, sort }) {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
+	// label as category:
+	// let label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[2]}`));
+
 	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
 	let label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[0]}`));
 	let dataSetLabel = currency === 'euro' ? 'Income' : 'Expense';
