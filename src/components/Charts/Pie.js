@@ -87,7 +87,7 @@ function PieChart({ accountMovements, currency, sort }) {
 				className="canvas"
 				style={{
 					// width: '40rem',
-					width: '100%',
+					width: '40vh',
 					height: 'auto',
 					margin: 'auto',
 					padding: '1rem',

@@ -88,7 +88,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 			<div
 				className="canvas"
 				style={{
-					width: '100%',
+					width: '40vh',
 					height: 'auto',
 
 					margin: 'auto',
