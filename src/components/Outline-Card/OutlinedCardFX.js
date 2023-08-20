@@ -105,6 +105,7 @@ const BasicCardFX = ({
 			updatedExpenses.unshift([
 				-expenseAmount,
 				new Date().toLocaleDateString(),
+				expenseCategory,
 			]);
 		}
 
@@ -254,7 +255,7 @@ const BasicCardFX = ({
 						}}
 						onClick={handleSubmitExpense}
 					>
-						Add Transaction
+						Add Item
 					</Button>
 				</Box>
 			</CardContent>
