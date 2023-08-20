@@ -59,27 +59,35 @@ function ResponsiveAppBar({
 			position="sticky"
 			sx={{
 				backgroundColor: '#16425b',
-				fontFamily: 'Roboto Mono',
+				fontFamily: 'JetBrains Mono',
+				height: { md: '80px' },
+				justifyContent: 'center',
+				m: 0,
 				// mb: '1rem',
 			}}
 		>
 			<Container maxWidth="xxl">
-				<Toolbar>
+				<Toolbar disableGutters>
 					<Stack
 						direction={{ xs: 'column', md: 'row' }}
-						sx={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}
+						sx={{
+							alignItems: 'flex-start',
+							justifyContent: 'flex-start',
+						}}
 					>
 						{user ? (
 							<>
 								<Button
+									sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}
 									onClick={closeAccountHandler}
-									size="xs"
+									size="s"
 									color="inherit"
 									startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
 								>
 									Close
 								</Button>
 								<Button
+									sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}
 									onClick={() => switchCurrency()}
 									size="xs"
 									color="inherit"
@@ -90,6 +98,7 @@ function ResponsiveAppBar({
 									Switch
 								</Button>
 								<Button
+									sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}
 									size="xs"
 									color="inherit"
 									startIcon={<GitHub color="white" sx={{ ml: 1 }} />}
@@ -103,6 +112,7 @@ function ResponsiveAppBar({
 								</Button>
 
 								<Button
+									sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}
 									onClick={handleClick}
 									color="inherit"
 									startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
@@ -112,6 +122,7 @@ function ResponsiveAppBar({
 							</>
 						) : (
 							<Button
+								sx={{ fontSize: { xs: '1rem', sm: '1.2rem' } }}
 								onClick={handleLogin}
 								color="inherit"
 								startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
