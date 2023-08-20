@@ -248,7 +248,7 @@ const BasicCardFX = ({
 								backgroundColor: 'black',
 								cursor: 'default',
 							},
-							bgcolor: '#585054',
+							bgcolor: '#d64045',
 							color: 'white',
 							mt: 4,
 						}}
