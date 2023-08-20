@@ -18,7 +18,6 @@ const Movements = ({ accountMovements, currency, sort }) => {
 			sx={{
 				justifyContent: 'space-between',
 				mb: 2,
-				mt: 2,
 				flexGrow: 1,
 			}}
 			// className={classes.main__container__window}

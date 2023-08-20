@@ -103,7 +103,6 @@ function MainApp({
 						backgroundColor: '#EEEEEE',
 						alignItems: 'centre',
 						justifyContent: 'space-around',
-						mt: 2,
 						paddingTop: '1rem',
 						// height: '40vh',
 					}}

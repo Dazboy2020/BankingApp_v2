@@ -133,7 +133,7 @@ const BasicCardFX = ({
 			sx={{
 				display: 'flex',
 				flexGrow: 1,
-				m: 1,
+				mb: 0.5,
 				alignItems: 'flex-start',
 			}}
 		>

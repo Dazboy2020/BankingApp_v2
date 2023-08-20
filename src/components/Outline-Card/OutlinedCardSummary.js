@@ -17,7 +17,7 @@ export default function BasicCardSummary({
 	}
 
 	return (
-		<Card sx={{ display: 'flex', flexGrow: 1, m: 1 }}>
+		<Card sx={{ display: 'flex', flexGrow: 1, mr: 1, mb: 0.5 }}>
 			<CardContent>
 				<Typography
 					variant="h6"
