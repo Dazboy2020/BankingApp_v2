@@ -45,7 +45,7 @@ export default function Toast({ openToast, setOpenToast }) {
 			>
 				<Alert
 					onClose={handleClose}
-					severity="success"
+					severity="info"
 					sx={{ width: '100%', fontSize: '1.5rem' }}
 				>
 					Transaction Completed!

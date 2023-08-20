@@ -92,7 +92,7 @@ const BasicCardFX = ({
 	function handleSubmitExpense(e) {
 		e.preventDefault();
 
-		if (+expenseAmount <= 0 || '') return;
+		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 
 		if (expenseType === 'deposit' && expenseAmount > 0) {
 			updatedDeposits.unshift([
@@ -127,6 +127,7 @@ const BasicCardFX = ({
 		setAccountMovements(updatedAccount);
 		setExpenseAmount('');
 		setOpenToast(true);
+		setExpenseCategory('');
 	}
 
 	return (
