@@ -75,6 +75,10 @@
 	font-weight: bold;
 }
 
+.movements__category {
+	font-weight: bold;
+}
+
 ul {
 	display: flex;
 	flex-direction: column;
