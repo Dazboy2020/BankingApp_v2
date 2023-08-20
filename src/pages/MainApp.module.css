@@ -3,6 +3,7 @@
 	overflow-x: hidden;
 	overflow-y: hidden;
 	/* filter: invert(100%); */
+	font-family: 'Roboto Mono';
 }
 
 @media (max-width: 576px) {

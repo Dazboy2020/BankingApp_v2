@@ -58,7 +58,8 @@ function ResponsiveAppBar({
 		<AppBar
 			position="sticky"
 			sx={{
-				backgroundColor: '#BA68C8',
+				backgroundColor: '#16425b',
+				fontFamily: 'Roboto Mono',
 				// mb: '1rem',
 			}}
 		>

@@ -32,7 +32,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 			{
 				label: 'Income vs Expenses',
 				data: [totalIncome, totalExpenses],
-				backgroundColor: ['green', 'red'],
+				backgroundColor: ['#597081', '#a8577e'],
 			},
 		],
 	};
@@ -73,18 +73,15 @@ function PieEuro({ accountMovements, currency, sort }) {
 			}}
 		>
 			<Typography
-				variant="h5"
+				variant="h6"
 				sx={{
 					// maxWidth: '100%',
 					padding: '1rem',
-					backgroundColor: 'indianred',
+					backgroundColor: '#3a7ca5',
 					color: 'white',
-					// mt: '1rem',
-
-					// margin: '1rem',
 				}}
 			>
-				Income Vs. Expenses
+				INCOME vs.EXPENSES
 			</Typography>
 			<div
 				className="canvas"
