@@ -39,17 +39,25 @@ function PieChart({ accountMovements, currency, sort }) {
 
 	const options = {
 		plugins: {
-			legend: {
-				position: 'left',
-				rtl: true,
-				labels: {
-					usePointStyle: true,
-					pointStyle: 'circle',
-					padding: 20,
-					font: {
-						size: 16,
-						weight: 'bold',
-					},
+			// legend: {
+			// 	position: 'left',
+			// 	rtl: true,
+			// 	labels: {
+			// 		usePointStyle: true,
+			// 		pointStyle: 'circle',
+			// 		padding: 20,
+			// 		font: {
+			// 			size: 16,
+			// 			weight: 'bold',
+			// 		},
+			// 	},
+			// },
+			title: {
+				display: true,
+				text: 'Deposits received',
+				font: {
+					size: 16,
+					weight: 'bold',
 				},
 			},
 		},
@@ -68,6 +76,8 @@ function PieChart({ accountMovements, currency, sort }) {
 					// maxWidth: '100%',
 					padding: '1rem',
 					backgroundColor: 'indianred',
+					color: 'white',
+
 					// mt: '1rem',
 				}}
 			>
