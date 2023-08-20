@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 
 import NewNav from '../components/Navbar/NewNav';
+import { NavLink } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -52,7 +53,7 @@ export default function SignIn({
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		if (loggedInAccount && loggedInAccount[0].pin === +pin) {
+		if (loggedInAccount[0]?.pin === +pin) {
 			setAccountMovements(loggedInAccount);
 			setIsLoggedIn(true);
 			navigate('/application');
@@ -150,9 +151,9 @@ export default function SignIn({
 									</Link>
 								</Grid>
 								<Grid item>
-									<Link href="#" variant="body2">
+									<NavLink to="/signup" variant="body2">
 										{"Don't have an account? Sign Up"}
-									</Link>
+									</NavLink>
 								</Grid>
 							</Grid>
 						</Box>
