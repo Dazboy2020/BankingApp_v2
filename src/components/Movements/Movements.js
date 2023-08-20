@@ -23,7 +23,6 @@ const Movements = ({ accountMovements, currency, sort }) => {
 				mb: 2,
 				flexGrow: 1,
 			}}
-			// className={classes.main__container__window}
 		>
 			<ul>
 				<Stack>
