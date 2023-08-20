@@ -69,6 +69,8 @@ function PieChart({ accountMovements, currency, sort }) {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
+				position: 'relative',
+				// flexGrow: 1,
 			}}
 		>
 			<Typography

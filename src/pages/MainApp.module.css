@@ -9,5 +9,9 @@
 @media (max-width: 576px) {
 	.pie_wrapper {
 		padding: 0;
+		display: flex;
+		align-items: 'centre';
+		justify-content: 'space-around';
+		padding-top: '1rem';
 	}
 }
