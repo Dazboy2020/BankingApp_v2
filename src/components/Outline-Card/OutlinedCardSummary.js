@@ -38,10 +38,10 @@ export default function BasicCardSummary({
 						onClick={handleSort}
 						sx={{
 							'&:hover': {
-								backgroundColor: 'black',
+								backgroundColor: '#680747',
 								cursor: 'default',
 							},
-							bgcolor: '#d64045',
+							bgcolor: '#f70776',
 							color: 'white',
 							mt: 2,
 						}}

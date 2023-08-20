@@ -245,10 +245,10 @@ const BasicCardFX = ({
 						startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
 						sx={{
 							'&:hover': {
-								backgroundColor: 'black',
+								backgroundColor: '#680747',
 								cursor: 'default',
 							},
-							bgcolor: '#d64045',
+							bgcolor: '#f70776',
 							color: 'white',
 							mt: 4,
 						}}
