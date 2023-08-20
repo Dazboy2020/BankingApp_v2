@@ -82,6 +82,7 @@ function PieChart({ accountMovements, currency, sort }) {
 					padding: '1rem',
 					backgroundColor: '#3a7ca5',
 					color: 'white',
+					textAlign: 'center',
 				}}
 			>
 				{currency === 'euro' ? 'INCOME' : 'EXPENSES'}
