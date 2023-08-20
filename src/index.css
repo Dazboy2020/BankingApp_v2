@@ -69,4 +69,8 @@ body {
 		margin-left: 0;
 		margin-right: 0.5rem;
 	}
+
+	.card__summary {
+		margin-right: 0;
+	}
 }
