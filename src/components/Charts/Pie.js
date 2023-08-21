@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import RedoIcon from '@mui/icons-material/Redo';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import RedoIcon from '@mui/icons-material/Redo';
+// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import {
 	Chart as ChartJS,
@@ -79,13 +79,13 @@ function PieChart({ accountMovements, currency, sort, setSort }) {
 		},
 	};
 
-	function handleSort() {
-		setSort((sort) => !sort);
-	}
+	// function handleSort() {
+	// 	setSort((sort) => !sort);
+	// }
 
-	function handleCategory() {
-		setCategory((category) => !category);
-	}
+	// function handleCategory() {
+	// 	setCategory((category) => !category);
+	// }
 
 	return (
 		<Box
