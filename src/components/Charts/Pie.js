@@ -27,19 +27,20 @@ function PieChart({ accountMovements, currency, sort, setSort }) {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
+	let chartLabel;
 	// label as category:
 	let labelCategory = moves.map((item) =>
 		item[0] > 0 ? `${item[0]}` : `${item[2]}`
 	);
 
 	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
-	let label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[0]}`));
+	let label = moves.map((item) => item[0]);
 	let dataSetLabel = currency === 'euro' ? 'Income' : 'Expense';
 	let titleText = currency === 'euro' ? 'INCOME' : 'EXPENSES';
-	let chartData = currency !== 'euro' && category ? label : labelCategory;
+	chartLabel = category ? label : labelCategory;
 
 	const userData = {
-		labels: chartData,
+		labels: chartLabel,
 		datasets: [
 			{
 				label: dataSetLabel,
@@ -83,7 +84,6 @@ function PieChart({ accountMovements, currency, sort, setSort }) {
 	}
 
 	function handleCategory() {
-		if (currency === 'euro') return;
 		setCategory((category) => !category);
 	}
 
