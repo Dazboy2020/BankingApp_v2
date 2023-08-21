@@ -11,7 +11,7 @@ import {
 } from 'chart.js/auto';
 
 import { Doughnut } from 'react-chartjs-2';
-import { Typography, Box, Button } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 function PieChart({ accountMovements, currency, sort, setSort }) {
 	const [category, setCategory] = useState(false);
