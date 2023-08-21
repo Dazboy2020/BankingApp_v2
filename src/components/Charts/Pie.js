@@ -119,7 +119,7 @@ function PieChart({ accountMovements, currency, sort, setSort }) {
 			>
 				<Doughnut data={userData} options={options} />
 			</div>
-			<Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+			{/* <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
 				<Button
 					variant="contained"
 					onClick={handleSort}
@@ -162,7 +162,7 @@ function PieChart({ accountMovements, currency, sort, setSort }) {
 				>
 					{category ? 'CATEGORY' : 'AMOUNT'}
 				</Button>
-			</Box>
+			</Box> */}
 		</Box>
 	);
 }
