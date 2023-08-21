@@ -5,8 +5,6 @@ import Typography from '@mui/material/Typography';
 import { Box, Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 
-// import classes from './OutlineCardSummary.module.css';
-
 export default function BasicCardSummary({
 	accountMovements,
 	currency,
@@ -20,7 +18,6 @@ export default function BasicCardSummary({
 
 	return (
 		<Card
-			// className={classes.cardsummary}
 			sx={{ display: 'flex', flexGrow: 1, mr: { xs: 0, sm: 0.5 }, mb: 0.5 }}
 		>
 			<CardContent>

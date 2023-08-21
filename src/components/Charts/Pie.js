@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RedoIcon from '@mui/icons-material/Redo';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 import {
 	Chart as ChartJS,
 	ArcElement,
@@ -8,9 +11,11 @@ import {
 } from 'chart.js/auto';
 
 import { Doughnut } from 'react-chartjs-2';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Button } from '@mui/material';
 
-function PieChart({ accountMovements, currency, sort }) {
+function PieChart({ accountMovements, currency, sort, setSort }) {
+	const [category, setCategory] = useState(false);
+
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	const movementsToDisplay =
@@ -23,19 +28,25 @@ function PieChart({ accountMovements, currency, sort }) {
 		: movementsToDisplay;
 
 	// label as category:
-	// let label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[2]}`));
+	let labelCategory = moves.map((item) =>
+		item[0] > 0 ? `${item[0]}` : `${item[2]}`
+	);
 
 	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
 	let label = moves.map((item) => (item[0] > 0 ? `${item[0]}` : `${item[0]}`));
 	let dataSetLabel = currency === 'euro' ? 'Income' : 'Expense';
 	let titleText = currency === 'euro' ? 'INCOME' : 'EXPENSES';
+	let chartData = currency !== 'euro' && category ? label : labelCategory;
 
 	const userData = {
-		labels: label,
+		labels: chartData,
 		datasets: [
 			{
 				label: dataSetLabel,
 				data: moves.map((item) => item[0]),
+				// label: dataSetLabel,
+
+				// data: moves.map((item) => item[0]),
 				backgroundColor: bgColor,
 			},
 		],
@@ -66,6 +77,15 @@ function PieChart({ accountMovements, currency, sort }) {
 			},
 		},
 	};
+
+	function handleSort() {
+		setSort((sort) => !sort);
+	}
+
+	function handleCategory() {
+		if (currency === 'euro') return;
+		setCategory((category) => !category);
+	}
 
 	return (
 		<Box
@@ -99,6 +119,50 @@ function PieChart({ accountMovements, currency, sort }) {
 			>
 				<Doughnut data={userData} options={options} />
 			</div>
+			<Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+				<Button
+					variant="contained"
+					onClick={handleSort}
+					sx={{
+						'&:hover': {
+							backgroundColor: '#680747',
+							cursor: 'default',
+						},
+						bgcolor: '#f70776',
+						color: 'white',
+						mt: 2,
+						minWidth: '9rem',
+						margin: '.5rem',
+						padding: 1,
+					}}
+					size="s"
+					color="inherit"
+					startIcon={<RedoIcon />}
+				>
+					Sort
+				</Button>
+				<Button
+					onClick={handleCategory}
+					variant="contained"
+					sx={{
+						'&:hover': {
+							backgroundColor: '#680747',
+							cursor: 'default',
+						},
+						bgcolor: '#f70776',
+						color: 'white',
+						mt: 2,
+						minWidth: '9rem',
+						margin: '.5rem',
+						padding: 1,
+					}}
+					size="s"
+					color="inherit"
+					startIcon={<ShoppingCartIcon />}
+				>
+					{category ? 'CATEGORY' : 'AMOUNT'}
+				</Button>
+			</Box>
 		</Box>
 	);
 }

@@ -30,7 +30,8 @@ function PieEuro({ accountMovements, currency, sort }) {
 		labels: [incomeData, expenseData],
 		datasets: [
 			{
-				label: 'Income vs Expenses',
+				label: ' Total Income vs Expenses',
+
 				data: [totalIncome, totalExpenses],
 				backgroundColor: ['#597081', '#a8577e'],
 			},

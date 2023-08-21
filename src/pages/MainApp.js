@@ -111,6 +111,7 @@ function MainApp({
 						accountMovements={accountMovements}
 						currency={currency}
 						sort={sort}
+						setSort={setSort}
 					/>
 					<PieEuro
 						accountMovements={accountMovements}
