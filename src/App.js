@@ -137,6 +137,7 @@ function App() {
 		setIsLoggedIn(false);
 		setUser('');
 	}
+
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -188,6 +189,7 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 							/>
+
 							<MainApp
 								accountMovements={accountMovements}
 								totalExpenses={totalExpenses}

@@ -13,9 +13,8 @@ import PieEuro from '../components/Charts/PieEuro';
 // import classes from '../components/Charts/pie_wrapper.Module.css';
 import styles from './MainApp.module.css';
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
-import { ThemeProvider } from '@emotion/react';
-import { CssBaseline, createTheme } from '@mui/material';
-
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 const darkTheme = createTheme({
 	palette: {
 		mode: 'dark',
