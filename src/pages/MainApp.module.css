@@ -4,6 +4,7 @@
 	overflow-y: hidden;
 	/* filter: invert(100%); */
 	font-family: 'Roboto Mono';
+	animation: fade 0.5s;
 }
 
 @media (max-width: 576px) {
@@ -13,5 +14,15 @@
 		align-items: 'centre';
 		justify-content: 'space-around';
 		padding-top: '1rem';
+	}
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
 	}
 }
