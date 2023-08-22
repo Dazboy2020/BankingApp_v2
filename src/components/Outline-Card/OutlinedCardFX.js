@@ -17,7 +17,7 @@ const menuType = [
 		label: 'expense',
 	},
 ];
-const menuCategory = [
+const menuExpense = [
 	{
 		value: 'utilities',
 		label: 'utilities',
@@ -40,10 +40,22 @@ const menuCategory = [
 	},
 ];
 
-const menuNull = [
+const menuDeposit = [
 	{
-		value: 'N/A',
-		label: 'N/A',
+		value: 'salary',
+		label: 'salary',
+	},
+	{
+		value: 'shares',
+		label: 'shares',
+	},
+	{
+		value: 'sales',
+		label: 'sales',
+	},
+	{
+		value: 'other',
+		label: 'other',
 	},
 ];
 
@@ -98,6 +110,7 @@ const BasicCardFX = ({
 			updatedDeposits.unshift([
 				+expenseAmount,
 				new Date().toLocaleDateString(),
+				expenseCategory,
 			]);
 		}
 
@@ -228,12 +241,12 @@ const BasicCardFX = ({
 								onChange={handleExpenseCategory}
 							>
 								{label === 'expense'
-									? menuCategory.map((option) => (
+									? menuExpense.map((option) => (
 											<MenuItem key={option.value} value={option.value}>
 												{option.label}
 											</MenuItem>
 									  ))
-									: menuNull.map((option) => (
+									: menuDeposit.map((option) => (
 											<MenuItem key={option.value} value={option.value}>
 												{option.label}
 											</MenuItem>

@@ -124,12 +124,12 @@ function MainApp({
 					<Stack direction={{ xs: 'column', md: 'row' }} sx={{ flexGrow: 1 }}>
 						<Movements
 							accountMovements={accountMovements}
-							currency={currency}
+							// currency={currency}
 							sort={sort}
 						/>
 						<MovementsExpenses
 							accountMovements={accountMovements}
-							currency={currency}
+							// currency={currency}
 							sort={sort}
 						/>
 					</Stack>
