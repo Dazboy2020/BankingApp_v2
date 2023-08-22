@@ -5,9 +5,13 @@
 /* ?MOVEMENTS */
 .movements {
 	display: flex;
-	flex-grow: 1;
+	/* flex-grow: 1; */
+
+	/* align-items: flex-start; */
 	/* flex-direction: column; */
+
 	/* grid-row: 2 / span 3; */
+
 	background-color: #fff;
 	overflow-y: auto;
 	font-family: 'Roboto Mono';
@@ -87,6 +91,7 @@ ul {
 	padding: 0.2rem;
 	align-items: stretch;
 	flex-grow: 1;
+	width: auto;
 }
 
 @media (max-width: 576px) {

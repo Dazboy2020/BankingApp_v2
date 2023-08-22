@@ -12,6 +12,7 @@ import PieEuro from '../components/Charts/PieEuro';
 
 // import classes from '../components/Charts/pie_wrapper.Module.css';
 import styles from './MainApp.module.css';
+import MovementsExpenses from '../components/Movements/Movements_Expenses';
 
 function MainApp({
 	open,
@@ -120,11 +121,18 @@ function MainApp({
 					/>
 				</Stack>
 				<MovementList>
-					<Movements
-						accountMovements={accountMovements}
-						currency={currency}
-						sort={sort}
-					/>
+					<Stack direction={{ xs: 'column', md: 'row' }} sx={{ flexGrow: 1 }}>
+						<Movements
+							accountMovements={accountMovements}
+							currency={currency}
+							sort={sort}
+						/>
+						<MovementsExpenses
+							accountMovements={accountMovements}
+							currency={currency}
+							sort={sort}
+						/>
+					</Stack>
 				</MovementList>
 			</>
 		</div>
