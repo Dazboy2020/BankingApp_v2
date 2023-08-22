@@ -44,56 +44,56 @@ function MainApp({
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
 			<div className={styles.body}>
-				<>
-					<AlertDialogSlide
-						open={open}
-						setOpen={setOpen}
-						LogUserOut={LogUserOut}
-					/>
-					<CloseAccountModal
-						openModal={openModal}
-						setOpenModal={setOpenModal}
-						LogUserOut={LogUserOut}
-					/>
-					<Toast openToast={openToast} setOpenToast={setOpenToast} />
-					<Stack
-						direction={{ s: 'column', sm: 'row' }}
-						sx={{
-							justifyContent: 'space-between',
-							// m: 1,
-						}}
-					>
-						<BasicCardSummary
-							sx={{
-								width: {
-									lg: 200,
-								},
-							}}
-							accountMovements={accountMovements}
-							totalExpenses={totalExpenses}
-							totalIncome={totalIncome}
-							currency={currency}
-							setSort={setSort}
-							accounts={accounts}
-							user={user}
-						/>
-						<BasicCardFX
-							sx={{
-								width: {
-									lg: 200,
-								},
-							}}
-							accountMovements={accountMovements}
-							setAccountMovements={setAccountMovements}
-							setOpenToast={setOpenToast}
+				<AlertDialogSlide
+					open={open}
+					setOpen={setOpen}
+					LogUserOut={LogUserOut}
+				/>
+				<CloseAccountModal
+					openModal={openModal}
+					setOpenModal={setOpenModal}
+					LogUserOut={LogUserOut}
+				/>
+				<Toast openToast={openToast} setOpenToast={setOpenToast} />
 
-							// totalExpenses={totalExpenses}
-							// totalIncome={totalIncome}
-							// setSort={setSort}
-							// accounts={accoun
-							// user={user}
-						/>
-						{/* <BasicCardTransaction
+				<Stack
+					direction={{ s: 'column', sm: 'row' }}
+					sx={{
+						justifyContent: 'space-between',
+						// m: 1,
+					}}
+				>
+					<BasicCardSummary
+						sx={{
+							width: {
+								lg: 200,
+							},
+						}}
+						accountMovements={accountMovements}
+						totalExpenses={totalExpenses}
+						totalIncome={totalIncome}
+						currency={currency}
+						setSort={setSort}
+						accounts={accounts}
+						user={user}
+					/>
+					<BasicCardFX
+						sx={{
+							width: {
+								lg: 200,
+							},
+						}}
+						accountMovements={accountMovements}
+						setAccountMovements={setAccountMovements}
+						setOpenToast={setOpenToast}
+
+						// totalExpenses={totalExpenses}
+						// totalIncome={totalIncome}
+						// setSort={setSort}
+						// accounts={accoun
+						// user={user}
+					/>
+					{/* <BasicCardTransaction
 							accountMovements={accountMovements}
 							setAccountMovements={setAccountMovements}
 							currency={currency}
@@ -104,31 +104,34 @@ function MainApp({
 							user={user}
 							setOpenToast={setOpenToast}
 						/>  */}
-					</Stack>
-					<Stack
-						className={styles.pie_wrapper}
-						direction={{ xs: 'column', md: 'row' }}
-						sx={{
-							display: 'flex',
-							backgroundColor: '#EEEEEE',
-							alignItems: 'centre',
-							justifyContent: 'space-around',
-							paddingTop: '1rem',
-							// height: '40vh',
-						}}
-					>
-						<PieChart
-							accountMovements={accountMovements}
-							currency={currency}
-							sort={sort}
-							setSort={setSort}
-						/>
-						<PieEuro
-							accountMovements={accountMovements}
-							currency={currency}
-							sort={sort}
-						/>
-					</Stack>
+				</Stack>
+
+				<Stack
+					className={styles.pie_wrapper}
+					direction={{ xs: 'column', md: 'row' }}
+					sx={{
+						display: 'flex',
+						backgroundColor: '#EEEEEE',
+						alignItems: 'centre',
+						justifyContent: 'space-around',
+						paddingTop: '1rem',
+						// height: '40vh',
+					}}
+				>
+					<PieChart
+						accountMovements={accountMovements}
+						currency={currency}
+						sort={sort}
+						setSort={setSort}
+					/>
+					<PieEuro
+						accountMovements={accountMovements}
+						currency={currency}
+						sort={sort}
+					/>
+				</Stack>
+
+				<ThemeProvider theme={darkTheme}>
 					<MovementList>
 						<Stack direction={{ xs: 'column', md: 'row' }} sx={{ flexGrow: 1 }}>
 							<Movements
@@ -143,7 +146,7 @@ function MainApp({
 							/>
 						</Stack>
 					</MovementList>
-				</>
+				</ThemeProvider>
 			</div>
 		</ThemeProvider>
 	);
