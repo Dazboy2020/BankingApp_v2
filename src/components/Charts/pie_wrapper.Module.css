@@ -1,9 +1,0 @@
-.pie-wrapper {
-	background-color: blueviolet;
-}
-
-@media (max-width: 576px) {
-	.pie_wrapper {
-		padding: 0;
-	}
-}

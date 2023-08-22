@@ -97,7 +97,6 @@ function MainApp({
 						/>  */}
 				</Stack>
 				<Stack
-					className={styles.pie_wrapper}
 					direction={{ xs: 'column', md: 'row' }}
 					sx={{
 						display: 'flex',
