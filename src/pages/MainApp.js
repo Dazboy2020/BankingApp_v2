@@ -18,6 +18,9 @@ const theme = createTheme({
 	palette: {
 		mode: 'light',
 	},
+	typography: {
+		fontFamily: ['poppins', 'Nunito Sans'].join(','),
+	},
 });
 
 function MainApp({

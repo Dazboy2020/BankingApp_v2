@@ -76,7 +76,7 @@ function PieEuro({ accountMovements, currency, sort }) {
 			}}
 		>
 			<Typography
-				variant="h6"
+				variant="h5"
 				sx={{
 					// maxWidth: '100%',
 					padding: '1rem',

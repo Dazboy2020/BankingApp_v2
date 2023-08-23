@@ -27,7 +27,7 @@ export default function BasicCardSummary({
 		>
 			<CardContent>
 				<Typography
-					variant="h6"
+					variant="h4"
 					color="primary"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>

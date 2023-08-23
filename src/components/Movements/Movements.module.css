@@ -5,17 +5,8 @@
 /* ?MOVEMENTS */
 .movements {
 	display: flex;
-	/* flex-grow: 1; */
-
-	/* align-items: flex-start; */
-	/* flex-direction: column; */
-
-	/* grid-row: 2 / span 3; */
-
-	/* background-color: #fff; */
 	overflow-y: auto;
-	font-family: 'Roboto Mono';
-	/* min-width: 50rem; */
+	font-family: 'poppins';
 }
 
 .movements__row {
@@ -30,7 +21,7 @@
 }
 
 .movements__type {
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
@@ -40,7 +31,7 @@
 }
 
 .movements__date {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #666;
@@ -50,7 +41,7 @@
 	/* background-image: linear-gradient(to top left, #39b385, #9be15d); */
 	background-color: #597081;
 	/* min-width: 6rem; */
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
@@ -64,7 +55,7 @@
 .movements__type__withdrawal {
 	/* background-image: linear-gradient(to top left, #e52a5a, #ff585f); */
 	background-color: #a8577e;
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
@@ -81,6 +72,7 @@
 
 .movements__category {
 	font-weight: bold;
+	font-size: 1.3rem;
 }
 
 ul {

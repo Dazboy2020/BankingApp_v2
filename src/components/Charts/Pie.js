@@ -96,7 +96,7 @@ function PieChart({ accountMovements, currency, sort, setSort }) {
 			}}
 		>
 			<Typography
-				variant="h6"
+				variant="h5"
 				sx={{
 					padding: '1rem',
 					backgroundColor: '#3a7ca5',
