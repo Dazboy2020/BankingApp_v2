@@ -20,6 +20,8 @@ import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
+import classes from './SignIn.module.css';
+
 function Copyright(props) {
 	return (
 		<Typography
@@ -73,7 +75,8 @@ export default function SignIn({
 	return (
 		<>
 			<NewNav />
-			<ThemeProvider theme={defaultTheme}>
+			<Box className={classes.wrapper}>
+				{/* <ThemeProvider theme={defaultTheme}> */}
 				<Container component="main" maxWidth="xs">
 					<CssBaseline />
 					<Box
@@ -160,7 +163,8 @@ export default function SignIn({
 					</Box>
 					<Copyright sx={{ mt: 8, mb: 4 }} />
 				</Container>
-			</ThemeProvider>
+				{/* </ThemeProvider> */}
+			</Box>
 		</>
 	);
 }
