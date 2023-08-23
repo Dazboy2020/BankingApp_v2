@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 
-import NewNav from '../components/Navbar/NewNav';
+import NewNav from '../components/Movements/Navbar/NewNav';
 import { NavLink } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';

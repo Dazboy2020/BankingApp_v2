@@ -18,12 +18,17 @@ export default function BasicCardSummary({
 
 	return (
 		<Card
-			sx={{ display: 'flex', flexGrow: 1, mr: { xs: 0, sm: 0.5 }, mb: 0.5 }}
+			sx={{
+				display: 'flex',
+				flexGrow: 1,
+				mr: { xs: 0, sm: 0.5 },
+				mb: 0.5,
+			}}
 		>
 			<CardContent>
 				<Typography
 					variant="h6"
-					color="black"
+					color="primary"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
 					{currency === 'euro' ? 'Total Income' : 'Total Expenses'}

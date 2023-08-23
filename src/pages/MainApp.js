@@ -11,13 +11,14 @@ import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
 // import classes from '../components/Charts/pie_wrapper.Module.css';
-import styles from './MainApp.module.css';
+// import styles from './MainApp.module.css';
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Box } from '@mui/material';
 const darkTheme = createTheme({
 	palette: {
-		mode: 'dark',
+		mode: 'light',
 	},
 });
 
@@ -43,7 +44,7 @@ function MainApp({
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
-			<div className={styles.body}>
+			<Box sx={{ backgroundColor: 'primary' }}>
 				<AlertDialogSlide
 					open={open}
 					setOpen={setOpen}
@@ -67,6 +68,7 @@ function MainApp({
 						sx={{
 							width: {
 								lg: 200,
+								color: 'primary',
 							},
 						}}
 						accountMovements={accountMovements}
@@ -82,6 +84,7 @@ function MainApp({
 							width: {
 								lg: 200,
 							},
+							color: 'primary',
 						}}
 						accountMovements={accountMovements}
 						setAccountMovements={setAccountMovements}
@@ -107,14 +110,16 @@ function MainApp({
 				</Stack>
 
 				<Stack
-					className={styles.pie_wrapper}
+					// className={styles.pie_wrapper}
 					direction={{ xs: 'column', md: 'row' }}
 					sx={{
 						display: 'flex',
-						backgroundColor: '#EEEEEE',
+						// backgroundColor: '#EEEEEE',
 						alignItems: 'centre',
 						justifyContent: 'space-around',
 						paddingTop: '1rem',
+						backgroundColor: 'primary',
+
 						// height: '40vh',
 					}}
 				>
@@ -131,23 +136,24 @@ function MainApp({
 					/>
 				</Stack>
 
-				<ThemeProvider theme={darkTheme}>
-					<MovementList>
-						<Stack direction={{ xs: 'column', md: 'row' }} sx={{ flexGrow: 1 }}>
-							<Movements
-								accountMovements={accountMovements}
-								// currency={currency}
-								sort={sort}
-							/>
-							<MovementsExpenses
-								accountMovements={accountMovements}
-								// currency={currency}
-								sort={sort}
-							/>
-						</Stack>
-					</MovementList>
-				</ThemeProvider>
-			</div>
+				<MovementList>
+					<Stack
+						direction={{ xs: 'column', md: 'row' }}
+						sx={{ flexGrow: 1, backgroundColor: 'primary' }}
+					>
+						<Movements
+							accountMovements={accountMovements}
+							// currency={currency}
+							sort={sort}
+						/>
+						<MovementsExpenses
+							accountMovements={accountMovements}
+							// currency={currency}
+							sort={sort}
+						/>
+					</Stack>
+				</MovementList>
+			</Box>
 		</ThemeProvider>
 	);
 }
