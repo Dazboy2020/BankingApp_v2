@@ -10,8 +10,6 @@ import Movements from '../components/Movements/Movements';
 import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
-// import classes from '../components/Charts/pie_wrapper.Module.css';
-// import styles from './MainApp.module.css';
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -58,6 +56,7 @@ function MainApp({
 				<Toast openToast={openToast} setOpenToast={setOpenToast} />
 
 				<Stack
+					spacing={2}
 					direction={{ s: 'column', sm: 'row' }}
 					sx={{
 						justifyContent: 'space-between',
@@ -111,6 +110,7 @@ function MainApp({
 
 				<Card>
 					<Stack
+						spacing={2}
 						// className={styles.pie_wrapper}
 						direction={{ xs: 'column', md: 'row' }}
 						sx={{
