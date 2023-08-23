@@ -8,5 +8,12 @@
 		url('../../public/pexels-pixabay-265087.jpg');
 	background-size: cover;
 	background-position: center;
-	padding: 2.5rem 5rem;
+	padding: 1.5rem 2.5rem;
+}
+
+@media (max-width: 576px) {
+	.wrapper {
+		height: fit-content;
+		padding: 1rem;
+	}
 }
