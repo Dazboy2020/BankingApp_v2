@@ -13,8 +13,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
+import ResponsiveAppBar from '../Navbar/NewNav';
 
-import NewNav from '../components/Movements/Navbar/NewNav';
 import { NavLink } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
@@ -74,7 +74,7 @@ export default function SignIn({
 
 	return (
 		<>
-			<NewNav />
+			<ResponsiveAppBar />
 			<Box className={classes.wrapper}>
 				<ThemeProvider theme={defaultTheme}>
 					<Container component="main" maxWidth="xs">

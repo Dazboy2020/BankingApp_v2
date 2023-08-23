@@ -56,13 +56,12 @@ function ResponsiveAppBar({
 
 	return (
 		<AppBar
-			position="sticky"
+			position="static"
 			sx={{
-				backgroundColor: 'red',
-				height: { md: '100px' },
+				height: { md: '6rem' },
 				justifyContent: 'center',
 				m: 0,
-				fontFamily: 'Nunito Sans',
+				bgcolor: '##0288d1',
 
 				// mb: '1rem',
 			}}
@@ -79,39 +78,51 @@ function ResponsiveAppBar({
 						{user ? (
 							<>
 								<Button
+									size="medium"
 									sx={{
-										fontSize: { xs: '2rem', sm: '2rem' },
+										fontSize: { xs: '1rem', sm: '1.5rem' },
 										fontFamily: 'Nunito Sans',
 									}}
 									onClick={closeAccountHandler}
-									size="s"
 									color="inherit"
-									startIcon={<ErrorOutlineIcon color="white" sx={{ ml: 1 }} />}
+									startIcon={
+										<ErrorOutlineIcon
+											color="white"
+											size="large"
+											sx={{ ml: 1 }}
+										/>
+									}
 								>
 									Close
 								</Button>
 								<Button
 									sx={{
-										fontSize: { xs: '2rem', sm: '2rem' },
+										fontSize: { xs: '1rem', sm: '1.5rem' },
 										fontFamily: 'Nunito Sans',
 									}}
 									onClick={() => switchCurrency()}
-									size="xs"
+									size="medium"
 									color="inherit"
 									startIcon={
-										<CurrencyExchangeIcon color="white" sx={{ ml: 1 }} />
+										<CurrencyExchangeIcon
+											size="large"
+											color="white"
+											sx={{ ml: 1 }}
+										/>
 									}
 								>
 									Switch
 								</Button>
 								<Button
 									sx={{
-										fontSize: { xs: '2rem', sm: '2rem' },
+										fontSize: { xs: '1rem', sm: '1.5rem' },
 										fontFamily: 'Nunito Sans',
 									}}
-									size="xs"
+									size="medium"
 									color="inherit"
-									startIcon={<GitHub color="white" sx={{ ml: 1 }} />}
+									startIcon={
+										<GitHub color="white" size="large" sx={{ ml: 1 }} />
+									}
 								>
 									<Link
 										sx={{ color: 'white' }}
@@ -123,12 +134,15 @@ function ResponsiveAppBar({
 
 								<Button
 									sx={{
-										fontSize: { xs: '2rem', sm: '2rem' },
+										fontSize: { xs: '1rem', sm: '1.5rem' },
 										fontFamily: 'Nunito Sans',
 									}}
+									size="medium"
 									onClick={handleClick}
 									color="inherit"
-									startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
+									startIcon={
+										<ExitToAppIcon size="large" color="white" sx={{ ml: 1 }} />
+									}
 								>
 									Logout
 								</Button>
@@ -136,12 +150,15 @@ function ResponsiveAppBar({
 						) : (
 							<Button
 								sx={{
-									fontSize: { xs: '2rem', sm: '2rem' },
+									fontSize: { xs: '1rem', sm: '1.5rem' },
 									fontFamily: 'Nunito Sans',
 								}}
+								size="medium"
 								onClick={handleLogin}
 								color="inherit"
-								startIcon={<ExitToAppIcon color="white" sx={{ ml: 1 }} />}
+								startIcon={
+									<ExitToAppIcon size="large" color="white" sx={{ ml: 1 }} />
+								}
 							>
 								Login
 							</Button>
@@ -163,7 +180,7 @@ function ResponsiveAppBar({
 							color: 'white',
 						}}
 					>
-						<Typography variant="h6">{curDate}</Typography>
+						<Typography variant="h5">{curDate}</Typography>
 					</Stack>
 				</Toolbar>
 			</Container>

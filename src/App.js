@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import NewNav from './components/Movements/Navbar/NewNav';
+import ResponsiveAppBar from './Navbar/NewNav';
 // import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -145,7 +145,7 @@ function App() {
 					index
 					element={
 						<>
-							<NewNav
+							<ResponsiveAppBar
 								accountMovements={accountMovements}
 								setUser={setUser}
 								setPin={setPin}
@@ -171,7 +171,7 @@ function App() {
 					path="application"
 					element={
 						<>
-							<NewNav
+							<ResponsiveAppBar
 								accountMovements={accountMovements}
 								setUser={setUser}
 								setPin={setPin}

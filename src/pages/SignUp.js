@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import NewNav from '../components/Movements/Navbar/NewNav';
+import ResponsiveAppBar from '../Navbar/NewNav';
 import { NavLink } from 'react-router-dom';
 
 import classes from './SignIn.module.css';
@@ -50,7 +50,7 @@ export default function SignUp() {
 
 	return (
 		<>
-			<NewNav />
+			<ResponsiveAppBar />
 			<Box className={classes.wrapper}>
 				<ThemeProvider theme={defaultTheme}>
 					<Container component="main" maxWidth="xs">

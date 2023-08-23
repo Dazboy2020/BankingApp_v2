@@ -14,6 +14,7 @@ import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Card } from '@mui/material';
+
 const theme = createTheme({
 	palette: {
 		mode: 'light',
