@@ -55,7 +55,7 @@ export default function SignIn({
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		if (loggedInAccount[0]?.pin === +pin) {
+		if (loggedInAccount && loggedInAccount[0].pin === +pin) {
 			setAccountMovements(loggedInAccount);
 			setIsLoggedIn(true);
 			navigate('/application');
