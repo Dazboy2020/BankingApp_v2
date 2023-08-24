@@ -138,6 +138,8 @@ function App() {
 		setUser('');
 	}
 
+	// if (!user) navigate('/');
+
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -189,26 +191,27 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 							/>
-
-							<MainApp
-								accountMovements={accountMovements}
-								totalExpenses={totalExpenses}
-								totalIncome={totalIncome}
-								currency={currency}
-								setCurrency={setCurrency}
-								setSort={setSort}
-								sort={sort}
-								accounts={accounts}
-								user={user}
-								setAccountMovements={setAccountMovements}
-								setOpenToast={setOpenToast}
-								open={open}
-								setOpen={setOpen}
-								LogUserOut={LogUserOut}
-								openToast={openToast}
-								openModal={openModal}
-								setOpenModal={setOpenModal}
-							/>
+							{user && (
+								<MainApp
+									accountMovements={accountMovements}
+									totalExpenses={totalExpenses}
+									totalIncome={totalIncome}
+									currency={currency}
+									setCurrency={setCurrency}
+									setSort={setSort}
+									sort={sort}
+									accounts={accounts}
+									user={user}
+									setAccountMovements={setAccountMovements}
+									setOpenToast={setOpenToast}
+									open={open}
+									setOpen={setOpen}
+									LogUserOut={LogUserOut}
+									openToast={openToast}
+									openModal={openModal}
+									setOpenModal={setOpenModal}
+								/>
+							)}
 						</>
 					}
 				/>

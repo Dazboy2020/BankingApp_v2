@@ -156,7 +156,7 @@ const BasicCardFX = ({
 				<Box>
 					<Typography
 						variant="h4"
-						color="primary"
+						color="black"
 						sx={{ mb: 2, fontWeight: 'bold' }}
 					>
 						Add a Transaction:

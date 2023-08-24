@@ -61,7 +61,7 @@ function ResponsiveAppBar({
 				height: { md: '6rem' },
 				justifyContent: 'center',
 				m: 0,
-				bgcolor: '##0288d1',
+				bgcolor: '#263238',
 
 				// mb: '1rem',
 			}}
@@ -117,6 +117,7 @@ function ResponsiveAppBar({
 									sx={{
 										fontSize: { xs: '1rem', sm: '1.5rem' },
 										fontFamily: 'Nunito Sans',
+										display: { xs: 'none', md: 'flex' },
 									}}
 									size="medium"
 									color="inherit"
@@ -125,7 +126,7 @@ function ResponsiveAppBar({
 									}
 								>
 									<Link
-										sx={{ color: 'white' }}
+										sx={{ color: 'white', textDecoration: 'none' }}
 										href="https://github.com/Dazboy2020"
 									>
 										About

@@ -14,6 +14,7 @@ import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Card } from '@mui/material';
+import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
 
 const theme = createTheme({
 	palette: {
@@ -60,7 +61,7 @@ function MainApp({
 				<Toast openToast={openToast} setOpenToast={setOpenToast} />
 
 				<Stack
-					spacing={2}
+					spacing={1}
 					direction={{ s: 'column', sm: 'row' }}
 					sx={{
 						justifyContent: 'space-between',
@@ -68,6 +69,20 @@ function MainApp({
 					}}
 				>
 					<BasicCardSummary
+						sx={{
+							width: {
+								lg: 200,
+								color: 'primary',
+							},
+						}}
+						totalExpenses={totalExpenses}
+						totalIncome={totalIncome}
+						currency={currency}
+						setSort={setSort}
+						accounts={accounts}
+						user={user}
+					/>
+					<ExpenseSummary
 						sx={{
 							width: {
 								lg: 200,
@@ -115,17 +130,13 @@ function MainApp({
 				<Card>
 					<Stack
 						spacing={2}
-						// className={styles.pie_wrapper}
 						direction={{ xs: 'column', md: 'row' }}
 						sx={{
 							display: 'flex',
-							// backgroundColor: '#EEEEEE',
 							alignItems: 'centre',
 							justifyContent: 'space-around',
 							paddingTop: '1rem',
-							backgroundColor: 'primary',
-
-							// height: '40vh',
+							backgroundColor: '#eceff1',
 						}}
 					>
 						<PieChart
@@ -143,10 +154,7 @@ function MainApp({
 				</Card>
 
 				<MovementList>
-					<Stack
-						direction={{ xs: 'column', md: 'row' }}
-						// sx={{ flexGrow: 1, backgroundColor: 'primary' }}
-					>
+					<Stack direction={{ xs: 'column', md: 'row' }}>
 						<Card
 							sx={{
 								display: 'flex',

@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Box, Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 
-export default function BasicCardSummary({
+export default function ExpenseSummary({
 	accountMovements,
 	currency,
 	totalExpenses,
@@ -30,10 +30,10 @@ export default function BasicCardSummary({
 					color="black"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
-					{totalIncome}
+					Total Expenses
 				</Typography>
-				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
-					{`€${totalIncome.toFixed(2)}`}
+				<Typography sx={{ fontSize: '2rem' }} color="red" gutterBottom>
+					{`€${Math.abs(totalExpenses.toFixed(2))}`}
 				</Typography>
 
 				<Box>
