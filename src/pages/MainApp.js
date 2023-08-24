@@ -11,19 +11,12 @@ import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Box, Card } from '@mui/material';
+import { Card, Paper } from '@mui/material';
 import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
 
-const theme = createTheme({
-	palette: {
-		mode: 'light',
-	},
-	typography: {
-		fontFamily: ['poppins', 'Nunito Sans'].join(','),
-	},
-});
+import theme from '../theme';
 
 function MainApp({
 	open,
@@ -47,7 +40,12 @@ function MainApp({
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<Box bgcolor={'background.default'} color={'text.primary'}>
+			<Paper
+				elevation={24}
+				sx={{
+					margin: { xs: 'none', md: '1rem' },
+				}}
+			>
 				<AlertDialogSlide
 					open={open}
 					setOpen={setOpen}
@@ -61,19 +59,14 @@ function MainApp({
 				<Toast openToast={openToast} setOpenToast={setOpenToast} />
 
 				<Stack
-					spacing={1}
+					spacing={3}
 					direction={{ s: 'column', sm: 'row' }}
 					sx={{
 						justifyContent: 'space-between',
+						mt: 1,
 					}}
 				>
 					<BasicCardSummary
-						sx={{
-							width: {
-								lg: 200,
-								color: 'primary',
-							},
-						}}
 						totalExpenses={totalExpenses}
 						totalIncome={totalIncome}
 						currency={currency}
@@ -82,12 +75,6 @@ function MainApp({
 						user={user}
 					/>
 					<ExpenseSummary
-						sx={{
-							width: {
-								lg: 200,
-								color: 'primary',
-							},
-						}}
 						accountMovements={accountMovements}
 						totalExpenses={totalExpenses}
 						totalIncome={totalIncome}
@@ -97,12 +84,6 @@ function MainApp({
 						user={user}
 					/>
 					<BasicCardFX
-						sx={{
-							width: {
-								lg: 200,
-							},
-							color: 'primary',
-						}}
 						accountMovements={accountMovements}
 						setAccountMovements={setAccountMovements}
 						setOpenToast={setOpenToast}
@@ -175,7 +156,7 @@ function MainApp({
 						</Card>
 					</Stack>
 				</MovementList>
-			</Box>
+			</Paper>
 		</ThemeProvider>
 	);
 }

@@ -266,6 +266,8 @@ const BasicCardFX = ({
 							bgcolor: '#f70776',
 							color: 'white',
 							mt: 4,
+							fontSize: '1.2rem',
+							paddingRight: '.8rem',
 						}}
 						onClick={handleSubmitExpense}
 					>

@@ -48,6 +48,7 @@ export default function ExpenseSummary({
 							bgcolor: '#f70776',
 							color: 'white',
 							mt: 2,
+							fontSize: '1.2rem',
 						}}
 						size="xs"
 						color="inherit"

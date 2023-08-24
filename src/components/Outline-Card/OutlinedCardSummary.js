@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 
 export default function BasicCardSummary({
@@ -36,26 +36,25 @@ export default function BasicCardSummary({
 					{`€${totalIncome.toFixed(2)}`}
 				</Typography>
 
-				<Box>
-					<Button
-						variant="contained"
-						onClick={handleSort}
-						sx={{
-							'&:hover': {
-								backgroundColor: '#680747',
-								cursor: 'default',
-							},
-							bgcolor: '#f70776',
-							color: 'white',
-							mt: 2,
-						}}
-						size="xs"
-						color="inherit"
-						startIcon={<SouthOutlinedIcon />}
-					>
-						Sort
-					</Button>
-				</Box>
+				<Button
+					variant="contained"
+					onClick={handleSort}
+					sx={{
+						'&:hover': {
+							backgroundColor: '#680747',
+							cursor: 'default',
+						},
+						bgcolor: '#f70776',
+						color: 'white',
+						mt: 2,
+						fontSize: '1.2rem',
+					}}
+					size="xs"
+					color="inherit"
+					startIcon={<SouthOutlinedIcon />}
+				>
+					Sort
+				</Button>
 			</CardContent>
 		</Card>
 	);
