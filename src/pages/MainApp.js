@@ -47,7 +47,7 @@ function MainApp({
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<Box sx={{ backgroundColor: 'primary' }}>
+			<Box bgcolor={'background.default'} color={'text.primary'}>
 				<AlertDialogSlide
 					open={open}
 					setOpen={setOpen}
@@ -65,7 +65,6 @@ function MainApp({
 					direction={{ s: 'column', sm: 'row' }}
 					sx={{
 						justifyContent: 'space-between',
-						// m: 1,
 					}}
 				>
 					<BasicCardSummary

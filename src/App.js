@@ -138,8 +138,6 @@ function App() {
 		setUser('');
 	}
 
-	// if (!user) navigate('/');
-
 	return (
 		<BrowserRouter>
 			<Routes>

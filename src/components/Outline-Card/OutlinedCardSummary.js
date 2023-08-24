@@ -27,7 +27,7 @@ export default function BasicCardSummary({
 			<CardContent>
 				<Typography
 					variant="h4"
-					color="black"
+					color="primary"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
 					Total Income

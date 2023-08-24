@@ -27,7 +27,7 @@ export default function ExpenseSummary({
 			<CardContent>
 				<Typography
 					variant="h4"
-					color="black"
+					color="primary"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
 					Total Expenses
