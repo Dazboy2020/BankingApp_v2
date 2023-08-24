@@ -136,7 +136,7 @@ function MainApp({
 							alignItems: 'centre',
 							justifyContent: 'space-around',
 							paddingTop: '1rem',
-							backgroundColor: '#eceff1',
+							backgroundColor: '##f3e5f5',
 						}}
 					>
 						<PieChart

@@ -42,7 +42,9 @@ const Movements = ({ accountMovements, currency, sort }) => {
 									</span>
 									<span className={classes.movements__date}>{item[1]}</span>
 									<span className={classes.movements__category}>{item[2]}</span>
-									<span className={classes.movements__value}>€{item[0]}</span>
+									<span className={classes.movements__value}>
+										€{item[0].toFixed(2)}
+									</span>
 								</Stack>
 							)}
 						</div>
