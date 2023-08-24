@@ -60,6 +60,7 @@ function ResponsiveAppBar({
 			sx={{
 				height: { md: '6rem' },
 				justifyContent: 'center',
+				alignContent: 'centre',
 				m: 0,
 				bgcolor: '#263238',
 
@@ -70,10 +71,12 @@ function ResponsiveAppBar({
 				<Toolbar disableGutters>
 					<Stack
 						direction={{ xs: 'column', md: 'row' }}
-						sx={{
-							alignItems: 'flex-start',
-							justifyContent: 'flex-start',
-						}}
+						// sx={{
+						// 	display: 'flex',
+						// 	alignItems: 'flex-start',
+						// 	justifyContent: 'flex-start',
+						// 	alignContent: 'center',
+						// }}
 					>
 						{user ? (
 							<>
@@ -150,9 +153,17 @@ function ResponsiveAppBar({
 							</>
 						) : (
 							<Button
+								// variant="contained"
 								sx={{
 									fontSize: { xs: '1rem', sm: '1.5rem' },
 									fontFamily: 'Nunito Sans',
+									'&:hover': {
+										backgroundColor: '#680747',
+										cursor: 'default',
+									},
+									bgcolor: '#f70776',
+									color: 'white',
+									// mt: 2,
 								}}
 								size="medium"
 								onClick={handleLogin}

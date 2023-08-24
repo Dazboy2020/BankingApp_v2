@@ -30,7 +30,7 @@ export default function BasicCardSummary({
 					color="black"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
-					{totalIncome}
+					Total Income
 				</Typography>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{`€${totalIncome.toFixed(2)}`}
