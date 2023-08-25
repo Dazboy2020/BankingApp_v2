@@ -18,6 +18,8 @@ import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
 
 import theme from '../theme';
 
+import classes from './MainApp.module.css';
+
 function MainApp({
 	open,
 	setOpen,
@@ -41,6 +43,7 @@ function MainApp({
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<Paper
+				className={classes.body}
 				elevation={24}
 				sx={{
 					margin: { xs: 'none', md: '1rem' },
