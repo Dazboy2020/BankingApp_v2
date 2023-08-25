@@ -13,7 +13,7 @@ import PieEuro from '../components/Charts/PieEuro';
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Card, Paper } from '@mui/material';
+import { Box, Card, Paper } from '@mui/material';
 import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
 
 import theme from '../theme';
@@ -43,6 +43,7 @@ function MainApp({
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<Paper
+				component="main"
 				className={classes.body}
 				elevation={24}
 				sx={{
@@ -62,6 +63,7 @@ function MainApp({
 				<Toast openToast={openToast} setOpenToast={setOpenToast} />
 
 				<Stack
+					component="section"
 					spacing={3}
 					direction={{ s: 'column', sm: 'row' }}
 					sx={{
@@ -112,6 +114,7 @@ function MainApp({
 
 				<Card>
 					<Stack
+						component="section"
 						spacing={2}
 						direction={{ xs: 'column', md: 'row' }}
 						sx={{
@@ -137,16 +140,18 @@ function MainApp({
 				</Card>
 
 				<MovementList>
-					<Stack direction={{ xs: 'column', md: 'row' }}>
-						<Card
+					<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
+						<Box
+							component="section"
 							sx={{
 								display: 'flex',
 								flexGrow: 1,
 							}}
 						>
 							<Movements accountMovements={accountMovements} sort={sort} />
-						</Card>
-						<Card
+						</Box>
+						<Box
+							component="section"
 							sx={{
 								display: 'flex',
 								flexGrow: 1,
@@ -156,7 +161,7 @@ function MainApp({
 								accountMovements={accountMovements}
 								sort={sort}
 							/>
-						</Card>
+						</Box>
 					</Stack>
 				</MovementList>
 			</Paper>

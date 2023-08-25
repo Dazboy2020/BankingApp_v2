@@ -18,6 +18,7 @@ export default function ExpenseSummary({
 
 	return (
 		<Card
+			component="article"
 			sx={{
 				display: 'flex',
 				flexGrow: 1,

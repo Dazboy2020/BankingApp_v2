@@ -18,6 +18,7 @@ export default function BasicCardSummary({
 
 	return (
 		<Card
+			component="article"
 			sx={{
 				display: 'flex',
 				flexGrow: 1,
