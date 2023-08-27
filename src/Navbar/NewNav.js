@@ -23,13 +23,11 @@ const options = {
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar({
-	// switchCurrency,
 	setUser,
 	setPin,
 	setClosePin,
 	setCloseUser,
 	user,
-	// setOpenModal,
 	isLoggedin,
 }) {
 	const { switchCurrency, accounts, setOpenModal, setOpen } = useAppContext();

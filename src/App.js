@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 
-// import CloseAccount from './components/CloseAccount/CloseAccount';
-
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ResponsiveAppBar from './Navbar/NewNav';
-// import BasicCardTransaction from './components/Outline-Card/OutlineCardTransfer';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
@@ -24,9 +21,6 @@ function App() {
 	const [closePin, setClosePin] = useState('');
 	// eslint-disable-next-line no-unused-vars
 	const [closeUser, setCloseUser] = useState('');
-	// const [open, setOpen] = useState(false);
-	// const [openModal, setOpenModal] = useState(false);
-	// const [openToast, setOpenToast] = useState(false);
 
 	function LogUserOut() {
 		setIsLoggedIn(false);

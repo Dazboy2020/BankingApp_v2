@@ -20,7 +20,7 @@ import theme from '../theme';
 
 import classes from './MainApp.module.css';
 
-function MainApp({ open, setOpen, LogUserOut, openModal, setOpenModal }) {
+function MainApp({ LogUserOut }) {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
@@ -32,16 +32,8 @@ function MainApp({ open, setOpen, LogUserOut, openModal, setOpenModal }) {
 					margin: { xs: 'none', md: '1rem' },
 				}}
 			>
-				<AlertDialogSlide
-					open={open}
-					setOpen={setOpen}
-					LogUserOut={LogUserOut}
-				/>
-				<CloseAccountModal
-					openModal={openModal}
-					setOpenModal={setOpenModal}
-					LogUserOut={LogUserOut}
-				/>
+				<AlertDialogSlide LogUserOut={LogUserOut} />
+				<CloseAccountModal LogUserOut={LogUserOut} />
 				<Toast />
 
 				<Stack
