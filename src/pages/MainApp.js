@@ -28,15 +28,6 @@ function MainApp({
 	setOpenModal,
 	openToast,
 	setOpenToast,
-	// accountMovements,
-	totalExpenses,
-	totalIncome,
-	setCurrency,
-	currency,
-	setSort,
-	// setAccountMovements,
-	user,
-	sort,
 }) {
 	return (
 		<ThemeProvider theme={theme}>
@@ -70,40 +61,9 @@ function MainApp({
 						mt: 1,
 					}}
 				>
-					<BasicCardSummary
-						totalExpenses={totalExpenses}
-						totalIncome={totalIncome}
-						currency={currency}
-						setSort={setSort}
-						user={user}
-					/>
-					<ExpenseSummary
-						totalExpenses={totalExpenses}
-						totalIncome={totalIncome}
-						currency={currency}
-						setSort={setSort}
-						user={user}
-					/>
-					<BasicCardFX
-						setOpenToast={setOpenToast}
-
-						// totalExpenses={totalExpenses}
-						// totalIncome={totalIncome}
-						// setSort={setSort}
-						// accounts={accoun
-						// user={user}
-					/>
-					{/* <BasicCardTransaction
-							accountMovements={accountMovements}
-							setAccountMovements={setAccountMovements}
-							currency={currency}
-							totalExpenses={totalExpenses}
-							totalIncome={totalIncome}
-							setSort={setSort}
-							accounts={accounts}
-							user={user}
-							setOpenToast={setOpenToast}
-						/>  */}
+					<BasicCardSummary />
+					<ExpenseSummary />
+					<BasicCardFX setOpenToast={setOpenToast} />
 				</Stack>
 
 				<Card>
@@ -120,7 +80,7 @@ function MainApp({
 						}}
 					>
 						<PieChart />
-						<PieEuro currency={currency} sort={sort} />
+						<PieEuro />
 					</Stack>
 				</Card>
 

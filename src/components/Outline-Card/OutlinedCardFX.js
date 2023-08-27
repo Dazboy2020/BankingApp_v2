@@ -60,11 +60,7 @@ const menuDeposit = [
 	},
 ];
 
-const BasicCardFX = ({
-	// accountMovements,
-	// setAccountMovements,
-	setOpenToast,
-}) => {
+const BasicCardFX = ({ setOpenToast }) => {
 	const { accountMovements, setAccountMovements } = useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
