@@ -22,15 +22,16 @@ const options = {
 
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
-function ResponsiveAppBar({
-	setUser,
-	setPin,
-	setClosePin,
-	setCloseUser,
-	user,
-	isLoggedin,
-}) {
-	const { switchCurrency, accounts, setOpenModal, setOpen } = useAppContext();
+function ResponsiveAppBar({ setUser, user, isLoggedin }) {
+	const {
+		switchCurrency,
+		accounts,
+		setOpenModal,
+		setOpen,
+		setPin,
+		setClosePin,
+		setCloseUser,
+	} = useAppContext();
 	const navigate = useNavigate();
 	function handleClick() {
 		if (!isLoggedin) {

@@ -15,12 +15,8 @@ let accounts = [account1, account2, account3];
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 	const [user, setUser] = useState('');
-	const [pin, setPin] = useState('');
-	// eslint-disable-next-line no-unused-vars
-	const [closePin, setClosePin] = useState('');
-	// eslint-disable-next-line no-unused-vars
-	const [closeUser, setCloseUser] = useState('');
 
 	function LogUserOut() {
 		setIsLoggedIn(false);
@@ -41,15 +37,12 @@ function App() {
 							<>
 								<ResponsiveAppBar
 									setUser={setUser}
-									setPin={setPin}
-									setClosePin={setClosePin}
 									LogUserOut={LogUserOut}
-									setCloseUser={setCloseUser}
 									user={user}
 									isLoggedIn={isLoggedIn}
 									setIsLoggedIn={setIsLoggedIn}
 								/>
-								{!isLoggedIn && <Homepage />}
+								{!isLoggedIn ? <Homepage /> : <MainApp />}
 							</>
 						}
 					/>
@@ -59,10 +52,7 @@ function App() {
 							<>
 								<ResponsiveAppBar
 									setUser={setUser}
-									setPin={setPin}
-									setClosePin={setClosePin}
 									LogUserOut={LogUserOut}
-									setCloseUser={setCloseUser}
 									user={user}
 									isLoggedIn={isLoggedIn}
 									setIsLoggedIn={setIsLoggedIn}
@@ -75,10 +65,8 @@ function App() {
 						path="login"
 						element={
 							<SignIn
-								pin={pin}
 								user={user}
 								setUser={setUser}
-								setPin={setPin}
 								loggedInAccount={loggedInAccount}
 								setIsLoggedIn={setIsLoggedIn}
 								isLoggedIn={isLoggedIn}

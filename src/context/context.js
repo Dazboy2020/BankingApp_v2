@@ -13,6 +13,9 @@ function ContextProvider({ children }) {
 	const [open, setOpen] = useState(false);
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
+	const [pin, setPin] = useState('');
+	const [closePin, setClosePin] = useState('');
+	const [closeUser, setCloseUser] = useState('');
 
 	const totalIncome = accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
@@ -50,6 +53,12 @@ function ContextProvider({ children }) {
 				setOpenModal,
 				openToast,
 				setOpenToast,
+				pin,
+				setPin,
+				closePin,
+				setClosePin,
+				closeUser,
+				setCloseUser,
 			}}
 		>
 			{children}
