@@ -17,7 +17,7 @@ const Movements = () => {
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
 				justifyContent: 'space-between',
-				mb: 2,
+				// mb: 2,
 				flexGrow: 1,
 			}}
 		>

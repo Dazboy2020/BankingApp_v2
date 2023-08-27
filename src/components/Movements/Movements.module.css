@@ -79,7 +79,6 @@ ul {
 	display: flex;
 	flex-direction: column;
 	list-style-type: none;
-	/* margin: 0.2rem; */
 	padding: 0.2rem;
 	align-items: stretch;
 	flex-grow: 1;

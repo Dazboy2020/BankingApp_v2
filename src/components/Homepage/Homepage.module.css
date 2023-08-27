@@ -1,6 +1,7 @@
 .homepage {
 	/* margin: 0.5rem; */
 	height: calc(100vh - 6rem);
+	/* height: 100vh; */
 	background-image: linear-gradient(
 			rgba(36, 42, 46, 0.8),
 			rgba(36, 42, 46, 0.8)
@@ -35,6 +36,12 @@
 	margin-bottom: 2.5rem;
 }
 
+@media (max-width: 900px) {
+	.homepage {
+		height: 100dvh;
+	}
+}
+
 @media (max-width: 800px) {
 	.homepage h1 {
 		font-size: 3.75rem;
@@ -44,12 +51,20 @@
 	.homepage h2 {
 		font-size: 1.5rem;
 	}
+
+	.homepage {
+		height: 100dvh;
+	}
 }
 
 @media (max-width: 576px) {
 	.homepage h1 {
 		font-size: 1.5rem;
 		line-height: 1.1;
+	}
+
+	.homepage {
+		height: 100dvh;
 	}
 
 	.homepage h2 {
