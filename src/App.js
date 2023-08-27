@@ -14,9 +14,8 @@ import { ContextProvider } from './context/context';
 let accounts = [account1, account2, account3];
 
 function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
 	const [user, setUser] = useState('');
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	function LogUserOut() {
 		setIsLoggedIn(false);
@@ -42,15 +41,7 @@ function App() {
 									isLoggedIn={isLoggedIn}
 									setIsLoggedIn={setIsLoggedIn}
 								/>
-								{/* {!isLoggedIn ? <Homepage /> : <MainApp />} */}
-								{loggedInAccount ? (
-									<>
-										<MainApp />
-										<Homepage />
-									</>
-								) : (
-									<Homepage />
-								)}
+								<Homepage />
 							</>
 						}
 					/>
