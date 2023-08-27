@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ContextProvider } from './context/context';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ResponsiveAppBar from './Navbar/NewNav';
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
 import MainApp from './pages/MainApp';
 
 import { account1, account2, account3 } from './accounts';
-import { ContextProvider } from './context/context';
-
 let accounts = [account1, account2, account3];
 
 function App() {

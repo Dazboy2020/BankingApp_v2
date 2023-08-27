@@ -7,16 +7,10 @@ const Movements = () => {
 	const { accountMovements, sort } = useAppContext();
 
 	const movementsToDisplay = accountMovements[0].deposits;
-	// currency === 'euro'
-	// 	? accountMovements[0].deposits
-	// 	: accountMovements[1].expenses;
 
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
-
-	// const category = accountMovements[1].expenses.map((item) => item[2]);
-	// console.log(category);
 
 	return (
 		<Stack

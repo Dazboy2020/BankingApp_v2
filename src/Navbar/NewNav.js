@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-// import { AccountBalanceOutlined, GitHub } from '@mui/icons-material';
 import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +31,9 @@ function ResponsiveAppBar({ setUser, user, isLoggedin }) {
 		setClosePin,
 		setCloseUser,
 	} = useAppContext();
+
 	const navigate = useNavigate();
+
 	function handleClick() {
 		if (!isLoggedin) {
 			setOpen(true);
@@ -68,15 +69,7 @@ function ResponsiveAppBar({ setUser, user, isLoggedin }) {
 		>
 			<Container maxWidth="xxl">
 				<Toolbar disableGutters>
-					<Stack
-						direction={{ xs: 'column', md: 'row' }}
-						// sx={{
-						// 	display: 'flex',
-						// 	alignItems: 'flex-start',
-						// 	justifyContent: 'flex-start',
-						// 	alignContent: 'center',
-						// }}
-					>
+					<Stack direction={{ xs: 'column', md: 'row' }}>
 						{user ? (
 							<>
 								<Button
