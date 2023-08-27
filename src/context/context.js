@@ -10,6 +10,9 @@ function ContextProvider({ children }) {
 	const [currency, setCurrency] = useState('euro');
 	const [sort, setSort] = useState(false);
 	const [accountMovements, setAccountMovements] = useState(account1);
+	const [open, setOpen] = useState(false);
+	const [openModal, setOpenModal] = useState(false);
+	const [openToast, setOpenToast] = useState(false);
 
 	const totalIncome = accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
@@ -41,6 +44,12 @@ function ContextProvider({ children }) {
 				totalIncome,
 				totalExpenses,
 				currency,
+				open,
+				setOpen,
+				openModal,
+				setOpenModal,
+				openToast,
+				setOpenToast,
 			}}
 		>
 			{children}

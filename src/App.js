@@ -17,8 +17,6 @@ import { ContextProvider } from './context/context';
 let accounts = [account1, account2, account3];
 
 function App() {
-	const [currency, setCurrency] = useState('euro');
-	const [sort, setSort] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState('');
 	const [pin, setPin] = useState('');
@@ -26,9 +24,9 @@ function App() {
 	const [closePin, setClosePin] = useState('');
 	// eslint-disable-next-line no-unused-vars
 	const [closeUser, setCloseUser] = useState('');
-	const [open, setOpen] = useState(false);
-	const [openModal, setOpenModal] = useState(false);
-	const [openToast, setOpenToast] = useState(false);
+	// const [open, setOpen] = useState(false);
+	// const [openModal, setOpenModal] = useState(false);
+	// const [openToast, setOpenToast] = useState(false);
 
 	function LogUserOut() {
 		setIsLoggedIn(false);
@@ -51,15 +49,9 @@ function App() {
 									setUser={setUser}
 									setPin={setPin}
 									setClosePin={setClosePin}
-									currency={currency}
-									open={open}
-									setOpen={setOpen}
 									LogUserOut={LogUserOut}
-									accounts={accounts}
 									setCloseUser={setCloseUser}
 									user={user}
-									openModal={openModal}
-									setOpenModal={setOpenModal}
 									isLoggedIn={isLoggedIn}
 									setIsLoggedIn={setIsLoggedIn}
 								/>
@@ -75,35 +67,13 @@ function App() {
 									setUser={setUser}
 									setPin={setPin}
 									setClosePin={setClosePin}
-									currency={currency}
-									open={open}
-									setOpen={setOpen}
 									LogUserOut={LogUserOut}
-									accounts={accounts}
 									setCloseUser={setCloseUser}
 									user={user}
-									openModal={openModal}
-									setOpenModal={setOpenModal}
 									isLoggedIn={isLoggedIn}
 									setIsLoggedIn={setIsLoggedIn}
 								/>
-								{user && (
-									<MainApp
-										currency={currency}
-										setCurrency={setCurrency}
-										setSort={setSort}
-										sort={sort}
-										accounts={accounts}
-										user={user}
-										setOpenToast={setOpenToast}
-										open={open}
-										setOpen={setOpen}
-										LogUserOut={LogUserOut}
-										openToast={openToast}
-										openModal={openModal}
-										setOpenModal={setOpenModal}
-									/>
-								)}
+								{user && <MainApp LogUserOut={LogUserOut} />}
 							</>
 						}
 					/>

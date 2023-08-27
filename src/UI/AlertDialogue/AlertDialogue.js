@@ -7,12 +7,14 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { useNavigate } from 'react-router';
+import { useAppContext } from '../../context/context';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({ open, setOpen, LogUserOut }) {
+export default function AlertDialogSlide({ LogUserOut }) {
+	const { open, setOpen } = useAppContext();
 	const navigate = useNavigate();
 	function handleCancel() {
 		setOpen(false);

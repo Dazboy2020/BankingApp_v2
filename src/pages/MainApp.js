@@ -20,15 +20,7 @@ import theme from '../theme';
 
 import classes from './MainApp.module.css';
 
-function MainApp({
-	open,
-	setOpen,
-	LogUserOut,
-	openModal,
-	setOpenModal,
-	openToast,
-	setOpenToast,
-}) {
+function MainApp({ open, setOpen, LogUserOut, openModal, setOpenModal }) {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
@@ -50,7 +42,7 @@ function MainApp({
 					setOpenModal={setOpenModal}
 					LogUserOut={LogUserOut}
 				/>
-				<Toast openToast={openToast} setOpenToast={setOpenToast} />
+				<Toast />
 
 				<Stack
 					component="section"
@@ -63,7 +55,7 @@ function MainApp({
 				>
 					<BasicCardSummary />
 					<ExpenseSummary />
-					<BasicCardFX setOpenToast={setOpenToast} />
+					<BasicCardFX />
 				</Stack>
 
 				<Card>

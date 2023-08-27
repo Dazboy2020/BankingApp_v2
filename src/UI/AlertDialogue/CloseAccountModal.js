@@ -7,16 +7,14 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { useNavigate } from 'react-router';
+import { useAppContext } from '../../context/context';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CloseAccountModal({
-	openModal,
-	setOpenModal,
-	LogUserOut,
-}) {
+export default function CloseAccountModal({ LogUserOut }) {
+	const { openModal, setOpenModal } = useAppContext();
 	const navigate = useNavigate();
 	function handleYes() {
 		console.log('CLICK');
