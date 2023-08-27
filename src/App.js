@@ -42,7 +42,15 @@ function App() {
 									isLoggedIn={isLoggedIn}
 									setIsLoggedIn={setIsLoggedIn}
 								/>
-								{!isLoggedIn ? <Homepage /> : <MainApp />}
+								{/* {!isLoggedIn ? <Homepage /> : <MainApp />} */}
+								{loggedInAccount ? (
+									<>
+										<MainApp />
+										<Homepage />
+									</>
+								) : (
+									<Homepage />
+								)}
 							</>
 						}
 					/>
