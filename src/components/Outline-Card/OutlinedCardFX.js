@@ -137,8 +137,6 @@ const BasicCardFX = ({
 			},
 		];
 
-		console.log(updatedAccount);
-
 		setAccountMovements(updatedAccount);
 		setExpenseAmount('');
 		setOpenToast(true);
