@@ -1,8 +1,10 @@
 import React from 'react';
 import { Stack } from '@mui/material';
 import classes from './Movements.module.css';
+import { useAppContext } from '../../context/context';
 
-const Movements = ({ accountMovements, currency, sort }) => {
+const Movements = ({ currency, sort }) => {
+	const { accountMovements } = useAppContext();
 	const movementsToDisplay = accountMovements[0].deposits;
 	// currency === 'euro'
 	// 	? accountMovements[0].deposits

@@ -21,6 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import classes from './SignIn.module.css';
+import { useAppContext } from '../context/context';
 
 function Copyright(props) {
 	return (
@@ -46,9 +47,10 @@ export default function SignIn({
 	setUser,
 	loggedInAccount,
 	setIsLoggedIn,
-	setAccountMovements,
+	// setAccountMovements,
 	isLoggedIn,
 }) {
+	const { setAccountMovements } = useAppContext();
 	const [error, setError] = useState(false);
 	const navigate = useNavigate();
 

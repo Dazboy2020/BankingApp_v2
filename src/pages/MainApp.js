@@ -28,14 +28,13 @@ function MainApp({
 	setOpenModal,
 	openToast,
 	setOpenToast,
-	accountMovements,
+	// accountMovements,
 	totalExpenses,
 	totalIncome,
 	setCurrency,
 	currency,
 	setSort,
-	setAccountMovements,
-	accounts,
+	// setAccountMovements,
 	user,
 	sort,
 }) {
@@ -76,21 +75,16 @@ function MainApp({
 						totalIncome={totalIncome}
 						currency={currency}
 						setSort={setSort}
-						accounts={accounts}
 						user={user}
 					/>
 					<ExpenseSummary
-						accountMovements={accountMovements}
 						totalExpenses={totalExpenses}
 						totalIncome={totalIncome}
 						currency={currency}
 						setSort={setSort}
-						accounts={accounts}
 						user={user}
 					/>
 					<BasicCardFX
-						accountMovements={accountMovements}
-						setAccountMovements={setAccountMovements}
 						setOpenToast={setOpenToast}
 
 						// totalExpenses={totalExpenses}
@@ -125,17 +119,8 @@ function MainApp({
 							backgroundColor: '##f3e5f5',
 						}}
 					>
-						<PieChart
-							accountMovements={accountMovements}
-							currency={currency}
-							sort={sort}
-							setSort={setSort}
-						/>
-						<PieEuro
-							accountMovements={accountMovements}
-							currency={currency}
-							sort={sort}
-						/>
+						<PieChart currency={currency} sort={sort} setSort={setSort} />
+						<PieEuro currency={currency} sort={sort} />
 					</Stack>
 				</Card>
 
@@ -148,7 +133,7 @@ function MainApp({
 								flexGrow: 1,
 							}}
 						>
-							<Movements accountMovements={accountMovements} sort={sort} />
+							<Movements />
 						</Box>
 						<Box
 							component="section"
@@ -157,10 +142,7 @@ function MainApp({
 								flexGrow: 1,
 							}}
 						>
-							<MovementsExpenses
-								accountMovements={accountMovements}
-								sort={sort}
-							/>
+							<MovementsExpenses />
 						</Box>
 					</Stack>
 				</MovementList>

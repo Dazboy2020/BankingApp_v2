@@ -12,12 +12,12 @@ import Homepage from './components/Homepage/Homepage';
 import MainApp from './pages/MainApp';
 
 import { account1, account2, account3 } from './accounts';
+import { ContextProvider } from './context/context';
 
 let accounts = [account1, account2, account3];
 
 function App() {
 	const [currency, setCurrency] = useState('euro');
-	const [accountMovements, setAccountMovements] = useState(account1);
 	const [sort, setSort] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState('');
@@ -30,14 +30,10 @@ function App() {
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
 
-	const totalIncome = accountMovements[0].deposits.reduce(
-		(acc, mov) => acc + mov[0],
-		0
-	);
-	const totalExpenses = accountMovements[1]?.expenses.reduce(
-		(acc, mov) => acc + mov[0],
-		0
-	);
+	function LogUserOut() {
+		setIsLoggedIn(false);
+		setUser('');
+	}
 
 	const loggedInAccount = accounts.find((acc) => {
 		return acc[0].owner === user;
@@ -51,104 +47,97 @@ function App() {
 		setSort(false);
 	}
 
-	function LogUserOut() {
-		setIsLoggedIn(false);
-		setUser('');
-	}
-
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route
-					index
-					element={
-						<>
-							<ResponsiveAppBar
-								accountMovements={accountMovements}
-								setUser={setUser}
-								setPin={setPin}
-								setClosePin={setClosePin}
-								switchCurrency={switchCurrency}
-								currency={currency}
-								open={open}
-								setOpen={setOpen}
-								LogUserOut={LogUserOut}
-								accounts={accounts}
-								setCloseUser={setCloseUser}
-								user={user}
-								openModal={openModal}
-								setOpenModal={setOpenModal}
-								isLoggedIn={isLoggedIn}
-								setIsLoggedIn={setIsLoggedIn}
-							/>
-							{!isLoggedIn && <Homepage />}
-						</>
-					}
-				/>
-				<Route
-					path="application"
-					element={
-						<>
-							<ResponsiveAppBar
-								accountMovements={accountMovements}
-								setUser={setUser}
-								setPin={setPin}
-								setClosePin={setClosePin}
-								switchCurrency={switchCurrency}
-								currency={currency}
-								open={open}
-								setOpen={setOpen}
-								LogUserOut={LogUserOut}
-								accounts={accounts}
-								setCloseUser={setCloseUser}
-								user={user}
-								openModal={openModal}
-								setOpenModal={setOpenModal}
-								isLoggedIn={isLoggedIn}
-								setIsLoggedIn={setIsLoggedIn}
-							/>
-							{user && (
-								<MainApp
-									accountMovements={accountMovements}
-									totalExpenses={totalExpenses}
-									totalIncome={totalIncome}
+		<ContextProvider>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						index
+						element={
+							<>
+								<ResponsiveAppBar
+									setUser={setUser}
+									setPin={setPin}
+									setClosePin={setClosePin}
+									switchCurrency={switchCurrency}
 									currency={currency}
-									setCurrency={setCurrency}
-									setSort={setSort}
-									sort={sort}
-									accounts={accounts}
-									user={user}
-									setAccountMovements={setAccountMovements}
-									setOpenToast={setOpenToast}
 									open={open}
 									setOpen={setOpen}
 									LogUserOut={LogUserOut}
-									openToast={openToast}
+									accounts={accounts}
+									setCloseUser={setCloseUser}
+									user={user}
 									openModal={openModal}
 									setOpenModal={setOpenModal}
+									isLoggedIn={isLoggedIn}
+									setIsLoggedIn={setIsLoggedIn}
 								/>
-							)}
-						</>
-					}
-				/>
-				<Route
-					path="login"
-					element={
-						<SignIn
-							pin={pin}
-							user={user}
-							setUser={setUser}
-							setPin={setPin}
-							loggedInAccount={loggedInAccount}
-							setIsLoggedIn={setIsLoggedIn}
-							isLoggedIn={isLoggedIn}
-							setAccountMovements={setAccountMovements}
-						/>
-					}
-				/>
-				<Route path="signup" element={<SignUp />} />
-			</Routes>
-		</BrowserRouter>
+								{!isLoggedIn && <Homepage />}
+							</>
+						}
+					/>
+					<Route
+						path="application"
+						element={
+							<>
+								<ResponsiveAppBar
+									setUser={setUser}
+									setPin={setPin}
+									setClosePin={setClosePin}
+									switchCurrency={switchCurrency}
+									currency={currency}
+									open={open}
+									setOpen={setOpen}
+									LogUserOut={LogUserOut}
+									accounts={accounts}
+									setCloseUser={setCloseUser}
+									user={user}
+									openModal={openModal}
+									setOpenModal={setOpenModal}
+									isLoggedIn={isLoggedIn}
+									setIsLoggedIn={setIsLoggedIn}
+								/>
+								{user && (
+									<MainApp
+										// totalExpenses={totalExpenses}
+										// totalIncome={totalIncome}
+										currency={currency}
+										setCurrency={setCurrency}
+										setSort={setSort}
+										sort={sort}
+										accounts={accounts}
+										user={user}
+										// setAccountMovements={setAccountMovements}
+										setOpenToast={setOpenToast}
+										open={open}
+										setOpen={setOpen}
+										LogUserOut={LogUserOut}
+										openToast={openToast}
+										openModal={openModal}
+										setOpenModal={setOpenModal}
+									/>
+								)}
+							</>
+						}
+					/>
+					<Route
+						path="login"
+						element={
+							<SignIn
+								pin={pin}
+								user={user}
+								setUser={setUser}
+								setPin={setPin}
+								loggedInAccount={loggedInAccount}
+								setIsLoggedIn={setIsLoggedIn}
+								isLoggedIn={isLoggedIn}
+							/>
+						}
+					/>
+					<Route path="signup" element={<SignUp />} />
+				</Routes>
+			</BrowserRouter>
+		</ContextProvider>
 	);
 }
 

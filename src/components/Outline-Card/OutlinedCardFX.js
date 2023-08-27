@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
+import { useAppContext } from '../../context/context';
 
 const menuType = [
 	{
@@ -60,10 +61,11 @@ const menuDeposit = [
 ];
 
 const BasicCardFX = ({
-	accountMovements,
-	setAccountMovements,
+	// accountMovements,
+	// setAccountMovements,
 	setOpenToast,
 }) => {
+	const { accountMovements, setAccountMovements } = useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
