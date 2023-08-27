@@ -7,11 +7,9 @@ import ResponsiveAppBar from './Navbar/NewNav';
 import Homepage from './components/Homepage/Homepage';
 import MainApp from './pages/MainApp';
 
-import { useAppContext } from './context/context';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
-	const { user } = useAppContext();
-
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -27,10 +25,10 @@ function App() {
 				<Route
 					path="application"
 					element={
-						<>
+						<ProtectedRoute>
 							<ResponsiveAppBar />
-							{user && <MainApp />}
-						</>
+							<MainApp />
+						</ProtectedRoute>
 					}
 				/>
 				<Route path="login" element={<SignIn />} />

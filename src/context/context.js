@@ -16,7 +16,7 @@ function ContextProvider({ children }) {
 	const [pin, setPin] = useState('');
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
-	const [user, setUser] = useState('');
+	const [user, setUser] = useState(null);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const totalIncome = accountMovements[0]?.deposits.reduce(
