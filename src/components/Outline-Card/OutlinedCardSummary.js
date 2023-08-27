@@ -6,14 +6,8 @@ import { Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 import { useAppContext } from '../../context/context';
 
-export default function BasicCardSummary({
-	// accountMovements,
-	currency,
-	totalExpenses,
-	// totalIncome,
-	setSort,
-}) {
-	const { totalIncome } = useAppContext();
+export default function BasicCardSummary() {
+	const { totalIncome, setSort } = useAppContext();
 	function handleSort() {
 		setSort((sort) => !sort);
 	}

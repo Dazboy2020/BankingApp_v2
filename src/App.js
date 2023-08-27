@@ -39,14 +39,6 @@ function App() {
 		return acc[0].owner === user;
 	});
 
-	function switchCurrency(e) {
-		setCurrency((curState) =>
-			curState === 'euro' ? (curState = 'usd') : 'euro'
-		);
-
-		setSort(false);
-	}
-
 	return (
 		<ContextProvider>
 			<BrowserRouter>
@@ -59,7 +51,6 @@ function App() {
 									setUser={setUser}
 									setPin={setPin}
 									setClosePin={setClosePin}
-									switchCurrency={switchCurrency}
 									currency={currency}
 									open={open}
 									setOpen={setOpen}
@@ -84,7 +75,6 @@ function App() {
 									setUser={setUser}
 									setPin={setPin}
 									setClosePin={setClosePin}
-									switchCurrency={switchCurrency}
 									currency={currency}
 									open={open}
 									setOpen={setOpen}
@@ -99,15 +89,12 @@ function App() {
 								/>
 								{user && (
 									<MainApp
-										// totalExpenses={totalExpenses}
-										// totalIncome={totalIncome}
 										currency={currency}
 										setCurrency={setCurrency}
 										setSort={setSort}
 										sort={sort}
 										accounts={accounts}
 										user={user}
-										// setAccountMovements={setAccountMovements}
 										setOpenToast={setOpenToast}
 										open={open}
 										setOpen={setOpen}

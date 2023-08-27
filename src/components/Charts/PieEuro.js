@@ -12,7 +12,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { Typography, Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
-function PieEuro({ currency, sort }) {
+function PieEuro() {
 	const { accountMovements } = useAppContext();
 	const totalIncome = accountMovements[0].deposits.reduce(
 		(acc, mov) => acc + mov[0],

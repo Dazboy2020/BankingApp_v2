@@ -13,8 +13,8 @@ import { Doughnut } from 'react-chartjs-2';
 import { Typography, Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
-function PieChart({ currency, sort, setSort }) {
-	const { accountMovements } = useAppContext();
+function PieChart() {
+	const { accountMovements, currency, sort } = useAppContext();
 	// const [category, setCategory] = useState(false);
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);

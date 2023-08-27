@@ -119,7 +119,7 @@ function MainApp({
 							backgroundColor: '##f3e5f5',
 						}}
 					>
-						<PieChart currency={currency} sort={sort} setSort={setSort} />
+						<PieChart />
 						<PieEuro currency={currency} sort={sort} />
 					</Stack>
 				</Card>
