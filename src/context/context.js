@@ -16,6 +16,8 @@ function ContextProvider({ children }) {
 	const [pin, setPin] = useState('');
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
+	const [user, setUser] = useState('');
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const totalIncome = accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
@@ -32,6 +34,15 @@ function ContextProvider({ children }) {
 		);
 
 		setSort(false);
+	}
+
+	const loggedInAccount = accounts.find((acc) => {
+		return acc[0].owner === user;
+	});
+
+	function LogUserOut() {
+		setIsLoggedIn(false);
+		setUser('');
 	}
 
 	return (
@@ -59,6 +70,12 @@ function ContextProvider({ children }) {
 				setClosePin,
 				closeUser,
 				setCloseUser,
+				user,
+				setUser,
+				isLoggedIn,
+				setIsLoggedIn,
+				loggedInAccount,
+				LogUserOut,
 			}}
 		>
 			{children}

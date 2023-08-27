@@ -20,7 +20,7 @@ import theme from '../theme';
 
 import classes from './MainApp.module.css';
 
-function MainApp({ LogUserOut }) {
+function MainApp() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
@@ -32,8 +32,8 @@ function MainApp({ LogUserOut }) {
 					margin: { xs: 'none', md: '1rem' },
 				}}
 			>
-				<AlertDialogSlide LogUserOut={LogUserOut} />
-				<CloseAccountModal LogUserOut={LogUserOut} />
+				<AlertDialogSlide />
+				<CloseAccountModal />
 				<Toast />
 
 				<Stack

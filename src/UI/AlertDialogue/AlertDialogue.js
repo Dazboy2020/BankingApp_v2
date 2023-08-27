@@ -13,8 +13,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({ LogUserOut }) {
-	const { open, setOpen } = useAppContext();
+export default function AlertDialogSlide() {
+	const { open, setOpen, LogUserOut } = useAppContext();
 
 	const navigate = useNavigate();
 

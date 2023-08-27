@@ -21,7 +21,7 @@ const options = {
 
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
-function ResponsiveAppBar({ setUser, user, isLoggedin }) {
+function ResponsiveAppBar() {
 	const {
 		switchCurrency,
 		accounts,
@@ -30,6 +30,9 @@ function ResponsiveAppBar({ setUser, user, isLoggedin }) {
 		setPin,
 		setClosePin,
 		setCloseUser,
+		user,
+		setUser,
+		isLoggedin,
 	} = useAppContext();
 
 	const navigate = useNavigate();

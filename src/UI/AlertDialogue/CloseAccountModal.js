@@ -13,8 +13,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CloseAccountModal({ LogUserOut }) {
-	const { openModal, setOpenModal } = useAppContext();
+export default function CloseAccountModal() {
+	const { openModal, setOpenModal, LogUserOut } = useAppContext();
 	const navigate = useNavigate();
 	function handleYes() {
 		console.log('CLICK');

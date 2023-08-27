@@ -40,13 +40,16 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignIn({
-	user,
-	setUser,
-	loggedInAccount,
-	setIsLoggedIn,
-}) {
-	const { setAccountMovements, pin, setPin } = useAppContext();
+export default function SignIn() {
+	const {
+		setAccountMovements,
+		pin,
+		setPin,
+		user,
+		setUser,
+		loggedInAccount,
+		setIsLoggedIn,
+	} = useAppContext();
 	const [error, setError] = useState(false);
 	const navigate = useNavigate();
 
