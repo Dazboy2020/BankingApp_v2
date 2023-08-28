@@ -38,23 +38,16 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const {
-		pin,
-		// setPin,
-		user,
-		// setUser,
-		// loggedInAccount,
-		logUserIn,
-		error,
-		// setError,
-		dispatch,
-	} = useAppContext();
+	const { pin, user, logUserIn, error, dispatch } = useAppContext();
 	const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		logUserIn();
+
+		// user ? navigate('/application') : navigate('/login');
+		// if (!user) navigate('/login');
 		if (user) navigate('/application');
 	};
 

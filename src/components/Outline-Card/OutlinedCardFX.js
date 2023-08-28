@@ -61,8 +61,7 @@ const menuDeposit = [
 ];
 
 const BasicCardFX = () => {
-	const { setOpenToast } = useAppContext();
-	const { accountMovements, setAccountMovements } = useAppContext();
+	const { accountMovements, handleExpenseItem, setOpenToast } = useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
@@ -90,8 +89,14 @@ const BasicCardFX = () => {
 
 	useEffect(
 		function () {
-			if (expenseType === 'expense') setLabel('expense');
-			if (expenseType === 'deposit') setLabel('deposit');
+			if (expenseType === 'expense') {
+				setLabel('expense');
+				setExpenseCategory('');
+			}
+			if (expenseType === 'deposit') {
+				setLabel('deposit');
+				setExpenseCategory('');
+			}
 		},
 		[expenseType]
 	);
@@ -134,7 +139,7 @@ const BasicCardFX = () => {
 			},
 		];
 
-		setAccountMovements(updatedAccount);
+		handleExpenseItem(updatedAccount);
 		setExpenseAmount('');
 		setOpenToast(true);
 		setExpenseCategory('');

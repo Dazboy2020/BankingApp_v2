@@ -34,10 +34,13 @@ function reducer(state, action) {
 				};
 			} else {
 				return {
-					Error: true,
+					...state,
+					loggedInAccount: '',
+					error: true,
 					pin: '',
 					user: '',
 					isLoggedIn: false,
+					accountMovements: [],
 				};
 			}
 
@@ -47,6 +50,12 @@ function reducer(state, action) {
 				isLoggedIn: false,
 				user: '',
 				pin: '',
+			};
+
+		case 'add/expense-depsoit':
+			return {
+				...state,
+				accountMovements: action.payload,
 			};
 
 		default:
@@ -101,6 +110,10 @@ function ContextProvider({ children }) {
 		dispatch({ type: 'user/LoggedOut' });
 	}
 
+	function handleExpenseItem(updatedAccount) {
+		dispatch({ type: 'add/expense-depsoit', payload: updatedAccount });
+	}
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -135,6 +148,7 @@ function ContextProvider({ children }) {
 				logUserIn,
 				error,
 				// setError,
+				handleExpenseItem,
 				dispatch,
 			}}
 		>
