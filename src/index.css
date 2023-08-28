@@ -52,8 +52,4 @@ body::-webkit-scrollbar {
 	.cardsummary {
 		margin-right: 0;
 	}
-
-	.homepage {
-		height: 100vh;
-	}
 }
