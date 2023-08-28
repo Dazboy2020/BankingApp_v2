@@ -42,19 +42,6 @@ function PieEuro() {
 
 	const options = {
 		plugins: {
-			// legend: {
-			// 	position: 'left',
-			// 	rtl: true,
-			// 	labels: {
-			// 		usePointStyle: true,
-			// 		pointStyle: 'circle',
-			// 		padding: 20,
-			// 		font: {
-			// 			size: 16,
-			// 			weight: 'bold',
-			// 		},
-			// 	},
-			// },
 			title: {
 				display: true,
 				text: 'Income vs. Expenses',
@@ -74,13 +61,11 @@ function PieEuro() {
 				display: 'flex',
 				flexDirection: 'column',
 				position: 'relative',
-				// flexGrow: 1,
 			}}
 		>
 			<Typography
 				variant="h5"
 				sx={{
-					// maxWidth: '100%',
 					padding: '1rem',
 					backgroundColor: '#3a7ca5',
 					color: 'white',

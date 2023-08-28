@@ -1,6 +1,3 @@
-// import RedoIcon from '@mui/icons-material/Redo';
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
 import {
 	Chart as ChartJS,
 	ArcElement,
@@ -15,7 +12,6 @@ import { useAppContext } from '../../context/context';
 
 function PieChart() {
 	const { accountMovements, currency, sort } = useAppContext();
-	// const [category, setCategory] = useState(false);
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
@@ -28,17 +24,10 @@ function PieChart() {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
-	// let chartLabel;
-	// // label as category:
-	// let labelCategory = moves.map((item) =>
-	// 	item[0] > 0 ? `${item[0]}` : `${item[2]}`
-	// );
-
 	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
 	let label = moves.map((item) => item[0]);
 	let dataSetLabel = currency === 'euro' ? 'Income' : 'Expense';
 	let titleText = currency === 'euro' ? 'INCOME' : 'EXPENSES';
-	// chartLabel = category ? label : labelCategory;
 
 	const userData = {
 		labels: label,
@@ -46,9 +35,6 @@ function PieChart() {
 			{
 				label: dataSetLabel,
 				data: moves.map((item) => item[0]),
-				// label: dataSetLabel,
-
-				// data: moves.map((item) => item[0]),
 				backgroundColor: bgColor,
 			},
 		],
@@ -56,19 +42,6 @@ function PieChart() {
 
 	const options = {
 		plugins: {
-			// legend: {
-			// 	position: 'left',
-			// 	rtl: true,
-			// 	labels: {
-			// 		usePointStyle: true,
-			// 		pointStyle: 'circle',
-			// 		padding: 20,
-			// 		font: {
-			// 			size: 16,
-			// 			weight: 'bold',
-			// 		},
-			// 	},
-			// },
 			title: {
 				display: true,
 				text: titleText,
@@ -79,14 +52,6 @@ function PieChart() {
 			},
 		},
 	};
-
-	// function handleSort() {
-	// 	setSort((sort) => !sort);
-	// }
-
-	// function handleCategory() {
-	// 	setCategory((category) => !category);
-	// }
 
 	return (
 		<Box
@@ -120,50 +85,6 @@ function PieChart() {
 			>
 				<Doughnut data={userData} options={options} />
 			</div>
-			{/* <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-				<Button
-					variant="contained"
-					onClick={handleSort}
-					sx={{
-						'&:hover': {
-							backgroundColor: '#680747',
-							cursor: 'default',
-						},
-						bgcolor: '#f70776',
-						color: 'white',
-						mt: 2,
-						minWidth: '9rem',
-						margin: '.5rem',
-						padding: 1,
-					}}
-					size="s"
-					color="inherit"
-					startIcon={<RedoIcon />}
-				>
-					Sort
-				</Button>
-				<Button
-					onClick={handleCategory}
-					variant="contained"
-					sx={{
-						'&:hover': {
-							backgroundColor: '#680747',
-							cursor: 'default',
-						},
-						bgcolor: '#f70776',
-						color: 'white',
-						mt: 2,
-						minWidth: '9rem',
-						margin: '.5rem',
-						padding: 1,
-					}}
-					size="s"
-					color="inherit"
-					startIcon={<ShoppingCartIcon />}
-				>
-					{category ? 'CATEGORY' : 'AMOUNT'}
-				</Button>
-			</Box> */}
 		</Box>
 	);
 }

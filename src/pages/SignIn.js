@@ -56,7 +56,6 @@ export default function SignIn() {
 
 		logUserIn();
 		if (user) navigate('/application');
-		console.log(user);
 	};
 
 	// function onBlurHandler() {
