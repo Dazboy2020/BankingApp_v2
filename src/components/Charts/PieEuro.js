@@ -13,12 +13,12 @@ import { Typography, Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
 function PieEuro() {
-	const { accountMovements } = useAppContext();
-	const totalIncome = accountMovements[0].deposits.reduce(
+	const { state } = useAppContext();
+	const totalIncome = state.accountMovements[0].deposits.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const totalExpenses = accountMovements[1]?.expenses.reduce(
+	const totalExpenses = state.accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);

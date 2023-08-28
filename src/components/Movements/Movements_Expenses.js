@@ -4,9 +4,9 @@ import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
 
 const MovementsExpenses = () => {
-	const { accountMovements, sort } = useAppContext();
+	const { sort, state } = useAppContext();
 
-	const movementsToDisplay = accountMovements[1].expenses;
+	const movementsToDisplay = state.accountMovements[1].expenses;
 
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])

@@ -61,16 +61,16 @@ const menuDeposit = [
 ];
 
 const BasicCardFX = () => {
-	const { accountMovements, handleExpenseItem, setOpenToast } = useAppContext();
+	const { handleExpenseItem, setOpenToast, state } = useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
 
-	const updatedDeposits = accountMovements[0].deposits.map(
+	const updatedDeposits = state.accountMovements[0].deposits.map(
 		(movement) => movement
 	);
-	const updatedExpenses = accountMovements[1].expenses.map(
+	const updatedExpenses = state.accountMovements[1].expenses.map(
 		(movement) => movement
 	);
 
@@ -130,11 +130,11 @@ const BasicCardFX = () => {
 
 		updatedAccount = [
 			{
-				...accountMovements[0],
+				...state.accountMovements[0],
 				deposits: updatedDeposits,
 			},
 			{
-				...accountMovements[1],
+				...state.accountMovements[1],
 				expenses: updatedExpenses,
 			},
 		];

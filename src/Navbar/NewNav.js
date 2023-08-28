@@ -24,23 +24,20 @@ const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 function ResponsiveAppBar() {
 	const {
 		switchCurrency,
-		accounts,
 		setOpenModal,
 		setOpen,
 		setPin,
 		setClosePin,
 		setCloseUser,
-		user,
+		// user,
 		setUser,
-		isLoggedin,
+		state,
 	} = useAppContext();
 
 	const navigate = useNavigate();
 
 	function handleClick() {
-		if (!isLoggedin) {
-			setOpen(true);
-		}
+		setOpen(true);
 	}
 
 	function handleLogin() {
@@ -49,8 +46,8 @@ function ResponsiveAppBar() {
 
 	function closeAccountHandler() {
 		setOpenModal(true);
-		const index = accounts.findIndex((acc) => acc.owner === user);
-		accounts.splice(index, 1);
+		const index = state.accounts.findIndex((acc) => acc.owner === state.user);
+		state.accounts.splice(index, 1);
 		setClosePin('');
 		setCloseUser('');
 		setPin('');
@@ -66,14 +63,12 @@ function ResponsiveAppBar() {
 				alignContent: 'centre',
 				m: 0,
 				bgcolor: '#263238',
-
-				// mb: '1rem',
 			}}
 		>
 			<Container maxWidth="xxl">
 				<Toolbar disableGutters>
 					<Stack direction={{ xs: 'column', md: 'row' }}>
-						{user ? (
+						{state.isLoggedIn && (
 							<>
 								<Button
 									size="medium"
@@ -146,9 +141,10 @@ function ResponsiveAppBar() {
 									Logout
 								</Button>
 							</>
-						) : (
+						)}
+
+						{!state.isLoggedIn && (
 							<Button
-								// variant="contained"
 								sx={{
 									fontSize: { xs: '1rem', sm: '1.5rem' },
 									fontFamily: 'Nunito Sans',
@@ -158,7 +154,6 @@ function ResponsiveAppBar() {
 									},
 									bgcolor: '#f70776',
 									color: 'white',
-									// mt: 2,
 								}}
 								size="medium"
 								onClick={handleLogin}

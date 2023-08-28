@@ -11,14 +11,14 @@ import { Typography, Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
 function PieChart() {
-	const { accountMovements, currency, sort } = useAppContext();
+	const { currency, sort, state } = useAppContext();
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	const movementsToDisplay =
 		currency === 'euro'
-			? accountMovements[0].deposits
-			: accountMovements[1].expenses;
+			? state.accountMovements[0].deposits
+			: state.accountMovements[1].expenses;
 
 	const moves = sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -59,7 +59,6 @@ function PieChart() {
 				display: 'flex',
 				flexDirection: 'column',
 				position: 'relative',
-				// flexGrow: 1,
 			}}
 		>
 			<Typography

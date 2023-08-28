@@ -3,18 +3,19 @@ import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
 
 function ProtectedRoute({ children }) {
-	const { user } = useAppContext();
+	const { state } = useAppContext();
+	console.log(state);
 
 	const navigate = useNavigate();
 
 	useEffect(
 		function () {
-			if (!user) navigate('/');
+			if (!state.user) navigate('/');
 		},
-		[user, navigate]
+		[state.user, navigate]
 	);
 
-	return user ? children : null;
+	return state.user ? children : null;
 }
 
 export default ProtectedRoute;

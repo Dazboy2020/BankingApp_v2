@@ -30,7 +30,8 @@ function reducer(state, action) {
 					...state,
 					accountMovements: loggedInAccount,
 					isLoggedIn: true,
-					loggedInAccount,
+					loggedInAccount: state.accounts[0].owner,
+					user: loggedInAccount[0].owner,
 				};
 			} else {
 				return {
@@ -65,7 +66,7 @@ function reducer(state, action) {
 
 function ContextProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, inititalState);
-	const { accountMovements, accounts, isLoggedIn, pin, user, error } = state;
+	// const { accountMovements, accounts, isLoggedIn, pin, user, error } = state;
 
 	// let accounts = [account1, account2, account3];
 	const [currency, setCurrency] = useState('euro');
@@ -81,11 +82,11 @@ function ContextProvider({ children }) {
 	// const [isLoggedIn, setIsLoggedIn] = useState(false);
 	// const [error, setError] = useState(false);
 
-	const totalIncome = accountMovements[0]?.deposits.reduce(
+	const totalIncome = state.accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const totalExpenses = accountMovements[1]?.expenses.reduce(
+	const totalExpenses = state.accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
@@ -98,12 +99,8 @@ function ContextProvider({ children }) {
 		setSort(false);
 	}
 
-	const loggedInAccount = accounts.find((acc) => {
-		return acc[0].owner === inititalState.user;
-	});
-
-	function logUserIn() {
-		dispatch({ type: 'user/LoggedIn' });
+	function logUserIn(user, pin) {
+		dispatch({ type: 'user/LoggedIn', payload: { user, pin } });
 	}
 
 	function LogUserOut() {
@@ -121,9 +118,9 @@ function ContextProvider({ children }) {
 				setSort,
 				switchCurrency,
 				sort,
-				accountMovements,
+				// accountMovements,
 				// setAccountMovements,
-				accounts,
+				// accounts,
 				totalIncome,
 				totalExpenses,
 				currency,
@@ -133,23 +130,24 @@ function ContextProvider({ children }) {
 				setOpenModal,
 				openToast,
 				setOpenToast,
-				pin,
+				// pin,
 				// setPin,
 				closePin,
 				setClosePin,
 				closeUser,
 				setCloseUser,
-				user,
+				// user,
 				// setUser,
-				isLoggedIn,
+				// isLoggedIn,
 				// setIsLoggedIn,
-				loggedInAccount,
+				// loggedInAccount,
 				LogUserOut,
 				logUserIn,
-				error,
+				// error,
 				// setError,
 				handleExpenseItem,
 				dispatch,
+				state,
 			}}
 		>
 			{children}

@@ -38,17 +38,15 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const { pin, user, logUserIn, error, dispatch } = useAppContext();
+	const { state, dispatch, logUserIn } = useAppContext();
 	const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		logUserIn();
+		logUserIn(state.user, state.pin);
 
-		// user ? navigate('/application') : navigate('/login');
-		// if (!user) navigate('/login');
-		if (user) navigate('/application');
+		if (state.user) navigate('/application');
 	};
 
 	// function onBlurHandler() {
@@ -93,7 +91,7 @@ export default function SignIn() {
 									name="username"
 									autoComplete="username"
 									autoFocus
-									value={user}
+									value={state.user}
 									onChange={(e) =>
 										dispatch({
 											type: 'field',
@@ -113,7 +111,7 @@ export default function SignIn() {
 									type="password"
 									id="pin"
 									autoComplete="current-pin"
-									value={pin}
+									value={state.pin}
 									onChange={(e) =>
 										dispatch({
 											type: 'field',
@@ -124,7 +122,7 @@ export default function SignIn() {
 									// onBlur={onBlurHandler}
 									color="secondary"
 								/>
-								{error ? (
+								{state.error ? (
 									<p style={{ color: 'red' }}>Something went wrong!</p>
 								) : (
 									<p style={{ color: 'white' }}>Something went wrong!</p>
