@@ -15,10 +15,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../Navbar/NewNav';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
 
 import classes from './SignIn.module.css';
 import { useAppContext } from '../context/context';
@@ -42,29 +42,22 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 	const {
-		setAccountMovements,
 		pin,
 		setPin,
 		user,
 		setUser,
 		loggedInAccount,
-		setIsLoggedIn,
+		logUserIn,
+		error,
+		setError,
 	} = useAppContext();
-	const [error, setError] = useState(false);
 	const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		if (loggedInAccount && loggedInAccount[0].pin === +pin) {
-			setAccountMovements(loggedInAccount);
-			setIsLoggedIn(true);
-			navigate('/application');
-		} else {
-			setError(true);
-			setPin('');
-			setUser('');
-		}
+		logUserIn();
+		if (loggedInAccount) navigate('/application');
 	};
 
 	function onBlurHandler() {

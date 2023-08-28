@@ -1,11 +1,52 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useReducer, useState } from 'react';
 import { account1, account2, account3 } from '../accounts';
 
 const AppContext = createContext();
 
-// function reducer(state, action) {}
+const inititalState = {
+	accountMovements: [],
+	accounts: [account1, account2, account3],
+	isLoggedIn: false,
+	pin: '',
+	user: '',
+	error: false,
+};
+
+function reducer(state, action) {
+	switch (action.type) {
+		case 'user/LoggedIn':
+			const loggedInAccount = inititalState.accounts.find((acc) => {
+				return acc[0].owner === inititalState.user;
+			});
+			if (loggedInAccount && loggedInAccount[0].pin === +inititalState.pin) {
+				return {
+					...state,
+					accountMovements: loggedInAccount,
+					isLoggedIn: true,
+				};
+			} else {
+				return {
+					Error: true,
+					pin: '',
+					user: '',
+				};
+			}
+
+		case 'user/LoggedOut':
+			return {
+				...state,
+				isLoggedIn: false,
+				user: '',
+			};
+
+		default:
+			return state;
+	}
+}
 
 function ContextProvider({ children }) {
+	const [state, dispatch] = useReducer(reducer, inititalState);
+
 	let accounts = [account1, account2, account3];
 	const [currency, setCurrency] = useState('euro');
 	const [sort, setSort] = useState(false);
@@ -18,6 +59,7 @@ function ContextProvider({ children }) {
 	const [closeUser, setCloseUser] = useState('');
 	const [user, setUser] = useState('');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [error, setError] = useState(false);
 
 	const totalIncome = accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
@@ -37,12 +79,15 @@ function ContextProvider({ children }) {
 	}
 
 	const loggedInAccount = accounts.find((acc) => {
-		return acc[0].owner === user;
+		return acc[0].owner === inititalState.user;
 	});
 
+	function logUserIn() {
+		dispatch({ type: 'user/LoggedIn' });
+	}
+
 	function LogUserOut() {
-		setIsLoggedIn(false);
-		setUser('');
+		dispatch({ type: 'user/LoggedOut' });
 	}
 
 	return (
@@ -76,6 +121,9 @@ function ContextProvider({ children }) {
 				setIsLoggedIn,
 				loggedInAccount,
 				LogUserOut,
+				logUserIn,
+				error,
+				setError,
 			}}
 		>
 			{children}
