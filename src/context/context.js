@@ -7,6 +7,7 @@ const inititalState = {
 	accountMovements: [],
 	accounts: [account1, account2, account3],
 	isLoggedIn: false,
+	loggedInAccount: '',
 	pin: '',
 	user: '',
 	error: false,
@@ -14,21 +15,29 @@ const inititalState = {
 
 function reducer(state, action) {
 	switch (action.type) {
+		case 'field': {
+			return {
+				...state,
+				[action.fieldName]: action.payload,
+			};
+		}
 		case 'user/LoggedIn':
-			const loggedInAccount = inititalState.accounts.find((acc) => {
-				return acc[0].owner === inititalState.user;
+			const loggedInAccount = state.accounts.find((acc) => {
+				return acc[0].owner === state.user;
 			});
-			if (loggedInAccount && loggedInAccount[0].pin === +inititalState.pin) {
+			if (loggedInAccount && loggedInAccount[0].pin === +state.pin) {
 				return {
 					...state,
 					accountMovements: loggedInAccount,
 					isLoggedIn: true,
+					loggedInAccount,
 				};
 			} else {
 				return {
 					Error: true,
 					pin: '',
 					user: '',
+					isLoggedIn: false,
 				};
 			}
 
@@ -37,6 +46,7 @@ function reducer(state, action) {
 				...state,
 				isLoggedIn: false,
 				user: '',
+				pin: '',
 			};
 
 		default:
@@ -46,20 +56,21 @@ function reducer(state, action) {
 
 function ContextProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, inititalState);
+	const { accountMovements, accounts, isLoggedIn, pin, user, error } = state;
 
-	let accounts = [account1, account2, account3];
+	// let accounts = [account1, account2, account3];
 	const [currency, setCurrency] = useState('euro');
 	const [sort, setSort] = useState(false);
-	const [accountMovements, setAccountMovements] = useState(account1);
+	// const [accountMovements, setAccountMovements] = useState(account1);
 	const [open, setOpen] = useState(false);
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
-	const [pin, setPin] = useState('');
+	// const [pin, setPin] = useState('');
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
-	const [user, setUser] = useState('');
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [error, setError] = useState(false);
+	// const [user, setUser] = useState('');
+	// const [isLoggedIn, setIsLoggedIn] = useState(false);
+	// const [error, setError] = useState(false);
 
 	const totalIncome = accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
@@ -98,7 +109,7 @@ function ContextProvider({ children }) {
 				switchCurrency,
 				sort,
 				accountMovements,
-				setAccountMovements,
+				// setAccountMovements,
 				accounts,
 				totalIncome,
 				totalExpenses,
@@ -110,20 +121,21 @@ function ContextProvider({ children }) {
 				openToast,
 				setOpenToast,
 				pin,
-				setPin,
+				// setPin,
 				closePin,
 				setClosePin,
 				closeUser,
 				setCloseUser,
 				user,
-				setUser,
+				// setUser,
 				isLoggedIn,
-				setIsLoggedIn,
+				// setIsLoggedIn,
 				loggedInAccount,
 				LogUserOut,
 				logUserIn,
 				error,
-				setError,
+				// setError,
+				dispatch,
 			}}
 		>
 			{children}

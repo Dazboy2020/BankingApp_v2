@@ -17,9 +17,6 @@ import ResponsiveAppBar from '../Navbar/NewNav';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 
-// import { useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
-
 import classes from './SignIn.module.css';
 import { useAppContext } from '../context/context';
 
@@ -43,13 +40,14 @@ const defaultTheme = createTheme();
 export default function SignIn() {
 	const {
 		pin,
-		setPin,
+		// setPin,
 		user,
-		setUser,
-		loggedInAccount,
+		// setUser,
+		// loggedInAccount,
 		logUserIn,
 		error,
-		setError,
+		// setError,
+		dispatch,
 	} = useAppContext();
 	const navigate = useNavigate();
 
@@ -57,14 +55,15 @@ export default function SignIn() {
 		event.preventDefault();
 
 		logUserIn();
-		if (loggedInAccount) navigate('/application');
+		if (user) navigate('/application');
+		console.log(user);
 	};
 
-	function onBlurHandler() {
-		setError(false);
+	// function onBlurHandler() {
+	// 	setError(false);
 
-		if (user.length > 0) setError(false);
-	}
+	// 	if (user.length > 0) setError(false);
+	// }
 
 	return (
 		<>
@@ -103,8 +102,14 @@ export default function SignIn() {
 									autoComplete="username"
 									autoFocus
 									value={user}
-									onChange={(e) => setUser(e.target.value)}
-									onBlur={onBlurHandler}
+									onChange={(e) =>
+										dispatch({
+											type: 'field',
+											fieldName: 'user',
+											payload: e.currentTarget.value,
+										})
+									}
+									// onBlur={onBlurHandler}
 									color="secondary"
 								/>
 								<TextField
@@ -117,8 +122,14 @@ export default function SignIn() {
 									id="pin"
 									autoComplete="current-pin"
 									value={pin}
-									onChange={(e) => setPin(e.target.value)}
-									onBlur={onBlurHandler}
+									onChange={(e) =>
+										dispatch({
+											type: 'field',
+											fieldName: 'pin',
+											payload: e.currentTarget.value,
+										})
+									}
+									// onBlur={onBlurHandler}
 									color="secondary"
 								/>
 								{error ? (
