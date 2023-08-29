@@ -98,14 +98,6 @@ function ContextProvider({ children }) {
 		0
 	);
 
-	function logUserIn(user, pin) {
-		dispatch({ type: 'user/LoggedIn', payload: { user, pin } });
-	}
-
-	function LogUserOut() {
-		dispatch({ type: 'user/LoggedOut' });
-	}
-
 	return (
 		<AppContext.Provider
 			value={{
@@ -122,9 +114,6 @@ function ContextProvider({ children }) {
 				setClosePin,
 				closeUser,
 				setCloseUser,
-
-				LogUserOut,
-				logUserIn,
 
 				dispatch,
 				state,

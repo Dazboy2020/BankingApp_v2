@@ -14,7 +14,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function AlertDialogSlide() {
-	const { open, setOpen, LogUserOut } = useAppContext();
+	const { open, setOpen, dispatch } = useAppContext();
 
 	const navigate = useNavigate();
 
@@ -24,7 +24,8 @@ export default function AlertDialogSlide() {
 
 	function handleYesLogout() {
 		setOpen(false);
-		LogUserOut();
+		dispatch({ type: 'user/LoggedOut' });
+
 		navigate('/');
 	}
 
