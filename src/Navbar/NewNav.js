@@ -23,13 +23,11 @@ const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar() {
 	const {
-		// switchCurrency,
 		setOpenModal,
 		setOpen,
 		setPin,
 		setClosePin,
 		setCloseUser,
-		// user,
 		setUser,
 		state,
 		dispatch,
