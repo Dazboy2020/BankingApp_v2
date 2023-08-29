@@ -4,11 +4,11 @@ import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
 
 const Movements = () => {
-	const { sort, state } = useAppContext();
+	const { state } = useAppContext();
 
 	const movementsToDisplay = state.accountMovements[0].deposits;
 
-	const moves = sort
+	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
@@ -17,7 +17,6 @@ const Movements = () => {
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
 				justifyContent: 'space-between',
-				// mb: 2,
 				flexGrow: 1,
 			}}
 		>

@@ -7,10 +7,7 @@ import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 import { useAppContext } from '../../context/context';
 
 export default function BasicCardSummary() {
-	const { totalIncome, setSort } = useAppContext();
-	function handleSort() {
-		setSort((sort) => !sort);
-	}
+	const { totalIncome, dispatch } = useAppContext();
 
 	return (
 		<Card
@@ -35,7 +32,7 @@ export default function BasicCardSummary() {
 
 				<Button
 					variant="contained"
-					onClick={handleSort}
+					onClick={() => dispatch({ type: 'sort' })}
 					sx={{
 						'&:hover': {
 							backgroundColor: '#680747',

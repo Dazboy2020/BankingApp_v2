@@ -4,11 +4,11 @@ import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
 
 const MovementsExpenses = () => {
-	const { sort, state } = useAppContext();
+	const { state } = useAppContext();
 
 	const movementsToDisplay = state.accountMovements[1].expenses;
 
-	const moves = sort
+	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 

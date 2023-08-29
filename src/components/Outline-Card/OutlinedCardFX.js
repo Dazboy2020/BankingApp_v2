@@ -61,7 +61,7 @@ const menuDeposit = [
 ];
 
 const BasicCardFX = () => {
-	const { handleExpenseItem, setOpenToast, state } = useAppContext();
+	const { setOpenToast, state, dispatch } = useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
@@ -139,7 +139,8 @@ const BasicCardFX = () => {
 			},
 		];
 
-		handleExpenseItem(updatedAccount);
+		dispatch({ type: 'add/expense-depsoit', payload: updatedAccount });
+
 		setExpenseAmount('');
 		setOpenToast(true);
 		setExpenseCategory('');

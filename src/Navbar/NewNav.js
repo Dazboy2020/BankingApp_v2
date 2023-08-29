@@ -23,7 +23,7 @@ const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar() {
 	const {
-		switchCurrency,
+		// switchCurrency,
 		setOpenModal,
 		setOpen,
 		setPin,
@@ -32,6 +32,7 @@ function ResponsiveAppBar() {
 		// user,
 		setUser,
 		state,
+		dispatch,
 	} = useAppContext();
 
 	const navigate = useNavigate();
@@ -93,7 +94,7 @@ function ResponsiveAppBar() {
 										fontSize: { xs: '1rem', sm: '1.5rem' },
 										fontFamily: 'Nunito Sans',
 									}}
-									onClick={() => switchCurrency()}
+									onClick={() => dispatch({ type: 'switchCurrency' })}
 									size="medium"
 									color="inherit"
 									startIcon={

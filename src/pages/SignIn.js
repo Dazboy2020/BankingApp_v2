@@ -49,12 +49,6 @@ export default function SignIn() {
 		if (state.user) navigate('/application');
 	};
 
-	// function onBlurHandler() {
-	// 	setError(false);
-
-	// 	if (user.length > 0) setError(false);
-	// }
-
 	return (
 		<>
 			<ResponsiveAppBar />
