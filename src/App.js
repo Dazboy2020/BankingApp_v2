@@ -1,8 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ResponsiveAppBar from './Navbar/NewNav';
-import Homepage from './components/Homepage/Homepage';
-import { lazy } from 'react';
+// import ResponsiveAppBar from './Navbar/NewNav';
+// import Homepage from './components/Homepage/Homepage';
 import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 
 // import SignIn from './pages/SignIn';
@@ -13,6 +12,8 @@ import ProtectedRoute from './pages/ProtectedRoute';
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
+const ResponsiveAppBar = lazy(() => import('./Navbar/NewNav'));
+const Homepage = lazy(() => import('./components/Homepage/Homepage'));
 
 function App() {
 	return (
