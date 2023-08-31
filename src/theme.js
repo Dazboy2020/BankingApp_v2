@@ -43,6 +43,14 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiTypography: {
+			styleOverrides: {
+				// Target the typography inside the drawer content
+				root: {
+					fontSize: '20px', // Set your desired font size
+				},
+			},
+		},
 	},
 });
 
