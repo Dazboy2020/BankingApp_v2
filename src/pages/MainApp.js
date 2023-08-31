@@ -19,88 +19,100 @@ import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
 import theme from '../theme';
 
 import classes from './MainApp.module.css';
+import ResponsiveDrawer from '../components/Drawer/Draw';
 
 function MainApp() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<Paper
-				component="main"
-				className={classes.body}
-				elevation={24}
+			<ResponsiveDrawer />
+			<Box
 				sx={{
-					margin: { xs: 'none', md: '1rem' },
+					ml: { sm: '19rem', s: '.5rem' },
+					mr: { sm: '.5rem', m: '.5rem' },
 				}}
 			>
-				<AlertDialogSlide />
-				<CloseAccountModal />
-				<Toast />
-
-				<Stack
-					component="section"
-					spacing={3}
-					direction={{ s: 'column', sm: 'row' }}
+				<Paper
+					component="main"
+					className={classes.body}
+					elevation={24}
 					sx={{
-						justifyContent: 'space-between',
-						mt: 1,
-						mb: 2,
+						margin: { xs: 'none', md: '1rem' },
 					}}
 				>
-					<BasicCardSummary />
-					<ExpenseSummary />
-					<BasicCardFX />
-				</Stack>
+					<AlertDialogSlide />
+					<CloseAccountModal />
+					<Toast />
 
-				<Card>
 					<Stack
 						component="section"
-						spacing={2}
-						direction={{ xs: 'column', md: 'row' }}
+						spacing={3}
+						direction={{ sm: 'column', md: 'row' }}
 						sx={{
-							display: 'flex',
-							alignItems: 'centre',
-							justifyContent: 'space-around',
-							paddingTop: '1rem',
-							backgroundColor: '##f3e5f5',
-							mt: 2,
+							justifyContent: 'space-between',
+							mt: 1,
 							mb: 2,
 						}}
 					>
-						<PieChart />
-						<PieEuro />
+						<BasicCardSummary />
+						<ExpenseSummary />
+						<BasicCardFX />
 					</Stack>
-				</Card>
 
-				<Paper sx={{ mt: 2 }}>
-					<MovementList>
-						<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
-							<Box
-								component="section"
-								sx={{
-									display: 'flex',
-									flexGrow: 1,
-									width: '100%',
-									// justifyContent: 'flex-start',
-								}}
-							>
-								<Movements />
-							</Box>
-							<Box
-								component="section"
-								sx={{
-									display: 'flex',
-									flexGrow: 1,
-									width: '100%',
-
-									// justifyContent: 'flex-start',
-								}}
-							>
-								<MovementsExpenses />
-							</Box>
+					<Card>
+						<Stack
+							component="section"
+							spacing={2}
+							direction={{ xs: 'column', md: 'row' }}
+							sx={{
+								display: 'flex',
+								alignItems: 'centre',
+								justifyContent: 'space-around',
+								paddingTop: '1rem',
+								backgroundColor: '##f3e5f5',
+								mt: 2,
+								mb: 2,
+							}}
+						>
+							<PieChart />
+							<PieEuro />
 						</Stack>
-					</MovementList>
+					</Card>
+
+					<Paper sx={{ mt: 2 }}>
+						<MovementList>
+							<Stack
+								component="section"
+								direction={{ xs: 'column', md: 'row' }}
+							>
+								<Box
+									component="section"
+									sx={{
+										display: 'flex',
+										flexGrow: 1,
+										width: '100%',
+										// justifyContent: 'flex-start',
+									}}
+								>
+									<Movements />
+								</Box>
+								<Box
+									component="section"
+									sx={{
+										display: 'flex',
+										flexGrow: 1,
+										width: '100%',
+
+										// justifyContent: 'flex-start',
+									}}
+								>
+									<MovementsExpenses />
+								</Box>
+							</Stack>
+						</MovementList>
+					</Paper>
 				</Paper>
-			</Paper>
+			</Box>
 		</ThemeProvider>
 	);
 }

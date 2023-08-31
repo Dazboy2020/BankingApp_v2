@@ -33,7 +33,7 @@ function App() {
 						path="application"
 						element={
 							<ProtectedRoute>
-								<ResponsiveAppBar />
+								{/* <ResponsiveAppBar /> */}
 								<MainApp />
 							</ProtectedRoute>
 						}
