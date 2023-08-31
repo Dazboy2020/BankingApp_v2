@@ -43,6 +43,7 @@ function MainApp() {
 					sx={{
 						justifyContent: 'space-between',
 						mt: 1,
+						mb: 2,
 					}}
 				>
 					<BasicCardSummary />
@@ -61,6 +62,8 @@ function MainApp() {
 							justifyContent: 'space-around',
 							paddingTop: '1rem',
 							backgroundColor: '##f3e5f5',
+							mt: 2,
+							mb: 2,
 						}}
 					>
 						<PieChart />
@@ -68,28 +71,32 @@ function MainApp() {
 					</Stack>
 				</Card>
 
-				<MovementList>
-					<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
-						<Box
-							component="section"
-							sx={{
-								display: 'flex',
-								flexGrow: 1,
-							}}
-						>
-							<Movements />
-						</Box>
-						<Box
-							component="section"
-							sx={{
-								display: 'flex',
-								flexGrow: 1,
-							}}
-						>
-							<MovementsExpenses />
-						</Box>
-					</Stack>
-				</MovementList>
+				<Paper sx={{ mt: 2 }}>
+					<MovementList>
+						<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
+							<Box
+								component="section"
+								sx={{
+									display: 'flex',
+									flexGrow: 1,
+									// justifyContent: 'flex-start',
+								}}
+							>
+								<Movements />
+							</Box>
+							<Box
+								component="section"
+								sx={{
+									display: 'flex',
+									flexGrow: 1,
+									// justifyContent: 'flex-start',
+								}}
+							>
+								<MovementsExpenses />
+							</Box>
+						</Stack>
+					</MovementList>
+				</Paper>
 			</Paper>
 		</ThemeProvider>
 	);

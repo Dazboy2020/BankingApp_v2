@@ -17,7 +17,7 @@ const MovementsExpenses = () => {
 			direction={{ s: 'column', sm: 'row' }}
 			sx={{
 				justifyContent: 'space-between',
-				// mb: 2,
+				alignItems: 'flex-start',
 				flexGrow: 1,
 			}}
 		>
