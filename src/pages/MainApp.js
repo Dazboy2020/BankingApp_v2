@@ -79,6 +79,7 @@ function MainApp() {
 								sx={{
 									display: 'flex',
 									flexGrow: 1,
+									width: '100%',
 									// justifyContent: 'flex-start',
 								}}
 							>
@@ -89,6 +90,8 @@ function MainApp() {
 								sx={{
 									display: 'flex',
 									flexGrow: 1,
+									width: '100%',
+
 									// justifyContent: 'flex-start',
 								}}
 							>
