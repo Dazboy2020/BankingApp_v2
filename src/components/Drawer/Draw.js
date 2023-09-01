@@ -17,7 +17,41 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { Button } from '@mui/material';
+
 const drawerWidth = 300;
+
+const ListNew = (props) => {
+	const itemsList = [
+		{
+			text: 'Home',
+			icon: <InboxIcon />,
+		},
+		{
+			text: 'About',
+			icon: <MailIcon />,
+		},
+		{
+			text: 'Contact',
+			icon: <MailIcon />,
+		},
+	];
+	return (
+		<List>
+			{itemsList.map((item, index) => {
+				const { text, icon } = item;
+				return (
+					<ListItem key={item.text}>
+						<Button>
+							{icon && <ListItemIcon>{icon}</ListItemIcon>}
+							<ListItemText primary={text} />
+						</Button>
+					</ListItem>
+				);
+			})}
+		</List>
+	);
+};
 
 function ResponsiveDrawer(props) {
 	const { window } = props;
@@ -32,16 +66,7 @@ function ResponsiveDrawer(props) {
 			<Toolbar />
 			<Divider />
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				<ListNew />
 			</List>
 			<Divider />
 			<List>

@@ -32,11 +32,9 @@ const theme = createTheme({
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					// Set the background color for the AppBar
-					backgroundColor: '#680747', // Replace with your desired background color
+					backgroundColor: '#680747',
 				},
 				colorDefault: {
-					// Set the color for the icons inside the AppBar to white
 					'& .MuiSvgIcon-root': {
 						color: 'white',
 					},
@@ -45,9 +43,15 @@ const theme = createTheme({
 		},
 		MuiTypography: {
 			styleOverrides: {
-				// Target the typography inside the drawer content
 				root: {
 					fontSize: '20px', // Set your desired font size
+				},
+			},
+		},
+		MuiButton: {
+			styleOverrides: {
+				text: {
+					color: '#fff',
 				},
 			},
 		},
