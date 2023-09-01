@@ -68,8 +68,11 @@ function ResponsiveDrawer(props) {
 			<AppBar
 				position="fixed"
 				sx={{
-					width: { sm: `calc(100% - ${drawerWidth}px)` },
-					ml: { sm: `${drawerWidth}px` },
+					width: {
+						sm: `calc(100% - ${drawerWidth - 40}px)`,
+						md: `calc(100% - ${drawerWidth}px)`,
+					},
+					ml: { sm: `${drawerWidth}px`, lg: `${drawerWidth + 100}px` },
 				}}
 			>
 				<Toolbar>
@@ -117,7 +120,8 @@ function ResponsiveDrawer(props) {
 						display: { xs: 'none', sm: 'block' },
 						'& .MuiDrawer-paper': {
 							boxSizing: 'border-box',
-							width: drawerWidth,
+							// width: drawerWidth,
+							width: { sm: `${drawerWidth - 40}px`, md: drawerWidth },
 						},
 					}}
 					open
@@ -130,7 +134,7 @@ function ResponsiveDrawer(props) {
 				sx={{
 					flexGrow: 1,
 					p: 3,
-					width: { sm: `calc(100% - ${drawerWidth}px)` },
+					width: { sm: `calc(100% - ${drawerWidth}px)`, md: drawerWidth },
 				}}
 			>
 				<Toolbar />
