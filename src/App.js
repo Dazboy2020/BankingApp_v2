@@ -12,8 +12,10 @@ import ProtectedRoute from './pages/ProtectedRoute';
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
+
 const ResponsiveAppBar = lazy(() => import('./Navbar/NewNav'));
 const Homepage = lazy(() => import('./components/Homepage/Homepage'));
+const About = lazy(() => import('./pages/About.js'));
 
 function App() {
 	return (
@@ -40,6 +42,7 @@ function App() {
 					/>
 					<Route path="login" element={<SignIn />} />
 					<Route path="signup" element={<SignUp />} />
+					<Route path="about" element={<About />} />
 				</Routes>
 			</Suspense>
 		</BrowserRouter>

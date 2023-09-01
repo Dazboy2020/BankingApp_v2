@@ -11,20 +11,15 @@ import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Card, Paper } from '@mui/material';
 import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
-
-import theme from '../theme';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';
 
 function MainApp() {
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
+		<>
 			<ResponsiveDrawer />
 			<Box
 				sx={{
@@ -113,7 +108,7 @@ function MainApp() {
 					</Paper>
 				</Paper>
 			</Box>
-		</ThemeProvider>
+		</>
 	);
 }
 

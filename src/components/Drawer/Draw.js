@@ -18,31 +18,37 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 300;
 
 const ListNew = (props) => {
+	const navigate = useNavigate();
+
 	const itemsList = [
 		{
-			text: 'Home',
+			text: 'Summary',
 			icon: <InboxIcon />,
+			onClick: () => navigate('/application'),
 		},
 		{
 			text: 'About',
 			icon: <MailIcon />,
+			onClick: () => navigate('/about'),
 		},
 		{
 			text: 'Contact',
 			icon: <MailIcon />,
+			onClick: () => navigate('/about'),
 		},
 	];
 	return (
 		<List>
 			{itemsList.map((item, index) => {
-				const { text, icon } = item;
+				const { text, icon, onClick } = item;
 				return (
-					<ListItem key={item.text}>
-						<Button>
+					<ListItem key={item.text} onClick={onClick}>
+						<Button onClick={onclick}>
 							{icon && <ListItemIcon>{icon}</ListItemIcon>}
 							<ListItemText primary={text} />
 						</Button>
