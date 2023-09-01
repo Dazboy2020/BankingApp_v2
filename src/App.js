@@ -13,7 +13,7 @@ const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
 
-const ResponsiveAppBar = lazy(() => import('./Navbar/NewNav'));
+const ResponsiveAppBar = lazy(() => import('./components/Navbar/NewNav'));
 const Homepage = lazy(() => import('./components/Homepage/Homepage'));
 const About = lazy(() => import('./pages/About.js'));
 
@@ -32,7 +32,7 @@ function App() {
 						}
 					/>
 					<Route
-						path="application"
+						path="overview"
 						element={
 							<ProtectedRoute>
 								{/* <ResponsiveAppBar /> */}

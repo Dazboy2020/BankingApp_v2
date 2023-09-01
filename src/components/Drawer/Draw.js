@@ -27,9 +27,9 @@ const ListNew = (props) => {
 
 	const itemsList = [
 		{
-			text: 'Summary',
+			text: 'Overview',
 			icon: <HouseIcon />,
-			onClick: () => navigate('/application'),
+			onClick: () => navigate('/overview'),
 		},
 		{
 			text: 'About',
@@ -79,7 +79,7 @@ function ResponsiveDrawer(props) {
 
 	const drawer = (
 		<div>
-			<Toolbar />
+			<Toolbar sx={{ minHeight: '128px' }} />
 			<Divider />
 			<List>
 				<ListNew />
@@ -113,7 +113,7 @@ function ResponsiveDrawer(props) {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h5" noWrap component="div">
+					<Typography variant="h4" noWrap component="div">
 						Expense Tracker
 					</Typography>
 				</Toolbar>

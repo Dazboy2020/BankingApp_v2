@@ -10,7 +10,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { Link, Stack } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { useAppContext } from '../context/context';
+import { useAppContext } from '../../context/context';
 
 const now = new Date();
 const options = {

@@ -4,7 +4,7 @@
 	overflow-y: hidden;
 	/* filter: invert(100%); */
 	/* font-family: 'Roboto Mono'; */
-	animation: fade 1s;
+	animation: fade 0.5s;
 }
 
 @media (max-width: 576px) {
