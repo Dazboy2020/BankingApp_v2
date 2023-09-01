@@ -6,16 +6,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+
+import HouseIcon from '@mui/icons-material/House';
 
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,7 @@ const ListNew = (props) => {
 	const itemsList = [
 		{
 			text: 'Summary',
-			icon: <InboxIcon />,
+			icon: <HouseIcon />,
 			onClick: () => navigate('/application'),
 		},
 		{
@@ -47,8 +47,18 @@ const ListNew = (props) => {
 			{itemsList.map((item, index) => {
 				const { text, icon, onClick } = item;
 				return (
-					<ListItem key={item.text} onClick={onClick}>
-						<Button onClick={onclick}>
+					<ListItem sx={{ width: '100%' }} key={item.text} onClick={onClick}>
+						<Button
+							sx={{
+								'&:hover': {
+									backgroundColor: '#680747',
+									cursor: 'default',
+								},
+								width: '100%',
+								textAlign: 'left',
+							}}
+							onClick={onclick}
+						>
 							{icon && <ListItemIcon>{icon}</ListItemIcon>}
 							<ListItemText primary={text} />
 						</Button>
@@ -73,19 +83,6 @@ function ResponsiveDrawer(props) {
 			<Divider />
 			<List>
 				<ListNew />
-			</List>
-			<Divider />
-			<List>
-				{['All mail', 'Trash', 'Spam'].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
-					</ListItem>
-				))}
 			</List>
 		</div>
 	);
