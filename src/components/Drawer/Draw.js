@@ -10,20 +10,30 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import EuroIcon from '@mui/icons-material/Euro';
+import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import HouseIcon from '@mui/icons-material/House';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context/context';
 
 const drawerWidth = 300;
 
 const ListNew = (props) => {
+	const { setOpen } = useAppContext();
 	const navigate = useNavigate();
+
+	function handleClick() {
+		console.log('Click');
+		setOpen(true);
+	}
 
 	const itemsList = [
 		{
@@ -32,14 +42,29 @@ const ListNew = (props) => {
 			onClick: () => navigate('/overview'),
 		},
 		{
-			text: 'About',
-			icon: <MailIcon />,
+			text: 'Expenses',
+			icon: <ShoppingCartIcon />,
 			onClick: () => navigate('/about'),
 		},
 		{
-			text: 'Contact',
-			icon: <MailIcon />,
+			text: 'Deposits',
+			icon: <EuroIcon />,
 			onClick: () => navigate('/about'),
+		},
+		{
+			text: 'Analytics',
+			icon: <PsychologyAltIcon />,
+			onClick: () => navigate('/about'),
+		},
+		{
+			text: 'Account',
+			icon: <AccountCircleIcon />,
+			onClick: () => navigate('/about'),
+		},
+		{
+			text: 'Logout',
+			icon: <ExitToAppIcon />,
+			onClick: handleClick,
 		},
 	];
 	return (
@@ -54,6 +79,7 @@ const ListNew = (props) => {
 									backgroundColor: '#680747',
 									cursor: 'default',
 								},
+								color: '#fff',
 								width: '100%',
 								textAlign: 'left',
 							}}
@@ -78,13 +104,13 @@ function ResponsiveDrawer(props) {
 	};
 
 	const drawer = (
-		<div>
-			<Toolbar sx={{ minHeight: '128px' }} />
+		<>
+			<Toolbar />
 			<Divider />
 			<List>
 				<ListNew />
 			</List>
-		</div>
+		</>
 	);
 
 	const container =
@@ -101,9 +127,10 @@ function ResponsiveDrawer(props) {
 						md: `calc(100% - ${drawerWidth}px)`,
 					},
 					ml: { sm: `${drawerWidth}px`, lg: `${drawerWidth + 100}px` },
+					minHeight: '6rem', //! new
 				}}
 			>
-				<Toolbar>
+				<Toolbar sx={{ height: '6rem' }}>
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
@@ -113,7 +140,13 @@ function ResponsiveDrawer(props) {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h4" noWrap component="div">
+					<Typography
+						sx={{
+							fontSize: { xs: '1.5rem', sm: '2rem' },
+						}}
+						noWrap
+						component="section"
+					>
 						Expense Tracker
 					</Typography>
 				</Toolbar>

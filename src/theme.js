@@ -44,17 +44,17 @@ const theme = createTheme({
 		MuiTypography: {
 			styleOverrides: {
 				root: {
-					fontSize: '20px', // Set your desired font size
+					// fontSize: '24px', // Set your desired font size
 				},
 			},
 		},
-		MuiButton: {
-			styleOverrides: {
-				text: {
-					color: '#fff',
-				},
-			},
-		},
+		// MuiButton: {
+		// 	styleOverrides: {
+		// 		text: {
+		// 			color: '#fff',
+		// 		},
+		// 	},
+		// },
 	},
 });
 
