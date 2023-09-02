@@ -2,8 +2,8 @@ import { Stack } from '@mui/system';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
-import BasicCardSummary from '../components/Outline-Card/OutlinedCardSummary';
-import BasicCardFX from '../components/Outline-Card/OutlinedCardFX';
+import BasicCardSummary from '../components/Outline-Card/Income';
+import BasicCardFX from '../components/Outline-Card/AddTransaction';
 import MovementList from '../components/Movements/MovementList';
 import Movements from '../components/Movements/Movements';
 
@@ -12,7 +12,7 @@ import PieEuro from '../components/Charts/PieEuro';
 
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { Box, Card, Paper } from '@mui/material';
-import ExpenseSummary from '../components/Outline-Card/OutlineExpenseSummary';
+import ExpenseSummary from '../components/Outline-Card/Expenses';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';

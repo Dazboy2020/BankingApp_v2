@@ -159,7 +159,7 @@ const BasicCardFX = () => {
 			<CardContent>
 				<Box>
 					<Typography
-						variant="h4"
+						variant="h5"
 						color="primary"
 						sx={{ mb: 2, fontWeight: 'bold' }}
 					>

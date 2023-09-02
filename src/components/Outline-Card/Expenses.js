@@ -24,7 +24,7 @@ export default function ExpenseSummary() {
 		>
 			<CardContent>
 				<Typography
-					variant="h4"
+					variant="h5"
 					color="primary"
 					sx={{ mb: 0.5, fontWeight: 'bold' }}
 				>
