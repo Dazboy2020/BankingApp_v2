@@ -44,22 +44,22 @@ const ListNew = (props) => {
 		{
 			text: 'Expenses',
 			icon: <ShoppingCartIcon />,
-			onClick: () => navigate('/about'),
+			onClick: () => navigate('/expenses'),
 		},
 		{
 			text: 'Deposits',
 			icon: <EuroIcon />,
-			onClick: () => navigate('/about'),
+			onClick: () => navigate('/deposits'),
 		},
 		{
 			text: 'Analytics',
 			icon: <PsychologyAltIcon />,
-			onClick: () => navigate('/about'),
+			onClick: () => navigate('/analytics'),
 		},
 		{
 			text: 'Account',
 			icon: <AccountCircleIcon />,
-			onClick: () => navigate('/about'),
+			onClick: () => navigate('/account'),
 		},
 		{
 			text: 'Logout',
