@@ -12,7 +12,7 @@ import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
-import { Box, Card, Paper } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';
@@ -48,8 +48,6 @@ function MainApp() {
 						direction={{ sm: 'column', md: 'row' }}
 						sx={{
 							justifyContent: 'space-between',
-							mt: 1,
-							mb: 2,
 						}}
 					>
 						<Income />
@@ -58,26 +56,25 @@ function MainApp() {
 						<AddTransaction />
 					</Stack>
 
-					<Card>
-						<Stack
-							component="section"
-							spacing={2}
-							direction={{ xs: 'column', md: 'row' }}
-							sx={{
-								display: 'flex',
-								alignItems: 'centre',
-								justifyContent: 'space-around',
-								paddingTop: '1rem',
-								backgroundColor: '##f3e5f5',
-								mt: 2,
-								mb: 2,
-							}}
-						>
-							<PieChart />
-							<PieEuro />
-						</Stack>
-					</Card>
+					{/* //! Charts */}
+					<Stack
+						component="section"
+						spacing={2}
+						direction={{ xs: 'column', md: 'row' }}
+						sx={{
+							display: 'flex',
+							alignItems: 'centre',
+							justifyContent: 'space-around',
+							paddingTop: '1rem',
+							backgroundColor: '##f3e5f5',
+							mb: 2,
+						}}
+					>
+						<PieChart />
+						<PieEuro />
+					</Stack>
 
+					{/* //!Movements */}
 					<Paper sx={{ mt: 2 }}>
 						<MovementList>
 							<Stack

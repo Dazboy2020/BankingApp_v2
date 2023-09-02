@@ -7,7 +7,7 @@ import {
 } from 'chart.js/auto';
 
 import { Doughnut } from 'react-chartjs-2';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Card, CardContent } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
 function PieChart() {
@@ -54,37 +54,42 @@ function PieChart() {
 	};
 
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				position: 'relative',
-			}}
-		>
-			<Typography
-				variant="h5"
-				sx={{
-					padding: '1rem',
-					backgroundColor: '#3a7ca5',
-					color: 'white',
-					textAlign: 'center',
-				}}
-			>
-				{state.currency === 'euro' ? 'INCOME' : 'EXPENSES'}
-			</Typography>
-			<div
-				className="canvas"
-				style={{
-					// width: '40rem',
-					width: '40vh',
-					height: 'auto',
-					margin: 'auto',
-					padding: '1rem',
-				}}
-			>
-				<Doughnut data={userData} options={options} />
-			</div>
-		</Box>
+		<Card sx={{ width: '100%' }}>
+			<CardContent>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						position: 'relative',
+					}}
+				>
+					<Typography
+						variant="h5"
+						sx={{
+							padding: '1rem',
+							backgroundColor: '#3a7ca5',
+							color: 'white',
+							textAlign: 'center',
+						}}
+					>
+						{state.currency === 'euro' ? 'INCOME' : 'EXPENSES'}
+					</Typography>
+					<div
+						className="canvas"
+						style={{
+							// width: '40rem',
+							width: '40vh',
+							height: '40vh',
+
+							margin: 'auto',
+							padding: '1rem',
+						}}
+					>
+						<Doughnut data={userData} options={options} />
+					</div>
+				</Box>
+			</CardContent>
+		</Card>
 	);
 }
 
