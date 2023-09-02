@@ -2,20 +2,23 @@ import { Stack } from '@mui/system';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
-import BasicCardSummary from '../components/Outline-Card/Income';
-import BasicCardFX from '../components/Outline-Card/AddTransaction';
+
 import MovementList from '../components/Movements/MovementList';
 import Movements from '../components/Movements/Movements';
+
+import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 
 import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { Box, Card, Paper } from '@mui/material';
-import ExpenseSummary from '../components/Outline-Card/Expenses';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';
+import AddTransaction from '../components/Outline-Card/AddTransaction';
+import Income from '../components/Outline-Card/Income';
+import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 
 function MainApp() {
 	return (
@@ -49,9 +52,10 @@ function MainApp() {
 							mb: 2,
 						}}
 					>
-						<BasicCardSummary />
+						<Income />
 						<ExpenseSummary />
-						<BasicCardFX />
+						<AvailbleFunds />
+						<AddTransaction />
 					</Stack>
 
 					<Card>

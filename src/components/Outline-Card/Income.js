@@ -5,8 +5,11 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 import { useAppContext } from '../../context/context';
+import { Box } from '@mui/material';
 
-export default function BasicCardSummary() {
+import PaidIcon from '@mui/icons-material/Paid';
+
+export default function Income() {
 	const { totalIncome, dispatch } = useAppContext();
 
 	return (
@@ -18,14 +21,24 @@ export default function BasicCardSummary() {
 				mb: 0.5,
 			}}
 		>
-			<CardContent>
-				<Typography
-					variant="h5"
-					color="primary"
-					sx={{ mb: 0.5, fontWeight: 'bold' }}
+			<CardContent sx={{ width: '100%' }}>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+						flexFlow: 1,
+					}}
 				>
-					Total Income
-				</Typography>
+					<Typography
+						variant="h5"
+						color="primary"
+						sx={{ mb: 0.5, fontWeight: 'bold' }}
+					>
+						Total Income
+					</Typography>
+					<PaidIcon sx={{ color: 'green', fontSize: 80 }} />
+				</Box>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{`€${totalIncome.toFixed(2)}`}
 				</Typography>

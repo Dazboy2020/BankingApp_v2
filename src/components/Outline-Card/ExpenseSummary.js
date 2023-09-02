@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Box, Button } from '@mui/material';
 import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
 import { useAppContext } from '../../context/context';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function ExpenseSummary() {
 	const { totalExpenses, dispatch } = useAppContext();
@@ -22,14 +23,24 @@ export default function ExpenseSummary() {
 				mb: 0.5,
 			}}
 		>
-			<CardContent>
-				<Typography
-					variant="h5"
-					color="primary"
-					sx={{ mb: 0.5, fontWeight: 'bold' }}
+			<CardContent sx={{ width: '100%' }}>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+						flexFlow: 1,
+					}}
 				>
-					Total Expenses
-				</Typography>
+					<Typography
+						variant="h5"
+						color="primary"
+						sx={{ mb: 0.5, fontWeight: 'bold' }}
+					>
+						Total Expenses
+					</Typography>
+					<ShoppingCartIcon sx={{ color: 'red', fontSize: 80 }} />
+				</Box>
 				<Typography sx={{ fontSize: '2rem' }} color="red" gutterBottom>
 					{`€${Math.abs(totalExpenses.toFixed(2))}`}
 				</Typography>

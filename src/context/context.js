@@ -89,11 +89,11 @@ function ContextProvider({ children }) {
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
 
-	const totalIncome = state.accountMovements[0]?.deposits.reduce(
+	const totalIncome = +state.accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);
-	const totalExpenses = state.accountMovements[1]?.expenses.reduce(
+	const totalExpenses = +state.accountMovements[1]?.expenses.reduce(
 		(acc, mov) => acc + mov[0],
 		0
 	);

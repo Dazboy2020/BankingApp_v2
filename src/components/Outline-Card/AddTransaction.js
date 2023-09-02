@@ -60,7 +60,7 @@ const menuDeposit = [
 	},
 ];
 
-const BasicCardFX = () => {
+const AddTransaction = () => {
 	const { setOpenToast, state, dispatch } = useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
@@ -283,4 +283,4 @@ const BasicCardFX = () => {
 	);
 };
 
-export default BasicCardFX;
+export default AddTransaction;
