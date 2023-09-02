@@ -31,9 +31,7 @@ const ListNew = (props) => {
 	const navigate = useNavigate();
 
 	function handleClick() {
-		console.log('Click');
 		setOpen(true);
-		console.log(setOpen);
 	}
 
 	const itemsList = [

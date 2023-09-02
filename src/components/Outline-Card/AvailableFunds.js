@@ -10,6 +10,9 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 export default function AvailbleFunds() {
 	const { totalExpenses, totalIncome } = useAppContext();
 
+	const fundColour =
+		totalIncome - Math.abs(totalExpenses) >= 0 ? 'green' : 'red';
+
 	return (
 		<Card
 			component="article"
@@ -36,7 +39,7 @@ export default function AvailbleFunds() {
 					</Typography>
 					<AccountBalanceIcon sx={{ color: '#242a2e', fontSize: 70 }} />
 				</Box>
-				<Typography sx={{ fontSize: '2rem', color: 'green' }} gutterBottom>
+				<Typography sx={{ fontSize: '2rem', color: fundColour }} gutterBottom>
 					{`€${(totalIncome + totalExpenses).toFixed(2)}`}
 				</Typography>
 			</CardContent>

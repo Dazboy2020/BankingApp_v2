@@ -29,6 +29,51 @@ function App() {
 							</>
 						}
 					/>
+					<Route path="login" element={<SignIn />} />
+					<Route path="signup" element={<SignUp />} />
+
+					{/* //!ProtectedRoutes */}
+					<Route
+						path="about"
+						element={
+							<ProtectedRoute>
+								<About />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="expenses"
+						element={
+							<ProtectedRoute>
+								<Expenses />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="deposits"
+						element={
+							<ProtectedRoute>
+								<Deposits />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="analytics"
+						element={
+							<ProtectedRoute>
+								<Analytics />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="account"
+						element={
+							<ProtectedRoute>
+								<Account />
+							</ProtectedRoute>
+						}
+					/>
+
 					<Route
 						path="overview"
 						element={
@@ -37,13 +82,6 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path="login" element={<SignIn />} />
-					<Route path="signup" element={<SignUp />} />
-					<Route path="about" element={<About />} />
-					<Route path="expenses" element={<Expenses />} />
-					<Route path="deposits" element={<Deposits />} />
-					<Route path="analytics" element={<Analytics />} />
-					<Route path="account" element={<Account />} />
 				</Routes>
 			</Suspense>
 		</BrowserRouter>
