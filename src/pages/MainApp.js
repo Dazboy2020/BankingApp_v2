@@ -55,7 +55,7 @@ function MainApp() {
 						<Income />
 						<ExpenseSummary />
 						<AvailbleFunds />
-						<AddTransaction />
+						{/* <AddTransaction /> */}
 					</Stack>
 
 					<Card>

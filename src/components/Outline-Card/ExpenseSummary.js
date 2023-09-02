@@ -34,12 +34,11 @@ export default function ExpenseSummary() {
 				>
 					<Typography
 						variant="h5"
-						color="primary"
-						sx={{ mb: 0.5, fontWeight: 'bold' }}
+						sx={{ mb: 0.5, fontWeight: 'bold', color: '#242a2e' }}
 					>
 						Total Expenses
 					</Typography>
-					<ShoppingCartIcon sx={{ color: 'red', fontSize: 80 }} />
+					<ShoppingCartIcon sx={{ color: 'red', fontSize: 70 }} />
 				</Box>
 				<Typography sx={{ fontSize: '2rem' }} color="red" gutterBottom>
 					{`€${Math.abs(totalExpenses.toFixed(2))}`}

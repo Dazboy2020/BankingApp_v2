@@ -1,7 +1,11 @@
 import ResponsiveDrawer from '../components/Drawer/Draw';
 import { Box } from '@mui/material';
+import { useAppContext } from '../context/context';
 
 function Expenses() {
+	const { state } = useAppContext();
+	console.log(state.user);
+
 	return (
 		<>
 			<ResponsiveDrawer />

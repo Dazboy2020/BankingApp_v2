@@ -30,12 +30,11 @@ export default function AvailbleFunds() {
 				>
 					<Typography
 						variant="h5"
-						color="primary"
-						sx={{ mb: 0.5, fontWeight: 'bold' }}
+						sx={{ mb: 0.5, fontWeight: 'bold', color: '#242a2e' }}
 					>
 						Available Funds
 					</Typography>
-					<AccountBalanceIcon sx={{ color: 'grey', fontSize: 80 }} />
+					<AccountBalanceIcon sx={{ color: '#242a2e', fontSize: 70 }} />
 				</Box>
 				<Typography sx={{ fontSize: '2rem', color: 'green' }} gutterBottom>
 					{`€${(totalIncome + totalExpenses).toFixed(2)}`}
