@@ -1,10 +1,12 @@
 import ResponsiveDrawer from '../components/Drawer/Draw';
 import { CardContent, Card, Stack } from '@mui/material';
+import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
 function Account() {
 	return (
 		<>
 			<ResponsiveDrawer />
+			<AlertDialogSlide />
 
 			<Stack
 				flexDirection="row"

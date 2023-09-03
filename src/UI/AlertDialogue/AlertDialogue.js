@@ -23,6 +23,7 @@ export default function AlertDialogSlide() {
 	}
 
 	function handleYesLogout() {
+		console.log('hello from modal component');
 		setOpen(false);
 		dispatch({ type: 'user/LoggedOut' });
 
