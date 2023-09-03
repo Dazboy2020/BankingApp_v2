@@ -1,18 +1,42 @@
 import ResponsiveDrawer from '../components/Drawer/Draw';
-import { Box } from '@mui/material';
+import { CardContent, Card, Stack } from '@mui/material';
 
 function Account() {
 	return (
 		<>
 			<ResponsiveDrawer />
-			<Box
+
+			<Stack
+				flexDirection="row"
 				sx={{
+					height: '80vh',
+					justifyContent: 'space-evenly',
+					alignItems: 'center',
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },
 				}}
 			>
-				<h1>Account</h1>
-			</Box>
+				<Card
+					sx={{
+						width: '30%',
+						height: '30%',
+					}}
+				>
+					<CardContent>
+						<h1>Card 1</h1>
+					</CardContent>
+				</Card>
+				<Card
+					sx={{
+						width: '30%',
+						height: '30%',
+					}}
+				>
+					<CardContent>
+						<h1>Card 2</h1>
+					</CardContent>
+				</Card>
+			</Stack>
 		</>
 	);
 }

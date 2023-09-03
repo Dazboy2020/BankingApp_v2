@@ -27,6 +27,7 @@
 	color: antiquewhite;
 	font-size: 4.5rem;
 	line-height: 1.3;
+	animation: slideDown 0.75s 1 ease-in-out forwards;
 }
 
 .homepage h2 {
@@ -34,6 +35,7 @@
 	width: 90%;
 	font-size: 1.9rem;
 	margin-bottom: 2.5rem;
+	animation: slideUp 1s 1 ease-in-out forwards;
 }
 
 @media (max-width: 900px) {
@@ -69,5 +71,25 @@
 
 	.homepage h2 {
 		font-size: 1rem;
+	}
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-600px);
+	}
+	to {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(400px);
+	}
+	to {
+		transform: translateY(0px);
+		opacity: 1;
 	}
 }
