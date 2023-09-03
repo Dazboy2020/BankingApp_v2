@@ -38,30 +38,27 @@
 }
 
 .movements__type__deposit {
-	/* background-image: linear-gradient(to top left, #39b385, #9be15d); */
 	background-color: #597081;
-	/* min-width: 6rem; */
 	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
 	padding: 0.5rem;
 	min-width: 10rem;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.1rem;
 
 	/* border-radius: 10rem; */
 }
 
 .movements__type__withdrawal {
-	/* background-image: linear-gradient(to top left, #e52a5a, #ff585f); */
 	background-color: #a8577e;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
 	padding: 0.5rem;
 	min-width: 10rem;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.1rem;
 }
 
 .movements__value {

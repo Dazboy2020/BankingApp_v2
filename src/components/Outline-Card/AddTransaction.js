@@ -151,12 +151,12 @@ const AddTransaction = () => {
 			component="article"
 			sx={{
 				display: 'flex',
-				flexGrow: 1,
+				// flexGrow: 1,
 				mb: 0.5,
 				alignItems: 'flex-start',
 			}}
 		>
-			<CardContent>
+			<CardContent sx={{ width: '100%' }}>
 				<Box>
 					<Typography
 						variant="h5"

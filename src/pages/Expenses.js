@@ -4,6 +4,7 @@ import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
 import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
+import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 
 function Expenses() {
 	return (
@@ -24,8 +25,9 @@ function Expenses() {
 					direction={{ sm: 'column', md: 'row' }}
 					sx={{ m: 2 }}
 				>
-					<ExpenseSummary />
 					<AddTransaction />
+					<ExpenseSummary />
+					<AvailbleFunds />
 				</Stack>
 				<Card sx={{ m: 2 }}>
 					<MovementsExpenses />
