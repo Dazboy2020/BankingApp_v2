@@ -1,5 +1,6 @@
 .body {
-	background-color: rgb(238, 235, 235);
+	/* background-color: rgb(238, 235, 235); */
+	background-color: #ececec;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	/* filter: invert(100%); */

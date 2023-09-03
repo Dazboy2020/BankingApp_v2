@@ -16,7 +16,6 @@ import { Box, Paper } from '@mui/material';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';
-import AddTransaction from '../components/Outline-Card/AddTransaction';
 import Income from '../components/Outline-Card/Income';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 
@@ -53,7 +52,6 @@ function MainApp() {
 						<Income />
 						<ExpenseSummary />
 						<AvailbleFunds />
-						<AddTransaction />
 					</Stack>
 
 					{/* //! Charts */}

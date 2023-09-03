@@ -11,7 +11,8 @@ function Account() {
 			<Stack
 				flexDirection="row"
 				sx={{
-					height: '80vh',
+					backgroundColor: '#ececec',
+					height: '90vh',
 					justifyContent: 'space-evenly',
 					alignItems: 'center',
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
