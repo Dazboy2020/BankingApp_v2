@@ -146,13 +146,14 @@ function ResponsiveAppBar() {
 							<Button
 								sx={{
 									fontSize: { xs: '1rem', sm: '1.5rem' },
-									fontFamily: 'Nunito Sans',
+									// fontFamily: 'Nunito Sans',
 									'&:hover': {
 										backgroundColor: '#680747',
 										cursor: 'default',
 									},
 									bgcolor: '#f70776',
 									color: 'white',
+									paddingRight: '20px',
 								}}
 								size="medium"
 								onClick={handleLogin}

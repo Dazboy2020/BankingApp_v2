@@ -6,6 +6,7 @@
 	/* filter: invert(100%); */
 	/* font-family: 'Roboto Mono'; */
 	animation: fade 0.2s;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 @media (max-width: 576px) {

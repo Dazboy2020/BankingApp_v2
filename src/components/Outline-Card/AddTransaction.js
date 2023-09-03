@@ -160,7 +160,7 @@ const AddTransaction = () => {
 				<Box>
 					<Typography
 						variant="h5"
-						color="primary"
+						color="#242a2e"
 						sx={{ mb: 2, fontWeight: 'bold' }}
 					>
 						Add a Transaction:
