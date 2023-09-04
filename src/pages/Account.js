@@ -60,22 +60,24 @@ function Account() {
 								sx={{
 									'& .MuiTextField-root': {
 										m: 1,
-										width: { md: '80ch', sm: '45ch', s: '100%', xs: '100%' },
+										width: { md: '80ch', sm: '45ch', s: '99%', xs: '99%' },
 									},
 								}}
 								noValidate
 								autoComplete="off"
 							>
-								<Box sx={{}}>
+								<Box>
 									<TextField
 										id="outlined-firstname"
 										label="First Name"
 										defaultValue="Default Value"
+										color="secondary"
 									/>
 									<TextField
 										id="outlined-secondname"
 										label="Second Name"
 										defaultValue="Default Value"
+										color="secondary"
 									/>
 								</Box>
 								<Box>
@@ -83,11 +85,13 @@ function Account() {
 										id="outlined-email"
 										label="Email"
 										defaultValue="Default Value"
+										color="secondary"
 									/>
 									<TextField
 										id="outlined-currency"
 										label="Currency "
 										defaultValue="Default Value"
+										color="secondary"
 									/>
 								</Box>
 								<Box
