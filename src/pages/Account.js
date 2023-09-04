@@ -17,7 +17,7 @@ function Account() {
 
 			<Box
 				sx={{
-					height: '100vh',
+					height: '90vh',
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },
 				}}
@@ -28,14 +28,17 @@ function Account() {
 					sx={{
 						m: 2,
 						justifyContent: { sm: 'flex-start', md: 'center' },
+						alignItems: { md: 'center' },
 					}}
-					height="100vh"
+					height="80vh"
 				>
 					<Card
 						component="main"
 						sx={{
 							width: '100%',
-							height: '75%',
+							height: { xs: '100%', s: '100%', sm: '75%' },
+							justifyContent: 'center',
+							alignItems: 'center',
 							// mt: '30rem',
 						}}
 					>
@@ -43,10 +46,8 @@ function Account() {
 							sx={{
 								display: 'flex',
 								flexDirection: 'column',
-								// justifyContent: 'space-between',
-								// width: '100%',
 								height: '100%',
-								flexGrow: 1,
+								// flexGrow: 1,
 							}}
 						>
 							<CardMedia
@@ -66,7 +67,7 @@ function Account() {
 								noValidate
 								autoComplete="off"
 							>
-								<Box>
+								<Box sx={{ textAlign: 'center' }}>
 									<TextField
 										id="outlined-firstname"
 										label="First Name"
@@ -80,7 +81,7 @@ function Account() {
 										color="secondary"
 									/>
 								</Box>
-								<Box>
+								<Box sx={{ textAlign: 'center' }}>
 									<TextField
 										id="outlined-email"
 										label="Email"
@@ -117,31 +118,3 @@ function Account() {
 }
 
 export default Account;
-
-// <Card
-// 									component="main"
-// 									sx={{
-// 										// display: 'flex',
-// 										// width: '75%',
-// 										// height: '100%',
-// 										height: '50%',
-// 										width: '20rem',
-// 									}}
-// 								>
-// 									<CardContent
-// 										sx={{
-// 											display: 'flex',
-// 											flexDirection: 'column',
-// 											justifyContent: 'space-between',
-// 											// width: '100%',
-// 											height: '100%',
-// 										}}
-// 									>
-// 										<CardMedia
-// 											sx={{ width: '120px', height: 'auto' }}
-// 											component="img"
-// 											src="/avatar-min.jpg" // Provide the correct path here
-// 											alt="user avatar"
-// 										/>
-// 									</CardContent>
-// 								</Card>
