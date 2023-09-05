@@ -38,7 +38,9 @@ export default function ExpenseSummary() {
 					>
 						Total Expenses
 					</Typography>
-					<ShoppingCartIcon sx={{ color: 'red', fontSize: 70 }} />
+					<ShoppingCartIcon
+						sx={{ color: 'red', fontSize: { xs: '50px', sm: '60px' } }}
+					/>
 				</Box>
 				<Typography sx={{ fontSize: '2rem' }} color="red" gutterBottom>
 					{`€${Math.abs(totalExpenses.toFixed(2))}`}

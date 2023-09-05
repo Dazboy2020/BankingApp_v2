@@ -10,9 +10,6 @@ const theme = createTheme({
 		},
 	},
 	components: {
-		MuiCard: {
-			elevation: 6,
-		},
 		MuiDrawer: {
 			styleOverrides: {
 				paper: {
@@ -48,13 +45,11 @@ const theme = createTheme({
 				},
 			},
 		},
-		// MuiButton: {
-		// 	styleOverrides: {
-		// 		text: {
-		// 			color: '#fff',
-		// 		},
-		// 	},
-		// },
+		MuiButton: {
+			styleOverrides: {
+				text: {},
+			},
+		},
 	},
 });
 

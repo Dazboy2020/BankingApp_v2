@@ -36,7 +36,9 @@ export default function Income() {
 					>
 						Total Income
 					</Typography>
-					<PaidIcon sx={{ color: 'green', fontSize: 70 }} />
+					<PaidIcon
+						sx={{ color: 'green', fontSize: { xs: '50px', sm: '60px' } }}
+					/>
 				</Box>
 				<Typography sx={{ fontSize: '2rem' }} color="green" gutterBottom>
 					{`€${totalIncome.toFixed(2)}`}

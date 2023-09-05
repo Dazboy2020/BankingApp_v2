@@ -126,7 +126,7 @@ function ResponsiveDrawer(props) {
 						md: `calc(100% - ${drawerWidth}px)`,
 					},
 					ml: { sm: `${drawerWidth}px`, lg: `${drawerWidth + 100}px` },
-					minHeight: '6rem', //! new
+					height: { xs: '4rem', sm: '5rem', md: '6rem' }, //! new
 				}}
 			>
 				<Toolbar sx={{ height: '6rem' }}>

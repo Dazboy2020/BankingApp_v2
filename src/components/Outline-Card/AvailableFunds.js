@@ -37,7 +37,9 @@ export default function AvailbleFunds() {
 					>
 						Available Funds
 					</Typography>
-					<AccountBalanceIcon sx={{ color: '#242a2e', fontSize: 70 }} />
+					<AccountBalanceIcon
+						sx={{ color: '#242a2e', fontSize: { xs: '50px', sm: '60px' } }}
+					/>
 				</Box>
 				<Typography sx={{ fontSize: '2rem', color: fundColour }} gutterBottom>
 					{`€${(totalIncome + totalExpenses).toFixed(2)}`}
