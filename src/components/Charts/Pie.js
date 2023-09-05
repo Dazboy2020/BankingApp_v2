@@ -64,12 +64,13 @@ function PieChart() {
 					}}
 				>
 					<Typography
-						variant="h5"
 						sx={{
+							fontSize: { xs: '1rem', md: '1.3rem' },
 							padding: '1rem',
 							backgroundColor: '#3a7ca5',
 							color: 'white',
 							textAlign: 'center',
+							fontWeight: 'bold',
 						}}
 					>
 						{state.currency === 'euro' ? 'INCOME' : 'EXPENSES'}
