@@ -1,0 +1,29 @@
+.MainWrapper {
+	/* margin: auto; */
+	/* margin-right: 2rem; */
+	/* height: 90%; */
+	/* width: auto; */
+	padding: 2rem;
+	background-color: whitesmoke;
+	border: solid black 1px;
+	border-radius: 5px;
+	border-style: outset;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+	margin: auto;
+}
+
+@media (max-width: 800px) {
+	.MainWrapper {
+		padding: 0;
+	}
+}
+
+@media (max-width: 576px) {
+	.MainWrapper {
+		margin: 0;
+		padding: 0rem;
+		max-width: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+}

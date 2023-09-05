@@ -1,0 +1,68 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+:root {
+	--color-brand--1: #ffb545;
+	--color-brand--2: #00c46a;
+
+	--color-dark--0: #242a2e;
+	--color-dark--1: #2d3439;
+	--color-dark--2: #42484d;
+	--color-light--1: #aaa;
+	--color-light--2: #ececec;
+	--color-light--3: #d6dee0;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+@media (max-width: 1400px) {
+	.canvas {
+		height: 450px;
+		width: 450px;
+		margin-top: 1rem;
+	}
+}
+
+@media (max-width: 1025px) {
+	.canvas {
+		height: 375px;
+		width: 375px;
+	}
+}
+
+@media (max-width: 800px) {
+	.canvas {
+		height: 300px;
+		width: 300px;
+	}
+}
+
+@media (max-width: 576px) {
+	body,
+	html {
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	.pie_wrapper {
+		padding: 0;
+	}
+
+	.canvas {
+		margin-top: 2rem;
+		padding: 0;
+		margin-left: 0;
+		margin-right: 0.5rem;
+	}
+
+	.cardsummary {
+		margin-right: 0;
+	}
+}
