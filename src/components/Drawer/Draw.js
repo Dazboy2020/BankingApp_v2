@@ -51,9 +51,9 @@ const ListNew = (props) => {
 			onClick: () => navigate('/deposits'),
 		},
 		{
-			text: 'Analytics',
+			text: 'Charts',
 			icon: <PsychologyAltIcon />,
-			onClick: () => navigate('/analytics'),
+			onClick: () => navigate('/charts'),
 		},
 		{
 			text: 'Account',

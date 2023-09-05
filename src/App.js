@@ -13,7 +13,7 @@ const About = lazy(() => import('./pages/About'));
 const Expenses = lazy(() => import('./pages/Expenses'));
 const Deposits = lazy(() => import('./pages/Deposits'));
 const Account = lazy(() => import('./pages/Account'));
-const Analytics = lazy(() => import('./pages/Analytics'));
+const Charts = lazy(() => import('./pages/Charts'));
 
 function App() {
 	return (
@@ -58,10 +58,10 @@ function App() {
 						}
 					/>
 					<Route
-						path="analytics"
+						path="charts"
 						element={
 							<ProtectedRoute>
-								<Analytics />
+								<Charts />
 							</ProtectedRoute>
 						}
 					/>

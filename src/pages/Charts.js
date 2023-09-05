@@ -4,7 +4,7 @@ import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import BarChartDeposit from '../components/Charts/BarChartDeposit';
 import BarChartExpenses from '../components/Charts/BarChartExpenses';
 
-function Analytics() {
+function Chart() {
 	return (
 		<Box sx={{ backgroundColor: '#ececec', height: '100%' }}>
 			<ResponsiveDrawer />
@@ -24,4 +24,4 @@ function Analytics() {
 	);
 }
 
-export default Analytics;
+export default Chart;
