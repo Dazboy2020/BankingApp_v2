@@ -66,7 +66,7 @@ function PieChart() {
 					<Typography
 						sx={{
 							fontSize: { xs: '1rem', md: '1.3rem' },
-							padding: '1rem',
+							padding: { xs: '.8rem', md: '1rem' },
 							backgroundColor: '#3a7ca5',
 							color: 'white',
 							textAlign: 'center',
