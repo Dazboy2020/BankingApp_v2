@@ -16,6 +16,8 @@ import { NavLink } from 'react-router-dom';
 
 import classes from './SignIn.module.css';
 
+import { useState } from 'react';
+
 function Copyright(props) {
 	return (
 		<Typography
@@ -39,14 +41,29 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+	const [values, setValues] = useState({
+		firstName: '',
+		lastName: '',
+		email: '',
+		password: '',
+		confirmPassword: '',
+	});
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
-		});
+		// const data = new FormData(event.currentTarget);
+		// console.log({
+		// 	email: data.get('email'),
+		// 	password: data.get('password'),
+		// });
+
+		console.log(values);
 	};
+
+	function handleChange(e) {
+		setValues({ ...values, [e.target.name]: e.target.value });
+		console.log(values);
+	}
 
 	return (
 		<>
@@ -57,10 +74,6 @@ export default function SignUp() {
 						<CssBaseline />
 						<Box
 							sx={{
-								// marginTop: 8,
-								// display: 'flex',
-								// flexDirection: 'column',
-								// alignItems: 'center',
 								backgroundColor: 'white',
 								marginTop: 8,
 								display: 'flex',
@@ -83,9 +96,10 @@ export default function SignUp() {
 								noValidate
 								onSubmit={handleSubmit}
 								sx={{ mt: 3 }}
+								onChange={handleChange}
 							>
 								<Grid container spacing={2}>
-									<Grid item xs={12} sm={6}>
+									<Grid item xs={12}>
 										<TextField
 											autoComplete="given-name"
 											name="firstName"
@@ -97,7 +111,7 @@ export default function SignUp() {
 											color="secondary"
 										/>
 									</Grid>
-									<Grid item xs={12} sm={6}>
+									<Grid item xs={12}>
 										<TextField
 											required
 											fullWidth
@@ -128,6 +142,18 @@ export default function SignUp() {
 											type="password"
 											id="password"
 											autoComplete="new-password"
+											color="secondary"
+										/>
+									</Grid>
+									<Grid item xs={12}>
+										<TextField
+											required
+											fullWidth
+											name="confirmPassword"
+											label="Confirm Password"
+											// type="password"
+											id="confirmPassword"
+											// autoComplete="new-password"
 											color="secondary"
 										/>
 									</Grid>
