@@ -1,4 +1,6 @@
 import React, { Suspense, lazy } from 'react';
+import axios from 'axios';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 
@@ -14,6 +16,9 @@ const Expenses = lazy(() => import('./pages/Expenses'));
 const Deposits = lazy(() => import('./pages/Deposits'));
 const Account = lazy(() => import('./pages/Account'));
 const Charts = lazy(() => import('./pages/Charts'));
+
+axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.withCredentials = true;
 
 function App() {
 	return (

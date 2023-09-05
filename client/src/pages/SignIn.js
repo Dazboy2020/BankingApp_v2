@@ -20,6 +20,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import classes from './SignIn.module.css';
 import { useAppContext } from '../context/context';
 
+import axios from 'axios';
+
 function Copyright(props) {
 	return (
 		<Typography
@@ -43,6 +45,8 @@ export default function SignIn() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+
+		axios.get('/');
 
 		dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
 
