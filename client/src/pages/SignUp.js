@@ -56,14 +56,16 @@ export default function SignUp() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const { firstName, email, password } = data;
+		const { firstName, lastName, email, password, confirmPassword } = data;
 		setMessage('');
 
 		try {
 			const { data } = await axios.post('/register', {
 				firstName,
+				lastName,
 				email,
 				password,
+				confirmPassword,
 			});
 
 			if (data.error) {
