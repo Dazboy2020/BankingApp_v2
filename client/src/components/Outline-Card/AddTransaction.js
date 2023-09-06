@@ -61,11 +61,13 @@ const menuDeposit = [
 ];
 
 const AddTransaction = () => {
-	const { setOpenToast, state, dispatch } = useAppContext();
+	const { setOpenToast, state, dispatch, message, setMessage } =
+		useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
+	// const [message, setMessage] = useState('');
 
 	const updatedDeposits = state.accountMovements[0].deposits.map(
 		(movement) => movement
@@ -101,8 +103,17 @@ const AddTransaction = () => {
 		[expenseType]
 	);
 
+	// useEffect(
+	// 	function () {
+	// 		console.log(message);
+	// 		console.log(`state.message: ${state.message}`);
+	// 	},
+	// 	[message, state.message]
+	// );
+
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
+		setMessage('');
 	}
 
 	function handleSubmitExpense(e) {
@@ -138,11 +149,14 @@ const AddTransaction = () => {
 				expenses: updatedExpenses,
 			},
 		];
+		setMessage(
+			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
+		);
 
-		dispatch({ type: 'add/expense-depsoit', payload: updatedAccount });
-
+		dispatch({ type: 'add/expense-deposit', payload: updatedAccount });
+		// setMessage('transaction successful!');
 		setExpenseAmount('');
-		setOpenToast(true);
+		setOpenToast(true, { message: message });
 		setExpenseCategory('');
 	}
 

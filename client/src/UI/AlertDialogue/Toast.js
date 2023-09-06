@@ -11,7 +11,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export default function Toast() {
-	const { openToast, setOpenToast } = useAppContext();
+	const { openToast, setOpenToast, message } = useAppContext();
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
 			return;
@@ -43,7 +43,8 @@ export default function Toast() {
 				open={openToast}
 				autoHideDuration={3000}
 				onClose={handleClose}
-				message="Transaction Completed!"
+				// message="Transaction Completed!"
+				message={message} // Use the dynamic message prop here
 				action={action}
 			>
 				<Alert
@@ -51,7 +52,8 @@ export default function Toast() {
 					severity="info"
 					sx={{ width: '100%', fontSize: '1.5rem' }}
 				>
-					Transaction Completed!
+					{/* Transaction Completed! */}
+					{message}
 				</Alert>
 			</Snackbar>
 		</div>

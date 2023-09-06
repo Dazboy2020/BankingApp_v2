@@ -13,6 +13,7 @@ const inititalState = {
 	error: false,
 	currency: 'euro',
 	sort: false,
+	message: '',
 };
 
 function reducer(state, action) {
@@ -56,10 +57,11 @@ function reducer(state, action) {
 				pin: '',
 			};
 
-		case 'add/expense-depsoit':
+		case 'add/expense-deposit':
 			return {
 				...state,
 				accountMovements: action.payload,
+				message: 'Transaction added!',
 			};
 
 		case 'switchCurrency':
@@ -88,6 +90,7 @@ function ContextProvider({ children }) {
 	const [openToast, setOpenToast] = useState(false);
 	const [closePin, setClosePin] = useState('');
 	const [closeUser, setCloseUser] = useState('');
+	const [message, setMessage] = useState('this is a test');
 
 	const totalIncome = +state.accountMovements[0]?.deposits.reduce(
 		(acc, mov) => acc + mov[0],
@@ -117,6 +120,8 @@ function ContextProvider({ children }) {
 
 				dispatch,
 				state,
+				message,
+				setMessage,
 			}}
 		>
 			{children}
