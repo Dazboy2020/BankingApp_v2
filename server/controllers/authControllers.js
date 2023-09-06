@@ -6,7 +6,7 @@ const test = (req, res) => {
 
 const registerUser = async (req, res) => {
 	try {
-		const { firstName, email, password } = req.body;
+		const { firstName, lastName, email, password, confirmPassword } = req.body;
 		console.log(req.body);
 
 		if (!firstName) {
@@ -15,9 +15,21 @@ const registerUser = async (req, res) => {
 			});
 		}
 
+		if (!lastName) {
+			return res.json({
+				error: 'Last Name is required!',
+			});
+		}
+
 		if (!password || password.length < 6) {
 			return res.json({
 				error: 'Password is required and should be at least 6 characters long!',
+			});
+		}
+
+		if (password !== confirmPassword) {
+			return res.json({
+				error: 'Passwords do not match!',
 			});
 		}
 
@@ -30,8 +42,10 @@ const registerUser = async (req, res) => {
 
 		const user = await User.create({
 			firstName,
+			lastName,
 			email,
 			password,
+			confirmPassword,
 		});
 
 		return res.json(user);
