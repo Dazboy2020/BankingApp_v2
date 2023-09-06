@@ -15,7 +15,7 @@ import ResponsiveAppBar from '../components/Navbar/NewNav';
 import { NavLink } from 'react-router-dom';
 
 import classes from './SignIn.module.css';
-
+import { useAppContext } from '../context/context';
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -42,6 +42,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+	const { setOpenToast, message, setMessage } = useAppContext();
 	const [data, setData] = useState({
 		firstName: '',
 		lastName: '',
@@ -50,10 +51,13 @@ export default function SignUp() {
 		confirmPassword: '',
 	});
 
+	// setMessage('');
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		const { firstName, email, password } = data;
+		setMessage('');
 
 		try {
 			const { data } = await axios.post('/register', {
@@ -61,7 +65,21 @@ export default function SignUp() {
 				email,
 				password,
 			});
-		} catch (error) {}
+
+			if (data.error) {
+				setMessage(data.error);
+				setOpenToast(true, { message: data.error });
+			} else {
+				setMessage('Account Created!');
+				setOpenToast(true, { message: message });
+
+				setData({});
+			}
+		} catch (error) {
+			console.log(error);
+		}
+
+		// setOpenToast(true, { message: message });
 	};
 
 	function handleChange(e) {
@@ -71,6 +89,7 @@ export default function SignUp() {
 	return (
 		<>
 			<ResponsiveAppBar />
+
 			<Box className={classes.wrapper}>
 				<ThemeProvider theme={defaultTheme}>
 					<Container component="main" maxWidth="xs">
@@ -160,14 +179,6 @@ export default function SignUp() {
 											color="secondary"
 										/>
 									</Grid>
-									{/* <Grid item xs={12}>
-										<FormControlLabel
-											control={
-												<Checkbox value="allowExtraEmails" color="primary" />
-											}
-											label="I want to receive inspiration, marketing promotions and updates via email."
-										/>
-									</Grid> */}
 								</Grid>
 								<Button
 									type="submit"

@@ -6,6 +6,8 @@ import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 
 import ProtectedRoute from './pages/ProtectedRoute';
 
+import Toast from './UI/AlertDialogue/Toast';
+
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
@@ -24,6 +26,8 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Suspense fallback={<SpinnerFullPage />}>
+				<Toast />
+
 				<Routes>
 					<Route
 						index

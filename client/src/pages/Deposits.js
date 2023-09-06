@@ -1,6 +1,5 @@
 import ResponsiveDrawer from '../components/Drawer/Draw';
 import { Box, Card, Stack } from '@mui/material';
-import Toast from '../UI/AlertDialogue/Toast';
 
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
@@ -13,7 +12,7 @@ function Expenses() {
 		<Box sx={{ backgroundColor: '#ececec' }}>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
-			<Toast />
+			{/* <Toast /> */}
 
 			<Box
 				sx={{
