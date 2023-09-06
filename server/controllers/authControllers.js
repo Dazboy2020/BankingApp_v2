@@ -6,9 +6,10 @@ const test = (req, res) => {
 
 const registerUser = async (req, res) => {
 	try {
-		const { name, email, password } = req.body;
+		const { firstName, email, password } = req.body;
+		console.log(req.body);
 
-		if (!name) {
+		if (!firstName) {
 			return res.json({
 				error: 'Name is required!',
 			});
@@ -28,7 +29,7 @@ const registerUser = async (req, res) => {
 		}
 
 		const user = await User.create({
-			name,
+			firstName,
 			email,
 			password,
 		});
