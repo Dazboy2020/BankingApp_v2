@@ -17,6 +17,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './SignIn.module.css';
 
 import { useState } from 'react';
+import axios from 'axios';
 
 function Copyright(props) {
 	return (
@@ -41,7 +42,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-	const [values, setValues] = useState({
+	const [data, setData] = useState({
 		firstName: '',
 		lastName: '',
 		email: '',
@@ -49,14 +50,22 @@ export default function SignUp() {
 		confirmPassword: '',
 	});
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		console.log(values);
+		const { firstName, email, password } = data;
+
+		try {
+			const { data } = await axios.post('/register', {
+				firstName,
+				email,
+				password,
+			});
+		} catch (error) {}
 	};
 
 	function handleChange(e) {
-		setValues({ ...values, [e.target.name]: e.target.value });
+		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
 	return (
