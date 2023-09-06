@@ -103,14 +103,6 @@ const AddTransaction = () => {
 		[expenseType]
 	);
 
-	// useEffect(
-	// 	function () {
-	// 		console.log(message);
-	// 		console.log(`state.message: ${state.message}`);
-	// 	},
-	// 	[message, state.message]
-	// );
-
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
 		setMessage('');
