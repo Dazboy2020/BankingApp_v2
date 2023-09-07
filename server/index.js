@@ -10,6 +10,8 @@ mongoose
 	.then(() => console.log('DB Connected'))
 	.catch((err) => console.log('MongoDB connected: ', err));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 //! Middleware
 app.use(express.json());
 
