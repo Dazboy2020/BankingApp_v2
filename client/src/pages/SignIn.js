@@ -20,6 +20,7 @@ import { useState } from 'react';
 
 import classes from './SignIn.module.css';
 import { useAppContext } from '../context/context';
+import { useEffect } from 'react';
 
 import axios from 'axios';
 
@@ -41,7 +42,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const { state, dispatch, useEffect } = useAppContext();
+	const { state, dispatch } = useAppContext();
+	const navigate = useNavigate();
 
 	const [data, setData] = useState({
 		firstName: '',
@@ -58,6 +60,7 @@ export default function SignIn() {
 
 		try {
 			const { data: userData } = await axios.post('/login', data);
+			dispatch({ type: 'user/MongoLoggedIn', payload: userData.user });
 
 			console.log(userData.user);
 		} catch (error) {
@@ -67,10 +70,13 @@ export default function SignIn() {
 		if (data.error) {
 			console.log(data.error);
 		}
-		// dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
-
-		// if (state.user) navigate('/overview');
 	};
+	useEffect(
+		function () {
+			if (state.user) navigate('/overview');
+		},
+		[navigate, state.user]
+	);
 
 	return (
 		<>

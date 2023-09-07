@@ -15,7 +15,7 @@ function BarChartExpenses() {
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
-	const movementsToDisplay = state.accountMovements[1].expenses;
+	const movementsToDisplay = state.expenses;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])

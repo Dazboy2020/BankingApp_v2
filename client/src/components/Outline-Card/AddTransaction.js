@@ -69,12 +69,8 @@ const AddTransaction = () => {
 	const [label, setLabel] = useState('');
 	// const [message, setMessage] = useState('');
 
-	const updatedDeposits = state.accountMovements[0].deposits.map(
-		(movement) => movement
-	);
-	const updatedExpenses = state.accountMovements[1].expenses.map(
-		(movement) => movement
-	);
+	const updatedDeposits = state.deposits?.map((movement) => movement);
+	const updatedExpenses = state.expenses?.map((movement) => movement);
 
 	function handleReturn(e) {
 		e.preventDefault();
@@ -133,11 +129,11 @@ const AddTransaction = () => {
 
 		updatedAccount = [
 			{
-				...state.accountMovements[0],
+				...state.deposits,
 				deposits: updatedDeposits,
 			},
 			{
-				...state.accountMovements[1],
+				...state.expenses,
 				expenses: updatedExpenses,
 			},
 		];

@@ -16,9 +16,7 @@ function BarChart() {
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	const movementsToDisplay =
-		state.currency === 'euro'
-			? state.accountMovements[0].deposits
-			: state.accountMovements[1].expenses;
+		state.currency === 'euro' ? state.deposits : state.expenses;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])

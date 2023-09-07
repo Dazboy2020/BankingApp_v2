@@ -6,7 +6,7 @@ import { useAppContext } from '../../context/context';
 const MovementsExpenses = () => {
 	const { state } = useAppContext();
 
-	const movementsToDisplay = state.accountMovements[1].expenses;
+	const movementsToDisplay = state.expenses;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])

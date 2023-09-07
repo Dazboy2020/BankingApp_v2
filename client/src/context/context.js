@@ -6,6 +6,8 @@ const AppContext = createContext();
 const inititalState = {
 	accountMovements: [],
 	accounts: [account1, account2, account3],
+	expenses: [],
+	deposits: [],
 	isLoggedIn: false,
 	loggedInAccount: '',
 	pin: '',
@@ -25,6 +27,17 @@ function reducer(state, action) {
 				error: false,
 			};
 		}
+		case 'user/MongoLoggedIn': {
+			return {
+				...state,
+				loggedInAccount: action.payload,
+				isLoggedIn: true,
+				user: action.payload.firstName,
+				expenses: action.payload.expenses,
+				deposits: action.payload.deposits,
+			};
+		}
+
 		case 'user/LoggedIn':
 			const loggedInAccount = state.accounts.find((acc) => {
 				return acc[0].owner === state.user;
@@ -92,14 +105,8 @@ function ContextProvider({ children }) {
 	const [closeUser, setCloseUser] = useState('');
 	const [message, setMessage] = useState('this is a test');
 
-	const totalIncome = +state.accountMovements[0]?.deposits.reduce(
-		(acc, mov) => acc + mov[0],
-		0
-	);
-	const totalExpenses = +state.accountMovements[1]?.expenses.reduce(
-		(acc, mov) => acc + mov[0],
-		0
-	);
+	const totalIncome = +state.deposits?.reduce((acc, mov) => acc + mov[0], 0);
+	const totalExpenses = +state.expenses?.reduce((acc, mov) => acc + mov[0], 0);
 
 	return (
 		<AppContext.Provider
