@@ -8,9 +8,7 @@ const mongoose = require('mongoose');
 mongoose
 	.connect(process.env.MONGO_URL)
 	.then(() => console.log('DB Connected'))
-	.catch((err) =>
-		console.log(`MongoDB connected: ${conn.connection.host}`, err)
-	);
+	.catch((err) => console.log('MongoDB connected: ', err));
 
 //! Middleware
 app.use(express.json());
