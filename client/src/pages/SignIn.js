@@ -42,6 +42,7 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 	const { state, dispatch } = useAppContext();
+	const navigate = useNavigate();
 	// const [firstName, setFirsName] = useState('');
 	// const [lastName, setLastName] = useState('');
 	// const [pin, setPin] = useState('');
@@ -49,23 +50,38 @@ export default function SignIn() {
 
 	const [data, setData] = useState({
 		firstName: '',
-		lastName: '',
-		email: '',
-		pin: '',
-		confirmPin: '',
+		// lastName: '',
+		// email: '',
+		password: '',
+		// confirmPin: '',
 	});
 
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });
-		console.log(data);
 	}
 	// const navigate = useNavigate();
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
+		console.log('click');
+		const { firstName, password } = data;
 
-		// axios.get('/');
+		try {
+			const { data } = await axios.post('/login', {
+				firstName,
+				password,
+			});
 
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+
+		if (data.error) {
+			console.log(data.error);
+		} else {
+			navigate('/overview');
+		}
 		// dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
 
 		// if (state.user) navigate('/overview');
@@ -124,12 +140,12 @@ export default function SignIn() {
 									margin="normal"
 									required
 									fullWidth
-									name="pin"
-									label="pin"
+									name="password"
+									label="password"
 									type="password"
-									id="pin"
+									id="password"
 									autoComplete="current-pin"
-									value={data.pin}
+									value={data.password}
 									onChange={onChange}
 									// onBlur={onBlurHandler}
 									color="secondary"
