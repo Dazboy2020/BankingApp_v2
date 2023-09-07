@@ -16,6 +16,7 @@ import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/Navbar/NewNav';
 
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import classes from './SignIn.module.css';
 import { useAppContext } from '../context/context';
@@ -41,16 +42,33 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 	const { state, dispatch } = useAppContext();
-	const navigate = useNavigate();
+	// const [firstName, setFirsName] = useState('');
+	// const [lastName, setLastName] = useState('');
+	// const [pin, setPin] = useState('');
+	// const [confirmPin, setConfirmPin] = useState(false);
+
+	const [data, setData] = useState({
+		firstName: '',
+		lastName: '',
+		email: '',
+		pin: '',
+		confirmPin: '',
+	});
+
+	function onChange(e) {
+		setData({ ...data, [e.target.name]: e.target.value });
+		console.log(data);
+	}
+	// const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		axios.get('/');
+		// axios.get('/');
 
-		dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
+		// dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
 
-		if (state.user) navigate('/overview');
+		// if (state.user) navigate('/overview');
 	};
 
 	return (
@@ -84,20 +102,22 @@ export default function SignIn() {
 									margin="normal"
 									required
 									fullWidth
-									id="username"
+									id="firstName"
 									label="username"
-									name="username"
+									name="firstName"
 									autoComplete="username"
 									autoFocus
-									value={state.user}
-									onChange={(e) =>
-										dispatch({
-											type: 'field',
-											fieldName: 'user',
-											payload: e.currentTarget.value,
-										})
-									}
+									value={data.firstName}
+									// onChange={(e) =>
+									// 	dispatch({
+									// 		type: 'field',
+									// 		fieldName: 'user',
+									// 		payload: e.currentTarget.value,
+									// 	})
+									// }
 									// onBlur={onBlurHandler}
+
+									onChange={onChange}
 									color="secondary"
 								/>
 								<TextField
@@ -109,14 +129,8 @@ export default function SignIn() {
 									type="password"
 									id="pin"
 									autoComplete="current-pin"
-									value={state.pin}
-									onChange={(e) =>
-										dispatch({
-											type: 'field',
-											fieldName: 'pin',
-											payload: e.currentTarget.value,
-										})
-									}
+									value={data.pin}
+									onChange={onChange}
 									// onBlur={onBlurHandler}
 									color="secondary"
 								/>
