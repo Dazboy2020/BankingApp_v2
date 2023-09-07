@@ -41,8 +41,10 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const { state, dispatch } = useAppContext();
-	const navigate = useNavigate();
+	const { state, dispatch, useEffect } = useAppContext();
+	// const navigate = useNavigate();
+	const [mongoData, setMongoData] = useState('');
+
 	// const [firstName, setFirsName] = useState('');
 	// const [lastName, setLastName] = useState('');
 	// const [pin, setPin] = useState('');
@@ -59,28 +61,59 @@ export default function SignIn() {
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
+
 	// const navigate = useNavigate();
 
+	// const handleSubmit = async (event) => {
+	// 	event.preventDefault();
+	// 	console.log('click');
+	// 	const { firstName, password } = data;
+
+	// 	try {
+	// 		const { data } = await axios.post('/login', {
+	// 			firstName,
+	// 			password,
+	// 		});
+
+	// 		console.log(data);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+
+	// 	if (data.error) {
+	// 		console.log(data.error);
+	// 	}
+	// 	// dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
+
+	// 	// if (state.user) navigate('/overview');
+	// };
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		console.log('click');
-		const { firstName, password } = data;
 
 		try {
-			const { data } = await axios.post('/login', {
-				firstName,
-				password,
-			});
+			const { data: userData } = await axios.post('/login', data);
 
-			console.log(data);
+			console.log(userData);
+
+			// Now you have access to the user data
+			const { expenses, deposits, _id, firstName, lastName, email } =
+				userData.user;
+
+			// You can use this user data as needed
+			console.log('User ID:', _id);
+			console.log('First Name:', firstName);
+			console.log('Last Name:', lastName);
+			console.log('Email:', email);
+			console.log('Expenses:', expenses);
+			console.log('Deposits:', deposits);
 		} catch (error) {
 			console.log(error);
 		}
 
+		// If you need to access data.error, do it after the try-catch block
 		if (data.error) {
 			console.log(data.error);
-		} else {
-			navigate('/overview');
 		}
 		// dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
 

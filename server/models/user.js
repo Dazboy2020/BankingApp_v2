@@ -11,6 +11,8 @@ const userSchema = new Schema({
 	},
 	password: String,
 	confirmPassword: String,
+	expenses: Array,
+	deposits: Array,
 });
 
 //! userSchema inside of the 'User' collection

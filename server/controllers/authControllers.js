@@ -7,7 +7,15 @@ const test = (req, res) => {
 
 const registerUser = async (req, res) => {
 	try {
-		const { firstName, lastName, email, password, confirmPassword } = req.body;
+		const {
+			firstName,
+			lastName,
+			email,
+			password,
+			confirmPassword,
+			expenses,
+			deposits,
+		} = req.body;
 		console.log(req.body);
 
 		if (!firstName) {
@@ -22,7 +30,7 @@ const registerUser = async (req, res) => {
 			});
 		}
 
-		if (!password || password.length < 6) {
+		if (!password || password.length < 4) {
 			return res.json({
 				error: 'Password is required and should be at least 6 characters long!',
 			});
@@ -46,6 +54,19 @@ const registerUser = async (req, res) => {
 			firstName,
 			lastName,
 			email,
+			expenses: [
+				[-100, '2022-11-18'],
+				[-45.23, '2022-12-23'],
+				[-250.5, '2022-01-28'],
+				[-2500, '2020-04-16'],
+				[-242.21, '2020-05-08'],
+			],
+			deposits: [
+				[62.21, '2021-05-08'],
+				[133.9, '2021-05-27'],
+				[791.97, '2020-07-11'],
+				[130, '2019-07-12'],
+			],
 			password: hashedPassword,
 			confirmPassword: hashedPassword,
 		});
@@ -56,23 +77,49 @@ const registerUser = async (req, res) => {
 	}
 };
 
+// const loginUser = async (req, res) => {
+// 	try {
+// 		const { firstName, password } = req.body;
+// 		const user = await User.findOne({ firstName });
+// 		if (!user) {
+// 			return res.json({
+// 				error: 'No user found!',
+// 			});
+// 		}
+
+// 		console.log(user);
+
+// 		const match = await comparePassword(password, user.password);
+// 		if (match) {
+// 			res.json('Passwords match');
+// 			res.status(200).json({ user }); // Send the user object as JSON
+// 		} else {
+// 			res.json('passwords dont match');
+// 		}
+// 	} catch (error) {}
+// };
+
 const loginUser = async (req, res) => {
 	try {
 		const { firstName, password } = req.body;
 		const user = await User.findOne({ firstName });
 		if (!user) {
-			return res.json({
+			return res.status(404).json({
 				error: 'No user found!',
 			});
 		}
 
 		const match = await comparePassword(password, user.password);
 		if (match) {
-			res.json('Passwords match');
+			// Send the user object as JSON
+			res.status(200).json({ user });
 		} else {
-			res.json('passwords dont match');
+			res.status(401).json({ error: "Passwords don't match" });
 		}
-	} catch (error) {}
+	} catch (error) {
+		// Handle errors here
+		res.status(500).json({ error: 'Internal server error' });
+	}
 };
 
 module.exports = {
