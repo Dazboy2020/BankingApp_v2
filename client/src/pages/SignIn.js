@@ -42,51 +42,16 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 	const { state, dispatch, useEffect } = useAppContext();
-	// const navigate = useNavigate();
-	const [mongoData, setMongoData] = useState('');
-
-	// const [firstName, setFirsName] = useState('');
-	// const [lastName, setLastName] = useState('');
-	// const [pin, setPin] = useState('');
-	// const [confirmPin, setConfirmPin] = useState(false);
 
 	const [data, setData] = useState({
 		firstName: '',
-		// lastName: '',
-		// email: '',
 		password: '',
-		// confirmPin: '',
 	});
 
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
-	// const navigate = useNavigate();
-
-	// const handleSubmit = async (event) => {
-	// 	event.preventDefault();
-	// 	console.log('click');
-	// 	const { firstName, password } = data;
-
-	// 	try {
-	// 		const { data } = await axios.post('/login', {
-	// 			firstName,
-	// 			password,
-	// 		});
-
-	// 		console.log(data);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-
-	// 	if (data.error) {
-	// 		console.log(data.error);
-	// 	}
-	// 	// dispatch({ type: 'user/LoggedIn', payload: (state.user, state.pin) });
-
-	// 	// if (state.user) navigate('/overview');
-	// };
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		console.log('click');
@@ -94,24 +59,11 @@ export default function SignIn() {
 		try {
 			const { data: userData } = await axios.post('/login', data);
 
-			console.log(userData);
-
-			// Now you have access to the user data
-			const { expenses, deposits, _id, firstName, lastName, email } =
-				userData.user;
-
-			// You can use this user data as needed
-			console.log('User ID:', _id);
-			console.log('First Name:', firstName);
-			console.log('Last Name:', lastName);
-			console.log('Email:', email);
-			console.log('Expenses:', expenses);
-			console.log('Deposits:', deposits);
+			console.log(userData.user);
 		} catch (error) {
 			console.log(error);
 		}
 
-		// If you need to access data.error, do it after the try-catch block
 		if (data.error) {
 			console.log(data.error);
 		}

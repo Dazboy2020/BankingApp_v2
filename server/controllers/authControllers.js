@@ -77,28 +77,6 @@ const registerUser = async (req, res) => {
 	}
 };
 
-// const loginUser = async (req, res) => {
-// 	try {
-// 		const { firstName, password } = req.body;
-// 		const user = await User.findOne({ firstName });
-// 		if (!user) {
-// 			return res.json({
-// 				error: 'No user found!',
-// 			});
-// 		}
-
-// 		console.log(user);
-
-// 		const match = await comparePassword(password, user.password);
-// 		if (match) {
-// 			res.json('Passwords match');
-// 			res.status(200).json({ user }); // Send the user object as JSON
-// 		} else {
-// 			res.json('passwords dont match');
-// 		}
-// 	} catch (error) {}
-// };
-
 const loginUser = async (req, res) => {
 	try {
 		const { firstName, password } = req.body;
