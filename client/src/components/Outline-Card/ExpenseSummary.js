@@ -10,10 +10,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 export default function ExpenseSummary() {
 	const { totalExpenses, dispatch } = useAppContext();
 
-	// function handleSort() {
-	// 	setSort((sort) => !sort);
-	// }
-
 	return (
 		<Card
 			component="article"

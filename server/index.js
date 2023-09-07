@@ -17,6 +17,6 @@ app.use(express.json());
 
 app.use('/', require('./routes/authRoutes'));
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`Serving is Stringrunning on ${PORT}`));
