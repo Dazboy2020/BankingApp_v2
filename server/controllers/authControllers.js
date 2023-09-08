@@ -54,19 +54,8 @@ const registerUser = async (req, res) => {
 			firstName,
 			lastName,
 			email,
-			expenses: [
-				[-100, '2022-11-18'],
-				[-45.23, '2022-12-23'],
-				[-250.5, '2022-01-28'],
-				[-2500, '2020-04-16'],
-				[-242.21, '2020-05-08'],
-			],
-			deposits: [
-				[62.21, '2021-05-08'],
-				[133.9, '2021-05-27'],
-				[791.97, '2020-07-11'],
-				[130, '2019-07-12'],
-			],
+			expenses: [],
+			deposits: [],
 			password: hashedPassword,
 			confirmPassword: hashedPassword,
 		});
