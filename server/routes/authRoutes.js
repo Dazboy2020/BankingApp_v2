@@ -13,7 +13,10 @@ router.use(
 	cors({
 		credentials: true,
 		// origin: 'http://localhost:3000',
-		origin: 'https://expensify-frontend.onrender.com/',
+		origin: [
+			'https://expensify-frontend.onrender.com/',
+			'http://localhost:5000',
+		],
 	})
 );
 
