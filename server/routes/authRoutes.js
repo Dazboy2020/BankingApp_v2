@@ -11,8 +11,7 @@ const {
 //! middleware
 router.use(
 	cors({
-		// origin: 'http://localhost:3000',
-		origin: ['https://expensify-frontend.onrender.com/'],
+		origin: 'http://localhost:3000',
 		credentials: true,
 	})
 );
