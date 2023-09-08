@@ -1,10 +1,4 @@
-import {
-	Chart as ChartJS,
-	ArcElement,
-	Legend,
-	Tooltip,
-	Title,
-} from 'chart.js/auto';
+import { Chart as ChartJS, ArcElement, Legend, Tooltip, Title } from 'chart.js';
 
 import { Bar } from 'react-chartjs-2';
 import { Typography, Box, Card, CardContent } from '@mui/material';
