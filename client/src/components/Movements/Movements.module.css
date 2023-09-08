@@ -15,7 +15,6 @@
 
 	padding: 0.5rem;
 	display: flex;
-	/* align-items: flex-start; */
 	border-bottom: 1px solid #eee;
 	margin: 0.1rem;
 }
@@ -27,7 +26,6 @@
 	color: #fff;
 	padding: 0.1rem 1rem;
 	border-radius: 10rem;
-	/* margin-right: 2rem; */
 }
 
 .movements__date {
@@ -44,20 +42,18 @@
 	font-weight: 500;
 	color: #fff;
 	padding: 0.5rem;
-	min-width: 10rem;
+	width: 10rem;
 	margin-bottom: 0.1rem;
-
-	/* border-radius: 10rem; */
 }
 
-.movements__type__withdrawal {
+.movements__type__expense {
 	background-color: #a8577e;
 	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #fff;
 	padding: 0.5rem;
-	min-width: 10rem;
+	width: 10rem;
 	margin-bottom: 0.1rem;
 }
 
@@ -80,48 +76,5 @@ ul {
 	align-items: stretch;
 	flex-grow: 1;
 	width: 100%;
+	min-height: 30rem;
 }
-/* 
-@media (max-width: 576px) {
-	.movements__row {
-		flex-grow: 1;
-		flex-direction: column;
-		width: 100%;
-
-		padding: 0.1rem;
-		display: flex;
-		align-items: center;
-		border-bottom: 1px solid #eee;
-		margin: 0.1rem;
-	}
-
-	.movements__type__withdrawal {
-		font-size: 0.9rem;
-		text-transform: uppercase;
-		font-weight: 500;
-		color: #fff;
-		padding: 0.3rem;
-		min-width: 8rem;
-		margin-bottom: 0.3rem;
-	}
-
-	.movements__type {
-		font-size: 0.9rem;
-		text-transform: uppercase;
-		font-weight: 500;
-		color: #fff;
-		padding: 0.1rem 1rem;
-		border-radius: 10rem;
-	}
-	ul {
-		display: flex;
-		flex-direction: column;
-		list-style-type: none;
-		padding: 0.2rem;
-		align-items: stretch;
-		flex-grow: 1;
-		width: auto;
-	}
-} 
-
-*/
