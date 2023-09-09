@@ -1,14 +1,11 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import { Link, Stack } from '@mui/material';
-import { GitHub } from '@mui/icons-material';
+import { Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 
@@ -22,35 +19,12 @@ const options = {
 const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar() {
-	const {
-		setOpenModal,
-		setOpen,
-		setPin,
-		setClosePin,
-		setCloseUser,
-		setUser,
-		state,
-		dispatch,
-	} = useAppContext();
+	const { state } = useAppContext();
 
 	const navigate = useNavigate();
 
-	function handleClick() {
-		setOpen(true);
-	}
-
 	function handleLogin() {
 		navigate('/login');
-	}
-
-	function closeAccountHandler() {
-		setOpenModal(true);
-		const index = state.accounts.findIndex((acc) => acc.owner === state.user);
-		state.accounts.splice(index, 1);
-		setClosePin('');
-		setCloseUser('');
-		setPin('');
-		setUser('');
 	}
 
 	return (
@@ -67,81 +41,6 @@ function ResponsiveAppBar() {
 			<Container maxWidth="xxl">
 				<Toolbar disableGutters>
 					<Stack direction={{ xs: 'column', md: 'row' }}>
-						{state.isLoggedIn && (
-							<>
-								<Button
-									size="medium"
-									sx={{
-										fontSize: { xs: '1rem', sm: '1.5rem' },
-										fontFamily: 'Nunito Sans',
-									}}
-									onClick={closeAccountHandler}
-									color="inherit"
-									startIcon={
-										<ErrorOutlineIcon
-											color="white"
-											size="large"
-											sx={{ ml: 1 }}
-										/>
-									}
-								>
-									Close
-								</Button>
-								<Button
-									sx={{
-										fontSize: { xs: '1rem', sm: '1.5rem' },
-										fontFamily: 'Nunito Sans',
-									}}
-									onClick={() => dispatch({ type: 'switchCurrency' })}
-									size="medium"
-									color="inherit"
-									startIcon={
-										<CurrencyExchangeIcon
-											size="large"
-											color="white"
-											sx={{ ml: 1 }}
-										/>
-									}
-								>
-									Switch
-								</Button>
-								<Button
-									sx={{
-										fontSize: { xs: '1rem', sm: '1.5rem' },
-										fontFamily: 'Nunito Sans',
-										display: { xs: 'none', md: 'flex' },
-									}}
-									size="medium"
-									color="inherit"
-									startIcon={
-										<GitHub color="white" size="large" sx={{ ml: 1 }} />
-									}
-								>
-									<Link
-										sx={{ color: 'white', textDecoration: 'none' }}
-										href="https://github.com/Dazboy2020"
-									>
-										About
-									</Link>
-								</Button>
-
-								<Button
-									sx={{
-										fontSize: { xs: '1rem', sm: '1.5rem' },
-										fontFamily: 'Nunito Sans',
-									}}
-									size="medium"
-									onClick={handleClick}
-									color="inherit"
-									startIcon={
-										<ExitToAppIcon size="large" color="white" sx={{ ml: 1 }} />
-									}
-								>
-									Logout
-								</Button>
-							</>
-						)}
-
 						{!state.isLoggedIn && (
 							<Button
 								sx={{
