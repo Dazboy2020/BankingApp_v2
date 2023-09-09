@@ -16,6 +16,7 @@ const inititalState = {
 	currency: 'euro',
 	sort: false,
 	message: '',
+	ID: '',
 };
 
 function reducer(state, action) {
@@ -35,6 +36,7 @@ function reducer(state, action) {
 				user: action.payload.firstName,
 				expenses: action.payload.expenses,
 				deposits: action.payload.deposits,
+				ID: action.payload._id,
 			};
 		}
 

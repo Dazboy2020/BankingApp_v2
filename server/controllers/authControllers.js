@@ -88,9 +88,56 @@ const loginUser = async (req, res) => {
 		res.status(500).json({ error: 'Internal server error' });
 	}
 };
+const addExpense = async (req, res) => {
+	console.log('API HIT');
+	const { _id, expenses } = req.body;
+	try {
+		const user = await User.findById(_id);
+
+		if (!user) {
+			return res.status(404).json({ error: 'User not found' });
+		}
+
+		user.expenses = expenses;
+
+		await user.save();
+
+		console.log(`Expenses added successfully for user with ID ${_id}`);
+
+		return res.status(200).json({ message: 'Expenses added successfully' });
+	} catch (error) {
+		console.error(`Error adding expenses: ${error.message}`);
+		return res.status(500).json({ error: 'Internal server error' });
+	}
+};
+
+const addDeposit = async (req, res) => {
+	console.log('API HIT');
+	const { _id, deposits } = req.body;
+	try {
+		const user = await User.findById(_id);
+
+		if (!user) {
+			return res.status(404).json({ error: 'User not found' });
+		}
+
+		user.deposits = deposits;
+
+		await user.save();
+
+		console.log(`Expenses added successfully for user with ID ${_id}`);
+
+		return res.status(200).json({ message: 'Expenses added successfully' });
+	} catch (error) {
+		console.error(`Error adding expenses: ${error.message}`);
+		return res.status(500).json({ error: 'Internal server error' });
+	}
+};
 
 module.exports = {
 	test,
 	registerUser,
 	loginUser,
+	addExpense,
+	addDeposit,
 };

@@ -8,6 +8,8 @@ import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { useAppContext } from '../../context/context';
 
+import axios from 'axios';
+
 const menuType = [
 	{
 		value: 'deposit',
@@ -104,7 +106,7 @@ const AddTransaction = () => {
 		setMessage('');
 	}
 
-	function handleSubmitExpense(e) {
+	async function handleSubmitExpense(e) {
 		e.preventDefault();
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
@@ -125,6 +127,46 @@ const AddTransaction = () => {
 			]);
 		}
 
+		let expenseData;
+
+		if (expenseType === 'expense') {
+			expenseData = {
+				_id: state.ID,
+				expenses: updatedExpenses,
+			};
+
+			try {
+				const response = await axios.post(
+					'http://localhost:5000/addexpense',
+					expenseData
+				);
+
+				console.log('Expense added successfully:', response.data);
+			} catch (error) {
+				console.error('Error adding expense:', error);
+			}
+		}
+
+		if (expenseType === 'deposit') {
+			expenseData = {
+				_id: state.ID,
+				deposits: updatedDeposits,
+			};
+
+			try {
+				const response = await axios.post(
+					'http://localhost:5000/adddeposit',
+					expenseData
+				);
+
+				console.log('Expense added successfully:', response.data);
+			} catch (error) {
+				console.error('Error adding expense:', error);
+			}
+		}
+
+		console.log(expenseData);
+
 		setMessage(
 			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
 		);
@@ -133,7 +175,6 @@ const AddTransaction = () => {
 			? dispatch({ type: 'add/expense', payload: updatedExpenses })
 			: dispatch({ type: 'add/deposit', payload: updatedDeposits });
 
-		// setMessage('transaction successful!');
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
 		setExpenseCategory('');

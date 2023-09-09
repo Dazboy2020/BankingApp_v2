@@ -6,6 +6,8 @@ const {
 	test,
 	registerUser,
 	loginUser,
+	addExpense: addexpense,
+	addDeposit,
 } = require('../controllers/authControllers');
 
 //! middleware
@@ -21,5 +23,9 @@ router.get('/', test);
 router.post('/register', registerUser);
 
 router.post('/login', loginUser);
+
+router.post('/addexpense', addexpense);
+
+router.post('/adddeposit', addDeposit);
 
 module.exports = router;

@@ -80,8 +80,6 @@ export default function SignUp() {
 		} catch (error) {
 			console.log(error);
 		}
-
-		// setOpenToast(true, { message: message });
 	};
 
 	function handleChange(e) {
