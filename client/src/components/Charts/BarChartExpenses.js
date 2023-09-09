@@ -1,13 +1,27 @@
-import { Chart as ChartJS, ArcElement, Legend, Tooltip, Title } from 'chart.js';
-
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend,
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Typography, Box, Card, CardContent } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
+ChartJS.register(
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend
+);
+
 function BarChartExpenses() {
 	const { state } = useAppContext();
-
-	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
 	const movementsToDisplay = state.expenses;
 
