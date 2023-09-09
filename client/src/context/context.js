@@ -38,30 +38,6 @@ function reducer(state, action) {
 			};
 		}
 
-		case 'user/LoggedIn':
-			const loggedInAccount = state.accounts.find((acc) => {
-				return acc[0].owner === state.user;
-			});
-			if (loggedInAccount && loggedInAccount[0].pin === +state.pin) {
-				return {
-					...state,
-					accountMovements: loggedInAccount,
-					isLoggedIn: true,
-					loggedInAccount: loggedInAccount[0].owner,
-					user: loggedInAccount[0].owner,
-				};
-			} else {
-				return {
-					...state,
-					loggedInAccount: '',
-					error: true,
-					pin: '',
-					user: '',
-					isLoggedIn: false,
-					accountMovements: [],
-				};
-			}
-
 		case 'user/LoggedOut':
 			return {
 				...state,
@@ -70,11 +46,16 @@ function reducer(state, action) {
 				pin: '',
 			};
 
-		case 'add/expense-deposit':
+		case 'add/expense':
 			return {
 				...state,
-				accountMovements: action.payload,
-				message: 'Transaction added!',
+				expenses: action.payload,
+			};
+
+		case 'add/deposit':
+			return {
+				...state,
+				deposits: action.payload,
 			};
 
 		case 'switchCurrency':

@@ -69,8 +69,8 @@ const AddTransaction = () => {
 	const [label, setLabel] = useState('');
 	// const [message, setMessage] = useState('');
 
-	const updatedDeposits = state.deposits?.map((movement) => movement);
-	const updatedExpenses = state.expenses?.map((movement) => movement);
+	const updatedDeposits = state.deposits;
+	const updatedExpenses = state.expenses;
 
 	function handleReturn(e) {
 		e.preventDefault();
@@ -125,23 +125,14 @@ const AddTransaction = () => {
 			]);
 		}
 
-		let updatedAccount;
-
-		updatedAccount = [
-			{
-				...state.deposits,
-				deposits: updatedDeposits,
-			},
-			{
-				...state.expenses,
-				expenses: updatedExpenses,
-			},
-		];
 		setMessage(
 			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
 		);
 
-		dispatch({ type: 'add/expense-deposit', payload: updatedAccount });
+		expenseType === 'expense'
+			? dispatch({ type: 'add/expense', payload: updatedExpenses })
+			: dispatch({ type: 'add/deposit', payload: updatedDeposits });
+
 		// setMessage('transaction successful!');
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
