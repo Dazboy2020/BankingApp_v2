@@ -68,7 +68,18 @@
 	font-size: 1.3rem;
 }
 
-ul {
+/* ul {
+	display: flex;
+	flex-direction: column;
+	list-style-type: none;
+	padding: 0.2rem;
+	align-items: stretch;
+	flex-grow: 1;
+	width: 100%;
+	min-height: 30rem;
+} */
+
+.list {
 	display: flex;
 	flex-direction: column;
 	list-style-type: none;

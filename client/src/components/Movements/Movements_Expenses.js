@@ -13,7 +13,7 @@ const MovementsExpenses = () => {
 		: movementsToDisplay;
 
 	return (
-		<ul>
+		<ul className={classes.list}>
 			{moves.map((item) => (
 				<div
 					key={Math.floor(Math.random() * 10000) + 1}
