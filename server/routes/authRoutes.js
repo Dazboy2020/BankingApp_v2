@@ -11,11 +11,10 @@ const {
 //! middleware
 router.use(
 	cors({
-		origin: 'http://localhost:3000',
 		credentials: true,
+		origin: 'http://localhost:3000',
 	})
 );
-app.options('*', cors());
 
 router.get('/', test);
 
