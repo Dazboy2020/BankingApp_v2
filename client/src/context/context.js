@@ -14,6 +14,7 @@ const inititalState = {
 	sort: false,
 	message: '',
 	ID: '',
+	addTransactionAnimate: false,
 };
 
 function reducer(state, action) {
@@ -63,6 +64,13 @@ function reducer(state, action) {
 				...state,
 				sort: state.sort === true ? false : true,
 			};
+
+		case 'addTransactionAnimate': {
+			return {
+				...state,
+				addTransactionAnimate: action.payload,
+			};
+		}
 
 		default:
 			return state;

@@ -69,7 +69,6 @@ const AddTransaction = () => {
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
-	// const [message, setMessage] = useState('');
 
 	const updatedDeposits = state.deposits;
 	const updatedExpenses = state.expenses;
@@ -108,6 +107,7 @@ const AddTransaction = () => {
 
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
+		dispatch({ type: 'addTransactionAnimate', payload: true });
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 
@@ -117,12 +117,24 @@ const AddTransaction = () => {
 
 		const expenseDate = `${day}  ${month}  ${year}`;
 
+		let id = Math.random().toString();
+
 		if (expenseType === 'deposit' && expenseAmount > 0) {
-			updatedDeposits.unshift([+expenseAmount, expenseDate, expenseCategory]);
+			updatedDeposits.unshift([
+				+expenseAmount,
+				expenseDate,
+				expenseCategory,
+				id,
+			]);
 		}
 
 		if (expenseType === 'expense' && expenseAmount > 0) {
-			updatedExpenses.unshift([-expenseAmount, expenseDate, expenseCategory]);
+			updatedExpenses.unshift([
+				-expenseAmount,
+				expenseDate,
+				expenseCategory,
+				id,
+			]);
 		}
 
 		let expenseData;
@@ -149,6 +161,7 @@ const AddTransaction = () => {
 			expenseData = {
 				_id: state.ID,
 				deposits: updatedDeposits,
+				id: Math.random().toString(),
 			};
 
 			try {
@@ -174,6 +187,7 @@ const AddTransaction = () => {
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
 		setExpenseCategory('');
+		// dispatch({ type: 'addTransactionAnimate', payload: false });
 	}
 
 	return (
