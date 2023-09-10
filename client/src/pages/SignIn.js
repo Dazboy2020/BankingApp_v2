@@ -45,7 +45,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const { state, dispatch } = useAppContext();
+	const { state, dispatch, setOpenToast, message, setMessage } =
+		useAppContext();
 	const navigate = useNavigate();
 
 	const [data, setData] = useState({
@@ -59,19 +60,19 @@ export default function SignIn() {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log('click');
+		setMessage('');
 
 		try {
 			const { data: userData } = await axios.post('/login', data);
-			dispatch({ type: 'user/MongoLoggedIn', payload: userData.user });
 
-			console.log(userData.user);
+			if (userData.error) {
+				setMessage(userData.error);
+				setOpenToast(true, { message: userData.error });
+			} else {
+				dispatch({ type: 'user/MongoLoggedIn', payload: userData.user });
+			}
 		} catch (error) {
 			console.log(error);
-		}
-
-		if (data.error) {
-			console.log(data.error);
 		}
 	};
 	useEffect(

@@ -8,8 +8,10 @@ import {
 	TextField,
 } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
+import { useAppContext } from '../context/context';
 
 function Account() {
+	const { state } = useAppContext();
 	return (
 		<Box sx={{ backgroundColor: '#ececec' }}>
 			<ResponsiveDrawer />
@@ -71,28 +73,32 @@ function Account() {
 									<TextField
 										id="outlined-firstname"
 										label="First Name"
-										defaultValue="Default Value"
+										defaultValue={state.user}
 										color="secondary"
+										disabled={true}
 									/>
 									<TextField
 										id="outlined-secondname"
 										label="Second Name"
-										defaultValue="Default Value"
+										defaultValue={state.lastName}
 										color="secondary"
+										disabled={true}
 									/>
 								</Box>
 								<Box sx={{ textAlign: 'center' }}>
 									<TextField
 										id="outlined-email"
 										label="Email"
-										defaultValue="Default Value"
+										defaultValue={state.loggedInAccount.email}
 										color="secondary"
+										disabled={true}
 									/>
 									<TextField
 										id="outlined-currency"
 										label="Currency "
-										defaultValue="Default Value"
+										defaultValue="€"
 										color="secondary"
+										disabled={true}
 									/>
 								</Box>
 								<Box
