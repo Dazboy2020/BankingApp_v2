@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { useAppContext } from '../../context/context';
+
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,7 +8,6 @@ import Button from '@mui/material/Button';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
-import { useAppContext } from '../../context/context';
 
 import axios from 'axios';
 
@@ -63,7 +64,7 @@ const menuDeposit = [
 ];
 
 const AddTransaction = () => {
-	const { setOpenToast, state, dispatch, message, setMessage } =
+	const { setOpenToast, dispatch, message, setMessage, state } =
 		useAppContext();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
@@ -130,8 +131,9 @@ const AddTransaction = () => {
 		let expenseData;
 
 		if (expenseType === 'expense') {
+			const queryParams = `?_id=${state.ID}`;
 			expenseData = {
-				_id: state.ID,
+				id: window.crypto.randomUUID(),
 				amount: -expenseAmount,
 				date: expenseDate,
 				category: expenseCategory,
@@ -139,7 +141,7 @@ const AddTransaction = () => {
 
 			try {
 				const response = await axios.post(
-					'http://localhost:5000/addexpense',
+					`http://localhost:5000/addexpense${queryParams}`,
 					expenseData
 				);
 
@@ -150,8 +152,10 @@ const AddTransaction = () => {
 		}
 
 		if (expenseType === 'deposit') {
+			const queryParams = `?_id=${state.ID}`;
+
 			expenseData = {
-				_id: state.ID,
+				id: window.crypto.randomUUID(),
 				amount: +expenseAmount,
 				date: expenseDate,
 				category: expenseCategory,
@@ -159,7 +163,7 @@ const AddTransaction = () => {
 
 			try {
 				const response = await axios.post(
-					'http://localhost:5000/adddeposit',
+					`http://localhost:5000/adddeposit${queryParams}`,
 					expenseData
 				);
 

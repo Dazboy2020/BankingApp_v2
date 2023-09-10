@@ -8,7 +8,7 @@ const {
 	loginUser,
 	addExpense: addexpense,
 	addDeposit,
-} = require('../controllers/authControllers');
+} = require('../controllers/routeControllers');
 
 //! middleware
 router.use(

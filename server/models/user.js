@@ -13,7 +13,7 @@ const userSchema = new Schema({
 	confirmPassword: String,
 	expenses: [
 		{
-			_id: String,
+			id: String,
 			amount: Number,
 			date: String,
 			category: String,
@@ -21,7 +21,7 @@ const userSchema = new Schema({
 	],
 	deposits: [
 		{
-			_id: String,
+			id: String,
 			amount: Number,
 			date: String,
 			category: String,

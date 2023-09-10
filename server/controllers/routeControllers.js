@@ -93,7 +93,8 @@ const loginUser = async (req, res) => {
 };
 
 const addExpense = async (req, res) => {
-	const { amount, date, category, _id } = req.body;
+	const { amount, date, category, id } = req.body;
+	const _id = req.query._id;
 	try {
 		const user = await User.findById(_id);
 
@@ -105,7 +106,7 @@ const addExpense = async (req, res) => {
 			amount,
 			date,
 			category,
-			_id,
+			id,
 		};
 
 		user.expenses.unshift(newExpense);
@@ -122,7 +123,9 @@ const addExpense = async (req, res) => {
 };
 
 const addDeposit = async (req, res) => {
-	const { amount, date, category, _id } = req.body;
+	const { amount, date, category, id } = req.body;
+	const _id = req.query._id;
+
 	try {
 		const user = await User.findById(_id);
 
@@ -134,7 +137,7 @@ const addDeposit = async (req, res) => {
 			amount,
 			date,
 			category,
-			_id,
+			id,
 		};
 
 		user.deposits.unshift(newExpense);
