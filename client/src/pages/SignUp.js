@@ -28,8 +28,8 @@ function Copyright(props) {
 			{...props}
 		>
 			{'Copyright © '}
-			<Link color="inherit" href="https://mui.com/">
-				Your Website
+			<Link color="inherit" href="https://github.com/Dazboy2020/">
+				Dazboy
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -197,8 +197,8 @@ export default function SignUp() {
 									</Grid>
 								</Grid>
 							</Box>
+							<Copyright sx={{ mt: 5 }} />
 						</Box>
-						<Copyright sx={{ mt: 5 }} />
 					</Container>
 				</ThemeProvider>
 			</Box>

@@ -33,7 +33,10 @@ function Copyright(props) {
 			{...props}
 		>
 			{'Copyright © '}
-			<Link color="inherit">DazBoy</Link> {new Date().getFullYear()}
+			<Link color="inherit" href="https://github.com/Dazboy2020/">
+				DazBoy
+			</Link>{' '}
+			{new Date().getFullYear()}
 			{'.'}
 		</Typography>
 	);
@@ -115,15 +118,6 @@ export default function SignIn() {
 									autoComplete="username"
 									autoFocus
 									value={data.firstName}
-									// onChange={(e) =>
-									// 	dispatch({
-									// 		type: 'field',
-									// 		fieldName: 'user',
-									// 		payload: e.currentTarget.value,
-									// 	})
-									// }
-									// onBlur={onBlurHandler}
-
 									onChange={onChange}
 									color="secondary"
 								/>
@@ -174,8 +168,8 @@ export default function SignIn() {
 									</Grid>
 								</Grid>
 							</Box>
+							<Copyright sx={{ mt: 4, mb: 0 }} />
 						</Box>
-						<Copyright sx={{ mt: 8, mb: 4 }} />
 					</Container>
 				</ThemeProvider>
 			</Box>
