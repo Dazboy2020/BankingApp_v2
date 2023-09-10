@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import ResponsiveAppBar from '../components/Navbar/NewNav';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import classes from './SignIn.module.css';
 import { useAppContext } from '../context/context';
@@ -42,6 +42,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+	const navigate = useNavigate();
 	const { setOpenToast, message, setMessage } = useAppContext();
 	const [data, setData] = useState({
 		firstName: '',
@@ -76,6 +77,7 @@ export default function SignUp() {
 				setOpenToast(true, { message: message });
 
 				setData({});
+				navigate('/login');
 			}
 		} catch (error) {
 			console.log(error);

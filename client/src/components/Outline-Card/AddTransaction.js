@@ -111,20 +111,18 @@ const AddTransaction = () => {
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 
+		const month = new Date().toLocaleString('en-GB', { month: 'short' });
+		const day = new Date().toLocaleString('en-GB', { day: '2-digit' });
+		const year = new Date().getFullYear();
+
+		const expenseDate = `${day}  ${month}  ${year}`;
+
 		if (expenseType === 'deposit' && expenseAmount > 0) {
-			updatedDeposits.unshift([
-				+expenseAmount,
-				new Date().toLocaleDateString(),
-				expenseCategory,
-			]);
+			updatedDeposits.unshift([+expenseAmount, expenseDate, expenseCategory]);
 		}
 
 		if (expenseType === 'expense' && expenseAmount > 0) {
-			updatedExpenses.unshift([
-				-expenseAmount,
-				new Date().toLocaleDateString(),
-				expenseCategory,
-			]);
+			updatedExpenses.unshift([-expenseAmount, expenseDate, expenseCategory]);
 		}
 
 		let expenseData;
