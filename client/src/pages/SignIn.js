@@ -45,6 +45,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+	// eslint-disable-next-line no-unused-vars
 	const { state, dispatch, setOpenToast, message, setMessage } =
 		useAppContext();
 	const navigate = useNavigate();

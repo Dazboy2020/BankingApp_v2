@@ -163,8 +163,6 @@ const AddTransaction = () => {
 			}
 		}
 
-		console.log(expenseData);
-
 		setMessage(
 			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
 		);
