@@ -12,8 +12,13 @@ const Movements = () => {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
+	const animate =
+		state.addTransactionAnimate === true
+			? classes.movements__row__animate
+			: classes.movements__row;
+
 	return (
-		<ul className={classes.list}>
+		<ul className={animate}>
 			{moves.map((item) => (
 				<div
 					key={Math.floor(Math.random() * 10000) + 1}

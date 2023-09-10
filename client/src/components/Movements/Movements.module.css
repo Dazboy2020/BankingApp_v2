@@ -81,20 +81,22 @@
 }
 
 .movements__row__animate {
-	flex-grow: 1;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	/* flex-grow: 1; */
 	flex-direction: column;
 
 	padding: 0.5rem;
 	display: flex;
 	border-bottom: 1px solid #eee;
 	margin: 0.1rem;
-	animation: slideUp 1s 1 ease-in-out forwards;
+	animation: slideUp 0.5s 1 ease-in-out forwards;
 }
 
 @keyframes slideUp {
 	from {
 		opacity: 0;
-		transform: translateY(800px);
+		transform: translateY(100px);
 	}
 	to {
 		transform: translateY(0px);

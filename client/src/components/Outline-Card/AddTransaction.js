@@ -100,6 +100,18 @@ const AddTransaction = () => {
 		[expenseType]
 	);
 
+	useEffect(() => {
+		const intervalDuration = 3000;
+
+		const intervalId = setInterval(() => {
+			dispatch({ type: 'addTransactionAnimate', payload: false });
+		}, intervalDuration);
+
+		return () => {
+			clearInterval(intervalId);
+		};
+	}, [setExpenseAmount, dispatch]);
+
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
 		setMessage('');
@@ -151,7 +163,7 @@ const AddTransaction = () => {
 					expenseData
 				);
 
-				console.log('Expense added successfully:', response.data);
+				console.log('New expense added successfully:', response.data);
 			} catch (error) {
 				console.error('Error adding expense:', error);
 			}
@@ -170,7 +182,7 @@ const AddTransaction = () => {
 					expenseData
 				);
 
-				console.log('Expense added successfully:', response.data);
+				console.log('Deposit added successfully:', response.data);
 			} catch (error) {
 				console.error('Error adding expense:', error);
 			}
@@ -180,14 +192,18 @@ const AddTransaction = () => {
 			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
 		);
 
-		expenseType === 'expense'
-			? dispatch({ type: 'add/expense', payload: updatedExpenses })
-			: dispatch({ type: 'add/deposit', payload: updatedDeposits });
+		if (expenseType === 'expense') {
+			dispatch({ type: 'add/expense', payload: updatedExpenses });
+		}
+
+		if (expenseType === 'deposit') {
+			dispatch({ type: 'add/deposit', payload: updatedDeposits });
+		}
 
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
 		setExpenseCategory('');
-		// dispatch({ type: 'addTransactionAnimate', payload: false });
+		// dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	return (
