@@ -23,8 +23,7 @@ ChartJS.register(
 function BarChart() {
 	const { state } = useAppContext();
 
-	const movementsToDisplay =
-		state.currency === 'euro' ? state.deposits : state.expenses;
+	const movementsToDisplay = state.deposits;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -32,8 +31,8 @@ function BarChart() {
 
 	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
 	let label = moves.map((item) => item[0]);
-	let dataSetLabel = state.currency === 'euro' ? 'Income' : 'Expense';
-	let titleText = state.currency === 'euro' ? 'INCOME' : 'EXPENSES';
+	let dataSetLabel = 'Income';
+	let titleText = 'INCOME';
 
 	const userData = {
 		labels: label,
@@ -78,7 +77,7 @@ function BarChart() {
 							textAlign: 'center',
 						}}
 					>
-						{state.currency === 'euro' ? 'INCOME' : 'EXPENSES'}
+						INCOME
 					</Typography>
 					<div
 						className="canvas"

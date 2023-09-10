@@ -9,8 +9,7 @@ function PieChart() {
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
-	const movementsToDisplay =
-		state.currency === 'euro' ? state.deposits : state.expenses;
+	const movementsToDisplay = state.expenses;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -18,8 +17,8 @@ function PieChart() {
 
 	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
 	let label = moves.map((item) => item[0]);
-	let dataSetLabel = state.currency === 'euro' ? 'Income' : 'Expense';
-	let titleText = state.currency === 'euro' ? 'INCOME' : 'EXPENSES';
+	let dataSetLabel = 'Expense';
+	let titleText = 'EXPENSES';
 
 	const userData = {
 		labels: label,
@@ -65,7 +64,7 @@ function PieChart() {
 							fontWeight: 'bold',
 						}}
 					>
-						{state.currency === 'euro' ? 'INCOME' : 'EXPENSES'}
+						EXPENSES
 					</Typography>
 					<div
 						className="canvas"

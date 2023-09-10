@@ -52,8 +52,6 @@ export default function SignUp() {
 		confirmPassword: '',
 	});
 
-	// setMessage('');
-
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 

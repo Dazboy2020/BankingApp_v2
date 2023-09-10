@@ -1,11 +1,8 @@
 import { createContext, useContext, useReducer, useState } from 'react';
-import { account1, account2, account3 } from '../accounts';
 
 const AppContext = createContext();
 
 const inititalState = {
-	accountMovements: [],
-	accounts: [account1, account2, account3],
 	expenses: [],
 	deposits: [],
 	isLoggedIn: false,
@@ -13,7 +10,6 @@ const inititalState = {
 	pin: '',
 	user: '',
 	error: false,
-	currency: 'euro',
 	sort: false,
 	message: '',
 	ID: '',
@@ -58,13 +54,6 @@ function reducer(state, action) {
 			return {
 				...state,
 				deposits: action.payload,
-			};
-
-		case 'switchCurrency':
-			return {
-				...state,
-				currency: state.currency === 'euro' ? 'usd' : 'euro',
-				sort: false,
 			};
 
 		case 'sort':
