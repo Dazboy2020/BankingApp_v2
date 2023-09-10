@@ -11,8 +11,22 @@ const userSchema = new Schema({
 	},
 	password: String,
 	confirmPassword: String,
-	expenses: Array,
-	deposits: Array,
+	expenses: [
+		{
+			_id: String,
+			amount: Number,
+			date: String,
+			category: String,
+		},
+	],
+	deposits: [
+		{
+			_id: String,
+			amount: Number,
+			date: String,
+			category: String,
+		},
+	],
 });
 
 //! userSchema inside of the 'User' collection

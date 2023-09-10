@@ -3,8 +3,8 @@ import { createContext, useContext, useReducer, useState } from 'react';
 const AppContext = createContext();
 
 const inititalState = {
-	expenses: [],
-	deposits: [],
+	expenses: [{}],
+	deposits: [{}],
 	isLoggedIn: false,
 	loggedInAccount: '',
 	pin: '',
@@ -50,13 +50,13 @@ function reducer(state, action) {
 		case 'add/expense':
 			return {
 				...state,
-				expenses: action.payload,
+				expenses: [action.payload, ...state.expenses],
 			};
 
 		case 'add/deposit':
 			return {
 				...state,
-				deposits: action.payload,
+				deposits: [action.payload, ...state.deposits],
 			};
 
 		case 'sort':
@@ -87,8 +87,14 @@ function ContextProvider({ children }) {
 	const [closeUser, setCloseUser] = useState('');
 	const [message, setMessage] = useState('this is a test');
 
-	const totalIncome = +state.deposits?.reduce((acc, mov) => acc + mov[0], 0);
-	const totalExpenses = +state.expenses?.reduce((acc, mov) => acc + mov[0], 0);
+	const totalIncome = +state.deposits?.reduce(
+		(acc, dep) => acc + dep.amount,
+		0
+	);
+	const totalExpenses = +state.expenses?.reduce(
+		(acc, ex) => acc + ex.amount,
+		0
+	);
 
 	return (
 		<AppContext.Provider

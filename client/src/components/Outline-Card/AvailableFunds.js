@@ -10,8 +10,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 export default function AvailbleFunds() {
 	const { totalExpenses, totalIncome } = useAppContext();
 
-	const fundColour =
-		totalIncome - Math.abs(totalExpenses) >= 0 ? 'green' : 'red';
+	const fundColour = totalIncome - totalExpenses >= 0 ? 'green' : 'red';
 
 	return (
 		<Card

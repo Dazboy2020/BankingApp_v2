@@ -15,8 +15,8 @@ function PieChart() {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
-	let bgColor = moves.map((item) => (item[0] > 0 ? '#597081' : '#a8577e'));
-	let label = moves.map((item) => item[0]);
+	let bgColor = moves.map((item) => (item.amount > 0 ? '#597081' : '#a8577e'));
+	let label = moves.map((item) => item.amount);
 	let dataSetLabel = 'Expense';
 	let titleText = 'EXPENSES';
 
@@ -25,7 +25,7 @@ function PieChart() {
 		datasets: [
 			{
 				label: dataSetLabel,
-				data: moves.map((item) => item[0]),
+				data: moves.map((item) => item.amount),
 				backgroundColor: bgColor,
 			},
 		],

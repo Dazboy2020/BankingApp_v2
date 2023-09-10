@@ -91,9 +91,9 @@ const loginUser = async (req, res) => {
 		res.status(500).json({ error: 'Internal server error' });
 	}
 };
+
 const addExpense = async (req, res) => {
-	console.log('API HIT');
-	const { _id, expenses } = req.body;
+	const { amount, date, category, _id } = req.body;
 	try {
 		const user = await User.findById(_id);
 
@@ -101,7 +101,14 @@ const addExpense = async (req, res) => {
 			return res.status(404).json({ error: 'User not found' });
 		}
 
-		user.expenses = expenses;
+		const newExpense = {
+			amount,
+			date,
+			category,
+			_id,
+		};
+
+		user.expenses.unshift(newExpense);
 
 		await user.save();
 
@@ -115,8 +122,7 @@ const addExpense = async (req, res) => {
 };
 
 const addDeposit = async (req, res) => {
-	console.log('API HIT');
-	const { _id, deposits } = req.body;
+	const { amount, date, category, _id } = req.body;
 	try {
 		const user = await User.findById(_id);
 
@@ -124,8 +130,14 @@ const addDeposit = async (req, res) => {
 			return res.status(404).json({ error: 'User not found' });
 		}
 
-		user.deposits = deposits;
+		const newExpense = {
+			amount,
+			date,
+			category,
+			_id,
+		};
 
+		user.deposits.unshift(newExpense);
 		await user.save();
 
 		console.log(`Expenses added successfully for user with ID ${_id}`);

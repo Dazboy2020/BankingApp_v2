@@ -70,9 +70,6 @@ const AddTransaction = () => {
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
 
-	const updatedDeposits = state.deposits;
-	const updatedExpenses = state.expenses;
-
 	function handleReturn(e) {
 		e.preventDefault();
 		return;
@@ -100,6 +97,7 @@ const AddTransaction = () => {
 		[expenseType]
 	);
 
+	//! Clear animation
 	useEffect(() => {
 		const intervalDuration = 3000;
 
@@ -129,32 +127,14 @@ const AddTransaction = () => {
 
 		const expenseDate = `${day}  ${month}  ${year}`;
 
-		let id = Math.random().toString();
-
-		if (expenseType === 'deposit' && expenseAmount > 0) {
-			updatedDeposits.unshift([
-				+expenseAmount,
-				expenseDate,
-				expenseCategory,
-				id,
-			]);
-		}
-
-		if (expenseType === 'expense' && expenseAmount > 0) {
-			updatedExpenses.unshift([
-				-expenseAmount,
-				expenseDate,
-				expenseCategory,
-				id,
-			]);
-		}
-
 		let expenseData;
 
 		if (expenseType === 'expense') {
 			expenseData = {
 				_id: state.ID,
-				expenses: updatedExpenses,
+				amount: -expenseAmount,
+				date: expenseDate,
+				category: expenseCategory,
 			};
 
 			try {
@@ -172,8 +152,9 @@ const AddTransaction = () => {
 		if (expenseType === 'deposit') {
 			expenseData = {
 				_id: state.ID,
-				deposits: updatedDeposits,
-				id: Math.random().toString(),
+				amount: +expenseAmount,
+				date: expenseDate,
+				category: expenseCategory,
 			};
 
 			try {
@@ -193,17 +174,16 @@ const AddTransaction = () => {
 		);
 
 		if (expenseType === 'expense') {
-			dispatch({ type: 'add/expense', payload: updatedExpenses });
+			dispatch({ type: 'add/expense', payload: expenseData });
 		}
 
 		if (expenseType === 'deposit') {
-			dispatch({ type: 'add/deposit', payload: updatedDeposits });
+			dispatch({ type: 'add/deposit', payload: expenseData });
 		}
 
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
 		setExpenseCategory('');
-		// dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	return (

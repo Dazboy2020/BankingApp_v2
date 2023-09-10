@@ -8,8 +8,11 @@ import { useAppContext } from '../../context/context';
 
 function PieEuro() {
 	const { state } = useAppContext();
-	const totalIncome = state.deposits?.reduce((acc, mov) => acc + mov[0], 0);
-	const totalExpenses = state.expenses?.reduce((acc, mov) => acc + mov[0], 0);
+	const totalIncome = state.deposits?.reduce((acc, mov) => acc + mov.amount, 0);
+	const totalExpenses = state.expenses?.reduce(
+		(acc, mov) => acc + mov.amount,
+		0
+	);
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 

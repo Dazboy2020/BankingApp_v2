@@ -25,11 +25,9 @@ const MovementsExpenses = () => {
 				>
 					<Stack className={classes.movements__row}>
 						<span className={classes.movements__type__expense}>Expense</span>
-						<span className={classes.movements__date}>{item[1]}</span>
-						<span className={classes.movements__category}>{item[2]}</span>
-						<span className={classes.movements__value}>
-							€{item[0].toFixed(2)}
-						</span>
+						<span className={classes.movements__date}>{item.date}</span>
+						<span className={classes.movements__category}>{item.category}</span>
+						<span className={classes.movements__value}>€{item.amount}</span>
 					</Stack>
 				</div>
 			))}
