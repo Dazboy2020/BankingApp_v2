@@ -65,6 +65,12 @@ function reducer(state, action) {
 				deposits: state.deposits.filter((ex) => ex.id !== action.payload),
 			};
 
+		case 'delete/expense':
+			return {
+				...state,
+				expenses: state.expenses.filter((ex) => ex.id !== action.payload),
+			};
+
 		case 'sort':
 			return {
 				...state,

@@ -5,9 +5,23 @@ import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
+import { useEffect } from 'react';
 
 const MovementsExpenses = () => {
-	const { state } = useAppContext();
+	const { state, dispatch } = useAppContext();
+
+	//! Clear animation
+	useEffect(() => {
+		const intervalDuration = 3000;
+
+		const intervalId = setInterval(() => {
+			dispatch({ type: 'addTransactionAnimate', payload: false });
+		}, intervalDuration);
+
+		return () => {
+			clearInterval(intervalId);
+		};
+	}, [dispatch]);
 
 	const movementsToDisplay = state.expenses;
 
@@ -21,6 +35,11 @@ const MovementsExpenses = () => {
 			: classes.movements__row;
 
 	function handleEditClick() {}
+
+	function handleDelete(id) {
+		dispatch({ type: 'addTransactionAnimate', payload: true });
+		dispatch({ type: 'delete/expense', payload: id });
+	}
 
 	return (
 		<ul className={animate}>
@@ -83,7 +102,7 @@ const MovementsExpenses = () => {
 										fontWeight: '500',
 										mt: '.3rem',
 									}}
-									onClick={handleEditClick}
+									onClick={() => handleDelete(item.id)}
 									startIcon={
 										<DeleteIcon
 											sx={{

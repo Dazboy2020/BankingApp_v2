@@ -1,5 +1,5 @@
 import ResponsiveDrawer from '../components/Drawer/Draw';
-import { Box, Stack, Paper } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
@@ -14,19 +14,20 @@ function Expenses() {
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
 
-			<Paper
+			<Box
 				className={classes.body}
 				sx={{
 					// height: '100vh',
 
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },
-					// bgcolor: '#ececec',
+					bgcolor: '#ececec',
 				}}
 			>
 				<Stack
 					spacing={2}
 					direction={{ sm: 'column', md: 'row' }}
+					// sx={{ m: 2 }}
 					sx={{
 						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
 					}}
@@ -42,7 +43,7 @@ function Expenses() {
 				>
 					<Movements />
 				</Box>
-			</Paper>
+			</Box>
 		</>
 	);
 }
