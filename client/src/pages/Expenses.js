@@ -1,29 +1,32 @@
 import ResponsiveDrawer from '../components/Drawer/Draw';
-import { Box, Card, Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
 import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
+import classes from './Expenses.module.css';
 
 function Expenses() {
 	return (
-		<Box sx={{ backgroundColor: '#ececec' }}>
+		<>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
 			{/* <Toast /> */}
 
 			<Box
+				className={classes.body}
 				sx={{
-					height: '100vh',
+					// height: '100vh',
 
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },
+					bgcolor: '#ececec',
 				}}
 			>
 				<Stack
-					spacing={2}
+					spacing={6}
 					direction={{ sm: 'column', md: 'row' }}
 					sx={{ m: 2 }}
 				>
@@ -31,11 +34,11 @@ function Expenses() {
 					<ExpenseSummary />
 					<AvailbleFunds />
 				</Stack>
-				<Card sx={{ m: 2 }}>
+				<Box sx={{ m: 2 }}>
 					<MovementsExpenses />
-				</Card>
+				</Box>
 			</Box>
-		</Box>
+		</>
 	);
 }
 

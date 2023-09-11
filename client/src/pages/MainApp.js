@@ -73,36 +73,33 @@ function MainApp() {
 					</Stack>
 
 					{/* //!Movements */}
-					<Paper sx={{ mt: 2 }}>
-						<MovementList>
-							<Stack
+					{/* <Paper sx={{ mt: 2 }}> */}
+					<MovementList>
+						<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
+							<Box
 								component="section"
-								direction={{ xs: 'column', md: 'row' }}
+								sx={{
+									display: 'flex',
+									flexGrow: 1,
+									width: '100%',
+								}}
 							>
-								<Box
-									component="section"
-									sx={{
-										display: 'flex',
-										flexGrow: 1,
-										width: '100%',
-									}}
-								>
-									<Movements />
-								</Box>
-								<Box
-									component="section"
-									sx={{
-										display: 'flex',
-										flexGrow: 1,
-										width: '100%',
-									}}
-								>
-									<MovementsExpenses />
-								</Box>
-							</Stack>
-						</MovementList>
-					</Paper>
+								<Movements />
+							</Box>
+							<Box
+								component="section"
+								sx={{
+									display: 'flex',
+									flexGrow: 1,
+									width: '100%',
+								}}
+							>
+								<MovementsExpenses />
+							</Box>
+						</Stack>
+					</MovementList>
 				</Paper>
+				{/* </Paper> */}
 			</Box>
 		</>
 	);

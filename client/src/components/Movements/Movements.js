@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { Stack } from '@mui/material';
+import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -28,7 +28,7 @@ const Movements = () => {
 	return (
 		<ul className={animate}>
 			{moves.map((item) => (
-				<div
+				<Paper
 					key={Math.floor(Math.random() * 10000) + 1}
 					className={classes.movements}
 				>
@@ -102,7 +102,7 @@ const Movements = () => {
 							<span className={classes.movements__value}>€{item.amount}</span>
 						</Box>
 					</Stack>
-				</div>
+				</Paper>
 			))}
 		</ul>
 	);

@@ -7,8 +7,10 @@
 	display: flex;
 	overflow-y: auto;
 	font-family: 'poppins';
-	border: 1px solid grey;
-	margin: 1rem;
+	/* border: 1px solid grey; */
+	/* margin: 1rem; */
+	margin-top: 0.25rem;
+	margin-bottom: 1rem;
 }
 
 .movements__row {

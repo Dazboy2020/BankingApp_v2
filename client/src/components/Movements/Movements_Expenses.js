@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
 import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -25,7 +25,7 @@ const MovementsExpenses = () => {
 	return (
 		<ul className={animate}>
 			{moves.map((item) => (
-				<div
+				<Paper
 					key={Math.floor(Math.random() * 10000) + 1}
 					className={classes.movements}
 				>
@@ -99,7 +99,7 @@ const MovementsExpenses = () => {
 							<span className={classes.movements__value}>€{item.amount}</span>
 						</Box>
 					</Stack>
-				</div>
+				</Paper>
 			))}
 		</ul>
 	);
