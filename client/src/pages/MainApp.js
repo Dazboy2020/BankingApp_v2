@@ -85,7 +85,6 @@ function MainApp() {
 										display: 'flex',
 										flexGrow: 1,
 										width: '100%',
-										// justifyContent: 'flex-start',
 									}}
 								>
 									<Movements />
@@ -96,8 +95,6 @@ function MainApp() {
 										display: 'flex',
 										flexGrow: 1,
 										width: '100%',
-
-										// justifyContent: 'flex-start',
 									}}
 								>
 									<MovementsExpenses />

@@ -305,6 +305,7 @@ const AddTransaction = () => {
 				</Box>
 				<Box>
 					<Button
+						variant="contained"
 						startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
 						sx={{
 							'&:hover': {

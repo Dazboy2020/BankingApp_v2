@@ -1,5 +1,5 @@
 .main__container__window {
-	border: solid black 1px;
+	/* border: solid black 1px; */
 }
 
 /* ?MOVEMENTS */
@@ -7,17 +7,17 @@
 	display: flex;
 	overflow-y: auto;
 	font-family: 'poppins';
+	border: 1px solid grey;
+	margin: 1rem;
 }
 
 .movements__row {
 	flex-grow: 1;
 	flex-direction: column;
-
 	padding: 0.5rem;
 	display: flex;
-	border-bottom: 1px solid #eee;
-	margin: 0.1rem;
-	/* animation: slideUp 1s 1 ease-in-out forwards; */
+	margin-top: 0.1rem;
+	margin-bottom: 0.2rem;
 }
 
 .movements__type {
