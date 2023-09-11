@@ -126,7 +126,7 @@ function ResponsiveDrawer(props) {
 						md: `calc(100% - ${drawerWidth}px)`,
 					},
 					ml: { sm: `${drawerWidth}px`, lg: `${drawerWidth + 100}px` },
-					height: { xs: '4rem', sm: '5rem', md: '6rem' }, //! new
+					height: { xs: '4rem', sm: '5rem', md: '7rem' }, //! new
 				}}
 			>
 				<Toolbar sx={{ height: '6rem' }}>
@@ -193,7 +193,8 @@ function ResponsiveDrawer(props) {
 				component="main"
 				sx={{
 					flexGrow: 1,
-					p: 3,
+					// p: 3,
+					pb: 6,
 					width: { sm: `calc(100% - ${drawerWidth}px)`, md: drawerWidth },
 				}}
 			>

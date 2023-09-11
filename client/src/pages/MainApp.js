@@ -73,7 +73,6 @@ function MainApp() {
 					</Stack>
 
 					{/* //!Movements */}
-					{/* <Paper sx={{ mt: 2 }}> */}
 					<MovementList>
 						<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
 							<Box
@@ -99,7 +98,6 @@ function MainApp() {
 						</Stack>
 					</MovementList>
 				</Paper>
-				{/* </Paper> */}
 			</Box>
 		</>
 	);

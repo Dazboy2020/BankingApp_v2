@@ -18,6 +18,7 @@
 body::-webkit-scrollbar {
 	display: none;
 	font-family: 'Ubuntu', sans-serif;
+	/* background-color: #ececec; */
 }
 
 @media (max-width: 1400px) {

@@ -28,13 +28,19 @@ function Expenses() {
 				<Stack
 					spacing={6}
 					direction={{ sm: 'column', md: 'row' }}
-					sx={{ m: 2 }}
+					sx={{
+						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+					}}
 				>
 					<AddTransaction />
 					<ExpenseSummary />
 					<AvailbleFunds />
 				</Stack>
-				<Box sx={{ m: 2 }}>
+				<Box
+					sx={{
+						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+					}}
+				>
 					<MovementsExpenses />
 				</Box>
 			</Box>
