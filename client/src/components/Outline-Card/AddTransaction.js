@@ -131,7 +131,7 @@ const AddTransaction = () => {
 		let expenseData;
 
 		if (expenseType === 'expense') {
-			const queryParams = `?_id=${state.ID}`;
+			const queryParams = `?_id=${state._id}`;
 			expenseData = {
 				id: window.crypto.randomUUID(),
 				amount: -expenseAmount,
@@ -152,7 +152,7 @@ const AddTransaction = () => {
 		}
 
 		if (expenseType === 'deposit') {
-			const queryParams = `?_id=${state.ID}`;
+			const queryParams = `?_id=${state._id}`;
 
 			expenseData = {
 				id: window.crypto.randomUUID(),

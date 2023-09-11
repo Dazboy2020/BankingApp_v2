@@ -113,7 +113,7 @@ const addExpense = async (req, res) => {
 
 		await user.save();
 
-		console.log(`Expenses added successfully for user with ID ${_id}`);
+		console.log(`Expense added successfully for user with ID ${_id}`);
 
 		return res.status(200).json({ message: 'Expenses added successfully' });
 	} catch (error) {
@@ -143,7 +143,7 @@ const addDeposit = async (req, res) => {
 		user.deposits.unshift(newExpense);
 		await user.save();
 
-		console.log(`Expenses added successfully for user with ID ${_id}`);
+		console.log(`Deposit added successfully for user with ID ${_id}`);
 
 		return res.status(200).json({ message: 'Expenses added successfully' });
 	} catch (error) {
