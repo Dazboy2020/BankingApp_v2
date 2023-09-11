@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
@@ -8,7 +8,20 @@ import { Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
 const Movements = () => {
-	const { state } = useAppContext();
+	const { state, dispatch } = useAppContext();
+
+	//! Clear animation
+	useEffect(() => {
+		const intervalDuration = 3000;
+
+		const intervalId = setInterval(() => {
+			dispatch({ type: 'addTransactionAnimate', payload: false });
+		}, intervalDuration);
+
+		return () => {
+			clearInterval(intervalId);
+		};
+	}, [dispatch]);
 
 	const movementsToDisplay = state.deposits;
 
@@ -21,8 +34,11 @@ const Movements = () => {
 			? classes.movements__row__animate
 			: classes.movements__row;
 
-	function handleEditClick() {
-		console.log('click');
+	function handleEditClick() {}
+
+	function handleDelete(id) {
+		dispatch({ type: 'addTransactionAnimate', payload: true });
+		dispatch({ type: 'delete/deposit', payload: id });
 	}
 
 	return (
@@ -60,7 +76,7 @@ const Movements = () => {
 										fontWeight: '500',
 										mt: '.3rem',
 									}}
-									onClick={handleEditClick}
+									// onClick={() => handleEditClick(item.id)}
 									startIcon={
 										<CreateIcon
 											sx={{
@@ -86,7 +102,7 @@ const Movements = () => {
 										fontWeight: '500',
 										mt: '.3rem',
 									}}
-									onClick={handleEditClick}
+									onClick={() => handleDelete(item.id)}
 									startIcon={
 										<DeleteIcon
 											sx={{

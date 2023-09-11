@@ -83,6 +83,7 @@
 }
 
 .movements__row__animate {
+	width: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	/* flex-grow: 1; */

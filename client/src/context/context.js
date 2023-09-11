@@ -13,7 +13,7 @@ const inititalState = {
 	error: false,
 	sort: false,
 	message: '',
-	ID: '',
+	_id: '',
 	addTransactionAnimate: false,
 };
 
@@ -35,7 +35,7 @@ function reducer(state, action) {
 				lastName: action.payload.lastName,
 				expenses: action.payload.expenses,
 				deposits: action.payload.deposits,
-				ID: action.payload._id,
+				_id: action.payload._id,
 			};
 		}
 
@@ -57,6 +57,12 @@ function reducer(state, action) {
 			return {
 				...state,
 				deposits: [action.payload, ...state.deposits],
+			};
+
+		case 'delete/deposit':
+			return {
+				...state,
+				deposits: state.deposits.filter((ex) => ex.id !== action.payload),
 			};
 
 		case 'sort':
