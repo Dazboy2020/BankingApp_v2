@@ -15,6 +15,7 @@ const inititalState = {
 	message: '',
 	_id: '',
 	addTransactionAnimate: false,
+	isActive: 0,
 };
 
 function reducer(state, action) {
@@ -81,6 +82,13 @@ function reducer(state, action) {
 			return {
 				...state,
 				addTransactionAnimate: action.payload,
+			};
+		}
+
+		case 'addActiveClass': {
+			return {
+				...state,
+				isActive: action.payload,
 			};
 		}
 

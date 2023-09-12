@@ -27,38 +27,43 @@ import { useAppContext } from '../../context/context';
 const drawerWidth = 300;
 
 const ListNew = (props) => {
-	const { setOpen } = useAppContext();
+	const { setOpen, state, dispatch } = useAppContext();
+	// const [isActive, setIsActive] = React.useState(null);
 	const navigate = useNavigate();
 
 	function handleClick() {
 		setOpen(true);
 	}
 
+	function handleLink(text, index) {
+		if (text === 'Logout') return handleClick();
+
+		dispatch({ type: 'addActiveClass', payload: index });
+
+		navigate('/' + text);
+		console.log(state.isActive);
+	}
+
 	const itemsList = [
 		{
 			text: 'Overview',
 			icon: <HouseIcon />,
-			onClick: () => navigate('/overview'),
 		},
 		{
 			text: 'Expenses',
 			icon: <ShoppingCartIcon />,
-			onClick: () => navigate('/expenses'),
 		},
 		{
 			text: 'Deposits',
 			icon: <EuroIcon />,
-			onClick: () => navigate('/deposits'),
 		},
 		{
 			text: 'Charts',
 			icon: <PsychologyAltIcon />,
-			onClick: () => navigate('/charts'),
 		},
 		{
 			text: 'Account',
 			icon: <AccountCircleIcon />,
-			onClick: () => navigate('/account'),
 		},
 		{
 			text: 'Logout',
@@ -66,24 +71,25 @@ const ListNew = (props) => {
 			onClick: handleClick,
 		},
 	];
+
 	return (
 		<List>
 			{itemsList.map((item, index) => {
 				const { text, icon, onClick } = item;
+				const buttonStyles = {
+					'&:hover': {
+						backgroundColor: '#680747',
+						cursor: 'default',
+					},
+					color: '#fff',
+					width: '100%',
+					textAlign: 'left',
+					backgroundColor: state.isActive === index ? '#680747' : '#242a2e',
+				};
+
 				return (
 					<ListItem sx={{ width: '100%' }} key={item.text} onClick={onClick}>
-						<Button
-							sx={{
-								'&:hover': {
-									backgroundColor: '#680747',
-									cursor: 'default',
-								},
-								color: '#fff',
-								width: '100%',
-								textAlign: 'left',
-							}}
-							onClick={onclick}
-						>
+						<Button sx={buttonStyles} onClick={() => handleLink(text, index)}>
 							{icon && <ListItemIcon>{icon}</ListItemIcon>}
 							<ListItemText primary={text} />
 						</Button>

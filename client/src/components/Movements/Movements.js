@@ -59,7 +59,8 @@ const Movements = () => {
 		<ul className={animate}>
 			{moves.map((item) => (
 				<Paper
-					key={Math.floor(Math.random() * 10000) + 1}
+					// key={Math.floor(Math.random() * 10000) + 1}
+					key={item.id}
 					className={classes.movements}
 				>
 					<Stack component="section" className={classes.movements__row}>
