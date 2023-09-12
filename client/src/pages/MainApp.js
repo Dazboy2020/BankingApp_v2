@@ -35,6 +35,7 @@ function MainApp() {
 					elevation={24}
 					sx={{
 						margin: { xs: 'none', md: '1rem' },
+						minHeight: '100vh',
 					}}
 				>
 					<AlertDialogSlide />

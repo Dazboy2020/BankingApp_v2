@@ -7,6 +7,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
+import axios from 'axios';
+
 const Movements = () => {
 	const { state, dispatch } = useAppContext();
 
@@ -36,7 +38,17 @@ const Movements = () => {
 
 	function handleEditClick() {}
 
-	function handleDelete(id) {
+	async function handleDelete(id) {
+		let userId = state._id;
+		console.log(userId, id);
+
+		try {
+			await axios.delete(`http://localhost:5000/deletedeposit/${userId}/${id}`);
+			console.log('Deposit deleted successfully');
+		} catch (error) {
+			console.error('Error deleting deposit:', error);
+		}
+
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 		dispatch({ type: 'delete/deposit', payload: id });
 	}

@@ -18,7 +18,7 @@ function Expenses() {
 			<Box
 				className={classes.body}
 				sx={{
-					height: '100vh',
+					minHeight: '100vh',
 
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },

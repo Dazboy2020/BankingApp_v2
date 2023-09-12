@@ -152,10 +152,79 @@ const addDeposit = async (req, res) => {
 	}
 };
 
+const deleteDeposit = async (req, res) => {
+	try {
+		const { userId, depositId } = req.params;
+		console.log('Received DELETE_Deposit request:', userId, depositId);
+
+		// Find the user by userId
+		const user = await User.findById(userId);
+
+		if (!user) {
+			return res.status(404).json({ message: 'User not found' });
+		}
+
+		// Find the expense in the user's expenses array by depositId
+		const depositIndex = user.deposits.findIndex(
+			(deposit) => deposit.id === depositId
+		);
+
+		if (depositIndex === -1) {
+			return res.status(404).json({ message: 'Deposit not found' });
+		}
+
+		// Remove the expense from the expenses array
+		user.deposits.splice(depositIndex, 1);
+
+		// Save the updated user document
+		await user.save();
+
+		res.status(200).json({ message: 'Deposit deleted successfully' });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Internal server error' });
+	}
+};
+const deleteExpense = async (req, res) => {
+	try {
+		const { userId, expenseId } = req.params;
+		console.log('Received DELETE-expense request:', userId, expenseId);
+
+		// Find the user by userId
+		const user = await User.findById(userId);
+
+		if (!user) {
+			return res.status(404).json({ message: 'User not found' });
+		}
+
+		// Find the expense in the user's expenses array by expenseId
+		const expenseIndex = user.expenses.findIndex(
+			(expense) => expense.id === expenseId
+		);
+
+		if (expenseIndex === -1) {
+			return res.status(404).json({ message: 'Expense not found' });
+		}
+
+		// Remove the expense from the expenses array
+		user.expenses.splice(expenseIndex, 1);
+
+		// Save the updated user document
+		await user.save();
+
+		res.status(200).json({ message: 'Expense deleted successfully' });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Internal server error' });
+	}
+};
+
 module.exports = {
 	test,
 	registerUser,
 	loginUser,
 	addExpense,
 	addDeposit,
+	deleteExpense,
+	deleteDeposit,
 };

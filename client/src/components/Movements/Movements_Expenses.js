@@ -7,6 +7,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 import { useEffect } from 'react';
 
+import axios from 'axios';
+
 const MovementsExpenses = () => {
 	const { state, dispatch } = useAppContext();
 
@@ -36,7 +38,22 @@ const MovementsExpenses = () => {
 
 	function handleEditClick() {}
 
-	function handleDelete(id) {
+	// function handleDelete(id) {
+	// 	dispatch({ type: 'addTransactionAnimate', payload: true });
+	// 	dispatch({ type: 'delete/expense', payload: id });
+	// }
+
+	async function handleDelete(id) {
+		let userId = state._id;
+		console.log(userId, id);
+
+		try {
+			await axios.delete(`http://localhost:5000/deleteexpense/${userId}/${id}`);
+			console.log('Expense deleted successfully');
+		} catch (error) {
+			console.error('Error deleting expense:', error);
+		}
+
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 		dispatch({ type: 'delete/expense', payload: id });
 	}

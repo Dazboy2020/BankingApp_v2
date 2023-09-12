@@ -6,8 +6,10 @@ const {
 	test,
 	registerUser,
 	loginUser,
-	addExpense: addexpense,
+	addExpense,
 	addDeposit,
+	deleteDeposit,
+	deleteExpense,
 } = require('../controllers/routeControllers');
 
 //! middleware
@@ -24,8 +26,12 @@ router.post('/register', registerUser);
 
 router.post('/login', loginUser);
 
-router.post('/addexpense', addexpense);
+router.post('/addexpense', addExpense);
 
 router.post('/adddeposit', addDeposit);
+
+router.delete('/deletedeposit/:userId/:depositId', deleteDeposit);
+
+router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
 
 module.exports = router;
