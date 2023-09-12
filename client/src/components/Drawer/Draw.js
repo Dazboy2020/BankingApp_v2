@@ -28,7 +28,6 @@ const drawerWidth = 300;
 
 const ListNew = (props) => {
 	const { setOpen, state, dispatch } = useAppContext();
-	// const [isActive, setIsActive] = React.useState(null);
 	const navigate = useNavigate();
 
 	function handleClick() {

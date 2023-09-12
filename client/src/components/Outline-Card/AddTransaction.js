@@ -11,6 +11,18 @@ import AddIcon from '@mui/icons-material/Add';
 
 import axios from 'axios';
 
+const buttonStyles = {
+	'&:hover': {
+		backgroundColor: '#680747',
+		cursor: 'default',
+	},
+	bgcolor: '#f70776',
+	color: 'white',
+	mt: 4,
+	fontSize: '1.2rem',
+	paddingRight: '.8rem',
+};
+
 const menuType = [
 	{
 		value: 'deposit',
@@ -84,6 +96,7 @@ const AddTransaction = () => {
 		setExpenseType(e.target.value);
 	}
 
+	//! set expense type //
 	useEffect(
 		function () {
 			if (expenseType === 'expense') {
@@ -116,11 +129,12 @@ const AddTransaction = () => {
 		setMessage('');
 	}
 
+	//! Add transaction
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
-		dispatch({ type: 'addTransactionAnimate', payload: true });
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
+		dispatch({ type: 'addTransactionAnimate', payload: true });
 
 		const month = new Date().toLocaleString('en-GB', { month: 'short' });
 		const day = new Date().toLocaleString('en-GB', { day: '2-digit' });
@@ -130,6 +144,7 @@ const AddTransaction = () => {
 
 		let expenseData;
 
+		//* add expense //
 		if (expenseType === 'expense') {
 			const queryParams = `?_id=${state._id}`;
 			expenseData = {
@@ -149,8 +164,10 @@ const AddTransaction = () => {
 			} catch (error) {
 				console.error('Error adding expense:', error);
 			}
+			dispatch({ type: 'add/expense', payload: expenseData });
 		}
 
+		//* add Deposit //
 		if (expenseType === 'deposit') {
 			const queryParams = `?_id=${state._id}`;
 
@@ -171,19 +188,13 @@ const AddTransaction = () => {
 			} catch (error) {
 				console.error('Error adding expense:', error);
 			}
+
+			dispatch({ type: 'add/deposit', payload: expenseData });
 		}
 
 		setMessage(
 			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
 		);
-
-		if (expenseType === 'expense') {
-			dispatch({ type: 'add/expense', payload: expenseData });
-		}
-
-		if (expenseType === 'deposit') {
-			dispatch({ type: 'add/deposit', payload: expenseData });
-		}
 
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
@@ -195,7 +206,6 @@ const AddTransaction = () => {
 			component="article"
 			sx={{
 				display: 'flex',
-				// flexGrow: 1,
 				mb: 0.5,
 				alignItems: 'flex-start',
 			}}
@@ -225,7 +235,7 @@ const AddTransaction = () => {
 						{/* //! Amount */}
 						<Box
 							sx={{
-								'& .MuiTextField-root': { m: 1, width: '25ch' },
+								'& .MuiTextField-root': { m: 1, width: '20ch' },
 							}}
 							noValidate
 							autoComplete="off"
@@ -247,7 +257,7 @@ const AddTransaction = () => {
 						<Box
 							component="form"
 							sx={{
-								'& .MuiTextField-root': { m: 1, width: '25ch' },
+								'& .MuiTextField-root': { m: 1, width: '20ch' },
 							}}
 							noValidate
 							autoComplete="off"
@@ -274,7 +284,7 @@ const AddTransaction = () => {
 						<Box
 							component="form"
 							sx={{
-								'& .MuiTextField-root': { m: 1, width: '25ch' },
+								'& .MuiTextField-root': { m: 1, width: '20ch' },
 							}}
 							noValidate
 							autoComplete="off"
@@ -307,17 +317,7 @@ const AddTransaction = () => {
 					<Button
 						variant="contained"
 						startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
-						sx={{
-							'&:hover': {
-								backgroundColor: '#680747',
-								cursor: 'default',
-							},
-							bgcolor: '#f70776',
-							color: 'white',
-							mt: 4,
-							fontSize: '1.2rem',
-							paddingRight: '.8rem',
-						}}
+						sx={buttonStyles}
 						onClick={handleSubmitExpense}
 					>
 						Add Item
