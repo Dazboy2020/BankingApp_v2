@@ -41,7 +41,6 @@ const ListNew = (props) => {
 		dispatch({ type: 'addActiveClass', payload: index });
 
 		navigate('/' + text);
-		console.log(state.isActive);
 	}
 
 	const itemsList = [
@@ -79,7 +78,7 @@ const ListNew = (props) => {
 				const buttonStyles = {
 					'&:hover': {
 						backgroundColor: '#680747',
-						cursor: 'default',
+						cursor: 'pointer',
 					},
 					color: '#fff',
 					width: '100%',
