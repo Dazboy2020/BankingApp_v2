@@ -64,7 +64,11 @@ export default function SignIn() {
 		setMessage('');
 
 		try {
-			const { data: userData } = await axios.post('/login', data);
+			// const { data: userData } = await axios.post('/login', data);
+			const { data: userData } = await axios.post(
+				'http://localhost:5000/login',
+				data
+			);
 
 			if (userData.error) {
 				setMessage(userData.error);
