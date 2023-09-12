@@ -41,6 +41,20 @@ const MovementsExpenses = () => {
 		dispatch({ type: 'delete/expense', payload: id });
 	}
 
+	const buttonStyles = {
+		bgcolor: '#f70776',
+		color: 'white',
+		fontSize: '1rem',
+		paddingRight: '.8rem',
+		mr: '10px',
+		fontWeight: '500',
+		mt: '.3rem',
+		'&:hover': {
+			backgroundColor: '#680747',
+			cursor: 'default',
+		},
+	};
+
 	return (
 		<ul className={animate}>
 			{moves.map((item) => (
@@ -48,7 +62,7 @@ const MovementsExpenses = () => {
 					key={Math.floor(Math.random() * 10000) + 1}
 					className={classes.movements}
 				>
-					<Stack className={classes.movements__row}>
+					<Stack component="section" className={classes.movements__row}>
 						<span className={classes.movements__type__expense}>Expense</span>
 						<span className={classes.movements__date}>{item.date}</span>
 						<span className={classes.movements__category}>{item.category}</span>
@@ -63,19 +77,7 @@ const MovementsExpenses = () => {
 							<Box sx={{ mt: '2rem' }}>
 								<Button
 									variant="contained"
-									sx={{
-										'&:hover': {
-											backgroundColor: '#680747',
-											cursor: 'default',
-										},
-										bgcolor: '#f70776',
-										color: 'white',
-										fontSize: '1rem',
-										paddingRight: '.8rem',
-										mr: '10px',
-										fontWeight: '500',
-										mt: '.3rem',
-									}}
+									sx={buttonStyles}
 									onClick={handleEditClick}
 									startIcon={
 										<CreateIcon
@@ -90,18 +92,7 @@ const MovementsExpenses = () => {
 								</Button>
 								<Button
 									variant="contained"
-									sx={{
-										'&:hover': {
-											backgroundColor: '#680747',
-											cursor: 'default',
-										},
-										bgcolor: '#f70776',
-										color: 'white',
-										fontSize: '1rem',
-										paddingRight: '.8rem',
-										fontWeight: '500',
-										mt: '.3rem',
-									}}
+									sx={buttonStyles}
 									onClick={() => handleDelete(item.id)}
 									startIcon={
 										<DeleteIcon
