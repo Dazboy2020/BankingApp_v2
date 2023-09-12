@@ -16,6 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //! Middleware
 app.use(express.json());
 
+app.use(
+	cors({
+		credentials: true,
+		origin: 'http://localhost:3000',
+	})
+);
+
 app.use('/', require('./routes/authRoutes'));
 
 const PORT = 5000;

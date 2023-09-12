@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
+const app = express();
 
 const {
 	test,
@@ -13,7 +14,7 @@ const {
 } = require('../controllers/routeControllers');
 
 //! middleware
-router.use(
+app.use(
 	cors({
 		credentials: true,
 		origin: 'http://localhost:3000',
