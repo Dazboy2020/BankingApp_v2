@@ -7,7 +7,7 @@ const path = require('path');
 
 //!DB connection
 mongoose
-	.connect(process.env.MONGO_URL)
+	.connect(process.env.MONGO_URI)
 	.then(() => console.log('DB Connected'))
 	.catch((err) => console.log('MongoDB connected: ', err));
 
