@@ -10,7 +10,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 const MovementsExpenses = () => {
-	const { state, dispatch } = useAppContext();
+	const { setOpenToast, dispatch, message, setMessage, state } =
+		useAppContext();
 
 	//! Clear animation
 	useEffect(() => {
@@ -38,14 +39,10 @@ const MovementsExpenses = () => {
 
 	function handleEditClick() {}
 
-	// function handleDelete(id) {
-	// 	dispatch({ type: 'addTransactionAnimate', payload: true });
-	// 	dispatch({ type: 'delete/expense', payload: id });
-	// }
-
 	async function handleDelete(id) {
 		let userId = state._id;
 		console.log(userId, id);
+		setMessage('');
 
 		try {
 			await axios.delete(`http://localhost:5000/deleteexpense/${userId}/${id}`);
@@ -56,6 +53,9 @@ const MovementsExpenses = () => {
 
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 		dispatch({ type: 'delete/expense', payload: id });
+
+		setMessage('Expense item deleted!');
+		setOpenToast(true, { message: message });
 	}
 
 	const buttonStyles = {

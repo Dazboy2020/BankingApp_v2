@@ -103,9 +103,8 @@ function ContextProvider({ children }) {
 	const [open, setOpen] = useState(false);
 	const [openModal, setOpenModal] = useState(false);
 	const [openToast, setOpenToast] = useState(false);
-	const [closePin, setClosePin] = useState('');
-	const [closeUser, setCloseUser] = useState('');
-	const [message, setMessage] = useState('this is a test');
+
+	const [message, setMessage] = useState('');
 
 	const totalIncome = +state.deposits?.reduce(
 		(acc, dep) => acc + dep.amount,
@@ -127,11 +126,6 @@ function ContextProvider({ children }) {
 				setOpenModal,
 				openToast,
 				setOpenToast,
-
-				closePin,
-				setClosePin,
-				closeUser,
-				setCloseUser,
 
 				dispatch,
 				state,

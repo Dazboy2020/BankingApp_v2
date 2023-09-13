@@ -10,7 +10,8 @@ import { useAppContext } from '../../context/context';
 import axios from 'axios';
 
 const Movements = () => {
-	const { state, dispatch } = useAppContext();
+	const { setOpenToast, dispatch, message, setMessage, state } =
+		useAppContext();
 
 	//! Clear animation
 	useEffect(() => {
@@ -51,6 +52,9 @@ const Movements = () => {
 
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 		dispatch({ type: 'delete/deposit', payload: id });
+
+		setMessage('Deposit item deleted!');
+		setOpenToast(true, { message: message });
 	}
 
 	const buttonStyles = {
