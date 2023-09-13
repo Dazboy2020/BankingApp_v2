@@ -26,7 +26,9 @@ const Movements = () => {
 		};
 	}, [dispatch]);
 
-	const movementsToDisplay = state.deposits;
+	const movementsToDisplay = state.isEditing
+		? state.editingDeposit
+		: state.deposits;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -37,7 +39,18 @@ const Movements = () => {
 			? classes.movements__row__animate
 			: classes.movements__row;
 
-	function handleEditClick() {}
+	const depositEditMode = state.isEditing
+		? classes.movements__row__edit
+		: classes.movements__row;
+
+	//! Edit an Item
+	function handleEditClick(id) {
+		let depositToEdit = state.deposits.filter((ex) => ex.id === id);
+
+		dispatch({ type: 'edit/deposit', payload: depositToEdit });
+
+		console.log(depositToEdit);
+	}
 
 	async function handleDelete(id) {
 		let userId = state._id;
@@ -79,7 +92,7 @@ const Movements = () => {
 					key={item.id}
 					className={classes.movements}
 				>
-					<Stack component="section" className={classes.movements__row}>
+					<Stack component="section" className={depositEditMode}>
 						<span className={classes.movements__type__deposit}>Income</span>
 						<span className={classes.movements__date}>{item.date}</span>
 						<span className={classes.movements__category}>{item.category}</span>
@@ -92,21 +105,23 @@ const Movements = () => {
 							}}
 						>
 							<Box sx={{ mt: '2rem' }}>
-								<Button
-									sx={buttonStyles}
-									variant="contained"
-									onClick={() => handleEditClick(item.id)}
-									startIcon={
-										<CreateIcon
-											sx={{
-												color: 'white',
-												mr: '2px',
-											}}
-										/>
-									}
-								>
-									Edit
-								</Button>
+								{state.isActive !== 0 && (
+									<Button
+										sx={buttonStyles}
+										variant="contained"
+										onClick={() => handleEditClick(item.id)}
+										startIcon={
+											<CreateIcon
+												sx={{
+													color: 'white',
+													mr: '2px',
+												}}
+											/>
+										}
+									>
+										Edit
+									</Button>
+								)}
 								<Button
 									variant="contained"
 									sx={buttonStyles}

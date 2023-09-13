@@ -1,7 +1,3 @@
-.main__container__window {
-	/* border: solid black 1px; */
-}
-
 /* ?MOVEMENTS */
 .movements {
 	display: flex;
@@ -74,7 +70,7 @@
 	display: flex;
 	flex-direction: column;
 	list-style-type: none;
-	padding: 0.2rem;
+	padding: 0.5rem;
 	align-items: stretch;
 	flex-grow: 1;
 	width: 100%;
@@ -91,8 +87,22 @@
 	padding: 0.5rem;
 	display: flex;
 	border-bottom: 1px solid #eee;
-	margin: 0.1rem;
-	animation: slideUp 0.5s 1 ease-in-out forwards;
+	/* margin: 0.1rem; */
+	animation: slideUp 0.25s 1 ease-in-out forwards;
+}
+
+.movements__row__edit {
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	flex-grow: 1;
+	flex-direction: column;
+
+	padding: 0.5rem;
+	display: flex;
+	border: 2px solid purple;
+	/* margin: 0.1rem; */
+	animation: slideUp 0.25s 1 ease-in-out forwards;
 }
 
 @keyframes slideUp {

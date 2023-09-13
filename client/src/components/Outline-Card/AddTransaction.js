@@ -19,6 +19,7 @@ const buttonStyles = {
 	bgcolor: '#f70776',
 	color: 'white',
 	mt: 4,
+	mr: 2,
 	fontSize: '1.2rem',
 	paddingRight: '.8rem',
 };
@@ -73,6 +74,8 @@ const AddTransaction = () => {
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
 
+	const expenseEditMode = state.isEditing ? '2px solid purple' : '';
+
 	function handleReturn(e) {
 		e.preventDefault();
 		return;
@@ -117,6 +120,11 @@ const AddTransaction = () => {
 		setMessage('');
 	}
 
+	function handleCancelEdit() {
+		dispatch({ type: 'edit/cancel' });
+		dispatch({ type: 'addTransactionAnimate', payload: true });
+	}
+
 	//! Add transaction
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
@@ -141,8 +149,6 @@ const AddTransaction = () => {
 				date: expenseDate,
 				category: expenseCategory,
 			};
-
-			console.log(expenseData);
 
 			try {
 				const response = await axios.post(
@@ -198,6 +204,7 @@ const AddTransaction = () => {
 				display: 'flex',
 				mb: 0.5,
 				alignItems: 'flex-start',
+				border: expenseEditMode,
 			}}
 		>
 			<CardContent sx={{ width: '100%' }}>
@@ -207,7 +214,7 @@ const AddTransaction = () => {
 						color="#242a2e"
 						sx={{ mb: 2, fontWeight: 'bold' }}
 					>
-						Add a Transaction:
+						{!state.isEditing ? 'Add a Transaction:' : 'Edit Mode'}
 					</Typography>
 				</Box>
 				<Box
@@ -284,8 +291,18 @@ const AddTransaction = () => {
 						sx={buttonStyles}
 						onClick={handleSubmitExpense}
 					>
-						Add Item
+						{!state.isEditing ? 'Add Item' : 'Edit Item'}
 					</Button>
+					{state.isEditing && (
+						<Button
+							variant="contained"
+							startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
+							sx={buttonStyles}
+							onClick={handleCancelEdit}
+						>
+							Cancel
+						</Button>
+					)}
 				</Box>
 			</CardContent>
 		</Card>

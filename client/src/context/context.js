@@ -16,6 +16,8 @@ const inititalState = {
 	_id: '',
 	addTransactionAnimate: false,
 	isActive: 0,
+	isEditing: false,
+	editingExpense: [{}],
 };
 
 function reducer(state, action) {
@@ -89,6 +91,29 @@ function reducer(state, action) {
 			return {
 				...state,
 				isActive: action.payload,
+			};
+		}
+
+		case 'edit/expense': {
+			return {
+				...state,
+				isEditing: true,
+				editingExpense: action.payload,
+			};
+		}
+		case 'edit/deposit': {
+			return {
+				...state,
+				isEditing: true,
+				editingDeposit: action.payload,
+			};
+		}
+
+		case 'edit/cancel': {
+			return {
+				...state,
+				isEditing: false,
+				editingExpense: '',
 			};
 		}
 

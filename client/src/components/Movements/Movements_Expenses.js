@@ -26,7 +26,9 @@ const MovementsExpenses = () => {
 		};
 	}, [dispatch]);
 
-	const movementsToDisplay = state.expenses;
+	const movementsToDisplay = state.isEditing
+		? state.editingExpense
+		: state.expenses;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -37,8 +39,20 @@ const MovementsExpenses = () => {
 			? classes.movements__row__animate
 			: classes.movements__row;
 
-	function handleEditClick() {}
+	const expenseEditMode = state.isEditing
+		? classes.movements__row__edit
+		: classes.movements__row;
 
+	//! Edit an Item
+	function handleEditClick(id) {
+		let expenseToEdit = state.expenses.filter((ex) => ex.id === id);
+
+		dispatch({ type: 'edit/expense', payload: expenseToEdit });
+
+		console.log(expenseToEdit);
+	}
+
+	//! Delete an Item
 	async function handleDelete(id) {
 		let userId = state._id;
 		console.log(userId, id);
@@ -80,7 +94,7 @@ const MovementsExpenses = () => {
 					key={item.id}
 					className={classes.movements}
 				>
-					<Stack component="section" className={classes.movements__row}>
+					<Stack component="section" className={expenseEditMode}>
 						<span className={classes.movements__type__expense}>Expense</span>
 						<span className={classes.movements__date}>{item.date}</span>
 						<span className={classes.movements__category}>{item.category}</span>
@@ -93,21 +107,23 @@ const MovementsExpenses = () => {
 							}}
 						>
 							<Box sx={{ mt: '2rem' }}>
-								<Button
-									variant="contained"
-									sx={buttonStyles}
-									onClick={handleEditClick}
-									startIcon={
-										<CreateIcon
-											sx={{
-												color: 'white',
-												mr: '2px',
-											}}
-										/>
-									}
-								>
-									Edit
-								</Button>
+								{state.isActive !== 0 && (
+									<Button
+										variant="contained"
+										sx={buttonStyles}
+										onClick={() => handleEditClick(item.id)}
+										startIcon={
+											<CreateIcon
+												sx={{
+													color: 'white',
+													mr: '2px',
+												}}
+											/>
+										}
+									>
+										Edit
+									</Button>
+								)}
 								<Button
 									variant="contained"
 									sx={buttonStyles}
