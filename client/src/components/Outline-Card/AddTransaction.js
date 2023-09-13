@@ -23,16 +23,6 @@ const buttonStyles = {
 	paddingRight: '.8rem',
 };
 
-const menuType = [
-	{
-		value: 'deposit',
-		label: 'deposit',
-	},
-	{
-		value: 'expense',
-		label: 'expense',
-	},
-];
 const menuExpense = [
 	{
 		value: 'utilities',
@@ -92,23 +82,21 @@ const AddTransaction = () => {
 		setExpenseAmount(e.target.value);
 	}
 
-	function handleExpenseType(e) {
-		setExpenseType(e.target.value);
-	}
-
 	//! set expense type //
 	useEffect(
 		function () {
-			if (expenseType === 'expense') {
+			if (state.isActive === 1) {
+				setExpenseType('expense');
 				setLabel('expense');
 				setExpenseCategory('');
 			}
-			if (expenseType === 'deposit') {
+			if (state.isActive === 2) {
+				setExpenseType('deposit');
 				setLabel('deposit');
 				setExpenseCategory('');
 			}
 		},
-		[expenseType]
+		[expenseType, state.isActive]
 	);
 
 	//! Clear animation
@@ -153,6 +141,8 @@ const AddTransaction = () => {
 				date: expenseDate,
 				category: expenseCategory,
 			};
+
+			console.log(expenseData);
 
 			try {
 				const response = await axios.post(
@@ -251,32 +241,6 @@ const AddTransaction = () => {
 									color="secondary"
 								></TextField>
 							</form>
-						</Box>
-						{/* {//! TYPE */}
-
-						<Box
-							component="form"
-							sx={{
-								'& .MuiTextField-root': { m: 1, width: '20ch' },
-							}}
-							noValidate
-							autoComplete="off"
-						>
-							<TextField
-								id="outlined-select-currency"
-								select
-								label="Select"
-								value={expenseType}
-								helperText="Type"
-								onChange={handleExpenseType}
-								color="secondary"
-							>
-								{menuType.map((option) => (
-									<MenuItem key={option.value} value={option.value}>
-										{option.label}
-									</MenuItem>
-								))}
-							</TextField>
 						</Box>
 
 						{/*//! EXPENSE CATEGORY */}
