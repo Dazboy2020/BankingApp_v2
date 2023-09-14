@@ -89,7 +89,6 @@ const loginUser = async (req, res) => {
 			res.json({ error: 'Incorrect Password' });
 		}
 	} catch (error) {
-		// Handle errors here
 		res.status(500).json({ error: 'Internal server error' });
 	}
 };
@@ -162,14 +161,12 @@ const deleteDeposit = async (req, res) => {
 		const { userId, depositId } = req.params;
 		console.log('Received DELETE_Deposit request:', userId, depositId);
 
-		// Find the user by userId
 		const user = await User.findById(userId);
 
 		if (!user) {
 			return res.status(404).json({ message: 'User not found' });
 		}
 
-		// Find the expense in the user's expenses array by depositId
 		const depositIndex = user.deposits.findIndex(
 			(deposit) => deposit.id === depositId
 		);
@@ -197,14 +194,12 @@ const deleteExpense = async (req, res) => {
 		const { userId, expenseId } = req.params;
 		console.log('Received DELETE-expense request:', userId, expenseId);
 
-		// Find the user by userId
 		const user = await User.findById(userId);
 
 		if (!user) {
 			return res.status(404).json({ message: 'User not found' });
 		}
 
-		// Find the expense in the user's expenses array by expenseId
 		const expenseIndex = user.expenses.findIndex(
 			(expense) => expense.id === expenseId
 		);
@@ -216,7 +211,6 @@ const deleteExpense = async (req, res) => {
 		// Remove the expense from the expenses array
 		user.expenses.splice(expenseIndex, 1);
 
-		// Save the updated user document
 		await user.save();
 
 		res.status(200).json({ message: 'Expense deleted successfully' });
@@ -233,14 +227,12 @@ const editExpense = async (req, res) => {
 		const { userId, expenseId } = req.params;
 		const updatedExpenseData = req.body;
 
-		// Find the user by _id
 		const user = await User.findById(userId);
 
 		if (!user) {
 			return res.status(404).json({ error: 'User not found' });
 		}
 
-		// Find the expense by _id within the expenses array
 		const expense = user.expenses.find((exp) => exp.id === expenseId);
 
 		if (!expense) {
@@ -253,7 +245,6 @@ const editExpense = async (req, res) => {
 		expense.date = updatedExpenseData.date;
 		expense.category = updatedExpenseData.category;
 
-		// Save the updated user document
 		const updatedUser = await user.save();
 
 		res.json(updatedUser); // Respond with the updated user document
@@ -272,14 +263,12 @@ const editDeposit = async (req, res) => {
 		const updatedDepositData = req.body;
 		console.log(updatedDepositData);
 
-		// Find the user by _id
 		const user = await User.findById(userId);
 
 		if (!user) {
 			return res.status(404).json({ error: 'User not found' });
 		}
 
-		// Find the expense by _id within the expenses array
 		const deposit = user.deposits.find((exp) => exp.id === depositId);
 
 		console.log(user, deposit);

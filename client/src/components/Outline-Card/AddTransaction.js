@@ -152,8 +152,6 @@ const AddTransaction = () => {
 			const userId = state._id;
 			const expenseId = expenseData.id;
 
-			console.log(`http://localhost:5000/editexpense/${userId}/${expenseId}`);
-
 			try {
 				const response = await axios.put(
 					`http://localhost:5000/editexpense/${userId}/${expenseId}`,
@@ -178,8 +176,6 @@ const AddTransaction = () => {
 				category: expenseCategory,
 				date: state.editingDeposit[0].date,
 			};
-
-			console.log(expenseData);
 
 			const userId = state._id;
 			const expenseId = expenseData.id;

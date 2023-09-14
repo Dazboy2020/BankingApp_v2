@@ -136,7 +136,9 @@ const Movements = () => {
 									Delete
 								</Button>
 							</Box>
-							<span className={classes.movements__value}>€{item.amount}</span>
+							<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+								<span className={classes.movements__value}>€{item.amount}</span>
+							</Box>
 						</Box>
 					</Stack>
 				</Paper>
