@@ -5,6 +5,7 @@ import classes from './Movements.module.css';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from '@mui/material';
+import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useAppContext } from '../../context/context';
 
 import axios from 'axios';
@@ -91,15 +92,17 @@ const Movements = () => {
 					className={classes.movements}
 				>
 					<Stack component="section" className={depositEditMode}>
-						<span className={classes.movements__type__deposit}>Income</span>
+						<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+							<span className={classes.movements__type__deposit}>Income</span>
+							<NorthEastIcon sx={{ fontSize: '40px', color: 'green' }} />
+						</Box>
 						<span className={classes.movements__date}>{item.date}</span>
 						<span className={classes.movements__category}>{item.category}</span>
 						<Box
 							sx={{
 								display: 'flex',
-								flexDirection: 'space-between',
+								justifyContent: 'space-between',
 								alignContent: 'center',
-								justifyContent: 'center',
 							}}
 						>
 							<Box sx={{ mt: '2rem' }}>

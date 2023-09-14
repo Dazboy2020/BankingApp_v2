@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
+import SouthEastIcon from '@mui/icons-material/SouthEast';
 import { useEffect } from 'react';
 
 import axios from 'axios';
@@ -93,15 +94,17 @@ const MovementsExpenses = () => {
 					className={classes.movements}
 				>
 					<Stack component="section" className={expenseEditMode}>
-						<span className={classes.movements__type__expense}>Expense</span>
+						<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+							<span className={classes.movements__type__expense}>Expense</span>
+							<SouthEastIcon sx={{ fontSize: '40px', color: 'red' }} />
+						</Box>
 						<span className={classes.movements__date}>{item.date}</span>
 						<span className={classes.movements__category}>{item.category}</span>
 						<Box
 							sx={{
 								display: 'flex',
-								flexDirection: 'space-between',
+								justifyContent: 'space-between',
 								alignContent: 'center',
-								justifyContent: 'center',
 							}}
 						>
 							<Box sx={{ mt: '2rem' }}>
@@ -138,7 +141,12 @@ const MovementsExpenses = () => {
 									Delete
 								</Button>
 							</Box>
-							<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+							<Box
+								sx={{
+									display: 'flex',
+									alignItems: 'flex-end',
+								}}
+							>
 								<span className={classes.movements__value}>€{item.amount}</span>
 							</Box>
 						</Box>
