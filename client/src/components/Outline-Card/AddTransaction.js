@@ -146,7 +146,7 @@ const AddTransaction = () => {
 				id: state.editingExpense[0].id,
 				amount: -expenseAmount,
 				category: expenseCategory,
-				date: state.editingDeposit[0].date,
+				date: state.editingExpense[0].date,
 			};
 
 			const userId = state._id;
