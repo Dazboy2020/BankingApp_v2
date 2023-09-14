@@ -144,6 +144,14 @@ function reducer(state, action) {
 		}
 
 		case 'addActiveClass': {
+			if (action.payload === 0) {
+				return {
+					...state,
+					isEditing: false,
+					isActive: action.payload,
+				};
+			}
+
 			return {
 				...state,
 				isActive: action.payload,
@@ -157,6 +165,12 @@ function reducer(state, action) {
 				editingExpense: '',
 			};
 		}
+
+		case 'reset/editing':
+			return {
+				...state,
+				isEditing: false,
+			};
 
 		default:
 			return state;
