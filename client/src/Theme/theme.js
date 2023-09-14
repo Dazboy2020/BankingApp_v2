@@ -47,7 +47,10 @@ const theme = createTheme({
 		},
 		MuiButton: {
 			styleOverrides: {
-				text: {},
+				root: {
+					backgroundColor: 'MediumVioletRed', // Set your desired background color here
+					color: 'white', // Set your desired text color here
+				},
 			},
 		},
 	},

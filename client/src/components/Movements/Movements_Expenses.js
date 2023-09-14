@@ -49,7 +49,7 @@ const MovementsExpenses = () => {
 
 		dispatch({ type: 'edit/expense', payload: expenseToEdit });
 
-		console.log(expenseToEdit);
+		console.log(expenseToEdit[0].id);
 	}
 
 	//! Delete an Item
@@ -73,7 +73,7 @@ const MovementsExpenses = () => {
 	}
 
 	const buttonStyles = {
-		bgcolor: '#f70776',
+		// bgcolor: '#f70776',
 		color: 'white',
 		fontSize: '1rem',
 		paddingRight: '.8rem',

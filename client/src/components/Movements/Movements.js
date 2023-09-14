@@ -71,7 +71,7 @@ const Movements = () => {
 	}
 
 	const buttonStyles = {
-		bgcolor: '#f70776',
+		// bgcolor: '#f70776',
 		color: 'white',
 		fontSize: '1rem',
 		paddingRight: '.8rem',

@@ -16,7 +16,7 @@ const buttonStyles = {
 		backgroundColor: '#680747',
 		cursor: 'default',
 	},
-	bgcolor: '#f70776',
+	// bgcolor: '#f70776',
 	color: 'white',
 	mt: 4,
 	mr: 2,
@@ -140,8 +140,39 @@ const AddTransaction = () => {
 
 		let expenseData;
 
+		//! Edit Expense //
+		if (state.isEditing && expenseType === 'expense') {
+			expenseData = {
+				id: state.editingExpense[0].id,
+				amount: -expenseAmount,
+				category: expenseCategory,
+			};
+			console.log('edit mode and expense:', expenseData);
+
+			const userId = state._id; // Replace with the actual user ID
+			const expenseId = expenseData.id;
+
+			console.log(userId, expenseId);
+			console.log(`http://localhost:5000/editexpense/${userId}/${expenseId}`);
+
+			try {
+				const response = await axios.put(
+					`http://localhost:5000/editexpense/${userId}/${expenseId}`,
+					expenseData
+				);
+				console.log('Expense updated successfully:', response.data);
+			} catch (error) {
+				console.error('Error updating expense:', error);
+			}
+
+			dispatch({
+				type: 'add/editedExpense',
+				payload: { id: expenseData.id, expenseData },
+			});
+		}
+
 		//* add expense //
-		if (expenseType === 'expense') {
+		if (expenseType === 'expense' && state.isEditing === false) {
 			const queryParams = `?_id=${state._id}`;
 			expenseData = {
 				id: window.crypto.randomUUID(),

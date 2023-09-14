@@ -18,6 +18,7 @@ const inititalState = {
 	isActive: 0,
 	isEditing: false,
 	editingExpense: [{}],
+	editingDeposit: [{}],
 };
 
 function reducer(state, action) {
@@ -62,6 +63,42 @@ function reducer(state, action) {
 				deposits: [action.payload, ...state.deposits],
 			};
 
+		case 'edit/expense': {
+			return {
+				...state,
+				isEditing: true,
+				editingExpense: action.payload,
+			};
+		}
+
+		case 'edit/deposit': {
+			return {
+				...state,
+				isEditing: true,
+				editingDeposit: action.payload,
+			};
+		}
+
+		case 'add/editedExpense': {
+			const updatedExpenses = state.expenses.map((expense) => {
+				if (expense.id === action.payload.id) {
+					// Replace the matching expense with the updated data
+					return {
+						...expense,
+						...action.payload.expenseData,
+					};
+				} else {
+					return expense;
+				}
+			});
+
+			return {
+				...state,
+				expenses: updatedExpenses,
+				isEditing: false,
+			};
+		}
+
 		case 'delete/deposit':
 			return {
 				...state,
@@ -91,21 +128,6 @@ function reducer(state, action) {
 			return {
 				...state,
 				isActive: action.payload,
-			};
-		}
-
-		case 'edit/expense': {
-			return {
-				...state,
-				isEditing: true,
-				editingExpense: action.payload,
-			};
-		}
-		case 'edit/deposit': {
-			return {
-				...state,
-				isEditing: true,
-				editingDeposit: action.payload,
 			};
 		}
 

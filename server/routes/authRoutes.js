@@ -11,6 +11,7 @@ const {
 	addDeposit,
 	deleteDeposit,
 	deleteExpense,
+	editExpense,
 } = require('../controllers/routeControllers');
 
 //! middleware
@@ -34,5 +35,7 @@ router.post('/adddeposit', addDeposit);
 router.delete('/deletedeposit/:userId/:depositId', deleteDeposit);
 
 router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
+
+router.put('/editexpense/:userId/:expenseId', editExpense);
 
 module.exports = router;

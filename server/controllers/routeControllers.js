@@ -5,6 +5,7 @@ const test = (req, res) => {
 	res.json('test is working!');
 };
 
+//! Register User //
 const registerUser = async (req, res) => {
 	try {
 		const {
@@ -66,6 +67,7 @@ const registerUser = async (req, res) => {
 	}
 };
 
+//! Login User //
 const loginUser = async (req, res) => {
 	try {
 		const { firstName, password } = req.body;
@@ -92,6 +94,7 @@ const loginUser = async (req, res) => {
 	}
 };
 
+//! Add Expense
 const addExpense = async (req, res) => {
 	const { amount, date, category, id } = req.body;
 	const _id = req.query._id;
@@ -122,6 +125,7 @@ const addExpense = async (req, res) => {
 	}
 };
 
+//! Add Deposit //
 const addDeposit = async (req, res) => {
 	const { amount, date, category, id } = req.body;
 	const _id = req.query._id;
@@ -152,6 +156,7 @@ const addDeposit = async (req, res) => {
 	}
 };
 
+//! Delete Deposit
 const deleteDeposit = async (req, res) => {
 	try {
 		const { userId, depositId } = req.params;
@@ -185,6 +190,8 @@ const deleteDeposit = async (req, res) => {
 		res.status(500).json({ message: 'Internal server error' });
 	}
 };
+
+//! Delete Expense
 const deleteExpense = async (req, res) => {
 	try {
 		const { userId, expenseId } = req.params;
@@ -219,6 +226,43 @@ const deleteExpense = async (req, res) => {
 	}
 };
 
+//! Edit Expense
+const editExpense = async (req, res) => {
+	console.log('API HIT');
+	try {
+		const { userId, expenseId } = req.params;
+		const updatedExpenseData = req.body;
+
+		// Find the user by _id
+		const user = await User.findById(userId);
+
+		if (!user) {
+			return res.status(404).json({ error: 'User not found' });
+		}
+
+		// Find the expense by _id within the expenses array
+		const expense = user.expenses.find((exp) => exp.id === expenseId);
+
+		if (!expense) {
+			console.log('Expenses:', user.expenses);
+			return res.status(404).json({ error: 'Expense not found' });
+		}
+
+		// Update the expense properties
+		expense.amount = updatedExpenseData.amount;
+		expense.date = updatedExpenseData.date;
+		expense.category = updatedExpenseData.category;
+
+		// Save the updated user document
+		const updatedUser = await user.save();
+
+		res.json(updatedUser); // Respond with the updated user document
+	} catch (error) {
+		console.error('Error updating expense:', error);
+		res.status(500).json({ error: 'Internal server error' });
+	}
+};
+
 module.exports = {
 	test,
 	registerUser,
@@ -227,4 +271,5 @@ module.exports = {
 	addDeposit,
 	deleteExpense,
 	deleteDeposit,
+	editExpense,
 };
