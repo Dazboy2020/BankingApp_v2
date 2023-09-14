@@ -263,6 +263,47 @@ const editExpense = async (req, res) => {
 	}
 };
 
+//! Edit Deposit //
+
+const editDeposit = async (req, res) => {
+	console.log('API HIT');
+	try {
+		const { userId, depositId } = req.params;
+		const updatedDepositData = req.body;
+		console.log(updatedDepositData);
+
+		// Find the user by _id
+		const user = await User.findById(userId);
+
+		if (!user) {
+			return res.status(404).json({ error: 'User not found' });
+		}
+
+		// Find the expense by _id within the expenses array
+		const deposit = user.deposits.find((exp) => exp.id === depositId);
+
+		console.log(user, deposit);
+
+		if (!deposit) {
+			console.log('Deposits:', user.deposits);
+			return res.status(404).json({ error: 'Deposit not found' });
+		}
+
+		// Update the expense properties
+		deposit.amount = updatedDepositData.amount;
+		deposit.date = updatedDepositData.date;
+		deposit.category = updatedDepositData.category;
+
+		// Save the updated user document
+		const updatedUser = await user.save();
+
+		res.json(updatedUser); // Respond with the updated user document
+	} catch (error) {
+		console.error('Error updating expense:', error);
+		res.status(500).json({ error: 'Internal server error' });
+	}
+};
+
 module.exports = {
 	test,
 	registerUser,
@@ -272,4 +313,5 @@ module.exports = {
 	deleteExpense,
 	deleteDeposit,
 	editExpense,
+	editDeposit,
 };

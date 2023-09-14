@@ -146,13 +146,12 @@ const AddTransaction = () => {
 				id: state.editingExpense[0].id,
 				amount: -expenseAmount,
 				category: expenseCategory,
+				date: state.editingDeposit[0].date,
 			};
-			console.log('edit mode and expense:', expenseData);
 
-			const userId = state._id; // Replace with the actual user ID
+			const userId = state._id;
 			const expenseId = expenseData.id;
 
-			console.log(userId, expenseId);
 			console.log(`http://localhost:5000/editexpense/${userId}/${expenseId}`);
 
 			try {
@@ -167,6 +166,36 @@ const AddTransaction = () => {
 
 			dispatch({
 				type: 'add/editedExpense',
+				payload: { id: expenseData.id, expenseData },
+			});
+		}
+
+		//* edit deposit //
+		if (expenseType === 'deposit' && state.isEditing) {
+			expenseData = {
+				id: state.editingDeposit[0].id,
+				amount: +expenseAmount,
+				category: expenseCategory,
+				date: state.editingDeposit[0].date,
+			};
+
+			console.log(expenseData);
+
+			const userId = state._id;
+			const expenseId = expenseData.id;
+
+			try {
+				const response = await axios.put(
+					`http://localhost:5000/editdeposit/${userId}/${expenseId}`,
+					expenseData
+				);
+				console.log('Expense updated successfully:', response.data);
+			} catch (error) {
+				console.error('Error updating expense:', error);
+			}
+
+			dispatch({
+				type: 'add/editedDeposit',
 				payload: { id: expenseData.id, expenseData },
 			});
 		}
@@ -195,7 +224,7 @@ const AddTransaction = () => {
 		}
 
 		//* add Deposit //
-		if (expenseType === 'deposit') {
+		if (expenseType === 'deposit' && state.isEditing === false) {
 			const queryParams = `?_id=${state._id}`;
 
 			expenseData = {

@@ -48,8 +48,6 @@ const MovementsExpenses = () => {
 		let expenseToEdit = state.expenses.filter((ex) => ex.id === id);
 
 		dispatch({ type: 'edit/expense', payload: expenseToEdit });
-
-		console.log(expenseToEdit[0].id);
 	}
 
 	//! Delete an Item

@@ -98,6 +98,25 @@ function reducer(state, action) {
 				isEditing: false,
 			};
 		}
+		case 'add/editedDeposit': {
+			const updatedDeposits = state.deposits.map((deposit) => {
+				if (deposit.id === action.payload.id) {
+					// Replace the matching expense with the updated data
+					return {
+						...deposit,
+						...action.payload.expenseData,
+					};
+				} else {
+					return deposit;
+				}
+			});
+			console.log(updatedDeposits);
+			return {
+				...state,
+				deposits: updatedDeposits,
+				isEditing: false,
+			};
+		}
 
 		case 'delete/deposit':
 			return {

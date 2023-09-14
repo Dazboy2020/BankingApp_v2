@@ -45,11 +45,9 @@ const Movements = () => {
 
 	//! Edit an Item
 	function handleEditClick(id) {
-		let depositToEdit = state.deposits.filter((ex) => ex.id === id);
+		let depositToEdit = state.deposits.filter((deposit) => deposit.id === id);
 
 		dispatch({ type: 'edit/deposit', payload: depositToEdit });
-
-		console.log(depositToEdit);
 	}
 
 	async function handleDelete(id) {
