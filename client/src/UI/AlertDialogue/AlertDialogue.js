@@ -48,10 +48,28 @@ export default function AlertDialogSlide() {
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button color="secondary" onClick={handleYesLogout}>
+					<Button
+						sx={{
+							'&:hover': {
+								backgroundColor: '#680747',
+								cursor: 'default',
+							},
+						}}
+						color="secondary"
+						onClick={handleYesLogout}
+					>
 						Yes
 					</Button>
-					<Button color="secondary" onClick={handleCancel}>
+					<Button
+						sx={{
+							'&:hover': {
+								backgroundColor: '#680747',
+								cursor: 'default',
+							},
+						}}
+						color="secondary"
+						onClick={handleCancel}
+					>
 						Cancel
 					</Button>
 				</DialogActions>
