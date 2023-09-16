@@ -11,6 +11,14 @@
 	padding: 1.5rem 2.5rem;
 }
 
+.loginBoxSigningIn {
+	opacity: 50%;
+}
+
+.loginBoxSignInSuccess {
+	opacity: 100%;
+}
+
 @media (max-width: 576px) {
 	.wrapper {
 		height: fit-content;

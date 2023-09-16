@@ -55,13 +55,21 @@ export default function SignIn() {
 		password: '',
 	});
 
+	const [isLoading, setIsLoading] = useState(false);
+
+	const signInclass = isLoading
+		? classes.loginBoxSigningIn
+		: classes.loginBoxSignInSuccess;
+
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		setMessage('');
+		setIsLoading(true);
+		setMessage('Signing in..');
+		setOpenToast(true, { message: message });
 
 		try {
 			// const { data: userData } = await axios.post('/login', data);
@@ -80,19 +88,20 @@ export default function SignIn() {
 			console.log(error);
 		}
 	};
+
 	useEffect(
 		function () {
 			if (state.user) navigate('/overview');
+			setIsLoading(false);
 		},
-		[navigate, state.user]
+		[navigate, state.user, setIsLoading]
 	);
-
 	return (
 		<>
 			<ResponsiveAppBar />
 			<Box className={classes.wrapper}>
 				<ThemeProvider theme={defaultTheme}>
-					<Container component="main" maxWidth="xs">
+					<Container className={signInclass} component="main" maxWidth="xs">
 						<CssBaseline />
 						<Box
 							sx={{
