@@ -3,12 +3,12 @@ import { Box, Stack } from '@mui/material';
 
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
-import Movements from '../components/Movements/Movements';
 import Income from '../components/Outline-Card/Income';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 import classes from './Deposits.module.css';
+import DepositItems from '../components/Movements/DepositItems';
 
-function Expenses() {
+function Deposits() {
 	return (
 		<>
 			<ResponsiveDrawer />
@@ -41,11 +41,11 @@ function Expenses() {
 						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
 					}}
 				>
-					<Movements />
+					<DepositItems />
 				</Box>
 			</Box>
 		</>
 	);
 }
 
-export default Expenses;
+export default Deposits;

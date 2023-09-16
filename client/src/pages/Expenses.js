@@ -4,7 +4,7 @@ import { Box, Stack } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
 import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
-import MovementsExpenses from '../components/Movements/Movements_Expenses';
+import ExpenseItems from '../components/Movements/ExpenseItems';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 import classes from './Expenses.module.css';
 
@@ -41,7 +41,7 @@ function Expenses() {
 						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
 					}}
 				>
-					<MovementsExpenses />
+					<ExpenseItems />
 				</Box>
 			</Box>
 		</>

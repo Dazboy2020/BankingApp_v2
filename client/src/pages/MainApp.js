@@ -4,20 +4,20 @@ import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
 
 import MovementList from '../components/Movements/MovementList';
-import Movements from '../components/Movements/Movements';
 
 import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 
 import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
-import MovementsExpenses from '../components/Movements/Movements_Expenses';
 import { Box, Paper } from '@mui/material';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';
 import Income from '../components/Outline-Card/Income';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
+import ExpenseItems from '../components/Movements/ExpenseItems';
+import DepositItems from '../components/Movements/DepositItems';
 
 function MainApp() {
 	return (
@@ -84,7 +84,7 @@ function MainApp() {
 									width: '100%',
 								}}
 							>
-								<Movements />
+								<DepositItems />
 							</Box>
 							<Box
 								component="section"
@@ -94,7 +94,7 @@ function MainApp() {
 									width: '100%',
 								}}
 							>
-								<MovementsExpenses />
+								<ExpenseItems />
 							</Box>
 						</Stack>
 					</MovementList>

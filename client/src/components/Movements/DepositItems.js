@@ -1,15 +1,15 @@
+import React, { useEffect } from 'react';
 import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
-import { useEffect } from 'react';
 
-import ExpenseCard from './ExpenseCard';
+import DepositCard from './DepositCard';
 
-const MovementsExpenses = () => {
+const DepositItems = () => {
 	const { dispatch, state } = useAppContext();
 
 	//! Clear animation
 	useEffect(() => {
-		const intervalDuration = 3000;
+		const intervalDuration = 2000;
 
 		const intervalId = setInterval(() => {
 			dispatch({ type: 'addTransactionAnimate', payload: false });
@@ -21,8 +21,8 @@ const MovementsExpenses = () => {
 	}, [dispatch]);
 
 	const movementsToDisplay = state.isEditing
-		? state.editingExpense
-		: state.expenses;
+		? state.editingDeposit
+		: state.deposits;
 
 	const moves = state.sort
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
@@ -35,11 +35,11 @@ const MovementsExpenses = () => {
 
 	return (
 		<ul className={animate}>
-			{moves.map((expense) => (
-				<ExpenseCard expense={expense} key={expense.id} />
+			{moves.map((deposit) => (
+				<DepositCard deposit={deposit} key={deposit.id} />
 			))}
 		</ul>
 	);
 };
 
-export default MovementsExpenses;
+export default DepositItems;
