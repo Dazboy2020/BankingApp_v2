@@ -2,13 +2,12 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Box, Button } from '@mui/material';
-import SouthOutlinedIcon from '@mui/icons-material/SouthOutlined';
+import { Box } from '@mui/material';
 import { useAppContext } from '../../context/context';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function ExpenseSummary() {
-	const { totalExpenses, dispatch } = useAppContext();
+	const { totalExpenses } = useAppContext();
 
 	return (
 		<Card
@@ -41,28 +40,6 @@ export default function ExpenseSummary() {
 				<Typography sx={{ fontSize: '2rem' }} color="red" gutterBottom>
 					{`€${Math.abs(totalExpenses.toFixed(2))}`}
 				</Typography>
-
-				<Box>
-					<Button
-						variant="contained"
-						onClick={() => dispatch({ type: 'sort' })}
-						sx={{
-							'&:hover': {
-								backgroundColor: '#680747',
-								cursor: 'default',
-							},
-							bgcolor: '#f70776',
-							color: 'white',
-							mt: 2,
-							fontSize: '1.2rem',
-						}}
-						size="xs"
-						color="inherit"
-						startIcon={<SouthOutlinedIcon />}
-					>
-						Sort
-					</Button>
-				</Box>
 			</CardContent>
 		</Card>
 	);
