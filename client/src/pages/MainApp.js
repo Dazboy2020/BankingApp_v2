@@ -10,7 +10,7 @@ import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 import PieChart from '../components/Charts/Pie';
 import PieEuro from '../components/Charts/PieEuro';
 
-import { Box, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 
 import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/Drawer/Draw';
@@ -23,25 +23,26 @@ function MainApp() {
 	return (
 		<>
 			<ResponsiveDrawer />
+			<AlertDialogSlide />
+			<CloseAccountModal />
+			<Toast />
 			<Box
+				component="main"
+				className={classes.body}
 				sx={{
+					minHeight: '100vh',
+
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },
+					bgcolor: '#ececec',
 				}}
 			>
-				<Paper
-					component="main"
+				<Box
 					className={classes.body}
-					elevation={24}
 					sx={{
-						margin: { xs: 'none', md: '1rem' },
-						minHeight: '100vh',
+						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
 					}}
 				>
-					<AlertDialogSlide />
-					<CloseAccountModal />
-					<Toast />
-
 					<Stack
 						component="section"
 						spacing={3}
@@ -65,7 +66,7 @@ function MainApp() {
 							alignItems: 'centre',
 							justifyContent: 'space-around',
 							paddingTop: '1rem',
-							backgroundColor: '##f3e5f5',
+							// backgroundColor: '##f3e5f5',
 							mb: 2,
 						}}
 					>
@@ -79,6 +80,7 @@ function MainApp() {
 							spacing={2}
 							component="section"
 							direction={{ xs: 'column', md: 'row' }}
+							// sx={{ margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' } }}
 						>
 							<Box
 								component="section"
@@ -102,7 +104,7 @@ function MainApp() {
 							</Box>
 						</Stack>
 					</MovementList>
-				</Paper>
+				</Box>
 			</Box>
 		</>
 	);
