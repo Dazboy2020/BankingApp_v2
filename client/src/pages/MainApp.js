@@ -75,7 +75,11 @@ function MainApp() {
 
 					{/* //!Movements */}
 					<MovementList>
-						<Stack component="section" direction={{ xs: 'column', md: 'row' }}>
+						<Stack
+							spacing={2}
+							component="section"
+							direction={{ xs: 'column', md: 'row' }}
+						>
 							<Box
 								component="section"
 								sx={{
