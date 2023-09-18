@@ -5,12 +5,13 @@
 	font-family: 'poppins';
 	margin-top: 0.25rem;
 	margin-bottom: 1rem;
+	padding: 0.5rem;
 }
 
 .movements__row {
 	flex-grow: 1;
 	flex-direction: column;
-	padding: 0.5rem;
+	/* padding: 0.5rem; */
 	display: flex;
 	margin-top: 0.1rem;
 	margin-bottom: 0.2rem;
@@ -84,9 +85,9 @@
 	flex-grow: 1;
 	flex-direction: column;
 
-	padding: 0.5rem;
+	/* padding: 0.5rem; */
 	display: flex;
-	border-bottom: 1px solid #eee;
+	/* border-bottom: 1px solid #eee; */
 	/* margin: 0.1rem; */
 	animation: slideUp 0.25s 1 ease-in-out forwards;
 }
@@ -98,11 +99,15 @@
 	flex-grow: 1;
 	flex-direction: column;
 
-	padding: 0.5rem;
+	/* padding: 0.5rem; */
 	display: flex;
 	border: 2px solid purple;
 	/* margin: 0.1rem; */
 	animation: slideUp 0.25s 1 ease-in-out forwards;
+}
+
+ul {
+	padding: 0;
 }
 
 @keyframes slideUp {
