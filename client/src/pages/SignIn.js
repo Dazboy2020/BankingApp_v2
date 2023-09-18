@@ -81,6 +81,7 @@ export default function SignIn() {
 			if (userData.error) {
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
+				setIsLoading(false);
 			} else {
 				dispatch({ type: 'user/MongoLoggedIn', payload: userData.user });
 			}

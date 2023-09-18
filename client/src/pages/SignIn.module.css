@@ -12,11 +12,11 @@
 }
 
 .loginBoxSigningIn {
-	opacity: 50%;
+	display: none;
 }
 
 .loginBoxSignInSuccess {
-	opacity: 100%;
+	display: flex;
 }
 
 @media (max-width: 576px) {
