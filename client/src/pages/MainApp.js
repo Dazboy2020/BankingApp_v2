@@ -80,7 +80,6 @@ function MainApp() {
 							spacing={2}
 							component="section"
 							direction={{ xs: 'column', md: 'row' }}
-							// sx={{ margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' } }}
 						>
 							<Box
 								component="section"
