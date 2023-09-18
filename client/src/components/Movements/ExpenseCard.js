@@ -60,8 +60,8 @@ function ExpenseCard({ expense }) {
 
 	return (
 		<Paper
-			// key={Math.floor(Math.random() * 10000) + 1}
 			className={classes.movements}
+			sx={{ border: state.isEditing ? '1px solid purple' : '' }}
 		>
 			<Stack component="section" className={expenseEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

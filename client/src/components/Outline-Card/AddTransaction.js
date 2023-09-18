@@ -16,7 +16,6 @@ const buttonStyles = {
 		backgroundColor: '#680747',
 		cursor: 'default',
 	},
-	// bgcolor: '#f70776',
 	color: 'white',
 	mt: 4,
 	mr: 2,
@@ -74,7 +73,7 @@ const AddTransaction = () => {
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
 
-	const expenseEditMode = state.isEditing ? '2px solid purple' : '';
+	const expenseEditMode = state.isEditing ? '1px solid purple' : '';
 
 	function handleReturn(e) {
 		e.preventDefault();

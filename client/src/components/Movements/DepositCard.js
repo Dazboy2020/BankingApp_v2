@@ -59,7 +59,10 @@ function DepositCard({ deposit }) {
 		: classes.movements__row;
 
 	return (
-		<Paper className={classes.movements}>
+		<Paper
+			className={classes.movements}
+			sx={{ border: state.isEditing ? '1px solid purple' : '' }}
+		>
 			<Stack component="section" className={depositEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
 					<span className={classes.movements__type__deposit}>Income</span>
