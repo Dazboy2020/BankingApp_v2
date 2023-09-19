@@ -109,7 +109,7 @@ function ResponsiveDrawer(props) {
 	const drawer = (
 		<>
 			<Toolbar />
-			<Divider />
+			{/* <Divider /> */}
 			<List sx={{ mt: '3rem' }}>
 				<ListNew />
 			</List>
@@ -133,7 +133,17 @@ function ResponsiveDrawer(props) {
 					height: { xs: '4rem', sm: '5rem', md: '7rem' }, //! new
 				}}
 			>
-				<Toolbar sx={{ height: '6rem' }}>
+				<Toolbar
+					sx={{
+						height: '7rem',
+						padding: { xs: '.5rem', s: 0, sm: '1rem' },
+						// marginLeft: { xs: '.5rem', s: '3rem' },
+						// bgcolor: '#52525b',
+						bgcolor: '#263238',
+
+						borderBottom: '1px solid white',
+					}}
+				>
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
@@ -198,8 +208,11 @@ function ResponsiveDrawer(props) {
 				sx={{
 					flexGrow: 1,
 					// p: 3,
-					pb: 6,
-					width: { sm: `calc(100% - ${drawerWidth}px)`, md: drawerWidth },
+					pb: 0,
+					width: {
+						sm: `calc(100% - ${drawerWidth}px)`,
+						md: drawerWidth,
+					},
 				}}
 			>
 				<Toolbar />

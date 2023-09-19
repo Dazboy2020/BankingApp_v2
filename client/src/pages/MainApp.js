@@ -34,7 +34,6 @@ function MainApp() {
 
 					ml: { lg: '18.8rem', md: '18rem', sm: '16rem', s: 0 },
 					mr: { lg: 0, sm: 0, m: 0 },
-					// bgcolor: '#ececec',
 				}}
 			>
 				<Box
@@ -48,6 +47,9 @@ function MainApp() {
 						direction={{ sm: 'column', md: 'row' }}
 						sx={{
 							justifyContent: 'space-between',
+							ml: 4,
+							mr: 4,
+							mt: 10,
 						}}
 					>
 						<Income />
@@ -58,7 +60,7 @@ function MainApp() {
 					{/* //! Charts */}
 					<Stack
 						component="section"
-						spacing={2}
+						spacing={4}
 						direction={{ xs: 'column', md: 'row' }}
 						sx={{
 							display: 'flex',
@@ -67,6 +69,9 @@ function MainApp() {
 							paddingTop: '1rem',
 							// backgroundColor: '##f3e5f5',
 							mb: 2,
+							ml: 4,
+							mr: 4,
+							mt: 3,
 						}}
 					>
 						<PieChart />
@@ -76,7 +81,8 @@ function MainApp() {
 					{/* //!Movements */}
 					<MovementList>
 						<Stack
-							spacing={2}
+							sx={{ ml: 4, mr: 4, mt: 4 }}
+							spacing={4}
 							component="section"
 							direction={{ xs: 'column', md: 'row' }}
 						>

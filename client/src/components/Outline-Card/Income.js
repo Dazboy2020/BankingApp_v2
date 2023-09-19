@@ -17,6 +17,7 @@ export default function Income() {
 				display: 'flex',
 				flexGrow: 1,
 				mb: 2,
+				borderRadius: '10px',
 			}}
 		>
 			<CardContent sx={{ width: '100%' }}>

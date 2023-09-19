@@ -27,9 +27,10 @@ function Deposits() {
 				<Stack
 					spacing={2}
 					direction={{ sm: 'column', md: 'row' }}
-					// sx={{ m: 2 }}
 					sx={{
-						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+						ml: 6,
+						mr: 6,
+						mt: 10,
 					}}
 				>
 					<AddTransaction />
@@ -38,7 +39,9 @@ function Deposits() {
 				</Stack>
 				<Box
 					sx={{
-						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+						ml: 6,
+						mr: 6,
+						mt: 4,
 					}}
 				>
 					<DepositItems />

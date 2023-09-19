@@ -26,10 +26,12 @@ function Expenses() {
 				}}
 			>
 				<Stack
-					spacing={6}
+					spacing={2}
 					direction={{ sm: 'column', md: 'row' }}
 					sx={{
-						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+						ml: 6,
+						mr: 6,
+						mt: 10,
 					}}
 				>
 					<AddTransaction />
@@ -38,7 +40,9 @@ function Expenses() {
 				</Stack>
 				<Box
 					sx={{
-						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+						ml: 6,
+						mr: 6,
+						mt: 4,
 					}}
 				>
 					<ExpenseItems />
