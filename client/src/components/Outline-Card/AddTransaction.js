@@ -128,6 +128,8 @@ const AddTransaction = () => {
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
 
+		const BASE_URL = 'http://localhost:5000';
+
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 
@@ -153,7 +155,7 @@ const AddTransaction = () => {
 
 			try {
 				const response = await axios.put(
-					`http://localhost:5000/editexpense/${userId}/${expenseId}`,
+					`${BASE_URL}/editexpense/${userId}/${expenseId}`,
 					expenseData
 				);
 				console.log('Expense updated successfully:', response.data);
@@ -181,7 +183,7 @@ const AddTransaction = () => {
 
 			try {
 				const response = await axios.put(
-					`http://localhost:5000/editdeposit/${userId}/${expenseId}`,
+					`${BASE_URL}/editdeposit/${userId}/${expenseId}`,
 					expenseData
 				);
 				console.log('Expense updated successfully:', response.data);
@@ -207,7 +209,7 @@ const AddTransaction = () => {
 
 			try {
 				const response = await axios.post(
-					`http://localhost:5000/addexpense${queryParams}`,
+					`${BASE_URL}/addexpense${queryParams}`,
 					expenseData
 				);
 
@@ -231,7 +233,7 @@ const AddTransaction = () => {
 
 			try {
 				const response = await axios.post(
-					`http://localhost:5000/adddeposit${queryParams}`,
+					`${BASE_URL}/adddeposit${queryParams}`,
 					expenseData
 				);
 
@@ -257,7 +259,7 @@ const AddTransaction = () => {
 			component="article"
 			sx={{
 				display: 'flex',
-				mb: 0.5,
+				mb: 2,
 				alignItems: 'flex-start',
 				border: expenseEditMode,
 			}}

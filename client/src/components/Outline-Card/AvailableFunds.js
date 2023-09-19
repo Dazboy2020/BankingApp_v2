@@ -18,7 +18,7 @@ export default function AvailbleFunds() {
 			sx={{
 				display: 'flex',
 				flexGrow: 1,
-				mb: 0.5,
+				mb: 2,
 			}}
 		>
 			<CardContent sx={{ width: '100%' }}>

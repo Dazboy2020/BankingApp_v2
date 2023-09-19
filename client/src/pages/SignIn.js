@@ -48,6 +48,7 @@ export default function SignIn() {
 	// eslint-disable-next-line no-unused-vars
 	const { state, dispatch, setOpenToast, message, setMessage } =
 		useAppContext();
+
 	const navigate = useNavigate();
 
 	const [data, setData] = useState({
@@ -56,6 +57,8 @@ export default function SignIn() {
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
+
+	const BASE_URL = 'http://localhost:5000';
 
 	const signInclass = isLoading
 		? classes.loginBoxSigningIn
@@ -73,10 +76,7 @@ export default function SignIn() {
 
 		try {
 			// const { data: userData } = await axios.post('/login', data);
-			const { data: userData } = await axios.post(
-				'http://localhost:5000/login',
-				data
-			);
+			const { data: userData } = await axios.post(`${BASE_URL}/login`, data);
 
 			if (userData.error) {
 				setMessage(userData.error);

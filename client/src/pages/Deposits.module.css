@@ -1,10 +1,10 @@
 .body {
-	background-color: #ececec;
+	background-color: #ced4da;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	/* filter: invert(100%); */
 	/* font-family: 'Roboto Mono'; */
 	animation: fade 0.2s;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: Poppins, sans-serif;
 	height: auto;
 }
