@@ -262,6 +262,7 @@ const AddTransaction = () => {
 				mb: 2,
 				alignItems: 'flex-start',
 				border: expenseEditMode,
+				borderRadius: '10px',
 			}}
 		>
 			<CardContent sx={{ width: '100%' }}>

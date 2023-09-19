@@ -61,7 +61,10 @@ function DepositCard({ deposit }) {
 	return (
 		<Paper
 			className={classes.movements}
-			sx={{ border: state.isEditing ? '1px solid purple' : '' }}
+			sx={{
+				border: state.isEditing ? '1px solid purple' : '',
+				borderRadius: '10px',
+			}}
 		>
 			<Stack component="section" className={depositEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
