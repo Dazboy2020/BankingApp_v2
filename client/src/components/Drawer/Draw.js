@@ -76,13 +76,13 @@ const ListNew = (props) => {
 				const { text, icon, onClick } = item;
 				const buttonStyles = {
 					'&:hover': {
-						backgroundColor: '#862e9c',
+						backgroundColor: '#680747',
 						cursor: 'pointer',
 					},
 					color: '#fff',
 					width: '100%',
 					textAlign: 'left',
-					backgroundColor: state.isActive === index ? '#862e9c' : '#242a2e',
+					backgroundColor: state.isActive === index ? '#680747' : '#242a2e',
 				};
 
 				return (
