@@ -24,7 +24,7 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 
-const drawerWidth = 300;
+const drawerWidth = 305;
 
 const ListNew = (props) => {
 	const { setOpen, state, dispatch } = useAppContext();
@@ -110,7 +110,7 @@ function ResponsiveDrawer(props) {
 		<>
 			<Toolbar />
 			<Divider />
-			<List>
+			<List sx={{ mt: '3rem' }}>
 				<ListNew />
 			</List>
 		</>
