@@ -61,7 +61,7 @@ function MainApp() {
 					<Stack
 						component="section"
 						spacing={4}
-						direction={{ xs: 'column', md: 'row' }}
+						direction={{ s: 'column', md: 'column', lg: 'row' }}
 						sx={{
 							display: 'flex',
 							alignItems: 'centre',

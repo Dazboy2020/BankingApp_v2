@@ -76,13 +76,14 @@ const ListNew = (props) => {
 				const { text, icon, onClick } = item;
 				const buttonStyles = {
 					'&:hover': {
-						backgroundColor: '#680747',
+						backgroundColor: '#7c2d12',
 						cursor: 'pointer',
 					},
 					color: '#fff',
 					width: '100%',
 					textAlign: 'left',
-					backgroundColor: state.isActive === index ? '#680747' : '#242a2e',
+					// backgroundColor: state.isActive === index ? '#680747' : '#242a2e',
+					backgroundColor: state.isActive === index ? '#f97316' : '#242a2e',
 				};
 
 				return (
@@ -139,9 +140,9 @@ function ResponsiveDrawer(props) {
 						padding: { xs: '.5rem', s: 0, sm: '1rem' },
 						// marginLeft: { xs: '.5rem', s: '3rem' },
 						// bgcolor: '#52525b',
-						bgcolor: '#263238',
+						bgcolor: '#27272a',
 
-						borderBottom: '1px solid white',
+						borderBottom: '1px solid #f97316',
 					}}
 				>
 					<IconButton
