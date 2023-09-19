@@ -15,7 +15,7 @@ function PieChart() {
 		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
 		: movementsToDisplay;
 
-	let bgColor = moves.map((item) => (item.amount > 0 ? '#597081' : '#a8577e'));
+	let bgColor = moves.map((item) => (item.amount > 0 ? '#597081' : '#d6336c'));
 	let label = moves.map((item) => item.amount);
 	let dataSetLabel = 'Expense';
 	let titleText = 'EXPENSES';
@@ -34,7 +34,7 @@ function PieChart() {
 	const options = {
 		plugins: {
 			title: {
-				display: true,
+				display: false,
 				text: titleText,
 				font: {
 					size: 16,
@@ -56,12 +56,12 @@ function PieChart() {
 				>
 					<Typography
 						sx={{
-							fontSize: { xs: '1rem', md: '1.3rem' },
-							padding: { xs: '.8rem', md: '1rem' },
-							backgroundColor: '#3a7ca5',
+							fontSize: { xs: '1rem', md: '1.5rem' },
+							padding: { xs: '.8rem', md: '.5rem' },
+							backgroundColor: '#495057',
 							color: 'white',
 							textAlign: 'center',
-							fontWeight: 'bold',
+							// fontWeight: 500,
 						}}
 					>
 						EXPENSES
@@ -69,7 +69,6 @@ function PieChart() {
 					<div
 						className="canvas"
 						style={{
-							// width: '40rem',
 							width: '40vh',
 							height: '40vh',
 
