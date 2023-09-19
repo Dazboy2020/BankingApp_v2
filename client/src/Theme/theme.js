@@ -29,7 +29,7 @@ const theme = createTheme({
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					backgroundColor: '#680747',
+					backgroundColor: '#343a40',
 				},
 				colorDefault: {
 					'& .MuiSvgIcon-root': {
@@ -50,6 +50,13 @@ const theme = createTheme({
 				root: {
 					backgroundColor: 'MediumVioletRed', // Set your desired background color here
 					color: 'white', // Set your desired text color here
+				},
+			},
+		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					backgroundColor: '#e9ecef',
 				},
 			},
 		},

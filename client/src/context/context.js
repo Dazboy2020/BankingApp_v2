@@ -5,7 +5,7 @@ const AppContext = createContext();
 const inititalState = {
 	expenses: [{}],
 	deposits: [{}],
-	isLoggedIn: false,
+	isLoggedIn: true,
 	loggedInAccount: '',
 	pin: '',
 	user: '',
