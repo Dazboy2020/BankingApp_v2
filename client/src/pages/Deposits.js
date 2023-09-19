@@ -19,8 +19,8 @@ function Deposits() {
 				sx={{
 					minHeight: '100vh',
 
-					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
-					mr: { sm: '.5rem', m: '.5rem' },
+					ml: { lg: '18.8rem', md: '18rem', sm: '16rem', s: 0 },
+					mr: { lg: 0, sm: 0, m: 0 },
 					bgcolor: '#ececec',
 				}}
 			>
