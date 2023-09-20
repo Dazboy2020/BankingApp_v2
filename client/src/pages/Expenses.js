@@ -7,8 +7,11 @@ import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 import ExpenseItems from '../components/Movements/ExpenseItems';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 import classes from './Expenses.module.css';
+import FilterItems from '../components/Filter/Filter';
+import { useAppContext } from '../context/context';
 
 function Expenses() {
+	const { state } = useAppContext();
 	return (
 		<>
 			<ResponsiveDrawer />
@@ -45,6 +48,7 @@ function Expenses() {
 						mt: 4,
 					}}
 				>
+					{!state.isEditing && <FilterItems />}
 					<ExpenseItems />
 				</Box>
 			</Box>

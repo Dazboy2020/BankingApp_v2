@@ -7,8 +7,12 @@ import Income from '../components/Outline-Card/Income';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 import classes from './Deposits.module.css';
 import DepositItems from '../components/Movements/DepositItems';
+import FilterItems from '../components/Filter/Filter';
+import { useAppContext } from '../context/context';
 
 function Deposits() {
+	const { state } = useAppContext();
+
 	return (
 		<>
 			<ResponsiveDrawer />
@@ -37,6 +41,7 @@ function Deposits() {
 					<Income />
 					<AvailbleFunds />
 				</Stack>
+
 				<Box
 					sx={{
 						ml: 6,
@@ -44,6 +49,7 @@ function Deposits() {
 						mt: 4,
 					}}
 				>
+					{!state.isEditing && <FilterItems />}
 					<DepositItems />
 				</Box>
 			</Box>
