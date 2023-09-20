@@ -17,9 +17,13 @@ const FilterItems = () => {
 		.filter((expense) => expense.category)
 		.map((ex) => ex.category);
 
+	expenseLabelsInitial.unshift('All Expenses');
+
 	const depositLabelInitial = state.deposits
 		.filter((deposit) => deposit.category)
 		.map((dep) => dep.category);
+
+	depositLabelInitial.unshift('All Deposits');
 
 	const expenseLabels = [...new Set(expenseLabelsInitial)];
 	const depositLabels = [...new Set(depositLabelInitial)];
@@ -109,7 +113,10 @@ const FilterItems = () => {
 						<Box
 							component="form"
 							sx={{
-								'& .MuiTextField-root': { m: 1, width: '20ch' },
+								'& .MuiTextField-root': {
+									m: 1,
+									width: { xs: '10ch', s: '30ch', md: '30ch' },
+								},
 							}}
 							noValidate
 							autoComplete="off"

@@ -179,6 +179,12 @@ function reducer(state, action) {
 			};
 
 		case 'user/filteredExpenses': {
+			if (action.payload === 'All Expenses')
+				return {
+					...state,
+					filteredExpenses: state.expenses,
+				};
+
 			return {
 				...state,
 				filtering: true,
@@ -188,6 +194,12 @@ function reducer(state, action) {
 			};
 		}
 		case 'user/filteredDeposits': {
+			if (action.payload === 'All Deposits') {
+				return {
+					...state,
+					filteredDeposits: state.deposits,
+				};
+			}
 			return {
 				...state,
 				filtering: true,
