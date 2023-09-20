@@ -13,13 +13,13 @@ import { useAppContext } from '../context/context';
 function Account() {
 	const { state } = useAppContext();
 	return (
-		<Box sx={{ backgroundColor: '#ececec' }}>
+		<Box sx={{ backgroundColor: '#343a40' }}>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
 
 			<Box
 				sx={{
-					height: '90vh',
+					height: '100vh',
 					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
 					mr: { sm: '.5rem', m: '.5rem' },
 				}}
@@ -105,6 +105,11 @@ function Account() {
 									sx={{
 										position: 'absolute',
 										bottom: '1rem',
+										color: 'white', // Set the text color
+										textDecoration: 'none', // Add underline
+										'&:hover': {
+											color: 'white', // Change color on hover
+										},
 									}}
 								>
 									<p>

@@ -76,7 +76,7 @@ const ListNew = (props) => {
 				const { text, icon, onClick } = item;
 				const buttonStyles = {
 					'&:hover': {
-						backgroundColor: '#7c2d12',
+						backgroundColor: '#343a40',
 						cursor: 'pointer',
 					},
 					color: '#fff',
@@ -140,7 +140,7 @@ function ResponsiveDrawer(props) {
 						padding: { xs: '.5rem', s: 0, sm: '1rem' },
 						// marginLeft: { xs: '.5rem', s: '3rem' },
 						// bgcolor: '#52525b',
-						bgcolor: '#27272a',
+						bgcolor: '#343a40',
 
 						borderBottom: '1px solid #f97316',
 					}}
