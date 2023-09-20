@@ -48,7 +48,13 @@ function PieEuro() {
 
 	return (
 		<Card sx={{ width: '100%', borderRadius: '10px' }}>
-			<CardContent>
+			<CardContent
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'centre',
+				}}
+			>
 				<Box
 					sx={{
 						display: 'flex',

@@ -46,7 +46,9 @@ function PieChart() {
 
 	return (
 		<Card sx={{ width: '100%', borderRadius: '10px', mb: 3 }}>
-			<CardContent>
+			<CardContent
+				sx={{ display: 'flex', justifyContent: 'center', alignItems: 'centre' }}
+			>
 				<Box
 					sx={{
 						display: 'flex',
