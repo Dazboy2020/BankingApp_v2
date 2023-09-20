@@ -32,6 +32,7 @@ function DepositCard({ deposit }) {
 		let depositToEdit = state.deposits.filter((deposit) => deposit.id === id);
 
 		dispatch({ type: 'edit/deposit', payload: depositToEdit });
+		// dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	//! Delete an Item //

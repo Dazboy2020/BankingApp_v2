@@ -7,53 +7,22 @@ import CardContent from '@mui/material/CardContent';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 
-const menuExpense = [
-	{
-		value: 'utilities',
-		label: 'utilities',
-	},
-	{
-		value: 'leisure',
-		label: 'leisure',
-	},
-	{
-		value: 'food',
-		label: 'food',
-	},
-	{
-		value: 'travel',
-		label: 'travel',
-	},
-	{
-		value: 'debt',
-		label: 'debt',
-	},
-];
-
-const menuDeposit = [
-	{
-		value: 'salary',
-		label: 'salary',
-	},
-	{
-		value: 'shares',
-		label: 'shares',
-	},
-	{
-		value: 'sales',
-		label: 'sales',
-	},
-	{
-		value: 'other',
-		label: 'other',
-	},
-];
-
 const FilterItems = () => {
 	const { dispatch, state } = useAppContext();
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
+
+	const expenseLabelsInitial = state.expenses
+		.filter((expense) => expense.category)
+		.map((ex) => ex.category);
+
+	const depositLabelInitial = state.deposits
+		.filter((deposit) => deposit.category)
+		.map((dep) => dep.category);
+
+	const expenseLabels = [...new Set(expenseLabelsInitial)];
+	const depositLabels = [...new Set(depositLabelInitial)];
 
 	//! set expense type //
 	useEffect(
@@ -63,16 +32,12 @@ const FilterItems = () => {
 				setLabel('expense');
 
 				dispatch({ type: 'user/filteredExpenses', payload: expenseCategory });
-
-				// setExpenseCategory('');
 			}
 			if (state.isActive === 2) {
 				setExpenseType('deposit');
 				setLabel('deposit');
 
 				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
-
-				// setExpenseCategory('');
 			}
 		},
 		[expenseType, state.isActive, dispatch, expenseCategory]
@@ -159,14 +124,17 @@ const FilterItems = () => {
 								onChange={handleExpenseCategory}
 							>
 								{label === 'expense'
-									? menuExpense.map((option) => (
-											<MenuItem key={option.value} value={option.value}>
-												{option.label}
+									? expenseLabels.map((option) => (
+											<MenuItem key={option} value={option}>
+												{option}
 											</MenuItem>
 									  ))
-									: menuDeposit.map((option) => (
-											<MenuItem key={option.value} value={option.value}>
-												{option.label}
+									: depositLabels.map((option) => (
+											<MenuItem
+												key={Math.random().toLocaleString()}
+												value={option}
+											>
+												{option}
 											</MenuItem>
 									  ))}
 							</TextField>
