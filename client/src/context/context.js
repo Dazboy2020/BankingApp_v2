@@ -19,6 +19,9 @@ const inititalState = {
 	isEditing: false,
 	editingExpense: [{}],
 	editingDeposit: [{}],
+	filtering: false,
+	filteredExpenses: null,
+	filteredDeposits: null,
 };
 
 function reducer(state, action) {
@@ -40,6 +43,7 @@ function reducer(state, action) {
 				expenses: action.payload.expenses,
 				deposits: action.payload.deposits,
 				_id: action.payload._id,
+				filteredExpenses: null,
 			};
 		}
 
@@ -49,6 +53,7 @@ function reducer(state, action) {
 				isLoggedIn: false,
 				user: '',
 				pin: '',
+				filteredExpenses: null,
 			};
 
 		case 'add/expense':
@@ -128,6 +133,7 @@ function reducer(state, action) {
 			return {
 				...state,
 				expenses: state.expenses.filter((ex) => ex.id !== action.payload),
+				filteredExpenses: '',
 			};
 
 		case 'sort':
@@ -171,6 +177,25 @@ function reducer(state, action) {
 				...state,
 				isEditing: false,
 			};
+
+		case 'user/filteredExpenses': {
+			return {
+				...state,
+				filtering: true,
+				filteredExpenses: state.expenses.filter(
+					(ex) => ex.category === action.payload
+				),
+			};
+		}
+		case 'user/filteredDeposits': {
+			return {
+				...state,
+				filtering: true,
+				filteredDeposits: state.deposits.filter(
+					(ex) => ex.category === action.payload
+				),
+			};
+		}
 
 		default:
 			return state;

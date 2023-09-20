@@ -20,13 +20,24 @@ const DepositItems = () => {
 		};
 	}, [dispatch]);
 
-	const movementsToDisplay = state.isEditing
-		? state.editingDeposit
-		: state.deposits;
+	let moves;
 
-	const moves = state.sort
-		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
-		: movementsToDisplay;
+	if (state.isActive === 0) {
+		moves = state.deposits;
+	} else {
+		if (state.isEditing) {
+			moves = state.editingDeposit;
+		} else {
+			moves =
+				state.filteredDeposits?.length > 0
+					? state.filteredDeposits
+					: state.deposits;
+		}
+	}
+
+	if (!moves) {
+		moves = [];
+	}
 
 	const animate =
 		state.addTransactionAnimate === true

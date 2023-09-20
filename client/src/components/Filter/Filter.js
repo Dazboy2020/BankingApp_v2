@@ -50,7 +50,7 @@ const menuDeposit = [
 ];
 
 const FilterItems = () => {
-	const { dispatch, setMessage, state } = useAppContext();
+	const { dispatch, state } = useAppContext();
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
@@ -61,15 +61,21 @@ const FilterItems = () => {
 			if (state.isActive === 1) {
 				setExpenseType('expense');
 				setLabel('expense');
-				setExpenseCategory('');
+
+				dispatch({ type: 'user/filteredExpenses', payload: expenseCategory });
+
+				// setExpenseCategory('');
 			}
 			if (state.isActive === 2) {
 				setExpenseType('deposit');
 				setLabel('deposit');
-				setExpenseCategory('');
+
+				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
+
+				// setExpenseCategory('');
 			}
 		},
-		[expenseType, state.isActive]
+		[expenseType, state.isActive, dispatch, expenseCategory]
 	);
 
 	//! Clear animation
@@ -87,7 +93,7 @@ const FilterItems = () => {
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
-		setMessage('');
+		dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	//! Add transaction
@@ -112,17 +118,12 @@ const FilterItems = () => {
 			>
 				<Box
 					sx={{
-						// backgroundColor: '#495057',
 						fontWeight: 500,
-						// color: '#fff',
 						width: '15rem',
 						marginBottom: '0.1rem',
 					}}
 				>
-					<Typography
-						sx={{ fontFamily: 'poppins', fontSize: '1.3rem' }}
-						// variant="h5"
-					>
+					<Typography sx={{ fontFamily: 'poppins', fontSize: '1.3rem' }}>
 						Filter Items:
 					</Typography>
 				</Box>

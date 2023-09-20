@@ -20,13 +20,26 @@ const ExpenseItems = () => {
 		};
 	}, [dispatch]);
 
-	const movementsToDisplay = state.isEditing
-		? state.editingExpense
-		: state.expenses;
+	// let moves = state.isEditing ? state.editingExpense : state.expenses;
 
-	const moves = state.sort
-		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
-		: movementsToDisplay;
+	let moves;
+
+	if (state.isActive === 0) {
+		moves = state.expenses;
+	} else {
+		if (state.isEditing) {
+			moves = state.editingExpense;
+		} else {
+			moves =
+				state.filteredExpenses?.length > 0
+					? state.filteredExpenses
+					: state.expenses;
+		}
+	}
+
+	if (!moves) {
+		moves = [];
+	}
 
 	const animate =
 		state.addTransactionAnimate === true
