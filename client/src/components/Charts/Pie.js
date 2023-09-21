@@ -63,6 +63,7 @@ function PieChart() {
 							backgroundColor: '#495057',
 							color: 'white',
 							textAlign: 'center',
+							letterSpacing: '.1rem',
 							// fontWeight: 500,
 						}}
 					>

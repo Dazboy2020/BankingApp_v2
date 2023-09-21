@@ -49,7 +49,11 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					backgroundColor: 'MediumVioletRed', // Set your desired background color here
-					color: 'white', // Set your desired text color here
+					color: 'white',
+					letterSpacing: '.1rem',
+					'&.css-ikss9a-MuiTypography-root': {
+						letterSpacing: '.1rem', // Adjust the letter-spacing value as needed
+					},
 				},
 			},
 		},

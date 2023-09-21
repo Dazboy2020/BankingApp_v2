@@ -17,6 +17,7 @@ const buttonStyles = {
 		cursor: 'default',
 	},
 	color: 'white',
+	letterSpacing: '.1rem',
 	mt: 4,
 	mr: 2,
 	fontSize: '1.2rem',

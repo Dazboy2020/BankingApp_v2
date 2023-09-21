@@ -12,7 +12,8 @@ import axios from 'axios';
 const buttonStyles = {
 	// bgcolor: '#f70776',
 	color: 'white',
-	fontSize: '1rem',
+	fontSize: '1.1rem',
+	letterSpacing: '.1rem',
 	paddingRight: '.8rem',
 	mr: '10px',
 	fontWeight: '500',

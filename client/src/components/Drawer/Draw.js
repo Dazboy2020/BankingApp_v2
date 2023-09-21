@@ -69,6 +69,12 @@ const ListNew = (props) => {
 		},
 	];
 
+	const styles = {
+		'.css-ikss9a-MuiTypography-root': {
+			letterSpacing: '.1rem',
+		},
+	};
+
 	return (
 		<List>
 			{itemsList.map((item, index) => {
@@ -81,15 +87,15 @@ const ListNew = (props) => {
 					color: '#fff',
 					width: '100%',
 					textAlign: 'left',
-					// backgroundColor: state.isActive === index ? '#680747' : '#242a2e',
 					backgroundColor: state.isActive === index ? '#f97316' : '#242a2e',
+					letterSpacing: '2px',
 				};
 
 				return (
 					<ListItem sx={{ width: '100%' }} key={item.text} onClick={onClick}>
 						<Button sx={buttonStyles} onClick={() => handleLink(text, index)}>
 							{icon && <ListItemIcon>{icon}</ListItemIcon>}
-							<ListItemText primary={text} />
+							<ListItemText primary={text} sx={styles} />
 						</Button>
 					</ListItem>
 				);
@@ -111,7 +117,7 @@ function ResponsiveDrawer(props) {
 			<Toolbar />
 			{/* <Divider /> */}
 			<List sx={{ mt: '3rem' }}>
-				<ListNew />
+				<ListNew sx={{ letterSpacing: '10px' }} />
 			</List>
 		</>
 	);
