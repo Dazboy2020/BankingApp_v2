@@ -24,6 +24,8 @@ const buttonStyles = {
 	},
 };
 
+const BASE_URL = 'http://localhost:5000';
+
 function DepositCard({ deposit }) {
 	const { setOpenToast, dispatch, message, setMessage, state } =
 		useAppContext();
@@ -43,7 +45,7 @@ function DepositCard({ deposit }) {
 		console.log(userId, id);
 
 		try {
-			await axios.delete(`http://localhost:5000/deletedeposit/${userId}/${id}`);
+			await axios.delete(`${BASE_URL}/deletedeposit/${userId}/${id}`);
 			console.log('Deposit deleted successfully');
 		} catch (error) {
 			console.error('Error deleting deposit:', error);

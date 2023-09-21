@@ -24,6 +24,8 @@ const buttonStyles = {
 	},
 };
 
+const BASE_URL = 'http://localhost:5000';
+
 function ExpenseCard({ expense }) {
 	const { setOpenToast, dispatch, message, setMessage, state } =
 		useAppContext();
@@ -42,7 +44,7 @@ function ExpenseCard({ expense }) {
 		setMessage('');
 
 		try {
-			await axios.delete(`http://localhost:5000/deleteexpense/${userId}/${id}`);
+			await axios.delete(`${BASE_URL}/deleteexpense/${userId}/${id}`);
 			console.log('Expense deleted successfully');
 		} catch (error) {
 			console.error('Error deleting expense:', error);
