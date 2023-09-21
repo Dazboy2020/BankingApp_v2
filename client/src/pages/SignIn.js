@@ -19,7 +19,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import classes from './SignIn.module.css';
-import SpinnerFullPage from '../components/Spinner/SpinnerFullPage';
+import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
 
@@ -100,9 +100,11 @@ export default function SignIn() {
 	);
 	return (
 		<>
-			<ResponsiveAppBar />
+			{!isLoading && <ResponsiveAppBar />}
 			{isLoading ? (
-				<SpinnerFullPage />
+				<>
+					<LinearWithValueLabel />
+				</>
 			) : (
 				<Box className={classes.wrapper}>
 					<ThemeProvider theme={defaultTheme}>

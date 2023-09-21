@@ -19,7 +19,6 @@ const inititalState = {
 	isEditing: false,
 	editingExpense: [{}],
 	editingDeposit: [{}],
-	filtering: false,
 	filteredExpenses: null,
 	filteredDeposits: null,
 };
