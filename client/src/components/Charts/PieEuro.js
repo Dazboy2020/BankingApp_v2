@@ -20,10 +20,10 @@ function PieEuro() {
 	let expenseData = `${Math.abs(totalExpenses).toFixed(2)}`;
 
 	const userData = {
-		labels: [incomeData, expenseData],
+		labels: [`Deposits: ${incomeData}`, `Expenses: ${expenseData}`],
 		datasets: [
 			{
-				label: ' Total Income vs Expenses',
+				label: 'Expenses vs Deposits',
 
 				data: [totalIncome, totalExpenses],
 				backgroundColor: ['#495057', '#d6336c'],
