@@ -69,6 +69,15 @@ const ListNew = (props) => {
 		},
 	];
 
+	//* styles for live version
+	// const styles = {
+	// 	'.css-19tv5ub': {
+	// 		letterSpacing: '.1rem',
+	// 		fontSize: '1.4rem',
+	// 		fontWeight: 'bold',
+	// 	},
+	// };
+
 	const styles = {
 		'.css-ikss9a-MuiTypography-root': {
 			letterSpacing: '.1rem',
