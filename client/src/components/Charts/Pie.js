@@ -9,14 +9,14 @@ function PieChart() {
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
 
-	const movementsToDisplay = state.expenses;
+	const moves = state.expenses;
 
-	const moves = state.sort
-		? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
-		: movementsToDisplay;
+	// const moves = state.sort
+	// 	? movementsToDisplay.slice().sort((a, b) => b[0] - a[0])
+	// 	: movementsToDisplay;
 
-	let bgColor = moves.map((item) => (item.amount > 0 ? '#597081' : '#d6336c'));
-	let label = moves.map((item) => item.amount);
+	let bgColor = ['#9ca3af', '#6b7280', '#4b5563', '#374151', '#1f2937'];
+	let label = moves.map((item) => item.category);
 	let dataSetLabel = 'Expense';
 	let titleText = 'EXPENSES';
 
