@@ -72,6 +72,8 @@ const ListNew = (props) => {
 	const styles = {
 		'.css-ikss9a-MuiTypography-root': {
 			letterSpacing: '.1rem',
+			fontSize: '1.4rem',
+			fontWeight: 'bold',
 		},
 	};
 
@@ -81,14 +83,13 @@ const ListNew = (props) => {
 				const { text, icon, onClick } = item;
 				const buttonStyles = {
 					'&:hover': {
-						backgroundColor: '#343a40',
+						backgroundColor: state.isActive === index ? '#f97316' : '#343a40',
 						cursor: 'pointer',
 					},
-					color: '#fff',
 					width: '100%',
 					textAlign: 'left',
 					backgroundColor: state.isActive === index ? '#f97316' : '#242a2e',
-					letterSpacing: '2px',
+					color: state.isActive === index ? '#f5f5f5' : '#d6d3d1',
 				};
 
 				return (
@@ -117,7 +118,7 @@ function ResponsiveDrawer(props) {
 			<Toolbar />
 			{/* <Divider /> */}
 			<List sx={{ mt: '3rem' }}>
-				<ListNew sx={{ letterSpacing: '10px' }} />
+				<ListNew />
 			</List>
 		</>
 	);

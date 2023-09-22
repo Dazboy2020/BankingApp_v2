@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
-import AddIcon from '@mui/icons-material/Add';
 
 import axios from 'axios';
 
@@ -26,43 +25,43 @@ const buttonStyles = {
 
 const menuExpense = [
 	{
-		value: 'utilities',
-		label: 'utilities',
+		value: 'Utilities',
+		label: 'Utilities',
 	},
 	{
-		value: 'leisure',
-		label: 'leisure',
+		value: 'Leisure',
+		label: 'Leisure',
 	},
 	{
-		value: 'food',
-		label: 'food',
+		value: 'Food',
+		label: 'Food',
 	},
 	{
-		value: 'travel',
-		label: 'travel',
+		value: 'Travel',
+		label: 'Travel',
 	},
 	{
-		value: 'debt',
-		label: 'debt',
+		value: 'Debt',
+		label: 'Debt',
 	},
 ];
 
 const menuDeposit = [
 	{
-		value: 'salary',
-		label: 'salary',
+		value: 'Salary',
+		label: 'Salary',
 	},
 	{
-		value: 'shares',
-		label: 'shares',
+		value: 'Shares',
+		label: 'Shares',
 	},
 	{
-		value: 'sales',
-		label: 'sales',
+		value: 'Sales',
+		label: 'Sales',
 	},
 	{
-		value: 'other',
-		label: 'other',
+		value: 'Other',
+		label: 'Other',
 	},
 ];
 
@@ -346,7 +345,6 @@ const AddTransaction = () => {
 				<Box>
 					<Button
 						variant="contained"
-						startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
 						sx={buttonStyles}
 						onClick={handleSubmitExpense}
 					>
@@ -355,7 +353,6 @@ const AddTransaction = () => {
 					{state.isEditing && (
 						<Button
 							variant="contained"
-							startIcon={<AddIcon color="white" sx={{ ml: 1 }} />}
 							sx={buttonStyles}
 							onClick={handleCancelEdit}
 						>

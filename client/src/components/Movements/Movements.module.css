@@ -31,7 +31,8 @@
 	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 500;
-	color: #666;
+	margin-top: 5px;
+	/* color: #666; */
 }
 
 .movements__type__deposit {
@@ -52,10 +53,11 @@
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
 	font-weight: 500;
-	color: #fff;
+	color: #f5f5f5;
 	padding: 0.5rem;
 	width: 15rem;
 	margin-bottom: 0.1rem;
+	initial-letter: capitalise;
 }
 
 .movements__value {
@@ -65,7 +67,6 @@
 }
 
 .movements__category {
-	font-weight: bold;
 	font-size: 1.3rem;
 }
 
