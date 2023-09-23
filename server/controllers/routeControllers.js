@@ -1,107 +1,89 @@
-const { comparePassword, hashPassword } = require('../helpers/auth');
-const User = require('../models/user');
-
+const User = require("../models/user");
+const ErrorResponse = require("../utils/errorResponse");
 const test = (req, res) => {
-	res.json('test is working!');
+	res.json("test is working!");
 };
 
 //! Register User //
-const registerUser = async (req, res) => {
+const registerUser = async (req, res, next) => {
 	try {
-		const {
-			firstName,
-			lastName,
-			email,
-			password,
-			confirmPassword,
-			expenses,
-			deposits,
-		} = req.body;
-		console.log(req.body);
-
-		if (!firstName) {
-			return res.json({
-				error: 'Name is required!',
-			});
-		}
-
-		if (!lastName) {
-			return res.json({
-				error: 'Last Name is required!',
-			});
-		}
-
-		if (!password || password.length < 4) {
-			return res.json({
-				error: 'Password is required and should be at least 6 characters long!',
-			});
-		}
-
-		if (password !== confirmPassword) {
-			return res.json({
-				error: 'Passwords do not match!',
-			});
-		}
+		const { firstName, lastName, email, password, confirmPassword } = req.body;
 
 		const exist = await User.findOne({ email });
 		if (exist) {
 			return res.json({
-				error: 'Email already exists',
+				error: "Email already exists",
 			});
 		}
-		const hashedPassword = await hashPassword(password, confirmPassword);
 
 		const user = await User.create({
 			firstName,
 			lastName,
 			email,
+			password,
+			confirmPassword,
 			expenses: [],
 			deposits: [],
-			password: hashedPassword,
-			confirmPassword: hashedPassword,
 		});
 
-		return res.json(user);
+		// return res.json(user);
+		res.status(201).json({
+			success: true,
+			user,
+		});
 	} catch (error) {
-		console.log(error);
+		res.status(500).json({
+			success: false,
+			error: error.msg,
+		});
 	}
 };
 
 //! Login User //
-const loginUser = async (req, res) => {
+const loginUser = async (req, res, next) => {
+	const { email, password } = req.body;
+	if (!email || !password) {
+		return next(new ErrorResponse("Please provide an email and password", 400));
+	}
+
 	try {
-		const { firstName, password } = req.body;
-		const user = await User.findOne({ firstName });
+		const user = await User.findOne({ email }).select("+password");
+
 		if (!user) {
-			return res.json({
-				error: 'No user found!',
+			res.status(404).json({
+				success: false,
+				error: "Invalid credentials",
 			});
 		}
 
-		const match = await comparePassword(password, user.password);
+		const isMatch = await user.matchPasswords(password);
 
-		if (match) {
-			// Send the user object as JSON
-			res.status(200).json({ user });
+		if (!isMatch) {
+			return next(new ErrorResponse("Invalid credentials", 401));
 		}
 
-		if (!match) {
-			res.json({ error: 'Incorrect Password' });
+		if (!isMatch) {
+			res.json({ error: "Incorrect Password" });
 		}
+
+		res.status(200).json({
+			success: true,
+			token: "dfsfsdfdsfsdfsd",
+		});
 	} catch (error) {
-		res.status(500).json({ error: 'Internal server error' });
+		next(err);
 	}
 };
 
 //! Add Expense
-const addExpense = async (req, res) => {
+const addExpense = async (req, res, next) => {
 	const { amount, date, category, id } = req.body;
 	const _id = req.query._id;
 	try {
 		const user = await User.findById(_id);
 
 		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
+			return res.status(404).json({ error: "User not found" });
 		}
 
 		const newExpense = {
@@ -117,15 +99,15 @@ const addExpense = async (req, res) => {
 
 		console.log(`Expense added successfully for user with ID ${_id}`);
 
-		return res.status(200).json({ message: 'Expenses added successfully' });
+		return res.status(200).json({ message: "Expenses added successfully" });
 	} catch (error) {
 		console.error(`Error adding expenses: ${error.message}`);
-		return res.status(500).json({ error: 'Internal server error' });
+		return res.status(500).json({ error: "Internal server error" });
 	}
 };
 
 //! Add Deposit //
-const addDeposit = async (req, res) => {
+const addDeposit = async (req, res, next) => {
 	const { amount, date, category, id } = req.body;
 	const _id = req.query._id;
 
@@ -133,7 +115,7 @@ const addDeposit = async (req, res) => {
 		const user = await User.findById(_id);
 
 		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
+			return res.status(404).json({ error: "User not found" });
 		}
 
 		const newExpense = {
@@ -148,23 +130,23 @@ const addDeposit = async (req, res) => {
 
 		console.log(`Deposit added successfully for user with ID ${_id}`);
 
-		return res.status(200).json({ message: 'Expenses added successfully' });
+		return res.status(200).json({ message: "Expenses added successfully" });
 	} catch (error) {
 		console.error(`Error adding expenses: ${error.message}`);
-		return res.status(500).json({ error: 'Internal server error' });
+		return res.status(500).json({ error: "Internal server error" });
 	}
 };
 
 //! Delete Deposit
-const deleteDeposit = async (req, res) => {
+const deleteDeposit = async (req, res, next) => {
 	try {
 		const { userId, depositId } = req.params;
-		console.log('Received DELETE_Deposit request:', userId, depositId);
+		console.log("Received DELETE_Deposit request:", userId, depositId);
 
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ message: 'User not found' });
+			return res.status(404).json({ message: "User not found" });
 		}
 
 		const depositIndex = user.deposits.findIndex(
@@ -172,7 +154,7 @@ const deleteDeposit = async (req, res) => {
 		);
 
 		if (depositIndex === -1) {
-			return res.status(404).json({ message: 'Deposit not found' });
+			return res.status(404).json({ message: "Deposit not found" });
 		}
 
 		// Remove the expense from the expenses array
@@ -181,23 +163,23 @@ const deleteDeposit = async (req, res) => {
 		// Save the updated user document
 		await user.save();
 
-		res.status(200).json({ message: 'Deposit deleted successfully' });
+		res.status(200).json({ message: "Deposit deleted successfully" });
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ message: 'Internal server error' });
+		res.status(500).json({ message: "Internal server error" });
 	}
 };
 
 //! Delete Expense
-const deleteExpense = async (req, res) => {
+const deleteExpense = async (req, res, next) => {
 	try {
 		const { userId, expenseId } = req.params;
-		console.log('Received DELETE-expense request:', userId, expenseId);
+		console.log("Received DELETE-expense request:", userId, expenseId);
 
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ message: 'User not found' });
+			return res.status(404).json({ message: "User not found" });
 		}
 
 		const expenseIndex = user.expenses.findIndex(
@@ -205,7 +187,7 @@ const deleteExpense = async (req, res) => {
 		);
 
 		if (expenseIndex === -1) {
-			return res.status(404).json({ message: 'Expense not found' });
+			return res.status(404).json({ message: "Expense not found" });
 		}
 
 		// Remove the expense from the expenses array
@@ -213,16 +195,16 @@ const deleteExpense = async (req, res) => {
 
 		await user.save();
 
-		res.status(200).json({ message: 'Expense deleted successfully' });
+		res.status(200).json({ message: "Expense deleted successfully" });
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ message: 'Internal server error' });
+		res.status(500).json({ message: "Internal server error" });
 	}
 };
 
 //! Edit Expense
-const editExpense = async (req, res) => {
-	console.log('API HIT');
+const editExpense = async (req, res, next) => {
+	console.log("API HIT");
 	try {
 		const { userId, expenseId } = req.params;
 		const updatedExpenseData = req.body;
@@ -230,14 +212,14 @@ const editExpense = async (req, res) => {
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
+			return res.status(404).json({ error: "User not found" });
 		}
 
 		const expense = user.expenses.find((exp) => exp.id === expenseId);
 
 		if (!expense) {
-			console.log('Expenses:', user.expenses);
-			return res.status(404).json({ error: 'Expense not found' });
+			console.log("Expenses:", user.expenses);
+			return res.status(404).json({ error: "Expense not found" });
 		}
 
 		// Update the expense properties
@@ -249,15 +231,15 @@ const editExpense = async (req, res) => {
 
 		res.json(updatedUser); // Respond with the updated user document
 	} catch (error) {
-		console.error('Error updating expense:', error);
-		res.status(500).json({ error: 'Internal server error' });
+		console.error("Error updating expense:", error);
+		res.status(500).json({ error: "Internal server error" });
 	}
 };
 
 //! Edit Deposit //
 
-const editDeposit = async (req, res) => {
-	console.log('API HIT');
+const editDeposit = async (req, res, next) => {
+	console.log("API HIT");
 	try {
 		const { userId, depositId } = req.params;
 		const updatedDepositData = req.body;
@@ -266,7 +248,7 @@ const editDeposit = async (req, res) => {
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
+			return res.status(404).json({ error: "User not found" });
 		}
 
 		const deposit = user.deposits.find((exp) => exp.id === depositId);
@@ -274,8 +256,8 @@ const editDeposit = async (req, res) => {
 		console.log(user, deposit);
 
 		if (!deposit) {
-			console.log('Deposits:', user.deposits);
-			return res.status(404).json({ error: 'Deposit not found' });
+			console.log("Deposits:", user.deposits);
+			return res.status(404).json({ error: "Deposit not found" });
 		}
 
 		// Update the expense properties
@@ -288,8 +270,8 @@ const editDeposit = async (req, res) => {
 
 		res.json(updatedUser); // Respond with the updated user document
 	} catch (error) {
-		console.error('Error updating expense:', error);
-		res.status(500).json({ error: 'Internal server error' });
+		console.error("Error updating expense:", error);
+		res.status(500).json({ error: "Internal server error" });
 	}
 };
 

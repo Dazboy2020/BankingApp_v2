@@ -1,24 +1,16 @@
-const express = require('express');
-const dotenv = require('dotenv').config();
-const cors = require('cors');
+const dotenv = require("dotenv").config();
+const express = require("express");
+const connectDB = require("./config/db");
+const errorHandler = require("./middleware/error");
+const cors = require("cors");
+const path = require("path");
+
 const app = express();
-const mongoose = require('mongoose');
-const path = require('path');
 
 //!DB connection
-// mongoose
-// 	.connect(process.env.MONGO_URI)
-// 	.then(() => console.log('DB Connected'))
-// 	.catch((err) => console.log('MongoDB connected: ', err));
+connectDB();
 
-mongoose
-	.connect(process.env.MONGO_URI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => console.log('DB Connected'))
-	.catch((err) => console.error('MongoDB connection error:', err));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 //! Middleware
 app.use(express.json());
@@ -27,14 +19,22 @@ app.use(
 	cors({
 		credentials: true,
 		origin: [
-			'http://localhost:3000',
-			'https://expensify-frontend.onrender.com',
+			"http://localhost:3000",
+			"https://expensify-frontend.onrender.com",
 		],
 	})
 );
 
-app.use('/', require('./routes/authRoutes'));
+app.use("/", require("./routes/authRoutes"));
+app.use(errorHandler);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Serving is Stringrunning on ${PORT}`));
+const server = app.listen(PORT, () =>
+	console.log(`Serving is Stringrunning on ${PORT}`)
+);
+
+process.on("unhandledRejection", () => (error, promise) => {
+	console.log(`Logged Error: ${error}`);
+	server.close(() => process.exit(1));
+});
