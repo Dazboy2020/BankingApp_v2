@@ -27,10 +27,7 @@ const registerUser = async (req, res, next) => {
 		});
 
 		// return res.json(user);
-		res.status(201).json({
-			success: true,
-			user,
-		});
+		sendToken(user, 201, res);
 	} catch (error) {
 		res.status(500).json({
 			success: false,
@@ -66,10 +63,7 @@ const loginUser = async (req, res, next) => {
 			res.json({ error: "Incorrect Password" });
 		}
 
-		res.status(200).json({
-			success: true,
-			token: "dfsfsdfdsfsdfsd",
-		});
+		sendToken(user, 201, res);
 	} catch (error) {
 		next(err);
 	}
@@ -273,6 +267,11 @@ const editDeposit = async (req, res, next) => {
 		console.error("Error updating expense:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
+};
+
+const sendToken = (user, statusCode, res) => {
+	const token = user.getSignedToken();
+	res.status(statusCode).json({ success: true, token });
 };
 
 module.exports = {
