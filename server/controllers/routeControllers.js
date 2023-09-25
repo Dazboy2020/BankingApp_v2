@@ -1,7 +1,9 @@
-const User = require("../models/user");
-const ErrorResponse = require("../utils/errorResponse");
+const User = require('../models/user');
+const ErrorResponse = require('../utils/errorResponse');
+const sendEmail = require('../utils/sendEmail');
+const crypto = require('crypto');
 const test = (req, res) => {
-	res.json("test is working!");
+	res.json('test is working!');
 };
 
 //! Register User //
@@ -12,7 +14,7 @@ const registerUser = async (req, res, next) => {
 		const exist = await User.findOne({ email });
 		if (exist) {
 			return res.json({
-				error: "Email already exists",
+				error: 'Email already exists',
 			});
 		}
 
@@ -40,30 +42,30 @@ const registerUser = async (req, res, next) => {
 const loginUser = async (req, res, next) => {
 	const { email, password } = req.body;
 	if (!email || !password) {
-		return next(new ErrorResponse("Please provide an email and password", 400));
+		return next(new ErrorResponse('Please provide an email and password', 400));
 	}
 
 	try {
-		const user = await User.findOne({ email }).select("+password");
+		const user = await User.findOne({ email }).select('+password');
 
 		if (!user) {
 			res.status(404).json({
 				success: false,
-				error: "Invalid credentials",
+				error: 'Invalid credentials',
 			});
 		}
 
 		const isMatch = await user.matchPasswords(password);
 
 		if (!isMatch) {
-			return next(new ErrorResponse("Invalid credentials", 401));
+			return next(new ErrorResponse('Invalid credentials', 401));
 		}
 
 		if (!isMatch) {
-			res.json({ error: "Incorrect Password" });
+			res.json({ error: 'Incorrect Password' });
 		}
 
-		sendToken(user, 201, res);
+		sendToken(user, 200, res);
 	} catch (error) {
 		next(err);
 	}
@@ -77,7 +79,7 @@ const addExpense = async (req, res, next) => {
 		const user = await User.findById(_id);
 
 		if (!user) {
-			return res.status(404).json({ error: "User not found" });
+			return res.status(404).json({ error: 'User not found' });
 		}
 
 		const newExpense = {
@@ -93,10 +95,10 @@ const addExpense = async (req, res, next) => {
 
 		console.log(`Expense added successfully for user with ID ${_id}`);
 
-		return res.status(200).json({ message: "Expenses added successfully" });
+		return res.status(200).json({ message: 'Expenses added successfully' });
 	} catch (error) {
 		console.error(`Error adding expenses: ${error.message}`);
-		return res.status(500).json({ error: "Internal server error" });
+		return res.status(500).json({ error: 'Internal server error' });
 	}
 };
 
@@ -109,7 +111,7 @@ const addDeposit = async (req, res, next) => {
 		const user = await User.findById(_id);
 
 		if (!user) {
-			return res.status(404).json({ error: "User not found" });
+			return res.status(404).json({ error: 'User not found' });
 		}
 
 		const newExpense = {
@@ -124,10 +126,10 @@ const addDeposit = async (req, res, next) => {
 
 		console.log(`Deposit added successfully for user with ID ${_id}`);
 
-		return res.status(200).json({ message: "Expenses added successfully" });
+		return res.status(200).json({ message: 'Expenses added successfully' });
 	} catch (error) {
 		console.error(`Error adding expenses: ${error.message}`);
-		return res.status(500).json({ error: "Internal server error" });
+		return res.status(500).json({ error: 'Internal server error' });
 	}
 };
 
@@ -135,12 +137,12 @@ const addDeposit = async (req, res, next) => {
 const deleteDeposit = async (req, res, next) => {
 	try {
 		const { userId, depositId } = req.params;
-		console.log("Received DELETE_Deposit request:", userId, depositId);
+		console.log('Received DELETE_Deposit request:', userId, depositId);
 
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ message: "User not found" });
+			return res.status(404).json({ message: 'User not found' });
 		}
 
 		const depositIndex = user.deposits.findIndex(
@@ -148,7 +150,7 @@ const deleteDeposit = async (req, res, next) => {
 		);
 
 		if (depositIndex === -1) {
-			return res.status(404).json({ message: "Deposit not found" });
+			return res.status(404).json({ message: 'Deposit not found' });
 		}
 
 		// Remove the expense from the expenses array
@@ -157,10 +159,10 @@ const deleteDeposit = async (req, res, next) => {
 		// Save the updated user document
 		await user.save();
 
-		res.status(200).json({ message: "Deposit deleted successfully" });
+		res.status(200).json({ message: 'Deposit deleted successfully' });
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ message: "Internal server error" });
+		res.status(500).json({ message: 'Internal server error' });
 	}
 };
 
@@ -168,12 +170,12 @@ const deleteDeposit = async (req, res, next) => {
 const deleteExpense = async (req, res, next) => {
 	try {
 		const { userId, expenseId } = req.params;
-		console.log("Received DELETE-expense request:", userId, expenseId);
+		console.log('Received DELETE-expense request:', userId, expenseId);
 
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ message: "User not found" });
+			return res.status(404).json({ message: 'User not found' });
 		}
 
 		const expenseIndex = user.expenses.findIndex(
@@ -181,7 +183,7 @@ const deleteExpense = async (req, res, next) => {
 		);
 
 		if (expenseIndex === -1) {
-			return res.status(404).json({ message: "Expense not found" });
+			return res.status(404).json({ message: 'Expense not found' });
 		}
 
 		// Remove the expense from the expenses array
@@ -189,16 +191,16 @@ const deleteExpense = async (req, res, next) => {
 
 		await user.save();
 
-		res.status(200).json({ message: "Expense deleted successfully" });
+		res.status(200).json({ message: 'Expense deleted successfully' });
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ message: "Internal server error" });
+		res.status(500).json({ message: 'Internal server error' });
 	}
 };
 
 //! Edit Expense
 const editExpense = async (req, res, next) => {
-	console.log("API HIT");
+	console.log('API HIT');
 	try {
 		const { userId, expenseId } = req.params;
 		const updatedExpenseData = req.body;
@@ -206,14 +208,14 @@ const editExpense = async (req, res, next) => {
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ error: "User not found" });
+			return res.status(404).json({ error: 'User not found' });
 		}
 
 		const expense = user.expenses.find((exp) => exp.id === expenseId);
 
 		if (!expense) {
-			console.log("Expenses:", user.expenses);
-			return res.status(404).json({ error: "Expense not found" });
+			console.log('Expenses:', user.expenses);
+			return res.status(404).json({ error: 'Expense not found' });
 		}
 
 		// Update the expense properties
@@ -225,15 +227,15 @@ const editExpense = async (req, res, next) => {
 
 		res.json(updatedUser); // Respond with the updated user document
 	} catch (error) {
-		console.error("Error updating expense:", error);
-		res.status(500).json({ error: "Internal server error" });
+		console.error('Error updating expense:', error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 };
 
 //! Edit Deposit //
 
 const editDeposit = async (req, res, next) => {
-	console.log("API HIT");
+	console.log('API HIT');
 	try {
 		const { userId, depositId } = req.params;
 		const updatedDepositData = req.body;
@@ -242,7 +244,7 @@ const editDeposit = async (req, res, next) => {
 		const user = await User.findById(userId);
 
 		if (!user) {
-			return res.status(404).json({ error: "User not found" });
+			return res.status(404).json({ error: 'User not found' });
 		}
 
 		const deposit = user.deposits.find((exp) => exp.id === depositId);
@@ -250,8 +252,8 @@ const editDeposit = async (req, res, next) => {
 		console.log(user, deposit);
 
 		if (!deposit) {
-			console.log("Deposits:", user.deposits);
-			return res.status(404).json({ error: "Deposit not found" });
+			console.log('Deposits:', user.deposits);
+			return res.status(404).json({ error: 'Deposit not found' });
 		}
 
 		// Update the expense properties
@@ -264,8 +266,81 @@ const editDeposit = async (req, res, next) => {
 
 		res.json(updatedUser); // Respond with the updated user document
 	} catch (error) {
-		console.error("Error updating expense:", error);
-		res.status(500).json({ error: "Internal server error" });
+		console.error('Error updating expense:', error);
+		res.status(500).json({ error: 'Internal server error' });
+	}
+};
+
+const forgotPassword = async (req, res, next) => {
+	const { email } = req.body;
+
+	try {
+		const user = await User.findOne({ email });
+
+		if (!user) {
+			return next(new ErrorResponse('Email could not be sent', 404));
+		}
+
+		const resetToken = user.getResetPasswordToken();
+
+		await user.save();
+
+		const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+
+		const message = `
+		<h1>You have requested a password reset</h1>
+		<p>Please visit this link to reset your password<p>
+		<a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+		`;
+
+		try {
+			await sendEmail({
+				to: user.email,
+				subject: 'Password Reset Request',
+				text: message,
+			});
+
+			res.status(200).json({ success: true, data: 'Email sent' });
+		} catch (error) {
+			user.resetPasswordToken = undefined;
+			user.resetPasswordExpire = undefined;
+
+			await user.save();
+
+			return next(new ErrorResponse('Email could not be sent', 500));
+		}
+	} catch (error) {
+		next(error);
+	}
+};
+
+const resetPassword = async (req, res, next) => {
+	const resetPasswordToken = crypto
+		.createHash('sha256')
+		.update(req.params.resetToken)
+		.digest('hex');
+
+	try {
+		const user = await User.findOne({
+			resetPasswordToken,
+			resetPasswordExpire: { $gt: Date.now() },
+		});
+
+		if (!user) {
+			return next(new ErrorResponse('Invalid reset token', 400));
+		}
+
+		user.password = req.body.password;
+		user.resetPasswordToken = undefined;
+		user.resetPasswordExpire = undefined;
+
+		await user.save();
+
+		return res
+			.status(201)
+			.json({ success: true, data: 'Password Reset Success' });
+	} catch (error) {
+		next(error);
 	}
 };
 
@@ -284,4 +359,6 @@ module.exports = {
 	deleteDeposit,
 	editExpense,
 	editDeposit,
+	forgotPassword,
+	resetPassword,
 };

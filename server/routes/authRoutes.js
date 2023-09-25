@@ -13,6 +13,8 @@ const {
 	deleteExpense,
 	editExpense,
 	editDeposit,
+	forgotPassword,
+	resetPassword,
 } = require('../controllers/routeControllers');
 
 //! middleware
@@ -40,5 +42,9 @@ router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
 router.put('/editexpense/:userId/:expenseId', editExpense);
 
 router.put('/editdeposit/:userId/:depositId', editDeposit);
+
+router.post('/forgotpassword', forgotPassword);
+
+router.post('/resetpassword/:resetToken', resetPassword);
 
 module.exports = router;
