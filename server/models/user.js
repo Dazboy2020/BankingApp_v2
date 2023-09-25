@@ -6,11 +6,11 @@ const jwt = require('jsonwebtoken');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-	firstName: {
+	username: {
 		type: String,
 		required: [true, 'Please provide a username'],
+		unique: true,
 	},
-	lastName: String,
 	email: {
 		type: String,
 		required: [true, 'Please provide an email address'],

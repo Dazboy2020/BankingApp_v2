@@ -53,7 +53,7 @@ export default function SignIn() {
 	const navigate = useNavigate();
 
 	const [data, setData] = useState({
-		firstName: '',
+		email: '',
 		password: '',
 	});
 
@@ -78,13 +78,20 @@ export default function SignIn() {
 		try {
 			// const { data: userData } = await axios.post('/login', data);
 			const { data: userData } = await axios.post(`${BASE_URL}/login`, data);
+			console.log(userData);
 
 			if (userData.error) {
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
 			} else {
-				dispatch({ type: 'user/MongoLoggedIn', payload: userData.user });
+				dispatch({
+					type: 'user/MongoLoggedIn',
+					payload: {
+						user: userData.user,
+						token: userData.token,
+					},
+				});
 			}
 		} catch (error) {
 			console.log(error);
@@ -93,10 +100,10 @@ export default function SignIn() {
 
 	useEffect(
 		function () {
-			if (state.user) navigate('/overview');
+			if (state.token) navigate('/overview');
 			setIsLoading(false);
 		},
-		[navigate, state.user, setIsLoading]
+		[navigate, state.token, setIsLoading]
 	);
 	return (
 		<>
@@ -134,12 +141,12 @@ export default function SignIn() {
 										margin="normal"
 										required
 										fullWidth
-										id="firstName"
-										label="username"
-										name="firstName"
-										autoComplete="username"
+										id="email"
+										label="email"
+										name="email"
+										autoComplete="email"
 										autoFocus
-										value={data.firstName}
+										value={data.email}
 										onChange={onChange}
 										color="secondary"
 									/>

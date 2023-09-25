@@ -45,8 +45,7 @@ export default function SignUp() {
 	const navigate = useNavigate();
 	const { setOpenToast, message, setMessage } = useAppContext();
 	const [data, setData] = useState({
-		firstName: '',
-		lastName: '',
+		username: '',
 		email: '',
 		password: '',
 		confirmPassword: '',
@@ -55,13 +54,12 @@ export default function SignUp() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const { firstName, lastName, email, password, confirmPassword } = data;
+		const { username, email, password, confirmPassword } = data;
 		setMessage('');
 
 		try {
 			const { data } = await axios.post('/register', {
-				firstName,
-				lastName,
+				username,
 				email,
 				password,
 				confirmPassword,
@@ -124,16 +122,16 @@ export default function SignUp() {
 									<Grid item xs={12}>
 										<TextField
 											autoComplete="given-name"
-											name="firstName"
+											name="username"
 											required
 											fullWidth
-											id="firstName"
-											label="First Name"
+											id="username"
+											label="username"
 											autoFocus
 											color="secondary"
 										/>
 									</Grid>
-									<Grid item xs={12}>
+									{/* <Grid item xs={12}>
 										<TextField
 											required
 											fullWidth
@@ -143,7 +141,7 @@ export default function SignUp() {
 											autoComplete="family-name"
 											color="secondary"
 										/>
-									</Grid>
+									</Grid> */}
 									<Grid item xs={12}>
 										<TextField
 											required

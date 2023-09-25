@@ -9,7 +9,7 @@ const test = (req, res) => {
 //! Register User //
 const registerUser = async (req, res, next) => {
 	try {
-		const { firstName, lastName, email, password, confirmPassword } = req.body;
+		const { username, email, password, confirmPassword } = req.body;
 
 		const exist = await User.findOne({ email });
 		if (exist) {
@@ -19,8 +19,7 @@ const registerUser = async (req, res, next) => {
 		}
 
 		const user = await User.create({
-			firstName,
-			lastName,
+			username,
 			email,
 			password,
 			confirmPassword,
@@ -61,11 +60,17 @@ const loginUser = async (req, res, next) => {
 			return next(new ErrorResponse('Invalid credentials', 401));
 		}
 
-		if (!isMatch) {
-			res.json({ error: 'Incorrect Password' });
+		if (isMatch) {
+			const token = user.getSignedToken();
+
+			// Send both user data and token in the response
+			res.status(200).json({
+				user,
+				token,
+			});
 		}
 
-		sendToken(user, 200, res);
+		// sendToken(user, 200, res);
 	} catch (error) {
 		next(err);
 	}

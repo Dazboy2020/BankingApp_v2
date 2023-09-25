@@ -5,10 +5,11 @@ const AppContext = createContext();
 const inititalState = {
 	expenses: [{}],
 	deposits: [{}],
+	token: '',
 	isLoggedIn: false,
 	loggedInAccount: '',
 	pin: '',
-	user: '',
+	username: '',
 	lastName: '',
 	error: false,
 	sort: false,
@@ -35,13 +36,16 @@ function reducer(state, action) {
 		case 'user/MongoLoggedIn': {
 			return {
 				...state,
-				loggedInAccount: action.payload,
+				loggedInAccount: action.payload.user,
 				isLoggedIn: true,
-				user: action.payload.firstName,
-				lastName: action.payload.lastName,
-				expenses: action.payload.expenses,
-				deposits: action.payload.deposits,
-				_id: action.payload._id,
+
+				username: action.payload.user.username,
+				user: action.payload.user.username,
+				token: action.payload.token,
+
+				expenses: action.payload.user.expenses,
+				deposits: action.payload.user.deposits,
+				_id: action.payload.user._id,
 				filteredExpenses: null,
 			};
 		}
