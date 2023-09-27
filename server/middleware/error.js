@@ -1,4 +1,4 @@
-const ErrorResponse = require("../utils/errorResponse");
+const ErrorResponse = require('../utils/errorResponse');
 
 const errorHandler = (err, req, res, next) => {
 	let error = { ...err };
@@ -10,7 +10,7 @@ const errorHandler = (err, req, res, next) => {
 		error = new ErrorResponse(message, 400);
 	}
 
-	if (err.name === "ValidationError") {
+	if (err.name === 'ValidationError') {
 		const message = Object.values(err.errors).map((val) => val.message);
 		error = new ErrorResponse(message, 400);
 	}
@@ -19,7 +19,7 @@ const errorHandler = (err, req, res, next) => {
 
 	res.status(error.statusCode || 500).json({
 		success: false,
-		error: error.message || "Server Error",
+		error: error.message || 'Server Error',
 	});
 };
 

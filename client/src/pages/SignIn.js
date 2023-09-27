@@ -69,55 +69,72 @@ export default function SignIn() {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
-	// async function getUserData() {
-	// 	const config = {
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 			Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-	// 		},
-	// 	};
+	async function getUserData() {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+			},
+		};
 
-	// 	const { data: userData } = await axios.get('/userdata', config);
+		try {
+			const { data: userData } = await axios.get(
+				`${BASE_URL}/userdata`,
+				config
+			);
 
-	// 	dispatch({
-	// 		type: 'user/MongoLoggedIn',
-	// 		payload: {
-	// 			user: userData.user,
-	// 			token: userData.token,
-	// 		},
-	// 	});
-	// }
+			if (userData.error) {
+				console.log(userData.error);
 
-	// useEffect(() => {
-	// 	const fetchPrivateDate = async () => {
-	// 		const config = {
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-	// 				Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-	// 			},
-	// 		};
+				setMessage(userData.error);
+				setOpenToast(true, { message: userData.error });
+				setIsLoading(false);
+			} else {
+				console.log('else block');
+				dispatch({
+					type: 'user/MongoLoggedIn',
+					payload: {
+						user: userData.user,
+						token: userData.token,
+					},
+				});
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
-	// 		try {
-	// 			const { data: userData } = await axios.get('/userdata', config);
+	useEffect(() => {
+		const fetchPrivateDate = async () => {
+			const authToken = localStorage.getItem('authToken');
+			if (!authToken) return;
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+				},
+			};
 
-	// 			console.log(userData.user);
+			try {
+				const { data: userData } = await axios.get('/userdata', config);
 
-	// 			if (!userData) return;
-	// 			dispatch({
-	// 				type: 'user/MongoLoggedIn',
-	// 				payload: {
-	// 					user: userData.user,
-	// 					token: userData.token,
-	// 				},
-	// 			});
+				console.log(userData.user);
 
-	// 		} catch (error) {
-	// 			localStorage.removeItem('authToken');
-	// 		}
-	// 	};
+				if (!userData) return;
+				dispatch({
+					type: 'user/MongoLoggedIn',
+					payload: {
+						user: userData.user,
+						token: userData.token,
+					},
+				});
+			} catch (error) {
+				localStorage.removeItem('authToken');
+			}
+		};
 
-	// 	fetchPrivateDate();
-	// }, [dispatch]);
+		fetchPrivateDate();
+	}, [dispatch]);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -127,22 +144,27 @@ export default function SignIn() {
 
 		try {
 			const { data: userData } = await axios.post(`${BASE_URL}/login`, data);
+			console.log(userData);
 
 			if (userData.error) {
+				console.log(userData.error);
+
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
+				setData('');
 			} else {
-				console.log(userData);
 				localStorage.setItem('authToken', userData.token);
 
-				dispatch({
-					type: 'user/MongoLoggedIn',
-					payload: {
-						user: userData.user,
-						token: userData.token,
-					},
-				});
+				// dispatch({
+				// 	type: 'user/MongoLoggedIn',
+				// 	payload: {
+				// 		user: userData.user,
+				// 		token: userData.token,
+				// 	},
+				// });
+
+				getUserData();
 			}
 		} catch (error) {
 			console.log(error);

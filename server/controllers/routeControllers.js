@@ -48,7 +48,7 @@ const loginUser = async (req, res, next) => {
 		const user = await User.findOne({ email }).select('+password');
 
 		if (!user) {
-			res.status(404).json({
+			return res.status(200).json({
 				success: false,
 				error: 'Invalid credentials',
 			});
@@ -57,7 +57,11 @@ const loginUser = async (req, res, next) => {
 		const isMatch = await user.matchPasswords(password);
 
 		if (!isMatch) {
-			return next(new ErrorResponse('Invalid credentials', 401));
+			// return next(new ErrorResponse('Invalid credentials', 401));
+			return res.status(200).json({
+				success: false,
+				error: 'Invalid credentials',
+			});
 		}
 
 		if (isMatch) {
@@ -65,7 +69,7 @@ const loginUser = async (req, res, next) => {
 
 			// Send both user data and token in the response
 			res.status(200).json({
-				user,
+				// user,
 				token,
 				success: 'success',
 			});
@@ -73,7 +77,8 @@ const loginUser = async (req, res, next) => {
 
 		// sendToken(user, 200, res);
 	} catch (error) {
-		next(err);
+		next(error);
+		// return res.status(500).json({ error: 'Internal server error' });
 	}
 };
 

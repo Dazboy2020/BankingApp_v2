@@ -22,15 +22,24 @@ exports.getUserData = async (req, res, next) => {
 
 	try {
 		user = await User.findById(userId, '-password');
+		if (!user) {
+			return res.status(200).json({
+				success: false,
+				error: 'Invalid credentials',
+			});
+		}
+
+		return res.status(200).json({
+			user,
+			success: 'success',
+		});
 	} catch (error) {
 		console.log(error);
 	}
 
-	if (!user) return res.status(404).json('User not found');
-
 	// const user = req.user;
-	return res.status(200).json({
-		user,
-		success: 'success',
-	});
+	// return res.status(200).json({
+	// 	user,
+	// 	success: 'success',
+	// });
 };
