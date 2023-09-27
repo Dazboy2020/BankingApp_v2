@@ -98,6 +98,7 @@ export default function SignIn() {
 						token: userData.token,
 					},
 				});
+				setIsLoading(false);
 			}
 		} catch (error) {
 			console.log(error);

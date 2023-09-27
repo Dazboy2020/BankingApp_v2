@@ -330,7 +330,7 @@ const forgotPassword = async (req, res, next) => {
 
 		await user.save();
 
-		const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+		const resetUrl = `http://localhost:3000/resetpassword/${resetToken}`;
 
 		const message = `
 		<h1>You have requested a password reset</h1>
@@ -371,15 +371,29 @@ const resetPassword = async (req, res, next) => {
 			resetPasswordExpire: { $gt: Date.now() },
 		});
 
+		console.log(user);
+
 		if (!user) {
 			return next(new ErrorResponse('Invalid reset token', 400));
 		}
 
 		user.password = req.body.password;
+		user.confirmPassword = req.body.confirmPassword;
 		user.resetPasswordToken = undefined;
 		user.resetPasswordExpire = undefined;
 
 		await user.save();
+
+		//*possible new code
+		// const token = user.getSignedToken();
+
+		// 	// Send both user data and token in the response
+		// 	res.status(200).json({
+		// 		// user,
+		// 		token,
+		// 		success: 'success',
+		// 	});
+		// }
 
 		return res
 			.status(201)
