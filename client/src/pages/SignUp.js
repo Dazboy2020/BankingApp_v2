@@ -51,6 +51,8 @@ export default function SignUp() {
 		confirmPassword: '',
 	});
 
+	const BASE_URL = 'http://localhost:5000';
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -58,7 +60,7 @@ export default function SignUp() {
 		setMessage('');
 
 		try {
-			const { data } = await axios.post('/register', {
+			const { data } = await axios.post(`${BASE_URL}/register`, {
 				username,
 				email,
 				password,

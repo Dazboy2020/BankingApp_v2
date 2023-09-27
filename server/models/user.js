@@ -30,6 +30,7 @@ const userSchema = new Schema({
 	confirmPassword: {
 		type: String,
 		required: [true, 'Please confirm your password'],
+		minLength: 6,
 	},
 	resetPasswordToken: String,
 	resetPasswordExpire: Date,

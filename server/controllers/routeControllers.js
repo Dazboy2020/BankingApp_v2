@@ -18,6 +18,24 @@ const registerUser = async (req, res, next) => {
 			});
 		}
 
+		if (!username || !email || !password || !confirmPassword) {
+			return res.json({
+				error: 'Please complete all fields',
+			});
+		}
+
+		if (password !== confirmPassword) {
+			return res.json({
+				error: 'Passwords do not match!',
+			});
+		}
+
+		if (password.length < 6) {
+			return res.json({
+				error: 'Password must be 6 characters long',
+			});
+		}
+
 		const user = await User.create({
 			username,
 			email,
