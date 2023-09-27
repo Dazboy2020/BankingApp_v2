@@ -57,6 +57,7 @@ function reducer(state, action) {
 				user: '',
 				pin: '',
 				filteredExpenses: null,
+				token: '',
 			};
 
 		case 'add/expense':

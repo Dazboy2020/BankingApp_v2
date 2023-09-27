@@ -15,6 +15,7 @@ const {
 	editDeposit,
 	forgotPassword,
 	resetPassword,
+	getUser,
 } = require('../controllers/routeControllers');
 
 //! middleware
@@ -30,6 +31,8 @@ router.get('/', test);
 router.post('/register', registerUser);
 
 router.post('/login', loginUser);
+
+router.get('/getuser', getUser);
 
 router.post('/addexpense', addExpense);
 

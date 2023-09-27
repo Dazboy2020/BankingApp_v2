@@ -69,6 +69,51 @@ export default function SignIn() {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
+	// async function getUserData() {
+	// 	const config = {
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 			Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+	// 		},
+	// 	};
+
+	// 	const { data: userData } = await axios.get('/userdata', config);
+
+	// }
+
+	useEffect(() => {
+		const fetchPrivateDate = async () => {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+				},
+			};
+
+			try {
+				const { data: userData } = await axios.get('/userdata', config);
+
+				console.log(userData.user);
+
+				if (!userData) return;
+				dispatch({
+					type: 'user/MongoLoggedIn',
+					payload: {
+						user: userData.user,
+						token: userData.token,
+					},
+				});
+
+				// setPrivateData(data.data);
+			} catch (error) {
+				localStorage.removeItem('authToken');
+				// setError("You are not authorized please login");
+			}
+		};
+
+		fetchPrivateDate();
+	}, [dispatch]);
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		setIsLoading(true);
@@ -85,6 +130,8 @@ export default function SignIn() {
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
 			} else {
+				localStorage.setItem('authToken', userData.token);
+
 				dispatch({
 					type: 'user/MongoLoggedIn',
 					payload: {
@@ -100,11 +147,12 @@ export default function SignIn() {
 
 	useEffect(
 		function () {
-			if (state.token) navigate('/overview');
+			if (state.user) navigate('/overview');
 			setIsLoading(false);
 		},
-		[navigate, state.token, setIsLoading]
+		[navigate, state.user, setIsLoading]
 	);
+
 	return (
 		<>
 			{!isLoading && <ResponsiveAppBar />}

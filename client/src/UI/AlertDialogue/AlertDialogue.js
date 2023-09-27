@@ -26,6 +26,7 @@ export default function AlertDialogSlide() {
 		console.log('hello from modal component');
 		setOpen(false);
 		dispatch({ type: 'user/LoggedOut' });
+		localStorage.removeItem('authToken');
 
 		navigate('/');
 	}
