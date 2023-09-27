@@ -79,40 +79,45 @@ export default function SignIn() {
 
 	// 	const { data: userData } = await axios.get('/userdata', config);
 
+	// 	dispatch({
+	// 		type: 'user/MongoLoggedIn',
+	// 		payload: {
+	// 			user: userData.user,
+	// 			token: userData.token,
+	// 		},
+	// 	});
 	// }
 
-	useEffect(() => {
-		const fetchPrivateDate = async () => {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-				},
-			};
+	// useEffect(() => {
+	// 	const fetchPrivateDate = async () => {
+	// 		const config = {
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 				Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+	// 			},
+	// 		};
 
-			try {
-				const { data: userData } = await axios.get('/userdata', config);
+	// 		try {
+	// 			const { data: userData } = await axios.get('/userdata', config);
 
-				console.log(userData.user);
+	// 			console.log(userData.user);
 
-				if (!userData) return;
-				dispatch({
-					type: 'user/MongoLoggedIn',
-					payload: {
-						user: userData.user,
-						token: userData.token,
-					},
-				});
+	// 			if (!userData) return;
+	// 			dispatch({
+	// 				type: 'user/MongoLoggedIn',
+	// 				payload: {
+	// 					user: userData.user,
+	// 					token: userData.token,
+	// 				},
+	// 			});
 
-				// setPrivateData(data.data);
-			} catch (error) {
-				localStorage.removeItem('authToken');
-				// setError("You are not authorized please login");
-			}
-		};
+	// 		} catch (error) {
+	// 			localStorage.removeItem('authToken');
+	// 		}
+	// 	};
 
-		fetchPrivateDate();
-	}, [dispatch]);
+	// 	fetchPrivateDate();
+	// }, [dispatch]);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -121,15 +126,14 @@ export default function SignIn() {
 		setOpenToast(true, { message: message });
 
 		try {
-			// const { data: userData } = await axios.post('/login', data);
 			const { data: userData } = await axios.post(`${BASE_URL}/login`, data);
-			console.log(userData);
 
 			if (userData.error) {
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
 			} else {
+				console.log(userData);
 				localStorage.setItem('authToken', userData.token);
 
 				dispatch({
