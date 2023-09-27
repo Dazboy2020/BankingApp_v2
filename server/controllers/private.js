@@ -36,10 +36,4 @@ exports.getUserData = async (req, res, next) => {
 	} catch (error) {
 		console.log(error);
 	}
-
-	// const user = req.user;
-	// return res.status(200).json({
-	// 	user,
-	// 	success: 'success',
-	// });
 };
