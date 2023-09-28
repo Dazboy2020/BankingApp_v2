@@ -84,12 +84,12 @@ export default function ForgotPassword() {
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
-				setData({});
+				setData({ email: '' });
 			} else {
 				setIsLoading(false);
 				setMessage('Request Sent');
 				setOpenToast(true, { message: message });
-				setData({});
+				setData({ email: '' });
 				navigate('/login');
 			}
 		} catch (error) {

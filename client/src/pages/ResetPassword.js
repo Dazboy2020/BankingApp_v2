@@ -56,8 +56,6 @@ export default function ResetPassword() {
 		confirmPassword: '',
 	});
 
-	const [error, setError] = useState('');
-
 	const [isLoading, setIsLoading] = useState(false);
 
 	const BASE_URL = 'http://localhost:5000';
@@ -80,7 +78,22 @@ export default function ResetPassword() {
 
 		if (data.password !== data.confirmPassword) {
 			setMessage('Passwords do not match!');
-			setData({});
+			setOpenToast(message);
+
+			setData({
+				password: '',
+				confirmPassword: '',
+			});
+			return;
+		}
+		if (data.password.length < 8) {
+			setMessage('Password must be at leat 8 characters');
+			setOpenToast(message);
+
+			setData({
+				password: '',
+				confirmPassword: '',
+			});
 			return;
 		}
 
@@ -169,17 +182,13 @@ export default function ResetPassword() {
 										// onBlur={onBlurHandler}
 										color="secondary"
 									/>
-									{state.error ? (
+									{/* {state.error ? (
 										<p style={{ color: 'red' }}>Something went wrong!</p>
 									) : (
 										<p style={{ color: 'white' }}>Something went wrong!</p>
-									)}
-									{/* <FormControlLabel
-										sx={{ mt: 5 }}
-										control={<Checkbox value="remember" color="primary" />}
-										label="Remember me"
-									/> */}
-									<p style={{ textAlign: 'center', color: 'red' }}>{error}</p>
+									)} */}
+
+									{/* <p style={{ textAlign: 'center', color: 'red' }}>{error}</p> */}
 									<Button
 										startIcon={<Login size="medium" />}
 										type="submit"

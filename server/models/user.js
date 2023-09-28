@@ -23,14 +23,14 @@ const userSchema = new Schema({
 	password: {
 		type: String,
 		required: [true, 'Please add a password'],
-		minLength: 6,
+		minLength: 8,
 		//! select false
 		select: false,
 	},
 	confirmPassword: {
 		type: String,
 		required: [true, 'Please confirm your password'],
-		minLength: 6,
+		minLength: 8,
 	},
 	resetPasswordToken: String,
 	resetPasswordExpire: Date,

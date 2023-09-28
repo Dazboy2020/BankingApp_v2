@@ -59,7 +59,6 @@ function PieEuro() {
 				}}
 			>
 				<Box
-					className={classes.animate}
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
@@ -93,7 +92,7 @@ function PieEuro() {
 							<Doughnut data={userData} options={options} />
 						</div>
 					) : (
-						<Box>
+						<Box className={classes.animate}>
 							<p style={{ textAlign: 'center', padding: '1rem' }}>
 								Awaiting Data...
 							</p>
