@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -21,6 +19,7 @@ import { useState } from 'react';
 import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
+import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -50,6 +49,7 @@ export default function ResetPassword() {
 		useAppContext();
 
 	const navigate = useNavigate();
+	let { resetToken } = useParams();
 
 	const [data, setData] = useState({
 		password: '',
@@ -73,30 +73,41 @@ export default function ResetPassword() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		// setIsLoading(true);
-		setMessage('Signing in..');
-		setOpenToast(true, { message: message });
+		// setMessage('Signing in..');
+		// setOpenToast(true, { message: message });
 
 		console.log(data);
 
-		// 	try {
-		// 		const { data: userData } = await axios.post(`${BASE_URL}/forgotpassword`, data);
+		if (data.password !== data.confirmPassword) {
+			setMessage('Passwords do not match!');
+			setData({});
+			return;
+		}
 
-		// 		if (userData.error) {
-		// 			console.log(userData.error);
+		try {
+			const { data: userData } = await axios.put(
+				`${BASE_URL}/resetpassword/${resetToken}`,
+				data
+			);
 
-		// 			setMessage(userData.error);
-		// 			setOpenToast(true, { message: userData.error });
-		// 			setIsLoading(false);
-		// 			setData({
-		// 				password: '',
-		// 				confirmPassword: '',
-		// 			});
-		// 		} else {
-		//             console.log()
-		// 		}
-		// 	} catch (error) {
-		// 		console.log(error);
-		// 	}
+			if (userData.error) {
+				console.log(userData.error);
+
+				setMessage(userData.error);
+				setOpenToast(true, { message: userData.error });
+				setIsLoading(false);
+				setData({
+					password: '',
+					confirmPassword: '',
+				});
+			} else {
+				setMessage(userData.success);
+				setOpenToast(true, { message });
+				navigate('/login');
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
@@ -177,7 +188,7 @@ export default function ResetPassword() {
 										sx={{ mt: 1, mb: 2 }}
 										color="secondary"
 									>
-										Request New Password
+										Create New Password
 									</Button>
 									<Grid container>
 										<Grid item xs>

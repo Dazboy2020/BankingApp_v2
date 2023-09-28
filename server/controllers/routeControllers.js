@@ -379,7 +379,11 @@ const resetPassword = async (req, res, next) => {
 		console.log(user);
 
 		if (!user) {
-			return next(new ErrorResponse('Invalid reset token', 400));
+			// return next(new ErrorResponse('Invalid reset token', 400));
+			return res.status(200).json({
+				success: false,
+				error: 'Invalid Reset Token',
+			});
 		}
 
 		user.password = req.body.password;
@@ -390,19 +394,19 @@ const resetPassword = async (req, res, next) => {
 		await user.save();
 
 		//*possible new code
-		// const token = user.getSignedToken();
+		const token = user.getSignedToken();
 
-		// 	// Send both user data and token in the response
-		// 	res.status(200).json({
-		// 		// user,
-		// 		token,
-		// 		success: 'success',
-		// 	});
-		// }
+		// Send both user data and token in the response
+		res.status(200).json({
+			// user,
+			token,
+			success: 'Password Reset!',
+		});
 
-		return res
-			.status(201)
-			.json({ success: true, data: 'Password Reset Success' });
+		//* Old code below. No token sent
+		// return res
+		// 	.status(201)
+		// 	.json({ success: true, data: 'Password Reset Success' });
 	} catch (error) {
 		next(error);
 	}
