@@ -48,7 +48,7 @@ export default function ForgotPassword() {
 
 	const navigate = useNavigate();
 
-	const [data, setData] = useState({});
+	const [data, setData] = useState({ email: '' });
 
 	const [error, setError] = useState('');
 
@@ -84,14 +84,12 @@ export default function ForgotPassword() {
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
-				setData({
-					email: '',
-				});
+				setData({});
 			} else {
 				setIsLoading(false);
 				setMessage('Request Sent');
 				setOpenToast(true, { message: message });
-				setData('');
+				setData({});
 				navigate('/login');
 			}
 		} catch (error) {
