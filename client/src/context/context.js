@@ -47,6 +47,7 @@ function reducer(state, action) {
 				deposits: action.payload.user.deposits,
 				_id: action.payload.user._id,
 				filteredExpenses: null,
+				isActive: 0,
 			};
 		}
 

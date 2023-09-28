@@ -20,6 +20,7 @@ import ExpenseItems from '../components/Movements/ExpenseItems';
 import DepositItems from '../components/Movements/DepositItems';
 
 function MainApp() {
+	// <a href="https://storyset.com/business">Business illustrations by Storyset</a>
 	return (
 		<>
 			<ResponsiveDrawer />

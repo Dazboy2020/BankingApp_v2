@@ -6,6 +6,9 @@ import { Doughnut } from 'react-chartjs-2';
 import { Typography, Box, Card, CardContent } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
+import nodata from '../../assets/nodata.png';
+import classes from './pie_wrapper.module.css';
+
 function PieEuro() {
 	const { state } = useAppContext();
 	const totalIncome = state.deposits?.reduce((acc, mov) => acc + mov.amount, 0);
@@ -56,6 +59,7 @@ function PieEuro() {
 				}}
 			>
 				<Box
+					className={classes.animate}
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
@@ -75,18 +79,35 @@ function PieEuro() {
 					>
 						INCOME vs.EXPENSES
 					</Typography>
-					<div
-						className="canvas"
-						style={{
-							width: '40vh',
-							height: '40vh',
+					{state.expenses.length > 0 || state.deposits > 0 ? (
+						<div
+							className="canvas"
+							style={{
+								width: '40vh',
+								height: '40vh',
 
-							margin: 'auto',
-							padding: '1rem',
-						}}
-					>
-						<Doughnut data={userData} options={options} />
-					</div>
+								margin: 'auto',
+								padding: '1rem',
+							}}
+						>
+							<Doughnut data={userData} options={options} />
+						</div>
+					) : (
+						<Box>
+							<p style={{ textAlign: 'center', padding: '1rem' }}>
+								Awaiting Data...
+							</p>
+							<img
+								style={{
+									width: '40vh',
+									height: '35vh',
+									objectFit: '-moz-initial',
+								}}
+								src={nodata}
+								alt="finance"
+							/>
+						</Box>
+					)}
 				</Box>
 			</CardContent>
 		</Card>

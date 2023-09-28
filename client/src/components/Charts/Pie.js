@@ -4,6 +4,9 @@ import { Doughnut } from 'react-chartjs-2';
 import { Typography, Box, Card, CardContent } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
+import finance from '../../assets/finance.png';
+import classes from './pie_wrapper.module.css';
+
 function PieChart() {
 	const { state } = useAppContext();
 
@@ -50,6 +53,7 @@ function PieChart() {
 				sx={{ display: 'flex', justifyContent: 'center', alignItems: 'centre' }}
 			>
 				<Box
+					className={classes.animate}
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
@@ -69,18 +73,36 @@ function PieChart() {
 					>
 						EXPENSES
 					</Typography>
-					<div
-						className="canvas"
-						style={{
-							width: '40vh',
-							height: '40vh',
 
-							margin: 'auto',
-							padding: '1rem',
-						}}
-					>
-						<Doughnut data={userData} options={options} />
-					</div>
+					{state.expenses.length > 0 || state.deposits > 0 ? (
+						<div
+							className="canvas"
+							style={{
+								width: '40vh',
+								height: '40vh',
+
+								margin: 'auto',
+								padding: '1rem',
+							}}
+						>
+							<Doughnut data={userData} options={options} />
+						</div>
+					) : (
+						<Box>
+							<p style={{ textAlign: 'center', padding: '1rem' }}>
+								No Expenses Found
+							</p>
+							<img
+								style={{
+									width: '40vh',
+									height: '35vh',
+									objectFit: '-moz-initial',
+								}}
+								src={finance}
+								alt="finance"
+							/>
+						</Box>
+					)}
 				</Box>
 			</CardContent>
 		</Card>
