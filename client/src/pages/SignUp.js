@@ -133,17 +133,7 @@ export default function SignUp() {
 											color="secondary"
 										/>
 									</Grid>
-									{/* <Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											id="lastName"
-											label="Last Name"
-											name="lastName"
-											autoComplete="family-name"
-											color="secondary"
-										/>
-									</Grid> */}
+
 									<Grid item xs={12}>
 										<TextField
 											required

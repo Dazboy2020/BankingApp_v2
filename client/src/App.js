@@ -7,6 +7,8 @@ import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 import ProtectedRoute from './pages/ProtectedRoute';
 
 import Toast from './UI/AlertDialogue/Toast';
+import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
 
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
@@ -40,6 +42,11 @@ function App() {
 					/>
 					<Route path="login" element={<SignIn />} />
 					<Route path="signup" element={<SignUp />} />
+					<Route path="forgotpassword" element={<ForgotPassword />} />
+					<Route
+						path="resetpassword/:resetToken/"
+						element={<ResetPassword />}
+					/>
 
 					{/* //!ProtectedRoutes */}
 					<Route

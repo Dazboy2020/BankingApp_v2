@@ -23,7 +23,6 @@ export default function AlertDialogSlide() {
 	}
 
 	function handleYesLogout() {
-		console.log('hello from modal component');
 		setOpen(false);
 		dispatch({ type: 'user/LoggedOut' });
 		localStorage.removeItem('authToken');
@@ -45,7 +44,7 @@ export default function AlertDialogSlide() {
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText id="alert-dialog-slide-description">
-						Are you sure you want to exit Bankist?
+						Are you sure you want to exit Expensify?
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>

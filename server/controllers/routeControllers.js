@@ -58,6 +58,7 @@ const registerUser = async (req, res, next) => {
 //! Login User //
 const loginUser = async (req, res, next) => {
 	const { email, password } = req.body;
+	console.log(email, password);
 	if (!email || !password) {
 		return next(new ErrorResponse('Please provide an email and password', 400));
 	}
@@ -323,7 +324,11 @@ const forgotPassword = async (req, res, next) => {
 		const user = await User.findOne({ email });
 
 		if (!user) {
-			return next(new ErrorResponse('Email could not be sent', 404));
+			// return next(new ErrorResponse('Email could not be sent', 404));
+			return res.status(200).json({
+				success: false,
+				error: 'Email address invalid',
+			});
 		}
 
 		const resetToken = user.getResetPasswordToken();
