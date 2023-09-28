@@ -74,13 +74,12 @@ export default function ResetPassword() {
 		// setMessage('Signing in..');
 		// setOpenToast(true, { message: message });
 
-		console.log(data);
-
 		if (data.password !== data.confirmPassword) {
 			setMessage('Passwords do not match!');
-			setOpenToast(message);
+			setOpenToast(true, { message: message });
 
 			setData({
+				...data,
 				password: '',
 				confirmPassword: '',
 			});
@@ -88,9 +87,10 @@ export default function ResetPassword() {
 		}
 		if (data.password.length < 8) {
 			setMessage('Password must be at leat 8 characters');
-			setOpenToast(message);
+			setOpenToast(true, { message: message });
 
 			setData({
+				...data,
 				password: '',
 				confirmPassword: '',
 			});
@@ -106,16 +106,17 @@ export default function ResetPassword() {
 			if (userData.error) {
 				console.log(userData.error);
 
-				setMessage(userData.error);
-				setOpenToast(true, { message: userData.error });
+				// setMessage(userData.error);
+				setOpenToast(true, { message: 'Something went wrong' });
 				setIsLoading(false);
 				setData({
+					...data,
 					password: '',
 					confirmPassword: '',
 				});
 			} else {
 				setMessage(userData.success);
-				setOpenToast(true, { message });
+				setOpenToast(true, { message: message });
 				navigate('/login');
 			}
 		} catch (error) {
