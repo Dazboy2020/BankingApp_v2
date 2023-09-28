@@ -7,9 +7,9 @@ import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 import ProtectedRoute from './pages/ProtectedRoute';
 
 import Toast from './UI/AlertDialogue/Toast';
-import ResetPassword from './pages/ResetPassword';
-import ForgotPassword from './pages/ForgotPassword';
 
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
