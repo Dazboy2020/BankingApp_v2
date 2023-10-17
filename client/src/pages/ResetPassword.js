@@ -202,9 +202,9 @@ export default function ResetPassword() {
 									</Button>
 									<Grid container>
 										<Grid item xs>
-											<Link href="/login" variant="body2">
+											<NavLink to="/login" variant="body2">
 												Login
-											</Link>
+											</NavLink>
 										</Grid>
 										<Grid item>
 											<NavLink to="/signup" variant="body2">

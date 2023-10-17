@@ -172,12 +172,12 @@ export default function ForgotPassword() {
 										}}
 									>
 										<div sx={{ mb: 10 }}>
-											<NavLink to="/signup" variant="body2">
+											<NavLink to="/SignUp" variant="body2">
 												{"Don't have an account? Sign Up"}
 											</NavLink>
 										</div>
 										<div>
-											<NavLink href="/login" variant="body2">
+											<NavLink to="/login" variant="body2">
 												Login
 											</NavLink>
 										</div>
