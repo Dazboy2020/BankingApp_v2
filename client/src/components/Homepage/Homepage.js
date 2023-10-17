@@ -1,6 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './Homepage.module.css';
+import { useEffect } from 'react';
 
 export default function Homepage() {
+	const navigate = useNavigate();
+	const storagetoken = localStorage.getItem('authToken');
+
+	useEffect(
+		function () {
+			if (storagetoken) navigate('/overview');
+		},
+		[navigate, storagetoken]
+	);
+
 	return (
 		<main className={styles.homepage}>
 			<section>

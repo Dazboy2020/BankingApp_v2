@@ -85,7 +85,7 @@ function DepositCard({ deposit }) {
 					}}
 				>
 					<Box sx={{ mt: '2rem' }}>
-						{state.isActive !== 0 && (
+						{state.isActive !== 0 && !state.isEditing && (
 							<Button
 								sx={buttonStyles}
 								variant="contained"

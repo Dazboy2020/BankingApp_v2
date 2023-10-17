@@ -16,7 +16,6 @@ function Expenses() {
 		<>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
-			{/* <Toast /> */}
 
 			<Box
 				className={classes.body}

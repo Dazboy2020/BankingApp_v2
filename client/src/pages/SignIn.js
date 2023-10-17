@@ -107,9 +107,11 @@ export default function SignIn() {
 
 	//* useEffect to check whether authToken store in localStorage
 	useEffect(() => {
+		console.log('fetch private data');
 		const fetchPrivateDate = async () => {
 			const authToken = localStorage.getItem('authToken');
 			if (!authToken) return;
+
 			const config = {
 				headers: {
 					'Content-Type': 'application/json',
@@ -120,7 +122,7 @@ export default function SignIn() {
 			try {
 				const { data: userData } = await axios.get('/userdata', config);
 
-				if (!userData) return;
+				if (!userData) return <SignIn />;
 				dispatch({
 					type: 'user/MongoLoggedIn',
 					payload: {
@@ -155,6 +157,8 @@ export default function SignIn() {
 					email: '',
 					password: '',
 				});
+
+				return <SignIn />;
 			} else {
 				localStorage.setItem('authToken', userData.token);
 

@@ -84,7 +84,7 @@ function ExpenseCard({ expense }) {
 					}}
 				>
 					<Box sx={{ mt: '2rem' }}>
-						{state.isActive !== 0 && (
+						{state.isActive !== 0 && !state.isEditing && (
 							<Button
 								variant="contained"
 								sx={buttonStyles}
