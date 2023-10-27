@@ -24,6 +24,7 @@ import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
 
 import axios from 'axios';
+import Homepage from '../components/Homepage/Homepage';
 
 function Copyright(props) {
 	return (
@@ -122,7 +123,8 @@ export default function SignIn() {
 			try {
 				const { data: userData } = await axios.get('/userdata', config);
 
-				if (!userData) return <SignIn />;
+				// if (!userData) return <SignIn />;
+				if (!userData) return;
 				dispatch({
 					type: 'user/MongoLoggedIn',
 					payload: {
