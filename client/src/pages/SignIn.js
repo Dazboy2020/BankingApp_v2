@@ -15,15 +15,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/Navbar/NewNav';
 
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
-import { useEffect } from 'react';
 
 import axios from 'axios';
+import { useFetchPrivateData } from '../Hooks/useFetchPrivateData';
+import useAutoLogin from '../Hooks/useAutoLogin';
 // import Homepage from '../components/Homepage/Homepage';
 
 function Copyright(props) {
@@ -51,8 +52,6 @@ export default function SignIn() {
 	const { state, dispatch, setOpenToast, message, setMessage } =
 		useAppContext();
 
-	const navigate = useNavigate();
-
 	const [data, setData] = useState({
 		email: '',
 		password: '',
@@ -70,6 +69,9 @@ export default function SignIn() {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
+	useFetchPrivateData(`${BASE_URL}/userdata`);
+	useAutoLogin();
+
 	async function getUserData() {
 		const config = {
 			headers: {
@@ -85,8 +87,6 @@ export default function SignIn() {
 			);
 
 			if (userData.error) {
-				console.log(userData.error);
-
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				setIsLoading(false);
@@ -105,41 +105,6 @@ export default function SignIn() {
 			console.log(error);
 		}
 	}
-
-	//* useEffect to check whether authToken store in localStorage
-	useEffect(() => {
-		console.log('fetch private data');
-		const fetchPrivateDate = async () => {
-			const authToken = localStorage.getItem('authToken');
-
-			if (!authToken) return;
-
-			const config = {
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-				},
-			};
-
-			try {
-				const { data: userData } = await axios.get('/userdata', config);
-
-				// if (!userData) return <SignIn />;
-				if (!userData) return;
-				dispatch({
-					type: 'user/MongoLoggedIn',
-					payload: {
-						user: userData.user,
-						token: userData.token,
-					},
-				});
-			} catch (error) {
-				localStorage.removeItem('authToken');
-			}
-		};
-
-		fetchPrivateDate();
-	}, [dispatch]);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -171,14 +136,6 @@ export default function SignIn() {
 			console.log(error);
 		}
 	};
-
-	useEffect(
-		function () {
-			if (state.user) navigate('/overview');
-			setIsLoading(false);
-		},
-		[navigate, state.user, setIsLoading]
-	);
 
 	const storagetoken = localStorage.getItem('authToken');
 
