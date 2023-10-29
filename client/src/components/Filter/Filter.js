@@ -48,17 +48,7 @@ const FilterItems = () => {
 	);
 
 	//! Clear animation
-	useEffect(() => {
-		const intervalDuration = 3000;
-
-		const intervalId = setInterval(() => {
-			dispatch({ type: 'addTransactionAnimate', payload: false });
-		}, intervalDuration);
-
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [setExpenseCategory, dispatch]);
+	//deleted as moved to custom hook
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);

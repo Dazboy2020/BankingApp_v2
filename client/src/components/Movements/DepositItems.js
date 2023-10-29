@@ -1,24 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
 
 import DepositCard from './DepositCard';
 
 const DepositItems = () => {
-	const { dispatch, state } = useAppContext();
-
-	//! Clear animation
-	useEffect(() => {
-		const intervalDuration = 2000;
-
-		const intervalId = setInterval(() => {
-			dispatch({ type: 'addTransactionAnimate', payload: false });
-		}, intervalDuration);
-
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [dispatch]);
+	const { state } = useAppContext();
 
 	let moves;
 

@@ -1,26 +1,10 @@
 import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
-import { useEffect } from 'react';
 
 import ExpenseCard from './ExpenseCard';
 
 const ExpenseItems = () => {
-	const { dispatch, state } = useAppContext();
-
-	//! Clear animation
-	useEffect(() => {
-		const intervalDuration = 3000;
-
-		const intervalId = setInterval(() => {
-			dispatch({ type: 'addTransactionAnimate', payload: false });
-		}, intervalDuration);
-
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [dispatch]);
-
-	// let moves = state.isEditing ? state.editingExpense : state.expenses;
+	const { state } = useAppContext();
 
 	let moves;
 

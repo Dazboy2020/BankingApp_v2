@@ -12,6 +12,7 @@ import { useAppContext } from '../context/context';
 
 function Expenses() {
 	const { state } = useAppContext();
+
 	return (
 		<>
 			<ResponsiveDrawer />
