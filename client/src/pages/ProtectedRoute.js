@@ -11,7 +11,7 @@ function ProtectedRoute({ children }) {
 
 	useEffect(
 		function () {
-			if (!state.user) navigate('/login');
+			if (!state.user) navigate('/');
 		},
 		[state.user, navigate]
 	);

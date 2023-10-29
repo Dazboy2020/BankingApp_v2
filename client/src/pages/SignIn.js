@@ -24,7 +24,7 @@ import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
 
 import axios from 'axios';
-import Homepage from '../components/Homepage/Homepage';
+// import Homepage from '../components/Homepage/Homepage';
 
 function Copyright(props) {
 	return (
@@ -111,6 +111,7 @@ export default function SignIn() {
 		console.log('fetch private data');
 		const fetchPrivateDate = async () => {
 			const authToken = localStorage.getItem('authToken');
+
 			if (!authToken) return;
 
 			const config = {
