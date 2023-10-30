@@ -62,6 +62,7 @@ const FilterItems = () => {
 			component="article"
 			sx={{
 				display: 'flex',
+
 				mb: 2,
 				alignItems: 'flex-start',
 				borderRadius: '10px',
@@ -71,7 +72,8 @@ const FilterItems = () => {
 				sx={{
 					width: '100%',
 					display: 'flex',
-					alignItems: 'center',
+					flexDirection: { xs: 'column', sm: 'row' },
+					alignItems: { xs: 'flex-start', sm: 'center' },
 					justifyContent: 'space-between',
 				}}
 			>
@@ -105,7 +107,7 @@ const FilterItems = () => {
 							sx={{
 								'& .MuiTextField-root': {
 									m: 1,
-									width: { xs: '10ch', s: '30ch', md: '30ch' },
+									width: { xs: '20ch', s: '30ch', md: '30ch' },
 								},
 							}}
 							noValidate
