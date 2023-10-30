@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
-import axios from 'axios';
+import useDeleteExpense from '../../Hooks/useDeleteExpense';
 
 const buttonStyles = {
 	// bgcolor: '#f70776',
@@ -24,11 +24,9 @@ const buttonStyles = {
 	},
 };
 
-const BASE_URL = 'http://localhost:5000';
-
 function ExpenseCard({ expense }) {
-	const { setOpenToast, dispatch, message, setMessage, state } =
-		useAppContext();
+	const { dispatch, state } = useAppContext();
+	const { deleteExpense } = useDeleteExpense();
 
 	//! Edit an Item
 	function handleEditClick(id) {
@@ -38,23 +36,8 @@ function ExpenseCard({ expense }) {
 	}
 
 	//! Delete an Item
-	async function handleDelete(id) {
-		let userId = state._id;
-		console.log(userId, id);
-		setMessage('');
-
-		try {
-			await axios.delete(`${BASE_URL}/deleteexpense/${userId}/${id}`);
-			console.log('Expense deleted successfully');
-		} catch (error) {
-			console.error('Error deleting expense:', error);
-		}
-
-		dispatch({ type: 'addTransactionAnimate', payload: true });
-		dispatch({ type: 'delete/expense', payload: id });
-
-		setMessage('Expense item deleted!');
-		setOpenToast(true, { message: message });
+	function handleDelete(id) {
+		deleteExpense(id);
 	}
 
 	const expenseEditMode = state.isEditing

@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useAppContext } from '../../context/context';
 
-import axios from 'axios';
+import useDeleteDeposit from '../../Hooks/useDeleteDeposit';
 
 const buttonStyles = {
 	color: 'white',
@@ -24,11 +24,10 @@ const buttonStyles = {
 	},
 };
 
-const BASE_URL = 'http://localhost:5000';
-
 function DepositCard({ deposit }) {
-	const { setOpenToast, dispatch, message, setMessage, state } =
-		useAppContext();
+	const { dispatch, state } = useAppContext();
+
+	const { deleteDeposit } = useDeleteDeposit();
 
 	//! Edit an Item
 	function handleEditClick(id) {
@@ -40,22 +39,8 @@ function DepositCard({ deposit }) {
 
 	//! Delete an Item //
 
-	async function handleDelete(id) {
-		let userId = state._id;
-		console.log(userId, id);
-
-		try {
-			await axios.delete(`${BASE_URL}/deletedeposit/${userId}/${id}`);
-			console.log('Deposit deleted successfully');
-		} catch (error) {
-			console.error('Error deleting deposit:', error);
-		}
-
-		dispatch({ type: 'addTransactionAnimate', payload: true });
-		dispatch({ type: 'delete/deposit', payload: id });
-
-		setMessage('Deposit item deleted!');
-		setOpenToast(true, { message: message });
+	function handleDelete(id) {
+		deleteDeposit(id);
 	}
 
 	const depositEditMode = state.isEditing
