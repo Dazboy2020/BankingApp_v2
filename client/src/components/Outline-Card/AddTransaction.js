@@ -8,7 +8,11 @@ import Button from '@mui/material/Button';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 
-import axios from 'axios';
+import useClearAnimation from '../../Hooks/useClearAnimation';
+import useEditExpense from '../../Hooks/useEditExpense';
+import useEditDeposit from '../../Hooks/useEditDeposit';
+import useAddExpense from '../../Hooks/useAddExpense';
+import useAddDeposit from '../../Hooks/useAddDeposit';
 
 const buttonStyles = {
 	'&:hover': {
@@ -23,7 +27,7 @@ const buttonStyles = {
 	paddingRight: '.8rem',
 };
 
-const menuExpense = [
+const menuExpenseItems = [
 	{
 		value: 'Utilities',
 		label: 'Utilities',
@@ -46,7 +50,7 @@ const menuExpense = [
 	},
 ];
 
-const menuDeposit = [
+const menuDepositItems = [
 	{
 		value: 'Salary',
 		label: 'Salary',
@@ -68,6 +72,11 @@ const menuDeposit = [
 const AddTransaction = () => {
 	const { setOpenToast, dispatch, message, setMessage, state } =
 		useAppContext();
+
+	const { editExpense } = useEditExpense();
+	const { editDeposit } = useEditDeposit();
+	const { addExpense } = useAddExpense();
+	const { addDeposit } = useAddDeposit();
 	const [expenseAmount, setExpenseAmount] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
@@ -102,17 +111,7 @@ const AddTransaction = () => {
 	);
 
 	//! Clear animation
-	useEffect(() => {
-		const intervalDuration = 3000;
-
-		const intervalId = setInterval(() => {
-			dispatch({ type: 'addTransactionAnimate', payload: false });
-		}, intervalDuration);
-
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [setExpenseAmount, dispatch]);
+	useClearAnimation();
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
@@ -128,8 +127,6 @@ const AddTransaction = () => {
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
 
-		const BASE_URL = 'http://localhost:5000';
-
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 
@@ -143,106 +140,22 @@ const AddTransaction = () => {
 
 		//! Edit Expense //
 		if (state.isEditing && expenseType === 'expense') {
-			expenseData = {
-				id: state.editingExpense[0].id,
-				amount: -expenseAmount,
-				category: expenseCategory,
-				date: state.editingExpense[0].date,
-			};
-
-			const userId = state._id;
-			const expenseId = expenseData.id;
-
-			try {
-				const response = await axios.put(
-					`${BASE_URL}/editexpense/${userId}/${expenseId}`,
-					expenseData
-				);
-				console.log('Expense updated successfully:', response.data);
-			} catch (error) {
-				console.error('Error updating expense:', error);
-			}
-
-			dispatch({
-				type: 'add/editedExpense',
-				payload: { id: expenseData.id, expenseData },
-			});
+			editExpense(expenseAmount, expenseCategory, expenseData);
 		}
 
-		//* edit deposit //
+		//! edit deposit //
 		if (expenseType === 'deposit' && state.isEditing) {
-			expenseData = {
-				id: state.editingDeposit[0].id,
-				amount: +expenseAmount,
-				category: expenseCategory,
-				date: state.editingDeposit[0].date,
-			};
-
-			const userId = state._id;
-			const expenseId = expenseData.id;
-
-			try {
-				const response = await axios.put(
-					`${BASE_URL}/editdeposit/${userId}/${expenseId}`,
-					expenseData
-				);
-				console.log('Expense updated successfully:', response.data);
-			} catch (error) {
-				console.error('Error updating expense:', error);
-			}
-
-			dispatch({
-				type: 'add/editedDeposit',
-				payload: { id: expenseData.id, expenseData },
-			});
+			editDeposit(expenseData, expenseAmount, expenseCategory);
 		}
 
-		//* add expense //
+		//! add expense //
 		if (expenseType === 'expense' && state.isEditing === false) {
-			const queryParams = `?_id=${state._id}`;
-			expenseData = {
-				id: window.crypto.randomUUID(),
-				amount: -expenseAmount,
-				date: expenseDate,
-				category: expenseCategory,
-			};
-
-			try {
-				const response = await axios.post(
-					`${BASE_URL}/addexpense${queryParams}`,
-					expenseData
-				);
-
-				console.log('New expense added successfully:', response.data);
-			} catch (error) {
-				console.error('Error adding expense:', error);
-			}
-			dispatch({ type: 'add/expense', payload: expenseData });
+			addExpense(expenseData, expenseAmount, expenseDate, expenseCategory);
 		}
 
-		//* add Deposit //
+		//! add Deposit //
 		if (expenseType === 'deposit' && state.isEditing === false) {
-			const queryParams = `?_id=${state._id}`;
-
-			expenseData = {
-				id: window.crypto.randomUUID(),
-				amount: +expenseAmount,
-				date: expenseDate,
-				category: expenseCategory,
-			};
-
-			try {
-				const response = await axios.post(
-					`${BASE_URL}/adddeposit${queryParams}`,
-					expenseData
-				);
-
-				console.log('Deposit added successfully:', response.data);
-			} catch (error) {
-				console.error('Error adding expense:', error);
-			}
-
-			dispatch({ type: 'add/deposit', payload: expenseData });
+			addDeposit(expenseData, expenseAmount, expenseCategory, expenseDate);
 		}
 
 		setMessage(
@@ -328,12 +241,12 @@ const AddTransaction = () => {
 								onChange={handleExpenseCategory}
 							>
 								{label === 'expense'
-									? menuExpense.map((option) => (
+									? menuExpenseItems.map((option) => (
 											<MenuItem key={option.value} value={option.value}>
 												{option.label}
 											</MenuItem>
 									  ))
-									: menuDeposit.map((option) => (
+									: menuDepositItems.map((option) => (
 											<MenuItem key={option.value} value={option.value}>
 												{option.label}
 											</MenuItem>
