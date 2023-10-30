@@ -22,6 +22,7 @@ const inititalState = {
 	editingDeposit: [{}],
 	filteredExpenses: null,
 	filteredDeposits: null,
+	isLoading: false,
 };
 
 function reducer(state, action) {
@@ -166,6 +167,13 @@ function reducer(state, action) {
 			return {
 				...state,
 				isActive: action.payload,
+			};
+		}
+
+		case 'isLoading': {
+			return {
+				...state,
+				isLoading: action.payload,
 			};
 		}
 

@@ -22,9 +22,10 @@ import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
 
-import axios from 'axios';
 import { useFetchPrivateData } from '../Hooks/useFetchPrivateData';
 import useAutoLogin from '../Hooks/useAutoLogin';
+import useGetUserData from '../Hooks/useGetUserData';
+
 // import Homepage from '../components/Homepage/Homepage';
 
 function Copyright(props) {
@@ -49,15 +50,15 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 	// eslint-disable-next-line no-unused-vars
-	const { state, dispatch, setOpenToast, message, setMessage } =
+	const { state, setOpenToast, message, setMessage, isLoading } =
 		useAppContext();
+
+	const { getUserData } = useGetUserData();
 
 	const [data, setData] = useState({
 		email: '',
 		password: '',
 	});
-
-	const [isLoading, setIsLoading] = useState(false);
 
 	const BASE_URL = 'http://localhost:5000';
 
@@ -72,69 +73,16 @@ export default function SignIn() {
 	useFetchPrivateData(`${BASE_URL}/userdata`);
 	useAutoLogin();
 
-	async function getUserData() {
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-			},
-		};
-
-		try {
-			const { data: userData } = await axios.get(
-				`${BASE_URL}/userdata`,
-				config
-			);
-
-			if (userData.error) {
-				setMessage(userData.error);
-				setOpenToast(true, { message: userData.error });
-				setIsLoading(false);
-			} else {
-				console.log('else block');
-				dispatch({
-					type: 'user/MongoLoggedIn',
-					payload: {
-						user: userData.user,
-						token: userData.token,
-					},
-				});
-				setIsLoading(false);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-	const handleSubmit = async (event) => {
+	const handleSubmit = (event) => {
 		event.preventDefault();
-		setIsLoading(true);
+		setData({
+			email: '',
+			password: '',
+		});
 		setMessage('Signing in..');
 		setOpenToast(true, { message: message });
 
-		try {
-			const { data: userData } = await axios.post(`${BASE_URL}/login`, data);
-
-			if (userData.error) {
-				console.log(userData.error);
-
-				setMessage(userData.error);
-				setOpenToast(true, { message: userData.error });
-				setIsLoading(false);
-				setData({
-					email: '',
-					password: '',
-				});
-
-				return <SignIn />;
-			} else {
-				localStorage.setItem('authToken', userData.token);
-
-				getUserData();
-			}
-		} catch (error) {
-			console.log(error);
-		}
+		getUserData(data);
 	};
 
 	const storagetoken = localStorage.getItem('authToken');
