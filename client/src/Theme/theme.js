@@ -54,6 +54,7 @@ const theme = createTheme({
 					'&.css-ikss9a-MuiTypography-root': {
 						letterSpacing: '.1rem', // Adjust the letter-spacing value as needed
 					},
+					// padding: '5px',
 				},
 			},
 		},

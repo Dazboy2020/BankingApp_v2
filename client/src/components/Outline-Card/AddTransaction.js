@@ -14,6 +14,9 @@ import useEditDeposit from '../../Hooks/useEditDeposit';
 import useAddExpense from '../../Hooks/useAddExpense';
 import useAddDeposit from '../../Hooks/useAddDeposit';
 
+import { menuExpenseItems } from './menuExpenseItems';
+import { menuDepositItems } from './menuDepositItems';
+
 const buttonStyles = {
 	'&:hover': {
 		backgroundColor: '#680747',
@@ -23,64 +26,22 @@ const buttonStyles = {
 	letterSpacing: '.1rem',
 	mt: 4,
 	mr: 2,
-	fontSize: '1.2rem',
+	fontSize: '1.1rem',
 	paddingRight: '.8rem',
 };
-
-const menuExpenseItems = [
-	{
-		value: 'Utilities',
-		label: 'Utilities',
-	},
-	{
-		value: 'Leisure',
-		label: 'Leisure',
-	},
-	{
-		value: 'Food',
-		label: 'Food',
-	},
-	{
-		value: 'Travel',
-		label: 'Travel',
-	},
-	{
-		value: 'Debt',
-		label: 'Debt',
-	},
-];
-
-const menuDepositItems = [
-	{
-		value: 'Salary',
-		label: 'Salary',
-	},
-	{
-		value: 'Shares',
-		label: 'Shares',
-	},
-	{
-		value: 'Sales',
-		label: 'Sales',
-	},
-	{
-		value: 'Other',
-		label: 'Other',
-	},
-];
 
 const AddTransaction = () => {
 	const { setOpenToast, dispatch, message, setMessage, state } =
 		useAppContext();
+	const [label, setLabel] = useState('');
+	const [expenseType, setExpenseType] = useState('expense');
+	const [expenseAmount, setExpenseAmount] = useState('');
+	const [expenseCategory, setExpenseCategory] = useState('');
 
 	const { editExpense } = useEditExpense();
 	const { editDeposit } = useEditDeposit();
 	const { addExpense } = useAddExpense();
 	const { addDeposit } = useAddDeposit();
-	const [expenseAmount, setExpenseAmount] = useState('');
-	const [expenseType, setExpenseType] = useState('expense');
-	const [expenseCategory, setExpenseCategory] = useState('');
-	const [label, setLabel] = useState('');
 
 	const expenseEditMode = state.isEditing ? '1px solid purple' : '';
 
