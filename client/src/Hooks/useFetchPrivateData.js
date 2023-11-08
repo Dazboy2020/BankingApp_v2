@@ -9,7 +9,7 @@ export function useFetchPrivateData(url) {
 	useEffect(() => {
 		console.log('fetch private data');
 
-		const fetchPrivateDate = async () => {
+		const fetchPrivateData = async () => {
 			const authToken = localStorage.getItem('authToken');
 
 			if (!authToken) return;
@@ -38,6 +38,6 @@ export function useFetchPrivateData(url) {
 			}
 		};
 
-		fetchPrivateDate();
+		fetchPrivateData();
 	}, [dispatch, url]);
 }

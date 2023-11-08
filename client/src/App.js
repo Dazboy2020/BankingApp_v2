@@ -50,54 +50,20 @@ function App() {
 
 					{/* //!ProtectedRoutes */}
 					<Route
-						path="about"
-						element={
-							<ProtectedRoute>
-								<About />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="expenses"
-						element={
-							<ProtectedRoute>
-								<Expenses />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="deposits"
-						element={
-							<ProtectedRoute>
-								<Deposits />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="charts"
-						element={
-							<ProtectedRoute>
-								<Charts />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="account"
-						element={
-							<ProtectedRoute>
-								<Account />
-							</ProtectedRoute>
-						}
-					/>
-
-					<Route
 						path="overview"
 						element={
 							<ProtectedRoute>
 								<MainApp />
 							</ProtectedRoute>
 						}
-					/>
+					>
+						<Route path="about" element={<About />} />
+						<Route path="expenses" element={<Expenses />} />
+						<Route path="deposits" element={<Deposits />} />
+						<Route path="charts" element={<Charts />} />
+						<Route path="account" element={<Account />} />
+						{/* <Route path="overview" element={<MainApp />} /> */}
+					</Route>
 				</Routes>
 			</Suspense>
 		</BrowserRouter>
