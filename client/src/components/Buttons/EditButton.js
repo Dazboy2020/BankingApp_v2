@@ -43,14 +43,12 @@ function EditButton(expense, type) {
 				<CreateIcon
 					sx={{
 						color: 'white',
-						mr: '2px',
+						ml: '6px',
 					}}
 				/>
 			}
 			onClick={() => handleEditClick(expense)}
-		>
-			Edit
-		</Button>
+		></Button>
 	);
 }
 

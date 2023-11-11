@@ -39,14 +39,12 @@ function DeleteButton({ expense }) {
 				<DeleteIcon
 					sx={{
 						color: 'white',
-						mr: '2px',
+						ml: '6px',
 					}}
 				/>
 			}
 			onClick={() => handleDelete(expense)}
-		>
-			Delete
-		</Button>
+		></Button>
 	);
 }
 
