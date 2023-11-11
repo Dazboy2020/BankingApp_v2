@@ -1,37 +1,15 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
-import CreateIcon from '@mui/icons-material/Create';
 import { Box } from '@mui/material';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useAppContext } from '../../context/context';
 
 import DeleteButton from '../Buttons/DeleteButton';
-
-const buttonStyles = {
-	color: 'white',
-	fontSize: '1.1rem',
-	letterSpacing: '.1rem',
-	paddingRight: '.8rem',
-	mr: '10px',
-	fontWeight: '500',
-	mt: '.3rem',
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
-};
+import EditButton from '../Buttons/EditButton';
 
 function DepositCard({ deposit }) {
-	const { dispatch, state } = useAppContext();
-
-	//! Edit an Item
-	function handleEditClick(id) {
-		let depositToEdit = state.deposits.filter((deposit) => deposit.id === id);
-
-		dispatch({ type: 'edit/deposit', payload: depositToEdit });
-	}
+	const { state } = useAppContext();
 
 	const depositEditMode = state.isEditing
 		? classes.movements__row__edit
@@ -61,21 +39,7 @@ function DepositCard({ deposit }) {
 				>
 					<Box sx={{ mt: '2rem' }}>
 						{state.isActive !== 0 && !state.isEditing && (
-							<Button
-								sx={buttonStyles}
-								variant="contained"
-								onClick={() => handleEditClick(deposit.id)}
-								startIcon={
-									<CreateIcon
-										sx={{
-											color: 'white',
-											mr: '2px',
-										}}
-									/>
-								}
-							>
-								Edit
-							</Button>
+							<EditButton expense={deposit.id} type="deposit" />
 						)}
 						{state.isActive !== 0 && <DeleteButton expense={deposit.id} />}
 					</Box>

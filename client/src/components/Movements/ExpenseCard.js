@@ -1,39 +1,14 @@
 import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
 import { Box } from '@mui/material';
-import Button from '@mui/material/Button';
-import CreateIcon from '@mui/icons-material/Create';
 import { useAppContext } from '../../context/context';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 import DeleteButton from '../Buttons/DeleteButton';
 import EditButton from '../Buttons/EditButton';
 
-const buttonStyles = {
-	// bgcolor: '#f70776',
-	color: 'white',
-	fontSize: '1.1rem',
-	letterSpacing: '.1rem',
-	paddingRight: '.8rem',
-	mr: '10px',
-	fontWeight: '500',
-	mt: '.3rem',
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
-};
-
 function ExpenseCard({ expense }) {
-	const { dispatch, state } = useAppContext();
-
-	//! Edit an Item
-	function handleEditClick(id) {
-		if (!id) return;
-		let expenseToEdit = state.expenses.filter((ex) => ex.id === id);
-
-		dispatch({ type: 'edit/expense', payload: expenseToEdit });
-	}
+	const { state } = useAppContext();
 
 	const expenseEditMode = state.isEditing
 		? classes.movements__row__edit
@@ -63,25 +38,10 @@ function ExpenseCard({ expense }) {
 				>
 					<Box sx={{ mt: '2rem' }}>
 						{state.isActive !== 0 && !state.isEditing && (
-							<Button
-								variant="contained"
-								sx={buttonStyles}
-								onClick={() => handleEditClick(expense.id)}
-								startIcon={
-									<CreateIcon
-										sx={{
-											color: 'white',
-											mr: '2px',
-										}}
-									/>
-								}
-							>
-								Edit
-							</Button>
-							// <EditButton expense={expense.id} />
+							<EditButton expense={expense.id} type="expense" />
 						)}
 
-						{state.isActive !== 0 && <DeleteButton expense={expense} />}
+						{state.isActive !== 0 && <DeleteButton expense={expense.id} />}
 					</Box>
 					<Box
 						sx={{

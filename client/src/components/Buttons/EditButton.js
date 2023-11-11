@@ -17,14 +17,22 @@ const buttonStyles = {
 	},
 };
 
-function EditButton(expense) {
+function EditButton(expense, type) {
 	const { dispatch, state } = useAppContext();
 
 	//! Edit an Item
-	function handleEditClick(id) {
-		let expenseToEdit = state.expenses.filter((ex) => ex.id === id);
+	function handleEditClick({ expense, type }) {
+		let itemToEdit;
 
-		dispatch({ type: 'edit/expense', payload: expenseToEdit });
+		type === 'deposit'
+			? (itemToEdit = state.deposits.filter((ex) => ex.id === expense))
+			: (itemToEdit = state.expenses.filter((ex) => ex.id === expense));
+
+		if (state.isActive === 1)
+			dispatch({ type: 'edit/expense', payload: itemToEdit });
+
+		if (state.isActive === 2)
+			dispatch({ type: 'edit/deposit', payload: itemToEdit });
 	}
 
 	return (
