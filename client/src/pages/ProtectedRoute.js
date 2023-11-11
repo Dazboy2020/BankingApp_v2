@@ -3,6 +3,7 @@ import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
 
 import SignIn from '../pages/SignIn';
+import Homepage from '../components/Homepage/Homepage';
 
 function ProtectedRoute({ children }) {
 	const { state } = useAppContext();
@@ -11,12 +12,12 @@ function ProtectedRoute({ children }) {
 
 	useEffect(
 		function () {
-			if (!state.user) navigate('/');
+			if (!state.isLoggedIn) <SignIn />;
 		},
-		[state.user, navigate]
+		[state.isLoggedIn, navigate]
 	);
 
-	return state.user ? children : <SignIn />;
+	return state.isLoggedIn ? children : <SignIn />;
 }
 
 export default ProtectedRoute;

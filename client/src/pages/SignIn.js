@@ -75,6 +75,8 @@ export default function SignIn() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+
+		if (!data.email || !data.password) return;
 		setData({
 			email: '',
 			password: '',
