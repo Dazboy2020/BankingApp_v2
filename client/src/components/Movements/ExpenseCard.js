@@ -6,7 +6,6 @@ import CreateIcon from '@mui/icons-material/Create';
 import { useAppContext } from '../../context/context';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
-import useDeleteExpense from '../../Hooks/useDeleteExpense';
 import DeleteButton from '../Buttons/DeleteButton';
 import EditButton from '../Buttons/EditButton';
 
@@ -82,7 +81,7 @@ function ExpenseCard({ expense }) {
 							// <EditButton expense={expense.id} />
 						)}
 
-						<DeleteButton expense={expense.id} />
+						{state.isActive !== 0 && <DeleteButton expense={expense} />}
 					</Box>
 					<Box
 						sx={{

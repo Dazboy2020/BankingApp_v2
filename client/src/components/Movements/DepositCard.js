@@ -77,8 +77,7 @@ function DepositCard({ deposit }) {
 								Edit
 							</Button>
 						)}
-
-						<DeleteButton expense={deposit.id} />
+						{state.isActive !== 0 && <DeleteButton expense={deposit.id} />}
 					</Box>
 					<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
 						<span className={classes.movements__value}>€{deposit.amount}</span>

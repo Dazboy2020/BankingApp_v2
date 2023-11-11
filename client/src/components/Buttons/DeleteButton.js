@@ -26,11 +26,9 @@ function DeleteButton({ expense }) {
 	const { deleteDeposit } = useDeleteDeposit();
 
 	function handleDelete(expense) {
-		if (state.isActive === 1) {
-			deleteExpense(expense);
-		} else {
-			deleteDeposit(expense);
-		}
+		if (state.isActive === 1) deleteExpense(expense);
+
+		if (state.isActive === 2) deleteDeposit(expense);
 	}
 
 	return (
