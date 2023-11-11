@@ -3,12 +3,11 @@ import Button from '@mui/material/Button';
 import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
 import CreateIcon from '@mui/icons-material/Create';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from '@mui/material';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useAppContext } from '../../context/context';
 
-import useDeleteDeposit from '../../Hooks/useDeleteDeposit';
+import DeleteButton from '../Buttons/DeleteButton';
 
 const buttonStyles = {
 	color: 'white',
@@ -27,20 +26,11 @@ const buttonStyles = {
 function DepositCard({ deposit }) {
 	const { dispatch, state } = useAppContext();
 
-	const { deleteDeposit } = useDeleteDeposit();
-
 	//! Edit an Item
 	function handleEditClick(id) {
 		let depositToEdit = state.deposits.filter((deposit) => deposit.id === id);
 
 		dispatch({ type: 'edit/deposit', payload: depositToEdit });
-		// dispatch({ type: 'addTransactionAnimate', payload: true });
-	}
-
-	//! Delete an Item //
-
-	function handleDelete(id) {
-		deleteDeposit(id);
 	}
 
 	const depositEditMode = state.isEditing
@@ -87,21 +77,8 @@ function DepositCard({ deposit }) {
 								Edit
 							</Button>
 						)}
-						<Button
-							variant="contained"
-							sx={buttonStyles}
-							onClick={() => handleDelete(deposit.id)}
-							startIcon={
-								<DeleteIcon
-									sx={{
-										color: 'white',
-										mr: '2px',
-									}}
-								/>
-							}
-						>
-							Delete
-						</Button>
+
+						<DeleteButton expense={deposit.id} />
 					</Box>
 					<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
 						<span className={classes.movements__value}>€{deposit.amount}</span>

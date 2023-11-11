@@ -3,11 +3,12 @@ import classes from './Movements.module.css';
 import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 import useDeleteExpense from '../../Hooks/useDeleteExpense';
+import DeleteButton from '../Buttons/DeleteButton';
+import EditButton from '../Buttons/EditButton';
 
 const buttonStyles = {
 	// bgcolor: '#f70776',
@@ -26,18 +27,13 @@ const buttonStyles = {
 
 function ExpenseCard({ expense }) {
 	const { dispatch, state } = useAppContext();
-	const { deleteExpense } = useDeleteExpense();
 
 	//! Edit an Item
 	function handleEditClick(id) {
+		if (!id) return;
 		let expenseToEdit = state.expenses.filter((ex) => ex.id === id);
 
 		dispatch({ type: 'edit/expense', payload: expenseToEdit });
-	}
-
-	//! Delete an Item
-	function handleDelete(id) {
-		deleteExpense(id);
 	}
 
 	const expenseEditMode = state.isEditing
@@ -83,22 +79,10 @@ function ExpenseCard({ expense }) {
 							>
 								Edit
 							</Button>
+							// <EditButton expense={expense.id} />
 						)}
-						<Button
-							variant="contained"
-							sx={buttonStyles}
-							onClick={() => handleDelete(expense.id)}
-							startIcon={
-								<DeleteIcon
-									sx={{
-										color: 'white',
-										mr: '2px',
-									}}
-								/>
-							}
-						>
-							Delete
-						</Button>
+
+						<DeleteButton expense={expense.id} />
 					</Box>
 					<Box
 						sx={{
