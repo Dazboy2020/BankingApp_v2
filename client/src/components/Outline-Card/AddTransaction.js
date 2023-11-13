@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 
-import useClearAnimation from '../../Hooks/useClearAnimation';
+// import useClearAnimation from '../../Hooks/useClearAnimation';
 import useEditExpense from '../../Hooks/useEditExpense';
 import useEditDeposit from '../../Hooks/useEditDeposit';
 import useAddExpense from '../../Hooks/useAddExpense';
@@ -72,7 +72,7 @@ const AddTransaction = () => {
 	);
 
 	//! Clear animation
-	useClearAnimation();
+	// useClearAnimation();
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
