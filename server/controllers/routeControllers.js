@@ -119,8 +119,8 @@ const getUser = async (req, res, next) => {
 
 //! Add Expense
 const addExpense = async (req, res, next) => {
-	const { amount, date, category, id } = req.body;
-	const _id = req.query._id;
+	const { amount, date, category, id, _id } = req.body;
+	// const _id = req.query._id;
 	try {
 		const user = await User.findById(_id);
 
@@ -150,8 +150,8 @@ const addExpense = async (req, res, next) => {
 
 //! Add Deposit //
 const addDeposit = async (req, res, next) => {
-	const { amount, date, category, id } = req.body;
-	const _id = req.query._id;
+	const { amount, date, category, id, _id } = req.body;
+	// const _id = req.query._id;
 
 	try {
 		const user = await User.findById(_id);

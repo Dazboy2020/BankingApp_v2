@@ -36,7 +36,7 @@ router.get('/getuser', getUser);
 
 router.post('/addexpense', addExpense);
 
-router.post('/adddeposit', addDeposit);
+router.post('/add-deposit', addDeposit);
 
 router.delete('/deletedeposit/:userId/:depositId', deleteDeposit);
 

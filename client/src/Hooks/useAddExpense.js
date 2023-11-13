@@ -12,19 +12,17 @@ export default function useAddExpense() {
 	) => {
 		const BASE_URL = 'http://localhost:5000';
 
-		const queryParams = `?_id=${state._id}`;
+		// const queryParams = `?_id=${state._id}`;
 		expenseData = {
 			id: window.crypto.randomUUID(),
 			amount: -expenseAmount,
 			date: expenseDate,
 			category: expenseCategory,
+			_id: state._id,
 		};
 
 		try {
-			const response = await axios.post(
-				`${BASE_URL}/addexpense${queryParams}`,
-				expenseData
-			);
+			const response = await axios.post(`${BASE_URL}/addexpense`, expenseData);
 
 			console.log('New expense added successfully:', response.data);
 		} catch (error) {

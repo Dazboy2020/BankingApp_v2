@@ -12,20 +12,18 @@ export default function useAddDeposit() {
 	) => {
 		const BASE_URL = 'http://localhost:5000';
 
-		const queryParams = `?_id=${state._id}`;
+		// const queryParams = `?_id=${state._id}`;
 
 		expenseData = {
 			id: window.crypto.randomUUID(),
 			amount: +expenseAmount,
 			date: expenseDate,
 			category: expenseCategory,
+			_id: state._id,
 		};
 
 		try {
-			const response = await axios.post(
-				`${BASE_URL}/adddeposit${queryParams}`,
-				expenseData
-			);
+			const response = await axios.post(`${BASE_URL}/add-deposit`, expenseData);
 
 			console.log('Deposit added successfully:', response.data);
 		} catch (error) {
