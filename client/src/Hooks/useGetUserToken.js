@@ -3,12 +3,12 @@ import axios from 'axios';
 import SignIn from '../pages/SignIn';
 import { useNavigate } from 'react-router-dom';
 
-export default function useGetUserData() {
+export default function useGetUserToken() {
 	const { dispatch, setMessage, setOpenToast } = useAppContext();
 
 	const navigate = useNavigate();
 
-	const getUserData = async (data) => {
+	const getUserToken = async (data) => {
 		const BASE_URL = 'http://localhost:5000';
 
 		try {
@@ -27,11 +27,12 @@ export default function useGetUserData() {
 
 				localStorage.setItem('authToken', userData.token);
 				navigate('/overview');
+				console.log('getUserToken:', userData);
 			}
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	return { getUserData };
+	return { getUserToken };
 }

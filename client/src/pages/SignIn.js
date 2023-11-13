@@ -22,9 +22,9 @@ import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
 
-import { useFetchPrivateData } from '../Hooks/useFetchPrivateData';
+import { useFetchPrivateUserData } from '../Hooks/useFetchPrivateUserData';
 import useAutoLogin from '../Hooks/useAutoLogin';
-import useGetUserData from '../Hooks/useGetUserData';
+import useGetUserToken from '../Hooks/useGetUserToken';
 
 // import Homepage from '../components/Homepage/Homepage';
 
@@ -53,7 +53,7 @@ export default function SignIn() {
 	const { state, setOpenToast, message, setMessage, isLoading } =
 		useAppContext();
 
-	const { getUserData } = useGetUserData();
+	const { getUserToken } = useGetUserToken();
 
 	const [data, setData] = useState({
 		email: '',
@@ -70,8 +70,8 @@ export default function SignIn() {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
-	useFetchPrivateData(`${BASE_URL}/userdata`);
-	useAutoLogin();
+	// useFetchPrivateUserData(`${BASE_URL}/userdata`);
+	// useAutoLogin();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -84,7 +84,7 @@ export default function SignIn() {
 		setMessage('Signing in..');
 		setOpenToast(true, { message: message });
 
-		getUserData(data);
+		getUserToken(data);
 	};
 
 	const storagetoken = localStorage.getItem('authToken');

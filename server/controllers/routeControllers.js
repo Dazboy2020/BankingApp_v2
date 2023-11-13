@@ -58,7 +58,7 @@ const registerUser = async (req, res, next) => {
 //! Login User //
 const loginUser = async (req, res, next) => {
 	const { email, password } = req.body;
-	console.log(email, password);
+
 	if (!email || !password) {
 		return next(new ErrorResponse('Please provide an email and password', 400));
 	}
@@ -90,7 +90,7 @@ const loginUser = async (req, res, next) => {
 			res.status(200).json({
 				// user,
 				token,
-				success: 'success',
+				success: 'success: token sent',
 			});
 		}
 
@@ -99,22 +99,6 @@ const loginUser = async (req, res, next) => {
 		next(error);
 		// return res.status(500).json({ error: 'Internal server error' });
 	}
-};
-
-const getUser = async (req, res, next) => {
-	const userId = req.id;
-	console.log(userId);
-	let user;
-
-	try {
-		user = await User.findById(userId, '-password');
-	} catch (error) {
-		console.log(error);
-	}
-
-	if (!user) return next(new ErrorResponse('Invalid credentials', 401));
-
-	return res.status(200).json({ user });
 };
 
 //! Add Expense
@@ -429,5 +413,21 @@ module.exports = {
 	editDeposit,
 	forgotPassword,
 	resetPassword,
-	getUser,
+	// getUser,
 };
+
+// const getUser = async (req, res, next) => {
+// 	const userId = req.id;
+// 	console.log(userId);
+// 	let user;
+
+// 	try {
+// 		user = await User.findById(userId, '-password');
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+
+// 	if (!user) return next(new ErrorResponse('Invalid credentials', 401));
+
+// 	return res.status(200).json({ user });
+// };

@@ -12,12 +12,12 @@ function ProtectedRoute({ children }) {
 
 	useEffect(
 		function () {
-			if (!state.isLoggedIn) <SignIn />;
+			if (!state.isLoggedIn) navigate('/');
 		},
 		[state.isLoggedIn, navigate]
 	);
 
-	return state.isLoggedIn ? children : <SignIn />;
+	return state.isLoggedIn ? children : null;
 }
 
 export default ProtectedRoute;

@@ -32,7 +32,7 @@ router.post('/register', registerUser);
 
 router.post('/login', loginUser);
 
-router.get('/getuser', getUser);
+// router.get('/getuser', getUser);
 
 router.post('/addexpense', addExpense);
 

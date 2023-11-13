@@ -1,21 +1,7 @@
 const User = require('../models/user');
 
-exports.getPrivateData = async (req, res, next) => {
-	res.status(200).json({
-		success: true,
-		data: 'You got access to this private route 1',
-	});
-};
-
-exports.getPrivateData2 = (req, res, next) => {
-	res.status(200).json({
-		success: true,
-		data: 'You got access to this private route 2',
-	});
-};
-
-exports.getUserData = async (req, res, next) => {
-	console.log(req.user);
+exports.getUserProtectedRoute = async (req, res, next) => {
+	console.log('backend: getUserToken', req.user);
 	const userId = req.user._id;
 
 	let user;
@@ -31,7 +17,7 @@ exports.getUserData = async (req, res, next) => {
 
 		return res.status(200).json({
 			user,
-			success: 'success',
+			success: 'success protected middleware user route',
 		});
 	} catch (error) {
 		console.log(error);

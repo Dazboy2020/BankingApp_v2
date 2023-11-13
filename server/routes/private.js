@@ -4,9 +4,7 @@ const cors = require('cors');
 
 const { protect } = require('../middleware/auth');
 
-const { getPrivateData } = require('../controllers/private');
-const { getPrivateData2 } = require('../controllers/private');
-const { getUserData } = require('../controllers/private');
+const { getUserProtectedRoute } = require('../controllers/private');
 
 //! middleware
 router.use(
@@ -16,8 +14,6 @@ router.use(
 	})
 );
 
-router.route('/private1').get(protect, getPrivateData);
-router.route('/private2').get(protect, getPrivateData2);
-router.route('/userdata').get(protect, getUserData);
+router.route('/userdata').get(protect, getUserProtectedRoute);
 
 module.exports = router;

@@ -1,18 +1,17 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useAppContext } from '../context/context';
+import SignIn from '../pages/SignIn';
 
-export function useFetchPrivateData(url) {
+export function useFetchPrivateUserData(url) {
 	const { dispatch } = useAppContext();
 
 	//! useEffect to check whether authToken store in localStorage
 	useEffect(() => {
-		console.log('fetch private data');
-
-		const fetchPrivateDate = async () => {
+		const fetchPrivateUserData = async () => {
 			const authToken = localStorage.getItem('authToken');
 
-			if (!authToken) return;
+			// if (!authToken) return;
 
 			const config = {
 				headers: {
@@ -26,11 +25,13 @@ export function useFetchPrivateData(url) {
 
 				// if (!userData) return <SignIn />;
 				if (!userData) return;
+
+				console.log('fetch private data:', userData);
 				dispatch({
 					type: 'user/MongoLoggedIn',
 					payload: {
 						user: userData.user,
-						token: userData.token,
+						// token: userData.token,
 					},
 				});
 			} catch (error) {
@@ -38,6 +39,6 @@ export function useFetchPrivateData(url) {
 			}
 		};
 
-		fetchPrivateDate();
+		fetchPrivateUserData();
 	}, [dispatch, url]);
 }
