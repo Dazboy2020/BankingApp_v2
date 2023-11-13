@@ -13,6 +13,8 @@ import { useAppContext } from '../context/context';
 function Deposits() {
 	const { state } = useAppContext();
 
+	console.log('render');
+
 	return (
 		<>
 			<ResponsiveDrawer />
