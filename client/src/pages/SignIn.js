@@ -22,11 +22,7 @@ import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
 
-import { useFetchPrivateUserData } from '../Hooks/useFetchPrivateUserData';
-import useAutoLogin from '../Hooks/useAutoLogin';
 import useGetUserToken from '../Hooks/useGetUserToken';
-
-// import Homepage from '../components/Homepage/Homepage';
 
 function Copyright(props) {
 	return (
@@ -49,7 +45,6 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	// eslint-disable-next-line no-unused-vars
 	const { state, setOpenToast, message, setMessage, isLoading } =
 		useAppContext();
 
@@ -60,8 +55,6 @@ export default function SignIn() {
 		password: '',
 	});
 
-	const BASE_URL = 'http://localhost:5000';
-
 	const signInclass = isLoading
 		? classes.loginBoxSigningIn
 		: classes.loginBoxSignInSuccess;
@@ -69,9 +62,6 @@ export default function SignIn() {
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
-
-	// useFetchPrivateUserData(`${BASE_URL}/userdata`);
-	// useAutoLogin();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();

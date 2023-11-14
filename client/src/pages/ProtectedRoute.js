@@ -2,9 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
 
-import SignIn from '../pages/SignIn';
-import Homepage from '../components/Homepage/Homepage';
-
 function ProtectedRoute({ children }) {
 	const { state } = useAppContext();
 
@@ -12,12 +9,12 @@ function ProtectedRoute({ children }) {
 
 	useEffect(
 		function () {
-			if (!state.isLoggedIn) navigate('/');
+			if (!state.user) navigate('/');
 		},
-		[state.isLoggedIn, navigate]
+		[state.user, navigate]
 	);
 
-	return state.isLoggedIn ? children : null;
+	return state.user ? children : null;
 }
 
 export default ProtectedRoute;

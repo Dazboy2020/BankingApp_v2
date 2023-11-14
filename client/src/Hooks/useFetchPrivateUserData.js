@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useAppContext } from '../context/context';
-import SignIn from '../pages/SignIn';
 
 export function useFetchPrivateUserData(url) {
 	const { dispatch } = useAppContext();
@@ -11,7 +10,7 @@ export function useFetchPrivateUserData(url) {
 		const fetchPrivateUserData = async () => {
 			const authToken = localStorage.getItem('authToken');
 
-			// if (!authToken) return;
+			if (!authToken) return;
 
 			const config = {
 				headers: {

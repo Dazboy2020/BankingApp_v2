@@ -1,8 +1,6 @@
-// import { useNavigate } from 'react-router-dom';
 import useAutoLogin from '../../Hooks/useAutoLogin';
 import { useFetchPrivateUserData } from '../../Hooks/useFetchPrivateUserData';
 import styles from './Homepage.module.css';
-// import { useEffect } from 'react';
 
 export default function Homepage() {
 	const BASE_URL = 'http://localhost:5000';
