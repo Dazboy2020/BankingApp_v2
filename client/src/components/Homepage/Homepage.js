@@ -5,7 +5,10 @@ import styles from './Homepage.module.css';
 export default function Homepage() {
 	const BASE_URL = 'http://localhost:5000';
 
+	//? Checks to see if JWT token and if so, fetches data via middleware Protected Route
 	useFetchPrivateUserData(`${BASE_URL}/userdata`);
+
+	//? if user is in state then redirects to /overview
 	useAutoLogin();
 
 	return (

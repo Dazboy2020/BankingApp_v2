@@ -301,6 +301,7 @@ const editDeposit = async (req, res, next) => {
 	}
 };
 
+//! Forgot password and send email link
 const forgotPassword = async (req, res, next) => {
 	const { email } = req.body;
 
@@ -348,6 +349,7 @@ const forgotPassword = async (req, res, next) => {
 	}
 };
 
+//! Reset passord
 const resetPassword = async (req, res, next) => {
 	const resetPasswordToken = crypto
 		.createHash('sha256')

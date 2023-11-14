@@ -5,7 +5,8 @@ import { useAppContext } from '../context/context';
 export function useFetchPrivateUserData(url) {
 	const { dispatch } = useAppContext();
 
-	//! useEffect to check whether authToken store in localStorage
+	//? useEffect to check whether authToken store in localStorage and if so, retrieve user data via middleware protected route
+
 	useEffect(() => {
 		const fetchPrivateUserData = async () => {
 			const authToken = localStorage.getItem('authToken');
@@ -22,7 +23,6 @@ export function useFetchPrivateUserData(url) {
 			try {
 				const { data: userData } = await axios.get(url, config);
 
-				// if (!userData) return <SignIn />;
 				if (!userData) return;
 
 				console.log('fetch private data:', userData);
