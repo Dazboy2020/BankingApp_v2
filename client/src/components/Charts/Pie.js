@@ -1,11 +1,11 @@
 import { Chart as ChartJS, ArcElement, Legend, Tooltip, Title } from 'chart.js';
 
 import { Doughnut } from 'react-chartjs-2';
-import { Typography, Box, Card, CardContent } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
-import finance from '../../assets/finance.png';
-import classes from './pie_wrapper.module.css';
+import ChartCard from './ChartCard';
+import NoData from './NoData';
+import nodata from '../../assets/nodata.png';
 
 function PieChart() {
 	const { state } = useAppContext();
@@ -44,64 +44,13 @@ function PieChart() {
 	};
 
 	return (
-		<Card sx={{ width: '100%', borderRadius: '10px', mb: 3 }}>
-			<CardContent
-				sx={{ display: 'flex', justifyContent: 'center', alignItems: 'centre' }}
-			>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						position: 'relative',
-					}}
-				>
-					<Typography
-						sx={{
-							fontSize: { xs: '1rem', md: '1.5rem' },
-							padding: { xs: '.8rem', md: '.5rem' },
-							backgroundColor: '#495057',
-							color: 'white',
-							textAlign: 'center',
-							letterSpacing: '.1rem',
-							borderRadius: '8px',
-							// fontWeight: 500,
-						}}
-					>
-						EXPENSES
-					</Typography>
-
-					{state.expenses.length > 0 || state.deposits > 0 ? (
-						<div
-							className="canvas"
-							style={{
-								width: '40vh',
-								height: '40vh',
-
-								margin: 'auto',
-								padding: '1rem',
-							}}
-						>
-							<Doughnut data={userData} options={options} />
-						</div>
-					) : (
-						<Box className={classes.animate}>
-							<p style={{ textAlign: 'center', padding: '1rem' }}>
-								No Expenses Found
-							</p>
-							<img
-								style={{
-									width: '40vh',
-									height: '35vh',
-									objectFit: '-moz-initial',
-								}}
-								src={finance}
-								alt="finance"
-							/>
-						</Box>
-					)}
-				</Box>
-			</CardContent>
-		</Card>
+		<ChartCard>
+			{state.expenses.length > 0 || state.deposits > 0 ? (
+				<Doughnut data={userData} options={options} />
+			) : (
+				<NoData src={nodata} title="No Expenses Found.." />
+			)}
+		</ChartCard>
 	);
 }
 

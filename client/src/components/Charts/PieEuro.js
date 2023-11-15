@@ -3,11 +3,11 @@ import { Chart as ChartJS, ArcElement, Legend, Tooltip, Title } from 'chart.js';
 
 import { Doughnut } from 'react-chartjs-2';
 
-import { Typography, Box, Card, CardContent } from '@mui/material';
 import { useAppContext } from '../../context/context';
 
 import nodata from '../../assets/nodata.png';
-import classes from './pie_wrapper.module.css';
+import ChartCard from './ChartCard';
+import NoData from './NoData';
 
 function PieEuro() {
 	const { state } = useAppContext();
@@ -50,68 +50,13 @@ function PieEuro() {
 	};
 
 	return (
-		<Card sx={{ width: '100%', borderRadius: '10px' }}>
-			<CardContent
-				sx={{
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'centre',
-				}}
-			>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						position: 'relative',
-					}}
-				>
-					<Typography
-						sx={{
-							fontSize: { xs: '1rem', md: '1.5rem' },
-							padding: { xs: '.8rem', md: '.5rem' },
-							backgroundColor: '#495057',
-							color: 'white',
-							textAlign: 'center',
-							letterSpacing: '.1rem',
-							borderRadius: '8px',
-
-							// fontWeight: 'bold',
-						}}
-					>
-						INCOME vs.EXPENSES
-					</Typography>
-					{state.expenses.length > 0 || state.deposits > 0 ? (
-						<div
-							className="canvas"
-							style={{
-								width: '40vh',
-								height: '40vh',
-
-								margin: 'auto',
-								padding: '1rem',
-							}}
-						>
-							<Doughnut data={userData} options={options} />
-						</div>
-					) : (
-						<Box className={classes.animate}>
-							<p style={{ textAlign: 'center', padding: '1rem' }}>
-								Awaiting Data...
-							</p>
-							<img
-								style={{
-									width: '40vh',
-									height: '35vh',
-									objectFit: '-moz-initial',
-								}}
-								src={nodata}
-								alt="finance"
-							/>
-						</Box>
-					)}
-				</Box>
-			</CardContent>
-		</Card>
+		<ChartCard title="INCOME vs.EXPENSES">
+			{state.expenses.length > 0 || state.deposits > 0 ? (
+				<Doughnut data={userData} options={options} />
+			) : (
+				<NoData src={nodata} title="Awaiting Data..." />
+			)}
+		</ChartCard>
 	);
 }
 
