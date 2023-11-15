@@ -73,6 +73,8 @@ function PieEuro() {
 							color: 'white',
 							textAlign: 'center',
 							letterSpacing: '.1rem',
+							borderRadius: '8px',
+
 							// fontWeight: 'bold',
 						}}
 					>

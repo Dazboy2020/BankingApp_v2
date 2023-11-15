@@ -19,6 +19,24 @@ import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 import ExpenseItems from '../components/Movements/ExpenseItems';
 import DepositItems from '../components/Movements/DepositItems';
 
+const movementList = {
+	display: 'flex',
+	flexGrow: 1,
+	width: '100%',
+};
+
+const chartStyle = {
+	display: 'flex',
+	alignItems: 'centre',
+	justifyContent: 'space-around',
+	paddingTop: '1rem',
+	// backgroundColor: '##f3e5f5',
+	mb: 2,
+	ml: 4,
+	mr: 4,
+	mt: 3,
+};
+
 function MainApp() {
 	// <a href="https://storyset.com/business">Business illustrations by Storyset</a>
 
@@ -65,17 +83,7 @@ function MainApp() {
 						component="section"
 						spacing={4}
 						direction={{ s: 'column', md: 'column', lg: 'row' }}
-						sx={{
-							display: 'flex',
-							alignItems: 'centre',
-							justifyContent: 'space-around',
-							paddingTop: '1rem',
-							// backgroundColor: '##f3e5f5',
-							mb: 2,
-							ml: 4,
-							mr: 4,
-							mt: 3,
-						}}
+						sx={chartStyle}
 					>
 						<PieChart />
 						<PieEuro />
@@ -83,33 +91,12 @@ function MainApp() {
 
 					{/* //!Movements */}
 					<MovementList>
-						<Stack
-							sx={{ ml: 4, mr: 4, mt: 4 }}
-							spacing={4}
-							component="section"
-							direction={{ xs: 'column', md: 'row' }}
-						>
-							<Box
-								component="section"
-								sx={{
-									display: 'flex',
-									flexGrow: 1,
-									width: '100%',
-								}}
-							>
-								<DepositItems />
-							</Box>
-							<Box
-								component="section"
-								sx={{
-									display: 'flex',
-									flexGrow: 1,
-									width: '100%',
-								}}
-							>
-								<ExpenseItems />
-							</Box>
-						</Stack>
+						<Box component="section" sx={movementList}>
+							<DepositItems />
+						</Box>
+						<Box component="section" sx={movementList}>
+							<ExpenseItems />
+						</Box>
 					</MovementList>
 				</Box>
 			</Box>

@@ -40,11 +40,12 @@
 	font-size: 1.2rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
-	font-weight: 500;
 	color: #fff;
 	padding: 0.5rem;
 	width: 15rem;
 	margin-bottom: 0.1rem;
+	border-radius: 8px;
+	font-weight: 600;
 }
 
 .movements__type__expense {
@@ -52,12 +53,13 @@
 	font-size: 1.2rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
-	font-weight: 500;
-	color: #f5f5f5;
+	/* color: #f5f5f5; */
+	color: #fff;
 	padding: 0.5rem;
 	width: 15rem;
 	margin-bottom: 0.1rem;
-	initial-letter: capitalise;
+	border-radius: 8px;
+	font-weight: 600;
 }
 
 .movements__value {
