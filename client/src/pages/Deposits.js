@@ -27,6 +27,8 @@ function Deposits() {
 
 					ml: { lg: '18.8rem', md: '18rem', sm: '16rem', s: 0 },
 					mr: { lg: 0, sm: 0, m: 0 },
+					// backgroundColor: '#343a40',
+
 					// bgcolor: '#ececec',
 				}}
 			>

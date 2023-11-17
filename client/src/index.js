@@ -3,19 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { ContextProvider } from './context/context';
-import { ThemeProvider } from '@emotion/react';
-import theme from './Theme/theme';
 import { CssBaseline } from '@mui/material';
+import { DarkModeProvider } from './Hooks/useDarkMode';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 	<React.StrictMode>
 		<ContextProvider>
-			<ThemeProvider theme={theme}>
+			<DarkModeProvider>
 				<CssBaseline />
 				<App />
-			</ThemeProvider>
+			</DarkModeProvider>
 		</ContextProvider>
 	</React.StrictMode>
 );

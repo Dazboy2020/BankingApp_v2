@@ -7,7 +7,10 @@ import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 import ProtectedRoute from './pages/ProtectedRoute';
 
 import Toast from './UI/AlertDialogue/Toast';
-import { DarkModeProvider } from './Hooks/useDarkMode';
+import { blue, purple } from '@mui/material/colors';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+import { useDarkMode } from './Hooks/useDarkMode';
 
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
@@ -26,8 +29,79 @@ axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.withCredentials = true;
 
 function App() {
+	const { isDarkMode } = useDarkMode();
+
+	const theme = createTheme({
+		palette: {
+			primary: {
+				main: blue[800],
+			},
+			secondary: {
+				main: purple[500],
+			},
+		},
+		components: {
+			MuiDrawer: {
+				styleOverrides: {
+					paper: {
+						background: '#242a2e',
+						color: '#fff',
+					},
+				},
+			},
+			MuiSvgIcon: {
+				styleOverrides: {
+					root: {
+						// Set the color to white
+						color: 'white',
+					},
+				},
+			},
+			MuiAppBar: {
+				styleOverrides: {
+					root: {
+						backgroundColor: '#343a40',
+					},
+					colorDefault: {
+						'& .MuiSvgIcon-root': {
+							color: 'white',
+						},
+					},
+				},
+			},
+			MuiTypography: {
+				styleOverrides: {
+					root: {
+						// fontSize: '24px', // Set your desired font size
+					},
+				},
+			},
+			MuiButton: {
+				styleOverrides: {
+					root: {
+						backgroundColor: 'MediumVioletRed', // Set your desired background color here
+						color: 'white',
+						letterSpacing: '.1rem',
+						'&.css-ikss9a-MuiTypography-root': {
+							letterSpacing: '.1rem', // Adjust the letter-spacing value as needed
+						},
+						// padding: '5px',
+					},
+				},
+			},
+			MuiPaper: {
+				styleOverrides: {
+					root: {
+						backgroundColor: isDarkMode ? '#000' : '#f0ebd8',
+						// backgroundColor: '#1c1917',
+						// borderRadius: '10px',
+					},
+				},
+			},
+		},
+	});
 	return (
-		<DarkModeProvider>
+		<ThemeProvider theme={theme}>
 			<BrowserRouter>
 				<Suspense fallback={<SpinnerFullPage />}>
 					<Toast />
@@ -103,7 +177,7 @@ function App() {
 					</Routes>
 				</Suspense>
 			</BrowserRouter>
-		</DarkModeProvider>
+		</ThemeProvider>
 	);
 }
 
