@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import { TextField, MenuItem, Typography, Stack } from '@mui/material';
+import { TextField, MenuItem, Typography, Stack, Input } from '@mui/material';
 import { useState } from 'react';
 
 // import useClearAnimation from '../../Hooks/useClearAnimation';
@@ -189,12 +189,17 @@ const AddTransaction = () => {
 									helperText="Select amount"
 									color="secondary"
 									sx={{
-										'.MuiInputLabel': {
-											color: 'white',
+										'& .MuiInputLabel-root': {
+											color: isDarkMode ? '#d6d3d1' : '#000',
+										}, //styles the label
+										'& .MuiOutlinedInput-root': {
+											'& > fieldset': {
+												borderColor: isDarkMode ? '#d6d3d1' : '#000',
+												borderRadius: 1,
+											},
 										},
-
-										color: isDarkMode ? '#d6d3d1' : '#000',
 									}}
+									variant="outlined"
 								></TextField>
 							</form>
 						</Box>
@@ -217,15 +222,34 @@ const AddTransaction = () => {
 								helperText="Category"
 								color="secondary"
 								onChange={handleExpenseCategory}
+								sx={{
+									'& .MuiInputLabel-root': {
+										color: isDarkMode ? '#d6d3d1' : '#000',
+									}, //styles the label
+									'& .MuiOutlinedInput-root': {
+										'& > fieldset': {
+											borderColor: isDarkMode ? '#d6d3d1' : '#000',
+											borderRadius: 1,
+										},
+									},
+								}}
 							>
 								{label === 'expense'
 									? menuExpenseItems.map((option) => (
-											<MenuItem key={option.value} value={option.value}>
+											<MenuItem
+												key={option.value}
+												value={option.value}
+												sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+											>
 												{option.label}
 											</MenuItem>
 									  ))
 									: menuDepositItems.map((option) => (
-											<MenuItem key={option.value} value={option.value}>
+											<MenuItem
+												key={option.value}
+												value={option.value}
+												sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+											>
 												{option.label}
 											</MenuItem>
 									  ))}
