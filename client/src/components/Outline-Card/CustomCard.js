@@ -2,8 +2,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 function CustomCard({ transactionType, transactionTotal, icon }) {
+	const { isDarkMode } = useDarkMode();
 	return (
 		<Card
 			component="article"
@@ -25,13 +27,21 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 				>
 					<Typography
 						variant="h5"
-						sx={{ mb: 0.5, fontWeight: 'bold', color: '#242a2e' }}
+						sx={{
+							mb: 0.5,
+							fontWeight: 'bold',
+							// color: '#242a2e'
+							color: isDarkMode ? '#d6d3d1' : '#000',
+						}}
 					>
 						{transactionType}
 					</Typography>
 					{icon}
 				</Box>
-				<Typography sx={{ fontSize: '2rem' }} gutterBottom>
+				<Typography
+					sx={{ fontSize: '2rem', color: isDarkMode ? '#fff' : '#000' }}
+					gutterBottom
+				>
 					{transactionTotal}
 				</Typography>
 			</CardContent>

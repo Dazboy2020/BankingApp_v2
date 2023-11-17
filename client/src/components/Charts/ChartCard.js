@@ -1,6 +1,9 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 function ChartCard({ children, title = 'EXPENSES' }) {
+	const { isDarkMode } = useDarkMode();
+
 	return (
 		<Card sx={{ width: '100%', borderRadius: '10px', mb: 3 }}>
 			<CardContent
@@ -17,11 +20,12 @@ function ChartCard({ children, title = 'EXPENSES' }) {
 						sx={{
 							fontSize: { xs: '1rem', md: '1.5rem' },
 							padding: { xs: '.8rem', md: '.5rem' },
-							backgroundColor: '#495057',
-							color: 'white',
+							backgroundColor: isDarkMode ? '#212529' : '#495057',
+							color: isDarkMode ? '#d6d3d1' : '#fff',
 							textAlign: 'center',
 							letterSpacing: '.1rem',
 							borderRadius: '8px',
+							fontWeight: 'bold',
 						}}
 					>
 						{title}
@@ -31,11 +35,11 @@ function ChartCard({ children, title = 'EXPENSES' }) {
 						style={{
 							height: '40vh',
 							width: '40vh',
-
 							padding: '1rem',
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
+							color: isDarkMode ? '#fff' : '#000',
 						}}
 					>
 						{children}

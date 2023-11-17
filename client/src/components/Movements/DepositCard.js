@@ -7,9 +7,11 @@ import { useAppContext } from '../../context/context';
 
 import DeleteButton from '../Buttons/DeleteButton';
 import EditButton from '../Buttons/EditButton';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 function DepositCard({ deposit }) {
 	const { state } = useAppContext();
+	const { isDarkMode } = useDarkMode();
 
 	const depositEditMode = state.isEditing
 		? classes.movements__row__edit
@@ -25,7 +27,7 @@ function DepositCard({ deposit }) {
 		>
 			<Stack component="section" className={depositEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-					<span className={classes.movements__type__deposit}>Income</span>
+					<span className={classes.movements__type}>Income</span>
 					<NorthEastIcon sx={{ fontSize: '40px', color: 'green' }} />
 				</Box>
 				<span className={classes.movements__date}>{deposit.date}</span>

@@ -6,12 +6,14 @@ import AddTransaction from '../components/Outline-Card/AddTransaction';
 import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 import ExpenseItems from '../components/Movements/ExpenseItems';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
-import classes from './Expenses.module.css';
+import classes from './MainApp.module.css';
 import FilterItems from '../components/Filter/Filter';
 import { useAppContext } from '../context/context';
+import { useDarkMode } from '../Hooks/useDarkMode';
 
 function Expenses() {
 	const { state } = useAppContext();
+	const { isDarkMode } = useDarkMode();
 
 	return (
 		<>
@@ -19,7 +21,7 @@ function Expenses() {
 			<AlertDialogSlide />
 
 			<Box
-				className={classes.body}
+				className={isDarkMode ? classes.darkmode : classes.body}
 				sx={{
 					minHeight: '100vh',
 

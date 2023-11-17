@@ -16,6 +16,7 @@ import useAddDeposit from '../../Hooks/useAddDeposit';
 
 import { menuExpenseItems } from './menuExpenseItems';
 import { menuDepositItems } from './menuDepositItems';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 const buttonStyles = {
 	'&:hover': {
@@ -33,6 +34,9 @@ const buttonStyles = {
 const AddTransaction = () => {
 	const { setOpenToast, dispatch, message, setMessage, state } =
 		useAppContext();
+
+	const { isDarkMode } = useDarkMode();
+
 	const [label, setLabel] = useState('');
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseAmount, setExpenseAmount] = useState('');
@@ -143,8 +147,11 @@ const AddTransaction = () => {
 				<Box>
 					<Typography
 						variant="h5"
-						color="#242a2e"
-						sx={{ mb: 2, fontWeight: 'bold' }}
+						sx={{
+							mb: 2,
+							fontWeight: 'bold',
+							color: isDarkMode ? '#d6d3d1' : '#000',
+						}}
 					>
 						{!state.isEditing ? 'Add a Transaction:' : 'Edit Mode'}
 					</Typography>
@@ -164,7 +171,10 @@ const AddTransaction = () => {
 						{/* //! Amount */}
 						<Box
 							sx={{
-								'& .MuiTextField-root': { m: 1, width: '20ch' },
+								'& .MuiTextField-root': {
+									m: 1,
+									width: '20ch',
+								},
 							}}
 							noValidate
 							autoComplete="off"
@@ -178,6 +188,13 @@ const AddTransaction = () => {
 									value={expenseAmount}
 									helperText="Select amount"
 									color="secondary"
+									sx={{
+										'.MuiInputLabel': {
+											color: 'white',
+										},
+
+										color: isDarkMode ? '#d6d3d1' : '#000',
+									}}
 								></TextField>
 							</form>
 						</Box>

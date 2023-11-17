@@ -5,15 +5,15 @@ import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import AddTransaction from '../components/Outline-Card/AddTransaction';
 import Income from '../components/Outline-Card/Income';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
-import classes from './Deposits.module.css';
+import classes from './MainApp.module.css';
 import DepositItems from '../components/Movements/DepositItems';
 import FilterItems from '../components/Filter/Filter';
 import { useAppContext } from '../context/context';
+import { useDarkMode } from '../Hooks/useDarkMode';
 
 function Deposits() {
 	const { state } = useAppContext();
-
-	console.log('render');
+	const { isDarkMode } = useDarkMode();
 
 	return (
 		<>
@@ -21,7 +21,7 @@ function Deposits() {
 			<AlertDialogSlide />
 
 			<Box
-				className={classes.body}
+				className={isDarkMode ? classes.darkmode : classes.body}
 				sx={{
 					minHeight: '100vh',
 

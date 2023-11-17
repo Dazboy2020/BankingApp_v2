@@ -11,7 +11,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EuroIcon from '@mui/icons-material/Euro';
@@ -23,6 +22,7 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 import Header from './Header';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 const drawerWidth = 305;
 
@@ -118,6 +118,7 @@ const ListNew = (props) => {
 function ResponsiveDrawer(props) {
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
+	const { isDarkMode } = useDarkMode();
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
@@ -154,9 +155,7 @@ function ResponsiveDrawer(props) {
 					sx={{
 						height: '7rem',
 						padding: { xs: '.5rem', s: 0, sm: '1rem' },
-						// marginLeft: { xs: '.5rem', s: '3rem' },
-						// bgcolor: '#52525b',
-						bgcolor: '#343a40',
+						bgcolor: isDarkMode ? '#212529' : '#343a40',
 
 						borderBottom: '1px solid #f97316',
 					}}

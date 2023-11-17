@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { useNavigate } from 'react-router';
 import { useAppContext } from '../../context/context';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -15,6 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide() {
 	const { open, setOpen, dispatch } = useAppContext();
+	const { isDarkMode } = useDarkMode();
 
 	const navigate = useNavigate();
 
@@ -39,11 +41,14 @@ export default function AlertDialogSlide() {
 				onClose={handleCancel}
 				aria-describedby="alert-dialog-slide-description"
 			>
-				<DialogTitle>
+				<DialogTitle sx={{ color: isDarkMode ? '#fff' : '#000' }}>
 					{'You are about to disconnect from all services.'}
 				</DialogTitle>
 				<DialogContent>
-					<DialogContentText id="alert-dialog-slide-description">
+					<DialogContentText
+						id="alert-dialog-slide-description"
+						sx={{ color: isDarkMode ? '#fff' : '#000' }}
+					>
 						Are you sure you want to exit Expensify?
 					</DialogContentText>
 				</DialogContent>

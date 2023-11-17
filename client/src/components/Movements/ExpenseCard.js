@@ -24,7 +24,7 @@ function ExpenseCard({ expense }) {
 		>
 			<Stack component="section" className={expenseEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-					<span className={classes.movements__type__expense}>Expense</span>
+					<span className={classes.movements__type}>Expense</span>
 					<SouthEastIcon sx={{ fontSize: '40px', color: 'red' }} />
 				</Box>
 				<span className={classes.movements__date}>{expense.date}</span>

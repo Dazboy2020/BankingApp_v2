@@ -18,6 +18,7 @@ import Income from '../components/Outline-Card/Income';
 import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
 import ExpenseItems from '../components/Movements/ExpenseItems';
 import DepositItems from '../components/Movements/DepositItems';
+import { useDarkMode } from '../Hooks/useDarkMode';
 
 const movementList = {
 	display: 'flex',
@@ -38,8 +39,7 @@ const chartStyle = {
 };
 
 function MainApp() {
-	// <a href="https://storyset.com/business">Business illustrations by Storyset</a>
-
+	const { isDarkMode } = useDarkMode();
 	console.log('Main app');
 	return (
 		<>
@@ -49,7 +49,7 @@ function MainApp() {
 			<Toast />
 			<Box
 				component="main"
-				className={classes.body}
+				className={isDarkMode ? classes.darkmode : classes.body}
 				sx={{
 					minHeight: '100vh',
 

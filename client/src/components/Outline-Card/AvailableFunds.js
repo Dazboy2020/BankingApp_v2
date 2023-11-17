@@ -3,8 +3,10 @@ import * as React from 'react';
 import { useAppContext } from '../../context/context';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomCard from './CustomCard';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 export default function AvailbleFunds() {
+	const { isDarkMode } = useDarkMode();
 	const { totalExpenses, totalIncome } = useAppContext();
 
 	return (
@@ -13,7 +15,10 @@ export default function AvailbleFunds() {
 			transactionTotal={`€${(totalIncome + totalExpenses).toFixed(2)}`}
 			icon={
 				<AccountBalanceIcon
-					sx={{ color: '#242a2e', fontSize: { xs: '50px', sm: '60px' } }}
+					sx={{
+						color: isDarkMode ? '#D1D5DB' : '#242a2e',
+						fontSize: { xs: '50px', sm: '60px' },
+					}}
 				/>
 			}
 		/>
