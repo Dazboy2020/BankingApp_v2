@@ -7,6 +7,7 @@ import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
 import ProtectedRoute from './pages/ProtectedRoute';
 
 import Toast from './UI/AlertDialogue/Toast';
+import { DarkModeProvider } from './Hooks/useDarkMode';
 
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
@@ -26,81 +27,83 @@ axios.defaults.withCredentials = true;
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Suspense fallback={<SpinnerFullPage />}>
-				<Toast />
+		<DarkModeProvider>
+			<BrowserRouter>
+				<Suspense fallback={<SpinnerFullPage />}>
+					<Toast />
 
-				<Routes>
-					<Route
-						index
-						element={
-							<>
-								<ResponsiveAppBar />
-								<Homepage />
-							</>
-						}
-					/>
-					<Route path="login" element={<SignIn />} />
-					<Route path="signup" element={<SignUp />} />
-					<Route path="forgotpassword" element={<ForgotPassword />} />
-					<Route
-						path="resetpassword/:resetToken/"
-						element={<ResetPassword />}
-					/>
+					<Routes>
+						<Route
+							index
+							element={
+								<>
+									<ResponsiveAppBar />
+									<Homepage />
+								</>
+							}
+						/>
+						<Route path="login" element={<SignIn />} />
+						<Route path="signup" element={<SignUp />} />
+						<Route path="forgotpassword" element={<ForgotPassword />} />
+						<Route
+							path="resetpassword/:resetToken/"
+							element={<ResetPassword />}
+						/>
 
-					{/* //!ProtectedRoutes */}
-					<Route
-						path="about"
-						element={
-							<ProtectedRoute>
-								<About />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="expenses"
-						element={
-							<ProtectedRoute>
-								<Expenses />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="deposits"
-						element={
-							<ProtectedRoute>
-								<Deposits />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="charts"
-						element={
-							<ProtectedRoute>
-								<Charts />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="account"
-						element={
-							<ProtectedRoute>
-								<Account />
-							</ProtectedRoute>
-						}
-					/>
+						{/* //!ProtectedRoutes */}
+						<Route
+							path="about"
+							element={
+								<ProtectedRoute>
+									<About />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="expenses"
+							element={
+								<ProtectedRoute>
+									<Expenses />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="deposits"
+							element={
+								<ProtectedRoute>
+									<Deposits />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="charts"
+							element={
+								<ProtectedRoute>
+									<Charts />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="account"
+							element={
+								<ProtectedRoute>
+									<Account />
+								</ProtectedRoute>
+							}
+						/>
 
-					<Route
-						path="overview"
-						element={
-							<ProtectedRoute>
-								<MainApp />
-							</ProtectedRoute>
-						}
-					/>
-				</Routes>
-			</Suspense>
-		</BrowserRouter>
+						<Route
+							path="overview"
+							element={
+								<ProtectedRoute>
+									<MainApp />
+								</ProtectedRoute>
+							}
+						/>
+					</Routes>
+				</Suspense>
+			</BrowserRouter>
+		</DarkModeProvider>
 	);
 }
 

@@ -22,6 +22,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
+import Header from './Header';
 
 const drawerWidth = 305;
 
@@ -169,15 +170,7 @@ function ResponsiveDrawer(props) {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography
-						sx={{
-							fontSize: { xs: '1.5rem', sm: '2rem' },
-						}}
-						noWrap
-						component="section"
-					>
-						Expense Tracker
-					</Typography>
+					<Header />
 				</Toolbar>
 			</AppBar>
 			<Box
