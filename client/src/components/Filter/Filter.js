@@ -6,12 +6,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { TextField, MenuItem, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 const FilterItems = () => {
 	const { dispatch, state } = useAppContext();
 	const [expenseType, setExpenseType] = useState('expense');
 	const [expenseCategory, setExpenseCategory] = useState('');
 	const [label, setLabel] = useState('');
+
+	const { isDarkMode } = useDarkMode();
 
 	const expenseLabelsInitial = state.expenses
 		.filter((expense) => expense.category)
@@ -47,15 +50,33 @@ const FilterItems = () => {
 		[expenseType, state.isActive, dispatch, expenseCategory]
 	);
 
-	//! Clear animation
-	//deleted as moved to custom hook
-
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	//! Add transaction
+	const formStyling = {
+		'& .MuiInputLabel-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiInputBase-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiFormHelperText-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiOutlinedInput-root': {
+			'& > fieldset': {
+				borderColor: isDarkMode ? '#d6d3d1' : '#000',
+				borderRadius: 1,
+				color: isDarkMode ? '#d6d3d1' : '#000',
+				// backgroundColor: isDarkMode ? '#171717' : '#f0ebd8',
+			},
+		},
+
+		color: isDarkMode ? '#d6d3d1' : '#000',
+	};
 
 	return (
 		<Card
@@ -84,7 +105,13 @@ const FilterItems = () => {
 						marginBottom: '0.1rem',
 					}}
 				>
-					<Typography sx={{ fontFamily: 'poppins', fontSize: '1.3rem' }}>
+					<Typography
+						sx={{
+							fontFamily: 'poppins',
+							fontSize: '1.3rem',
+							color: isDarkMode ? '#d6d3d1' : '#000',
+						}}
+					>
 						Filter Items:
 					</Typography>
 				</Box>
@@ -121,15 +148,21 @@ const FilterItems = () => {
 								helperText="Category"
 								color="secondary"
 								onChange={handleExpenseCategory}
+								sx={formStyling}
 							>
 								{label === 'expense'
 									? expenseLabels.map((option) => (
-											<MenuItem key={option} value={option}>
+											<MenuItem
+												key={option}
+												value={option}
+												sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+											>
 												{option}
 											</MenuItem>
 									  ))
 									: depositLabels.map((option) => (
 											<MenuItem
+												sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
 												key={Math.random().toLocaleString()}
 												value={option}
 											>

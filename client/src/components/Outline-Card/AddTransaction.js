@@ -51,15 +51,13 @@ const AddTransaction = () => {
 	const formStyling = {
 		'& .MuiInputLabel-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
-		}, //styles the label
+		},
 		'& .MuiInputBase-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
-		}, //styles the label
-
+		},
 		'& .MuiFormHelperText-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
 		},
-
 		'& .MuiOutlinedInput-root': {
 			'& > fieldset': {
 				borderColor: isDarkMode ? '#d6d3d1' : '#000',
@@ -70,7 +68,6 @@ const AddTransaction = () => {
 		},
 
 		color: isDarkMode ? '#d6d3d1' : '#000',
-		// color: 'white',
 	};
 
 	function handleReturn(e) {

@@ -40,7 +40,6 @@ const chartStyle = {
 
 function MainApp() {
 	const { isDarkMode } = useDarkMode();
-	console.log('Main app');
 	return (
 		<>
 			<ResponsiveDrawer />
