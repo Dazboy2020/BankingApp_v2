@@ -52,15 +52,25 @@ const AddTransaction = () => {
 		'& .MuiInputLabel-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
 		}, //styles the label
+		'& .MuiInputBase-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		}, //styles the label
+
+		'& .MuiFormHelperText-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+
 		'& .MuiOutlinedInput-root': {
 			'& > fieldset': {
 				borderColor: isDarkMode ? '#d6d3d1' : '#000',
 				borderRadius: 1,
+				color: isDarkMode ? '#d6d3d1' : '#000',
+				// backgroundColor: isDarkMode ? '#171717' : '#f0ebd8',
 			},
 		},
-		'& .MuiFormHelperText-root': {
-			color: isDarkMode ? '#d6d3d1' : '#000',
-		},
+
+		color: isDarkMode ? '#d6d3d1' : '#000',
+		// color: 'white',
 	};
 
 	function handleReturn(e) {
@@ -200,7 +210,6 @@ const AddTransaction = () => {
 									helperText="Select amount"
 									color="secondary"
 									sx={formStyling}
-									variant="outlined"
 								></TextField>
 							</form>
 						</Box>
