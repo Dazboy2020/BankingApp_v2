@@ -1,105 +1,39 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppContext } from '../../context/context';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import { TextField, MenuItem, Typography, Stack } from '@mui/material';
-import { useState } from 'react';
+import { Typography, Stack, Button } from '@mui/material';
 
+import { useDarkMode } from '../../Hooks/useDarkMode';
+import TransactionInputBox from './TransactionInputBox';
+import { useTransactionContext } from '../../context/transactionContext';
 import useEditExpense from '../../Hooks/useEditExpense';
 import useEditDeposit from '../../Hooks/useEditDeposit';
 import useAddExpense from '../../Hooks/useAddExpense';
 import useAddDeposit from '../../Hooks/useAddDeposit';
 
-import { menuExpenseItems } from './menuExpenseItems';
-import { menuDepositItems } from './menuDepositItems';
-import { useDarkMode } from '../../Hooks/useDarkMode';
-
-const buttonStyles = {
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
-	color: 'white',
-	letterSpacing: '.1rem',
-	mt: 4,
-	mr: 2,
-	fontSize: '1.1rem',
-	paddingRight: '.8rem',
-};
-
 const AddTransaction = () => {
-	const { setOpenToast, dispatch, message, setMessage, state } =
+	const { setMessage, state, dispatch, setOpenToast, message } =
 		useAppContext();
 
-	const { isDarkMode } = useDarkMode();
-
-	const [label, setLabel] = useState('');
-	const [expenseType, setExpenseType] = useState('expense');
-	const [expenseAmount, setExpenseAmount] = useState('');
-	const [expenseCategory, setExpenseCategory] = useState('');
+	const {
+		expenseAmount,
+		setExpenseAmount,
+		expenseCategory,
+		setExpenseCategory,
+		expenseType,
+	} = useTransactionContext();
 
 	const { editExpense } = useEditExpense();
 	const { editDeposit } = useEditDeposit();
 	const { addExpense } = useAddExpense();
 	const { addDeposit } = useAddDeposit();
 
+	const { isDarkMode } = useDarkMode();
+
 	const expenseEditMode = state.isEditing ? '1px solid purple' : '';
-
-	const formStyling = {
-		'& .MuiInputLabel-root': {
-			color: isDarkMode ? '#d6d3d1' : '#000',
-		},
-		'& .MuiInputBase-root': {
-			color: isDarkMode ? '#d6d3d1' : '#000',
-		},
-		'& .MuiFormHelperText-root': {
-			color: isDarkMode ? '#d6d3d1' : '#000',
-		},
-		'& .MuiOutlinedInput-root': {
-			'& > fieldset': {
-				borderColor: isDarkMode ? '#d6d3d1' : '#000',
-				borderRadius: 1,
-				color: isDarkMode ? '#d6d3d1' : '#000',
-				// backgroundColor: isDarkMode ? '#171717' : '#f0ebd8',
-			},
-		},
-
-		color: isDarkMode ? '#d6d3d1' : '#000',
-	};
-
-	function handleReturn(e) {
-		e.preventDefault();
-		return;
-	}
-
-	function handleExpenseAmount(e) {
-		setExpenseAmount(e.target.value);
-	}
-
-	//! set expense type //
-	useEffect(
-		function () {
-			if (state.isActive === 1) {
-				setExpenseType('expense');
-				setLabel('expense');
-				setExpenseCategory('');
-			}
-			if (state.isActive === 2) {
-				setExpenseType('deposit');
-				setLabel('deposit');
-				setExpenseCategory('');
-			}
-		},
-		[expenseType, state.isActive]
-	);
-
-	function handleExpenseCategory(e) {
-		setExpenseCategory(e.target.value);
-		setMessage('');
-	}
 
 	function handleCancelEdit() {
 		dispatch({ type: 'edit/cancel' });
@@ -109,8 +43,10 @@ const AddTransaction = () => {
 	//! Add transaction
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
+		console.log('click');
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
+
 		dispatch({ type: 'addTransactionAnimate', payload: true });
 
 		const month = new Date().toLocaleString('en-GB', { month: 'short' });
@@ -120,6 +56,8 @@ const AddTransaction = () => {
 		const expenseDate = `${day}  ${month}  ${year}`;
 
 		let expenseData;
+
+		console.log(expenseType);
 
 		//! Edit Expense //
 		if (state.isEditing && expenseType === 'expense') {
@@ -133,6 +71,8 @@ const AddTransaction = () => {
 
 		//! add expense //
 		if (expenseType === 'expense' && state.isEditing === false) {
+			console.log(expenseAmount, expenseCategory, expenseData);
+
 			addExpense(expenseData, expenseAmount, expenseDate, expenseCategory);
 		}
 
@@ -149,6 +89,19 @@ const AddTransaction = () => {
 		setOpenToast(true, { message: message });
 		setExpenseCategory('');
 	}
+
+	const buttonStyles = {
+		'&:hover': {
+			backgroundColor: '#680747',
+			cursor: 'default',
+		},
+		color: 'white',
+		letterSpacing: '.1rem',
+		mt: 4,
+		mr: 2,
+		fontSize: '1.1rem',
+		paddingRight: '.8rem',
+	};
 
 	return (
 		<Card
@@ -174,93 +127,23 @@ const AddTransaction = () => {
 						{!state.isEditing ? 'Add a Transaction:' : 'Edit Mode'}
 					</Typography>
 				</Box>
-				<Box
+
+				<Stack
+					direction={{ md: 'column', lg: 'row' }}
 					sx={{
 						display: 'flex',
+						justifyContent: 'space-between',
 					}}
 				>
-					<Stack
-						direction={{ md: 'column', lg: 'row' }}
-						sx={{
-							display: 'flex',
-							justifyContent: 'space-between',
-						}}
-					>
-						{/* //! Amount */}
-						<Box
-							sx={{
-								'& .MuiTextField-root': {
-									m: 1,
-									width: '20ch',
-								},
-							}}
-							noValidate
-							autoComplete="off"
-						>
-							<form component="form" onSubmit={handleReturn}>
-								<TextField
-									onChange={handleExpenseAmount}
-									id="outlined-select-currency"
-									type="number"
-									label="amount"
-									value={expenseAmount}
-									helperText="Select amount"
-									color="secondary"
-									sx={formStyling}
-								></TextField>
-							</form>
-						</Box>
-
-						{/*//! EXPENSE CATEGORY */}
-
-						<Box
-							component="form"
-							sx={{
-								'& .MuiTextField-root': { m: 1, width: '20ch' },
-							}}
-							noValidate
-							autoComplete="off"
-						>
-							<TextField
-								id="outlined-select-currency"
-								select
-								label="Select"
-								value={expenseCategory}
-								helperText="Category"
-								color="secondary"
-								onChange={handleExpenseCategory}
-								sx={formStyling}
-							>
-								{label === 'expense'
-									? menuExpenseItems.map((option) => (
-											<MenuItem
-												key={option.value}
-												value={option.value}
-												sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-											>
-												{option.label}
-											</MenuItem>
-									  ))
-									: menuDepositItems.map((option) => (
-											<MenuItem
-												key={option.value}
-												value={option.value}
-												sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-											>
-												{option.label}
-											</MenuItem>
-									  ))}
-							</TextField>
-						</Box>
-					</Stack>
-				</Box>
+					<TransactionInputBox />
+				</Stack>
 				<Box>
 					<Button
 						variant="contained"
 						sx={buttonStyles}
 						onClick={handleSubmitExpense}
 					>
-						{!state.isEditing ? 'Add Item' : 'Edit Item'}
+						{!state.isEditing ? 'Add item +' : 'Edit'}
 					</Button>
 					{state.isEditing && (
 						<Button
