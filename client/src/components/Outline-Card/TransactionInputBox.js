@@ -1,4 +1,4 @@
-import { Box, MenuItem, TextField } from '@mui/material';
+import { Box, MenuItem, Stack, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../Hooks/useDarkMode';
@@ -75,7 +75,13 @@ function TransactionInputBox() {
 	};
 
 	return (
-		<>
+		<Stack
+			direction={{ md: 'column', lg: 'row' }}
+			sx={{
+				display: 'flex',
+				justifyContent: 'space-between',
+			}}
+		>
 			<Box
 				sx={{
 					'& .MuiTextField-root': {
@@ -99,8 +105,6 @@ function TransactionInputBox() {
 					></TextField>
 				</form>
 			</Box>
-
-			{/*//! EXPENSE CATEGORY */}
 
 			<Box
 				component="form"
@@ -141,7 +145,7 @@ function TransactionInputBox() {
 						  ))}
 				</TextField>
 			</Box>
-		</>
+		</Stack>
 	);
 }
 

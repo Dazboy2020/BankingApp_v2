@@ -30,7 +30,6 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 						sx={{
 							mb: 0.5,
 							fontWeight: 'bold',
-							// color: '#242a2e'
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
 					>

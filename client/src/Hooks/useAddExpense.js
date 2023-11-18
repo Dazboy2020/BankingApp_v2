@@ -12,7 +12,6 @@ export default function useAddExpense() {
 	) => {
 		const BASE_URL = 'http://localhost:5000';
 
-		// const queryParams = `?_id=${state._id}`;
 		expenseData = {
 			id: window.crypto.randomUUID(),
 			amount: -expenseAmount,

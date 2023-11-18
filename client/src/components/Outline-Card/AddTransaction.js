@@ -4,7 +4,7 @@ import { useAppContext } from '../../context/context';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Typography, Stack, Button } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 
 import { useDarkMode } from '../../Hooks/useDarkMode';
 import TransactionInputBox from './TransactionInputBox';
@@ -56,8 +56,6 @@ const AddTransaction = () => {
 		const expenseDate = `${day}  ${month}  ${year}`;
 
 		let expenseData;
-
-		console.log(expenseType);
 
 		//! Edit Expense //
 		if (state.isEditing && expenseType === 'expense') {
@@ -128,15 +126,7 @@ const AddTransaction = () => {
 					</Typography>
 				</Box>
 
-				<Stack
-					direction={{ md: 'column', lg: 'row' }}
-					sx={{
-						display: 'flex',
-						justifyContent: 'space-between',
-					}}
-				>
-					<TransactionInputBox />
-				</Stack>
+				<TransactionInputBox />
 				<Box>
 					<Button
 						variant="contained"
