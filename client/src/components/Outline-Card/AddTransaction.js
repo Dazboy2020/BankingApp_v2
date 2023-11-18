@@ -4,7 +4,7 @@ import { useAppContext } from '../../context/context';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Typography, Button } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { useDarkMode } from '../../Hooks/useDarkMode';
 import TransactionInputBox from './TransactionInputBox';
@@ -13,6 +13,7 @@ import useEditExpense from '../../Hooks/useEditExpense';
 import useEditDeposit from '../../Hooks/useEditDeposit';
 import useAddExpense from '../../Hooks/useAddExpense';
 import useAddDeposit from '../../Hooks/useAddDeposit';
+import ButtonContainer from './ButtonContainer';
 
 const AddTransaction = () => {
 	const { setMessage, state, dispatch, setOpenToast, message } =
@@ -88,19 +89,6 @@ const AddTransaction = () => {
 		setExpenseCategory('');
 	}
 
-	const buttonStyles = {
-		'&:hover': {
-			backgroundColor: '#680747',
-			cursor: 'default',
-		},
-		color: 'white',
-		letterSpacing: '.1rem',
-		mt: 4,
-		mr: 2,
-		fontSize: '1.1rem',
-		paddingRight: '.8rem',
-	};
-
 	return (
 		<Card
 			component="article"
@@ -127,24 +115,10 @@ const AddTransaction = () => {
 				</Box>
 
 				<TransactionInputBox />
-				<Box>
-					<Button
-						variant="contained"
-						sx={buttonStyles}
-						onClick={handleSubmitExpense}
-					>
-						{!state.isEditing ? 'Add item +' : 'Edit'}
-					</Button>
-					{state.isEditing && (
-						<Button
-							variant="contained"
-							sx={buttonStyles}
-							onClick={handleCancelEdit}
-						>
-							Cancel
-						</Button>
-					)}
-				</Box>
+				<ButtonContainer
+					handleCancelEdit={handleCancelEdit}
+					handleSubmitExpense={handleSubmitExpense}
+				/>
 			</CardContent>
 		</Card>
 	);

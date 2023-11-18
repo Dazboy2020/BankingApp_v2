@@ -1,59 +1,14 @@
-import ResponsiveDrawer from '../components/Drawer/Draw';
-import { Box, Stack } from '@mui/material';
-
-import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import AddTransaction from '../components/Outline-Card/AddTransaction';
 import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
 import ExpenseItems from '../components/Movements/ExpenseItems';
-import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
-import classes from './MainApp.module.css';
-import FilterItems from '../components/Filter/Filter';
-import { useAppContext } from '../context/context';
-import { useDarkMode } from '../Hooks/useDarkMode';
+
+import TransactionLayout from './TransactionLayout';
 
 function Expenses() {
-	const { state } = useAppContext();
-	const { isDarkMode } = useDarkMode();
-
 	return (
-		<>
-			<ResponsiveDrawer />
-			<AlertDialogSlide />
-
-			<Box
-				className={isDarkMode ? classes.darkmode : classes.body}
-				sx={{
-					minHeight: '100vh',
-
-					ml: { lg: '18.8rem', md: '18rem', sm: '16rem', s: 0 },
-					mr: { lg: 0, sm: 0, m: 0 },
-				}}
-			>
-				<Stack
-					spacing={2}
-					direction={{ sm: 'column', md: 'row' }}
-					sx={{
-						ml: 6,
-						mr: 6,
-						mt: 10,
-					}}
-				>
-					<AddTransaction />
-					<ExpenseSummary />
-					<AvailbleFunds />
-				</Stack>
-				<Box
-					sx={{
-						ml: 6,
-						mr: 6,
-						mt: 4,
-					}}
-				>
-					{!state.isEditing && <FilterItems />}
-					<ExpenseItems />
-				</Box>
-			</Box>
-		</>
+		<TransactionLayout
+			TransactionType={<ExpenseSummary />}
+			TransactionItems={<ExpenseItems />}
+		/>
 	);
 }
 
