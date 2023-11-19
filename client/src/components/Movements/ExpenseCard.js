@@ -6,9 +6,11 @@ import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 import DeleteButton from '../Buttons/DeleteButton';
 import EditButton from '../Buttons/EditButton';
+import { useDarkMode } from '../../Hooks/useDarkMode';
 
 function ExpenseCard({ expense }) {
 	const { state } = useAppContext();
+	const { isDarkMode } = useDarkMode();
 
 	const expenseEditMode = state.isEditing
 		? classes.movements__row__edit
@@ -18,7 +20,7 @@ function ExpenseCard({ expense }) {
 		<Paper
 			className={classes.movements}
 			sx={{
-				border: state.isEditing ? '1px solid purple' : '',
+				border: state.isEditing ? '1px solid #f97316' : '',
 				borderRadius: '10px',
 			}}
 		>
@@ -27,8 +29,22 @@ function ExpenseCard({ expense }) {
 					<span className={classes.movements__type}>Expense</span>
 					<SouthEastIcon sx={{ fontSize: '40px', color: 'red' }} />
 				</Box>
-				<span className={classes.movements__date}>{expense.date}</span>
-				<span className={classes.movements__category}>{expense.category}</span>
+				<span
+					className={
+						isDarkMode ? classes.movements__date__dark : classes.movements__date
+					}
+				>
+					{expense.date}
+				</span>
+				<span
+					className={
+						isDarkMode
+							? classes.movements__category__dark
+							: classes.movements__category
+					}
+				>
+					{expense.category}
+				</span>
 				<Box
 					sx={{
 						display: 'flex',
@@ -49,7 +65,15 @@ function ExpenseCard({ expense }) {
 							alignItems: 'flex-end',
 						}}
 					>
-						<span className={classes.movements__value}>€{expense.amount}</span>
+						<span
+							className={
+								isDarkMode
+									? classes.movements__value__dark
+									: classes.movements__value
+							}
+						>
+							€{expense.amount}
+						</span>
 					</Box>
 				</Box>
 			</Stack>

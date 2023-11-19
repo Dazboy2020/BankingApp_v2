@@ -34,7 +34,7 @@ const AddTransaction = () => {
 
 	const { isDarkMode } = useDarkMode();
 
-	const expenseEditMode = state.isEditing ? '1px solid purple' : '';
+	const expenseEditMode = state.isEditing ? '1px solid #f97316' : '';
 
 	function handleCancelEdit() {
 		dispatch({ type: 'edit/cancel' });

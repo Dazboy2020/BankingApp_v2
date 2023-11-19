@@ -21,7 +21,7 @@ function DepositCard({ deposit }) {
 		<Paper
 			className={classes.movements}
 			sx={{
-				border: state.isEditing ? '1px solid purple' : '',
+				border: state.isEditing ? '1px solid #f97316' : '',
 				borderRadius: '10px',
 			}}
 		>
@@ -30,8 +30,22 @@ function DepositCard({ deposit }) {
 					<span className={classes.movements__type}>Income</span>
 					<NorthEastIcon sx={{ fontSize: '40px', color: 'green' }} />
 				</Box>
-				<span className={classes.movements__date}>{deposit.date}</span>
-				<span className={classes.movements__category}>{deposit.category}</span>
+				<span
+					className={
+						isDarkMode ? classes.movements__date__dark : classes.movements__date
+					}
+				>
+					{deposit.date}
+				</span>
+				<span
+					className={
+						isDarkMode
+							? classes.movements__category__dark
+							: classes.movements__category
+					}
+				>
+					{deposit.category}
+				</span>
 				<Box
 					sx={{
 						display: 'flex',
@@ -46,7 +60,15 @@ function DepositCard({ deposit }) {
 						{state.isActive !== 0 && <DeleteButton expense={deposit.id} />}
 					</Box>
 					<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-						<span className={classes.movements__value}>€{deposit.amount}</span>
+						<span
+							className={
+								isDarkMode
+									? classes.movements__value__dark
+									: classes.movements__value
+							}
+						>
+							€{deposit.amount}
+						</span>
 					</Box>
 				</Box>
 			</Stack>
