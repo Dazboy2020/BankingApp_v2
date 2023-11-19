@@ -1,7 +1,5 @@
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import useDeleteExpense from '../../Hooks/useDeleteExpense';
-import useDeleteDeposit from '../../Hooks/useDeleteDeposit';
 import { useAppContext } from '../../context/context';
 
 const buttonStyles = {
@@ -20,15 +18,24 @@ const buttonStyles = {
 };
 
 function DeleteButton({ expense }) {
-	const { state } = useAppContext();
-
-	const { deleteExpense } = useDeleteExpense();
-	const { deleteDeposit } = useDeleteDeposit();
+	const {
+		modalMessage,
+		setModalMessage,
+		modalTitle,
+		setModalTitle,
+		modalAction,
+		setModalAction,
+		id,
+		setId,
+		setOpen,
+	} = useAppContext();
 
 	function handleDelete(expense) {
-		if (state.isActive === 1) deleteExpense(expense);
-
-		if (state.isActive === 2) deleteDeposit(expense);
+		setModalTitle('Warning! Deletetion!');
+		setModalMessage('Are you sure you want to delete this item?');
+		setModalAction('delete');
+		setId(expense);
+		setOpen(true, modalMessage, modalTitle, modalAction, id);
 	}
 
 	return (

@@ -236,6 +236,11 @@ function ContextProvider({ children }) {
 
 	const [message, setMessage] = useState('');
 
+	const [modalTitle, setModalTitle] = useState('');
+	const [modalMessage, setModalMessage] = useState('');
+	const [modalAction, setModalAction] = useState('');
+	const [id, setId] = useState('');
+
 	const totalIncome = +state.deposits?.reduce(
 		(acc, dep) => acc + dep.amount,
 		0
@@ -261,6 +266,15 @@ function ContextProvider({ children }) {
 				state,
 				message,
 				setMessage,
+
+				modalTitle,
+				setModalTitle,
+				modalMessage,
+				setModalMessage,
+				modalAction,
+				setModalAction,
+				id,
+				setId,
 			}}
 		>
 			{children}

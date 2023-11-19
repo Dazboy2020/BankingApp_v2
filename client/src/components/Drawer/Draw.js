@@ -27,11 +27,24 @@ import { useDarkMode } from '../../Hooks/useDarkMode';
 const drawerWidth = 305;
 
 const ListNew = (props) => {
-	const { setOpen, state, dispatch } = useAppContext();
+	const {
+		setOpen,
+		state,
+		dispatch,
+		modalMessage,
+		setModalMessage,
+		modalTitle,
+		setModalTitle,
+		modalAction,
+		setModalAction,
+	} = useAppContext();
 	const navigate = useNavigate();
 
 	function handleClick() {
-		setOpen(true);
+		setModalMessage('Are you sure you want to exit Expensify?');
+		setModalTitle('You are about to disconnect from all services.');
+		setModalAction('logout');
+		setOpen(true, modalMessage, modalTitle, modalAction);
 	}
 
 	function handleLink(text, index) {

@@ -9,14 +9,29 @@ import Slide from '@mui/material/Slide';
 import { useNavigate } from 'react-router';
 import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../Hooks/useDarkMode';
+import useDeleteExpense from '../../Hooks/useDeleteExpense';
+import useDeleteDeposit from '../../Hooks/useDeleteDeposit';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function AlertDialogSlide() {
-	const { open, setOpen, dispatch } = useAppContext();
+	const {
+		open,
+		setOpen,
+		dispatch,
+		modalMessage,
+		modalTitle,
+		modalAction,
+		state,
+		id,
+	} = useAppContext();
+
 	const { isDarkMode } = useDarkMode();
+
+	const { deleteExpense } = useDeleteExpense();
+	const { deleteDeposit } = useDeleteDeposit();
 
 	const navigate = useNavigate();
 
@@ -24,12 +39,19 @@ export default function AlertDialogSlide() {
 		setOpen(false);
 	}
 
-	function handleYesLogout() {
-		setOpen(false);
-		dispatch({ type: 'user/LoggedOut' });
-		localStorage.removeItem('authToken');
+	function handleYes() {
+		if (modalAction === 'logout') {
+			setOpen(false);
+			dispatch({ type: 'user/LoggedOut' });
+			localStorage.removeItem('authToken');
 
-		navigate('/');
+			navigate('/');
+		} else {
+			if (state.isActive === 1) deleteExpense(id);
+
+			if (state.isActive === 2) deleteDeposit(id);
+			setOpen(false);
+		}
 	}
 
 	return (
@@ -42,14 +64,14 @@ export default function AlertDialogSlide() {
 				aria-describedby="alert-dialog-slide-description"
 			>
 				<DialogTitle sx={{ color: isDarkMode ? '#fff' : '#000' }}>
-					{'You are about to disconnect from all services.'}
+					{modalTitle}
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText
 						id="alert-dialog-slide-description"
 						sx={{ color: isDarkMode ? '#fff' : '#000' }}
 					>
-						Are you sure you want to exit Expensify?
+						{modalMessage}
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
@@ -61,7 +83,7 @@ export default function AlertDialogSlide() {
 							},
 						}}
 						color="secondary"
-						onClick={handleYesLogout}
+						onClick={handleYes}
 					>
 						Yes
 					</Button>
