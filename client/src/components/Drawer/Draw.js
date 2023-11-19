@@ -38,6 +38,7 @@ const ListNew = (props) => {
 		modalAction,
 		setModalAction,
 	} = useAppContext();
+
 	const navigate = useNavigate();
 
 	function handleClick() {

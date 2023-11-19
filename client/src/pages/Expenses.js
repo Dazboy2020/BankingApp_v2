@@ -3,12 +3,14 @@ import ExpenseItems from '../components/Movements/ExpenseItems';
 
 import TransactionLayout from './TransactionLayout';
 
-function Expenses() {
+function Expenses({ children }) {
 	return (
 		<TransactionLayout
 			TransactionType={<ExpenseSummary />}
 			TransactionItems={<ExpenseItems />}
-		/>
+		>
+			{children}
+		</TransactionLayout>
 	);
 }
 
