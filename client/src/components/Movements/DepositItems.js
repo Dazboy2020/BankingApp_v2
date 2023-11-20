@@ -34,6 +34,7 @@ const DepositItems = () => {
 			<AnimatePresence>
 				{moves.map((deposit) => (
 					<motion.li
+						layout="true"
 						key={deposit.id}
 						variants={containerVariants}
 						initial="hidden"

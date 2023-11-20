@@ -31,6 +31,7 @@ const ExpenseItems = () => {
 			<AnimatePresence>
 				{moves.map((expense) => (
 					<motion.li
+						layout="true"
 						key={expense.id}
 						variants={containerVariants}
 						initial="hidden"
