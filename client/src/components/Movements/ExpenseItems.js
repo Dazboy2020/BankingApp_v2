@@ -16,7 +16,7 @@ const containerVariants = {
 		y: 0,
 		scale: 1,
 
-		transition: { delay: 0.25 },
+		transition: { delay: 0.2 },
 	},
 };
 
