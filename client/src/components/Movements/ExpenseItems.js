@@ -3,6 +3,8 @@ import { useAppContext } from '../../context/context';
 
 import ExpenseCard from './ExpenseCard';
 
+import { motion } from 'framer-motion';
+
 const ExpenseItems = () => {
 	const { state } = useAppContext();
 
@@ -31,11 +33,16 @@ const ExpenseItems = () => {
 			: classes.movements__row;
 
 	return (
-		<ul className={animate}>
+		<motion.ul
+			className={classes.movements__row}
+			initial={{ y: 200, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ delay: 0.2 }}
+		>
 			{moves.map((expense) => (
 				<ExpenseCard expense={expense} key={expense.id} />
 			))}
-		</ul>
+		</motion.ul>
 	);
 };
 

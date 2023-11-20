@@ -1,6 +1,7 @@
 import React from 'react';
-import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
+import { motion } from 'framer-motion';
+import classes from './Movements.module.css';
 
 import DepositCard from './DepositCard';
 
@@ -26,17 +27,22 @@ const DepositItems = () => {
 		moves = [];
 	}
 
-	const animate =
-		state.addTransactionAnimate === true
-			? classes.movements__row__animate
-			: classes.movements__row;
+	// const animate =
+	// 	state.addTransactionAnimate === true
+	// 		? classes.movements__row__animate
+	// 		: classes.movements__row;
 
 	return (
-		<ul className={animate}>
+		<motion.ul
+			className={classes.movements__row}
+			initial={{ y: 200, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ delay: 0.2 }}
+		>
 			{moves.map((deposit) => (
 				<DepositCard deposit={deposit} key={deposit.id} />
 			))}
-		</ul>
+		</motion.ul>
 	);
 };
 
