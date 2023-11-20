@@ -51,6 +51,8 @@ const ListNew = (props) => {
 	function handleLink(text, index) {
 		if (text === 'Logout') return handleClick();
 
+		dispatch({ type: 'edit/cancel' });
+
 		dispatch({ type: 'addActiveClass', payload: index });
 
 		navigate('/' + text);
