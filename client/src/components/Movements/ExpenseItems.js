@@ -1,24 +1,8 @@
-import classes from './Movements.module.css';
 import { useAppContext } from '../../context/context';
-
-import ExpenseCard from './ExpenseCard';
-
 import { AnimatePresence, motion } from 'framer-motion';
-
-const containerVariants = {
-	hidden: {
-		opacity: 0,
-		scale: 0.8,
-		y: 400,
-	},
-	visible: {
-		opacity: 1,
-		y: 0,
-		scale: 1,
-
-		transition: { delay: 0.2 },
-	},
-};
+import classes from './Movements.module.css';
+import ExpenseCard from './ExpenseCard';
+import { containerVariants, exitAnimation } from './variants';
 
 const ExpenseItems = () => {
 	const { state } = useAppContext();
@@ -51,12 +35,7 @@ const ExpenseItems = () => {
 						variants={containerVariants}
 						initial="hidden"
 						animate="visible"
-						exit={{
-							y: 200,
-							opacity: 0,
-							scale: 0.9,
-							transition: { delay: 0.2 },
-						}}
+						exit={exitAnimation}
 					>
 						<ExpenseCard expense={expense} />
 					</motion.li>
