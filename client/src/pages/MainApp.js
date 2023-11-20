@@ -79,7 +79,7 @@ function MainApp() {
 					</Stack>
 
 					{/* //! Charts */}
-					<Stack
+					{/* <Stack
 						component="section"
 						spacing={4}
 						direction={{ s: 'column', md: 'column', lg: 'row' }}
@@ -87,7 +87,7 @@ function MainApp() {
 					>
 						<PieChart />
 						<PieEuro />
-					</Stack>
+					</Stack> */}
 
 					{/* //!Movements */}
 					<MovementList>
