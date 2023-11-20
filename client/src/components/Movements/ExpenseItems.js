@@ -27,22 +27,22 @@ const ExpenseItems = () => {
 	}
 
 	return (
-		<motion.ul className={classes.movements__row}>
-			<AnimatePresence>
-				{moves.map((expense) => (
-					<motion.li
-						layout="true"
-						key={expense.id}
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-						exit={exitAnimation}
-					>
-						<ExpenseCard expense={expense} />
-					</motion.li>
-				))}
-			</AnimatePresence>
-		</motion.ul>
+		// <motion.ul className={classes.movements__row}>
+		<AnimatePresence>
+			{moves.map((expense) => (
+				<motion.li
+					layout="true"
+					key={expense.id}
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					exit={exitAnimation}
+				>
+					<ExpenseCard expense={expense} />
+				</motion.li>
+			))}
+		</AnimatePresence>
+		// </motion.ul>
 	);
 };
 

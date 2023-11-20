@@ -19,6 +19,7 @@ export default function useDeleteDeposit(id) {
 		}
 
 		dispatch({ type: 'delete/deposit', payload: id });
+		if (state.isEditing) dispatch({ type: 'edit/cancel' });
 
 		setMessage('Deposit item deleted!');
 		setOpenToast(true, { message: message });

@@ -20,6 +20,7 @@ export default function useDeleteExpense(id) {
 		}
 
 		dispatch({ type: 'delete/expense', payload: id });
+		if (state.isEditing) dispatch({ type: 'edit/cancel' });
 
 		setMessage('Expense item deleted!');
 		setOpenToast(true, { message: message });
