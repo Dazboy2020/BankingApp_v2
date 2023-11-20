@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppContext } from '../../context/context';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 
 import DepositCard from './DepositCard';
@@ -8,10 +8,12 @@ import DepositCard from './DepositCard';
 const containerVariants = {
 	hidden: {
 		opacity: 0,
-		y: 200,
+		scale: 0.8,
+		y: 400,
 	},
 	visible: {
 		opacity: 1,
+		scale: 1,
 		y: 0,
 		transition: { delay: 0.2 },
 	},
@@ -39,21 +41,21 @@ const DepositItems = () => {
 		moves = [];
 	}
 
-	// const animate =
-	// 	state.addTransactionAnimate === true
-	// 		? classes.movements__row__animate
-	// 		: classes.movements__row;
-
 	return (
-		<motion.ul
-			className={classes.movements__row}
-			variants={containerVariants}
-			initial="hidden"
-			animate="visible"
-		>
-			{moves.map((deposit) => (
-				<DepositCard deposit={deposit} key={deposit.id} />
-			))}
+		<motion.ul className={classes.movements__row}>
+			<AnimatePresence>
+				{moves.map((deposit) => (
+					<motion.li
+						key={deposit.id}
+						variants={containerVariants}
+						initial="hidden"
+						animate="visible"
+						exit={{ y: 200, opacity: 0, transition: { delay: 0.05 } }}
+					>
+						<DepositCard deposit={deposit} />
+					</motion.li>
+				))}
+			</AnimatePresence>
 		</motion.ul>
 	);
 };

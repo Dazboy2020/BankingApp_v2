@@ -3,17 +3,20 @@ import { useAppContext } from '../../context/context';
 
 import ExpenseCard from './ExpenseCard';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const containerVariants = {
 	hidden: {
 		opacity: 0,
-		y: 200,
+		scale: 0.8,
+		y: 400,
 	},
 	visible: {
 		opacity: 1,
 		y: 0,
-		transition: { delay: 0.2, delayChildren: 1 },
+		scale: 1,
+
+		transition: { delay: 0.25 },
 	},
 };
 
@@ -41,16 +44,24 @@ const ExpenseItems = () => {
 
 	return (
 		<motion.ul className={classes.movements__row}>
-			{moves.map((expense, i) => (
-				<motion.li
-					key={expense.id}
-					variants={containerVariants}
-					initial="hidden"
-					animate="visible"
-				>
-					<ExpenseCard expense={expense} />
-				</motion.li>
-			))}
+			<AnimatePresence>
+				{moves.map((expense) => (
+					<motion.li
+						key={expense.id}
+						variants={containerVariants}
+						initial="hidden"
+						animate="visible"
+						exit={{
+							y: 200,
+							opacity: 0,
+							scale: 0.9,
+							transition: { delay: 0.2 },
+						}}
+					>
+						<ExpenseCard expense={expense} />
+					</motion.li>
+				))}
+			</AnimatePresence>
 		</motion.ul>
 	);
 };
