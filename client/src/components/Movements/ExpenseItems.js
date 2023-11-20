@@ -5,6 +5,18 @@ import ExpenseCard from './ExpenseCard';
 
 import { motion } from 'framer-motion';
 
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+		y: 200,
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { delay: 0.2, delayChildren: 1 },
+	},
+};
+
 const ExpenseItems = () => {
 	const { state } = useAppContext();
 
@@ -27,20 +39,17 @@ const ExpenseItems = () => {
 		moves = [];
 	}
 
-	const animate =
-		state.addTransactionAnimate === true
-			? classes.movements__row__animate
-			: classes.movements__row;
-
 	return (
-		<motion.ul
-			className={classes.movements__row}
-			initial={{ y: 200, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
-			transition={{ delay: 0.2 }}
-		>
-			{moves.map((expense) => (
-				<ExpenseCard expense={expense} key={expense.id} />
+		<motion.ul className={classes.movements__row}>
+			{moves.map((expense, i) => (
+				<motion.li
+					key={expense.id}
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+				>
+					<ExpenseCard expense={expense} />
+				</motion.li>
 			))}
 		</motion.ul>
 	);

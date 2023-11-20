@@ -19,7 +19,6 @@ export default function useDeleteExpense(id) {
 			console.error('Error deleting expense:', error);
 		}
 
-		dispatch({ type: 'addTransactionAnimate', payload: true });
 		dispatch({ type: 'delete/expense', payload: id });
 
 		setMessage('Expense item deleted!');

@@ -8,8 +8,6 @@ export default function useDeleteDeposit(id) {
 	const deleteDeposit = async (id) => {
 		const BASE_URL = 'http://localhost:5000';
 
-		// const { state, dispatch, setMessage, message, setOpenToast } =
-		//     useAppContext();
 		let userId = state._id;
 		console.log(userId, id);
 
@@ -20,7 +18,6 @@ export default function useDeleteDeposit(id) {
 			console.error('Error deleting deposit:', error);
 		}
 
-		dispatch({ type: 'addTransactionAnimate', payload: true });
 		dispatch({ type: 'delete/deposit', payload: id });
 
 		setMessage('Deposit item deleted!');

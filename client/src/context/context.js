@@ -148,13 +148,6 @@ function reducer(state, action) {
 				sort: state.sort === true ? false : true,
 			};
 
-		case 'addTransactionAnimate': {
-			return {
-				...state,
-				addTransactionAnimate: action.payload,
-			};
-		}
-
 		case 'addActiveClass': {
 			if (action.payload === 0) {
 				return {

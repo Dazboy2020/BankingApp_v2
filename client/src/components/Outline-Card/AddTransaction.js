@@ -38,7 +38,6 @@ const AddTransaction = () => {
 
 	function handleCancelEdit() {
 		dispatch({ type: 'edit/cancel' });
-		dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	//! Add transaction

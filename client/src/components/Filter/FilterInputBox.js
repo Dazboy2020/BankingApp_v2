@@ -47,7 +47,6 @@ function FilterInputBox() {
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
-		dispatch({ type: 'addTransactionAnimate', payload: true });
 	}
 
 	const formStyling = {

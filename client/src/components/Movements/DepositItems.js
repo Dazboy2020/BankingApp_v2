@@ -5,6 +5,18 @@ import classes from './Movements.module.css';
 
 import DepositCard from './DepositCard';
 
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+		y: 200,
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { delay: 0.2 },
+	},
+};
+
 const DepositItems = () => {
 	const { state } = useAppContext();
 
@@ -35,9 +47,9 @@ const DepositItems = () => {
 	return (
 		<motion.ul
 			className={classes.movements__row}
-			initial={{ y: 200, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
-			transition={{ delay: 0.2 }}
+			variants={containerVariants}
+			initial="hidden"
+			animate="visible"
 		>
 			{moves.map((deposit) => (
 				<DepositCard deposit={deposit} key={deposit.id} />
