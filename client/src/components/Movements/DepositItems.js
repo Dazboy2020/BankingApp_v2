@@ -30,7 +30,7 @@ const DepositItems = () => {
 	}
 
 	return (
-		<motion.ul className={classes.movements__row}>
+		<ul className={classes.movements__row}>
 			<AnimatePresence>
 				{moves.map((deposit) => (
 					<motion.li
@@ -45,7 +45,7 @@ const DepositItems = () => {
 					</motion.li>
 				))}
 			</AnimatePresence>
-		</motion.ul>
+		</ul>
 	);
 };
 
