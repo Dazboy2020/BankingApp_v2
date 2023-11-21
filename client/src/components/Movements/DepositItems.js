@@ -30,7 +30,7 @@ const DepositItems = () => {
 	}
 
 	return (
-		<ul className={classes.movements__row}>
+		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
 			<AnimatePresence>
 				{moves.map((deposit) => (
 					<motion.li

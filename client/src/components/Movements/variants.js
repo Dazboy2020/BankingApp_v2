@@ -1,8 +1,8 @@
 export const containerVariants = {
 	hidden: {
 		opacity: 0,
-		scale: [0.2, 0.4, 0.6, 0.8, 0.9, 1],
-		y: 500,
+		scale: [0.8, 0.9, 1],
+		y: 200,
 	},
 	visible: {
 		opacity: 1,
@@ -20,6 +20,6 @@ export const containerVariants = {
 
 export const exitAnimation = {
 	opacity: 0,
-	scale: [0.9, 0.7, 0.5, 0.3, 0],
+	scale: [0.8, 0],
 	transition: { type: 'spring', mass: 0.5, stiffness: 100 },
 };

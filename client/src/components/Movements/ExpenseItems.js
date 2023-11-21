@@ -27,7 +27,7 @@ const ExpenseItems = () => {
 	}
 
 	return (
-		<ul className={classes.movements__row}>
+		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
 			<AnimatePresence>
 				{moves.map((expense) => (
 					<motion.li
