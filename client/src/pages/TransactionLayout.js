@@ -45,7 +45,13 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 						mt: 4,
 					}}
 				>
-					{!state.isEditing && <FilterItems />}
+					{state.isActive === 1 &&
+						!state.isEditing &&
+						state.expenses.length > 0 && <FilterItems />}
+					{state.isActive === 2 &&
+						!state.isEditing &&
+						state.deposits.length > 0 && <FilterItems />}
+
 					{TransactionItems}
 				</Box>
 			</Box>
