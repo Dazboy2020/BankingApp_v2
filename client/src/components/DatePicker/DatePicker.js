@@ -1,9 +1,11 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useTransactionContext } from '../../context/transactionContext';
 
 export default function DatePickerValue() {
-	const [value, setValue] = React.useState(dayjs('date'));
+	const { pickerDate, setPickerDate } = useTransactionContext();
+	console.log(pickerDate);
 
 	return (
 		<DatePicker
@@ -11,8 +13,8 @@ export default function DatePickerValue() {
 				width: '20ch',
 			}}
 			label="Select date"
-			value={value}
-			onChange={(newValue) => setValue(newValue)}
+			value={pickerDate}
+			onChange={(newValue) => setPickerDate(newValue)}
 		/>
 	);
 }
