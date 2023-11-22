@@ -5,7 +5,20 @@ import { useTransactionContext } from '../../context/transactionContext';
 
 export default function DatePickerValue() {
 	const { pickerDate, setPickerDate } = useTransactionContext();
-	console.log(pickerDate);
+
+	const formatDateToString = (date) => {
+		return date ? dayjs(date).format('DD MMM YYYY') : ''; // Check if date is defined
+	};
+
+	// Get the formatted date string
+	const formattedDate = formatDateToString(pickerDate);
+
+	React.useEffect(
+		function () {
+			setPickerDate(formattedDate);
+		},
+		[formattedDate, setPickerDate]
+	);
 
 	return (
 		<DatePicker

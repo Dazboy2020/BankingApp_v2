@@ -11,6 +11,7 @@ const buttonStyles = {
 	letterSpacing: '.1rem',
 	mt: 4,
 	mr: 2,
+	ml: { xs: 2, s: 0 },
 	fontSize: '1.1rem',
 	paddingRight: '.8rem',
 };

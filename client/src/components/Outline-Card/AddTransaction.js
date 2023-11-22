@@ -25,6 +25,8 @@ const AddTransaction = () => {
 		expenseCategory,
 		setExpenseCategory,
 		expenseType,
+		pickerDate,
+		setPickerDate,
 	} = useTransactionContext();
 
 	const { editExpense } = useEditExpense();
@@ -43,7 +45,6 @@ const AddTransaction = () => {
 	//! Add transaction
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
-		console.log('click');
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 
@@ -71,12 +72,12 @@ const AddTransaction = () => {
 		if (expenseType === 'expense' && state.isEditing === false) {
 			console.log(expenseAmount, expenseCategory, expenseData);
 
-			addExpense(expenseData, expenseAmount, expenseDate, expenseCategory);
+			addExpense(expenseData, expenseAmount, pickerDate, expenseCategory);
 		}
 
 		//! add Deposit //
 		if (expenseType === 'deposit' && state.isEditing === false) {
-			addDeposit(expenseData, expenseAmount, expenseCategory, expenseDate);
+			addDeposit(expenseData, expenseAmount, expenseCategory, pickerDate);
 		}
 
 		setMessage(
@@ -86,6 +87,7 @@ const AddTransaction = () => {
 		setExpenseAmount('');
 		setOpenToast(true, { message: message });
 		setExpenseCategory('');
+		setPickerDate(null);
 	}
 
 	return (
