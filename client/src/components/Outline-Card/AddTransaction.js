@@ -14,6 +14,7 @@ import useEditDeposit from '../../Hooks/useEditDeposit';
 import useAddExpense from '../../Hooks/useAddExpense';
 import useAddDeposit from '../../Hooks/useAddDeposit';
 import ButtonContainer from './ButtonContainer';
+import dayjs from 'dayjs';
 
 const AddTransaction = () => {
 	const { setMessage, state, dispatch, setOpenToast, message } =
@@ -48,13 +49,7 @@ const AddTransaction = () => {
 
 		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
 
-		dispatch({ type: 'addTransactionAnimate', payload: true });
-
-		const month = new Date().toLocaleString('en-GB', { month: 'short' });
-		const day = new Date().toLocaleString('en-GB', { day: '2-digit' });
-		const year = new Date().getFullYear();
-
-		const expenseDate = `${day}  ${month}  ${year}`;
+		if (dayjs(pickerDate).isValid() === false) return;
 
 		let expenseData;
 
