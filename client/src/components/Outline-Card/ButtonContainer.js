@@ -1,5 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { useAppContext } from '../../context/context';
+import DatePickerValue from '../DatePicker/DatePicker';
 
 const buttonStyles = {
 	'&:hover': {
@@ -18,13 +19,14 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 	const { state } = useAppContext();
 
 	return (
-		<Box>
+		<Box display="flex" justifyContent="space-between" alignItems="baseline">
+			<DatePickerValue />
 			<Button
 				variant="contained"
 				sx={buttonStyles}
 				onClick={handleSubmitExpense}
 			>
-				{!state.isEditing ? 'Add item +' : 'Edit'}
+				{!state.isEditing ? '+' : 'Edit'}
 			</Button>
 			{state.isEditing && (
 				<Button

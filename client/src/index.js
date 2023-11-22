@@ -6,6 +6,8 @@ import { ContextProvider } from './context/context';
 import { CssBaseline } from '@mui/material';
 import { DarkModeProvider } from './Hooks/useDarkMode';
 import { TransactionProvider } from './context/transactionContext';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -15,7 +17,9 @@ root.render(
 			<TransactionProvider>
 				<DarkModeProvider>
 					<CssBaseline />
-					<App />
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<App />
+					</LocalizationProvider>
 				</DarkModeProvider>
 			</TransactionProvider>
 		</ContextProvider>

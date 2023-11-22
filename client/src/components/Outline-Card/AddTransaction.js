@@ -97,6 +97,7 @@ const AddTransaction = () => {
 				alignItems: 'flex-start',
 				border: expenseEditMode,
 				borderRadius: '10px',
+				// width: '30rem',
 			}}
 		>
 			<CardContent sx={{ width: '100%' }}>
