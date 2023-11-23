@@ -3,21 +3,9 @@ import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTransactionContext } from '../../context/transactionContext';
 import { useDarkMode } from '../../Hooks/useDarkMode';
-import { createTheme } from '@mui/material';
-import { ThemeProvider } from '@emotion/react';
 
 export default function DatePickerValue() {
 	const { isDarkMode } = useDarkMode();
-
-	// const defaultMaterialTheme = createTheme({
-	// 	MuiTypography: {
-	// 		styleOverrides: {
-	// 			root: {
-	// 				color: isDarkMode ? '#d6d3d1' : '#000',
-	// 			},
-	// 		},
-	// 	},
-	// });
 
 	const pickerStyle = {
 		'& .MuiInputBase-root': {
@@ -34,9 +22,6 @@ export default function DatePickerValue() {
 
 		'& .MuiDateCalendar-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
-		},
-		'& .MuiPickersCalendarHeader-root': {
-			color: 'white',
 		},
 
 		width: '20ch',
@@ -56,7 +41,9 @@ export default function DatePickerValue() {
 
 	React.useEffect(
 		function () {
-			if (expenseAmount && expenseCategory) setPickerDate(formattedDate);
+			if (expenseAmount && expenseCategory) {
+				setPickerDate(formattedDate);
+			}
 		},
 		[formattedDate, setPickerDate, expenseAmount, expenseCategory]
 	);
@@ -64,11 +51,9 @@ export default function DatePickerValue() {
 	const datePickerSlotProps = {
 		day: {
 			sx: {
-				'& .MuiPickersCalendarHeader-root': {
-					color: 'white',
-				},
 				'&.MuiPickersDay-root.Mui-selected': {
 					backgroundColor: isDarkMode ? '#d6d3d1' : '#000',
+					color: 'white',
 				},
 				':not(.Mui-selected)': {
 					backgroundColor: '#fff',
@@ -120,7 +105,6 @@ export default function DatePickerValue() {
 	};
 
 	return (
-		// <ThemeProvider theme={defaultMaterialTheme}>
 		<DatePicker
 			sx={pickerStyle}
 			label="Select date"
@@ -130,6 +114,5 @@ export default function DatePickerValue() {
 				...datePickerSlotProps,
 			}}
 		/>
-		// </ThemeProvider>
 	);
 }
