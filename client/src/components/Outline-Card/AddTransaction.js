@@ -41,6 +41,9 @@ const AddTransaction = () => {
 
 	function handleCancelEdit() {
 		dispatch({ type: 'edit/cancel' });
+		setExpenseAmount('');
+		setExpenseCategory('');
+		setPickerDate(null);
 	}
 
 	//! Add transaction
