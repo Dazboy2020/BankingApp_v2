@@ -40,12 +40,7 @@ const ListNew = (props) => {
 		setModalAction,
 	} = useAppContext();
 
-	const {
-		setPickerDate,
-		setExpenseCategory,
-		setExpenseType,
-		setExpenseAmount,
-	} = useTransactionContext();
+	const { setPickerDate } = useTransactionContext();
 
 	const navigate = useNavigate();
 
@@ -62,13 +57,11 @@ const ListNew = (props) => {
 		if (state.isEditing) dispatch({ type: 'edit/cancel' });
 
 		setPickerDate(null);
-
 		dispatch({ type: 'addActiveClass', payload: index });
-
 		navigate('/' + text);
 	}
 
-	const itemsList = [
+	const sideBarItems = [
 		{
 			text: 'Overview',
 			icon: <HouseIcon />,
@@ -115,7 +108,7 @@ const ListNew = (props) => {
 
 	return (
 		<List>
-			{itemsList.map((item, index) => {
+			{sideBarItems.map((item, index) => {
 				const { text, icon, onClick } = item;
 				const buttonStyles = {
 					'&:hover': {
@@ -153,7 +146,6 @@ function ResponsiveDrawer(props) {
 	const drawer = (
 		<>
 			<Toolbar />
-			{/* <Divider /> */}
 			<List sx={{ mt: '3rem' }}>
 				<ListNew />
 			</List>
