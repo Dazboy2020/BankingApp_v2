@@ -53,6 +53,12 @@ const AddTransaction = () => {
 
 		let expenseData;
 
+		const formatDateToString = (date) => {
+			return date ? dayjs(date).format('DD MMM YYYY') : ''; // Check if date is defined
+		};
+
+		const formattedDate = formatDateToString(pickerDate);
+
 		//! Edit Expense //
 		if (state.isEditing && expenseType === 'expense') {
 			editExpense(expenseAmount, expenseCategory, expenseData);
@@ -65,14 +71,12 @@ const AddTransaction = () => {
 
 		//! add expense //
 		if (expenseType === 'expense' && state.isEditing === false) {
-			console.log(expenseAmount, expenseCategory, expenseData);
-
-			addExpense(expenseData, expenseAmount, pickerDate, expenseCategory);
+			addExpense(expenseData, expenseAmount, formattedDate, expenseCategory);
 		}
 
 		//! add Deposit //
 		if (expenseType === 'deposit' && state.isEditing === false) {
-			addDeposit(expenseData, expenseAmount, expenseCategory, pickerDate);
+			addDeposit(expenseData, expenseAmount, expenseCategory, formattedDate);
 		}
 
 		setMessage(

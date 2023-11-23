@@ -1,5 +1,4 @@
 import * as React from 'react';
-import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTransactionContext } from '../../context/transactionContext';
 import { useDarkMode } from '../../Hooks/useDarkMode';
@@ -29,24 +28,7 @@ export default function DatePickerValue() {
 		color: isDarkMode ? '#d6d3d1' : '#000',
 	};
 
-	const { pickerDate, setPickerDate, expenseAmount, expenseCategory } =
-		useTransactionContext();
-
-	const formatDateToString = (date) => {
-		return date ? dayjs(date).format('DD MMM YYYY') : ''; // Check if date is defined
-	};
-
-	// Get the formatted date string
-	const formattedDate = formatDateToString(pickerDate);
-
-	React.useEffect(
-		function () {
-			if (expenseAmount && expenseCategory) {
-				setPickerDate(formattedDate);
-			}
-		},
-		[formattedDate, setPickerDate, expenseAmount, expenseCategory]
-	);
+	const { pickerDate, setPickerDate } = useTransactionContext();
 
 	const datePickerSlotProps = {
 		day: {
@@ -109,6 +91,7 @@ export default function DatePickerValue() {
 			sx={pickerStyle}
 			label="Select date"
 			value={pickerDate}
+			initialValue={null}
 			onChange={(newValue) => setPickerDate(newValue)}
 			slotProps={{
 				...datePickerSlotProps,
