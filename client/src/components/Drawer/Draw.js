@@ -40,7 +40,12 @@ const ListNew = (props) => {
 		setModalAction,
 	} = useAppContext();
 
-	const { setLabel } = useTransactionContext();
+	const {
+		setPickerDate,
+		setExpenseCategory,
+		setExpenseType,
+		setExpenseAmount,
+	} = useTransactionContext();
 
 	const navigate = useNavigate();
 
@@ -54,10 +59,9 @@ const ListNew = (props) => {
 	function handleLink(text, index) {
 		if (text === 'Logout') return handleClick();
 
-		dispatch({ type: 'edit/cancel' });
+		if (state.isEditing) dispatch({ type: 'edit/cancel' });
 
-		if (state.isActive === 1) setLabel('expense');
-		if (state.isActive === 2) setLabel('deposit');
+		setPickerDate(null);
 
 		dispatch({ type: 'addActiveClass', payload: index });
 

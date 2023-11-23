@@ -1,5 +1,5 @@
 import { Box, MenuItem, Stack, TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../Hooks/useDarkMode';
 
@@ -17,23 +17,22 @@ function TransactionInputBox() {
 		expenseCategory,
 		setExpenseCategory,
 		label,
+		setLabel,
 	} = useTransactionContext();
 
 	const { isDarkMode } = useDarkMode();
-
-	// const [label, setLabel] = useState('');
 
 	//! set expense type //
 	useEffect(
 		function () {
 			if (state.isActive === 1) {
-				// setLabel('expense');
+				setLabel('expense');
 				setExpenseCategory('');
 				setExpenseType('expense');
 				setExpenseAmount('');
 			}
 			if (state.isActive === 2) {
-				// setLabel('deposit');
+				setLabel('deposit');
 				setExpenseCategory('');
 				setExpenseType('deposit');
 				setExpenseAmount('');
@@ -45,6 +44,7 @@ function TransactionInputBox() {
 			setExpenseType,
 			setExpenseCategory,
 			setExpenseAmount,
+			setLabel,
 		]
 	);
 
@@ -133,7 +133,7 @@ function TransactionInputBox() {
 					onChange={handleExpenseCategory}
 					sx={formStyling}
 				>
-					{{ label } === 'expense'
+					{label === 'expense'
 						? menuExpenseItems.map((option) => (
 								<MenuItem
 									key={option.value}
