@@ -1,19 +1,21 @@
 import { Box, Button } from '@mui/material';
 import { useAppContext } from '../../context/context';
 import DatePickerValue from '../DatePicker/DatePicker';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const buttonStyles = {
 	'&:hover': {
 		backgroundColor: '#680747',
 		cursor: 'default',
 	},
+
 	color: 'white',
 	letterSpacing: '.1rem',
 	mt: 4,
 	mr: 2,
 	ml: { xs: 2, s: 0 },
 	fontSize: '1.1rem',
-	paddingRight: '.8rem',
+	// paddingRight: '.8rem',
 };
 
 function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {

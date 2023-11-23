@@ -15,6 +15,7 @@ const buttonStyles = {
 		backgroundColor: '#680747',
 		cursor: 'default',
 	},
+	pl: '1rem',
 };
 
 function EditButton(expense, type) {
