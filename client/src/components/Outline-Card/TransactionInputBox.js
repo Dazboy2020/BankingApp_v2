@@ -26,15 +26,15 @@ function TransactionInputBox() {
 	useEffect(
 		function () {
 			if (state.isActive === 1) {
+				setLabel('expense');
 				setExpenseCategory('');
 				setExpenseType('expense');
-				setLabel('expense');
 				setExpenseAmount('');
 			}
 			if (state.isActive === 2) {
+				setLabel('deposit');
 				setExpenseCategory('');
 				setExpenseType('deposit');
-				setLabel('deposit');
 				setExpenseAmount('');
 			}
 		},

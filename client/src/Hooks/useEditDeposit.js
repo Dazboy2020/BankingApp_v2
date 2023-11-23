@@ -4,14 +4,19 @@ import axios from 'axios';
 export default function useEditDeposit() {
 	const { state, dispatch } = useAppContext();
 
-	const editDeposit = async (expenseData, expenseAmount, expenseCategory) => {
+	const editDeposit = async (
+		expenseData,
+		expenseAmount,
+		expenseCategory,
+		formattedDate
+	) => {
 		const BASE_URL = 'http://localhost:5000';
 
 		expenseData = {
 			id: state.editingDeposit[0].id,
 			amount: +expenseAmount,
 			category: expenseCategory,
-			date: state.editingDeposit[0].date,
+			date: formattedDate,
 		};
 
 		const userId = state._id;

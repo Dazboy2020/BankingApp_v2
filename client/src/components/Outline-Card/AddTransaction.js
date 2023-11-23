@@ -61,12 +61,12 @@ const AddTransaction = () => {
 
 		//! Edit Expense //
 		if (state.isEditing && expenseType === 'expense') {
-			editExpense(expenseAmount, expenseCategory, expenseData);
+			editExpense(expenseAmount, expenseCategory, expenseData, formattedDate);
 		}
 
 		//! edit deposit //
 		if (expenseType === 'deposit' && state.isEditing) {
-			editDeposit(expenseData, expenseAmount, expenseCategory);
+			editDeposit(expenseData, expenseAmount, expenseCategory, formattedDate);
 		}
 
 		//! add expense //

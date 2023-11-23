@@ -4,14 +4,19 @@ import { useAppContext } from '../context/context';
 export default function useEditExpense() {
 	const { state, dispatch } = useAppContext();
 
-	const editExpense = async (expenseAmount, expenseCategory, expenseData) => {
+	const editExpense = async (
+		expenseAmount,
+		expenseCategory,
+		expenseData,
+		formattedDate
+	) => {
 		const BASE_URL = 'http://localhost:5000';
 
 		expenseData = {
 			id: state.editingExpense[0].id,
 			amount: -expenseAmount,
 			category: expenseCategory,
-			date: state.editingExpense[0].date,
+			date: formattedDate,
 		};
 
 		const userId = state._id;
