@@ -26,17 +26,25 @@ function TransactionInputBox() {
 	useEffect(
 		function () {
 			if (state.isActive === 1) {
+				setExpenseCategory('');
 				setExpenseType('expense');
 				setLabel('expense');
-				setExpenseCategory('');
+				setExpenseAmount('');
 			}
 			if (state.isActive === 2) {
+				setExpenseCategory('');
 				setExpenseType('deposit');
 				setLabel('deposit');
-				setExpenseCategory('');
+				setExpenseAmount('');
 			}
 		},
-		[expenseType, state.isActive, setExpenseType, setExpenseCategory]
+		[
+			expenseType,
+			state.isActive,
+			setExpenseType,
+			setExpenseCategory,
+			setExpenseAmount,
+		]
 	);
 
 	function handleReturn(e) {
