@@ -16,23 +16,24 @@ function TransactionInputBox() {
 		setExpenseAmount,
 		expenseCategory,
 		setExpenseCategory,
+		label,
 	} = useTransactionContext();
 
 	const { isDarkMode } = useDarkMode();
 
-	const [label, setLabel] = useState('');
+	// const [label, setLabel] = useState('');
 
 	//! set expense type //
 	useEffect(
 		function () {
 			if (state.isActive === 1) {
-				setLabel('expense');
+				// setLabel('expense');
 				setExpenseCategory('');
 				setExpenseType('expense');
 				setExpenseAmount('');
 			}
 			if (state.isActive === 2) {
-				setLabel('deposit');
+				// setLabel('deposit');
 				setExpenseCategory('');
 				setExpenseType('deposit');
 				setExpenseAmount('');
@@ -132,7 +133,7 @@ function TransactionInputBox() {
 					onChange={handleExpenseCategory}
 					sx={formStyling}
 				>
-					{label === 'expense'
+					{{ label } === 'expense'
 						? menuExpenseItems.map((option) => (
 								<MenuItem
 									key={option.value}

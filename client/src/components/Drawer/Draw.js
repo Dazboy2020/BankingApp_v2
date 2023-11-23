@@ -23,6 +23,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 import Header from './Header';
 import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useTransactionContext } from '../../context/transactionContext';
 
 const drawerWidth = 305;
 
@@ -39,6 +40,8 @@ const ListNew = (props) => {
 		setModalAction,
 	} = useAppContext();
 
+	const { setLabel } = useTransactionContext();
+
 	const navigate = useNavigate();
 
 	function handleClick() {
@@ -52,6 +55,9 @@ const ListNew = (props) => {
 		if (text === 'Logout') return handleClick();
 
 		dispatch({ type: 'edit/cancel' });
+
+		if (state.isActive === 1) setLabel('expense');
+		if (state.isActive === 2) setLabel('deposit');
 
 		dispatch({ type: 'addActiveClass', payload: index });
 
