@@ -1,5 +1,5 @@
-import Income from '../components/Outline-Card/Income';
-import DepositItems from '../components/Movements/DepositItems';
+import Income from '../components/outline-Card/Income';
+import DepositItems from '../components/movements/DepositItems';
 import TransactionLayout from './TransactionLayout';
 
 function Deposits({ children }) {

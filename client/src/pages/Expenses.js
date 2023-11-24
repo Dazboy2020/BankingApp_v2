@@ -1,5 +1,5 @@
-import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
-import ExpenseItems from '../components/Movements/ExpenseItems';
+import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
+import ExpenseItems from '../components/movements/ExpenseItems';
 
 import TransactionLayout from './TransactionLayout';
 

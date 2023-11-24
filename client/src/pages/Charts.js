@@ -1,8 +1,8 @@
-import ResponsiveDrawer from '../components/Drawer/Draw';
+import ResponsiveDrawer from '../components/drawer/Draw';
 import { Box } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import BarChartDeposit from '../components/Charts/BarChartDeposit';
-import BarChartExpenses from '../components/Charts/BarChartExpenses';
+import BarChartDeposit from '../components/charts/BarChartDeposit';
+import BarChartExpenses from '../components/charts/BarChartExpenses';
 
 function Chart() {
 	return (

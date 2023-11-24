@@ -1,7 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { useAppContext } from '../../context/context';
-import DatePickerValue from '../DatePicker/DatePicker';
-import CancelIcon from '@mui/icons-material/Cancel';
+import DatePickerValue from '../datePicker/DatePicker';
 
 const buttonStyles = {
 	'&:hover': {

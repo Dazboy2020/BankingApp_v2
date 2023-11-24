@@ -1,4 +1,4 @@
-import ResponsiveDrawer from '../components/Drawer/Draw';
+import ResponsiveDrawer from '../components/drawer/Draw';
 
 function About() {
 	return <ResponsiveDrawer />;

@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
-import ResponsiveAppBar from '../components/Navbar/NewNav';
+import ResponsiveAppBar from '../components/navbar/NewNav';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';

@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 function Header() {

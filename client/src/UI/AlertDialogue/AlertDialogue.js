@@ -8,9 +8,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { useNavigate } from 'react-router';
 import { useAppContext } from '../../context/context';
-import { useDarkMode } from '../../Hooks/useDarkMode';
-import useDeleteExpense from '../../Hooks/useDeleteExpense';
-import useDeleteDeposit from '../../Hooks/useDeleteDeposit';
+import { useDarkMode } from '../../hooks/useDarkMode';
+import useDeleteExpense from '../../hooks/useDeleteExpense';
+import useDeleteDeposit from '../../hooks/useDeleteDeposit';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;

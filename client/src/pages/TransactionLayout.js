@@ -1,12 +1,12 @@
 import { Box, Stack } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import ResponsiveDrawer from '../components/Drawer/Draw';
-import { useDarkMode } from '../Hooks/useDarkMode';
+import ResponsiveDrawer from '../components/drawer/Draw';
+import { useDarkMode } from '../hooks/useDarkMode';
 import classes from './MainApp.module.css';
 import { useAppContext } from '../context/context';
-import FilterItems from '../components/Filter/Filter';
-import AddTransaction from '../components/Outline-Card/AddTransaction';
-import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
+import FilterItems from '../components/filter/Filter';
+import AddTransaction from '../components/outline-Card/AddTransaction';
+import AvailbleFunds from '../components/outline-Card/AvailableFunds';
 
 function TransactionLayout({ TransactionType, TransactionItems }) {
 	const { isDarkMode } = useDarkMode();

@@ -1,7 +1,7 @@
 import { Box, MenuItem, TextField } from '@mui/material';
 import { useAppContext } from '../../context/context';
 import { useEffect, useState } from 'react';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 function FilterInputBox() {
 	const { dispatch, state } = useAppContext();

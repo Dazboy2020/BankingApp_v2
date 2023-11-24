@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTransactionContext } from '../../context/transactionContext';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 export default function DatePickerValue() {
 	const { isDarkMode } = useDarkMode();

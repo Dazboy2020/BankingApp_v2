@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';

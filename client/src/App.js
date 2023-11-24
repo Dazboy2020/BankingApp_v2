@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import axios from 'axios';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SpinnerFullPage from './components/Spinner/SpinnerFullPage';
+import SpinnerFullPage from './components/spinner/SpinnerFullPage';
 
 import ProtectedRoute from './pages/ProtectedRoute';
 
@@ -10,15 +10,15 @@ import Toast from './UI/AlertDialogue/Toast';
 import { blue, purple } from '@mui/material/colors';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
-import { useDarkMode } from './Hooks/useDarkMode';
+import { useDarkMode } from './hooks/useDarkMode';
 
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
-const ResponsiveAppBar = lazy(() => import('./components/Navbar/NewNav'));
-const Homepage = lazy(() => import('./components/Homepage/Homepage'));
+const ResponsiveAppBar = lazy(() => import('./components/navbar/NewNav'));
+const Homepage = lazy(() => import('./components/homepage/Homepage'));
 const About = lazy(() => import('./pages/About'));
 const Expenses = lazy(() => import('./pages/Expenses'));
 const Deposits = lazy(() => import('./pages/Deposits'));

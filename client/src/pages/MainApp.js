@@ -3,22 +3,22 @@ import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
 
-import MovementList from '../components/Movements/MovementList';
+import MovementList from '../components/movements/MovementList';
 
-import ExpenseSummary from '../components/Outline-Card/ExpenseSummary';
+import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
 
-import PieChart from '../components/Charts/Pie';
-import PieEuro from '../components/Charts/PieEuro';
+import PieChart from '../components/charts/Pie';
+import PieEuro from '../components/charts/PieEuro';
 
 import { Box } from '@mui/material';
 
 import classes from './MainApp.module.css';
-import ResponsiveDrawer from '../components/Drawer/Draw';
-import Income from '../components/Outline-Card/Income';
-import AvailbleFunds from '../components/Outline-Card/AvailableFunds';
-import ExpenseItems from '../components/Movements/ExpenseItems';
-import DepositItems from '../components/Movements/DepositItems';
-import { useDarkMode } from '../Hooks/useDarkMode';
+import ResponsiveDrawer from '../components/drawer/Draw';
+import Income from '../components/outline-Card/Income';
+import AvailbleFunds from '../components/outline-Card/AvailableFunds';
+import ExpenseItems from '../components/movements/ExpenseItems';
+import DepositItems from '../components/movements/DepositItems';
+import { useDarkMode } from '../hooks/useDarkMode';
 
 const movementList = {
 	display: 'flex',

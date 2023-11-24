@@ -22,7 +22,7 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 import Header from './Header';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import { useTransactionContext } from '../../context/transactionContext';
 
 const drawerWidth = 305;

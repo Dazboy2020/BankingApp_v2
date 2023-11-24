@@ -1,11 +1,11 @@
 import { Box, MenuItem, Stack, TextField } from '@mui/material';
 import { useAppContext } from '../../context/context';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 import { menuExpenseItems } from './menuExpenseItems';
 import { menuDepositItems } from './menuDepositItems';
 import { useTransactionContext } from '../../context/transactionContext';
-import useSwitchInputLabel from '../../Hooks/useSwitchInputLabels';
+import useSwitchInputLabel from '../../hooks/useSwitchInputLabels';
 
 function TransactionInputBox() {
 	const { setMessage } = useAppContext();
@@ -19,33 +19,8 @@ function TransactionInputBox() {
 
 	const { isDarkMode } = useDarkMode();
 
+	//! set expense type and input label //
 	useSwitchInputLabel();
-
-	//! set expense type //
-	// useEffect(
-	// 	function () {
-	// 		if (state.isActive === 1) {
-	// 			setLabel('expense');
-	// 			setExpenseCategory('');
-	// 			setExpenseType('expense');
-	// 			setExpenseAmount('');
-	// 		}
-	// 		if (state.isActive === 2) {
-	// 			setLabel('deposit');
-	// 			setExpenseCategory('');
-	// 			setExpenseType('deposit');
-	// 			setExpenseAmount('');
-	// 		}
-	// 	},
-	// 	[
-	// 		expenseType,
-	// 		state.isActive,
-	// 		setExpenseType,
-	// 		setExpenseCategory,
-	// 		setExpenseAmount,
-	// 		setLabel,
-	// 	]
-	// );
 
 	function handleReturn(e) {
 		e.preventDefault();

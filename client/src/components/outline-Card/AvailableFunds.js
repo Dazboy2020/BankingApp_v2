@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useAppContext } from '../../context/context';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomCard from './CustomCard';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 export default function AvailbleFunds() {
 	const { isDarkMode } = useDarkMode();

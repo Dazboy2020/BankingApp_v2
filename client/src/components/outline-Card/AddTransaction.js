@@ -6,13 +6,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography } from '@mui/material';
 
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import TransactionInputBox from './TransactionInputBox';
 import { useTransactionContext } from '../../context/transactionContext';
-import useEditExpense from '../../Hooks/useEditExpense';
-import useEditDeposit from '../../Hooks/useEditDeposit';
-import useAddExpense from '../../Hooks/useAddExpense';
-import useAddDeposit from '../../Hooks/useAddDeposit';
+import useEditExpense from '../../hooks/useEditExpense';
+import useEditDeposit from '../../hooks/useEditDeposit';
+import useAddExpense from '../../hooks/useAddExpense';
+import useAddDeposit from '../../hooks/useAddDeposit';
 import ButtonContainer from './ButtonContainer';
 import dayjs from 'dayjs';
 

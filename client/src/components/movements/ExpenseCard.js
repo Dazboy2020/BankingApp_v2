@@ -1,19 +1,18 @@
-import React from 'react';
 import { Paper, Stack } from '@mui/material';
 import classes from './Movements.module.css';
 import { Box } from '@mui/material';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { useAppContext } from '../../context/context';
+import SouthEastIcon from '@mui/icons-material/SouthEast';
 
-import DeleteButton from '../Buttons/DeleteButton';
-import EditButton from '../Buttons/EditButton';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import DeleteButton from '../buttons/DeleteButton';
+import EditButton from '../buttons/EditButton';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
-function DepositCard({ deposit }) {
+function ExpenseCard({ expense }) {
 	const { state } = useAppContext();
 	const { isDarkMode } = useDarkMode();
 
-	const depositEditMode = state.isEditing
+	const expenseEditMode = state.isEditing
 		? classes.movements__row__edit
 		: classes.movements__row;
 
@@ -25,17 +24,17 @@ function DepositCard({ deposit }) {
 				borderRadius: '10px',
 			}}
 		>
-			<Stack component="section" className={depositEditMode}>
+			<Stack component="section" className={expenseEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-					<span className={classes.movements__type}>Income</span>
-					<NorthEastIcon sx={{ fontSize: '40px', color: 'green' }} />
+					<span className={classes.movements__type}>Expense</span>
+					<SouthEastIcon sx={{ fontSize: '40px', color: 'red' }} />
 				</Box>
 				<span
 					className={
 						isDarkMode ? classes.movements__date__dark : classes.movements__date
 					}
 				>
-					{deposit.date}
+					{expense.date}
 				</span>
 				<span
 					className={
@@ -44,7 +43,7 @@ function DepositCard({ deposit }) {
 							: classes.movements__category
 					}
 				>
-					{deposit.category}
+					{expense.category}
 				</span>
 				<Box
 					sx={{
@@ -55,11 +54,17 @@ function DepositCard({ deposit }) {
 				>
 					<Box sx={{ mt: '2rem' }}>
 						{state.isActive !== 0 && !state.isEditing && (
-							<EditButton expense={deposit.id} type="deposit" />
+							<EditButton expense={expense.id} type="expense" />
 						)}
-						{state.isActive !== 0 && <DeleteButton expense={deposit.id} />}
+
+						{state.isActive !== 0 && <DeleteButton expense={expense.id} />}
 					</Box>
-					<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'flex-end',
+						}}
+					>
 						<span
 							className={
 								isDarkMode
@@ -67,7 +72,7 @@ function DepositCard({ deposit }) {
 									: classes.movements__value
 							}
 						>
-							€{deposit.amount}
+							€{expense.amount}
 						</span>
 					</Box>
 				</Box>
@@ -76,4 +81,4 @@ function DepositCard({ deposit }) {
 	);
 }
 
-export default DepositCard;
+export default ExpenseCard;

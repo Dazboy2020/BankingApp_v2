@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
-import { useDarkMode } from '../../Hooks/useDarkMode';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 function ChartCard({ children, title = 'EXPENSES' }) {
 	const { isDarkMode } = useDarkMode();

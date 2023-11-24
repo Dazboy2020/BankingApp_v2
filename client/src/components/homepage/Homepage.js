@@ -1,5 +1,5 @@
-import useAutoLogin from '../../Hooks/useAutoLogin';
-import { useFetchPrivateUserData } from '../../Hooks/useFetchPrivateUserData';
+import useAutoLogin from '../../hooks/useAutoLogin';
+import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import styles from './Homepage.module.css';
 
 export default function Homepage() {
