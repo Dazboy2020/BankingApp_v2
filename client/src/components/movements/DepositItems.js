@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import { containerVariants } from './variants';
 import { exitAnimation } from './variants';
-
 import DepositCard from './DepositCard';
 
 const DepositItems = () => {
@@ -14,6 +13,8 @@ const DepositItems = () => {
 
 	if (state.isActive === 0) {
 		moves = state.deposits;
+
+		// moves = state.deposits;
 	} else {
 		if (state.isEditing) {
 			moves = state.editingDeposit;

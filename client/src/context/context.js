@@ -15,7 +15,6 @@ const inititalState = {
 	sort: false,
 	message: '',
 	_id: '',
-	addTransactionAnimate: false,
 	isActive: 0,
 	isEditing: false,
 	editingExpense: [{}],
@@ -63,15 +62,28 @@ function reducer(state, action) {
 			};
 
 		case 'add/expense':
+			const sortedExpenses = [action.payload, ...state.expenses];
+			sortedExpenses.sort((a, b) => {
+				const dateA = new Date(a.date);
+				const dateB = new Date(b.date);
+				return dateB - dateA; // Ascending order, for descending: dateB - dateA
+			});
 			return {
 				...state,
-				expenses: [action.payload, ...state.expenses],
+				expenses: sortedExpenses,
 			};
 
 		case 'add/deposit':
+			const sortedDeposits = [action.payload, ...state.deposits];
+			sortedDeposits.sort((a, b) => {
+				const dateA = new Date(a.date);
+				const dateB = new Date(b.date);
+				return dateB - dateA; // Ascending order, for descending: dateB - dateA
+			});
+
 			return {
 				...state,
-				deposits: [action.payload, ...state.deposits],
+				deposits: sortedDeposits,
 			};
 
 		case 'edit/expense': {
