@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useState } from 'react';
+import { sortArrayByDate } from '../utils/sortArray';
 
 const AppContext = createContext();
 
@@ -34,6 +35,12 @@ function reducer(state, action) {
 			};
 		}
 		case 'user/MongoLoggedIn': {
+			const arrayOfExpenses = action.payload.user.expenses;
+			const arrayOfDeposits = action.payload.user.deposits;
+
+			sortArrayByDate(arrayOfExpenses);
+			sortArrayByDate(arrayOfDeposits);
+
 			return {
 				...state,
 				loggedInAccount: action.payload.user,
@@ -43,8 +50,8 @@ function reducer(state, action) {
 				user: action.payload.user.username,
 				token: action.payload.token,
 
-				expenses: action.payload.user.expenses,
-				deposits: action.payload.user.deposits,
+				expenses: arrayOfExpenses,
+				deposits: arrayOfDeposits,
 				_id: action.payload.user._id,
 				filteredExpenses: null,
 				isActive: 0,
@@ -63,11 +70,8 @@ function reducer(state, action) {
 
 		case 'add/expense':
 			const sortedExpenses = [action.payload, ...state.expenses];
-			sortedExpenses.sort((a, b) => {
-				const dateA = new Date(a.date);
-				const dateB = new Date(b.date);
-				return dateB - dateA; // Ascending order, for descending: dateB - dateA
-			});
+
+			sortArrayByDate(sortedExpenses);
 			return {
 				...state,
 				expenses: sortedExpenses,
@@ -75,11 +79,7 @@ function reducer(state, action) {
 
 		case 'add/deposit':
 			const sortedDeposits = [action.payload, ...state.deposits];
-			sortedDeposits.sort((a, b) => {
-				const dateA = new Date(a.date);
-				const dateB = new Date(b.date);
-				return dateB - dateA; // Ascending order, for descending: dateB - dateA
-			});
+			sortArrayByDate(sortedDeposits);
 
 			return {
 				...state,
@@ -115,12 +115,15 @@ function reducer(state, action) {
 				}
 			});
 
+			sortArrayByDate(updatedExpenses);
+
 			return {
 				...state,
 				expenses: updatedExpenses,
 				isEditing: false,
 			};
 		}
+
 		case 'add/editedDeposit': {
 			const updatedDeposits = state.deposits.map((deposit) => {
 				if (deposit.id === action.payload.id) {
@@ -132,6 +135,9 @@ function reducer(state, action) {
 					return deposit;
 				}
 			});
+
+			sortArrayByDate(updatedDeposits);
+
 			return {
 				...state,
 				deposits: updatedDeposits,
