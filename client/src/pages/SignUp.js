@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useAppContext } from '../context/context';
+import { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,15 +13,12 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import ResponsiveAppBar from '../components/navbar/NewNav';
-import { NavLink, useNavigate } from 'react-router-dom';
 
 import classes from './SignIn.module.css';
-import { useAppContext } from '../context/context';
-import { useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../utils/BASE_URL';
 
 function Copyright(props) {
 	return (
@@ -50,8 +51,6 @@ export default function SignUp() {
 		password: '',
 		confirmPassword: '',
 	});
-
-	const BASE_URL = 'http://localhost:5000';
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();

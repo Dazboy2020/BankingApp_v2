@@ -1,3 +1,4 @@
+import { useDarkMode } from '../hooks/useDarkMode';
 import { Stack } from '@mui/system';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
@@ -18,7 +19,6 @@ import Income from '../components/outline-Card/Income';
 import AvailbleFunds from '../components/outline-Card/AvailableFunds';
 import ExpenseItems from '../components/movements/ExpenseItems';
 import DepositItems from '../components/movements/DepositItems';
-import { useDarkMode } from '../hooks/useDarkMode';
 
 const rootWindowLayout = {
 	minHeight: '100vh',

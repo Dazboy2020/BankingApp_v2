@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { useAppContext } from '../context/context';
+import axios from 'axios';
+import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useEditExpense() {
 	const { state, dispatch } = useAppContext();
@@ -10,8 +11,6 @@ export default function useEditExpense() {
 		expenseData,
 		formattedDate
 	) => {
-		const BASE_URL = 'http://localhost:5000';
-
 		expenseData = {
 			id: state.editingExpense[0].id,
 			amount: -expenseAmount,

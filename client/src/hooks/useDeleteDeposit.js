@@ -1,13 +1,12 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
+import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useDeleteDeposit(id) {
 	const { state, dispatch, setMessage, message, setOpenToast } =
 		useAppContext();
 
 	const deleteDeposit = async (id) => {
-		const BASE_URL = 'http://localhost:5000';
-
 		let userId = state._id;
 		console.log(userId, id);
 

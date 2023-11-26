@@ -1,5 +1,6 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
+import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useAddExpense() {
 	const { state, dispatch } = useAppContext();
@@ -10,8 +11,6 @@ export default function useAddExpense() {
 		expenseDate,
 		expenseCategory
 	) => {
-		const BASE_URL = 'http://localhost:5000';
-
 		expenseData = {
 			id: window.crypto.randomUUID(),
 			amount: -expenseAmount,

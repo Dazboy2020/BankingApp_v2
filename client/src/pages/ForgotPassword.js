@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useAppContext } from '../context/context';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,12 +16,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/navbar/NewNav';
 
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { BASE_URL } from '../utils/BASE_URL';
 
 import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
-import { useAppContext } from '../context/context';
 
 import axios from 'axios';
 
@@ -54,8 +55,6 @@ export default function ForgotPassword() {
 	const [error, setError] = useState('');
 
 	const [isLoading, setIsLoading] = useState(false);
-
-	const BASE_URL = 'http://localhost:5000';
 
 	const signInclass = isLoading
 		? classes.loginBoxSigningIn

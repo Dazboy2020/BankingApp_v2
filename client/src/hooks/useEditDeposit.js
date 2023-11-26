@@ -1,5 +1,6 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
+import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useEditDeposit() {
 	const { state, dispatch } = useAppContext();
@@ -10,8 +11,6 @@ export default function useEditDeposit() {
 		expenseCategory,
 		formattedDate
 	) => {
-		const BASE_URL = 'http://localhost:5000';
-
 		expenseData = {
 			id: state.editingDeposit[0].id,
 			amount: +expenseAmount,

@@ -1,10 +1,9 @@
-import useAutoLogin from '../../hooks/useAutoLogin';
 import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
+import useAutoLogin from '../../hooks/useAutoLogin';
 import styles from './Homepage.module.css';
+import { BASE_URL } from '../../utils/BASE_URL';
 
 export default function Homepage() {
-	const BASE_URL = 'http://localhost:5000';
-
 	//? Checks to see if JWT token and if so, fetches data via middleware Protected Route
 	useFetchPrivateUserData(`${BASE_URL}/userdata`);
 

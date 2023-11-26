@@ -1,7 +1,8 @@
 import { useAppContext } from '../context/context';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SignIn from '../pages/SignIn';
-import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useGetUserToken() {
 	const { dispatch, setMessage, setOpenToast } = useAppContext();
@@ -9,8 +10,6 @@ export default function useGetUserToken() {
 	const navigate = useNavigate();
 
 	const getUserToken = async (data) => {
-		const BASE_URL = 'http://localhost:5000';
-
 		try {
 			dispatch({ type: 'isLoading', payload: true });
 
