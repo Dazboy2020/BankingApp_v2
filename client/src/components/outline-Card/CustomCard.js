@@ -12,11 +12,14 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 			sx={{
 				display: 'flex',
 				flexGrow: 1,
-				mb: 2,
+				mb: { xs: 1.5, s: 2 },
 				borderRadius: '10px',
+				'.MuiCardContent-root': {
+					pb: { xs: 0, s: 1, sm: 1.2 },
+				},
 			}}
 		>
-			<CardContent sx={{ width: '100%' }}>
+			<CardContent sx={{ width: '100%', p: 1 }}>
 				<Box
 					sx={{
 						display: 'flex',
@@ -28,7 +31,6 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 					<Typography
 						variant="h5"
 						sx={{
-							mb: 0.5,
 							fontWeight: 'bold',
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
@@ -39,7 +41,6 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 				</Box>
 				<Typography
 					sx={{ fontSize: '2rem', color: isDarkMode ? '#fff' : '#000' }}
-					gutterBottom
 				>
 					{transactionTotal}
 				</Typography>

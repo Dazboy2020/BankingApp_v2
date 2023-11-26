@@ -20,10 +20,7 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 				className={isDarkMode ? classes.darkmode : classes.body}
 				sx={{
 					minHeight: '100vh',
-
-					// ml: { lg: '18.8rem', md: '18rem', sm: '16rem', s: 0 },
 					ml: { lg: '19rem', md: '19rem', sm: '16.5rem', s: 0 },
-
 					mr: { lg: 0, sm: 0, m: 0 },
 				}}
 			>
@@ -36,9 +33,9 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 						mt: { xs: 5, md: 10 },
 					}}
 				>
-					<AddTransaction />
-					{TransactionType}
 					<AvailbleFunds />
+					{TransactionType}
+					<AddTransaction />
 				</Stack>
 				<Box
 					sx={{

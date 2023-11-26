@@ -94,8 +94,6 @@ function App() {
 					root: {
 						backgroundColor: isDarkMode ? '#171717' : '#f0ebd8',
 						transition: '400ms',
-						// backgroundColor: '#1c1917',
-						// borderRadius: '10px',
 					},
 				},
 			},

@@ -88,7 +88,7 @@ function FilterInputBox() {
 				select
 				label="Select"
 				value={expenseCategory}
-				helperText="Category"
+				// helperText="Category"
 				color="secondary"
 				onChange={handleExpenseCategory}
 				sx={formStyling}
