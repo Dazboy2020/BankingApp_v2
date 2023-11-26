@@ -67,66 +67,73 @@ function TransactionInputBox() {
 		>
 			<Box
 				sx={{
-					'& .MuiTextField-root': {
-						m: 1,
-						width: '20ch',
-					},
+					display: 'flex',
+					flexDirection: { xs: 'column', md: 'row' },
 				}}
-				noValidate
-				autoComplete="off"
 			>
-				<form component="form" onSubmit={handleReturn}>
-					<TextField
-						onChange={handleExpenseAmount}
-						id="outlined-select-currency"
-						type="number"
-						label="amount"
-						value={expenseAmount}
-						helperText="Select amount"
-						color="secondary"
-						sx={formStyling}
-					></TextField>
-				</form>
-			</Box>
-
-			<Box
-				component="form"
-				sx={{
-					'& .MuiTextField-root': { m: 1, width: '20ch' },
-				}}
-				noValidate
-				autoComplete="off"
-			>
-				<TextField
-					id="outlined-select-currency"
-					select
-					label="Select"
-					value={expenseCategory}
-					helperText="Category"
-					color="secondary"
-					onChange={handleExpenseCategory}
-					sx={formStyling}
+				<Box
+					sx={{
+						'& .MuiTextField-root': {
+							m: 1,
+							width: { xs: '20ch', lg: '10ch' },
+						},
+					}}
+					noValidate
+					autoComplete="off"
 				>
-					{label === 'expense'
-						? menuExpenseItems.map((option) => (
-								<MenuItem
-									key={option.value}
-									value={option.value}
-									sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-								>
-									{option.label}
-								</MenuItem>
-						  ))
-						: menuDepositItems.map((option) => (
-								<MenuItem
-									key={option.value}
-									value={option.value}
-									sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-								>
-									{option.label}
-								</MenuItem>
-						  ))}
-				</TextField>
+					<form component="form" onSubmit={handleReturn}>
+						<TextField
+							onChange={handleExpenseAmount}
+							id="outlined-select-currency"
+							type="number"
+							label="amount"
+							value={expenseAmount}
+							helperText="Select amount"
+							color="secondary"
+							sx={formStyling}
+						></TextField>
+					</form>
+				</Box>
+
+				<Box
+					component="form"
+					sx={{
+						'& .MuiTextField-root': { m: 1, width: '20ch' },
+					}}
+					noValidate
+					autoComplete="off"
+				>
+					<TextField
+						id="outlined-select-currency"
+						select
+						label="Select"
+						value={expenseCategory}
+						helperText="Category"
+						color="secondary"
+						onChange={handleExpenseCategory}
+						sx={formStyling}
+					>
+						{label === 'expense'
+							? menuExpenseItems.map((option) => (
+									<MenuItem
+										key={option.value}
+										value={option.value}
+										sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+									>
+										{option.label}
+									</MenuItem>
+							  ))
+							: menuDepositItems.map((option) => (
+									<MenuItem
+										key={option.value}
+										value={option.value}
+										sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+									>
+										{option.label}
+									</MenuItem>
+							  ))}
+					</TextField>
+				</Box>
 			</Box>
 		</Stack>
 	);

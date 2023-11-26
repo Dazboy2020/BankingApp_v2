@@ -20,13 +20,13 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 				className={isDarkMode ? classes.darkmode : classes.body}
 				sx={{
 					minHeight: '100vh',
-					ml: { lg: '19rem', md: '19rem', sm: '16.5rem', s: 0 },
+					ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
 					mr: { lg: 0, sm: 0, m: 0 },
 				}}
 			>
 				<Stack
 					spacing={2}
-					direction={{ sm: 'column', md: 'row' }}
+					direction={{ md: 'column', lg: 'row' }}
 					sx={{
 						ml: { xs: 3, sm: 6 },
 						mr: { xs: 3, sm: 6 },

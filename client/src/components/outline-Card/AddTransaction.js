@@ -97,11 +97,11 @@ const AddTransaction = () => {
 			component="article"
 			sx={{
 				display: 'flex',
+				flexGrow: 1,
 				mb: 2,
 				alignItems: 'flex-start',
 				border: expenseEditMode,
 				borderRadius: '10px',
-				// width: '30rem',
 			}}
 		>
 			<CardContent sx={{ width: '100%' }}>

@@ -17,6 +17,7 @@ export default function DatePickerValue() {
 		},
 		'& .MuiSvgIcon-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
+			fontSize: '1.75rem',
 		},
 
 		'& .MuiDateCalendar-root': {
