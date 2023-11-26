@@ -25,7 +25,8 @@ import Header from './Header';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useTransactionContext } from '../../context/transactionContext';
 
-const drawerWidth = 305;
+// const drawerWidth = 305;
+const drawerWidth = 360;
 
 const ListNew = (props) => {
 	const {
@@ -103,6 +104,7 @@ const ListNew = (props) => {
 			letterSpacing: '.1rem',
 			fontSize: '1.4rem',
 			fontWeight: 'bold',
+			ml: '1rem',
 		},
 	};
 

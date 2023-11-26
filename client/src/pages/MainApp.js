@@ -22,7 +22,7 @@ import DepositItems from '../components/movements/DepositItems';
 
 const rootWindowLayout = {
 	minHeight: '100vh',
-	ml: { lg: '19rem', md: '19rem', sm: '16.5rem', s: 0 },
+	ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
 	mr: { lg: 0, sm: 0, m: 0 },
 	backgroundColor: '#343a40',
 };

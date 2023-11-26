@@ -52,8 +52,8 @@ function App() {
 			MuiSvgIcon: {
 				styleOverrides: {
 					root: {
-						// Set the color to white
 						color: 'white',
+						fontSize: '3rem',
 					},
 				},
 			},

@@ -19,7 +19,7 @@ function ChartCard({ children, title = 'EXPENSES' }) {
 					<Typography
 						sx={{
 							margin: 'auto',
-							width: '95%',
+							width: '100%',
 							fontSize: { xs: '1rem', md: '1.5rem' },
 							padding: { xs: '.8rem', md: '.5rem' },
 							backgroundColor: isDarkMode ? '#212529' : '#495057',
