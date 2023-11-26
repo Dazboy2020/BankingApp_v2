@@ -15,7 +15,7 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 				mb: { xs: 1.5, s: 2 },
 				borderRadius: '10px',
 				'.MuiCardContent-root': {
-					pb: { xs: 0, s: 1, sm: 1.2 },
+					pb: { xs: 0, s: 0.5, sm: 1.2 },
 				},
 			}}
 		>

@@ -27,18 +27,10 @@ const rootWindowLayout = {
 	backgroundColor: '#343a40',
 };
 
-const movementList = {
-	display: 'flex',
-	flexGrow: 1,
-	width: '100%',
-};
-
 const chartStyle = {
 	display: 'flex',
 	alignItems: 'centre',
 	justifyContent: 'space-around',
-	paddingTop: '1rem',
-	// backgroundColor: '##f3e5f5',
 	mb: 2,
 	mt: 3,
 };
@@ -63,6 +55,7 @@ function MainApp() {
 						mt: 4,
 					}}
 				>
+					{/* //! Summary Cards */}
 					<Stack
 						component="section"
 						spacing={3}
@@ -89,12 +82,8 @@ function MainApp() {
 					</Stack>
 					{/* //!Movements */}
 					<MovementList>
-						<Box component="section" sx={movementList}>
-							<DepositItems />
-						</Box>
-						<Box component="section" sx={movementList}>
-							<ExpenseItems />
-						</Box>
+						<ExpenseItems />
+						<DepositItems />
 					</MovementList>
 				</Box>
 			</Box>
