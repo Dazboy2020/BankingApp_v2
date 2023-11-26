@@ -9,7 +9,6 @@ const inititalState = {
 	token: '',
 	isLoggedIn: false,
 	loggedInAccount: '',
-	pin: '',
 	username: '',
 	lastName: '',
 	error: false,

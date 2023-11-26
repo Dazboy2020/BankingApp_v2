@@ -79,11 +79,11 @@ function App() {
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						backgroundColor: 'MediumVioletRed', // Set your desired background color here
+						backgroundColor: 'MediumVioletRed', // Set desired background color here
 						color: 'white',
 						letterSpacing: '.1rem',
 						'&.css-ikss9a-MuiTypography-root': {
-							letterSpacing: '.1rem', // Adjust the letter-spacing value as needed
+							letterSpacing: '.1rem',
 						},
 						padding: '.5rem',
 					},

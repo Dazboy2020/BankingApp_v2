@@ -31,7 +31,7 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 					sx={{
 						ml: 6,
 						mr: 6,
-						mt: 10,
+						mt: { xs: 5, md: 10 },
 					}}
 				>
 					<AddTransaction />
