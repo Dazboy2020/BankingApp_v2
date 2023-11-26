@@ -6,10 +6,10 @@ const MovementList = ({ children }) => {
 	return (
 		<section>
 			<Stack
-				sx={{ ml: 4, mr: 4, mt: 4 }}
 				spacing={4}
 				component="section"
 				direction={{ xs: 'column', md: 'row' }}
+				sx={{ backgroundColor: '#343a40' }}
 			>
 				{children}
 			</Stack>

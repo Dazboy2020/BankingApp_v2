@@ -20,6 +20,13 @@ import ExpenseItems from '../components/movements/ExpenseItems';
 import DepositItems from '../components/movements/DepositItems';
 import { useDarkMode } from '../hooks/useDarkMode';
 
+const rootWindowLayout = {
+	minHeight: '100vh',
+	ml: { lg: '19rem', md: '19rem', sm: '16.5rem', s: 0 },
+	mr: { lg: 0, sm: 0, m: 0 },
+	backgroundColor: '#343a40',
+};
+
 const movementList = {
 	display: 'flex',
 	flexGrow: 1,
@@ -33,8 +40,6 @@ const chartStyle = {
 	paddingTop: '1rem',
 	// backgroundColor: '##f3e5f5',
 	mb: 2,
-	ml: 4,
-	mr: 4,
 	mt: 3,
 };
 
@@ -49,17 +54,13 @@ function MainApp() {
 			<Box
 				component="main"
 				className={isDarkMode ? classes.darkmode : classes.body}
-				sx={{
-					minHeight: '100vh',
-
-					ml: { lg: '18.8rem', md: '18rem', sm: '16rem', s: 0 },
-					mr: { lg: 0, sm: 0, m: 0 },
-					backgroundColor: '#343a40',
-				}}
+				sx={rootWindowLayout}
 			>
 				<Box
 					sx={{
-						margin: { xs: { ml: 0, mr: 0, mt: 2, mb: 2 }, md: '1rem' },
+						ml: { xs: 3, sm: 6 },
+						mr: { xs: 3, sm: 6 },
+						mt: 4,
 					}}
 				>
 					<Stack
@@ -68,9 +69,6 @@ function MainApp() {
 						direction={{ sm: 'column', md: 'row' }}
 						sx={{
 							justifyContent: 'space-between',
-							ml: 4,
-							mr: 4,
-
 							mt: { xs: 5, md: 10 },
 						}}
 					>
@@ -89,7 +87,6 @@ function MainApp() {
 						<PieChart />
 						<PieEuro />
 					</Stack>
-
 					{/* //!Movements */}
 					<MovementList>
 						<Box component="section" sx={movementList}>
