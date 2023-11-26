@@ -70,6 +70,7 @@ function MainApp() {
 							justifyContent: 'space-between',
 							ml: 4,
 							mr: 4,
+
 							mt: { xs: 5, md: 10 },
 						}}
 					>

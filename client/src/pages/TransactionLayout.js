@@ -29,8 +29,8 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 					spacing={2}
 					direction={{ sm: 'column', md: 'row' }}
 					sx={{
-						ml: 6,
-						mr: 6,
+						ml: { xs: 3, sm: 6 },
+						mr: { xs: 3, sm: 6 },
 						mt: { xs: 5, md: 10 },
 					}}
 				>
@@ -40,8 +40,8 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 				</Stack>
 				<Box
 					sx={{
-						ml: 6,
-						mr: 6,
+						ml: { xs: 3, sm: 6 },
+						mr: { xs: 3, sm: 6 },
 						mt: 4,
 					}}
 				>
