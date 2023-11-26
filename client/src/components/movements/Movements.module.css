@@ -55,6 +55,18 @@
 	border-radius: 8px;
 	font-weight: 600;
 }
+.movements__type__dark {
+	background-color: #212529;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	color: #fff;
+	padding: 0.5rem;
+	width: 15rem;
+	margin-bottom: 0.1rem;
+	border-radius: 8px;
+	font-weight: 600;
+}
 
 .movements__value {
 	font-size: 1.2rem;

@@ -27,7 +27,15 @@ function DepositCard({ deposit }) {
 		>
 			<Stack component="section" className={depositEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-					<span className={classes.movements__type}>Income</span>
+					<span
+						className={
+							isDarkMode
+								? classes.movements__type__dark
+								: classes.movements__type
+						}
+					>
+						Income
+					</span>
 					<NorthEastIcon sx={{ fontSize: '40px', color: 'green' }} />
 				</Box>
 				<span

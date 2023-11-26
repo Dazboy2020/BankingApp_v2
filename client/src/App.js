@@ -97,6 +97,15 @@ function App() {
 					},
 				},
 			},
+			MuiCardContent: {
+				styleOverrides: {
+					root: {
+						'.MuiCardContent-root': {
+							pb: { xs: 0, s: 0.5, sm: 1.2 },
+						},
+					},
+				},
+			},
 		},
 	});
 	return (

@@ -14,9 +14,6 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 				flexGrow: 1,
 				mb: { xs: 1.5, s: 2 },
 				borderRadius: '10px',
-				'.MuiCardContent-root': {
-					pb: { xs: 0, s: 0.5, sm: 1.2 },
-				},
 			}}
 		>
 			<CardContent sx={{ width: '100%', p: 1 }}>

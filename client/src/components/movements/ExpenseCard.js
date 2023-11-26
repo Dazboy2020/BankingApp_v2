@@ -26,7 +26,15 @@ function ExpenseCard({ expense }) {
 		>
 			<Stack component="section" className={expenseEditMode}>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-					<span className={classes.movements__type}>Expense</span>
+					<span
+						className={
+							isDarkMode
+								? classes.movements__type__dark
+								: classes.movements__type
+						}
+					>
+						Expense
+					</span>
 					<SouthEastIcon sx={{ fontSize: '40px', color: 'red' }} />
 				</Box>
 				<span
