@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography, Stack } from '@mui/material';
-import FilterInputBox from './FilterInputBox';
+// import FilterInputBox from './FilterInputBox';
+import DateMenu from './DateMenu';
 
 const FilterItems = () => {
 	const { isDarkMode } = useDarkMode();
@@ -15,7 +16,6 @@ const FilterItems = () => {
 			component="article"
 			sx={{
 				display: 'flex',
-
 				mb: 2,
 				alignItems: 'flex-start',
 				borderRadius: '10px',
@@ -52,9 +52,11 @@ const FilterItems = () => {
 					sx={{
 						display: 'flex',
 						justifyContent: 'space-between',
+						alignItems: 'center',
 					}}
 				>
-					<FilterInputBox />
+					<DateMenu />
+					{/* <FilterInputBox /> */}
 				</Stack>
 			</CardContent>
 		</Card>

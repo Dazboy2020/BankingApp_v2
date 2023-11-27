@@ -85,7 +85,7 @@ function App() {
 						'&.css-ikss9a-MuiTypography-root': {
 							letterSpacing: '.1rem',
 						},
-						padding: '.5rem',
+						padding: { xs: '.6rem', s: '.5rem' },
 					},
 				},
 			},

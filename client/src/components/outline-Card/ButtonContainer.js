@@ -1,6 +1,7 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, useMediaQuery } from '@mui/material';
 import { useAppContext } from '../../context/context';
 import DatePickerValue from '../datePicker/DatePicker';
+import { useTheme } from '@emotion/react';
 
 const buttonStyles = {
 	'&:hover': {
@@ -9,7 +10,6 @@ const buttonStyles = {
 	},
 
 	color: 'white',
-	mr: 1,
 	ml: { xs: 1, s: 0 },
 	fontSize: '1.1rem',
 };
@@ -17,8 +17,15 @@ const buttonStyles = {
 function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 	const { state } = useAppContext();
 
+	const theme = useTheme();
+	const isMdAndAbove = useMediaQuery(theme.breakpoints.up('lg'));
+
 	return (
-		<Box display="flex" alignItems="center">
+		<Box
+			display="flex"
+			justifyContent={isMdAndAbove ? 'flex-start' : 'space-between'}
+			alignItems="center"
+		>
 			<DatePickerValue />
 			<Button
 				variant="contained"
