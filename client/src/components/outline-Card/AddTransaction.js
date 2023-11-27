@@ -1,20 +1,21 @@
 import React from 'react';
 import { useAppContext } from '../../context/context';
+import { useTransactionContext } from '../../context/transactionContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography } from '@mui/material';
 
-import { useDarkMode } from '../../hooks/useDarkMode';
 import TransactionInputBox from './TransactionInputBox';
-import { useTransactionContext } from '../../context/transactionContext';
 import useEditExpense from '../../hooks/useEditExpense';
 import useEditDeposit from '../../hooks/useEditDeposit';
 import useAddExpense from '../../hooks/useAddExpense';
 import useAddDeposit from '../../hooks/useAddDeposit';
 import ButtonContainer from './ButtonContainer';
 import dayjs from 'dayjs';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 
 const AddTransaction = () => {
 	const { setMessage, state, dispatch, setOpenToast, message } =
@@ -104,8 +105,19 @@ const AddTransaction = () => {
 				borderRadius: '10px',
 			}}
 		>
-			<CardContent sx={{ width: '100%' }}>
-				<Box>
+			<CardContent
+				sx={{
+					width: '100%',
+					p: 1,
+				}}
+			>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+					}}
+				>
 					<Typography
 						variant="h5"
 						sx={{
@@ -116,6 +128,9 @@ const AddTransaction = () => {
 					>
 						{!state.isEditing ? 'Add a Transaction:' : 'Edit Mode'}
 					</Typography>
+					<PointOfSaleIcon
+						sx={{ color: 'green', fontSize: { xs: '50px', sm: '60px' } }}
+					/>
 				</Box>
 
 				<TransactionInputBox />

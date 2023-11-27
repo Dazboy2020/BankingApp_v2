@@ -9,10 +9,10 @@ const buttonStyles = {
 	},
 
 	color: 'white',
-	letterSpacing: '.1rem',
-	mt: 4,
-	mr: 2,
-	ml: { xs: 2, s: 0 },
+	// letterSpacing: '.1rem',
+	// mt: 4,
+	mr: 1,
+	ml: { xs: 1, s: 0 },
 	fontSize: '1.1rem',
 	// paddingRight: '.8rem',
 };
@@ -21,14 +21,14 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 	const { state } = useAppContext();
 
 	return (
-		<Box display="flex" justifyContent="space-between" alignItems="baseline">
+		<Box display="flex" alignItems="center">
 			<DatePickerValue />
 			<Button
 				variant="contained"
 				sx={buttonStyles}
 				onClick={handleSubmitExpense}
 			>
-				{!state.isEditing ? '+' : 'Edit'}
+				+
 			</Button>
 			{state.isEditing && (
 				<Button
