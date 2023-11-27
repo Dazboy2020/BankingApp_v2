@@ -9,12 +9,9 @@ const buttonStyles = {
 	},
 
 	color: 'white',
-	// letterSpacing: '.1rem',
-	// mt: 4,
 	mr: 1,
 	ml: { xs: 1, s: 0 },
 	fontSize: '1.1rem',
-	// paddingRight: '.8rem',
 };
 
 function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {

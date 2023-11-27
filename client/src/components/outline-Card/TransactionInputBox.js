@@ -1,10 +1,10 @@
-import { Box, MenuItem, Stack, TextField } from '@mui/material';
 import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../hooks/useDarkMode';
+import { Box, MenuItem, Stack, TextField } from '@mui/material';
+import { useTransactionContext } from '../../context/transactionContext';
 
 import { menuExpenseItems } from './menuExpenseItems';
 import { menuDepositItems } from './menuDepositItems';
-import { useTransactionContext } from '../../context/transactionContext';
 import useSwitchInputLabel from '../../hooks/useSwitchInputLabels';
 
 function TransactionInputBox() {
