@@ -1,7 +1,15 @@
 import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../hooks/useDarkMode';
-import { Box, MenuItem, Stack, TextField } from '@mui/material';
 import { useTransactionContext } from '../../context/transactionContext';
+import {
+	Box,
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+	Stack,
+	TextField,
+} from '@mui/material';
 
 import { menuExpenseItems } from './menuExpenseItems';
 import { menuDepositItems } from './menuDepositItems';
@@ -53,6 +61,12 @@ function TransactionInputBox() {
 				color: isDarkMode ? '#d6d3d1' : '#000',
 			},
 		},
+		'& .MuiFormLabel-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'&.MuiFormLabel-colorSecondary': {
+			color: 'primary',
+		},
 
 		color: isDarkMode ? '#d6d3d1' : '#000',
 	};
@@ -84,11 +98,10 @@ function TransactionInputBox() {
 					<form component="form" onSubmit={handleReturn}>
 						<TextField
 							onChange={handleExpenseAmount}
-							id="outlined-select-currency"
-							type="number"
+							id="outlined-select-amount"
 							label="amount"
+							type="number"
 							value={expenseAmount}
-							helperText="Select amount"
 							color="secondary"
 							sx={formStyling}
 						></TextField>
@@ -103,36 +116,44 @@ function TransactionInputBox() {
 					noValidate
 					autoComplete="off"
 				>
-					<TextField
-						id="outlined-select-currency"
-						select
-						label="Select"
-						value={expenseCategory}
-						helperText="Category"
-						color="secondary"
-						onChange={handleExpenseCategory}
-						sx={formStyling}
+					<FormControl
+						sx={{
+							...formStyling,
+							m: 1,
+							width: '20ch',
+						}}
 					>
-						{label === 'expense'
-							? menuExpenseItems.map((option) => (
-									<MenuItem
-										key={option.value}
-										value={option.value}
-										sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-									>
-										{option.label}
-									</MenuItem>
-							  ))
-							: menuDepositItems.map((option) => (
-									<MenuItem
-										key={option.value}
-										value={option.value}
-										sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-									>
-										{option.label}
-									</MenuItem>
-							  ))}
-					</TextField>
+						<InputLabel id="expense-category-label">Category</InputLabel>
+						<Select
+							labelId="expense-category-label"
+							id="outlined-select-category"
+							label="Category"
+							value={expenseCategory}
+							onChange={handleExpenseCategory}
+							color="secondary"
+							sx={formStyling}
+						>
+							{label === 'expense'
+								? menuExpenseItems.map((option) => (
+										<MenuItem
+											key={option.value}
+											value={option.value}
+											sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+										>
+											{option.label}
+										</MenuItem>
+								  ))
+								: menuDepositItems.map((option) => (
+										<MenuItem
+											key={option.value}
+											value={option.value}
+											sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+										>
+											{option.label}
+										</MenuItem>
+								  ))}
+						</Select>
+					</FormControl>
 				</Box>
 			</Box>
 		</Stack>

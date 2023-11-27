@@ -6,9 +6,9 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useTransactionContext } from '../../context/transactionContext';
 
 const buttonStyles = {
-	// bgcolor: '#f70776',
 	color: 'white',
 	fontSize: '1.1rem',
 	letterSpacing: '.1rem',
@@ -26,9 +26,9 @@ const buttonStyles = {
 
 export default function DateMenu() {
 	const { isDarkMode } = useDarkMode();
-
 	const { dispatch, state } = useAppContext();
-	const [expenseType, setExpenseType] = useState('expense');
+	const { expenseType } = useTransactionContext();
+
 	const [expenseCategory, setExpenseCategory] = useState('');
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,13 +37,9 @@ export default function DateMenu() {
 	useEffect(
 		function () {
 			if (state.isActive === 1) {
-				setExpenseType('expense');
-
 				dispatch({ type: 'user/filteredExpenses', payload: expenseCategory });
 			}
 			if (state.isActive === 2) {
-				setExpenseType('deposit');
-
 				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
 			}
 		},
