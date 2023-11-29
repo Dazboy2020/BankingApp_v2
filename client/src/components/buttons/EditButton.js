@@ -10,11 +10,6 @@ const buttonStyles = {
 	paddingRight: '.8rem',
 	mr: '10px',
 	fontWeight: '500',
-	mt: '.3rem',
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
 	pl: '1rem',
 };
 

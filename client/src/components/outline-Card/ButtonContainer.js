@@ -4,11 +4,6 @@ import DatePickerValue from '../datePicker/DatePicker';
 import { useTheme } from '@emotion/react';
 
 const buttonStyles = {
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
-
 	color: 'white',
 	ml: { xs: 1, s: 0 },
 	fontSize: '1.1rem',

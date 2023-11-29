@@ -79,13 +79,25 @@ function App() {
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						backgroundColor: 'MediumVioletRed', // Set desired background color here
+						// backgroundColor: 'MediumVioletRed', // Set desired background color here
+						// color: 'white',
+						backgroundColor: '#52525b', // Set desired background color here
 						color: 'white',
+						fontSize: '1.1rem',
 						letterSpacing: '.1rem',
+						paddingRight: '.8rem',
+						mr: '10px',
+						fontWeight: '500',
+						mt: '.3rem',
+						pl: '1rem',
 						'&.css-ikss9a-MuiTypography-root': {
 							letterSpacing: '.1rem',
 						},
 						padding: { xs: '.6rem', s: '.5rem' },
+						'&:hover': {
+							backgroundColor: '#3f3f46',
+							cursor: 'pointer',
+						},
 					},
 				},
 			},

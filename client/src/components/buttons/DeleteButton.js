@@ -3,19 +3,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 
 const buttonStyles = {
-	// bgcolor: '#f70776',
-	color: 'white',
-	fontSize: '1.1rem',
-	letterSpacing: '.1rem',
-	paddingRight: '.8rem',
-	mr: '10px',
-	fontWeight: '500',
-	mt: '.3rem',
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
-	pl: '1rem',
+	// color: 'white',
+	// fontSize: '1.1rem',
+	// letterSpacing: '.1rem',
+	// paddingRight: '.8rem',
+	// mr: '10px',
+	// fontWeight: '500',
+	// mt: '.3rem',
+	// pl: '1rem',
 };
 
 function DeleteButton({ expense }) {
@@ -45,10 +40,10 @@ function DeleteButton({ expense }) {
 			variant="contained"
 			startIcon={
 				<DeleteIcon
-					sx={{
-						color: 'white',
-						ml: '6px',
-					}}
+				// sx={{
+				// 	color: 'white',
+				// 	ml: '6px',
+				// }}
 				/>
 			}
 			onClick={() => handleDelete(expense)}

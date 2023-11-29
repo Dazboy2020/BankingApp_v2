@@ -16,11 +16,6 @@ const buttonStyles = {
 	mr: '10px',
 	fontWeight: '500',
 	mt: '.3rem',
-	'&:hover': {
-		backgroundColor: '#680747',
-		cursor: 'default',
-	},
-
 	pl: '1rem',
 };
 
@@ -43,7 +38,7 @@ export default function DateMenu() {
 				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
 			}
 		},
-		[expenseType, state.isActive, dispatch, expenseCategory]
+		[state.isActive, dispatch, expenseCategory]
 	);
 
 	const expenseLabelsInitial = state.expenses
