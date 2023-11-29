@@ -8,17 +8,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useTransactionContext } from '../../context/transactionContext';
 
-const buttonStyles = {
-	color: 'white',
-	fontSize: '1.1rem',
-	letterSpacing: '.1rem',
-	paddingRight: '.8rem',
-	mr: '10px',
-	fontWeight: '500',
-	mt: '.3rem',
-	pl: '1rem',
-};
-
 export default function DateMenu() {
 	const { isDarkMode } = useDarkMode();
 	const { dispatch, state } = useAppContext();
@@ -75,7 +64,6 @@ export default function DateMenu() {
 				aria-haspopup="true"
 				aria-expanded={open ? 'true' : undefined}
 				onClick={handleClick}
-				sx={buttonStyles}
 			>
 				Category
 			</Button>

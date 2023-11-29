@@ -2,17 +2,6 @@ import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
 import { useAppContext } from '../../context/context';
 
-const buttonStyles = {
-	// bgcolor: '#f70776',
-	color: 'white',
-	fontSize: '1.1rem',
-	letterSpacing: '.1rem',
-	paddingRight: '.8rem',
-	mr: '10px',
-	fontWeight: '500',
-	pl: '1rem',
-};
-
 function EditButton(expense, type) {
 	const { dispatch, state } = useAppContext();
 
@@ -33,7 +22,6 @@ function EditButton(expense, type) {
 
 	return (
 		<Button
-			sx={buttonStyles}
 			variant="contained"
 			startIcon={
 				<CreateIcon

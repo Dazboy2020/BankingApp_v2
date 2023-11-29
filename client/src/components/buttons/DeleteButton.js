@@ -2,17 +2,6 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 
-const buttonStyles = {
-	// color: 'white',
-	// fontSize: '1.1rem',
-	// letterSpacing: '.1rem',
-	// paddingRight: '.8rem',
-	// mr: '10px',
-	// fontWeight: '500',
-	// mt: '.3rem',
-	// pl: '1rem',
-};
-
 function DeleteButton({ expense }) {
 	const {
 		modalMessage,
@@ -36,14 +25,14 @@ function DeleteButton({ expense }) {
 
 	return (
 		<Button
-			sx={buttonStyles}
+			sx={{ ml: '6px' }}
 			variant="contained"
 			startIcon={
 				<DeleteIcon
-				// sx={{
-				// 	color: 'white',
-				// 	ml: '6px',
-				// }}
+					sx={{
+						color: 'white',
+						ml: '6px',
+					}}
 				/>
 			}
 			onClick={() => handleDelete(expense)}
