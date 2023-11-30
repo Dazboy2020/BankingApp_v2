@@ -125,7 +125,7 @@ const addExpense = async (req, res, next) => {
 
 		console.log(`Expense added successfully for user with ID ${_id}`);
 
-		return res.status(200).json({ message: 'Expenses added successfully' });
+		return res.status(200).json({ message: 'Expense added successfully' });
 	} catch (error) {
 		console.error(`Error adding expenses: ${error.message}`);
 		return res.status(500).json({ error: 'Internal server error' });
@@ -154,9 +154,7 @@ const addDeposit = async (req, res, next) => {
 		user.deposits.unshift(newExpense);
 		await user.save();
 
-		console.log(`Deposit added successfully for user with ID ${_id}`);
-
-		return res.status(200).json({ message: 'Expenses added successfully' });
+		return res.status(200).json({ message: 'Deposit added successfully' });
 	} catch (error) {
 		console.error(`Error adding expenses: ${error.message}`);
 		return res.status(500).json({ error: 'Internal server error' });
@@ -294,7 +292,8 @@ const editDeposit = async (req, res, next) => {
 		// Save the updated user document
 		const updatedUser = await user.save();
 
-		res.json(updatedUser); // Respond with the updated user document
+		res.json(updatedUser);
+		// Respond with the updated user document
 	} catch (error) {
 		console.error('Error updating expense:', error);
 		res.status(500).json({ error: 'Internal server error' });

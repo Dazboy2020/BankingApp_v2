@@ -3,7 +3,8 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useEditDeposit() {
-	const { state, dispatch } = useAppContext();
+	const { state, dispatch, setMessage, message, setOpenToast } =
+		useAppContext();
 
 	const editDeposit = async (
 		expenseData,
@@ -26,15 +27,24 @@ export default function useEditDeposit() {
 				`${BASE_URL}/editdeposit/${userId}/${expenseId}`,
 				expenseData
 			);
+
+			if (!response) return;
+			dispatch({
+				type: 'add/editedDeposit',
+				payload: { id: expenseData.id, expenseData },
+			});
+
+			setMessage('Deposit edited successfully');
+			setOpenToast(true, { message: message });
+
 			console.log('Expense updated successfully:', response.data);
 		} catch (error) {
+			if (!error) return;
+			const message = error.message;
+			setMessage(message);
+			setOpenToast(true, { message: message });
 			console.error('Error updating expense:', error);
 		}
-
-		dispatch({
-			type: 'add/editedDeposit',
-			payload: { id: expenseData.id, expenseData },
-		});
 	};
 
 	return { editDeposit };

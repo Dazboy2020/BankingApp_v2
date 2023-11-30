@@ -52,7 +52,6 @@ export default function Toast() {
 					severity="info"
 					sx={{ width: '100%', fontSize: '1.5rem' }}
 				>
-					{/* Transaction Completed! */}
 					{message}
 				</Alert>
 			</Snackbar>

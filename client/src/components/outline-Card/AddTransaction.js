@@ -83,12 +83,7 @@ const AddTransaction = () => {
 			addDeposit(expenseData, expenseAmount, expenseCategory, formattedDate);
 		}
 
-		setMessage(
-			expenseType === 'expense' ? 'Expense Item Added' : 'New Deposit Added'
-		);
-
 		setExpenseAmount('');
-		setOpenToast(true, { message: message });
 		setExpenseCategory('');
 		setPickerDate(null);
 	}
