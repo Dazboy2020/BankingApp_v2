@@ -27,6 +27,7 @@ exports.protect = async (req, res, next) => {
 		}
 
 		req.user = user;
+		console.log('success: private route');
 
 		next();
 	} catch (error) {

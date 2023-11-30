@@ -44,7 +44,7 @@ function App() {
 			MuiDrawer: {
 				styleOverrides: {
 					paper: {
-						background: isDarkMode ? '#1C1917' : '#242a2e',
+						background: isDarkMode ? '#171717' : '#242a2e',
 						color: '#fff',
 					},
 				},
@@ -104,7 +104,7 @@ function App() {
 			MuiPaper: {
 				styleOverrides: {
 					root: {
-						backgroundColor: isDarkMode ? '#171717' : '#f0ebd8',
+						backgroundColor: isDarkMode ? '#171717' : '#e5e5e5',
 						transition: '400ms',
 					},
 				},
