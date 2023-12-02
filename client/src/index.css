@@ -18,6 +18,8 @@
 body::-webkit-scrollbar {
 	display: none;
 	font-family: 'Ubuntu', sans-serif;
+	background-color: #343a40;
+
 	/* background-color: #ececec; */
 }
 

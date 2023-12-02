@@ -59,7 +59,7 @@ function BarChart() {
 	};
 
 	return (
-		<Card sx={{ width: '100%' }}>
+		<Card sx={{ width: '100%', mb: 3 }}>
 			<CardContent>
 				<Box
 					sx={{
