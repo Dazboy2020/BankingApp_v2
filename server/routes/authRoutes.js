@@ -3,6 +3,7 @@ const router = express.Router();
 const cors = require('cors');
 
 const app = express();
+const { protect } = require('../middleware/auth');
 
 const {
 	test,
@@ -18,7 +19,6 @@ const {
 	resetPassword,
 	getUser,
 } = require('../controllers/routeControllers');
-const { protect } = require('../middleware/auth');
 
 //! middleware
 app.use(
