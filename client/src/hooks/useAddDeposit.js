@@ -1,9 +1,14 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
 import { BASE_URL } from '../utils/BASE_URL';
+import { config } from './config';
 
 export default function useAddDeposit() {
 	const { state, dispatch, setMessage, setOpenToast } = useAppContext();
+
+	const authToken = localStorage.getItem('authToken');
+
+	if (!authToken) return;
 
 	const addDeposit = async (
 		expenseData,
@@ -20,7 +25,11 @@ export default function useAddDeposit() {
 		};
 
 		try {
-			const response = await axios.post(`${BASE_URL}/add-deposit`, expenseData);
+			const response = await axios.post(
+				`${BASE_URL}/add-deposit`,
+				expenseData,
+				config
+			);
 			if (!response) return;
 
 			const { message } = response.data;

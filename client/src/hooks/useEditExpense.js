@@ -1,10 +1,15 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
 import { BASE_URL } from '../utils/BASE_URL';
+import { config } from './config';
 
 export default function useEditExpense() {
 	const { state, dispatch, setMessage, message, setOpenToast } =
 		useAppContext();
+
+	const authToken = localStorage.getItem('authToken');
+
+	if (!authToken) return;
 
 	const editExpense = async (
 		expenseAmount,
@@ -25,7 +30,8 @@ export default function useEditExpense() {
 		try {
 			const response = await axios.put(
 				`${BASE_URL}/editexpense/${userId}/${expenseId}`,
-				expenseData
+				expenseData,
+				config
 			);
 
 			if (!response) return;

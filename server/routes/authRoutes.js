@@ -18,6 +18,7 @@ const {
 	resetPassword,
 	getUser,
 } = require('../controllers/routeControllers');
+const { protect } = require('../middleware/auth');
 
 //! middleware
 app.use(
@@ -33,7 +34,11 @@ router.post('/register', registerUser);
 
 router.post('/login', loginUser);
 
-// router.get('/getuser', getUser);
+router.post('/forgotpassword', forgotPassword);
+
+router.put('/resetpassword/:resetToken', resetPassword);
+
+router.use(protect);
 
 router.post('/addexpense', addExpense);
 
@@ -46,9 +51,5 @@ router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
 router.put('/editexpense/:userId/:expenseId', editExpense);
 
 router.put('/editdeposit/:userId/:depositId', editDeposit);
-
-router.post('/forgotpassword', forgotPassword);
-
-router.put('/resetpassword/:resetToken', resetPassword);
 
 module.exports = router;

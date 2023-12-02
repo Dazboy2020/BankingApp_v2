@@ -18,8 +18,7 @@ import dayjs from 'dayjs';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 
 const AddTransaction = () => {
-	const { setMessage, state, dispatch, setOpenToast, message } =
-		useAppContext();
+	const { state, dispatch } = useAppContext();
 
 	const {
 		expenseAmount,
