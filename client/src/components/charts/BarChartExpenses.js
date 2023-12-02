@@ -55,6 +55,7 @@ function BarChartExpenses() {
 
 	const options = {
 		responsive: true,
+		maintainAspectRatio: false,
 
 		plugins: {
 			title: {
