@@ -1,3 +1,4 @@
+import { useAppContext } from '../../context/context';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -9,7 +10,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Typography, Box, Card, CardContent } from '@mui/material';
-import { useAppContext } from '../../context/context';
+import { groupArrayByDate } from '../../utils/sortArray';
 
 ChartJS.register(
 	CategoryScale,
@@ -23,14 +24,14 @@ ChartJS.register(
 function BarChartExpenses() {
 	const { state } = useAppContext();
 
-	const movementsToDisplay = state.expenses;
+	const moves = state.expenses;
+	let sortedMoves = [];
 
-	const moves = state.sort
-		? movementsToDisplay.slice().sort((a, b) => b.amount - a.amount)
-		: movementsToDisplay;
+	sortedMoves = groupArrayByDate(moves);
 
-	let bgColor = moves.map((item) => (item.amount > 0 ? '#597081' : '#a8577e'));
-	let label = moves.map((item) => item.amount);
+	let bgColor = '#a8577e';
+	let label = sortedMoves.map((item) => item.date);
+
 	let dataSetLabel = 'Expenses';
 	let titleText = 'EXPENSES';
 
@@ -39,7 +40,7 @@ function BarChartExpenses() {
 		datasets: [
 			{
 				label: dataSetLabel,
-				data: moves.map((item) => item.amount),
+				data: sortedMoves.map((item) => item.totalAmount),
 				backgroundColor: bgColor,
 			},
 		],
