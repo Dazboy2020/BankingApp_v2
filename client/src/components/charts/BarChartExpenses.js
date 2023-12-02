@@ -3,19 +3,25 @@ import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	BarElement,
+	// BarElement,
 	Title,
 	Tooltip,
 	Legend,
+	PointElement,
+	LineElement,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { Typography, Box, Card, CardContent } from '@mui/material';
+import { Line } from 'react-chartjs-2';
+import { Typography, Card, CardContent } from '@mui/material';
 import { groupArrayByDate } from '../../utils/sortArray';
+import { useTheme } from '@mui/material/styles';
 
 ChartJS.register(
+	// BarElement,
+
 	CategoryScale,
 	LinearScale,
-	BarElement,
+	PointElement,
+	LineElement,
 	Title,
 	Tooltip,
 	Legend
@@ -23,6 +29,7 @@ ChartJS.register(
 
 function BarChartExpenses() {
 	const { state } = useAppContext();
+	const theme = useTheme();
 
 	const moves = state.expenses;
 	let sortedMoves = [];
@@ -47,6 +54,8 @@ function BarChartExpenses() {
 	};
 
 	const options = {
+		responsive: true,
+
 		plugins: {
 			title: {
 				display: true,
@@ -60,42 +69,53 @@ function BarChartExpenses() {
 	};
 
 	return (
-		<Card sx={{ width: '100%' }}>
-			<CardContent>
-				<Box
+		<Card
+			sx={{
+				width: '100%',
+				mb: 3,
+				[theme.breakpoints.down('sm')]: {
+					// Adjust height for mobile devices using theme breakpoints
+					height: '100vh', // 75% of viewport height for small devices
+				},
+			}}
+		>
+			<CardContent
+				sx={{
+					[theme.breakpoints.down('sm')]: {
+						height: '100vh',
+					},
+					display: 'flex',
+					flexDirection: 'column',
+					position: 'relative',
+					margin: 'auto',
+					height: '80vh',
+					width: 'auto',
+				}}
+			>
+				<Typography
+					variant="h5"
 					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						position: 'relative',
+						padding: '1rem',
+						backgroundColor: '#a8577e',
+						color: 'white',
+						textAlign: 'center',
 					}}
 				>
-					<Typography
-						variant="h5"
-						sx={{
-							padding: '1rem',
-							backgroundColor: '#a8577e',
-							color: 'white',
-							textAlign: 'center',
-						}}
-					>
-						EXPENSES
-					</Typography>
-					<div
-						className="canvas"
-						style={{
-							display: 'flex',
-							flexGrow: 1,
-							justifyContent: 'center',
-							width: '100%',
-							height: { xs: '100%', s: '100%', sm: '75%' },
-
-							marginLeft: 'auto',
-							padding: '1rem',
-						}}
-					>
-						<Bar data={userData} options={options} />
-					</div>
-				</Box>
+					EXPENSES
+				</Typography>
+				<div
+					className="canvas"
+					style={{
+						display: 'flex',
+						flexGrow: 1,
+						justifyContent: 'center',
+						width: '100%',
+						height: '100%',
+						padding: '1rem',
+					}}
+				>
+					<Line data={userData} options={options} />
+				</div>
 			</CardContent>
 		</Card>
 	);

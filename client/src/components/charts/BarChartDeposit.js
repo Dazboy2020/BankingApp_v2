@@ -10,8 +10,9 @@ import {
 } from 'chart.js';
 
 import { Bar } from 'react-chartjs-2';
-import { Typography, Box, Card, CardContent } from '@mui/material';
+import { Typography, Card, CardContent } from '@mui/material';
 import { groupArrayByDate } from '../../utils/sortArray';
+import { useTheme } from '@mui/material/styles';
 
 ChartJS.register(
 	CategoryScale,
@@ -23,6 +24,7 @@ ChartJS.register(
 );
 function BarChart() {
 	const { state } = useAppContext();
+	const theme = useTheme();
 
 	const moves = state.deposits;
 	let sortedMoves = [];
@@ -59,42 +61,51 @@ function BarChart() {
 	};
 
 	return (
-		<Card sx={{ width: '100%', mb: 3 }}>
-			<CardContent>
-				<Box
+		<Card
+			sx={{
+				width: '100%',
+				mb: 3,
+				[theme.breakpoints.down('sm')]: {
+					height: '100vh', // 75% of viewport height for small devices
+				},
+			}}
+		>
+			<CardContent
+				sx={{
+					[theme.breakpoints.down('sm')]: {
+						height: '100vh',
+					},
+					display: 'flex',
+					flexDirection: 'column',
+					position: 'relative',
+					margin: 'auto',
+					height: '80vh',
+					width: 'auto',
+				}}
+			>
+				<Typography
+					variant="h5"
 					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						position: 'relative',
+						padding: '1rem',
+						backgroundColor: '#3a7ca5',
+						color: 'white',
+						textAlign: 'center',
 					}}
 				>
-					<Typography
-						variant="h5"
-						sx={{
-							padding: '1rem',
-							backgroundColor: '#3a7ca5',
-							color: 'white',
-							textAlign: 'center',
-						}}
-					>
-						INCOME
-					</Typography>
-					<div
-						className="canvas"
-						style={{
-							// width: '40rem',
-							display: 'flex',
-							justifyContent: 'center',
-							width: '100%',
-							height: { xs: '100%', s: '100%', sm: '75%' },
-
-							marginLeft: 'auto',
-							padding: '1rem',
-						}}
-					>
-						<Bar data={userData} options={options} />
-					</div>
-				</Box>
+					INCOME
+				</Typography>
+				<div
+					className="canvas"
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						width: '100%',
+						height: '100%',
+						padding: '1rem',
+					}}
+				>
+					<Bar data={userData} options={options} />
+				</div>
 			</CardContent>
 		</Card>
 	);

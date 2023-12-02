@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
 
 	/* background-color: #ececec; */
 }
-
+/* 
 @media (max-width: 1400px) {
 	.canvas {
 		height: 450px;
@@ -63,9 +63,10 @@ body::-webkit-scrollbar {
 		padding: 0;
 		margin-left: 0;
 		margin-right: 0.5rem;
+		height: 100%;
 	}
 
 	.cardsummary {
 		margin-right: 0;
 	}
-}
+} */

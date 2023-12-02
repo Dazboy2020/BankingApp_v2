@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-function ChartCard({ children, title = 'EXPENSES' }) {
+function PieChartCard({ children, title = 'EXPENSES' }) {
 	const { isDarkMode } = useDarkMode();
 
 	return (
@@ -52,4 +52,4 @@ function ChartCard({ children, title = 'EXPENSES' }) {
 	);
 }
 
-export default ChartCard;
+export default PieChartCard;

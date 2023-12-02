@@ -6,7 +6,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useAppContext } from '../../context/context';
 
 import nodata from '../../assets/nodata.png';
-import ChartCard from './ChartCard';
+import PieChartCard from './PieChartCard';
 import NoData from './NoData';
 
 function PieEuro() {
@@ -50,13 +50,13 @@ function PieEuro() {
 	};
 
 	return (
-		<ChartCard title="INCOME vs.EXPENSES">
+		<PieChartCard title="INCOME vs.EXPENSES">
 			{state.expenses.length > 0 || state.deposits > 0 ? (
 				<Doughnut data={userData} options={options} />
 			) : (
 				<NoData src={nodata} title="Awaiting Data..." />
 			)}
-		</ChartCard>
+		</PieChartCard>
 	);
 }
 
