@@ -1,13 +1,12 @@
 import React from 'react';
-import { Paper, Stack } from '@mui/material';
-import classes from './Movements.module.css';
-import { Box } from '@mui/material';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import { useAppContext } from '../../context/context';
+import { Paper, Stack, Box } from '@mui/material';
+import classes from './Movements.module.css';
+import NorthEastIcon from '@mui/icons-material/NorthEast';
 
 import DeleteButton from '../buttons/DeleteButton';
 import EditButton from '../buttons/EditButton';
-import { useDarkMode } from '../../hooks/useDarkMode';
 
 function DepositCard({ deposit }) {
 	const { state } = useAppContext();

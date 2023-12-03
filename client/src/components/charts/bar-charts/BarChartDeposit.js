@@ -1,46 +1,40 @@
-import { useAppContext } from '../../context/context';
+import { useAppContext } from '../../../context/context';
 import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	// BarElement,
+	BarElement,
 	Title,
 	Tooltip,
 	Legend,
-	PointElement,
-	LineElement,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+
+import { Bar } from 'react-chartjs-2';
 import { Typography, Card, CardContent } from '@mui/material';
-import { groupArrayByDate } from '../../utils/sortArray';
+import { groupArrayByDate } from '../../../utils/sortArray';
 import { useTheme } from '@mui/material/styles';
 
 ChartJS.register(
-	// BarElement,
-
 	CategoryScale,
 	LinearScale,
-	PointElement,
-	LineElement,
+	BarElement,
 	Title,
 	Tooltip,
 	Legend
 );
-
-function BarChartExpenses() {
+function BarChart() {
 	const { state } = useAppContext();
 	const theme = useTheme();
 
-	const moves = state.expenses;
+	const moves = state.deposits;
 	let sortedMoves = [];
 
 	sortedMoves = groupArrayByDate(moves);
 
-	let bgColor = '#a8577e';
+	let bgColor = '#597081';
 	let label = sortedMoves.map((item) => item.date);
-
-	let dataSetLabel = 'Expenses';
-	let titleText = 'EXPENSES';
+	let dataSetLabel = 'Income';
+	let titleText = 'INCOME';
 
 	const userData = {
 		labels: label,
@@ -75,7 +69,6 @@ function BarChartExpenses() {
 				width: '100%',
 				mb: 3,
 				[theme.breakpoints.down('sm')]: {
-					// Adjust height for mobile devices using theme breakpoints
 					height: '100vh', // 75% of viewport height for small devices
 				},
 			}}
@@ -97,29 +90,28 @@ function BarChartExpenses() {
 					variant="h5"
 					sx={{
 						padding: '1rem',
-						backgroundColor: '#a8577e',
+						backgroundColor: '#3a7ca5',
 						color: 'white',
 						textAlign: 'center',
 					}}
 				>
-					EXPENSES
+					INCOME
 				</Typography>
 				<div
 					className="canvas"
 					style={{
 						display: 'flex',
-						flexGrow: 1,
 						justifyContent: 'center',
 						width: '100%',
 						height: '100%',
 						padding: '1rem',
 					}}
 				>
-					<Line data={userData} options={options} />
+					<Bar data={userData} options={options} />
 				</div>
 			</CardContent>
 		</Card>
 	);
 }
 
-export default BarChartExpenses;
+export default BarChart;

@@ -1,12 +1,11 @@
-import { Paper, Stack } from '@mui/material';
-import classes from './Movements.module.css';
-import { Box } from '@mui/material';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import { useAppContext } from '../../context/context';
+import { Paper, Stack, Box } from '@mui/material';
+import classes from './Movements.module.css';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 import DeleteButton from '../buttons/DeleteButton';
 import EditButton from '../buttons/EditButton';
-import { useDarkMode } from '../../hooks/useDarkMode';
 
 function ExpenseCard({ expense }) {
 	const { state } = useAppContext();
