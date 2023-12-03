@@ -29,8 +29,6 @@ function PieExpenses() {
 	let dataSetLabel = 'Expense';
 	let titleText = 'EXPENSES';
 
-	console.log(sortedMoves);
-
 	const userData = {
 		labels: label,
 		datasets: [

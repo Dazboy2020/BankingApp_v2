@@ -44,7 +44,6 @@ export function groupArrayByCategory(arr) {
 
 	// Create a new array with aggregated expenses
 	const aggregatedExpenses = Object.values(groupedExpenses);
-	console.log(aggregatedExpenses);
 
 	return aggregatedExpenses;
 }
