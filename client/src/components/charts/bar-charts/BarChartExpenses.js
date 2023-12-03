@@ -11,13 +11,12 @@ import {
 	LineElement,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Typography, Card, CardContent } from '@mui/material';
 import { groupArrayByDate } from '../../../utils/sortArray';
-import { useTheme } from '@mui/material/styles';
+import BarChartCard from './BarChartCard';
+import { useDarkMode } from '../../../hooks/useDarkMode';
 
 ChartJS.register(
 	// BarElement,
-
 	CategoryScale,
 	LinearScale,
 	PointElement,
@@ -29,14 +28,14 @@ ChartJS.register(
 
 function BarChartExpenses() {
 	const { state } = useAppContext();
-	const theme = useTheme();
+	const { isDarkMode } = useDarkMode();
 
 	const moves = state.expenses;
 	let sortedMoves = [];
 
 	sortedMoves = groupArrayByDate(moves);
 
-	let bgColor = '#a8577e';
+	let bgColor = isDarkMode ? '#212529' : '#495057';
 	let label = sortedMoves.map((item) => item.date);
 
 	let dataSetLabel = 'Expenses';
@@ -49,6 +48,7 @@ function BarChartExpenses() {
 				label: dataSetLabel,
 				data: sortedMoves.map((item) => item.totalAmount),
 				backgroundColor: bgColor,
+				color: 'white',
 			},
 		],
 	};
@@ -70,55 +70,9 @@ function BarChartExpenses() {
 	};
 
 	return (
-		<Card
-			sx={{
-				width: '100%',
-				mb: 3,
-				[theme.breakpoints.down('sm')]: {
-					// Adjust height for mobile devices using theme breakpoints
-					height: '100vh', // 75% of viewport height for small devices
-				},
-			}}
-		>
-			<CardContent
-				sx={{
-					[theme.breakpoints.down('sm')]: {
-						height: '100vh',
-					},
-					display: 'flex',
-					flexDirection: 'column',
-					position: 'relative',
-					margin: 'auto',
-					height: '80vh',
-					width: 'auto',
-				}}
-			>
-				<Typography
-					variant="h5"
-					sx={{
-						padding: '1rem',
-						backgroundColor: '#a8577e',
-						color: 'white',
-						textAlign: 'center',
-					}}
-				>
-					EXPENSES
-				</Typography>
-				<div
-					className="canvas"
-					style={{
-						display: 'flex',
-						flexGrow: 1,
-						justifyContent: 'center',
-						width: '100%',
-						height: '100%',
-						padding: '1rem',
-					}}
-				>
-					<Line data={userData} options={options} />
-				</div>
-			</CardContent>
-		</Card>
+		<BarChartCard options={options} userData={userData} title="EXPENSES">
+			<Line data={userData} options={options} />
+		</BarChartCard>
 	);
 }
 
