@@ -1,7 +1,7 @@
 import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
 import ExpenseItems from '../components/movements/ExpenseItems';
 
-import TransactionLayout from './TransactionLayout';
+import TransactionLayout from './layout/TransactionLayout';
 
 function Expenses({ children }) {
 	return (

@@ -1,4 +1,5 @@
 import ResponsiveDrawer from '../components/drawer/Draw';
+import PageLayout from './layout/PageLayout';
 import {
 	CardContent,
 	Card,
@@ -17,20 +18,16 @@ function Account() {
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
 
-			<Box
-				sx={{
-					height: '100vh',
-					ml: { lg: '19rem', md: '19rem', sm: '17rem', s: '.5rem' },
-					mr: { sm: '.5rem', m: '.5rem' },
-				}}
-			>
+			<PageLayout>
 				<Stack
-					spacing={2}
+					// spacing={2}
 					direction={{ sm: 'column', md: 'row' }}
 					sx={{
-						m: 2,
 						justifyContent: { sm: 'flex-start', md: 'center' },
 						alignItems: { md: 'center' },
+						ml: { xs: 3, sm: 6 },
+						mr: { xs: 3, sm: 6 },
+						mt: { xs: 5, md: 10 },
 					}}
 					height="80vh"
 				>
@@ -123,7 +120,7 @@ function Account() {
 						</CardContent>
 					</Card>
 				</Stack>
-			</Box>
+			</PageLayout>
 		</Box>
 	);
 }

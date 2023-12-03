@@ -1,29 +1,20 @@
+import { useAppContext } from '../../context/context';
 import { Box, Stack } from '@mui/material';
-import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import ResponsiveDrawer from '../components/drawer/Draw';
-import { useDarkMode } from '../hooks/useDarkMode';
-import classes from './MainApp.module.css';
-import { useAppContext } from '../context/context';
-import FilterItems from '../components/filter/Filter';
-import AddTransaction from '../components/outline-Card/AddTransaction';
-import AvailbleFunds from '../components/outline-Card/AvailableFunds';
+import AlertDialogSlide from '../../UI/AlertDialogue/AlertDialogue';
+import ResponsiveDrawer from '../../components/drawer/Draw';
+import FilterItems from '../../components/filter/Filter';
+import AddTransaction from '../../components/outline-Card/AddTransaction';
+import AvailbleFunds from '../../components/outline-Card/AvailableFunds';
+import PageLayout from '../layout/PageLayout';
 
 function TransactionLayout({ TransactionType, TransactionItems }) {
-	const { isDarkMode } = useDarkMode();
 	const { state } = useAppContext();
 	return (
 		<>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
 
-			<Box
-				className={isDarkMode ? classes.darkmode : classes.body}
-				sx={{
-					minHeight: '100vh',
-					ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
-					mr: { lg: 0, sm: 0, m: 0 },
-				}}
-			>
+			<PageLayout>
 				<Stack
 					spacing={2}
 					direction={{ md: 'column', lg: 'row' }}
@@ -53,7 +44,7 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 
 					{TransactionItems}
 				</Box>
-			</Box>
+			</PageLayout>
 		</>
 	);
 }
