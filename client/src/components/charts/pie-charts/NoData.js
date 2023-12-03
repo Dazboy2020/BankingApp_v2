@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import classes from './pie_wrapper.module.css';
+import classes from '../pie-charts/pie_wrapper.module.css';
 
 function NoData({ src, title }) {
 	return (

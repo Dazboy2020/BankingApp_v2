@@ -8,9 +8,6 @@ import MovementList from '../components/movements/MovementList';
 
 import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
 
-import PieChart from '../components/charts/Pie';
-import PieEuro from '../components/charts/PieEuro';
-
 import { Box } from '@mui/material';
 
 import classes from './MainApp.module.css';
@@ -19,6 +16,8 @@ import Income from '../components/outline-Card/Income';
 import AvailbleFunds from '../components/outline-Card/AvailableFunds';
 import ExpenseItems from '../components/movements/ExpenseItems';
 import DepositItems from '../components/movements/DepositItems';
+import PieExpenses from '../components/charts/pie-charts/PieExpenses';
+import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
 
 const rootWindowLayout = {
 	minHeight: '100vh',
@@ -77,8 +76,8 @@ function MainApp() {
 						direction={{ s: 'column', md: 'column', lg: 'row' }}
 						sx={chartStyle}
 					>
-						<PieChart />
-						<PieEuro />
+						<PieExpenses />
+						<PieExpenseVDeposit />
 					</Stack>
 					{/* //!Movements */}
 					<MovementList>

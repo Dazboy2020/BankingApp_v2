@@ -1,13 +1,13 @@
 import { Chart as ChartJS, ArcElement, Legend, Tooltip, Title } from 'chart.js';
 
 import { Doughnut } from 'react-chartjs-2';
-import { useAppContext } from '../../context/context';
+import { useAppContext } from '../../../context/context';
 
 import PieChartCard from './PieChartCard';
 import NoData from './NoData';
-import nodata from '../../assets/nodata.png';
+import nodata from '../../../assets/nodata.png';
 
-function PieChart() {
+function PieExpenses() {
 	const { state } = useAppContext();
 
 	ChartJS.register(ArcElement, Legend, Tooltip, Title);
@@ -54,4 +54,4 @@ function PieChart() {
 	);
 }
 
-export default PieChart;
+export default PieExpenses;

@@ -3,13 +3,13 @@ import { Chart as ChartJS, ArcElement, Legend, Tooltip, Title } from 'chart.js';
 
 import { Doughnut } from 'react-chartjs-2';
 
-import { useAppContext } from '../../context/context';
+import { useAppContext } from '../../../context/context';
 
-import nodata from '../../assets/nodata.png';
+import nodata from '../../../assets/nodata.png';
 import PieChartCard from './PieChartCard';
 import NoData from './NoData';
 
-function PieEuro() {
+function PieExpenseVDeposit() {
 	const { state } = useAppContext();
 	const totalIncome = state.deposits?.reduce((acc, mov) => acc + mov.amount, 0);
 	const totalExpenses = state.expenses?.reduce(
@@ -60,4 +60,4 @@ function PieEuro() {
 	);
 }
 
-export default PieEuro;
+export default PieExpenseVDeposit;

@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
-import { useDarkMode } from '../../hooks/useDarkMode';
+import { useDarkMode } from '../../../hooks/useDarkMode';
 
 function PieChartCard({ children, title = 'EXPENSES' }) {
 	const { isDarkMode } = useDarkMode();
