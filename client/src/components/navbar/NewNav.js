@@ -20,12 +20,25 @@ const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar() {
 	const { state } = useAppContext();
+	const [disableButton, setDisableButton] = React.useState(false);
 
 	const navigate = useNavigate();
 
 	function handleLogin() {
 		navigate('/login');
 	}
+
+	React.useEffect(() => {
+		// Get the current URL path
+		const currentPath = window.location.pathname;
+
+		// Check if the URL contains '/login'
+		if (currentPath.includes('/login')) {
+			setDisableButton(true);
+		} else {
+			setDisableButton(false);
+		}
+	}, []);
 
 	return (
 		<AppBar
@@ -59,6 +72,7 @@ function ResponsiveAppBar() {
 								startIcon={
 									<ExitToAppIcon size="large" color="white" sx={{ ml: 1 }} />
 								}
+								disabled={disableButton}
 							>
 								Login
 							</Button>

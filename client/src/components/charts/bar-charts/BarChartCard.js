@@ -12,7 +12,6 @@ import {
 	PointElement,
 	LineElement,
 } from 'chart.js';
-import { useEffect } from 'react';
 
 ChartJS.register(
 	BarElement,
