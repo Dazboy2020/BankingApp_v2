@@ -27,3 +27,24 @@ export function groupArrayByDate(arr) {
 
 	return aggregatedExpenses;
 }
+export function groupArrayByCategory(arr) {
+	const groupedExpenses = {};
+
+	arr.forEach((item) => {
+		if (!groupedExpenses[item.category]) {
+			groupedExpenses[item.category] = {
+				category: item.category,
+				totalAmount: 0,
+				expenses: [],
+			};
+		}
+		groupedExpenses[item.category].totalAmount += item.amount;
+		groupedExpenses[item.category].expenses.push(item);
+	});
+
+	// Create a new array with aggregated expenses
+	const aggregatedExpenses = Object.values(groupedExpenses);
+	console.log(aggregatedExpenses);
+
+	return aggregatedExpenses;
+}

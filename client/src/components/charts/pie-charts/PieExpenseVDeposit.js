@@ -8,9 +8,11 @@ import { useAppContext } from '../../../context/context';
 import nodata from '../../../assets/nodata.png';
 import PieChartCard from './PieChartCard';
 import NoData from './NoData';
+import { useDarkMode } from '../../../hooks/useDarkMode';
 
 function PieExpenseVDeposit() {
 	const { state } = useAppContext();
+	const { isDarkMode } = useDarkMode();
 	const totalIncome = state.deposits?.reduce((acc, mov) => acc + mov.amount, 0);
 	const totalExpenses = state.expenses?.reduce(
 		(acc, mov) => acc + mov.amount,
@@ -29,7 +31,9 @@ function PieExpenseVDeposit() {
 				label: 'Expenses vs Deposits',
 
 				data: [totalIncome, totalExpenses],
-				backgroundColor: ['#495057', '#d6336c'],
+				backgroundColor: isDarkMode
+					? ['#f97316', '#9A3412']
+					: ['#495057', '#d6336c'],
 			},
 		],
 	};

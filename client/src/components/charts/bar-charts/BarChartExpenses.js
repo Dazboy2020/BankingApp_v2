@@ -1,4 +1,5 @@
 import { useAppContext } from '../../../context/context';
+import { useDarkMode } from '../../../hooks/useDarkMode';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -10,10 +11,10 @@ import {
 	PointElement,
 	LineElement,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { groupArrayByDate } from '../../../utils/sortArray';
 import BarChartCard from './BarChartCard';
-import { useDarkMode } from '../../../hooks/useDarkMode';
+// import { useEffect } from 'react';
 
 ChartJS.register(
 	// BarElement,
@@ -35,7 +36,10 @@ function BarChartExpenses() {
 
 	sortedMoves = groupArrayByDate(moves);
 
-	let bgColor = isDarkMode ? '#212529' : '#495057';
+	let bgColor = isDarkMode
+		? ['#7C2D12', '#9A3412', '#B45309', '#D97706', '#f97316']
+		: ['#9ca3af', '#6b7280', '#4b5563', '#374151', '#1f2937'];
+
 	let label = sortedMoves.map((item) => item.date);
 
 	let dataSetLabel = 'Expenses';
@@ -46,9 +50,10 @@ function BarChartExpenses() {
 		datasets: [
 			{
 				label: dataSetLabel,
-				data: sortedMoves.map((item) => item.totalAmount),
+				data: sortedMoves.map((item) => Math.abs(item.totalAmount)),
 				backgroundColor: bgColor,
-				color: 'white',
+				maxBarThickness: 100,
+				borderRadius: 10,
 			},
 		],
 	};
@@ -70,8 +75,8 @@ function BarChartExpenses() {
 	};
 
 	return (
-		<BarChartCard options={options} userData={userData} title="EXPENSES">
-			<Line data={userData} options={options} />
+		<BarChartCard title="EXPENSES">
+			<Bar id="myChart" data={userData} options={options} />
 		</BarChartCard>
 	);
 }

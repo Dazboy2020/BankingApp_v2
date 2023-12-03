@@ -1,6 +1,6 @@
+import { useDarkMode } from '../../../hooks/useDarkMode';
 import { useTheme } from '@emotion/react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { Bar } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -12,7 +12,7 @@ import {
 	PointElement,
 	LineElement,
 } from 'chart.js';
-import { useDarkMode } from '../../../hooks/useDarkMode';
+import { useEffect } from 'react';
 
 ChartJS.register(
 	BarElement,
@@ -25,7 +25,7 @@ ChartJS.register(
 	Legend
 );
 
-function BarChartCard({ userData, options, title }) {
+function BarChartCard({ children, title }) {
 	const { isDarkMode } = useDarkMode();
 	const theme = useTheme();
 
@@ -57,8 +57,11 @@ function BarChartCard({ userData, options, title }) {
 					sx={{
 						padding: '1rem',
 						backgroundColor: isDarkMode ? '#212529' : '#495057',
-						color: isDarkMode ? '#d6d3d1' : '#fff',
+						color: '#fff',
 						textAlign: 'center',
+						letterSpacing: '.1rem',
+						borderRadius: '8px',
+						fontWeight: 'bold',
 					}}
 				>
 					{title}
@@ -74,7 +77,7 @@ function BarChartCard({ userData, options, title }) {
 						padding: '1rem',
 					}}
 				>
-					<Bar data={userData} options={options} />
+					{children}
 				</div>
 			</CardContent>
 		</Card>
