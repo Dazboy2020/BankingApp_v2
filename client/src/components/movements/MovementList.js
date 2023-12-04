@@ -8,7 +8,7 @@ const MovementList = ({ children }) => {
 			<Stack
 				spacing={4}
 				component="section"
-				direction={{ xs: 'column', md: 'row' }}
+				direction={{ xs: 'column', md: 'column', lg: 'row' }}
 				sx={{ width: '100%' }}
 			>
 				{children}
