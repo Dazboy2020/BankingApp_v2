@@ -17,8 +17,8 @@ const {
 	editDeposit,
 	forgotPassword,
 	resetPassword,
-	getUser,
 } = require('../controllers/routeControllers');
+const { googleAuth } = require('../controllers/googleAuth');
 
 //! middleware
 app.use(
@@ -29,6 +29,8 @@ app.use(
 );
 
 router.get('/', test);
+
+router.get('/google/auth', googleAuth);
 
 router.post('/register', registerUser);
 

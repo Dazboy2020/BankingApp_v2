@@ -23,6 +23,7 @@ import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import { useAppContext } from '../context/context';
 
 import useGetUserToken from '../hooks/useGetUserToken';
+import GoogleLoginButton from '../components/buttons/GoogleLogin';
 
 function Copyright(props) {
 	return (
@@ -111,6 +112,7 @@ export default function SignIn() {
 									<Typography component="h1" variant="h5">
 										Sign in
 									</Typography>
+									<GoogleLoginButton />
 									<Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
 										<TextField
 											margin="normal"

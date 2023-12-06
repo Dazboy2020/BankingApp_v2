@@ -26,7 +26,7 @@ app.use(
 );
 
 app.use('/', require('./routes/authRoutes'));
-app.use('/', require('./routes/private'));
+app.use('/', require('./routes/getUserData'));
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

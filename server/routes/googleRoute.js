@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-
-const { protect } = require('../middleware/auth');
-
-const { getUserProtectedRoute } = require('../controllers/private');
+const googleAuth = require('../controllers/googleAuth');
 
 //! middleware
 router.use(
@@ -14,6 +11,6 @@ router.use(
 	})
 );
 
-router.route('/userdata').get(protect, getUserProtectedRoute);
+router.route('/google/auth').get(googleAuth);
 
 module.exports = router;

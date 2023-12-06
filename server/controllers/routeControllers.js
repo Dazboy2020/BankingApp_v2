@@ -414,21 +414,4 @@ module.exports = {
 	editDeposit,
 	forgotPassword,
 	resetPassword,
-	// getUser,
 };
-
-// const getUser = async (req, res, next) => {
-// 	const userId = req.id;
-// 	console.log(userId);
-// 	let user;
-
-// 	try {
-// 		user = await User.findById(userId, '-password');
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-
-// 	if (!user) return next(new ErrorResponse('Invalid credentials', 401));
-
-// 	return res.status(200).json({ user });
-// };
