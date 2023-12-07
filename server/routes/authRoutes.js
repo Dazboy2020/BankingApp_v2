@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const app = express();
 const { protect } = require('../middleware/auth');
+const { googleAuth } = require('../controllers/googleAuth');
 
 const {
 	test,
@@ -18,13 +21,16 @@ const {
 	forgotPassword,
 	resetPassword,
 } = require('../controllers/routeControllers');
-const { googleAuth } = require('../controllers/googleAuth');
+
+const app = express();
+
+router.use(bodyParser.json());
 
 //! middleware
 app.use(
 	cors({
 		credentials: true,
-		origin: 'http://localhost:3000',
+		origin: ['http://localhost:3000', 'http://localhost:5000'],
 	})
 );
 
@@ -40,7 +46,7 @@ router.post('/forgotpassword', forgotPassword);
 
 router.put('/resetpassword/:resetToken', resetPassword);
 
-router.use(protect);
+// router.use(protect);
 
 router.post('/addexpense', addExpense);
 
