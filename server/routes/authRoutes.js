@@ -31,22 +31,22 @@ router.use(bodyParser.json());
 app.use(
 	cors({
 		credentials: true,
-		origin: ['http://localhost:3000', 'http://localhost:5000'],
+		origin: ['http://localhost:3000'],
 	})
 );
 
-const oAuth2Client = new OAuth2Client(
-	process.env.CLIENT_ID,
-	process.env.CLIENT_SECRET,
-	'postmessage'
-);
+// const oAuth2Client = new OAuth2Client(
+// 	process.env.CLIENT_ID,
+// 	process.env.CLIENT_SECRET,
+// 	'postmessage'
+// );
 
-app.post('/auth/google', async (req, res) => {
-	const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
-	console.log(tokens);
+// app.post('/auth/google', async (req, res) => {
+// 	const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
+// 	console.log(tokens);
 
-	res.json(tokens);
-});
+// 	res.json(tokens);
+// });
 
 router.get('/', test);
 
@@ -60,7 +60,7 @@ router.post('/forgotpassword', forgotPassword);
 
 router.put('/resetpassword/:resetToken', resetPassword);
 
-// router.use(protect);
+router.use(protect);
 
 router.post('/addexpense', addExpense);
 
