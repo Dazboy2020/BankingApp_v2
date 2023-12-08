@@ -46,8 +46,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const { state, setOpenToast, message, setMessage, isLoading } =
-		useAppContext();
+	const { state, isLoading } = useAppContext();
 
 	const { getUserToken } = useGetUserToken();
 
@@ -72,8 +71,6 @@ export default function SignIn() {
 			email: '',
 			password: '',
 		});
-		setMessage('Signing in..');
-		setOpenToast(true, { message: message });
 
 		getUserToken(data);
 	};

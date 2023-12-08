@@ -414,4 +414,5 @@ module.exports = {
 	editDeposit,
 	forgotPassword,
 	resetPassword,
+	sendToken,
 };

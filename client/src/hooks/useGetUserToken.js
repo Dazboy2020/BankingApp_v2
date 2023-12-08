@@ -5,7 +5,7 @@ import SignIn from '../pages/SignIn';
 import { BASE_URL } from '../utils/BASE_URL';
 
 export default function useGetUserToken() {
-	const { dispatch, setMessage, setOpenToast } = useAppContext();
+	const { dispatch, setMessage, setOpenToast, message } = useAppContext();
 
 	const navigate = useNavigate();
 
@@ -26,6 +26,8 @@ export default function useGetUserToken() {
 
 				localStorage.setItem('authToken', userData.token);
 				navigate('/overview');
+				setMessage('Welcome Back!');
+				setOpenToast(true, { message: message });
 				console.log('getUserToken:', userData);
 			}
 		} catch (error) {
