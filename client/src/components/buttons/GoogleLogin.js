@@ -1,6 +1,7 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from '@mui/material';
 import axios from 'axios';
+import google from '../../assets/google.png';
 
 function GoogleLoginButton() {
 	const handleClick = useGoogleLogin({
@@ -11,27 +12,35 @@ function GoogleLoginButton() {
 
 			console.log(tokens);
 		},
-		flow: 'auth-code',
-		// onSuccess: async (tokenResponse) => {
-		// 	const userInfo = await axios.get('http://localhost:5000/google/auth', {
-		// 		headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-		// 	});
-		// 	console.log(userInfo);
 
-		// },
+		flow: 'auth-code',
 	});
 
 	return (
 		<Button
 			sx={{
 				fontSize: { xs: '1rem', sm: '1.3rem' },
-				border: '1px solid grey',
 				width: '100%',
-				p: 1,
+				margin: 'auto',
+				'& .MuiButton-startIcon': {
+					m: 0,
+					p: 0,
+				},
 			}}
 			onClick={() => handleClick()}
+			startIcon={
+				<img
+					src={google}
+					alt="google button"
+					style={{
+						width: '100%',
+						margin: 'auto',
+					}} //
+					sx={{ m: 0 }}
+				/>
+			}
 		>
-			Google sign in 🚀
+			{/* Google sign in 🚀 */}
 		</Button>
 	);
 }

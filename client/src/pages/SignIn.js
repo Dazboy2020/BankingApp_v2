@@ -112,7 +112,7 @@ export default function SignIn() {
 									<Typography component="h1" variant="h5">
 										Sign in
 									</Typography>
-									<GoogleLoginButton />
+									{/* <GoogleLoginButton /> */}
 									<Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
 										<TextField
 											margin="normal"
@@ -151,6 +151,8 @@ export default function SignIn() {
 											control={<Checkbox value="remember" color="primary" />}
 											label="Remember me"
 										/>
+										<GoogleLoginButton />
+
 										<Button
 											startIcon={<Login size="medium" />}
 											type="submit"
@@ -161,6 +163,7 @@ export default function SignIn() {
 										>
 											Sign In
 										</Button>
+
 										<Grid container>
 											<Grid item xs>
 												<Link href="/forgotpassword" variant="body2">
