@@ -2,8 +2,11 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import google from '../../assets/google.png';
+import { useNavigate } from 'react-router-dom';
 
 function GoogleLoginButton() {
+	const navigate = useNavigate();
+
 	const handleClick = useGoogleLogin({
 		onSuccess: async ({ code }) => {
 			const tokens = await axios.post('http://localhost:5000/google/auth', {
@@ -16,6 +19,9 @@ function GoogleLoginButton() {
 
 			const { expenses, deposits, _id, email } = tokens.data.user;
 			console.log(expenses, deposits, _id, email);
+
+			localStorage.setItem('authToken', token);
+			navigate('/overview');
 		},
 
 		flow: 'auth-code',
