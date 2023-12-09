@@ -20,7 +20,6 @@ exports.googleAuth = async (req, res, next) => {
 	try {
 		const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
 		const userInfo = jwt.decode(tokens.id_token);
-		console.log(userInfo);
 
 		const existingUser = await User.findOne({ email: userInfo.email });
 

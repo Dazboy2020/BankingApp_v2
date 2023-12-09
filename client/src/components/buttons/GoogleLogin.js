@@ -13,12 +13,7 @@ function GoogleLoginButton() {
 				code,
 			});
 
-			console.log(tokens);
 			const { token } = tokens.data;
-			console.log(token);
-
-			const { expenses, deposits, _id, email } = tokens.data.user;
-			console.log(expenses, deposits, _id, email);
 
 			localStorage.setItem('authToken', token);
 			navigate('/overview');
