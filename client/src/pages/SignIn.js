@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { useAppContext } from '../context/context';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,12 +18,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/navbar/NewNav';
 
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-
 import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
-import { useAppContext } from '../context/context';
 
 import useGetUserToken from '../hooks/useGetUserToken';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
@@ -46,6 +45,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+	// useFetchPrivateUserData(`${BASE_URL}/userdata`);
+
 	const { state, isLoading } = useAppContext();
 
 	const { getUserToken } = useGetUserToken();

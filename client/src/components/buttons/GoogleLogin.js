@@ -45,9 +45,7 @@ function GoogleLoginButton() {
 					sx={{ m: 0 }}
 				/>
 			}
-		>
-			{/* Google sign in 🚀 */}
-		</Button>
+		></Button>
 	);
 }
 

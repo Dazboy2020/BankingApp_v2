@@ -2,7 +2,7 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 import { useAppContext } from '../../context/context';
 import { Paper, Stack, Box } from '@mui/material';
 import classes from './Movements.module.css';
-import SouthEastIcon from '@mui/icons-material/SouthEast';
+import ErrorOutlineTwoToneIcon from '@mui/icons-material/ErrorOutlineTwoTone';
 
 function NoDataCard({ type }) {
 	const { isDarkMode } = useDarkMode();
@@ -31,7 +31,7 @@ function NoDataCard({ type }) {
 					>
 						{type}
 					</span>
-					<SouthEastIcon sx={{ fontSize: '40px', color: 'red' }} />
+					<ErrorOutlineTwoToneIcon sx={{ fontSize: '40px', color: 'red' }} />
 				</Box>
 				<span
 					className={
@@ -47,7 +47,7 @@ function NoDataCard({ type }) {
 							: classes.movements__category
 					}
 				>
-					{/* Awaiting Data */}
+					{`Please add your first ${type} `}
 				</span>
 				<Box
 					sx={{
@@ -60,6 +60,7 @@ function NoDataCard({ type }) {
 						sx={{
 							display: 'flex',
 							alignItems: 'flex-end',
+							fontWeight: '500',
 						}}
 					>
 						<span
@@ -68,9 +69,7 @@ function NoDataCard({ type }) {
 									? classes.movements__value__dark
 									: classes.movements__value
 							}
-						>
-							{`Please add your first ${type} `}
-						</span>
+						></span>
 					</Box>
 				</Box>
 			</Stack>

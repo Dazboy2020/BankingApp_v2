@@ -31,6 +31,8 @@ export default function useGetUserToken() {
 				console.log('getUserToken:', userData);
 			}
 		} catch (error) {
+			dispatch({ type: 'isLoading', payload: false });
+
 			console.log(error);
 		}
 	};

@@ -22,6 +22,11 @@ body::-webkit-scrollbar {
 
 	/* background-color: #ececec; */
 }
+
+body,
+html {
+	background-color: #343a40; /* Replace with your preferred background color */
+}
 /* 
 @media (max-width: 1400px) {
 	.canvas {
