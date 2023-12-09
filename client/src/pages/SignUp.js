@@ -67,8 +67,11 @@ export default function SignUp() {
 			});
 
 			if (data.error) {
+				// setMessage(data.error);
+
+				console.log(data.error);
 				setMessage(data.error);
-				setOpenToast(true, { message: data.error });
+				setOpenToast(true, { message: message });
 			} else {
 				setMessage('Account Created!');
 				setOpenToast(true, { message: message });
@@ -77,7 +80,9 @@ export default function SignUp() {
 				navigate('/login');
 			}
 		} catch (error) {
-			console.log(error);
+			console.log(error.response.data.error);
+			setMessage(error.response.data.error);
+			setOpenToast(true, { message: message });
 		}
 	};
 

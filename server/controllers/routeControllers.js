@@ -11,29 +11,31 @@ const registerUser = async (req, res, next) => {
 	try {
 		const { username, email, password, confirmPassword } = req.body;
 
-		const exist = await User.findOne({ email });
-		if (exist) {
-			return res.json({
-				error: 'Email already exists',
-			});
-		}
-
 		if (!username || !email || !password || !confirmPassword) {
-			return res.json({
+			return res.status(200).json({
 				error: 'Please complete all fields',
 			});
 		}
 
-		if (password !== confirmPassword) {
-			return res.json({
-				error: 'Passwords do not match!',
-			});
+		const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+
+		if (existingUser) {
+			// Check if the username or email already exists
+			if (existingUser.username === username) {
+				return res.status(400).json({ error: 'Username already exists' });
+			} else {
+				return res.status(400).json({ error: 'Email already exists' });
+			}
 		}
 
-		if (password.length < 6) {
-			return res.json({
-				error: 'Password must be 6 characters long',
-			});
+		if (password !== confirmPassword) {
+			return res.status(200).json({ error: 'Passwords do not match!' });
+		}
+
+		if (password.length < 8) {
+			return res
+				.status(400)
+				.json({ error: 'Password must be min 8 characters!' });
 		}
 
 		const user = await User.create({
