@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from './variants';
+import NoDataCard from './NoDataCard';
 
 const ExpenseItems = () => {
 	const { state } = useAppContext();
@@ -29,6 +30,16 @@ const ExpenseItems = () => {
 	return (
 		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
 			<AnimatePresence>
+				{moves.length === 0 && (
+					<motion.li
+						layout="true"
+						variants={containerVariants}
+						initial="hidden"
+						animate="visible"
+					>
+						<NoDataCard type="Expense" />
+					</motion.li>
+				)}
 				{moves.map((expense) => (
 					<motion.li
 						layout="true"

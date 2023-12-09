@@ -5,6 +5,7 @@ import classes from './Movements.module.css';
 import { containerVariants } from './variants';
 import { exitAnimation } from './variants';
 import DepositCard from './DepositCard';
+import NoDataCard from './NoDataCard';
 
 const DepositItems = () => {
 	const { state } = useAppContext();
@@ -33,6 +34,18 @@ const DepositItems = () => {
 	return (
 		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
 			<AnimatePresence>
+				{moves.length === 0 && (
+					<motion.li
+						layout="true"
+						variants={containerVariants}
+						initial="hidden"
+						animate="visible"
+						exit={exitAnimation}
+					>
+						<NoDataCard type="Deposit" />
+					</motion.li>
+				)}
+
 				{moves.map((deposit) => (
 					<motion.li
 						key={deposit.id}
