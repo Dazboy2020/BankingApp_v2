@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAppContext } from '../context/context';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,6 +20,10 @@ import ResponsiveAppBar from '../components/navbar/NewNav';
 import classes from './SignIn.module.css';
 import axios from 'axios';
 import { BASE_URL } from '../utils/BASE_URL';
+import {
+	containerVariants,
+	exitAnimation,
+} from '../components/movements/variants';
 
 function Copyright(props) {
 	return (
@@ -95,106 +100,114 @@ export default function SignUp() {
 			<ResponsiveAppBar />
 
 			<Box className={classes.wrapper}>
-				<ThemeProvider theme={defaultTheme}>
-					<Container component="main" maxWidth="xs">
-						<CssBaseline />
-						<Box
-							sx={{
-								backgroundColor: 'white',
-								marginTop: 8,
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								border: 'solid 1px black',
-								padding: '3rem',
-								boxShadow:
-									'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-							}}
-						>
-							<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-								<LockOutlinedIcon />
-							</Avatar>
-							<Typography component="h1" variant="h5">
-								Sign up
-							</Typography>
+				<motion.div
+					layout="true"
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					exit={exitAnimation}
+				>
+					<ThemeProvider theme={defaultTheme}>
+						<Container component="main" maxWidth="xs">
+							<CssBaseline />
 							<Box
-								component="form"
-								noValidate
-								onSubmit={handleSubmit}
-								sx={{ mt: 3 }}
-								onChange={handleChange}
+								sx={{
+									backgroundColor: 'white',
+									marginTop: 8,
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+									border: 'solid 1px black',
+									padding: '3rem',
+									boxShadow:
+										'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+								}}
 							>
-								<Grid container spacing={2}>
-									<Grid item xs={12}>
-										<TextField
-											autoComplete="given-name"
-											name="username"
-											required
-											fullWidth
-											id="username"
-											label="username"
-											autoFocus
-											color="secondary"
-										/>
-									</Grid>
-
-									<Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											id="email"
-											label="Email Address"
-											name="email"
-											autoComplete="email"
-											color="secondary"
-										/>
-									</Grid>
-									<Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											name="password"
-											label="Password"
-											type="password"
-											id="password"
-											autoComplete="new-password"
-											color="secondary"
-										/>
-									</Grid>
-									<Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											name="confirmPassword"
-											label="Confirm Password"
-											type="password"
-											id="confirmPassword"
-											// autoComplete="new-password"
-											color="secondary"
-										/>
-									</Grid>
-								</Grid>
-								<Button
-									type="submit"
-									fullWidth
-									variant="contained"
-									sx={{ mt: 3, mb: 2 }}
-									color="secondary"
+								<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+									<LockOutlinedIcon />
+								</Avatar>
+								<Typography component="h1" variant="h5">
+									Sign up
+								</Typography>
+								<Box
+									component="form"
+									noValidate
+									onSubmit={handleSubmit}
+									sx={{ mt: 3 }}
+									onChange={handleChange}
 								>
-									Sign Up
-								</Button>
-								<Grid container justifyContent="flex-end">
-									<Grid item>
-										<NavLink to="/login" variant="body2">
-											Already have an account? Sign in
-										</NavLink>
+									<Grid container spacing={2}>
+										<Grid item xs={12}>
+											<TextField
+												autoComplete="given-name"
+												name="username"
+												required
+												fullWidth
+												id="username"
+												label="username"
+												autoFocus
+												color="secondary"
+											/>
+										</Grid>
+
+										<Grid item xs={12}>
+											<TextField
+												required
+												fullWidth
+												id="email"
+												label="Email Address"
+												name="email"
+												autoComplete="email"
+												color="secondary"
+											/>
+										</Grid>
+										<Grid item xs={12}>
+											<TextField
+												required
+												fullWidth
+												name="password"
+												label="Password"
+												type="password"
+												id="password"
+												autoComplete="new-password"
+												color="secondary"
+											/>
+										</Grid>
+										<Grid item xs={12}>
+											<TextField
+												required
+												fullWidth
+												name="confirmPassword"
+												label="Confirm Password"
+												type="password"
+												id="confirmPassword"
+												// autoComplete="new-password"
+												color="secondary"
+											/>
+										</Grid>
 									</Grid>
-								</Grid>
+									<Button
+										type="submit"
+										fullWidth
+										variant="contained"
+										sx={{ mt: 3, mb: 2 }}
+										color="secondary"
+									>
+										Sign Up
+									</Button>
+									<Grid container justifyContent="flex-end">
+										<Grid item>
+											<NavLink to="/login" variant="body2">
+												Already have an account? Sign in
+											</NavLink>
+										</Grid>
+									</Grid>
+								</Box>
+								<Copyright sx={{ mt: 5 }} />
 							</Box>
-							<Copyright sx={{ mt: 5 }} />
-						</Box>
-					</Container>
-				</ThemeProvider>
+						</Container>
+					</ThemeProvider>
+				</motion.div>
 			</Box>
 		</>
 	);
