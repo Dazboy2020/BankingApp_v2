@@ -22,24 +22,12 @@ import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import useGetUserToken from '../hooks/useGetUserToken';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-const containerVariants = {
-	hidden: {
-		opacity: 0,
-	},
-	visible: {
-		opacity: 1,
-
-		transition: {
-			duration: 0.2,
-		},
-	},
-};
-export const exitAnimation = {
-	opacity: 0,
-	transition: { duration: 0.2 },
-};
+import {
+	containerVariants,
+	exitAnimation,
+} from './page-animations/login_register';
 
 function Copyright(props) {
 	return (
@@ -93,7 +81,7 @@ export default function SignIn() {
 
 	return (
 		<>
-			{!isLoading && <ResponsiveAppBar />}
+			<ResponsiveAppBar />
 			{isLoading ? (
 				<>
 					<LinearWithValueLabel />

@@ -21,22 +21,10 @@ import classes from './SignIn.module.css';
 import axios from 'axios';
 import { BASE_URL } from '../utils/BASE_URL';
 
-const containerVariants = {
-	hidden: {
-		opacity: 0,
-	},
-	visible: {
-		opacity: 1,
-
-		transition: {
-			duration: 0.2,
-		},
-	},
-};
-export const exitAnimation = {
-	opacity: 0,
-	transition: { duration: 0.2 },
-};
+import {
+	containerVariants,
+	exitAnimation,
+} from './page-animations/login_register';
 
 function Copyright(props) {
 	return (
@@ -111,16 +99,22 @@ export default function SignUp() {
 	return (
 		<>
 			<ResponsiveAppBar />
-			<motion.div
-				layout="true"
-				variants={containerVariants}
-				initial="hidden"
-				animate="visible"
-				exit={exitAnimation}
-			>
-				<Box className={classes.wrapper}>
+
+			<Box className={classes.wrapper}>
+				<motion.div
+					layout="true"
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					exit={exitAnimation}
+				>
 					<ThemeProvider theme={defaultTheme}>
-						<Container component="main" maxWidth="xs">
+						<Container
+							component="main"
+							sx={{
+								width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+							}}
+						>
 							<CssBaseline />
 							<Box
 								sx={{
@@ -219,8 +213,8 @@ export default function SignUp() {
 							</Box>
 						</Container>
 					</ThemeProvider>
-				</Box>
-			</motion.div>
+				</motion.div>
+			</Box>
 		</>
 	);
 }
