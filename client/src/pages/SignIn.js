@@ -23,10 +23,23 @@ import useGetUserToken from '../hooks/useGetUserToken';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-	containerVariants,
-	exitAnimation,
-} from '../components/movements/variants';
+
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+
+		transition: {
+			duration: 0.2,
+		},
+	},
+};
+export const exitAnimation = {
+	opacity: 0,
+	transition: { duration: 0.2 },
+};
 
 function Copyright(props) {
 	return (
@@ -87,115 +100,111 @@ export default function SignIn() {
 				</>
 			) : (
 				<Box className={classes.wrapper}>
-					<AnimatePresence layout>
-						{!storagetoken && (
-							<motion.div
-								layout="true"
-								variants={containerVariants}
-								initial="hidden"
-								animate="visible"
-								exit={exitAnimation}
-							>
-								<ThemeProvider theme={defaultTheme}>
-									<Container
-										component="main"
+					{!storagetoken && (
+						<motion.div
+							layout="true"
+							variants={containerVariants}
+							initial="hidden"
+							animate="visible"
+							exit={exitAnimation}
+						>
+							<ThemeProvider theme={defaultTheme}>
+								<Container
+									component="main"
+									sx={{
+										width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+									}}
+								>
+									<CssBaseline />
+									<Box
 										sx={{
-											width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+											backgroundColor: 'white',
+											marginTop: 8,
+											display: 'flex',
+											flexDirection: 'column',
+											alignItems: 'center',
+											border: 'solid 1px black',
+											padding: '3rem',
+											boxShadow:
+												'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 										}}
 									>
-										<CssBaseline />
+										<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+											<LockOutlinedIcon />
+										</Avatar>
+										<Typography component="h1" variant="h5">
+											Sign in
+										</Typography>
 										<Box
-											sx={{
-												backgroundColor: 'white',
-												marginTop: 8,
-												display: 'flex',
-												flexDirection: 'column',
-												alignItems: 'center',
-												border: 'solid 1px black',
-												padding: '3rem',
-												boxShadow:
-													'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-											}}
+											component="form"
+											onSubmit={handleSubmit}
+											sx={{ mt: 1 }}
 										>
-											<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-												<LockOutlinedIcon />
-											</Avatar>
-											<Typography component="h1" variant="h5">
-												Sign in
-											</Typography>
-											<Box
-												component="form"
-												onSubmit={handleSubmit}
-												sx={{ mt: 1 }}
+											<TextField
+												margin="normal"
+												required
+												fullWidth
+												id="email"
+												label="email"
+												name="email"
+												autoComplete="email"
+												autoFocus
+												value={data.email}
+												onChange={onChange}
+												color="secondary"
+											/>
+											<TextField
+												margin="normal"
+												required
+												fullWidth
+												name="password"
+												label="password"
+												type="password"
+												id="password"
+												autoComplete="current-pin"
+												value={data.password}
+												onChange={onChange}
+												// onBlur={onBlurHandler}
+												color="secondary"
+											/>
+											{state.error ? (
+												<p style={{ color: 'red' }}>Something went wrong!</p>
+											) : (
+												<p style={{ color: 'white' }}>Something went wrong!</p>
+											)}
+
+											<GoogleLoginButton />
+
+											<Button
+												startIcon={<Login size="medium" />}
+												type="submit"
+												fullWidth
+												variant="contained"
+												sx={{ mt: 3, mb: 2 }}
+												color="secondary"
 											>
-												<TextField
-													margin="normal"
-													required
-													fullWidth
-													id="email"
-													label="email"
-													name="email"
-													autoComplete="email"
-													autoFocus
-													value={data.email}
-													onChange={onChange}
-													color="secondary"
-												/>
-												<TextField
-													margin="normal"
-													required
-													fullWidth
-													name="password"
-													label="password"
-													type="password"
-													id="password"
-													autoComplete="current-pin"
-													value={data.password}
-													onChange={onChange}
-													// onBlur={onBlurHandler}
-													color="secondary"
-												/>
-												{state.error ? (
-													<p style={{ color: 'red' }}>Something went wrong!</p>
-												) : (
-													<p style={{ color: 'white' }}>
-														Something went wrong!
-													</p>
-												)}
+												Sign In
+											</Button>
 
-												<GoogleLoginButton />
-
-												<Button
-													startIcon={<Login size="medium" />}
-													type="submit"
-													fullWidth
-													variant="contained"
-													sx={{ mt: 3, mb: 2 }}
-													color="secondary"
-												>
-													Sign In
-												</Button>
-
-												<Grid container>
-													<Grid item xs>
-														<Link href="/forgotpassword" variant="body2">
-															Forgot password?
-														</Link>
-													</Grid>
-													<Grid item>
-														<NavLink to="/signup" variant="body2">
-															{"Don't have an account? Sign Up"}
-														</NavLink>
-													</Grid>
+											<Grid container>
+												<Grid item xs>
+													<Link href="/forgotpassword" variant="body2">
+														Forgot password?
+													</Link>
 												</Grid>
-											</Box>
-											<Copyright sx={{ mt: 4, mb: 0 }} />
+												<Grid item>
+													<NavLink to="/signup" variant="body2">
+														{"Don't have an account? Sign Up"}
+													</NavLink>
+												</Grid>
+											</Grid>
 										</Box>
-									</Container>
-								</ThemeProvider>
-							</motion.div>
-						)}
-					</AnimatePresence>
+										<Copyright sx={{ mt: 4, mb: 0 }} />
+									</Box>
+								</Container>
+							</ThemeProvider>
+						</motion.div>
+					)}
 				</Box>
 			)}
 		</>

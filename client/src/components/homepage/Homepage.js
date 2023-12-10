@@ -3,7 +3,10 @@ import useAutoLogin from '../../hooks/useAutoLogin';
 import { BASE_URL } from '../../utils/BASE_URL';
 import { useAppContext } from '../../context/context';
 import { Box, Typography } from '@mui/material';
-import { AnimatePresence, motion as m } from 'framer-motion';
+import { motion as m } from 'framer-motion';
+import { lazy } from 'react';
+
+const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 
 const textStyles = {
 	fontFamily: 'poppins',
@@ -15,31 +18,21 @@ const textStyles = {
 	fontWeight: 300,
 };
 
-export const containerVariants = {
+const containerVariants = {
 	hidden: {
 		opacity: 0,
-		scale: [0.8, 0.9, 1],
-		y: -150,
 	},
 	visible: {
 		opacity: 1,
-		scale: 1,
-		y: 0,
 
 		transition: {
-			type: 'spring',
-			delay: 0.2,
-			mass: 0.8,
-			stiffness: 150,
-			duration: 0.25,
+			duration: 0.2,
 		},
 	},
 };
-
 export const exitAnimation = {
 	opacity: 0,
-	scale: [0.9, 0],
-	transition: { type: 'spring', damping: 15, stiffness: 200, duration: 0.5 },
+	transition: { duration: 0.2 },
 };
 
 export default function Homepage() {
@@ -52,51 +45,54 @@ export default function Homepage() {
 
 	if (!user && !state.isLoading) {
 		return (
-			<m.div
-				layout="true"
-				initial="hidden"
-				animate="visible"
-				exit={exitAnimation}
-				variants={containerVariants}
-				key="header"
-			>
-				<Box
-					component="main"
-					sx={{
-						minHeight: '100dvh',
-						backgroundColor: '#343a40',
-					}}
+			<>
+				<ResponsiveAppBar />
+				<m.div
+					layout="true"
+					initial="hidden"
+					animate="visible"
+					exit={exitAnimation}
+					variants={containerVariants}
+					key="header"
 				>
-					<Typography component="section">
-						<Box
-							sx={{
-								fontFamily: 'poppins',
-								fontSize: 'h1.fontSize',
-								color: 'antiquewhite',
-								textAlign: 'center',
-								mt: 10,
-								letterSpacing: 0.9,
-								fontWeight: '300',
-							}}
-						>
-							Welcome to Expensify.
-						</Box>
+					<Box
+						component="main"
+						sx={{
+							minHeight: '100dvh',
+							backgroundColor: '#343a40',
+						}}
+					>
+						<Typography component="section">
+							<Box
+								sx={{
+									fontFamily: 'poppins',
+									fontSize: 'h1.fontSize',
+									color: 'antiquewhite',
+									textAlign: 'center',
+									mt: 10,
+									letterSpacing: 0.9,
+									fontWeight: '300',
+								}}
+							>
+								Welcome to Expensify.
+							</Box>
 
-						<Box sx={textStyles}>
-							An all-in-one solution for managing your expenses.
-						</Box>
+							<Box sx={textStyles}>
+								An all-in-one solution for managing your expenses.
+							</Box>
 
-						<Box sx={textStyles}>
-							Expensify provides in-depth analysis of your finances.
-						</Box>
+							<Box sx={textStyles}>
+								Expensify provides in-depth analysis of your finances.
+							</Box>
 
-						<Box sx={textStyles}>
-							Easily target key spending patterns via powerful sorting and
-							filtering functionality.
-						</Box>
-					</Typography>
-				</Box>
-			</m.div>
+							<Box sx={textStyles}>
+								Easily target key spending patterns via powerful sorting and
+								filtering functionality.
+							</Box>
+						</Typography>
+					</Box>
+				</m.div>
+			</>
 		);
 	}
 

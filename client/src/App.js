@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import SpinnerFullPage from './components/spinner/SpinnerFullPage';
 
 import ProtectedRoute from './pages/ProtectedRoute';
@@ -18,7 +18,6 @@ const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MainApp = lazy(() => import('./pages/MainApp'));
-const ResponsiveAppBar = lazy(() => import('./components/navbar/NewNav'));
 const Homepage = lazy(() => import('./components/homepage/Homepage'));
 const About = lazy(() => import('./pages/About'));
 const Expenses = lazy(() => import('./pages/Expenses'));
@@ -31,6 +30,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
 	const { isDarkMode } = useDarkMode();
+	const location = useLocation();
 
 	const theme = createTheme({
 		palette: {
@@ -121,34 +121,17 @@ function App() {
 			},
 		},
 	});
+
 	return (
 		<ThemeProvider theme={theme}>
-			<BrowserRouter>
-				<Suspense fallback={<SpinnerFullPage />}>
-					<Toast />
-
-					<Routes>
-						<Route
-							index
-							element={
-								<AnimatePresence mode="wait" key="homepage">
-									<>
-										<ResponsiveAppBar />
-										<Homepage />
-									</>
-								</AnimatePresence>
-							}
-						/>
+			<Suspense fallback={<SpinnerFullPage />}>
+				<Toast />
+				<AnimatePresence mode="wait">
+					<Routes location={location} key={location.pathname}>
+						<Route index element={<Homepage />} />
 
 						<Route path="login" element={<SignIn />} />
-						<Route
-							path="signup"
-							element={
-								<AnimatePresence mode="wait" key="signup">
-									<SignUp />
-								</AnimatePresence>
-							}
-						/>
+						<Route path="signup" element={<SignUp />} />
 						<Route path="forgotpassword" element={<ForgotPassword />} />
 						<Route
 							path="resetpassword/:resetToken/"
@@ -206,8 +189,8 @@ function App() {
 							}
 						/>
 					</Routes>
-				</Suspense>
-			</BrowserRouter>
+				</AnimatePresence>
+			</Suspense>
 		</ThemeProvider>
 	);
 }

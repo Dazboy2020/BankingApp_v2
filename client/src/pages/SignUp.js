@@ -20,10 +20,23 @@ import ResponsiveAppBar from '../components/navbar/NewNav';
 import classes from './SignIn.module.css';
 import axios from 'axios';
 import { BASE_URL } from '../utils/BASE_URL';
-import {
-	containerVariants,
-	exitAnimation,
-} from '../components/movements/variants';
+
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+
+		transition: {
+			duration: 0.2,
+		},
+	},
+};
+export const exitAnimation = {
+	opacity: 0,
+	transition: { duration: 0.2 },
+};
 
 function Copyright(props) {
 	return (
@@ -98,15 +111,14 @@ export default function SignUp() {
 	return (
 		<>
 			<ResponsiveAppBar />
-
-			<Box className={classes.wrapper}>
-				<motion.div
-					layout="true"
-					variants={containerVariants}
-					initial="hidden"
-					animate="visible"
-					exit={exitAnimation}
-				>
+			<motion.div
+				layout="true"
+				variants={containerVariants}
+				initial="hidden"
+				animate="visible"
+				exit={exitAnimation}
+			>
+				<Box className={classes.wrapper}>
 					<ThemeProvider theme={defaultTheme}>
 						<Container component="main" maxWidth="xs">
 							<CssBaseline />
@@ -207,8 +219,8 @@ export default function SignUp() {
 							</Box>
 						</Container>
 					</ThemeProvider>
-				</motion.div>
-			</Box>
+				</Box>
+			</motion.div>
 		</>
 	);
 }
