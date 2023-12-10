@@ -6,8 +6,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -62,10 +60,6 @@ export default function SignIn() {
 		password: '',
 	});
 
-	const signInclass = isLoading
-		? classes.loginBoxSigningIn
-		: classes.loginBoxSignInSuccess;
-
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
@@ -104,9 +98,10 @@ export default function SignIn() {
 							>
 								<ThemeProvider theme={defaultTheme}>
 									<Container
-										className={signInclass}
 										component="main"
-										maxWidth="xs"
+										sx={{
+											width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+										}}
 									>
 										<CssBaseline />
 										<Box
@@ -128,7 +123,6 @@ export default function SignIn() {
 											<Typography component="h1" variant="h5">
 												Sign in
 											</Typography>
-											{/* <GoogleLoginButton /> */}
 											<Box
 												component="form"
 												onSubmit={handleSubmit}
@@ -168,13 +162,7 @@ export default function SignIn() {
 														Something went wrong!
 													</p>
 												)}
-												<FormControlLabel
-													sx={{ mt: 5 }}
-													control={
-														<Checkbox value="remember" color="primary" />
-													}
-													label="Remember me"
-												/>
+
 												<GoogleLoginButton />
 
 												<Button
@@ -182,7 +170,7 @@ export default function SignIn() {
 													type="submit"
 													fullWidth
 													variant="contained"
-													sx={{ mt: 1, mb: 2 }}
+													sx={{ mt: 3, mb: 2 }}
 													color="secondary"
 												>
 													Sign In

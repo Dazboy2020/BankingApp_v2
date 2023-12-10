@@ -86,7 +86,7 @@ function ResponsiveAppBar() {
 						sx={{
 							display: { xs: 'none', md: 'inline-block' },
 							mr: 2,
-							width: { md: '60%', lg: '40%', xl: '35%' },
+							width: { md: '60%', lg: '40%', xl: '30%' },
 
 							fontWeight: 700,
 							color: 'white',
