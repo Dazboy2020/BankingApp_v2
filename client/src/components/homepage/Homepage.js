@@ -1,8 +1,18 @@
 import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import useAutoLogin from '../../hooks/useAutoLogin';
-import styles from './Homepage.module.css';
 import { BASE_URL } from '../../utils/BASE_URL';
 import { useAppContext } from '../../context/context';
+import { Box, Typography } from '@mui/material';
+
+const textStyles = {
+	fontFamily: 'poppins',
+	fontSize: 'h4.fontSize',
+	color: 'antiquewhite',
+	textAlign: 'center',
+	mt: 5,
+	letterSpacing: 1,
+	fontWeight: 300,
+};
 
 export default function Homepage() {
 	const { state, user } = useAppContext();
@@ -14,19 +24,41 @@ export default function Homepage() {
 
 	if (!user && !state.isLoading) {
 		return (
-			<main className={styles.homepage}>
-				<section>
-					<h1>
-						Stay in control of your finances.
-						<br />
-						Expense Tracker helps you monitor your spending.
-					</h1>
-					<h2>
-						Welcome to Expense Tracker. An easy-to-use solution for managing
-						your expenses.
-					</h2>
-				</section>
-			</main>
+			<Box
+				component="main"
+				sx={{
+					minHeight: '100dvh',
+					backgroundColor: '#343a40',
+				}}
+			>
+				<Typography component="section">
+					<Box
+						sx={{
+							fontFamily: 'poppins',
+							fontSize: 'h1.fontSize',
+							color: 'antiquewhite',
+							textAlign: 'center',
+							mt: 10,
+							letterSpacing: 0.9,
+							fontWeight: '300',
+						}}
+					>
+						Welcome to Expensify.
+					</Box>
+					<Box sx={textStyles}>
+						An all-in-one solution for managing your expenses.
+					</Box>
+
+					<Box sx={textStyles}>
+						Expensify provides in-depth analysis of your finances.
+					</Box>
+
+					<Box sx={textStyles}>
+						Easily target key spending patterns via powerful sorting and
+						filtering functionality.
+					</Box>
+				</Typography>
+			</Box>
 		);
 	}
 

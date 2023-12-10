@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
 
 	return (
 		<AppBar
-			position="static"
+			position="sticky"
 			sx={{
 				height: { md: '6rem' },
 				justifyContent: 'center',
@@ -99,13 +99,15 @@ function ResponsiveAppBar() {
 								margin: 0,
 								display: 'flex',
 								justifyContent: 'space-around',
-								fontSize: '2rem',
+								fontSize: '1.8rem',
+								fontFamily: 'monospace',
+								fontWeight: '500',
 							}}
 						>
-							<li>Home</li>
-							<li>About</li>
-							<li>Register</li>
-							<li>Github</li>
+							<li style={{ cursor: 'pointer' }}>Home</li>
+							<li style={{ cursor: 'pointer' }}>About</li>
+							<li style={{ cursor: 'pointer' }}>Register</li>
+							<li style={{ cursor: 'pointer' }}>Github</li>
 						</ul>
 					</Box>
 				</Toolbar>

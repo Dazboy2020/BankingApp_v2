@@ -1,15 +1,6 @@
 .homepage {
-	/* margin: 0.5rem; */
-	height: calc(100vh - 6rem);
-	/* height: 100vh; */
-	background-image: linear-gradient(
-			rgba(36, 42, 46, 0.8),
-			rgba(36, 42, 46, 0.8)
-		),
-		url('../../../public/pexels-pixabay-265087-min.jpg');
-	background-size: cover;
-	background-position: center;
-	padding: 2.5rem 5rem;
+	height: 50vh;
+	background-color: #343a40; /* Replace with your preferred background color */
 }
 
 .homepage section {
@@ -18,9 +9,8 @@
 	height: 85%;
 	align-items: center;
 	justify-content: center;
-	gap: 2.5rem;
+	/* gap: 2.5rem; */
 	text-align: center;
-	margin-top: 10rem;
 }
 
 .homepage h1 {
@@ -28,6 +18,7 @@
 	font-size: 4.5rem;
 	line-height: 1.3;
 	animation: slideDown 0.75s 1 ease-in-out forwards;
+	margin-top: 10rem;
 }
 
 .homepage h2 {
@@ -37,7 +28,7 @@
 	margin-bottom: 2.5rem;
 	animation: slideUp 1s 1 ease-in-out forwards;
 }
-
+/* 
 @media (max-width: 900px) {
 	.homepage {
 		height: 100dvh;
@@ -72,7 +63,7 @@
 	.homepage h2 {
 		font-size: 1rem;
 	}
-}
+} */
 
 @keyframes slideDown {
 	from {
