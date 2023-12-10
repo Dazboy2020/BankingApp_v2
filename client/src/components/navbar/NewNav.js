@@ -40,6 +40,12 @@ function ResponsiveAppBar() {
 		}
 	}, []);
 
+	function handleNavLink(e) {
+		const link = e.target.outerText;
+		if (link === 'Home') navigate('/');
+		if (link === 'Register') navigate('/SignUp');
+	}
+
 	return (
 		<AppBar
 			position="sticky"
@@ -103,6 +109,7 @@ function ResponsiveAppBar() {
 								fontFamily: 'monospace',
 								fontWeight: '500',
 							}}
+							onClick={(e) => handleNavLink(e)}
 						>
 							<li style={{ cursor: 'pointer' }}>Home</li>
 							<li style={{ cursor: 'pointer' }}>About</li>

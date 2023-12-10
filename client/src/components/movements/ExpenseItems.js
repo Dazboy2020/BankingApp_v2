@@ -29,7 +29,7 @@ const ExpenseItems = () => {
 
 	return (
 		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
-			<AnimatePresence>
+			<AnimatePresence initial="false">
 				{moves.length === 0 && (
 					<motion.li
 						layout="true"
@@ -40,6 +40,8 @@ const ExpenseItems = () => {
 						<NoDataCard type="Expense" />
 					</motion.li>
 				)}
+			</AnimatePresence>
+			<AnimatePresence mode="wait">
 				{moves.map((expense) => (
 					<motion.li
 						layout="true"

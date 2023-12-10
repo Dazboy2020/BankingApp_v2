@@ -1,7 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import axios from 'axios';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import SpinnerFullPage from './components/spinner/SpinnerFullPage';
 
 import ProtectedRoute from './pages/ProtectedRoute';
@@ -130,14 +131,24 @@ function App() {
 						<Route
 							index
 							element={
-								<>
-									<ResponsiveAppBar />
-									<Homepage />
-								</>
+								<AnimatePresence mode="wait" key="homepage">
+									<>
+										<ResponsiveAppBar />
+										<Homepage />
+									</>
+								</AnimatePresence>
 							}
 						/>
+
 						<Route path="login" element={<SignIn />} />
-						<Route path="signup" element={<SignUp />} />
+						<Route
+							path="signup"
+							element={
+								<AnimatePresence mode="wait" key="signup">
+									<SignUp />
+								</AnimatePresence>
+							}
+						/>
 						<Route path="forgotpassword" element={<ForgotPassword />} />
 						<Route
 							path="resetpassword/:resetToken/"

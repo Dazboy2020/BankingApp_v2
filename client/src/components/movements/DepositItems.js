@@ -45,7 +45,9 @@ const DepositItems = () => {
 						<NoDataCard type="Deposit" />
 					</motion.li>
 				)}
+			</AnimatePresence>
 
+			<AnimatePresence mode="wait">
 				{moves.map((deposit) => (
 					<motion.li
 						key={deposit.id}

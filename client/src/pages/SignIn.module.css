@@ -10,10 +10,10 @@
 .loginBoxSignInSuccess {
 	display: flex;
 }
-
+/* 
 @media (max-width: 576px) {
 	.wrapper {
 		height: fit-content;
 		padding: 1rem;
 	}
-}
+} */

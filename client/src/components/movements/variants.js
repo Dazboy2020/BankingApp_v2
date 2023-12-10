@@ -21,6 +21,11 @@ export const containerVariants = {
 
 export const exitAnimation = {
 	opacity: 1,
-	scale: [0.9, 0],
-	transition: { type: 'spring', damping: 15, stiffness: 200, duration: 0.1 },
+	scale: [0.9, 0.8, 0],
+	transition: {
+		type: 'spring',
+		damping: 15,
+		stiffness: 100,
+		duration: 0.2,
+	},
 };
