@@ -5,18 +5,18 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 
-const now = new Date();
-const options = {
-	weekday: 'long',
-	day: '2-digit',
-	year: 'numeric',
-};
+// const now = new Date();
+// const options = {
+// 	weekday: 'long',
+// 	day: '2-digit',
+// 	year: 'numeric',
+// };
 
-const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
+// const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
 
 function ResponsiveAppBar() {
 	const { state } = useAppContext();
@@ -47,12 +47,16 @@ function ResponsiveAppBar() {
 				height: { md: '6rem' },
 				justifyContent: 'center',
 				alignContent: 'centre',
+				alignItems: 'center',
 				m: 0,
-				bgcolor: '#263238',
+				bgcolor: '#000',
 			}}
 		>
 			<Container maxWidth="xxl">
-				<Toolbar disableGutters>
+				<Toolbar
+					disableGutters
+					sx={{ display: 'flex', justifyContent: 'space-between' }}
+				>
 					<Stack direction={{ xs: 'column', md: 'row' }}>
 						{!state.isLoggedIn && (
 							<Button
@@ -78,24 +82,32 @@ function ResponsiveAppBar() {
 							</Button>
 						)}
 					</Stack>
-					<Stack
-						direction={'row'}
+					<Box
 						sx={{
+							display: { xs: 'none', md: 'inline-block' },
 							mr: 2,
-							display: {
-								xs: 'none',
-								md: 'flex',
-								justifyContent: 'flex-end',
-								flexGrow: 1,
-							},
-							fontFamily: 'Nunito Sans',
+							width: { md: '60%', lg: '40%', xl: '35%' },
 
 							fontWeight: 700,
 							color: 'white',
 						}}
 					>
-						<Typography variant="h5">{curDate}</Typography>
-					</Stack>
+						<ul
+							style={{
+								listStyle: 'none',
+								padding: 0,
+								margin: 0,
+								display: 'flex',
+								justifyContent: 'space-around',
+								fontSize: '2rem',
+							}}
+						>
+							<li>Home</li>
+							<li>About</li>
+							<li>Register</li>
+							<li>Github</li>
+						</ul>
+					</Box>
 				</Toolbar>
 			</Container>
 		</AppBar>
