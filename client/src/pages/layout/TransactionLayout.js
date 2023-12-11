@@ -28,6 +28,7 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 					{TransactionType}
 					<AddTransaction />
 				</Stack>
+
 				<Box
 					sx={{
 						ml: { xs: 3, sm: 6 },

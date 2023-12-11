@@ -29,32 +29,29 @@ const ExpenseItems = () => {
 
 	return (
 		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
-			<AnimatePresence initial="false">
-				{moves.length === 0 && (
-					<motion.li
-						layout="true"
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-					>
-						<NoDataCard type="Expense" />
-					</motion.li>
-				)}
-			</AnimatePresence>
-			<AnimatePresence mode="wait">
-				{moves.map((expense) => (
-					<motion.li
-						layout="true"
-						key={expense.id}
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-						exit={exitAnimation}
-					>
-						<ExpenseCard expense={expense} />
-					</motion.li>
-				))}
-			</AnimatePresence>
+			{moves.length === 0 && (
+				<motion.li
+					// layout="true"
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+				>
+					<NoDataCard type="Expense" />
+				</motion.li>
+			)}
+
+			{moves.map((expense) => (
+				<motion.li
+					// layout="true"
+					key={expense.id}
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					exit={exitAnimation}
+				>
+					<ExpenseCard expense={expense} />
+				</motion.li>
+			))}
 		</ul>
 	);
 };
