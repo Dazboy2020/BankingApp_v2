@@ -2,24 +2,16 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Box, Stack } from '@mui/material';
+import { Box, ListItem, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 
-// const now = new Date();
-// const options = {
-// 	weekday: 'long',
-// 	day: '2-digit',
-// 	year: 'numeric',
-// };
-
-// const curDate = new Intl.DateTimeFormat('en-GB', options).format(now);
+const listItems = ['Home', 'About', 'Register', 'Github']; // Array of list items
 
 function ResponsiveAppBar() {
-	const { state } = useAppContext();
+	const { state, navLink, setNavLink } = useAppContext();
 	const [disableButton, setDisableButton] = React.useState(false);
 
 	const navigate = useNavigate();
@@ -40,11 +32,17 @@ function ResponsiveAppBar() {
 		}
 	}, []);
 
-	function handleNavLink(e) {
-		const link = e.target.outerText;
-		if (link === 'Home') navigate('/');
-		if (link === 'Register') navigate('/SignUp');
+	function handleNavLink(e, index) {
+		// const link = e.target.outerText;
+		setNavLink(index); // Set the active item index
+
+		const link = index;
+
+		if (link === 0) navigate('/');
+		if (link === 2) navigate('/SignUp');
 	}
+
+	console.log('render');
 
 	return (
 		<AppBar
@@ -108,13 +106,28 @@ function ResponsiveAppBar() {
 								fontSize: '1.8rem',
 								fontFamily: 'monospace',
 								fontWeight: '500',
+								width: '100%',
+								textAlign: 'center',
+								minWidth: '100%',
 							}}
-							onClick={(e) => handleNavLink(e)}
 						>
-							<li style={{ cursor: 'pointer' }}>Home</li>
-							<li style={{ cursor: 'pointer' }}>About</li>
-							<li style={{ cursor: 'pointer' }}>Register</li>
-							<li style={{ cursor: 'pointer' }}>Github</li>
+							{listItems.map((item, index) => (
+								<ListItem
+									key={index}
+									sx={{
+										width: '100%',
+										borderBottom:
+											navLink === index ? '2px solid #f70776' : 'none',
+										justifyContent: 'center',
+										'&:hover': {
+											cursor: 'pointer',
+										},
+									}}
+									onClick={(e) => handleNavLink(e, index)}
+								>
+									{item}
+								</ListItem>
+							))}
 						</ul>
 					</Box>
 				</Toolbar>

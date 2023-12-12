@@ -42,7 +42,7 @@ function GoogleLoginButton() {
 						width: '100%',
 						margin: 'auto',
 					}} //
-					sx={{ m: 0 }}
+					sx={{ m: 0, p: 0 }}
 				/>
 			}
 		></Button>

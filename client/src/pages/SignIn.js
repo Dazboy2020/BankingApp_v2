@@ -106,7 +106,7 @@ export default function SignIn() {
 									<CssBaseline />
 									<Box
 										sx={{
-											backgroundColor: 'white',
+											backgroundColor: '#f1f5f9',
 											marginTop: 8,
 											display: 'flex',
 											flexDirection: 'column',
@@ -155,11 +155,6 @@ export default function SignIn() {
 												// onBlur={onBlurHandler}
 												color="secondary"
 											/>
-											{state.error ? (
-												<p style={{ color: 'red' }}>Something went wrong!</p>
-											) : (
-												<p style={{ color: 'white' }}>Something went wrong!</p>
-											)}
 
 											<GoogleLoginButton />
 

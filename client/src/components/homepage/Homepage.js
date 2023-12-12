@@ -5,6 +5,7 @@ import { useAppContext } from '../../context/context';
 import { Box, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
 import { lazy } from 'react';
+import TestSection from '../lottie/TestSection';
 
 const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 
@@ -66,14 +67,18 @@ export default function Homepage() {
 						component="main"
 						sx={{
 							minHeight: '100dvh',
-							backgroundColor: '#343a40',
+							// backgroundColor: '#343a40',
+
+							backgroundColor: '#2d3436',
+							backgroundImage:
+								'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
 						}}
 					>
 						<Typography component="section">
 							<Box
 								sx={{
 									fontFamily: 'poppins',
-									fontSize: 'h1.fontSize',
+									fontSize: { xs: '3rem', s: '3rem', sm: '4rem', md: '5rem' },
 									color: 'antiquewhite',
 									textAlign: 'center',
 									mt: 10,
@@ -98,6 +103,7 @@ export default function Homepage() {
 							</Box>
 						</Typography>
 					</Box>
+					<TestSection />
 				</m.div>
 			</>
 		);

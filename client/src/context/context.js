@@ -250,6 +250,7 @@ function ContextProvider({ children }) {
 	const [modalMessage, setModalMessage] = useState('');
 	const [modalAction, setModalAction] = useState('');
 	const [id, setId] = useState('');
+	const [navLink, setNavLink] = useState(0);
 
 	const totalIncome = +state.deposits?.reduce(
 		(acc, dep) => acc + dep.amount,
@@ -285,6 +286,9 @@ function ContextProvider({ children }) {
 				setModalAction,
 				id,
 				setId,
+
+				navLink,
+				setNavLink,
 			}}
 		>
 			{children}
