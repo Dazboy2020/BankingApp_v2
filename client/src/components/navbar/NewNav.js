@@ -1,48 +1,32 @@
 import * as React from 'react';
+import { useAppContext } from '../../context/context';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import { Box, ListItem, Stack } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { useAppContext } from '../../context/context';
+import { Box, ListItem } from '@mui/material';
+import { AnimatePresence, motion as m } from 'framer-motion';
 
-const listItems = ['Home', 'About', 'Register', 'Github']; // Array of list items
+const listItems = ['Home', 'Login', 'Register']; // Array of list items
 
 function ResponsiveAppBar() {
-	const { state, navLink, setNavLink } = useAppContext();
-	const [disableButton, setDisableButton] = React.useState(false);
-
-	const navigate = useNavigate();
-
-	function handleLogin() {
-		navigate('/login');
-	}
+	const { navLink, setNavLink } = useAppContext();
+	const currentPath = window.location.pathname; // Retrieves the pathname (e.g., '/login')
+	const routeAfterPort = currentPath;
 
 	React.useEffect(() => {
-		// Get the current URL path
-		const currentPath = window.location.pathname;
+		if (routeAfterPort === '/') setNavLink(0);
+		if (routeAfterPort === '/login') setNavLink(1);
+		if (routeAfterPort === '/signup') setNavLink(2);
+	});
+	const navigate = useNavigate();
 
-		// Check if the URL contains '/login'
-		if (currentPath.includes('/login')) {
-			setDisableButton(true);
-		} else {
-			setDisableButton(false);
-		}
-	}, []);
-
-	function handleNavLink(e, index) {
-		// const link = e.target.outerText;
+	function handleNavLink(index) {
+		if (index === 0) navigate('/');
+		if (index === 1) navigate('/login');
+		if (index === 2) navigate('/signup');
 		setNavLink(index); // Set the active item index
-
-		const link = index;
-
-		if (link === 0) navigate('/');
-		if (link === 2) navigate('/SignUp');
 	}
-
-	console.log('render');
 
 	return (
 		<AppBar
@@ -59,33 +43,9 @@ function ResponsiveAppBar() {
 			<Container maxWidth="xxl">
 				<Toolbar
 					disableGutters
-					sx={{ display: 'flex', justifyContent: 'space-between' }}
+					sx={{ display: 'flex', justifyContent: 'flex-end', mr: 10 }}
 				>
-					<Stack direction={{ xs: 'column', md: 'row' }}>
-						{!state.isLoggedIn && (
-							<Button
-								sx={{
-									fontSize: { xs: '1rem', sm: '1.5rem' },
-									'&:hover': {
-										backgroundColor: '#680747',
-										cursor: 'default',
-									},
-									bgcolor: '#f70776',
-									color: 'white',
-									paddingRight: '20px',
-								}}
-								size="medium"
-								onClick={handleLogin}
-								color="inherit"
-								startIcon={
-									<ExitToAppIcon size="large" color="white" sx={{ ml: 1 }} />
-								}
-								disabled={disableButton}
-							>
-								Login
-							</Button>
-						)}
-					</Stack>
+					{/* <Stack direction={{ xs: 'column', md: 'row' }}></Stack> */}
 					<Box
 						sx={{
 							display: { xs: 'none', md: 'inline-block' },
@@ -116,16 +76,37 @@ function ResponsiveAppBar() {
 									key={index}
 									sx={{
 										width: '100%',
-										borderBottom:
-											navLink === index ? '2px solid #f70776' : 'none',
 										justifyContent: 'center',
 										'&:hover': {
 											cursor: 'pointer',
 										},
 									}}
-									onClick={(e) => handleNavLink(e, index)}
+									onClick={() => handleNavLink(index)}
 								>
 									{item}
+
+									<AnimatePresence mode="wait">
+										{navLink === index && (
+											<Box
+												component={m.div}
+												initial={{ scale: 0 }}
+												animate={{
+													opacity: 1,
+													scale: [0, 1],
+													width: '100%',
+													transition: { delay: 0.2, duration: 0.1 },
+												}}
+												exit={{ scale: [1, 0] }}
+												sx={{
+													height: '2px',
+													backgroundColor: '#f70776',
+													position: 'absolute',
+													bottom: 0,
+													left: 0,
+												}}
+											/>
+										)}
+									</AnimatePresence>
 								</ListItem>
 							))}
 						</ul>
