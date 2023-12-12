@@ -52,7 +52,7 @@ const defaultTheme = createTheme();
 export default function SignIn() {
 	// useFetchPrivateUserData(`${BASE_URL}/userdata`);
 
-	const { state, isLoading } = useAppContext();
+	const { isLoading } = useAppContext();
 
 	const { getUserToken } = useGetUserToken();
 

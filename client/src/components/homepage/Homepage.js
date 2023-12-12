@@ -22,19 +22,19 @@ const textStyles = {
 const containerVariants = {
 	hidden: {
 		opacity: 0,
-		scale: [0.8, 0.9, 1],
+		scale: [0],
 		y: -100,
 	},
 	visible: {
 		opacity: 1,
-		scale: 1,
+		scale: [0, 1],
 		y: 0,
 
 		transition: {
 			type: 'spring',
 			mass: 0.5,
 			stiffness: 100,
-			duration: 0.2,
+			duration: 0.4,
 		},
 	},
 };
@@ -55,16 +55,8 @@ export default function Homepage() {
 		return (
 			<>
 				<ResponsiveAppBar />
-				<m.div
-					layout="true"
-					initial="hidden"
-					animate="visible"
-					exit={exitAnimation}
-					variants={containerVariants}
-					key="header"
-				>
+				<div>
 					<Box
-						component="main"
 						sx={{
 							minHeight: '100dvh',
 							backgroundColor: '#2d3436',
@@ -74,6 +66,13 @@ export default function Homepage() {
 					>
 						<Typography component="section">
 							<Box
+								component={m.div}
+								layout="true"
+								initial="hidden"
+								animate="visible"
+								exit={exitAnimation}
+								variants={containerVariants}
+								key="header"
 								sx={{
 									fontFamily: 'poppins',
 									fontSize: { xs: '3rem', s: '3rem', sm: '4rem', md: '5rem' },
@@ -102,7 +101,7 @@ export default function Homepage() {
 						</Typography>
 					</Box>
 					<TestSection />
-				</m.div>
+				</div>
 			</>
 		);
 	}
