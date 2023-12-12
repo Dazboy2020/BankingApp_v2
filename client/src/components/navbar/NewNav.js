@@ -8,6 +8,7 @@ import { Box, ListItem, Stack } from '@mui/material';
 import { AnimatePresence } from 'framer-motion';
 import LinkEffects from './LinkEffects';
 import smallpig from '../../assets/smallpig.svg';
+import LoginButton from '../buttons/LoginButton';
 
 const listItems = ['Home', 'Login', 'Register']; // Array of list items
 
@@ -45,22 +46,28 @@ function ResponsiveAppBar() {
 			<Container maxWidth="xxl">
 				<Toolbar
 					disableGutters
-					sx={{ display: 'flex', justifyContent: 'space-between', mr: 10 }}
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						mr: { s: 1, md: 5 },
+					}}
 				>
 					<Stack direction="row" sx={{ alignItems: 'center' }}>
 						<img width="75" height="75" src={smallpig} alt="logo" />
 						<Box
 							sx={{
-								fontSize: '2.2rem',
+								fontSize: { xs: '1.5em', sm: '2.2rem' },
 								fontFamily: 'monospace',
 								fontWeight: '500',
 								alignItems: 'center',
-								ml: 3,
+								ml: { xs: 3, md: 3.5 },
 							}}
 						>
 							Expensify
 						</Box>
 					</Stack>
+					<LoginButton />
+
 					<Box
 						sx={{
 							display: { xs: 'none', md: 'inline-block' },

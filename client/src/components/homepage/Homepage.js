@@ -4,16 +4,15 @@ import { BASE_URL } from '../../utils/BASE_URL';
 import { useAppContext } from '../../context/context';
 import { Box, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
-import { lazy } from 'react';
 import TestSection from '../lottie/TestSection';
-
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
+// import { lazy } from 'react';
 
 import ResponsiveAppBar from '../navbar/NewNav';
 
 const textStyles = {
 	fontFamily: 'poppins',
-	fontSize: 'h4.fontSize',
+	fontSize: { xs: '1.5rem', s: '1.5rem', sm: '2rem', md: '2rem' },
 	color: 'antiquewhite',
 	textAlign: 'center',
 	mt: 5,
@@ -77,10 +76,10 @@ export default function Homepage() {
 								key="header"
 								sx={{
 									fontFamily: 'poppins',
-									fontSize: { xs: '3rem', s: '3rem', sm: '4rem', md: '5rem' },
+									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '5rem' },
 									color: 'antiquewhite',
 									textAlign: 'center',
-									mt: 10,
+									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
 									letterSpacing: 0.9,
 									fontWeight: '300',
 								}}
@@ -94,11 +93,6 @@ export default function Homepage() {
 
 							<Box sx={textStyles}>
 								Expensify provides in-depth analysis of your finances.
-							</Box>
-
-							<Box sx={textStyles}>
-								Easily target key spending patterns via powerful sorting and
-								filtering functionality.
 							</Box>
 						</Typography>
 					</Box>
