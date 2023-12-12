@@ -23,7 +23,7 @@ const containerVariants = {
 	hidden: {
 		opacity: 0,
 		scale: [0.8, 0.9, 1],
-		y: 100,
+		y: -100,
 	},
 	visible: {
 		opacity: 1,
@@ -67,8 +67,6 @@ export default function Homepage() {
 						component="main"
 						sx={{
 							minHeight: '100dvh',
-							// backgroundColor: '#343a40',
-
 							backgroundColor: '#2d3436',
 							backgroundImage:
 								'linear-gradient(315deg, #2d3436 0%, #000000 74%)',

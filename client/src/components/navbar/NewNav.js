@@ -5,7 +5,8 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { Box, ListItem } from '@mui/material';
-import { AnimatePresence, motion as m } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import LinkEffects from './LinkEffects';
 
 const listItems = ['Home', 'Login', 'Register']; // Array of list items
 
@@ -86,26 +87,7 @@ function ResponsiveAppBar() {
 									{item}
 
 									<AnimatePresence mode="wait">
-										{navLink === index && (
-											<Box
-												component={m.div}
-												initial={{ scale: 0 }}
-												animate={{
-													opacity: 1,
-													scale: [0, 1],
-													width: '100%',
-													transition: { delay: 0.2, duration: 0.1 },
-												}}
-												exit={{ scale: [1, 0] }}
-												sx={{
-													height: '2px',
-													backgroundColor: '#f70776',
-													position: 'absolute',
-													bottom: 0,
-													left: 0,
-												}}
-											/>
-										)}
+										{navLink === index && <LinkEffects />}
 									</AnimatePresence>
 								</ListItem>
 							))}
