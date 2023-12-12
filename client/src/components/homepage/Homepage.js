@@ -7,7 +7,9 @@ import { motion as m } from 'framer-motion';
 import { lazy } from 'react';
 import TestSection from '../lottie/TestSection';
 
-const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
+// const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
+
+import ResponsiveAppBar from '../navbar/NewNav';
 
 const textStyles = {
 	fontFamily: 'poppins',

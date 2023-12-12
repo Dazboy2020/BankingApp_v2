@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import { Box, ListItem } from '@mui/material';
+import { Box, ListItem, Stack } from '@mui/material';
 import { AnimatePresence } from 'framer-motion';
 import LinkEffects from './LinkEffects';
+import smallpig from '../../assets/smallpig.svg';
 
 const listItems = ['Home', 'Login', 'Register']; // Array of list items
 
@@ -37,16 +38,29 @@ function ResponsiveAppBar() {
 				justifyContent: 'center',
 				alignContent: 'centre',
 				alignItems: 'center',
-				m: 0,
+				mt: { xs: 3, s: 3, sm: 3, md: 0 },
 				bgcolor: '#000',
 			}}
 		>
 			<Container maxWidth="xxl">
 				<Toolbar
 					disableGutters
-					sx={{ display: 'flex', justifyContent: 'flex-end', mr: 10 }}
+					sx={{ display: 'flex', justifyContent: 'space-between', mr: 10 }}
 				>
-					{/* <Stack direction={{ xs: 'column', md: 'row' }}></Stack> */}
+					<Stack direction="row" sx={{ alignItems: 'center' }}>
+						<img width="75" height="75" src={smallpig} alt="logo" />
+						<Box
+							sx={{
+								fontSize: '2.2rem',
+								fontFamily: 'monospace',
+								fontWeight: '500',
+								alignItems: 'center',
+								ml: 3,
+							}}
+						>
+							Expensify
+						</Box>
+					</Stack>
 					<Box
 						sx={{
 							display: { xs: 'none', md: 'inline-block' },

@@ -3,8 +3,10 @@ import { Button } from '@mui/material';
 import axios from 'axios';
 import google from '../../assets/google.png';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context/context';
 
 function GoogleLoginButton() {
+	const { dispatch } = useAppContext();
 	const navigate = useNavigate();
 
 	const handleClick = useGoogleLogin({
@@ -33,7 +35,10 @@ function GoogleLoginButton() {
 					p: 0,
 				},
 			}}
-			onClick={() => handleClick()}
+			onClick={() => {
+				dispatch({ type: 'isLoading', payload: true });
+				handleClick();
+			}}
 			startIcon={
 				<img
 					src={google}

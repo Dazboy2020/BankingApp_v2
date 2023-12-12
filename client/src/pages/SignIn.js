@@ -50,8 +50,6 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	// useFetchPrivateUserData(`${BASE_URL}/userdata`);
-
 	const { isLoading } = useAppContext();
 
 	const { getUserToken } = useGetUserToken();
@@ -149,10 +147,8 @@ export default function SignIn() {
 												label="password"
 												type="password"
 												id="password"
-												autoComplete="current-pin"
 												value={data.password}
 												onChange={onChange}
-												// onBlur={onBlurHandler}
 												color="secondary"
 											/>
 
