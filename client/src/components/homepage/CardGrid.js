@@ -7,54 +7,50 @@ function CardGrid() {
 	const boxStyling = {
 		padding: 5,
 	};
+
+	const text =
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.';
 	return (
-		<Box
-			sx={{
-				mt: 5,
-				ml: { xs: 5, s: 12, md: 12, lg: 15 },
-				mr: { xs: 5, s: 12, md: 12, lg: 15 },
-			}}
+		<Grid
+			width="100%"
+			container
+			rowSpacing={10}
+			columnSpacing={{ xs: 5, sm: 5, md: 10, lg: 15 }}
+			ml={5}
+			mr={5}
+			mt={5}
 		>
-			<Grid
-				width="100%"
-				container
-				rowSpacing={10}
-				columnSpacing={{ xs: 5, sm: 5, md: 10, lg: 15 }}
-				ml={5}
-				mr={5}
-			>
-				<Grid item xs={12} sm={6} md={6} lg={4}>
-					<Card>
-						<Box sx={boxStyling}>1</Box>
-					</Card>
-				</Grid>
-				<Grid item xs={12} sm={6} md={6} lg={4}>
-					<Card>
-						<Box sx={boxStyling}>2</Box>
-					</Card>
-				</Grid>
-				<Grid item xs={12} sm={6} md={6} lg={4}>
-					<Card>
-						<Box sx={boxStyling}>3</Box>
-					</Card>
-				</Grid>
-				<Grid item xs={12} sm={6} md={6} lg={4}>
-					<Card>
-						<Box sx={boxStyling}>1</Box>
-					</Card>
-				</Grid>
-				<Grid item xs={12} sm={6} md={6} lg={4}>
-					<Card>
-						<Box sx={boxStyling}>2</Box>
-					</Card>
-				</Grid>
-				<Grid item xs={12} sm={6} md={6} lg={4}>
-					<Card>
-						<Box sx={boxStyling}>3</Box>
-					</Card>
-				</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={4}>
+				<Card>
+					<Box sx={boxStyling}>{text}</Box>
+				</Card>
 			</Grid>
-		</Box>
+			<Grid item xs={12} sm={6} md={6} lg={4}>
+				<Card>
+					<Box sx={boxStyling}>{text}</Box>
+				</Card>
+			</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={4}>
+				<Card>
+					<Box sx={boxStyling}>{text}</Box>
+				</Card>
+			</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={4}>
+				<Card>
+					<Box sx={boxStyling}>{text}</Box>
+				</Card>
+			</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={4}>
+				<Card>
+					<Box sx={boxStyling}>{text}</Box>
+				</Card>
+			</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={4}>
+				<Card>
+					<Box sx={boxStyling}>{text}</Box>
+				</Card>
+			</Grid>
+		</Grid>
 	);
 }
 

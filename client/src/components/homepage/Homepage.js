@@ -73,48 +73,60 @@ export default function Homepage() {
 			<>
 				<ResponsiveAppBar />
 				<Box
+					component="main"
 					sx={{
 						minHeight: '100dvh',
 						backgroundColor: '#2d3436',
 						backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
 					}}
 				>
-					<Typography component="section">
-						<Box
-							component={m.div}
-							layout="true"
-							initial="hidden"
-							animate="visible"
-							exit={exitAnimation}
-							variants={containerVariants}
-							key="header"
-							sx={{
-								fontFamily: 'poppins',
-								fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
-								color: 'antiquewhite',
-								textAlign: 'center',
-								mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
-								letterSpacing: 0.9,
-								fontWeight: '300',
-							}}
-						>
-							Welcome to Expensify.
-						</Box>
-
-						<Box
-							layout="true"
-							initial="hidden"
-							component={m.div}
-							sx={textStyles}
-							variants={titleVariant}
-							animate="visible"
-							exit={exitAnimation}
-							key="subtitle"
-						>
-							An all-in-one solution for managing your expenses.
-						</Box>
-					</Typography>
-					<CardGrid />
+					<Box
+						component="section"
+						sx={{
+							ml: { xs: 5, s: 12, md: 12, lg: 15 },
+							mr: { xs: 5, s: 12, md: 12, lg: 15 },
+						}}
+					>
+						<Typography component="section">
+							<Box
+								component={m.div}
+								layout="true"
+								initial="hidden"
+								animate="visible"
+								exit={exitAnimation}
+								variants={containerVariants}
+								key="header"
+								sx={{
+									fontFamily: 'poppins',
+									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
+									color: 'antiquewhite',
+									textAlign: 'center',
+									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
+									letterSpacing: 0.9,
+									fontWeight: '300',
+									pt: 10,
+									pb: 10,
+									borderRadius: 3,
+									background: 'linear-gradient(to right, #3c1053, #ad5389)',
+								}}
+							>
+								Welcome to Expensify.
+								<Box
+									layout="true"
+									initial="hidden"
+									component={m.div}
+									sx={textStyles}
+									variants={titleVariant}
+									animate="visible"
+									exit={exitAnimation}
+									key="subtitle"
+								>
+									An all-in-one solution for managing your expenses.
+								</Box>
+							</Box>
+						</Typography>
+						<CardGrid />
+					</Box>
 				</Box>
 				<TestSection />
 			</>

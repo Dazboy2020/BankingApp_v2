@@ -85,7 +85,15 @@ export default function SignIn() {
 					<LinearWithValueLabel />
 				</>
 			) : (
-				<Box className={classes.wrapper}>
+				// <Box className={classes.wrapper}>
+				<Box
+					component="main"
+					sx={{
+						borderRadius: 3,
+						background: 'linear-gradient(to right, #3c1053, #ad5389)',
+						height: '100dvh',
+					}}
+				>
 					{!storagetoken && (
 						<motion.div
 							layout="true"
@@ -99,6 +107,7 @@ export default function SignIn() {
 									component="main"
 									sx={{
 										width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+										pt: 10,
 									}}
 								>
 									<CssBaseline />
@@ -185,6 +194,7 @@ export default function SignIn() {
 						</motion.div>
 					)}
 				</Box>
+				// </Box>
 			)}
 		</>
 	);

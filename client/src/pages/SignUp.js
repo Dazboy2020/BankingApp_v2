@@ -100,7 +100,15 @@ export default function SignUp() {
 		<>
 			<ResponsiveAppBar />
 
-			<Box className={classes.wrapper}>
+			{/* <Box className={classes.wrapper}> */}
+			<Box
+				component="main"
+				sx={{
+					borderRadius: 3,
+					background: 'linear-gradient(to right, #3c1053, #ad5389)',
+					height: '100dvh',
+				}}
+			>
 				<motion.div
 					layout="true"
 					variants={containerVariants}
@@ -113,6 +121,7 @@ export default function SignUp() {
 							component="main"
 							sx={{
 								width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+								pt: 10,
 							}}
 						>
 							<CssBaseline />
@@ -215,6 +224,7 @@ export default function SignUp() {
 					</ThemeProvider>
 				</motion.div>
 			</Box>
+			{/* </Box> */}
 		</>
 	);
 }

@@ -39,7 +39,7 @@ function ResponsiveAppBar() {
 				justifyContent: 'center',
 				alignContent: 'centre',
 				alignItems: 'center',
-				mt: { xs: 3, s: 3, sm: 3, md: 0 },
+				mt: { xs: 1, s: 3, sm: 3, md: 0 },
 				bgcolor: '#000',
 			}}
 		>
