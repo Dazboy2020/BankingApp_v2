@@ -10,7 +10,7 @@ import LinkEffects from './LinkEffects';
 import smallpig from '../../assets/smallpig.svg';
 import LoginButton from '../buttons/LoginButton';
 
-const listItems = ['Home', 'Login', 'Register']; // Array of list items
+const listItems = ['Home', 'Login', 'Register'];
 
 function ResponsiveAppBar() {
 	const { navLink, setNavLink } = useAppContext();
@@ -101,6 +101,8 @@ function ResponsiveAppBar() {
 										justifyContent: 'center',
 										'&:hover': {
 											cursor: 'pointer',
+											color: navLink === index ? 'white' : '#f70776',
+											transition: 'color  0.3s ease-in-out',
 										},
 									}}
 									onClick={() => handleNavLink(index)}

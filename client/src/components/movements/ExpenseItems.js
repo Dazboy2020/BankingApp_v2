@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/context';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from './variants';
