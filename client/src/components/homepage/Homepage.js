@@ -12,7 +12,7 @@ import ResponsiveAppBar from '../navbar/NewNav';
 
 const textStyles = {
 	fontFamily: 'poppins',
-	fontSize: { xs: '1.5rem', s: '1.5rem', sm: '2rem', md: '3rem' },
+	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '1.5rem', md: '1.75rem' },
 	color: 'antiquewhite',
 	textAlign: 'center',
 	mt: 5,
@@ -94,7 +94,7 @@ export default function Homepage() {
 									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
 									color: 'antiquewhite',
 									textAlign: 'center',
-									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 6 },
+									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
 									letterSpacing: 0.9,
 									fontWeight: '300',
 								}}

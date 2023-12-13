@@ -72,7 +72,7 @@ function ResponsiveAppBar() {
 						sx={{
 							display: { xs: 'none', md: 'flex', alignItems: 'center' },
 							mr: 2,
-							width: { md: '60%', lg: '40%', xl: '30%' },
+							width: { md: '40%', lg: '30%', xl: '20%' },
 
 							fontWeight: 700,
 							color: 'white',
@@ -92,7 +92,7 @@ function ResponsiveAppBar() {
 								fontWeight: '500',
 								width: '100%',
 								textAlign: 'center',
-								minWidth: '100%',
+								// minWidth: '100%',
 							}}
 						>
 							{listItems.map((item, index) => (

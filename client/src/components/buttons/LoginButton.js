@@ -22,7 +22,6 @@ function LoginButton() {
 		}
 
 		setType(buttonText);
-		console.log(buttonText);
 	}, []);
 
 	function handleClick() {
