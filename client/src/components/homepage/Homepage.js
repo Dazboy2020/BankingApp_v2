@@ -9,6 +9,7 @@ import TestSection from '../lottie/TestSection';
 // import { lazy } from 'react';
 
 import ResponsiveAppBar from '../navbar/NewNav';
+import CardGrid from './CardGrid';
 
 const textStyles = {
 	fontFamily: 'poppins',
@@ -71,53 +72,51 @@ export default function Homepage() {
 		return (
 			<>
 				<ResponsiveAppBar />
-				<div>
-					<Box
-						sx={{
-							minHeight: '100dvh',
-							backgroundColor: '#2d3436',
-							backgroundImage:
-								'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
-						}}
-					>
-						<Typography component="section">
-							<Box
-								component={m.div}
-								layout="true"
-								initial="hidden"
-								animate="visible"
-								exit={exitAnimation}
-								variants={containerVariants}
-								key="header"
-								sx={{
-									fontFamily: 'poppins',
-									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
-									color: 'antiquewhite',
-									textAlign: 'center',
-									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
-									letterSpacing: 0.9,
-									fontWeight: '300',
-								}}
-							>
-								Welcome to Expensify.
-							</Box>
+				<Box
+					sx={{
+						minHeight: '100dvh',
+						backgroundColor: '#2d3436',
+						backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
+					}}
+				>
+					<Typography component="section">
+						<Box
+							component={m.div}
+							layout="true"
+							initial="hidden"
+							animate="visible"
+							exit={exitAnimation}
+							variants={containerVariants}
+							key="header"
+							sx={{
+								fontFamily: 'poppins',
+								fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
+								color: 'antiquewhite',
+								textAlign: 'center',
+								mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
+								letterSpacing: 0.9,
+								fontWeight: '300',
+							}}
+						>
+							Welcome to Expensify.
+						</Box>
 
-							<Box
-								layout="true"
-								initial="hidden"
-								component={m.div}
-								sx={textStyles}
-								variants={titleVariant}
-								animate="visible"
-								exit={exitAnimation}
-								key="subtitle"
-							>
-								An all-in-one solution for managing your expenses.
-							</Box>
-						</Typography>
-					</Box>
-					<TestSection />
-				</div>
+						<Box
+							layout="true"
+							initial="hidden"
+							component={m.div}
+							sx={textStyles}
+							variants={titleVariant}
+							animate="visible"
+							exit={exitAnimation}
+							key="subtitle"
+						>
+							An all-in-one solution for managing your expenses.
+						</Box>
+					</Typography>
+					<CardGrid />
+				</Box>
+				<TestSection />
 			</>
 		);
 	}
