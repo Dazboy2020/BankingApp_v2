@@ -5,7 +5,7 @@ import google from '../../assets/google.png';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 
-function GoogleLoginButton() {
+function GoogleLoginButton({ width, height, mt }) {
 	const { dispatch } = useAppContext();
 	const navigate = useNavigate();
 
@@ -27,13 +27,18 @@ function GoogleLoginButton() {
 	return (
 		<Button
 			sx={{
-				fontSize: { xs: '1rem', sm: '1.3rem' },
-				width: '100%',
-				margin: 'auto',
+				margin: 0,
 				'& .MuiButton-startIcon': {
 					m: 0,
 					p: 0,
 				},
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+				mt: mt,
+				p: 0,
+				width: width,
+				height: height,
 			}}
 			onClick={() => {
 				dispatch({ type: 'isLoading', payload: true });
@@ -45,8 +50,9 @@ function GoogleLoginButton() {
 					alt="google button"
 					style={{
 						width: '100%',
-						margin: 'auto',
-					}} //
+						height: '100%',
+						border: '1px solid grey',
+					}}
 					sx={{ m: 0, p: 0 }}
 				/>
 			}

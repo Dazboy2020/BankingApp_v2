@@ -18,8 +18,8 @@ export const containerVariants = {
 };
 
 export const exitAnimation = {
-	opacity: 1,
-	scale: [1, 0],
+	opacity: 0,
+	scale: [1, 0.8],
 	transition: {
 		type: 'spring',
 		damping: 20,

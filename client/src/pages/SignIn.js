@@ -105,7 +105,7 @@ export default function SignIn() {
 									<Box
 										sx={{
 											backgroundColor: '#f1f5f9',
-											marginTop: 8,
+											marginTop: { xs: 5, s: 2, sm: 5 },
 											display: 'flex',
 											flexDirection: 'column',
 											alignItems: 'center',
@@ -152,7 +152,7 @@ export default function SignIn() {
 												color="secondary"
 											/>
 
-											<GoogleLoginButton />
+											<GoogleLoginButton width="100%" mt={3} />
 
 											<Button
 												startIcon={<Login size="medium" />}

@@ -12,7 +12,7 @@ import ResponsiveAppBar from '../navbar/NewNav';
 
 const textStyles = {
 	fontFamily: 'poppins',
-	fontSize: { xs: '1.5rem', s: '1.5rem', sm: '2rem', md: '2rem' },
+	fontSize: { xs: '1.5rem', s: '1.5rem', sm: '2rem', md: '3rem' },
 	color: 'antiquewhite',
 	textAlign: 'center',
 	mt: 5,
@@ -27,15 +27,30 @@ const containerVariants = {
 		y: -100,
 	},
 	visible: {
-		opacity: 1,
+		opacity: [1],
 		scale: [0, 1],
 		y: 0,
 
 		transition: {
-			type: 'spring',
-			mass: 0.5,
-			stiffness: 100,
-			duration: 0.4,
+			type: 'tween',
+			delay: 0.4,
+		},
+	},
+};
+
+const titleVariant = {
+	hidden: {
+		opacity: 0,
+		y: '100%',
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+
+		transition: {
+			type: 'tween',
+			duration: 0.5,
+			delay: 1,
 		},
 	},
 };
@@ -76,10 +91,10 @@ export default function Homepage() {
 								key="header"
 								sx={{
 									fontFamily: 'poppins',
-									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '5rem' },
+									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
 									color: 'antiquewhite',
 									textAlign: 'center',
-									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
+									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 6 },
 									letterSpacing: 0.9,
 									fontWeight: '300',
 								}}
@@ -87,12 +102,17 @@ export default function Homepage() {
 								Welcome to Expensify.
 							</Box>
 
-							<Box sx={textStyles}>
+							<Box
+								layout="true"
+								initial="hidden"
+								component={m.div}
+								sx={textStyles}
+								variants={titleVariant}
+								animate="visible"
+								exit={exitAnimation}
+								key="subtitle"
+							>
 								An all-in-one solution for managing your expenses.
-							</Box>
-
-							<Box sx={textStyles}>
-								Expensify provides in-depth analysis of your finances.
 							</Box>
 						</Typography>
 					</Box>

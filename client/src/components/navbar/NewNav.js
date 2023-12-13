@@ -49,7 +49,7 @@ function ResponsiveAppBar() {
 					sx={{
 						display: 'flex',
 						justifyContent: 'space-between',
-						mr: { s: 1, md: 5 },
+						mr: { s: 1, md: 1 },
 					}}
 				>
 					<Stack direction="row" sx={{ alignItems: 'center' }}>
@@ -70,7 +70,7 @@ function ResponsiveAppBar() {
 
 					<Box
 						sx={{
-							display: { xs: 'none', md: 'inline-block' },
+							display: { xs: 'none', md: 'flex', alignItems: 'center' },
 							mr: 2,
 							width: { md: '60%', lg: '40%', xl: '30%' },
 
@@ -85,6 +85,8 @@ function ResponsiveAppBar() {
 								margin: 0,
 								display: 'flex',
 								justifyContent: 'space-around',
+								alignItems: 'center',
+								alignContent: 'center',
 								fontSize: '1.8rem',
 								fontFamily: 'monospace',
 								fontWeight: '500',
@@ -114,6 +116,7 @@ function ResponsiveAppBar() {
 									</AnimatePresence>
 								</ListItem>
 							))}
+							{/* {<GoogleLoginButton width="100%" height="100%" />} */}
 						</ul>
 					</Box>
 				</Toolbar>
