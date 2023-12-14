@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Card, CardContent } from '@mui/material';
-import CardText from './cardcontent/CardText';
-import { cardTextContent } from './cardcontent/CardText';
+import { Card, CardContent, Typography } from '@mui/material';
+import { cardTextContent } from './cardcontent/cardText';
 
 function CardGrid({ content }) {
 	const boxStyling = {
@@ -20,7 +19,12 @@ function CardGrid({ content }) {
 				>
 					<CardContent sx={{ p: 0 }}>
 						<Box sx={boxStyling}>
-							<CardText header={content.header} text={content.text} />{' '}
+							<Box>
+								<Typography variant="h6">{content.header}</Typography>
+								<Box>
+									<Typography variant="h7">{content.text}</Typography>
+								</Box>
+							</Box>
 						</Box>
 					</CardContent>
 				</Card>

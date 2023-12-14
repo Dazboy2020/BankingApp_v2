@@ -1,18 +1,3 @@
-import { Box, Typography } from '@mui/material';
-
-function CardText({ header, text }) {
-	return (
-		<Box>
-			<Typography variant="h6">{header}</Typography>
-			<Box>
-				<Typography variant="h7">{text}</Typography>
-			</Box>
-		</Box>
-	);
-}
-
-export default CardText;
-
 export const cardTextContent = [
 	{
 		card1: {
