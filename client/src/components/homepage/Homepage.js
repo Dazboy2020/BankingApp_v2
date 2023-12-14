@@ -9,8 +9,16 @@ import TestSection from '../lottie/TestSection';
 // import { lazy } from 'react';
 
 import ResponsiveAppBar from '../navbar/NewNav';
-import CardGrid from './CardGrid';
+import CardGrid from './cardGrid/CardGrid';
 import GoogleLoginButton from '../buttons/GoogleLogin';
+import {
+	buttonVariant,
+	containerVariants,
+	exitAnimation,
+	titleVariant,
+} from './variants';
+
+import SpinnerFullPage from '../spinner/SpinnerFullPage';
 
 const textStyles = {
 	fontFamily: 'poppins',
@@ -20,45 +28,6 @@ const textStyles = {
 	mt: 5,
 	letterSpacing: 1,
 	fontWeight: 300,
-};
-
-const containerVariants = {
-	hidden: {
-		opacity: 0,
-		scale: [0],
-		y: -100,
-	},
-	visible: {
-		opacity: [1],
-		scale: [0, 1],
-		y: 0,
-
-		transition: {
-			type: 'tween',
-			delay: 0.4,
-		},
-	},
-};
-
-const titleVariant = {
-	hidden: {
-		opacity: 0,
-		y: '100%',
-	},
-	visible: {
-		opacity: 1,
-		y: 0,
-
-		transition: {
-			type: 'tween',
-			duration: 0.5,
-			delay: 1,
-		},
-	},
-};
-export const exitAnimation = {
-	opacity: 0,
-	transition: { duration: 0.2 },
 };
 
 export default function Homepage() {
@@ -76,16 +45,17 @@ export default function Homepage() {
 					component="main"
 					sx={{
 						minHeight: '100dvh',
-						backgroundColor: '#2d3436',
-						backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
+						// backgroundColor: '#2d3436',
+						// backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
+						backgroundColor: '#222',
 					}}
 				>
 					<ResponsiveAppBar />
 					<Box
 						component="section"
 						sx={{
-							ml: { xs: 5, s: 12, md: 12, lg: 20 },
-							mr: { xs: 5, s: 12, md: 12, lg: 20 },
+							ml: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
+							mr: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
 							mt: 4,
 						}}
 					>
@@ -115,9 +85,9 @@ export default function Homepage() {
 							>
 								Welcome to Expensify.
 								<Box
+									component={m.div}
 									layout="true"
 									initial="hidden"
-									component={m.div}
 									sx={textStyles}
 									variants={titleVariant}
 									animate="visible"
@@ -127,6 +97,13 @@ export default function Homepage() {
 									An all-in-one solution for managing your expenses.
 								</Box>
 								<Box
+									component={m.div}
+									layout="true"
+									initial="hidden"
+									variants={buttonVariant}
+									animate="visible"
+									exit={exitAnimation}
+									key="button"
 									sx={{
 										position: 'absolute',
 										left: 10,
@@ -149,5 +126,5 @@ export default function Homepage() {
 		);
 	}
 
-	return null;
+	return <Homepage />;
 }

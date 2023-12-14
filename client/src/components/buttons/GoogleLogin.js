@@ -3,10 +3,11 @@ import { Button } from '@mui/material';
 import axios from 'axios';
 import google from '../../assets/google.png';
 import { useNavigate } from 'react-router-dom';
-import { useAppContext } from '../../context/context';
+// import { useAppContext } from '../../context/context';
 
 function GoogleLoginButton({ width, height, padding }) {
-	const { dispatch } = useAppContext();
+	//! TODO: ERROR HANDLING
+	// const { dispatch } = useAppContext();
 	const navigate = useNavigate();
 
 	const handleClick = useGoogleLogin({
@@ -18,6 +19,8 @@ function GoogleLoginButton({ width, height, padding }) {
 			const { token } = tokens.data;
 
 			localStorage.setItem('authToken', token);
+			// dispatch({ type: 'isLoading', payload: false });
+
 			navigate('/overview');
 		},
 
