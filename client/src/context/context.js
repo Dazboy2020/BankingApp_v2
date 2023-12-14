@@ -62,7 +62,6 @@ function reducer(state, action) {
 				...state,
 				isLoggedIn: false,
 				user: '',
-				pin: '',
 				filteredExpenses: null,
 				token: '',
 			};

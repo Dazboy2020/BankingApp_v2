@@ -116,7 +116,6 @@ function ResponsiveAppBar() {
 									</AnimatePresence>
 								</ListItem>
 							))}
-							{/* {<GoogleLoginButton width="100%" height="100%" />} */}
 						</ul>
 					</Box>
 				</Toolbar>

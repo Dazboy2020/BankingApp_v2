@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/context';
 import { useEffect } from 'react';
-import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
+// import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
 
 function ProtectedRoute({ children }) {
 	const { state } = useAppContext();
@@ -15,9 +15,9 @@ function ProtectedRoute({ children }) {
 		[state.user, navigate]
 	);
 
-	if (!state.user && state.isLoading) {
-		return <SpinnerFullPage />;
-	}
+	// if (!state.user && state.isLoading) {
+	// 	return <SpinnerFullPage />;
+	// }
 
 	return state.user ? children : null;
 }

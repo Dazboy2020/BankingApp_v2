@@ -5,7 +5,7 @@ import google from '../../assets/google.png';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/context';
 
-function GoogleLoginButton({ width, height, mt }) {
+function GoogleLoginButton({ width, height, padding }) {
 	const { dispatch } = useAppContext();
 	const navigate = useNavigate();
 
@@ -35,10 +35,10 @@ function GoogleLoginButton({ width, height, mt }) {
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
-				mt: mt,
-				p: 0,
+				p: padding,
 				width: width,
 				height: height,
+				backgroundColor: 'transparent',
 			}}
 			onClick={() => {
 				dispatch({ type: 'isLoading', payload: true });
@@ -52,6 +52,7 @@ function GoogleLoginButton({ width, height, mt }) {
 						width: '100%',
 						height: '100%',
 						border: '1px solid grey',
+						padding: 0,
 					}}
 					sx={{ m: 0, p: 0 }}
 				/>

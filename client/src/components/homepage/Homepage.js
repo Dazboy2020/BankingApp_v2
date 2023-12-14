@@ -10,6 +10,7 @@ import TestSection from '../lottie/TestSection';
 
 import ResponsiveAppBar from '../navbar/NewNav';
 import CardGrid from './CardGrid';
+import GoogleLoginButton from '../buttons/GoogleLogin';
 
 const textStyles = {
 	fontFamily: 'poppins',
@@ -71,7 +72,6 @@ export default function Homepage() {
 	if (!user && !state.isLoading) {
 		return (
 			<>
-				<ResponsiveAppBar />
 				<Box
 					component="main"
 					sx={{
@@ -80,11 +80,13 @@ export default function Homepage() {
 						backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
 					}}
 				>
+					<ResponsiveAppBar />
 					<Box
 						component="section"
 						sx={{
-							ml: { xs: 5, s: 12, md: 12, lg: 15 },
-							mr: { xs: 5, s: 12, md: 12, lg: 15 },
+							ml: { xs: 5, s: 12, md: 12, lg: 20 },
+							mr: { xs: 5, s: 12, md: 12, lg: 20 },
+							mt: 4,
 						}}
 					>
 						<Typography component="section">
@@ -108,6 +110,7 @@ export default function Homepage() {
 									pb: 10,
 									borderRadius: 3,
 									background: 'linear-gradient(to right, #3c1053, #ad5389)',
+									position: 'relative',
 								}}
 							>
 								Welcome to Expensify.
@@ -122,6 +125,15 @@ export default function Homepage() {
 									key="subtitle"
 								>
 									An all-in-one solution for managing your expenses.
+								</Box>
+								<Box
+									sx={{
+										position: 'absolute',
+										left: 0,
+										bottom: 0,
+									}}
+								>
+									<GoogleLoginButton height="4rem" width="12rem" />
 								</Box>
 							</Box>
 						</Typography>
