@@ -72,7 +72,7 @@ function ResponsiveAppBar() {
 						sx={{
 							display: { xs: 'none', md: 'flex', alignItems: 'center' },
 							mr: 2,
-							width: { md: '40%', lg: '30%', xl: '20%' },
+							width: { md: '40%', lg: '25%', xl: '20%' },
 
 							fontWeight: 700,
 							color: 'white',
@@ -84,10 +84,10 @@ function ResponsiveAppBar() {
 								padding: 0,
 								margin: 0,
 								display: 'flex',
-								justifyContent: 'space-around',
+								justifyContent: 'space-between',
 								alignItems: 'center',
 								alignContent: 'center',
-								fontSize: '1.8rem',
+								fontSize: '1.4rem',
 								fontFamily: 'monospace',
 								fontWeight: '500',
 								width: '100%',

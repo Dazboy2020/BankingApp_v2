@@ -18,16 +18,16 @@ import {
 	titleVariant,
 } from './variants';
 
-import SpinnerFullPage from '../spinner/SpinnerFullPage';
+// import SpinnerFullPage from '../spinner/SpinnerFullPage';
 
 const textStyles = {
-	fontFamily: 'poppins',
-	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '1.5rem', md: '1.75rem' },
+	fontFamily: 'system-ui',
+	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '1.5rem', md: '1.5rem' },
 	color: 'antiquewhite',
 	textAlign: 'center',
-	mt: 5,
+	mt: 1,
 	letterSpacing: 1,
-	fontWeight: 300,
+	fontWeight: 400,
 };
 
 export default function Homepage() {
@@ -45,6 +45,7 @@ export default function Homepage() {
 					component="main"
 					sx={{
 						minHeight: '100dvh',
+						minWidth: '100%',
 						// backgroundColor: '#2d3436',
 						// backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
 						backgroundColor: '#222',
@@ -94,7 +95,7 @@ export default function Homepage() {
 									exit={exitAnimation}
 									key="subtitle"
 								>
-									An all-in-one solution for managing your expenses.
+									Expense management simplified.
 								</Box>
 								<Box
 									component={m.div}

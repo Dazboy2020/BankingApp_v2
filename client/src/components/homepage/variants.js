@@ -49,6 +49,22 @@ export const buttonVariant = {
 		},
 	},
 };
+export const cardTextVariant = {
+	hidden: {
+		opacity: 0,
+		y: '-100%',
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+
+		transition: {
+			type: 'tween',
+			duration: 0.3,
+			delay: 2,
+		},
+	},
+};
 
 export const exitAnimation = {
 	opacity: 0,
