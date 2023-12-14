@@ -74,7 +74,7 @@ export default function Homepage() {
 									color: 'antiquewhite',
 									textAlign: 'center',
 									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
-									letterSpacing: 0.9,
+									letterSpacing: -1,
 									fontWeight: '300',
 									pt: 10,
 									pb: 10,

@@ -3,21 +3,28 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Card, CardContent } from '@mui/material';
 import CardText from './cardcontent/CardText';
+import { cardTextContent } from './cardcontent/CardText';
 
-function CardGrid() {
+function CardGrid({ content }) {
 	const boxStyling = {
 		padding: 3,
 	};
 
-	function CustomCard({ children }) {
+	function CustomCard({ content }) {
 		return (
-			<Card
-				sx={{
-					borderRadius: '10px',
-				}}
-			>
-				<CardContent sx={{ p: 0 }}>{children}</CardContent>
-			</Card>
+			<Grid key={content.text} item xs={12} sm={6} md={6} lg={4}>
+				<Card
+					sx={{
+						borderRadius: '10px',
+					}}
+				>
+					<CardContent sx={{ p: 0 }}>
+						<Box sx={boxStyling}>
+							<CardText header={content.header} text={content.text} />{' '}
+						</Box>
+					</CardContent>
+				</Card>
+			</Grid>
 		);
 	}
 
@@ -32,48 +39,12 @@ function CardGrid() {
 			mt={{ xs: 0.1, sm: 2, md: 4, lg: 5 }}
 			pb={{ xs: 8, sm: 8, md: 6, lg: 8 }}
 		>
-			<Grid item xs={12} sm={6} md={6} lg={4}>
-				<CustomCard>
-					<Box sx={boxStyling}>
-						<CardText />
-					</Box>
-				</CustomCard>
-			</Grid>
-			<Grid item xs={12} sm={6} md={6} lg={4}>
-				<CustomCard>
-					<Box sx={boxStyling}>
-						<CardText />
-					</Box>
-				</CustomCard>
-			</Grid>
-			<Grid item xs={12} sm={6} md={6} lg={4}>
-				<CustomCard>
-					<Box sx={boxStyling}>
-						<CardText />
-					</Box>
-				</CustomCard>
-			</Grid>
-			<Grid item xs={12} sm={6} md={6} lg={4}>
-				<CustomCard>
-					<Box sx={boxStyling}>
-						<CardText />
-					</Box>
-				</CustomCard>
-			</Grid>
-			<Grid item xs={12} sm={6} md={6} lg={4}>
-				<CustomCard>
-					<Box sx={boxStyling}>
-						<CardText />
-					</Box>
-				</CustomCard>
-			</Grid>
-			<Grid item xs={12} sm={6} md={6} lg={4}>
-				<CustomCard>
-					<Box sx={boxStyling}>
-						<CardText />
-					</Box>
-				</CustomCard>
-			</Grid>
+			{cardTextContent.map((item) => {
+				const cards = Object.values(item);
+				return cards.map((card, index) => (
+					<CustomCard key={index} content={card} />
+				));
+			})}
 		</Grid>
 	);
 }
