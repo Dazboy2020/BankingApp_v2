@@ -133,7 +133,11 @@ export default function Homepage() {
 										bottom: 0,
 									}}
 								>
-									<GoogleLoginButton height="4rem" width="12rem" />
+									<GoogleLoginButton
+										height="3.5rem"
+										width="12rem"
+										padding={0}
+									/>
 								</Box>
 							</Box>
 						</Typography>
