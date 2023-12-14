@@ -32,6 +32,13 @@ function GoogleLoginButton({ width, height, padding }) {
 					m: 0,
 					p: 0,
 				},
+				'& .MuiButtonBase-root': {
+					p: 0,
+				},
+				'&:hover': {
+					backgroundColor: 'transparent',
+					cursor: 'pointer',
+				},
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -41,7 +48,7 @@ function GoogleLoginButton({ width, height, padding }) {
 				backgroundColor: 'transparent',
 			}}
 			onClick={() => {
-				dispatch({ type: 'isLoading', payload: true });
+				// dispatch({ type: 'isLoading', payload: true });
 				handleClick();
 			}}
 			startIcon={
@@ -51,8 +58,12 @@ function GoogleLoginButton({ width, height, padding }) {
 					style={{
 						width: '100%',
 						height: '100%',
-						border: '1px solid grey',
+						// border: '1px solid grey',
 						padding: 0,
+						'&:hover': {
+							backgroundColor: 'transparent',
+							cursor: 'pointer',
+						},
 					}}
 					sx={{ m: 0, p: 0 }}
 				/>

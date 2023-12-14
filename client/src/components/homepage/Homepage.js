@@ -129,8 +129,8 @@ export default function Homepage() {
 								<Box
 									sx={{
 										position: 'absolute',
-										left: 0,
-										bottom: 0,
+										left: 10,
+										bottom: 10,
 									}}
 								>
 									<GoogleLoginButton
