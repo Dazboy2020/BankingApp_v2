@@ -1,56 +1,21 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Card, CardContent, Typography } from '@mui/material';
 import { cardTextContent } from './cardText';
 import { motion as m } from 'framer-motion';
-import { cardTextVariant, exitAnimation, titleVariant } from '../variants';
+import { exitAnimation, titleVariant } from '../variants';
+import CustomCard from './CustomCard';
 
-function CardGrid({ content }) {
-	const boxStyling = {
-		padding: 4,
-	};
-
-	function CustomCard({ content }) {
-		return (
-			<Grid key={content.text} item xs={12} sm={6} md={6} lg={4}>
-				<Card
-					sx={{
-						borderRadius: '10px',
-					}}
-				>
-					<CardContent sx={{ p: 0 }}>
-						<Box sx={boxStyling}>
-							<Box
-								component={m.div}
-								initial="hidden"
-								variants={cardTextVariant}
-								animate="visible"
-								key="text"
-							>
-								<Typography sx={{ fontFamily: 'system-ui' }} variant="h6">
-									{content.header}
-								</Typography>
-								<Box>
-									<Typography variant="h7">{content.text}</Typography>
-								</Box>
-							</Box>
-						</Box>
-					</CardContent>
-				</Card>
-			</Grid>
-		);
-	}
-
+function CardGrid() {
 	return (
 		<Box
 			component={m.div}
-			layout="true"
+			// layout="true"
 			initial="hidden"
 			variants={titleVariant}
 			animate="visible"
 			exit={exitAnimation}
-			key="grid"
+			// key="grid"
 		>
 			<Grid
 				width="100%"

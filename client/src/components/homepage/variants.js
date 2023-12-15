@@ -62,6 +62,8 @@ export const cardTextVariant = {
 			type: 'tween',
 			duration: 0.3,
 			delay: 2,
+			staggerChildren: 0.1,
+			delayChildren: 0.3,
 		},
 	},
 };
