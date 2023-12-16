@@ -3,27 +3,29 @@ import { Button } from '@mui/material';
 import axios from 'axios';
 import google from '../../assets/google.png';
 import { useNavigate } from 'react-router-dom';
-// import { useAppContext } from '../../context/context';
 
 function GoogleLoginButton({ width, height, padding }) {
-	//! TODO: ERROR HANDLING
-	// const { dispatch } = useAppContext();
 	const navigate = useNavigate();
 
 	const handleClick = useGoogleLogin({
 		onSuccess: async ({ code }) => {
-			const tokens = await axios.post('http://localhost:5000/google/auth', {
-				code,
-			});
+			try {
+				const tokens = await axios.post('http://localhost:5000/google/auth', {
+					code,
+				});
 
-			const { token } = tokens.data;
+				const { token } = tokens.data;
 
-			localStorage.setItem('authToken', token);
-			// dispatch({ type: 'isLoading', payload: false });
+				localStorage.setItem('authToken', token);
 
-			navigate('/overview');
+				navigate('/overview');
+			} catch (error) {
+				console.error(error);
+			}
 		},
-
+		onError: (error) => {
+			console.error(error);
+		},
 		flow: 'auth-code',
 	});
 
@@ -51,7 +53,6 @@ function GoogleLoginButton({ width, height, padding }) {
 				backgroundColor: 'transparent',
 			}}
 			onClick={() => {
-				// dispatch({ type: 'isLoading', payload: true });
 				handleClick();
 			}}
 			startIcon={
@@ -61,7 +62,6 @@ function GoogleLoginButton({ width, height, padding }) {
 					style={{
 						width: '100%',
 						height: '100%',
-						// border: '1px solid grey',
 						padding: 0,
 						'&:hover': {
 							backgroundColor: 'transparent',

@@ -49,7 +49,6 @@ function ResponsiveAppBar() {
 					sx={{
 						display: 'flex',
 						justifyContent: 'space-between',
-						mr: { s: 1, md: 1 },
 					}}
 				>
 					<Stack direction="row" sx={{ alignItems: 'center' }}>

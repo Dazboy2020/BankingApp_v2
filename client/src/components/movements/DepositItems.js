@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppContext } from '../../context/context';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import { containerVariants } from './variants';
 import { exitAnimation } from './variants';
@@ -44,16 +44,18 @@ const DepositItems = () => {
 			)}
 
 			{moves.map((deposit) => (
-				<motion.li
-					key={deposit.id}
-					// layout="true"
-					variants={containerVariants}
-					initial="hidden"
-					animate="visible"
-					exit={exitAnimation}
-				>
-					<DepositCard deposit={deposit} />
-				</motion.li>
+				<AnimatePresence>
+					<motion.li
+						key={deposit.id}
+						layout="true"
+						variants={containerVariants}
+						initial="hidden"
+						animate="visible"
+						exit={exitAnimation}
+					>
+						<DepositCard deposit={deposit} />
+					</motion.li>
+				</AnimatePresence>
 			))}
 		</ul>
 	);

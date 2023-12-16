@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/context';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from './variants';
@@ -41,16 +41,18 @@ const ExpenseItems = () => {
 			)}
 
 			{moves.map((expense) => (
-				<motion.li
-					// layout="true"
-					key={expense.id}
-					variants={containerVariants}
-					initial="hidden"
-					animate="visible"
-					exit={exitAnimation}
-				>
-					<ExpenseCard expense={expense} />
-				</motion.li>
+				<AnimatePresence>
+					<motion.li
+						layout="true"
+						key={expense.id}
+						variants={containerVariants}
+						initial="hidden"
+						animate="visible"
+						exit={exitAnimation}
+					>
+						<ExpenseCard expense={expense} />
+					</motion.li>
+				</AnimatePresence>
 			))}
 		</ul>
 	);

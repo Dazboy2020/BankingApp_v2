@@ -9,7 +9,7 @@ function LinkEffects() {
 			animate={{
 				opacity: 1,
 				scale: [0, 1],
-				width: '100%',
+				width: '75%',
 				transition: { delay: 0.3, duration: 0.1 },
 			}}
 			exit={{ scale: [1, 0] }}
@@ -18,7 +18,7 @@ function LinkEffects() {
 				backgroundColor: '#f70776',
 				position: 'absolute',
 				bottom: 0,
-				left: 0,
+				marginLeft: 'auto',
 			}}
 		/>
 	);

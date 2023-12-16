@@ -52,11 +52,13 @@ export const buttonVariant = {
 export const cardTextVariant = {
 	hidden: {
 		opacity: 0,
-		y: '-100%',
+		// y: '-100%',
+		scaleX: 0,
 	},
 	visible: {
 		opacity: 1,
-		y: 0,
+		// y: 0,
+		scaleX: 1,
 
 		transition: {
 			type: 'tween',
