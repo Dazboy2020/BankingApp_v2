@@ -161,14 +161,27 @@ export default function SignIn() {
 												color="secondary"
 											/>
 
-											<GoogleLoginButton width="100%" mt={3} />
+											<Box
+												component="span"
+												sx={{
+													display: 'flex',
+													justifyContent: 'center',
+													mt: 5,
+												}}
+											>
+												<GoogleLoginButton
+													height="2.5rem"
+													width="75%"
+													padding={0}
+												/>
+											</Box>
 
 											<Button
 												startIcon={<Login size="medium" />}
 												type="submit"
 												fullWidth
 												variant="contained"
-												sx={{ mt: 3, mb: 2 }}
+												sx={{ mt: 5, mb: 2 }}
 												color="secondary"
 											>
 												Sign In

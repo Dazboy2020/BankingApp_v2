@@ -48,6 +48,7 @@ const ExpenseItems = () => {
 						initial="hidden"
 						animate="visible"
 						exit={exitAnimation}
+						key={expense.id}
 					>
 						<ExpenseCard expense={expense} />
 					</motion.li>

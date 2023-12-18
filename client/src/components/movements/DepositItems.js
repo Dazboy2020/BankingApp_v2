@@ -51,6 +51,7 @@ const DepositItems = () => {
 						initial="hidden"
 						animate="visible"
 						exit={exitAnimation}
+						key={deposit.id}
 					>
 						<DepositCard deposit={deposit} />
 					</motion.li>

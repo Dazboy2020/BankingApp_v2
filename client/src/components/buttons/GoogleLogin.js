@@ -67,6 +67,8 @@ function GoogleLoginButton({ width, height, padding }) {
 							backgroundColor: 'transparent',
 							cursor: 'pointer',
 						},
+						border: '1px solid grey',
+						borderRadius: 4,
 					}}
 					sx={{ m: 0, p: 0 }}
 				/>
