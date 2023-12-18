@@ -1,35 +1,24 @@
-import { useAppContext } from '../../context/context';
 import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from './variants';
 import NoDataCard from './NoDataCard';
+import useFilteredTransactions from '../../hooks/useFilteredTransactions';
+import { useMemo } from 'react';
 
 const ExpenseItems = () => {
-	const { state } = useAppContext();
+	const { transactions } = useFilteredTransactions('expenses');
 
-	let moves;
-
-	if (state.isActive === 0) {
-		moves = state.expenses;
-	} else {
-		if (state.isEditing) {
-			moves = state.editingExpense;
-		} else {
-			moves =
-				state.filteredExpenses?.length > 0
-					? state.filteredExpenses
-					: state.expenses;
-		}
-	}
-
-	if (!moves) {
-		moves = [];
-	}
+	const memoizedExpenses = useMemo(() => {
+		return transactions;
+	}, [transactions]);
 
 	return (
-		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
-			{moves.length === 0 && (
+		<motion.ul
+			style={{ listStyleType: 'none' }}
+			className={classes.movements__row}
+		>
+			{memoizedExpenses.length === 0 && (
 				<motion.li
 					// layout="true"
 					variants={containerVariants}
@@ -40,8 +29,8 @@ const ExpenseItems = () => {
 				</motion.li>
 			)}
 
-			{moves.map((expense) => (
-				<AnimatePresence key={expense.id}>
+			{memoizedExpenses.map((expense) => (
+				<AnimatePresence mode="wait">
 					<motion.li
 						layout="true"
 						variants={containerVariants}
@@ -54,7 +43,7 @@ const ExpenseItems = () => {
 					</motion.li>
 				</AnimatePresence>
 			))}
-		</ul>
+		</motion.ul>
 	);
 };
 

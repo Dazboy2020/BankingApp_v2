@@ -1,37 +1,22 @@
-import React from 'react';
-import { useAppContext } from '../../context/context';
+import React, { useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import { containerVariants } from './variants';
 import { exitAnimation } from './variants';
 import DepositCard from './DepositCard';
 import NoDataCard from './NoDataCard';
+import useFilteredTransactions from '../../hooks/useFilteredTransactions';
 
 const DepositItems = () => {
-	const { state } = useAppContext();
+	const { transactions } = useFilteredTransactions('deposits');
 
-	let moves;
-
-	if (state.isActive === 0) {
-		moves = state.deposits;
-	} else {
-		if (state.isEditing) {
-			moves = state.editingDeposit;
-		} else {
-			moves =
-				state.filteredDeposits?.length > 0
-					? state.filteredDeposits
-					: state.deposits;
-		}
-	}
-
-	if (!moves) {
-		moves = [];
-	}
+	const memoizedDeposits = useMemo(() => {
+		return transactions;
+	}, [transactions]);
 
 	return (
 		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
-			{moves.length === 0 && (
+			{memoizedDeposits.length === 0 && (
 				<motion.li
 					// layout="true"
 					variants={containerVariants}
@@ -43,8 +28,8 @@ const DepositItems = () => {
 				</motion.li>
 			)}
 
-			{moves.map((deposit) => (
-				<AnimatePresence key={deposit.id}>
+			{memoizedDeposits.map((deposit) => (
+				<AnimatePresence mode="wait">
 					<motion.li
 						layout="true"
 						variants={containerVariants}

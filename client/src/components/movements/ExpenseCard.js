@@ -6,6 +6,7 @@ import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 import DeleteButton from '../buttons/DeleteButton';
 import EditButton from '../buttons/EditButton';
+import React from 'react';
 
 function ExpenseCard({ expense }) {
 	const { state } = useAppContext();
@@ -88,4 +89,4 @@ function ExpenseCard({ expense }) {
 	);
 }
 
-export default ExpenseCard;
+export default React.memo(ExpenseCard);

@@ -9,6 +9,7 @@ import DeleteButton from '../buttons/DeleteButton';
 import EditButton from '../buttons/EditButton';
 
 function DepositCard({ deposit }) {
+	console.log('deposit');
 	const { state } = useAppContext();
 	const { isDarkMode } = useDarkMode();
 
@@ -83,4 +84,4 @@ function DepositCard({ deposit }) {
 	);
 }
 
-export default DepositCard;
+export default React.memo(DepositCard);
