@@ -1,6 +1,5 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useDeleteExpense(id) {
@@ -17,7 +16,7 @@ export default function useDeleteExpense(id) {
 		setMessage('');
 
 		try {
-			await axios.delete(`${BASE_URL}/deleteexpense/${userId}/${id}`, config);
+			await axios.delete(`/deleteexpense/${userId}/${id}`, config);
 			dispatch({ type: 'delete/expense', payload: id });
 			setMessage('Expense item deleted!');
 			setOpenToast(true, { message: message });

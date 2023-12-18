@@ -1,6 +1,6 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
+// import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useAddExpense() {
@@ -25,11 +25,7 @@ export default function useAddExpense() {
 		};
 
 		try {
-			const response = await axios.post(
-				`${BASE_URL}/addexpense`,
-				expenseData,
-				config
-			);
+			const response = await axios.post('/addexpense', expenseData, config);
 			if (!response) return;
 
 			const { message } = response.data;

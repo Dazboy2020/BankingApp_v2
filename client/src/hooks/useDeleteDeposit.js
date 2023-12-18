@@ -1,6 +1,5 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useDeleteDeposit(id) {
@@ -16,7 +15,7 @@ export default function useDeleteDeposit(id) {
 		console.log(userId, id);
 
 		try {
-			await axios.delete(`${BASE_URL}/deletedeposit/${userId}/${id}`, config);
+			await axios.delete(`/deletedeposit/${userId}/${id}`, config);
 			dispatch({ type: 'delete/deposit', payload: id });
 			setMessage('Deposit item deleted!');
 			setOpenToast(true, { message: message });

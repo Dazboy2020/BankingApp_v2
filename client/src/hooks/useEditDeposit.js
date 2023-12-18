@@ -1,6 +1,5 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useEditDeposit() {
@@ -29,7 +28,7 @@ export default function useEditDeposit() {
 
 		try {
 			const response = await axios.put(
-				`${BASE_URL}/editdeposit/${userId}/${expenseId}`,
+				`/editdeposit/${userId}/${expenseId}`,
 				expenseData,
 				config
 			);

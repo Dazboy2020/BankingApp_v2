@@ -1,6 +1,5 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useEditExpense() {
@@ -29,7 +28,7 @@ export default function useEditExpense() {
 
 		try {
 			const response = await axios.put(
-				`${BASE_URL}/editexpense/${userId}/${expenseId}`,
+				`/editexpense/${userId}/${expenseId}`,
 				expenseData,
 				config
 			);

@@ -1,6 +1,5 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useAddDeposit() {
@@ -25,11 +24,7 @@ export default function useAddDeposit() {
 		};
 
 		try {
-			const response = await axios.post(
-				`${BASE_URL}/add-deposit`,
-				expenseData,
-				config
-			);
+			const response = await axios.post('/add-deposit', expenseData, config);
 			if (!response) return;
 
 			const { message } = response.data;
