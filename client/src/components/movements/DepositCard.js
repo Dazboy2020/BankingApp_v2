@@ -9,7 +9,6 @@ import DeleteButton from '../buttons/DeleteButton';
 import EditButton from '../buttons/EditButton';
 
 function DepositCard({ deposit }) {
-	console.log('deposit');
 	const { state } = useAppContext();
 	const { isDarkMode } = useDarkMode();
 
