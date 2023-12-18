@@ -51,7 +51,7 @@ export const buttonVariant = {
 	},
 };
 
-export const cardTextVariant = {
+export const singleCard = {
 	hidden: {
 		opacity: 0,
 		// y: '-100%',
@@ -64,7 +64,7 @@ export const cardTextVariant = {
 
 		transition: {
 			type: 'tween',
-			duration: 0.3,
+			duration: 0.2,
 			delay: 2,
 		},
 	},
@@ -83,6 +83,25 @@ export const headerVariant = {
 			type: 'spring',
 			duration: 0.3,
 			delay: 3,
+			mass: 0.5,
+			stiffness: 300,
+		},
+	},
+};
+
+export const cardContent = {
+	hidden: {
+		opacity: 0,
+		y: '-100%',
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+
+		transition: {
+			type: 'spring',
+			duration: 0.3,
+			delay: 3.5,
 			mass: 0.5,
 			stiffness: 300,
 		},
