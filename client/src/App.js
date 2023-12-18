@@ -13,16 +13,16 @@ import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
 import { useDarkMode } from './hooks/useDarkMode';
 
-import Homepage from './components/homepage/Homepage';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+// import Homepage from './components/homepage/Homepage';
+// import SignIn from './pages/SignIn';
+// import SignUp from './pages/SignUp';
 
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 
-// const SignIn = lazy(() => import('./pages/SignIn'));
-// const SignUp = lazy(() => import('./pages/SignUp'));
-// const Homepage = lazy(() => import('./components/homepage/Homepage'));
+const SignIn = lazy(() => import('./pages/SignIn'));
+const SignUp = lazy(() => import('./pages/SignUp'));
+const Homepage = lazy(() => import('./components/homepage/Homepage'));
 
 const MainApp = lazy(() => import('./pages/MainApp'));
 const About = lazy(() => import('./pages/About'));

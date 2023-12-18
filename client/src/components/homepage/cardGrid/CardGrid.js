@@ -10,12 +10,10 @@ function CardGrid() {
 	return (
 		<Box
 			component={m.div}
-			// layout="true"
 			initial="hidden"
 			variants={titleVariant}
 			animate="visible"
 			exit={exitAnimation}
-			// key="grid"
 		>
 			<Grid
 				width="100%"
@@ -27,12 +25,9 @@ function CardGrid() {
 				mt={{ xs: 0.1, sm: 2, md: 4, lg: 5 }}
 				pb={{ xs: 8, sm: 8, md: 6, lg: 8 }}
 			>
-				{cardTextContent.map((item) => {
-					const cards = Object.values(item);
-					return cards.map((card, index) => (
-						<CustomCard key={index} content={card} />
-					));
-				})}
+				{cardTextContent.map((card, index) => (
+					<CustomCard key={index} card={card} />
+				))}
 			</Grid>
 		</Box>
 	);

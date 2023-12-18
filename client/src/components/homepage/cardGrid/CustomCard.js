@@ -1,10 +1,17 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import {
+	Box,
+	Card,
+	CardContent,
+	Grid,
+	Typography,
+	cardMediaClasses,
+} from '@mui/material';
 import { motion as m } from 'framer-motion';
-import { cardTextVariant } from '../variants';
+import { cardTextVariant, headerVariant } from '../variants';
 
-function CustomCard({ content }) {
+function CustomCard({ card, index }) {
 	return (
-		<Grid key={content.text} item xs={12} sm={6} md={6} lg={4}>
+		<Grid key={cardMediaClasses.text} item xs={12} sm={6} md={6} lg={4}>
 			<Card
 				sx={{
 					borderRadius: '10px',
@@ -15,14 +22,21 @@ function CustomCard({ content }) {
 					<Box
 						component={m.div}
 						initial="hidden"
-						variants={cardTextVariant}
+						variants={headerVariant}
 						animate="visible"
-						key="text"
 					>
 						<Typography sx={{ fontFamily: 'system-ui', mb: 1 }} variant="h6">
-							{content.header}
+							{card.header}
 						</Typography>
-						<Typography variant="h7">{content.text}</Typography>
+					</Box>
+					<Box
+						component={m.div}
+						initial="hidden"
+						variants={cardTextVariant}
+						animate="visible"
+						custom={index}
+					>
+						<Typography variant="h7">{card.text}</Typography>
 					</Box>
 				</CardContent>
 			</Card>

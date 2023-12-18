@@ -29,6 +29,7 @@ export const titleVariant = {
 			type: 'tween',
 			duration: 0.5,
 			delay: 1,
+			staggerChildren: 1,
 		},
 	},
 };
@@ -49,6 +50,7 @@ export const buttonVariant = {
 		},
 	},
 };
+
 export const cardTextVariant = {
 	hidden: {
 		opacity: 0,
@@ -64,8 +66,25 @@ export const cardTextVariant = {
 			type: 'tween',
 			duration: 0.3,
 			delay: 2,
-			staggerChildren: 0.1,
-			delayChildren: 0.3,
+		},
+	},
+};
+
+export const headerVariant = {
+	hidden: {
+		opacity: 0,
+		y: '-100%',
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+
+		transition: {
+			type: 'spring',
+			duration: 0.3,
+			delay: 3,
+			mass: 0.5,
+			stiffness: 300,
 		},
 	},
 };
