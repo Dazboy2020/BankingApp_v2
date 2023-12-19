@@ -119,36 +119,36 @@ export default function Homepage() {
 							</Box>
 						</Typography>
 						<section>
-							<Typography
-								sx={{
-									fontFamily: 'system-ui',
-									fontSize: {
-										xs: '1.5rem',
-										s: '2rem',
-										sm: '2rem',
-										md: '2rem',
-									},
-									color: 'antiquewhite',
-									textAlign: 'center',
-									mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
-									letterSpacing: -1,
-									fontWeight: '300',
-									pt: 2,
-									pb: 2,
-								}}
+							<Box
+								sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 20 } }}
+								component={m.div}
+								layout="true"
+								initial="hidden"
+								variants={subtitleVariant}
+								animate="visible"
+								exit={exitAnimation}
 							>
-								<Box
-									sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 20 } }}
-									component={m.div}
-									layout="true"
-									initial="hidden"
-									variants={subtitleVariant}
-									animate="visible"
-									exit={exitAnimation}
+								<Typography
+									sx={{
+										fontFamily: 'system-ui',
+										fontSize: {
+											xs: '1.5rem',
+											s: '2rem',
+											sm: '2rem',
+											md: '2rem',
+										},
+										color: 'antiquewhite',
+										textAlign: 'center',
+										mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
+										letterSpacing: -1,
+										fontWeight: '300',
+										pt: 2,
+										pb: 2,
+									}}
 								>
 									Getting started is easy.
-								</Box>
-							</Typography>
+								</Typography>
+							</Box>
 							<CardGrid />
 						</section>
 					</Box>
