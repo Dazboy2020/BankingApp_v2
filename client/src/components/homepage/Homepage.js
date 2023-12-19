@@ -46,8 +46,6 @@ export default function Homepage() {
 					sx={{
 						minHeight: '100dvh',
 						minWidth: '100%',
-						// backgroundColor: '#2d3436',
-						// backgroundImage: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
 						backgroundColor: '#222',
 					}}
 				>
@@ -71,10 +69,10 @@ export default function Homepage() {
 								key="header"
 								sx={{
 									fontFamily: 'poppins',
-									fontSize: { xs: '2rem', s: '2rem', sm: '3rem', md: '6rem' },
+									fontSize: { xs: '3rem', s: '3rem', sm: '4rem', md: '6rem' },
 									color: 'antiquewhite',
 									textAlign: 'center',
-									mt: { xs: 3.5, s: 3.5, sm: 3.5, md: 5 },
+									mt: { xs: 4, sm: 3.5, md: 5 },
 									letterSpacing: -1,
 									fontWeight: '300',
 									pt: 10,
@@ -82,6 +80,7 @@ export default function Homepage() {
 									borderRadius: 3,
 									background: 'linear-gradient(to right, #3c1053, #ad5389)',
 									position: 'relative',
+									mb: { xs: 4 },
 								}}
 							>
 								Welcome to Expensify.
@@ -119,7 +118,31 @@ export default function Homepage() {
 								</Box>
 							</Box>
 						</Typography>
-						<CardGrid />
+						<section>
+							<Box sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 20 } }}>
+								<Typography
+									sx={{
+										fontFamily: 'system-ui',
+										fontSize: {
+											xs: '1.5rem',
+											s: '2rem',
+											sm: '2rem',
+											md: '2rem',
+										},
+										color: 'antiquewhite',
+										textAlign: 'center',
+										mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
+										letterSpacing: -1,
+										fontWeight: '300',
+										pt: 2,
+										pb: 2,
+									}}
+								>
+									Getting started is easy.
+								</Typography>
+							</Box>
+							<CardGrid />
+						</section>
 					</Box>
 				</Box>
 				<TestSection />

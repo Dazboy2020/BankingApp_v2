@@ -5,7 +5,8 @@ function TestSection() {
 		<Stack
 			sx={{
 				minHeight: '100vh',
-				backgroundColor: 'white',
+				background:
+					'linear-gradient(180.2deg, rgb(120, 85, 137) -6.9%, rgb(35, 9, 31) 76.7%)',
 			}}
 		></Stack>
 	);
