@@ -89,4 +89,4 @@ function ExpenseCard({ expense }) {
 	);
 }
 
-export default React.memo(ExpenseCard);
+export default ExpenseCard;

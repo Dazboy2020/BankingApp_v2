@@ -15,10 +15,12 @@ const DepositItems = () => {
 	}, [transactions]);
 
 	return (
-		<ul style={{ listStyleType: 'none' }} className={classes.movements__row}>
+		<motion.ul
+			style={{ listStyleType: 'none' }}
+			className={classes.movements__row}
+		>
 			{memoizedDeposits.length === 0 && (
 				<motion.li
-					// layout="true"
 					variants={containerVariants}
 					initial="hidden"
 					animate="visible"
@@ -28,8 +30,8 @@ const DepositItems = () => {
 				</motion.li>
 			)}
 
-			{memoizedDeposits.map((deposit) => (
-				<AnimatePresence mode="wait">
+			<AnimatePresence>
+				{memoizedDeposits.map((deposit) => (
 					<motion.li
 						layout="true"
 						variants={containerVariants}
@@ -40,9 +42,9 @@ const DepositItems = () => {
 					>
 						<DepositCard deposit={deposit} />
 					</motion.li>
-				</AnimatePresence>
-			))}
-		</ul>
+				))}
+			</AnimatePresence>
+		</motion.ul>
 	);
 };
 

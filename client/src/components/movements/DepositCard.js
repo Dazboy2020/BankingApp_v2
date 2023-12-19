@@ -83,4 +83,4 @@ function DepositCard({ deposit }) {
 	);
 }
 
-export default React.memo(DepositCard);
+export default DepositCard;

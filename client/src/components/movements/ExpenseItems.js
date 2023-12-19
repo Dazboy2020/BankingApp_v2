@@ -20,17 +20,17 @@ const ExpenseItems = () => {
 		>
 			{memoizedExpenses.length === 0 && (
 				<motion.li
-					// layout="true"
 					variants={containerVariants}
 					initial="hidden"
 					animate="visible"
+					exit={exitAnimation}
 				>
-					<NoDataCard type="Expense" />
+					<NoDataCard type="Expenses" />
 				</motion.li>
 			)}
 
-			{memoizedExpenses.map((expense) => (
-				<AnimatePresence mode="wait">
+			<AnimatePresence>
+				{memoizedExpenses.map((expense) => (
 					<motion.li
 						layout="true"
 						variants={containerVariants}
@@ -41,8 +41,8 @@ const ExpenseItems = () => {
 					>
 						<ExpenseCard expense={expense} />
 					</motion.li>
-				</AnimatePresence>
-			))}
+				))}
+			</AnimatePresence>
 		</motion.ul>
 	);
 };

@@ -29,7 +29,7 @@ export default function useFilteredTransactions(type) {
 			transactions = state.deposits;
 		} else {
 			if (state.isEditing) {
-				transactions = state.editingExpense;
+				transactions = state.editingDeposit;
 			} else {
 				transactions =
 					state.filteredDeposits?.length > 0
