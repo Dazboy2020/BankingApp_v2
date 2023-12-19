@@ -1,6 +1,5 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
-// import { BASE_URL } from '../utils/BASE_URL';
 import { config } from './config';
 
 export default function useAddExpense() {

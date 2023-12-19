@@ -89,6 +89,21 @@ export const headerVariant = {
 	},
 };
 
+export const subtitleVariant = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+
+		transition: {
+			type: 'spring',
+			duration: 1,
+			delay: 4,
+		},
+	},
+};
+
 export const cardContent = {
 	hidden: {
 		opacity: 0,

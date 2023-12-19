@@ -22,7 +22,6 @@ import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 
 function Copyright(props) {
 	return (
@@ -98,7 +97,7 @@ export default function ResetPassword() {
 
 		try {
 			const { data: userData } = await axios.put(
-				`${BASE_URL}/resetpassword/${resetToken}`,
+				`/resetpassword/${resetToken}`,
 				data
 			);
 

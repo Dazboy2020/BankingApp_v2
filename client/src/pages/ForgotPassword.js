@@ -16,8 +16,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/navbar/NewNav';
 
-import { BASE_URL } from '../utils/BASE_URL';
-
 import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 
@@ -73,10 +71,7 @@ export default function ForgotPassword() {
 		console.log(data);
 
 		try {
-			const { data: userData } = await axios.post(
-				`${BASE_URL}/forgotpassword`,
-				data
-			);
+			const { data: userData } = await axios.post('/forgotpassword', data);
 
 			if (userData.error) {
 				console.log(userData.error);

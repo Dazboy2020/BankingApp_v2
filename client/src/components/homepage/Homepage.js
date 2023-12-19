@@ -1,6 +1,5 @@
 import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import useAutoLogin from '../../hooks/useAutoLogin';
-import { BASE_URL } from '../../utils/BASE_URL';
 import { useAppContext } from '../../context/context';
 import { Box, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
@@ -15,6 +14,7 @@ import {
 	buttonVariant,
 	containerVariants,
 	exitAnimation,
+	subtitleVariant,
 	titleVariant,
 } from './variants';
 
@@ -33,7 +33,7 @@ const textStyles = {
 export default function Homepage() {
 	const { state, user } = useAppContext();
 	//? Checks to see if JWT token and if so, fetches data via middleware Protected Route
-	useFetchPrivateUserData(`${BASE_URL}/userdata`);
+	useFetchPrivateUserData('/userdata');
 
 	//? if user is in state then redirects to /overview
 	useAutoLogin();
@@ -119,28 +119,36 @@ export default function Homepage() {
 							</Box>
 						</Typography>
 						<section>
-							<Box sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 20 } }}>
-								<Typography
-									sx={{
-										fontFamily: 'system-ui',
-										fontSize: {
-											xs: '1.5rem',
-											s: '2rem',
-											sm: '2rem',
-											md: '2rem',
-										},
-										color: 'antiquewhite',
-										textAlign: 'center',
-										mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
-										letterSpacing: -1,
-										fontWeight: '300',
-										pt: 2,
-										pb: 2,
-									}}
+							<Typography
+								sx={{
+									fontFamily: 'system-ui',
+									fontSize: {
+										xs: '1.5rem',
+										s: '2rem',
+										sm: '2rem',
+										md: '2rem',
+									},
+									color: 'antiquewhite',
+									textAlign: 'center',
+									mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
+									letterSpacing: -1,
+									fontWeight: '300',
+									pt: 2,
+									pb: 2,
+								}}
+							>
+								<Box
+									sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 20 } }}
+									component={m.div}
+									layout="true"
+									initial="hidden"
+									variants={subtitleVariant}
+									animate="visible"
+									exit={exitAnimation}
 								>
 									Getting started is easy.
-								</Typography>
-							</Box>
+								</Box>
+							</Typography>
 							<CardGrid />
 						</section>
 					</Box>

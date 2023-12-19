@@ -19,7 +19,6 @@ import ResponsiveAppBar from '../components/navbar/NewNav';
 
 // import classes from './SignIn.module.css';
 import axios from 'axios';
-import { BASE_URL } from '../utils/BASE_URL';
 
 import {
 	containerVariants,
@@ -65,7 +64,7 @@ export default function SignUp() {
 		setMessage('');
 
 		try {
-			const { data } = await axios.post(`${BASE_URL}/register`, {
+			const { data } = await axios.post('/register', {
 				username,
 				email,
 				password,

@@ -17,7 +17,13 @@ function CustomCard({ card, index }) {
 					pt: 4,
 					pb: 4,
 					minHeight: '100%',
-					backgroundColor: 'white',
+					backgroundColor: '#E5E7EB',
+					boxShadow: '5px 5px 28px 0px rgba(181,139,181,1)',
+					'&:hover': {
+						backgroundColor: '#FAFAFA',
+						pt: 1,
+						pb: 1,
+					},
 				}}
 			>
 				<CardContent>
