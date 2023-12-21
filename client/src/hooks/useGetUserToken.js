@@ -32,6 +32,8 @@ export default function useGetUserToken() {
 		} catch (error) {
 			dispatch({ type: 'isLoading', payload: false });
 
+			setMessage(error?.message);
+			setOpenToast(true, { message: message });
 			console.log(error);
 		}
 	};

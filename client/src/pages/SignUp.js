@@ -63,6 +63,19 @@ export default function SignUp() {
 		const { username, email, password, confirmPassword } = data;
 		setMessage('');
 
+		if (!username || !email || !password || !confirmPassword) {
+			setMessage('Please fill out all fields');
+			setOpenToast(true, { message: message });
+			return;
+		}
+
+		if (password !== confirmPassword) {
+			setMessage('Passwords do not match');
+			setOpenToast(true, { message: message });
+
+			return;
+		}
+
 		try {
 			const { data } = await axios.post('/register', {
 				username,
@@ -72,21 +85,16 @@ export default function SignUp() {
 			});
 
 			if (data.error) {
-				// setMessage(data.error);
-
-				console.log(data.error);
 				setMessage(data.error);
 				setOpenToast(true, { message: message });
 			} else {
 				setMessage('Account Created!');
 				setOpenToast(true, { message: message });
-
 				setData({});
 				navigate('/login');
 			}
 		} catch (error) {
-			console.log(error.response.data.error);
-			setMessage(error.response.data.error);
+			setMessage('Something went wrong, please try again later.');
 			setOpenToast(true, { message: message });
 		}
 	};

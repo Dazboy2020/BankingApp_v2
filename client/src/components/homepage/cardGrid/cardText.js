@@ -12,7 +12,7 @@ export const cardTextContent = [
 		text: 'Easily analyze your finances with the help of insightful graphs and charts',
 	},
 	{
-		header: 'Secure, encryped data',
+		header: 'Secure, encrypted data',
 		text: 'Sensitive user data is encrypted and stored securely',
 	},
 	// {
