@@ -29,14 +29,14 @@ function MainHeader() {
 						xs: '3.5rem',
 						s: '3.5rem',
 						sm: '3.5rem',
-						md: '7rem',
+						md: '6rem',
 					},
 					color: 'antiquewhite',
 					textAlign: 'center',
 					letterSpacing: -1,
 					fontWeight: '300',
 
-					mb: { xs: 4 },
+					mb: { xs: 1 },
 				}}
 			>
 				Welcome to Expensify.

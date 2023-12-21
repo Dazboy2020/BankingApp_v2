@@ -51,7 +51,7 @@ export default function Homepage() {
 							spacing={2}
 							sx={{
 								alignItems: 'center',
-								mt: { xs: 4, sm: 3.5, md: 5 },
+								mt: { xs: 4, sm: 3.5, md: 4 },
 							}}
 						>
 							<MainHeader />
@@ -60,7 +60,7 @@ export default function Homepage() {
 
 						<section>
 							<Box
-								sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 22 } }}
+								sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15 } }}
 								component={m.div}
 								layout="true"
 								initial="hidden"
@@ -79,7 +79,7 @@ export default function Homepage() {
 										},
 										color: 'antiquewhite',
 										textAlign: 'center',
-										mt: { xs: '1.5rem', s: '1.5rem', sm: '2rem', md: 2 },
+										mt: { xs: '1.5rem', s: '1.5rem', sm: '1.5rem' },
 										fontWeight: '300',
 										pt: 2,
 										pb: 2,
