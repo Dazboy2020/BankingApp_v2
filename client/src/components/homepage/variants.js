@@ -55,12 +55,12 @@ export const singleCard = {
 	hidden: {
 		opacity: 0,
 		// y: '-100%',
-		scaleX: 0,
+		scaleY: 0,
 	},
 	visible: {
 		opacity: 1,
 		// y: 0,
-		scaleX: 1,
+		scaleY: 1,
 
 		transition: {
 			type: 'tween',

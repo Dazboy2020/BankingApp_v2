@@ -14,8 +14,6 @@ function CustomCard({ card, index }) {
 				sx={{
 					borderRadius: '0px',
 					p: 2,
-					// pt: 2,
-					// pb: 2,
 					minHeight: '100%',
 					backgroundColor: '#000',
 					color: 'antiquewhite',

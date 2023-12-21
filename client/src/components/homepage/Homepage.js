@@ -10,25 +10,10 @@ import TestSection from '../lottie/TestSection';
 import ResponsiveAppBar from '../navbar/NewNav';
 import CardGrid from './cardGrid/CardGrid';
 import GoogleLoginButton from '../buttons/GoogleLogin';
-import {
-	buttonVariant,
-	containerVariants,
-	exitAnimation,
-	subtitleVariant,
-	titleVariant,
-} from './variants';
+import { buttonVariant, exitAnimation, subtitleVariant } from './variants';
+import MainHeader from './MainHeader';
 
 // import SpinnerFullPage from '../spinner/SpinnerFullPage';
-
-const textStyles = {
-	fontFamily: 'system-ui',
-	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '2rem', md: '2rem' },
-	color: 'antiquewhite',
-	textAlign: 'center',
-	mt: 1,
-	letterSpacing: 1,
-	fontWeight: 400,
-};
 
 export default function Homepage() {
 	const { state, user } = useAppContext();
@@ -60,50 +45,8 @@ export default function Homepage() {
 							mt: 4,
 						}}
 					>
-						<Typography component="section">
-							<Box
-								component={m.div}
-								layout="true"
-								initial="hidden"
-								animate="visible"
-								exit={exitAnimation}
-								variants={containerVariants}
-								key="header"
-								sx={{
-									fontFamily: 'poppins',
-									fontSize: {
-										xs: '3.5rem',
-										s: '3.5rem',
-										sm: '4rem',
-										md: '8rem',
-									},
-									color: 'antiquewhite',
-									textAlign: 'center',
-									mt: { xs: 4, sm: 3.5, md: 5 },
-									letterSpacing: -1,
-									fontWeight: '300',
-									pt: 10,
-									pb: 10,
-									borderRadius: 3,
-									// background: 'linear-gradient(to right, #3c1053, #ad5389)',
-									mb: { xs: 4 },
-								}}
-							>
-								Welcome to Expensify.
-								<Box
-									component={m.div}
-									layout="true"
-									initial="hidden"
-									sx={textStyles}
-									variants={titleVariant}
-									animate="visible"
-									exit={exitAnimation}
-									key="subtitle"
-								>
-									Expense management simplified.
-								</Box>
-							</Box>
-						</Typography>
+						<MainHeader />
+
 						<section>
 							<Box
 								sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 22 } }}
