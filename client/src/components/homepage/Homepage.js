@@ -22,7 +22,7 @@ import {
 
 const textStyles = {
 	fontFamily: 'system-ui',
-	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '1.5rem', md: '1.5rem' },
+	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '2rem', md: '2rem' },
 	color: 'antiquewhite',
 	textAlign: 'center',
 	mt: 1,
@@ -46,7 +46,9 @@ export default function Homepage() {
 					sx={{
 						minHeight: '100dvh',
 						minWidth: '100%',
-						backgroundColor: '#222',
+
+						backgroundImage:
+							'repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(0,0,0) 0px, rgb(0,0,0) 5px,rgb(0,0,0) 5px, rgb(0,0,0) 17px,rgb(0,0,0) 17px, rgb(0,0,0) 30px,rgb(0,0,0) 30px, rgb(0,0,0) 43px,rgb(0,0,0) 43px, rgb(0,0,0) 45px,rgb(0,0,0) 45px, rgb(0,0,0) 47px); background-size: 53px 53px',
 					}}
 				>
 					<ResponsiveAppBar />
@@ -69,7 +71,12 @@ export default function Homepage() {
 								key="header"
 								sx={{
 									fontFamily: 'poppins',
-									fontSize: { xs: '3rem', s: '3rem', sm: '4rem', md: '6rem' },
+									fontSize: {
+										xs: '3.5rem',
+										s: '3.5rem',
+										sm: '4rem',
+										md: '8rem',
+									},
 									color: 'antiquewhite',
 									textAlign: 'center',
 									mt: { xs: 4, sm: 3.5, md: 5 },
@@ -78,8 +85,7 @@ export default function Homepage() {
 									pt: 10,
 									pb: 10,
 									borderRadius: 3,
-									background: 'linear-gradient(to right, #3c1053, #ad5389)',
-									position: 'relative',
+									// background: 'linear-gradient(to right, #3c1053, #ad5389)',
 									mb: { xs: 4 },
 								}}
 							>
@@ -96,31 +102,11 @@ export default function Homepage() {
 								>
 									Expense management simplified.
 								</Box>
-								<Box
-									component={m.div}
-									layout="true"
-									initial="hidden"
-									variants={buttonVariant}
-									animate="visible"
-									exit={exitAnimation}
-									key="button"
-									sx={{
-										position: 'absolute',
-										left: 10,
-										bottom: 10,
-									}}
-								>
-									<GoogleLoginButton
-										height="3.5rem"
-										width="12rem"
-										padding={0}
-									/>
-								</Box>
 							</Box>
 						</Typography>
 						<section>
 							<Box
-								sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 20 } }}
+								sx={{ mt: { xs: 4, sm: 8, md: 10, lg: 15, xl: 22 } }}
 								component={m.div}
 								layout="true"
 								initial="hidden"
@@ -140,7 +126,7 @@ export default function Homepage() {
 										color: 'antiquewhite',
 										textAlign: 'center',
 										mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
-										letterSpacing: -1,
+										// letterSpacing: -1,
 										fontWeight: '300',
 										pt: 2,
 										pb: 2,
@@ -151,6 +137,22 @@ export default function Homepage() {
 							</Box>
 							<CardGrid />
 						</section>
+						<Box
+							component={m.div}
+							layout="true"
+							initial="hidden"
+							variants={buttonVariant}
+							animate="visible"
+							exit={exitAnimation}
+							key="button"
+							sx={{
+								display: 'flex',
+								justifyContent: 'center',
+								pb: 4,
+							}}
+						>
+							<GoogleLoginButton height="4rem" width="15rem" padding={0} />
+						</Box>
 					</Box>
 				</Box>
 				<TestSection />

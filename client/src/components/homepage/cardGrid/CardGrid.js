@@ -7,10 +7,11 @@ function CardGrid() {
 	return (
 		<Grid
 			container
-			rowSpacing={{ xs: 4, s: 4, sm: 8, md: 8, lg: 10 }}
+			rowSpacing={{ xs: 3, s: 3, sm: 3, md: 4, lg: 4 }}
 			columnSpacing={{ xs: 5, sm: 5, md: 10, lg: 5 }}
 			mt={{ xs: 0.1, sm: 2, md: 4, lg: 0 }}
 			pb={{ xs: 8, sm: 8, md: 6, lg: 8 }}
+			pt={{ xs: 0, sm: 0, md: 0, lg: 0 }}
 			// mb={{ xs: 8, sm: 8, md: 6, lg: 8 }}
 		>
 			{cardTextContent.map((card, index) => (

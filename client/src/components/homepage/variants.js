@@ -37,16 +37,16 @@ export const titleVariant = {
 export const buttonVariant = {
 	hidden: {
 		opacity: 0,
-		x: '100%',
+		y: '100%',
 	},
 	visible: {
 		opacity: 1,
-		x: 0,
+		y: 0,
 
 		transition: {
 			type: 'spring',
 			duration: 0.5,
-			delay: 1.5,
+			delay: 4,
 		},
 	},
 };

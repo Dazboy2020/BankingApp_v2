@@ -4,7 +4,7 @@ import { singleCard, headerVariant, cardContent } from '../variants';
 
 function CustomCard({ card, index }) {
 	return (
-		<Grid key={card.header} item xs={12} sm={6} md={6} lg={3}>
+		<Grid key={card.header} item xs={12} sm={6} md={6} lg={3} sx={{ pt: 0 }}>
 			<Card
 				component={m.div}
 				initial="hidden"
@@ -12,16 +12,14 @@ function CustomCard({ card, index }) {
 				animate="visible"
 				custom={index}
 				sx={{
-					borderRadius: '10px',
+					borderRadius: '0px',
 					p: 2,
-					pt: 4,
-					pb: 4,
+					// pt: 2,
+					// pb: 2,
 					minHeight: '100%',
-					backgroundColor: '#E5E7EB',
-					boxShadow: '5px 5px 25px 0px rgba(181,139,181,1)',
-					'&:hover': {
-						backgroundColor: '#FAFAFA',
-					},
+					backgroundColor: '#000',
+					color: 'antiquewhite',
+					borderLeft: '1px solid #f70776',
 				}}
 			>
 				<CardContent>
