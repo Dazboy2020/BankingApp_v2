@@ -28,18 +28,14 @@ function MainHeader() {
 					fontSize: {
 						xs: '3.5rem',
 						s: '3.5rem',
-						sm: '4rem',
-						md: '8rem',
+						sm: '3.5rem',
+						md: '7rem',
 					},
 					color: 'antiquewhite',
 					textAlign: 'center',
-					mt: { xs: 4, sm: 3.5, md: 5 },
 					letterSpacing: -1,
 					fontWeight: '300',
-					pt: 10,
-					pb: 10,
-					borderRadius: 3,
-					// background: 'linear-gradient(to right, #3c1053, #ad5389)',
+
 					mb: { xs: 4 },
 				}}
 			>

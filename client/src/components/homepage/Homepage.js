@@ -1,7 +1,7 @@
 import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import useAutoLogin from '../../hooks/useAutoLogin';
 import { useAppContext } from '../../context/context';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
 import TestSection from '../lottie/TestSection';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
@@ -12,6 +12,7 @@ import CardGrid from './cardGrid/CardGrid';
 import GoogleLoginButton from '../buttons/GoogleLogin';
 import { buttonVariant, exitAnimation, subtitleVariant } from './variants';
 import MainHeader from './MainHeader';
+import SubHeader from './SubHeader';
 
 // import SpinnerFullPage from '../spinner/SpinnerFullPage';
 
@@ -45,7 +46,17 @@ export default function Homepage() {
 							mt: 4,
 						}}
 					>
-						<MainHeader />
+						<Stack
+							direction={{ xs: 'column', md: 'column', lg: 'row' }}
+							spacing={2}
+							sx={{
+								alignItems: 'center',
+								mt: { xs: 4, sm: 3.5, md: 5 },
+							}}
+						>
+							<MainHeader />
+							<SubHeader />
+						</Stack>
 
 						<section>
 							<Box
@@ -61,15 +72,14 @@ export default function Homepage() {
 									sx={{
 										fontFamily: 'system-ui',
 										fontSize: {
-											xs: '1.5rem',
-											s: '2rem',
-											sm: '2rem',
+											xs: '1.2rem',
+											s: '1.5rem',
+											sm: '1.5rem',
 											md: '2rem',
 										},
 										color: 'antiquewhite',
 										textAlign: 'center',
-										mt: { xs: '1.5rem', s: '2rem', sm: '2rem', md: 2 },
-										// letterSpacing: -1,
+										mt: { xs: '1.5rem', s: '1.5rem', sm: '2rem', md: 2 },
 										fontWeight: '300',
 										pt: 2,
 										pb: 2,

@@ -89,6 +89,25 @@ export const headerVariant = {
 	},
 };
 
+export const subHeaderVariant = {
+	hidden: {
+		opacity: 0,
+		x: '100%',
+	},
+	visible: {
+		opacity: 1,
+		x: 0,
+
+		transition: {
+			type: 'spring',
+			duration: 0.3,
+			delay: 2,
+			mass: 0.5,
+			stiffness: 300,
+		},
+	},
+};
+
 export const subtitleVariant = {
 	hidden: {
 		opacity: 0,
