@@ -13,7 +13,7 @@ export default function Income() {
 			transactionTotal={`€${totalIncome.toFixed(2)}`}
 			icon={
 				<PaidIcon
-					sx={{ color: 'green', fontSize: { xs: '50px', sm: '60px' } }}
+					sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
 				/>
 			}
 		/>

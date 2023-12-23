@@ -10,6 +10,16 @@ export default function DatePickerValue() {
 		'& .MuiInputBase-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
 			borderColor: isDarkMode ? '#d6d3d1' : '#000',
+			height: '45px',
+		},
+		'& .MuiFormLabel-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+			borderColor: isDarkMode ? '#d6d3d1' : '#000',
+			fontSize: '10px',
+		},
+		'& .MuiOutlinedInput-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+			borderColor: isDarkMode ? '#d6d3d1' : '#000',
 		},
 		'& .MuiPaper-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
@@ -22,6 +32,15 @@ export default function DatePickerValue() {
 
 		'& .MuiDateCalendar-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiTextField-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiPickersFadeTransitionGroup-root ': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiInputBase-formControl': {
+			color: 'secondary',
 		},
 
 		width: '20ch',

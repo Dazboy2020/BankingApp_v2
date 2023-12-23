@@ -17,7 +17,7 @@ export default function AvailbleFunds() {
 				<AccountBalanceIcon
 					sx={{
 						color: isDarkMode ? '#D1D5DB' : '#242a2e',
-						fontSize: { xs: '50px', sm: '60px' },
+						fontSize: { xs: '40px', sm: '50px' },
 					}}
 				/>
 			}

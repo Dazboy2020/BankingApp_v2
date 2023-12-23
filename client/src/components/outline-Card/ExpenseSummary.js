@@ -12,7 +12,7 @@ export default function ExpenseSummary() {
 			transactionTotal={`€${Math.abs(totalExpenses.toFixed(2))}`}
 			icon={
 				<ShoppingCartIcon
-					sx={{ color: 'red', fontSize: { xs: '50px', sm: '60px' } }}
+					sx={{ color: 'red', fontSize: { xs: '40px', sm: '50px' } }}
 				/>
 			}
 		/>

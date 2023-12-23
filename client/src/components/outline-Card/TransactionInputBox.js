@@ -47,16 +47,18 @@ function TransactionInputBox() {
 	const formStyling = {
 		'& .MuiInputLabel-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
+			fontSize: '10px',
 		},
 		'& .MuiInputBase-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
+			height: '45px',
 		},
 		'& .MuiFormHelperText-root': {
 			color: isDarkMode ? '#d6d3d1' : '#000',
 		},
 		'& .MuiOutlinedInput-root': {
 			'& > fieldset': {
-				borderColor: isDarkMode ? '#d6d3d1' : '#000',
+				borderColor: isDarkMode ? 'silver' : '#000',
 				borderRadius: 1,
 				color: isDarkMode ? '#d6d3d1' : '#000',
 			},
@@ -65,7 +67,10 @@ function TransactionInputBox() {
 			color: isDarkMode ? '#d6d3d1' : '#000',
 		},
 		'&.MuiFormLabel-colorSecondary': {
-			color: 'primary',
+			color: 'secondary',
+		},
+		'&.MuiInputBase-inputAdornedEnd': {
+			color: 'white',
 		},
 
 		color: isDarkMode ? '#d6d3d1' : '#000',

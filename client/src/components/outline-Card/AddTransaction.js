@@ -113,7 +113,7 @@ const AddTransaction = () => {
 					}}
 				>
 					<Typography
-						variant="h5"
+						variant="h6"
 						sx={{
 							mb: 2,
 							fontWeight: 'bold',
@@ -123,7 +123,7 @@ const AddTransaction = () => {
 						{!state.isEditing ? 'Add a Transaction:' : 'Edit Mode'}
 					</Typography>
 					<PointOfSaleIcon
-						sx={{ color: 'green', fontSize: { xs: '50px', sm: '60px' } }}
+						sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
 					/>
 				</Box>
 

@@ -27,7 +27,7 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 					}}
 				>
 					<Typography
-						variant="h5"
+						variant="h6"
 						sx={{
 							fontWeight: 'bold',
 							color: isDarkMode ? '#d6d3d1' : '#000',
