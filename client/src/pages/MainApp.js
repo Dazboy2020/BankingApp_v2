@@ -18,6 +18,7 @@ import ExpenseItems from '../components/movements/ExpenseItems';
 import DepositItems from '../components/movements/DepositItems';
 import PieExpenses from '../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
+import CombinedItems from '../components/movements/CombinedItems';
 
 const rootWindowLayout = {
 	minHeight: '100vh',
@@ -81,8 +82,9 @@ function MainApp() {
 					</Stack>
 					{/* //!Movements */}
 					<MovementList>
-						<ExpenseItems />
-						<DepositItems />
+						{/* <ExpenseItems />
+						<DepositItems /> */}
+						<CombinedItems />
 					</MovementList>
 				</Box>
 			</Box>

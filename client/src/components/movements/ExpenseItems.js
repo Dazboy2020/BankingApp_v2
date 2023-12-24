@@ -25,7 +25,7 @@ const ExpenseItems = () => {
 					animate="visible"
 					exit={exitAnimation}
 				>
-					<NoDataCard type="Expenses" />
+					<NoDataCard type="Expense" />
 				</motion.li>
 			)}
 

@@ -1,4 +1,5 @@
 import { useAppContext } from '../context/context';
+import { sortArrayByDate } from '../utils/sortArray';
 
 export default function useFilteredTransactions(type) {
 	const { state } = useAppContext();
@@ -37,6 +38,14 @@ export default function useFilteredTransactions(type) {
 						: state.deposits;
 			}
 		}
+
+		if (!transactions) {
+			transactions = [];
+		}
+	}
+
+	if (type === 'combined') {
+		transactions = sortArrayByDate([...state.expenses, ...state.deposits]);
 
 		if (!transactions) {
 			transactions = [];

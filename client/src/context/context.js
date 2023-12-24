@@ -37,6 +37,8 @@ function reducer(state, action) {
 			const arrayOfExpenses = action.payload.user.expenses;
 			const arrayOfDeposits = action.payload.user.deposits;
 
+			console.log(arrayOfExpenses);
+
 			sortArrayByDate(arrayOfExpenses);
 			sortArrayByDate(arrayOfDeposits);
 

@@ -18,10 +18,18 @@ function NoDataCard({ type }) {
 			sx={{
 				border: state.isEditing ? '1px solid #f97316' : '',
 				borderRadius: '10px',
+				minWidth: '100%',
 			}}
 		>
 			<Stack component="section" className={expenseEditMode}>
-				<Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						mb: 3,
+						flexGrow: 1,
+					}}
+				>
 					<span
 						className={
 							isDarkMode
