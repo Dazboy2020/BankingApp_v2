@@ -42,6 +42,9 @@ export default function DatePickerValue() {
 		'& .MuiInputBase-formControl': {
 			color: 'secondary',
 		},
+		'&.MuiTypography-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
 
 		width: '20ch',
 		m: 1,

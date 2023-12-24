@@ -30,7 +30,7 @@ const ExpenseItems = () => {
 			)}
 
 			<AnimatePresence>
-				{memoizedExpenses.map((expense) => (
+				{memoizedExpenses.map((expense, index) => (
 					<motion.li
 						layout="true"
 						variants={containerVariants}
@@ -38,6 +38,7 @@ const ExpenseItems = () => {
 						animate="visible"
 						exit={exitAnimation}
 						key={expense.id}
+						custom={index}
 					>
 						<ExpenseCard expense={expense} />
 					</motion.li>

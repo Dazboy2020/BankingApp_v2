@@ -31,7 +31,7 @@ const DepositItems = () => {
 			)}
 
 			<AnimatePresence>
-				{memoizedDeposits.map((deposit) => (
+				{memoizedDeposits.map((deposit, index) => (
 					<motion.li
 						layout="true"
 						variants={containerVariants}
@@ -39,6 +39,7 @@ const DepositItems = () => {
 						animate="visible"
 						exit={exitAnimation}
 						key={deposit.id}
+						custom={index}
 					>
 						<DepositCard deposit={deposit} />
 					</motion.li>

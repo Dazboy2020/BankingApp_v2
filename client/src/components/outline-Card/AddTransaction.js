@@ -115,7 +115,6 @@ const AddTransaction = () => {
 					<Typography
 						variant="h6"
 						sx={{
-							mb: 2,
 							fontWeight: 'bold',
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
