@@ -44,13 +44,5 @@ export default function useFilteredTransactions(type) {
 		}
 	}
 
-	if (type === 'combined') {
-		transactions = sortArrayByDate([...state.expenses, ...state.deposits]);
-
-		if (!transactions) {
-			transactions = [];
-		}
-	}
-
 	return { transactions };
 }

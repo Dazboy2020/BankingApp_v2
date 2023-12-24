@@ -19,6 +19,7 @@ import DepositItems from '../components/movements/DepositItems';
 import PieExpenses from '../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
 import CombinedItems from '../components/movements/CombinedItems';
+import FilterItems from '../components/filter/Filter';
 
 const rootWindowLayout = {
 	minHeight: '100vh',
@@ -84,7 +85,10 @@ function MainApp() {
 					<MovementList>
 						{/* <ExpenseItems />
 						<DepositItems /> */}
-						<CombinedItems />
+						<Stack direction="column" sx={{ flexGrow: 1 }}>
+							<FilterItems />
+							<CombinedItems />
+						</Stack>
 					</MovementList>
 				</Box>
 			</Box>

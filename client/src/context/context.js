@@ -6,6 +6,7 @@ const AppContext = createContext();
 const inititalState = {
 	expenses: [{}],
 	deposits: [{}],
+	combinedTransactions: [{}],
 	token: '',
 	isLoggedIn: false,
 	loggedInAccount: '',
@@ -36,11 +37,14 @@ function reducer(state, action) {
 		case 'user/MongoLoggedIn': {
 			const arrayOfExpenses = action.payload.user.expenses;
 			const arrayOfDeposits = action.payload.user.deposits;
-
-			console.log(arrayOfExpenses);
+			const arrayOfCombinedTransactions = [
+				...arrayOfExpenses,
+				...arrayOfDeposits,
+			];
 
 			sortArrayByDate(arrayOfExpenses);
 			sortArrayByDate(arrayOfDeposits);
+			sortArrayByDate(arrayOfCombinedTransactions);
 
 			return {
 				...state,
@@ -53,6 +57,7 @@ function reducer(state, action) {
 
 				expenses: arrayOfExpenses,
 				deposits: arrayOfDeposits,
+				combinedTransactions: arrayOfCombinedTransactions,
 				_id: action.payload.user._id,
 				filteredExpenses: null,
 				isActive: 0,
