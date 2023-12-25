@@ -81,6 +81,7 @@ function reducer(state, action) {
 			return {
 				...state,
 				expenses: sortedExpenses,
+				combinedTransactions: [...sortedExpenses, ...state.deposits],
 			};
 
 		case 'add/deposit':
@@ -90,6 +91,7 @@ function reducer(state, action) {
 			return {
 				...state,
 				deposits: sortedDeposits,
+				combinedTransactions: [...sortedDeposits, ...state.expenses],
 			};
 
 		case 'edit/expense': {
@@ -127,6 +129,7 @@ function reducer(state, action) {
 				...state,
 				expenses: updatedExpenses,
 				isEditing: false,
+				combinedTransactions: [...updatedExpenses, ...state.deposits],
 			};
 		}
 
@@ -148,22 +151,32 @@ function reducer(state, action) {
 				...state,
 				deposits: updatedDeposits,
 				isEditing: false,
-				filteredExpenses: null,
+				combinedTransactions: [...updatedDeposits, state.expenses],
 			};
 		}
 
 		case 'delete/deposit':
+			const updatedDeletedDeposits = state.deposits.filter(
+				(ex) => ex.id !== action.payload
+			);
+			sortArrayByDate(updatedDeletedDeposits);
 			return {
 				...state,
-				deposits: state.deposits.filter((ex) => ex.id !== action.payload),
+				deposits: updatedDeletedDeposits,
 				filteredExpenses: null,
+				combinedTransactions: [...updatedDeletedDeposits, ...state.expenses],
 			};
 
 		case 'delete/expense':
+			const updatedDeletedExpenses = state.expenses.filter(
+				(ex) => ex.id !== action.payload
+			);
+			sortArrayByDate(updatedDeletedExpenses);
 			return {
 				...state,
-				expenses: state.expenses.filter((ex) => ex.id !== action.payload),
+				expenses: updatedDeletedExpenses,
 				filteredExpenses: null,
+				combinedTransactions: [...updatedDeletedExpenses, ...state.deposits],
 			};
 
 		case 'sort':

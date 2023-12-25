@@ -37,7 +37,7 @@ const CombinedItems = () => {
 						key={transaction.id}
 						custom={index}
 					>
-						{transaction.type === 'Expense' ? (
+						{transaction.amount < 0 ? (
 							<ExpenseCard expense={transaction} />
 						) : (
 							<DepositCard deposit={transaction} />

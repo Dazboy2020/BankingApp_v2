@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import { Typography, Stack } from '@mui/material';
 // import FilterInputBox from './FilterInputBox';
 import DateMenu from './DateMenu';
+import FilterInputBox from './FilterInputBox';
 
 const FilterItems = () => {
 	const { isDarkMode } = useDarkMode();
