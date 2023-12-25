@@ -11,23 +11,33 @@ import { useTransactionContext } from '../../context/transactionContext';
 export default function DateMenu() {
 	const { isDarkMode } = useDarkMode();
 	const { dispatch, state } = useAppContext();
-	const { expenseType } = useTransactionContext();
+	const { expenseType, setExpenseType } = useTransactionContext();
 
 	const [expenseCategory, setExpenseCategory] = useState('');
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 
 	//! set expense type //
+
 	useEffect(
 		function () {
+			if (state.isActive === 0) {
+				setExpenseType('All Transactions');
+
+				dispatch({ type: 'user/filterCombined', payload: expenseCategory });
+			}
+
 			if (state.isActive === 1) {
+				setExpenseType('expense');
 				dispatch({ type: 'user/filteredExpenses', payload: expenseCategory });
 			}
+
 			if (state.isActive === 2) {
+				setExpenseType('deposit');
 				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
 			}
 		},
-		[state.isActive, dispatch, expenseCategory]
+		[expenseType, state.isActive, dispatch, expenseCategory, setExpenseType]
 	);
 
 	const expenseLabelsInitial = state.expenses
@@ -42,8 +52,15 @@ export default function DateMenu() {
 
 	depositLabelInitial.unshift('All Deposits');
 
+	const combinedLabelsInitial = state.combinedTransactions
+		.filter((transaction) => transaction.category)
+		.map((item) => item.category);
+
+	combinedLabelsInitial.unshift('All transactions');
+
 	const expenseLabels = [...new Set(expenseLabelsInitial)];
 	const depositLabels = [...new Set(depositLabelInitial)];
+	const combinedLabels = [...new Set(combinedLabelsInitial)];
 
 	const open = Boolean(anchorEl);
 
@@ -84,25 +101,37 @@ export default function DateMenu() {
 					},
 				}}
 			>
-				{expenseType === 'expense'
-					? expenseLabels.map((option) => (
-							<MenuItem
-								value={option}
-								key={option}
-								onClick={(e) => handleClose(e, option)}
-							>
-								{option}
-							</MenuItem>
-					  ))
-					: depositLabels.map((option) => (
-							<MenuItem
-								value={option}
-								key={option}
-								onClick={(e) => handleClose(e, option)}
-							>
-								{option}
-							</MenuItem>
-					  ))}
+				{expenseType === 'expense' &&
+					expenseLabels.map((option) => (
+						<MenuItem
+							value={option}
+							key={option}
+							onClick={(e) => handleClose(e, option)}
+						>
+							{option}
+						</MenuItem>
+					))}
+
+				{expenseType === 'deposit' &&
+					depositLabels.map((option) => (
+						<MenuItem
+							value={option}
+							key={option}
+							onClick={(e) => handleClose(e, option)}
+						>
+							{option}
+						</MenuItem>
+					))}
+				{expenseType === 'All Transactions' &&
+					combinedLabels.map((option) => (
+						<MenuItem
+							value={option}
+							key={option}
+							onClick={(e) => handleClose(e, option)}
+						>
+							{option}
+						</MenuItem>
+					))}
 			</Menu>
 		</div>
 	);

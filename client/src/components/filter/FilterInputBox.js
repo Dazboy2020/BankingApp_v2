@@ -14,12 +14,20 @@ function FilterInputBox() {
 	//! set expense type //
 	useEffect(
 		function () {
+			if (state.isActive === 0) {
+				setExpenseType('combined');
+				setLabel('All Transactions');
+
+				dispatch({ type: 'user/filterCombined', payload: expenseCategory });
+			}
+
 			if (state.isActive === 1) {
 				setExpenseType('expense');
 				setLabel('expense');
 
 				dispatch({ type: 'user/filteredExpenses', payload: expenseCategory });
 			}
+
 			if (state.isActive === 2) {
 				setExpenseType('deposit');
 				setLabel('deposit');
@@ -29,6 +37,12 @@ function FilterInputBox() {
 		},
 		[expenseType, state.isActive, dispatch, expenseCategory]
 	);
+
+	const combinedLabelsInitial = state.combinedTransactions
+		.filter((transaction) => transaction.category)
+		.map((item) => item.category);
+
+	combinedLabelsInitial.unshift('All transactions');
 
 	const expenseLabelsInitial = state.expenses
 		.filter((expense) => expense.category)
@@ -44,9 +58,11 @@ function FilterInputBox() {
 
 	const expenseLabels = [...new Set(expenseLabelsInitial)];
 	const depositLabels = [...new Set(depositLabelInitial)];
+	const combinedLabels = [...new Set(combinedLabelsInitial)];
 
 	function handleExpenseCategory(e) {
 		setExpenseCategory(e.target.value);
+		console.log(expenseCategory);
 	}
 
 	const formStyling = {
@@ -92,25 +108,36 @@ function FilterInputBox() {
 				onChange={handleExpenseCategory}
 				sx={formStyling}
 			>
-				{label === 'expense'
-					? expenseLabels.map((option) => (
-							<MenuItem
-								key={option}
-								value={option}
-								sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-							>
-								{option}
-							</MenuItem>
-					  ))
-					: depositLabels.map((option) => (
-							<MenuItem
-								sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-								key={Math.random().toLocaleString()}
-								value={option}
-							>
-								{option}
-							</MenuItem>
-					  ))}
+				{label === 'expense' &&
+					expenseLabels.map((option) => (
+						<MenuItem
+							key={option}
+							value={option}
+							sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+						>
+							{option}
+						</MenuItem>
+					))}
+				{label === 'deposit' &&
+					depositLabels.map((option) => (
+						<MenuItem
+							sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+							key={Math.random().toLocaleString()}
+							value={option}
+						>
+							{option}
+						</MenuItem>
+					))}
+				{label === 'All Transactions' &&
+					combinedLabels.map((option) => (
+						<MenuItem
+							sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
+							key={Math.random().toLocaleString()}
+							value={option}
+						>
+							{option}
+						</MenuItem>
+					))}
 			</TextField>
 		</Box>
 	);

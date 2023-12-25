@@ -22,6 +22,7 @@ const inititalState = {
 	editingDeposit: [{}],
 	filteredExpenses: null,
 	filteredDeposits: null,
+	filteredCombined: null,
 	isLoading: false,
 };
 
@@ -211,6 +212,7 @@ function reducer(state, action) {
 			if (action.payload === 'All Expenses')
 				return {
 					...state,
+					filtering: false,
 					filteredExpenses: state.expenses,
 				};
 
@@ -226,6 +228,7 @@ function reducer(state, action) {
 			if (action.payload === 'All Deposits') {
 				return {
 					...state,
+					filtering: false,
 					filteredDeposits: state.deposits,
 				};
 			}
@@ -234,6 +237,22 @@ function reducer(state, action) {
 				filtering: true,
 				filteredDeposits: state.deposits.filter(
 					(ex) => ex.category === action.payload
+				),
+			};
+		}
+		case 'user/filterCombined': {
+			if (action.payload === 'All Transactions') {
+				return {
+					...state,
+					filtering: false,
+					filteredCombined: state.combinedTransactions,
+				};
+			}
+			return {
+				...state,
+				filtering: true,
+				filteredCombined: state.combinedTransactions.filter(
+					(transaction) => transaction.category === action.payload
 				),
 			};
 		}

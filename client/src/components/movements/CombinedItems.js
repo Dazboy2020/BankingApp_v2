@@ -9,23 +9,11 @@ import { containerVariants, exitAnimation } from './variants';
 import { sortArrayByDate } from '../../utils/sortArray';
 
 const CombinedItems = () => {
-	const { transactions: expenseTransactions } =
-		useFilteredTransactions('expenses');
-	const { transactions: depositTransactions } =
-		useFilteredTransactions('deposits');
+	const { transactions } = useFilteredTransactions('combined');
 
 	let combinedTransactions = useMemo(() => {
-		let expenses = expenseTransactions.map((transaction) => ({
-			...transaction,
-			type: 'Expense',
-		}));
-		let deposits = depositTransactions.map((transaction) => ({
-			...transaction,
-			type: 'Deposit',
-		}));
-
-		return [...expenses, ...deposits];
-	}, [expenseTransactions, depositTransactions]);
+		return transactions;
+	}, [transactions]);
 
 	if (combinedTransactions.length === 0) {
 		return <NoDataCard type="Transaction" />;
