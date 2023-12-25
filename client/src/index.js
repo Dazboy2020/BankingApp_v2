@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ContextProvider } from './context/context';
-import { CssBaseline } from '@mui/material';
 import { DarkModeProvider } from './hooks/useDarkMode';
 import { TransactionProvider } from './context/transactionContext';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ModalContextProvider } from './context/modalContext';
+import App from './App';
+import { CssBaseline } from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,14 +20,16 @@ root.render(
 			<GoogleOAuthProvider clientId="841090446655-o7mj2dl8hvgrm3nrga63s5924f033oea.apps.googleusercontent.com">
 				<ContextProvider>
 					<TransactionProvider>
-						<DarkModeProvider>
-							<CssBaseline />
-							<LocalizationProvider dateAdapter={AdapterDayjs}>
-								<Routes>
-									<Route path="/*" element={<App />} />
-								</Routes>
-							</LocalizationProvider>
-						</DarkModeProvider>
+						<ModalContextProvider>
+							<DarkModeProvider>
+								<CssBaseline />
+								<LocalizationProvider dateAdapter={AdapterDayjs}>
+									<Routes>
+										<Route path="/*" element={<App />} />
+									</Routes>
+								</LocalizationProvider>
+							</DarkModeProvider>
+						</ModalContextProvider>
 					</TransactionProvider>
 				</ContextProvider>
 			</GoogleOAuthProvider>

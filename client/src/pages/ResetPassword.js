@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useAppContext } from '../context/context';
 import { useParams } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -22,6 +21,7 @@ import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 
 import axios from 'axios';
+import { useModalContext } from '../context/modalContext';
 
 function Copyright(props) {
 	return (
@@ -44,9 +44,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function ResetPassword() {
-	// eslint-disable-next-line no-unused-vars
-	const { state, dispatch, setOpenToast, message, setMessage } =
-		useAppContext();
+	const { setOpenToast, message, setMessage } = useModalContext();
 
 	const navigate = useNavigate();
 	let { resetToken } = useParams();
@@ -68,9 +66,6 @@ export default function ResetPassword() {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		// setIsLoading(true);
-		// setMessage('Signing in..');
-		// setOpenToast(true, { message: message });
 
 		if (data.password !== data.confirmPassword) {
 			setMessage('Passwords do not match!');
@@ -104,7 +99,6 @@ export default function ResetPassword() {
 			if (userData.error) {
 				console.log(userData.error);
 
-				// setMessage(userData.error);
 				setOpenToast(true, { message: 'Something went wrong' });
 				setIsLoading(false);
 				setData({

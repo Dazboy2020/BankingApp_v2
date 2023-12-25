@@ -4,14 +4,14 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import MuiAlert from '@mui/material/Alert';
-import { useAppContext } from '../../context/context';
+import { useModalContext } from '../../context/modalContext';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export default function Toast() {
-	const { openToast, setOpenToast, message } = useAppContext();
+	const { openToast, setOpenToast, message } = useModalContext();
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
 			return;

@@ -20,6 +20,7 @@ import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 
 import axios from 'axios';
+import { useModalContext } from '../context/modalContext';
 
 function Copyright(props) {
 	return (
@@ -42,9 +43,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function ForgotPassword() {
-	// eslint-disable-next-line no-unused-vars
-	const { state, dispatch, setOpenToast, message, setMessage } =
-		useAppContext();
+	const { state } = useAppContext();
+
+	const { setOpenToast, message, setMessage } = useModalContext();
 
 	const navigate = useNavigate();
 

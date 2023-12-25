@@ -1,10 +1,12 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
 import { config } from './config';
+import { useModalContext } from '../context/modalContext';
 
 export default function useDeleteDeposit(id) {
-	const { state, dispatch, setMessage, message, setOpenToast } =
-		useAppContext();
+	const { state, dispatch } = useAppContext();
+
+	const { setOpenToast, message, setMessage } = useModalContext();
 
 	const authToken = localStorage.getItem('authToken');
 

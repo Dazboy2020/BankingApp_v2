@@ -278,15 +278,6 @@ function reducer(state, action) {
 function ContextProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, inititalState);
 
-	const [open, setOpen] = useState(false);
-	const [openModal, setOpenModal] = useState(false);
-	const [openToast, setOpenToast] = useState(false);
-
-	const [message, setMessage] = useState('');
-
-	const [modalTitle, setModalTitle] = useState('');
-	const [modalMessage, setModalMessage] = useState('');
-	const [modalAction, setModalAction] = useState('');
 	const [id, setId] = useState('');
 	const [navLink, setNavLink] = useState(0);
 
@@ -302,26 +293,11 @@ function ContextProvider({ children }) {
 	return (
 		<AppContext.Provider
 			value={{
-				totalIncome,
-				totalExpenses,
-				open,
-				setOpen,
-				openModal,
-				setOpenModal,
-				openToast,
-				setOpenToast,
-
 				dispatch,
 				state,
-				message,
-				setMessage,
+				totalIncome,
+				totalExpenses,
 
-				modalTitle,
-				setModalTitle,
-				modalMessage,
-				setModalMessage,
-				modalAction,
-				setModalAction,
 				id,
 				setId,
 

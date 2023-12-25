@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useAppContext } from '../context/context';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -17,13 +16,13 @@ import Container from '@mui/material/Container';
 
 import ResponsiveAppBar from '../components/navbar/NewNav';
 
-// import classes from './SignIn.module.css';
 import axios from 'axios';
 
 import {
 	containerVariants,
 	exitAnimation,
 } from './page-animations/login_register';
+import { useModalContext } from '../context/modalContext';
 
 function Copyright(props) {
 	return (
@@ -49,7 +48,8 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
 	const navigate = useNavigate();
-	const { setOpenToast, message, setMessage } = useAppContext();
+	const { setOpenToast, message, setMessage } = useModalContext();
+
 	const [data, setData] = useState({
 		username: '',
 		email: '',

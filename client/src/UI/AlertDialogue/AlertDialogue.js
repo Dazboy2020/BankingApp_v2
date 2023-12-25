@@ -11,22 +11,17 @@ import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import useDeleteExpense from '../../hooks/useDeleteExpense';
 import useDeleteDeposit from '../../hooks/useDeleteDeposit';
+import { useModalContext } from '../../context/modalContext';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function AlertDialogSlide() {
-	const {
-		open,
-		setOpen,
-		dispatch,
-		modalMessage,
-		modalTitle,
-		modalAction,
-		state,
-		id,
-	} = useAppContext();
+	const { dispatch, state, id } = useAppContext();
+
+	const { open, setOpen, modalTitle, modalMessage, modalAction } =
+		useModalContext();
 
 	const { isDarkMode } = useDarkMode();
 

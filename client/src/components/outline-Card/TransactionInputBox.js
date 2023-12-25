@@ -1,4 +1,3 @@
-import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useTransactionContext } from '../../context/transactionContext';
 import {
@@ -14,9 +13,11 @@ import {
 import { menuExpenseItems } from './menuExpenseItems';
 import { menuDepositItems } from './menuDepositItems';
 import useSwitchInputLabel from '../../hooks/useSwitchInputLabels';
+import { useModalContext } from '../../context/modalContext';
 
 function TransactionInputBox() {
-	const { setMessage } = useAppContext();
+	const { setMessage } = useModalContext();
+
 	const {
 		expenseAmount,
 		setExpenseAmount,

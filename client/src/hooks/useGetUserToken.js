@@ -2,9 +2,12 @@ import { useAppContext } from '../context/context';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SignIn from '../pages/SignIn';
+import { useModalContext } from '../context/modalContext';
 
 export default function useGetUserToken() {
-	const { dispatch, setMessage, setOpenToast, message } = useAppContext();
+	const { dispatch } = useAppContext();
+
+	const { setOpenToast, message, setMessage } = useModalContext();
 
 	const navigate = useNavigate();
 

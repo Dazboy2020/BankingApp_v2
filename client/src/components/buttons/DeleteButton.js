@@ -1,19 +1,20 @@
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
+import { useModalContext } from '../../context/modalContext';
 
 function DeleteButton({ expense }) {
+	const { id, setId } = useAppContext();
+
 	const {
-		modalMessage,
-		setModalMessage,
 		modalTitle,
 		setModalTitle,
+		setOpen,
+		modalMessage,
+		setModalMessage,
 		modalAction,
 		setModalAction,
-		id,
-		setId,
-		setOpen,
-	} = useAppContext();
+	} = useModalContext();
 
 	function handleDelete(expense) {
 		setModalTitle('Warning! Deletetion!');

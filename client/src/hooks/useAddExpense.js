@@ -1,9 +1,11 @@
 import { useAppContext } from '../context/context';
 import axios from 'axios';
 import { config } from './config';
+import { useModalContext } from '../context/modalContext';
 
 export default function useAddExpense() {
-	const { state, dispatch, setMessage, setOpenToast } = useAppContext();
+	const { state, dispatch } = useAppContext();
+	const { setOpenToast, setMessage } = useModalContext();
 
 	const authToken = localStorage.getItem('authToken');
 

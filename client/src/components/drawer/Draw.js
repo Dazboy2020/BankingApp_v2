@@ -24,22 +24,23 @@ import { useAppContext } from '../../context/context';
 import Header from './Header';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useTransactionContext } from '../../context/transactionContext';
+import { useModalContext } from '../../context/modalContext';
 
 // const drawerWidth = 305;
 const drawerWidth = 360;
 
 const ListNew = (props) => {
+	const { state, dispatch } = useAppContext();
+
 	const {
 		setOpen,
-		state,
-		dispatch,
-		modalMessage,
-		setModalMessage,
 		modalTitle,
 		setModalTitle,
+		modalMessage,
+		setModalMessage,
 		modalAction,
 		setModalAction,
-	} = useAppContext();
+	} = useModalContext();
 
 	const { setPickerDate } = useTransactionContext();
 
