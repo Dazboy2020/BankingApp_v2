@@ -1,44 +1,31 @@
-import { useDarkMode } from '../hooks/useDarkMode';
+import { useAppContext } from '../context/context';
 import { Stack } from '@mui/system';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
-
 import MovementList from '../components/movements/MovementList';
-
 import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
-
 import { Box } from '@mui/material';
-
-import classes from './MainApp.module.css';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import Income from '../components/outline-Card/Income';
 import AvailbleFunds from '../components/outline-Card/AvailableFunds';
-// import ExpenseItems from '../components/movements/ExpenseItems';
-// import DepositItems from '../components/movements/DepositItems';
 import PieExpenses from '../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
 import CombinedItems from '../components/movements/CombinedItems';
 import FilterItems from '../components/filter/Filter';
-import { useAppContext } from '../context/context';
-
-const rootWindowLayout = {
-	minHeight: '100vh',
-	ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
-	mr: { lg: 0, sm: 0, m: 0 },
-	backgroundColor: '#343a40',
-};
+import PageLayout from './layout/PageLayout';
+// import ExpenseItems from '../components/movements/ExpenseItems';
+// import DepositItems from '../components/movements/DepositItems';
 
 const chartStyle = {
 	display: 'flex',
 	alignItems: 'centre',
 	justifyContent: 'space-around',
-	mb: 2,
-	mt: 3,
+	mb: { xs: 2, sm: 5, md: 8 },
+	mt: { xs: 2, sm: 5, md: 8 },
 };
 
 function MainApp() {
-	const { isDarkMode } = useDarkMode();
 	const { state } = useAppContext();
 
 	return (
@@ -47,11 +34,7 @@ function MainApp() {
 			<AlertDialogSlide />
 			<CloseAccountModal />
 			<Toast />
-			<Box
-				component="main"
-				className={isDarkMode ? classes.darkmode : classes.body}
-				sx={rootWindowLayout}
-			>
+			<PageLayout>
 				<Box
 					sx={{
 						ml: { xs: 3, sm: 6 },
@@ -94,7 +77,7 @@ function MainApp() {
 						</Stack>
 					</MovementList>
 				</Box>
-			</Box>
+			</PageLayout>
 		</>
 	);
 }

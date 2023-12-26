@@ -9,7 +9,7 @@ import ProtectedRoute from './pages/ProtectedRoute';
 
 import Toast from './UI/AlertDialogue/Toast';
 import { blue, purple } from '@mui/material/colors';
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
 import { useDarkMode } from './hooks/useDarkMode';
 
@@ -32,7 +32,7 @@ const Account = lazy(() => import('./pages/Account'));
 const Charts = lazy(() => import('./pages/Charts'));
 
 axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function App() {
 	const { isDarkMode } = useDarkMode();
@@ -111,14 +111,16 @@ function App() {
 					root: {
 						backgroundColor: isDarkMode ? '#171717' : '#fff',
 						transition: '400ms',
+						padding: 1,
 					},
 				},
 			},
 			MuiCardContent: {
 				styleOverrides: {
 					root: {
-						'.MuiCardContent-root': {
-							pb: { xs: 0, s: 0.5, sm: 1.2 },
+						'&:last-child': {
+							// paddingBottom: 1,
+							padding: 10,
 						},
 					},
 				},

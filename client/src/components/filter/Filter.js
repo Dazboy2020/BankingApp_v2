@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography, Stack } from '@mui/material';
@@ -17,36 +16,32 @@ const FilterItems = () => {
 			sx={{
 				display: 'flex',
 				mb: 2,
-				alignItems: 'flex-start',
+				// alignItems: 'flex-start',
 				borderRadius: '10px',
+				p: 0,
 			}}
 		>
 			<CardContent
 				sx={{
 					width: '100%',
 					display: 'flex',
-					flexDirection: { xs: 'column', sm: 'row' },
-					alignItems: { xs: 'flex-start', sm: 'center' },
+
+					// flexDirection: { xs: 'column', sm: 'row' },
+					alignItems: { xs: 'center', sm: 'center' },
 					justifyContent: 'space-between',
+
+					// p: { xs: 1, sm: 1.5 },
 				}}
 			>
-				<Box
+				<Typography
 					sx={{
-						fontWeight: 500,
-						width: '15rem',
-						marginBottom: '0.1rem',
+						fontFamily: 'poppins',
+						fontSize: '1.3rem',
+						color: isDarkMode ? '#d6d3d1' : '#000',
 					}}
 				>
-					<Typography
-						sx={{
-							fontFamily: 'poppins',
-							fontSize: '1.3rem',
-							color: isDarkMode ? '#d6d3d1' : '#000',
-						}}
-					>
-						Filter Items:
-					</Typography>
-				</Box>
+					Filter Items:
+				</Typography>
 				<Stack
 					direction={{ md: 'column', lg: 'row' }}
 					sx={{

@@ -7,6 +7,12 @@ import AddTransaction from '../../components/outline-Card/AddTransaction';
 import AvailbleFunds from '../../components/outline-Card/AvailableFunds';
 import PageLayout from '../layout/PageLayout';
 
+const layout = {
+	ml: { xs: 3, sm: 6 },
+	mr: { xs: 3, sm: 6 },
+	mt: { xs: 5, md: 10 },
+};
+
 function TransactionLayout({ TransactionType, TransactionItems }) {
 	const { state } = useAppContext();
 	return (
@@ -15,27 +21,13 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 			<AlertDialogSlide />
 
 			<PageLayout>
-				<Stack
-					spacing={2}
-					direction={{ md: 'column', lg: 'row' }}
-					sx={{
-						ml: { xs: 3, sm: 6 },
-						mr: { xs: 3, sm: 6 },
-						mt: { xs: 5, md: 10 },
-					}}
-				>
+				<Stack spacing={2} direction={{ md: 'column', lg: 'row' }} sx={layout}>
 					<AvailbleFunds />
 					{TransactionType}
 					<AddTransaction />
 				</Stack>
 
-				<Box
-					sx={{
-						ml: { xs: 3, sm: 6 },
-						mr: { xs: 3, sm: 6 },
-						mt: 4,
-					}}
-				>
+				<Box sx={layout}>
 					{state.isActive === 1 &&
 						!state.isEditing &&
 						state.expenses.length > 0 && <FilterItems />}
