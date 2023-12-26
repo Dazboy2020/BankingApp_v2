@@ -109,7 +109,7 @@ function App() {
 			MuiPaper: {
 				styleOverrides: {
 					root: {
-						backgroundColor: isDarkMode ? '#171717' : '#e5e5e5',
+						backgroundColor: isDarkMode ? '#171717' : '#fff',
 						transition: '400ms',
 					},
 				},

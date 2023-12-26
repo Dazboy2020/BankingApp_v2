@@ -20,6 +20,7 @@ import PieExpenses from '../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
 import CombinedItems from '../components/movements/CombinedItems';
 import FilterItems from '../components/filter/Filter';
+import { useAppContext } from '../context/context';
 
 const rootWindowLayout = {
 	minHeight: '100vh',
@@ -38,6 +39,8 @@ const chartStyle = {
 
 function MainApp() {
 	const { isDarkMode } = useDarkMode();
+	const { state } = useAppContext();
+
 	return (
 		<>
 			<ResponsiveDrawer />
@@ -86,7 +89,7 @@ function MainApp() {
 						{/* <ExpenseItems />
 						<DepositItems /> */}
 						<Stack direction="column" sx={{ flexGrow: 1 }}>
-							<FilterItems />
+							{state.combinedTransactions.length > 0 && <FilterItems />}
 							<CombinedItems />
 						</Stack>
 					</MovementList>
