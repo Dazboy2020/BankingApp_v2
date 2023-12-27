@@ -101,7 +101,7 @@ const ListNew = (props) => {
 	// };
 
 	const styles = {
-		'.css-ikss9a-MuiTypography-root': {
+		'& .MuiTypography-root': {
 			letterSpacing: '.1rem',
 			fontSize: '1.4rem',
 			fontWeight: 'bold',

@@ -90,33 +90,34 @@ function Account() {
 										label="First Name"
 										defaultValue={state.user}
 										color="secondary"
-										sx={{
-											'& .MuiOutlinedInput-root': {
-												'& > fieldset': {
-													border: isDarkMode
-														? '1px solid grey'
-														: '1px solid black',
-												},
-											},
-										}}
-
-										// disabled={true}
+										// sx={{
+										// 	'& .MuiOutlinedInput-root': {
+										// 		'& > fieldset': {
+										// 			border: isDarkMode
+										// 				? '1px solid grey'
+										// 				: '1px solid black',
+										// 		},
+										// 	},
+										// }}
+										sx={disabledStyles}
+										disabled={true}
 									/>
 									<TextField
 										id="outlined-secondname"
 										label="Second Name"
 										defaultValue={state.lastName}
 										color="secondary"
-										sx={{
-											'& .MuiOutlinedInput-root': {
-												'& > fieldset': {
-													border: isDarkMode
-														? '1px solid grey'
-														: '1px solid black',
-												},
-											},
-										}}
-										// disabled={true}
+										// sx={{
+										// 	'& .MuiOutlinedInput-root': {
+										// 		'& > fieldset': {
+										// 			border: isDarkMode
+										// 				? '1px solid grey'
+										// 				: '1px solid black',
+										// 		},
+										// 	},
+										// }}
+										sx={disabledStyles}
+										disabled={true}
 									/>
 								</Box>
 								<Box sx={{ textAlign: 'center' }}>
