@@ -125,6 +125,27 @@ function App() {
 					},
 				},
 			},
+			MuiInputBase: {
+				styleOverrides: {
+					root: {
+						color: isDarkMode ? '#d6d3d1' : '#000',
+					},
+				},
+			},
+			MuiFormControl: {
+				styleOverrides: {
+					root: {
+						border: isDarkMode ? '#d6d3d1' : '#000',
+					},
+				},
+			},
+			MuiInputLabel: {
+				styleOverrides: {
+					root: {
+						color: isDarkMode ? '#d6d3d1' : '#000',
+					},
+				},
+			},
 		},
 	});
 

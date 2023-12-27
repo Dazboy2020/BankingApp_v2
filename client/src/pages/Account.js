@@ -10,9 +10,26 @@ import {
 } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import { useAppContext } from '../context/context';
+import { useDarkMode } from '../hooks/useDarkMode';
 
 function Account() {
 	const { state } = useAppContext();
+	const { isDarkMode } = useDarkMode();
+
+	const disabledStyles = {
+		'& .MuiInputBase-input.Mui-disabled': {
+			WebkitTextFillColor: isDarkMode ? 'grey' : 'secondary',
+		},
+		'& .MuiOutlinedInput-root.Mui-disabled': {
+			'& > fieldset': {
+				border: isDarkMode ? '1px solid grey' : '1px solid black',
+			},
+		},
+		'& .MuiInputLabel-formControl': {
+			color: isDarkMode ? 'grey' : 'secondary',
+		},
+	};
+
 	return (
 		<Box sx={{ backgroundColor: '#343a40' }}>
 			<ResponsiveDrawer />
@@ -38,6 +55,7 @@ function Account() {
 							height: { xs: '100%', s: '100%', sm: '75%' },
 							justifyContent: 'center',
 							alignItems: 'center',
+
 							// mt: '30rem',
 						}}
 					>
@@ -72,14 +90,33 @@ function Account() {
 										label="First Name"
 										defaultValue={state.user}
 										color="secondary"
-										disabled={true}
+										sx={{
+											'& .MuiOutlinedInput-root': {
+												'& > fieldset': {
+													border: isDarkMode
+														? '1px solid grey'
+														: '1px solid black',
+												},
+											},
+										}}
+
+										// disabled={true}
 									/>
 									<TextField
 										id="outlined-secondname"
 										label="Second Name"
 										defaultValue={state.lastName}
 										color="secondary"
-										disabled={true}
+										sx={{
+											'& .MuiOutlinedInput-root': {
+												'& > fieldset': {
+													border: isDarkMode
+														? '1px solid grey'
+														: '1px solid black',
+												},
+											},
+										}}
+										// disabled={true}
 									/>
 								</Box>
 								<Box sx={{ textAlign: 'center' }}>
@@ -87,15 +124,16 @@ function Account() {
 										id="outlined-email"
 										label="Email"
 										defaultValue={state.loggedInAccount.email}
-										color="secondary"
+										sx={disabledStyles}
 										disabled={true}
 									/>
 									<TextField
 										id="outlined-currency"
 										label="Currency "
 										defaultValue="€"
-										color="secondary"
+										// color="secondary"
 										disabled={true}
+										sx={disabledStyles}
 									/>
 								</Box>
 								<Box
