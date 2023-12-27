@@ -52,8 +52,8 @@ function MainApp() {
 							mt: { xs: 5, md: 10 },
 						}}
 					>
-						<Income />
 						<ExpenseSummary />
+						<Income />
 						<AvailbleFunds />
 					</Stack>
 
