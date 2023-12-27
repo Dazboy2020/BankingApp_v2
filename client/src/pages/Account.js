@@ -18,15 +18,15 @@ function Account() {
 
 	const disabledStyles = {
 		'& .MuiInputBase-input.Mui-disabled': {
-			WebkitTextFillColor: isDarkMode ? 'grey' : 'secondary',
+			WebkitTextFillColor: isDarkMode ? '#d6d3d1' : 'secondary',
 		},
 		'& .MuiOutlinedInput-root.Mui-disabled': {
 			'& > fieldset': {
-				border: isDarkMode ? '1px solid grey' : '1px solid black',
+				border: isDarkMode ? '1px solid gray' : '1px solid black',
 			},
 		},
 		'& .MuiInputLabel-formControl': {
-			color: isDarkMode ? 'grey' : 'secondary',
+			color: isDarkMode ? '#d6d3d1' : 'secondary',
 		},
 	};
 
@@ -64,13 +64,12 @@ function Account() {
 								display: 'flex',
 								flexDirection: 'column',
 								height: '100%',
-								// flexGrow: 1,
 							}}
 						>
 							<CardMedia
-								sx={{ width: '120px', height: 'auto' }}
+								sx={{ width: '120px', height: 'auto', mb: 3 }}
 								component="img"
-								src="/avatar-min.jpg" // Provide the correct path here
+								src="/avatar-min.jpg"
 								alt="user avatar"
 							/>
 							<Box
@@ -79,6 +78,7 @@ function Account() {
 									'& .MuiTextField-root': {
 										m: 1,
 										width: { md: '80ch', sm: '45ch', s: '99%', xs: '99%' },
+										mt: 2,
 									},
 								}}
 								noValidate
@@ -90,15 +90,6 @@ function Account() {
 										label="First Name"
 										defaultValue={state.user}
 										color="secondary"
-										// sx={{
-										// 	'& .MuiOutlinedInput-root': {
-										// 		'& > fieldset': {
-										// 			border: isDarkMode
-										// 				? '1px solid grey'
-										// 				: '1px solid black',
-										// 		},
-										// 	},
-										// }}
 										sx={disabledStyles}
 										disabled={true}
 									/>
@@ -107,15 +98,6 @@ function Account() {
 										label="Second Name"
 										defaultValue={state.lastName}
 										color="secondary"
-										// sx={{
-										// 	'& .MuiOutlinedInput-root': {
-										// 		'& > fieldset': {
-										// 			border: isDarkMode
-										// 				? '1px solid grey'
-										// 				: '1px solid black',
-										// 		},
-										// 	},
-										// }}
 										sx={disabledStyles}
 										disabled={true}
 									/>
@@ -132,7 +114,6 @@ function Account() {
 										id="outlined-currency"
 										label="Currency "
 										defaultValue="€"
-										// color="secondary"
 										disabled={true}
 										sx={disabledStyles}
 									/>
@@ -141,19 +122,20 @@ function Account() {
 									sx={{
 										position: 'absolute',
 										bottom: '1rem',
-										color: 'white', // Set the text color
-										textDecoration: 'none', // Add underline
-										'&:hover': {
-											color: 'white', // Change color on hover
+										textDecoration: 'none',
+										'& a': {
+											color: 'gray',
+											textDecoration: 'none',
+											'&:hover': {
+												color: '#d6d3d1',
+											},
 										},
 									}}
 								>
-									<p>
-										<a href="https://www.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_7074311.htm#query=avatar&position=2&from_view=keyword&track=sph">
-											Image by pikisuperstar
-										</a>
-										on Freepik
-									</p>
+									<a href="https://www.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_7074311.htm#query=avatar&position=2&from_view=keyword&track=sph">
+										Image by pikisuperstar
+									</a>
+									on Freepik
 								</Box>
 							</Box>
 						</CardContent>

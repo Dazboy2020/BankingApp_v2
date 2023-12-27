@@ -67,6 +67,7 @@ function MainApp() {
 						<PieExpenses />
 						<PieExpenseVDeposit />
 					</Stack>
+
 					{/* //!Movements */}
 					<MovementList>
 						{/* <ExpenseItems />

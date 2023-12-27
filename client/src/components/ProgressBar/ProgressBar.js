@@ -6,13 +6,12 @@ function ProgressBarComponent() {
 	let budget = 2000;
 	const { totalExpenses } = useAppContext();
 
-	let progress = Math.abs((totalExpenses / budget) * 100).toFixed(0);
+	let progress = Number(Math.abs((+totalExpenses / +budget) * 100).toFixed(0));
 
 	return (
 		<Box sx={{ mt: 2 }}>
 			<ProgressBar
 				completed={+progress}
-				// bgColor="#f97316"
 				bgColor="#343a40"
 				labelSize="20px"
 				labelColor="#fff"

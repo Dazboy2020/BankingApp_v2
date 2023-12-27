@@ -79,7 +79,7 @@ function App() {
 			MuiTypography: {
 				styleOverrides: {
 					root: {
-						// fontSize: '24px', // Set your desired font size
+						// Set your desired font size
 					},
 				},
 			},
