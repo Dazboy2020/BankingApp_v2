@@ -30,6 +30,7 @@ const Expenses = lazy(() => import('./pages/Expenses'));
 const Deposits = lazy(() => import('./pages/Deposits'));
 const Account = lazy(() => import('./pages/Account'));
 const Charts = lazy(() => import('./pages/Charts'));
+const Budget = lazy(() => import('./pages/Budget'));
 
 axios.defaults.baseURL = 'http://localhost:5000';
 // axios.defaults.withCredentials = true;
@@ -171,6 +172,7 @@ function App() {
 							<Route path="expenses" element={<Expenses />} />
 							<Route path="deposits" element={<Deposits />} />
 							<Route path="charts" element={<Charts />} />
+							<Route path="budget" element={<Budget />} />
 							<Route path="account" element={<Account />} />
 							<Route path="about" element={<About />} />
 						</Route>

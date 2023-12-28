@@ -1,7 +1,7 @@
 export const cardTextContent = [
 	{
 		header: 'Create your account',
-		text: 'Create you free, secure account or sign-in with Google',
+		text: 'Create your free, secure account or sign-in with Google',
 	},
 	{
 		header: 'Set spending budgets',

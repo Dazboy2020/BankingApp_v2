@@ -17,6 +17,7 @@ import EuroIcon from '@mui/icons-material/Euro';
 import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import HouseIcon from '@mui/icons-material/House';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import SavingsIcon from '@mui/icons-material/Savings';
 
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -79,6 +80,10 @@ const ListNew = (props) => {
 		{
 			text: 'Charts',
 			icon: <PsychologyAltIcon />,
+		},
+		{
+			text: 'Budget',
+			icon: <SavingsIcon />,
 		},
 		{
 			text: 'Account',
