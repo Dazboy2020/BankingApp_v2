@@ -17,7 +17,7 @@ function DeleteButton({ expense }) {
 	} = useModalContext();
 
 	function handleDelete(expense) {
-		setModalTitle('Warning! Deletetion!');
+		setModalTitle('Warning! Deletion!');
 		setModalMessage('Are you sure you want to delete this item?');
 		setModalAction('delete');
 		setId(expense);

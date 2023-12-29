@@ -101,7 +101,7 @@ export const subHeaderVariant = {
 		transition: {
 			type: 'spring',
 			duration: 0.3,
-			delay: 4,
+			delay: 5,
 			mass: 0.8,
 			stiffness: 400,
 		},
