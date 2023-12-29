@@ -20,7 +20,7 @@ function PieChartCard({ children, title = 'EXPENSES' }) {
 						sx={{
 							margin: 'auto',
 							width: '100%',
-							fontSize: { xs: '1rem', md: '1.5rem' },
+							fontSize: { xs: '1rem', md: '1.2rem' },
 							padding: { xs: '.8rem', md: '.5rem' },
 							backgroundColor: isDarkMode ? '#212529' : '#495057',
 							color: isDarkMode ? '#d6d3d1' : '#fff',

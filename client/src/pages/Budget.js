@@ -9,12 +9,14 @@ import {
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import PageLayout from './layout/PageLayout';
-import { useTransactionContext } from '../context/transactionContext';
 import { useModalContext } from '../context/modalContext';
+import { useState } from 'react';
+import { useAppContext } from '../context/context';
 
 function Budget() {
-	const { budget, setBudget } = useTransactionContext();
+	const { budget, dispatch } = useAppContext();
 	const { setOpenToast, message, setMessage } = useModalContext();
+	const [formBudget, setFormBudget] = useState(null);
 
 	function handleFormSubmit(e) {
 		e.preventDefault();
@@ -24,12 +26,13 @@ function Budget() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		if (budget === null || isNaN(budget) || budget <= 0) {
+		if (formBudget === null || isNaN(formBudget) || formBudget <= 0) {
 			setMessage('Please enter a valid budget!');
 			setOpenToast(true, { message: message });
 			return;
 		}
 
+		dispatch({ type: 'user/AddBudget', payload: formBudget });
 		setMessage('Budget Successfully updated!');
 		setOpenToast(true, { message: message });
 	}
@@ -40,10 +43,10 @@ function Budget() {
 		if (isNaN(budgetInput)) {
 			setMessage('Budget must be an integer!');
 			setOpenToast(true, { message: message });
-			setBudget(null);
+			setFormBudget(null);
 			return;
 		}
-		setBudget(+e.target.value);
+		setFormBudget(budgetInput);
 	}
 
 	return (

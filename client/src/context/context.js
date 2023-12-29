@@ -7,6 +7,7 @@ const inititalState = {
 	expenses: [{}],
 	deposits: [{}],
 	combinedTransactions: [{}],
+	budget: null,
 	token: '',
 	isLoggedIn: false,
 	loggedInAccount: '',
@@ -62,6 +63,7 @@ function reducer(state, action) {
 				_id: action.payload.user._id,
 				filteredExpenses: null,
 				isActive: 0,
+				budget: action.payload.user.budget || null,
 			};
 		}
 
@@ -72,6 +74,12 @@ function reducer(state, action) {
 				user: '',
 				filteredExpenses: null,
 				token: '',
+			};
+
+		case 'user/AddBudget':
+			return {
+				...state,
+				budget: action.payload,
 			};
 
 		case 'add/expense':

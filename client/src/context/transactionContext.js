@@ -8,7 +8,6 @@ function TransactionProvider({ children }) {
 	const [expenseType, setExpenseType] = useState('');
 	const [pickerDate, setPickerDate] = useState(null);
 	const [label, setLabel] = useState('');
-	const [budget, setBudget] = useState(null);
 
 	return (
 		<TransactionContext.Provider
@@ -23,8 +22,6 @@ function TransactionProvider({ children }) {
 				setPickerDate,
 				label,
 				setLabel,
-				budget,
-				setBudget,
 			}}
 		>
 			{children}

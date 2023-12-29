@@ -50,6 +50,10 @@ const userSchema = new Schema({
 			category: String,
 		},
 	],
+	budget: {
+		type: Number,
+		default: null,
+	},
 });
 
 userSchema.pre('save', async function (next) {

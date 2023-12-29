@@ -22,9 +22,9 @@ const registerUser = async (req, res, next) => {
 		if (existingUser) {
 			// Check if the username or email already exists
 			if (existingUser.username === username) {
-				return res.status(400).json({ error: 'Username already exists' });
+				return res.status(200).json({ error: 'Username already exists' });
 			} else {
-				return res.status(400).json({ error: 'Email already exists' });
+				return res.status(200).json({ error: 'Email already exists' });
 			}
 		}
 
