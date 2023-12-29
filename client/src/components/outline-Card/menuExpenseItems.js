@@ -16,7 +16,19 @@ export const menuExpenseItems = [
 		label: 'Travel',
 	},
 	{
-		value: 'Debt',
-		label: 'Debt',
+		value: 'Education',
+		label: 'Education',
+	},
+	{
+		value: 'Healthcare',
+		label: 'Healthcare',
+	},
+	{
+		value: 'Business',
+		label: 'Business',
+	},
+	{
+		value: 'Personal',
+		label: 'Personal',
 	},
 ];

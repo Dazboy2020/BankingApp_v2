@@ -4,12 +4,24 @@ export const menuDepositItems = [
 		label: 'Salary',
 	},
 	{
-		value: 'Shares',
-		label: 'Shares',
+		value: 'Investments',
+		label: 'Investments',
 	},
 	{
 		value: 'Sales',
 		label: 'Sales',
+	},
+	{
+		value: 'Business',
+		label: 'Business',
+	},
+	{
+		value: 'Freelance',
+		label: 'Freelance',
+	},
+	{
+		value: 'Shares',
+		label: 'Shares',
 	},
 	{
 		value: 'Other',

@@ -3,9 +3,17 @@ import { useAppContext } from '../../context/context';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CustomCard from './CustomCard';
 import ProgressBarComponent from '../ProgressBar/ProgressBar';
+import { useTransactionContext } from '../../context/transactionContext';
 
 export default function ExpenseSummary() {
 	const { totalExpenses } = useAppContext();
+	const { budget } = useTransactionContext();
+
+	function displayProgressBar() {
+		if (+budget === null) return null;
+
+		if (+budget !== null) return <ProgressBarComponent />;
+	}
 
 	return (
 		<CustomCard
@@ -16,7 +24,7 @@ export default function ExpenseSummary() {
 					sx={{ color: 'red', fontSize: { xs: '40px', sm: '50px' } }}
 				/>
 			}
-			bar={<ProgressBarComponent />}
+			bar={displayProgressBar()}
 		/>
 	);
 }

@@ -2,15 +2,17 @@ import { Box } from '@mui/material';
 import ProgressBar from '@ramonak/react-progress-bar';
 import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../hooks/useDarkMode';
+import { useTransactionContext } from '../../context/transactionContext';
 
 function ProgressBarComponent() {
 	const { isDarkMode } = useDarkMode();
-	let budget = 2000;
+	const { budget } = useTransactionContext();
 	const { totalExpenses } = useAppContext();
 
 	const color = isDarkMode ? '#fff' : '#000';
 	const barColor = isDarkMode ? '#f97316' : '#343a40';
 
+	if (budget === null) return;
 	let progress = Number(Math.abs((+totalExpenses / +budget) * 100).toFixed(0));
 
 	return (
