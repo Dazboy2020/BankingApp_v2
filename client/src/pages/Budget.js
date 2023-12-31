@@ -1,17 +1,20 @@
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import BudgetInputCard from '../components/budget/BudgetInputCard';
-import ResponsiveDrawer from '../components/drawer/Draw';
-import PageLayout from './layout/PageLayout';
 
-function Budget() {
+import TransactionLayout from './layout/TransactionLayout';
+import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
+import CombinedItems from '../components/transactionItems/CombinedItems';
+
+function Budget({ children }) {
 	return (
 		<>
-			<ResponsiveDrawer />
 			<AlertDialogSlide />
-
-			<PageLayout>
-				<BudgetInputCard />
-			</PageLayout>
+			<TransactionLayout
+				TransactionType={<ExpenseSummary />}
+				TransactionItems={<CombinedItems />}
+			>
+				{children}
+			</TransactionLayout>
+			);
 		</>
 	);
 }

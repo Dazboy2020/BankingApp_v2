@@ -1,28 +1,33 @@
 import { useDarkMode } from '../../hooks/useDarkMode';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
+import BudgetInputBox from '../budget/BudgetInputBox';
 
-function CustomCard({ transactionType, transactionTotal, icon }) {
+import SavingsIcon from '@mui/icons-material/Savings';
+function BudgetCard() {
 	const { isDarkMode } = useDarkMode();
+
 	return (
 		<Card
 			component="article"
 			sx={{
 				display: 'flex',
 				flexGrow: 1,
-				mb: { xs: 1.5, s: 2 },
+				mb: 2,
+				alignItems: 'flex-start',
 				borderRadius: '10px',
 			}}
 		>
-			<CardContent sx={{ width: '100%', p: 1 }}>
+			<CardContent
+				sx={{
+					width: '100%',
+					p: 1,
+				}}
+			>
 				<Box
 					sx={{
 						display: 'flex',
 						justifyContent: 'space-between',
 						alignItems: 'center',
-						flexFlow: 1,
 					}}
 				>
 					<Typography
@@ -32,18 +37,16 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
 					>
-						{transactionType}
+						Set your monthly budget
 					</Typography>
-					{icon}
+					<SavingsIcon
+						sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
+					/>
 				</Box>
-				<Typography
-					sx={{ fontSize: '2rem', color: isDarkMode ? '#fff' : '#000' }}
-				>
-					{transactionTotal}
-				</Typography>
+				<BudgetInputBox />
 			</CardContent>
 		</Card>
 	);
 }
 
-export default CustomCard;
+export default BudgetCard;

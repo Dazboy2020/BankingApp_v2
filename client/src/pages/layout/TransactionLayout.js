@@ -6,6 +6,7 @@ import FilterItems from '../../components/filter/Filter';
 import AddTransaction from '../../components/outline-Card/AddTransaction';
 import AvailbleFunds from '../../components/outline-Card/AvailableFunds';
 import PageLayout from '../layout/PageLayout';
+import BudgetCard from '../../components/outline-Card/BudgetCard';
 
 const layout = {
 	mt: { xs: 5, md: 10 },
@@ -20,9 +21,13 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 
 			<PageLayout>
 				<Stack spacing={2} direction={{ md: 'column', lg: 'row' }}>
-					<AvailbleFunds />
 					{TransactionType}
-					<AddTransaction />
+					<AvailbleFunds />
+
+					{state.isActive === 1 || state.isActive === 2 ? (
+						<AddTransaction />
+					) : null}
+					{state.isActive === 4 ? <BudgetCard /> : null}
 				</Stack>
 
 				<Box sx={layout}>
