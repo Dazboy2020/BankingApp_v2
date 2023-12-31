@@ -35,49 +35,41 @@ function MainApp() {
 			<CloseAccountModal />
 			<Toast />
 			<PageLayout>
-				<Box
+				{/* //! Summary Cards */}
+				<Stack
+					component="section"
+					spacing={3}
+					direction={{ sm: 'column', md: 'row' }}
 					sx={{
-						ml: { xs: 3, sm: 6 },
-						mr: { xs: 3, sm: 6 },
-						mt: 4,
+						justifyContent: 'space-between',
+						mt: { xs: 5, md: 10 },
 					}}
 				>
-					{/* //! Summary Cards */}
-					<Stack
-						component="section"
-						spacing={3}
-						direction={{ sm: 'column', md: 'row' }}
-						sx={{
-							justifyContent: 'space-between',
-							mt: { xs: 5, md: 10 },
-						}}
-					>
-						<ExpenseSummary />
-						<Income />
-						<AvailbleFunds />
-					</Stack>
+					<ExpenseSummary />
+					<Income />
+					<AvailbleFunds />
+				</Stack>
 
-					{/* //! Charts */}
-					<Stack
-						component="section"
-						spacing={4}
-						direction={{ s: 'column', md: 'column', lg: 'row' }}
-						sx={chartStyle}
-					>
-						<PieExpenses />
-						<PieExpenseVDeposit />
-					</Stack>
+				{/* //! Charts */}
+				<Stack
+					component="section"
+					spacing={4}
+					direction={{ s: 'column', md: 'column', lg: 'row' }}
+					sx={chartStyle}
+				>
+					<PieExpenses />
+					<PieExpenseVDeposit />
+				</Stack>
 
-					{/* //!Movements */}
-					<MovementList>
-						{/* <ExpenseItems />
+				{/* //!Movements */}
+				<MovementList>
+					{/* <ExpenseItems />
 						<DepositItems /> */}
-						<Stack direction="column" sx={{ flexGrow: 1 }}>
-							{state.combinedTransactions.length > 0 && <FilterItems />}
-							<CombinedItems />
-						</Stack>
-					</MovementList>
-				</Box>
+					<Stack direction="column" sx={{ flexGrow: 1 }}>
+						{state.combinedTransactions.length > 0 && <FilterItems />}
+						<CombinedItems />
+					</Stack>
+				</MovementList>
 			</PageLayout>
 		</>
 	);

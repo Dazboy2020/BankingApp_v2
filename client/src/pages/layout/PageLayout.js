@@ -13,7 +13,17 @@ function PageLayout({ children }) {
 				mr: { lg: 0, sm: 0, m: 0 },
 			}}
 		>
-			{children}
+			<Box
+				direction={{ sm: 'column', md: 'row' }}
+				sx={{
+					justifyContent: { sm: 'flex-start', md: 'center' },
+					ml: { xs: 3, sm: 6 },
+					mr: { xs: 3, sm: 6 },
+					mt: { xs: 5, md: 10 },
+				}}
+			>
+				{children}
+			</Box>
 		</Box>
 	);
 }

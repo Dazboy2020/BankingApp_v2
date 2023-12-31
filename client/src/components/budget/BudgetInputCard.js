@@ -7,7 +7,6 @@ import {
 	Card,
 	CardContent,
 	FormControl,
-	Stack,
 	TextField,
 } from '@mui/material';
 
@@ -48,62 +47,51 @@ function BudgetInputCard() {
 	}
 
 	return (
-		<Stack
-			direction={{ sm: 'column', md: 'row' }}
+		<Card
+			component="main"
 			sx={{
-				justifyContent: { sm: 'flex-start', md: 'center' },
-				ml: { xs: 3, sm: 6 },
-				mr: { xs: 3, sm: 6 },
-				mt: { xs: 5, md: 10 },
+				width: '100%',
+				height: { xs: '100%', s: '100%', sm: '75%' },
+				justifyContent: 'center',
+				alignItems: 'center',
+				mt: { xs: 3, md: 6 },
 			}}
 		>
-			<Card
-				component="main"
-				sx={{
-					width: '100%',
-					height: { xs: '100%', s: '100%', sm: '75%' },
-					justifyContent: 'center',
-					alignItems: 'center',
-
-					mt: { xs: 3, md: 6 },
-				}}
-			>
-				<CardContent>
-					<Box
-						component="form"
-						sx={{
-							textAlign: 'center',
-							'& .MuiTextField-root': {
-								m: 1,
-								width: { sxsm: '15ch', md: '50ch', s: '99%', xs: '99%' },
-								mt: { xs: 3, md: 10 },
-							},
-						}}
-						noValidate
-						autoComplete="off"
-						onSubmit={(e) => handleFormSubmit(e)}
-					>
-						<FormControl sx={{ display: 'flex' }}>
-							<TextField
-								id="Monthly Budget"
-								label="Monthly Budget"
-								defaultValue={budget}
-								color="secondary"
-								disabled={false}
-								onChange={handleBudgetChange}
-							/>
-							<Button
-								type="submit"
-								color="secondary"
-								onClick={(e) => handleSubmit(e)}
-							>
-								+
-							</Button>
-						</FormControl>
-					</Box>
-				</CardContent>
-			</Card>
-		</Stack>
+			<CardContent>
+				<Box
+					component="form"
+					sx={{
+						textAlign: 'center',
+						'& .MuiTextField-root': {
+							m: 1,
+							width: { sxsm: '15ch', md: '50ch', s: '99%', xs: '99%' },
+							mt: { xs: 3, md: 10 },
+						},
+					}}
+					noValidate
+					autoComplete="off"
+					onSubmit={(e) => handleFormSubmit(e)}
+				>
+					<FormControl sx={{ display: 'flex' }}>
+						<TextField
+							id="Monthly Budget"
+							label="Monthly Budget"
+							defaultValue={budget}
+							color="secondary"
+							disabled={false}
+							onChange={handleBudgetChange}
+						/>
+						<Button
+							type="submit"
+							color="secondary"
+							onClick={(e) => handleSubmit(e)}
+						>
+							+
+						</Button>
+					</FormControl>
+				</Box>
+			</CardContent>
+		</Card>
 	);
 }
 

@@ -11,16 +11,8 @@ function Chart() {
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
 			<PageLayout>
-				<Box
-					sx={{
-						ml: { xs: 3, sm: 6 },
-						mr: { xs: 3, sm: 6 },
-						mt: { xs: 5, sm: 10 },
-					}}
-				>
-					<BarChartDeposit />
-					<BarChartExpenses />
-				</Box>
+				<BarChartDeposit />
+				<BarChartExpenses />
 			</PageLayout>
 		</>
 	);

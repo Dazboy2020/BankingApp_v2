@@ -8,8 +8,6 @@ import AvailbleFunds from '../../components/outline-Card/AvailableFunds';
 import PageLayout from '../layout/PageLayout';
 
 const layout = {
-	ml: { xs: 3, sm: 6 },
-	mr: { xs: 3, sm: 6 },
 	mt: { xs: 5, md: 10 },
 };
 
@@ -21,7 +19,7 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 			<AlertDialogSlide />
 
 			<PageLayout>
-				<Stack spacing={2} direction={{ md: 'column', lg: 'row' }} sx={layout}>
+				<Stack spacing={2} direction={{ md: 'column', lg: 'row' }}>
 					<AvailbleFunds />
 					{TransactionType}
 					<AddTransaction />
