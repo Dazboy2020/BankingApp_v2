@@ -3,6 +3,7 @@ import {
 	Button,
 	Card,
 	CardContent,
+	FormControl,
 	Stack,
 	TextField,
 } from '@mui/material';
@@ -56,7 +57,6 @@ function Budget() {
 
 			<PageLayout>
 				<Stack
-					// spacing={2}
 					direction={{ sm: 'column', md: 'row' }}
 					sx={{
 						justifyContent: { sm: 'flex-start', md: 'center' },
@@ -64,7 +64,6 @@ function Budget() {
 						mr: { xs: 3, sm: 6 },
 						mt: { xs: 5, md: 10 },
 					}}
-					height="80vh"
 				>
 					<Card
 						component="main"
@@ -77,13 +76,9 @@ function Budget() {
 							mt: { xs: 3, md: 6 },
 						}}
 					>
-						<CardContent
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-							}}
-						>
+						<CardContent>
 							<Box
+								component="form"
 								sx={{
 									textAlign: 'center',
 									'& .MuiTextField-root': {
@@ -94,33 +89,25 @@ function Budget() {
 								}}
 								noValidate
 								autoComplete="off"
+								onSubmit={(e) => handleFormSubmit(e)}
 							>
-								<form component="form" onSubmit={(e) => handleFormSubmit(e)}>
-									<Stack
-										justifyContent="center"
-										direction="row"
-										sx={{
-											alignItems: { xs: 'baseline' },
-										}}
+								<FormControl sx={{ display: 'flex' }}>
+									<TextField
+										id="Monthly Budget"
+										label="Monthly Budget"
+										defaultValue={budget}
+										color="secondary"
+										disabled={false}
+										onChange={handleBudgetChange}
+									/>
+									<Button
+										type="submit"
+										color="secondary"
+										onClick={(e) => handleSubmit(e)}
 									>
-										<TextField
-											id="Monthly Budget"
-											label="Monthly Budget"
-											defaultValue={budget}
-											color="secondary"
-											sx={{}}
-											disabled={false}
-											onChange={handleBudgetChange}
-										/>
-										<Button
-											type="submit"
-											color="secondary"
-											onClick={(e) => handleSubmit(e)}
-										>
-											+
-										</Button>
-									</Stack>
-								</form>
+										+
+									</Button>
+								</FormControl>
 							</Box>
 						</CardContent>
 					</Card>
