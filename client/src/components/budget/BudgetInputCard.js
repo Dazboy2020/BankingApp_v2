@@ -65,14 +65,19 @@ function BudgetInputCard() {
 						'& .MuiTextField-root': {
 							m: 1,
 							width: { sxsm: '15ch', md: '50ch', s: '99%', xs: '99%' },
-							mt: { xs: 3, md: 10 },
 						},
 					}}
 					noValidate
 					autoComplete="off"
 					onSubmit={(e) => handleFormSubmit(e)}
 				>
-					<FormControl sx={{ display: 'flex' }}>
+					<FormControl
+						sx={{
+							display: 'flex',
+							flexDirection: 'row',
+							alignItems: 'baseline',
+						}}
+					>
 						<TextField
 							id="Monthly Budget"
 							label="Monthly Budget"

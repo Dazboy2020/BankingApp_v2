@@ -5,7 +5,6 @@ import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
 import MovementList from '../components/transactionItems/MovementList';
 import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
-import { Box } from '@mui/material';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import Income from '../components/outline-Card/Income';
 import AvailbleFunds from '../components/outline-Card/AvailableFunds';
