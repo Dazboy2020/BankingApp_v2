@@ -3,11 +3,45 @@ import { useAppContext } from '../../context/context';
 import { useModalContext } from '../../context/modalContext';
 import { Box, Button, FormControl, TextField } from '@mui/material';
 import ProgressBarComponent from '../ProgressBar/ProgressBar';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
-function BudgetInputBox({ bar }) {
+function BudgetInputBox() {
 	const { budget, dispatch } = useAppContext();
+	const { isDarkMode } = useDarkMode();
 	const { setOpenToast, message, setMessage } = useModalContext();
 	const [formBudget, setFormBudget] = useState(null);
+
+	const formStyling = {
+		'& .MuiInputLabel-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+			fontSize: '10px',
+		},
+		'& .MuiInputBase-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+			height: '45px',
+		},
+		'& .MuiFormHelperText-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiOutlinedInput-root': {
+			'& > fieldset': {
+				borderColor: isDarkMode ? 'silver' : '#000',
+				borderRadius: 1,
+				color: isDarkMode ? '#d6d3d1' : '#000',
+			},
+		},
+		'& .MuiFormLabel-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'&.MuiFormLabel-colorSecondary': {
+			color: 'secondary',
+		},
+		'&.MuiInputBase-inputAdornedEnd': {
+			color: 'white',
+		},
+
+		color: isDarkMode ? '#d6d3d1' : '#000',
+	};
 
 	function handleFormSubmit(e) {
 		e.preventDefault();
@@ -53,8 +87,9 @@ function BudgetInputBox({ bar }) {
 				textAlign: 'center',
 				'& .MuiTextField-root': {
 					m: 1,
-					width: { xs: '99%', s: '99%', sm: '20ch', md: '20ch' },
+					width: { xs: '99%', s: '99%', md: '20ch' },
 				},
+				fontSize: '10px',
 			}}
 			noValidate
 			autoComplete="off"
@@ -74,6 +109,7 @@ function BudgetInputBox({ bar }) {
 					color="secondary"
 					disabled={false}
 					onChange={handleBudgetChange}
+					sx={formStyling}
 				/>
 				<Button
 					type="submit"

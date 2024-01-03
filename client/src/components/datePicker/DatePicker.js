@@ -3,7 +3,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTransactionContext } from '../../context/transactionContext';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-export default function DatePickerValue() {
+export default function DatePickerValue({ labelName }) {
 	const { isDarkMode } = useDarkMode();
 
 	const pickerStyle = {
@@ -112,7 +112,7 @@ export default function DatePickerValue() {
 	return (
 		<DatePicker
 			sx={pickerStyle}
-			label="Select date"
+			label={labelName}
 			value={pickerDate}
 			initialValue={null}
 			onChange={(newValue) => setPickerDate(newValue)}

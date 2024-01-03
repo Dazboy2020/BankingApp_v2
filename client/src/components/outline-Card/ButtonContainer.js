@@ -21,7 +21,7 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 			justifyContent={isMdAndAbove ? 'flex-start' : 'space-between'}
 			alignItems="center"
 		>
-			<DatePickerValue />
+			<DatePickerValue labelName="Select Date" />
 			<Button
 				variant="contained"
 				sx={buttonStyles}

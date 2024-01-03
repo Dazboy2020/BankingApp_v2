@@ -8,7 +8,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useTransactionContext } from '../../context/transactionContext';
 
-export default function DateMenu() {
+export default function CategoryMenu() {
 	const { isDarkMode } = useDarkMode();
 	const { dispatch, state } = useAppContext();
 	const { expenseType, setExpenseType } = useTransactionContext();
@@ -73,6 +73,43 @@ export default function DateMenu() {
 		setExpenseCategory(value);
 	};
 
+	function setCategoryMenu() {
+		if (expenseType === 'expense') {
+			return expenseLabels.map((option) => (
+				<MenuItem
+					value={option}
+					key={option}
+					onClick={(e) => handleClose(e, option)}
+				>
+					{option}
+				</MenuItem>
+			));
+		}
+
+		if (expenseType === 'deposit') {
+			return depositLabels.map((option) => (
+				<MenuItem
+					value={option}
+					key={option}
+					onClick={(e) => handleClose(e, option)}
+				>
+					{option}
+				</MenuItem>
+			));
+		}
+
+		if (expenseType === 'All Transactions')
+			return combinedLabels.map((option) => (
+				<MenuItem
+					value={option}
+					key={option}
+					onClick={(e) => handleClose(e, option)}
+				>
+					{option}
+				</MenuItem>
+			));
+	}
+
 	return (
 		<div>
 			<Button
@@ -101,37 +138,7 @@ export default function DateMenu() {
 					},
 				}}
 			>
-				{expenseType === 'expense' &&
-					expenseLabels.map((option) => (
-						<MenuItem
-							value={option}
-							key={option}
-							onClick={(e) => handleClose(e, option)}
-						>
-							{option}
-						</MenuItem>
-					))}
-
-				{expenseType === 'deposit' &&
-					depositLabels.map((option) => (
-						<MenuItem
-							value={option}
-							key={option}
-							onClick={(e) => handleClose(e, option)}
-						>
-							{option}
-						</MenuItem>
-					))}
-				{expenseType === 'All Transactions' &&
-					combinedLabels.map((option) => (
-						<MenuItem
-							value={option}
-							key={option}
-							onClick={(e) => handleClose(e, option)}
-						>
-							{option}
-						</MenuItem>
-					))}
+				{setCategoryMenu()}
 			</Menu>
 		</div>
 	);
