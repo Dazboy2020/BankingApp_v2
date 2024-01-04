@@ -152,11 +152,17 @@ function reducer(state, action) {
 
 			sortArrayByDate(updatedExpenses);
 
+			budgetTransactions = filterExpensesForCurrentMonth([
+				...updatedExpenses,
+				...state.deposits,
+			]);
+
 			return {
 				...state,
 				expenses: updatedExpenses,
 				isEditing: false,
 				combinedTransactions: [...updatedExpenses, ...state.deposits],
+				budgetTransactions,
 			};
 		}
 
@@ -174,11 +180,17 @@ function reducer(state, action) {
 
 			sortArrayByDate(updatedDeposits);
 
+			budgetTransactions = filterExpensesForCurrentMonth([
+				...updatedDeposits,
+				...state.expenses,
+			]);
+
 			return {
 				...state,
 				deposits: updatedDeposits,
 				isEditing: false,
 				combinedTransactions: [...updatedDeposits, state.expenses],
+				budgetTransactions,
 			};
 		}
 
