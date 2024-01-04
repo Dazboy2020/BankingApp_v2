@@ -30,6 +30,9 @@ const inititalState = {
 };
 
 function reducer(state, action) {
+	let budgetTransactions = filterExpensesForCurrentMonth(
+		state.combinedTransactions
+	);
 	switch (action.type) {
 		case 'field': {
 			return {
@@ -80,33 +83,42 @@ function reducer(state, action) {
 			};
 
 		case 'user/AddBudget':
-			const budgetTransactions = filterExpensesForCurrentMonth(
-				state.combinedTransactions
-			);
 			return {
 				...state,
 				budget: action.payload,
-				budgetTransactions: budgetTransactions,
+				budgetTransactions,
 			};
 
 		case 'add/expense':
 			const sortedExpenses = [action.payload, ...state.expenses];
-
 			sortArrayByDate(sortedExpenses);
+
+			budgetTransactions = filterExpensesForCurrentMonth([
+				...sortedExpenses,
+				...state.deposits,
+			]);
+
 			return {
 				...state,
 				expenses: sortedExpenses,
 				combinedTransactions: [...sortedExpenses, ...state.deposits],
+				budgetTransactions,
 			};
 
 		case 'add/deposit':
 			const sortedDeposits = [action.payload, ...state.deposits];
 			sortArrayByDate(sortedDeposits);
 
+			budgetTransactions = filterExpensesForCurrentMonth([
+				...sortedDeposits,
+				...state.expenses,
+			]);
+
 			return {
 				...state,
 				deposits: sortedDeposits,
 				combinedTransactions: [...sortedDeposits, ...state.expenses],
+				budgetTransactions,
 			};
 
 		case 'edit/expense': {
@@ -175,11 +187,17 @@ function reducer(state, action) {
 				(ex) => ex.id !== action.payload
 			);
 			sortArrayByDate(updatedDeletedDeposits);
+
+			budgetTransactions = filterExpensesForCurrentMonth([
+				...updatedDeletedDeposits,
+				...state.expenses,
+			]);
 			return {
 				...state,
 				deposits: updatedDeletedDeposits,
 				filteredExpenses: null,
 				combinedTransactions: [...updatedDeletedDeposits, ...state.expenses],
+				budgetTransactions,
 			};
 
 		case 'delete/expense':
@@ -187,11 +205,17 @@ function reducer(state, action) {
 				(ex) => ex.id !== action.payload
 			);
 			sortArrayByDate(updatedDeletedExpenses);
+
+			budgetTransactions = filterExpensesForCurrentMonth([
+				...updatedDeletedExpenses,
+				...state.deposits,
+			]);
 			return {
 				...state,
 				expenses: updatedDeletedExpenses,
 				filteredExpenses: null,
 				combinedTransactions: [...updatedDeletedExpenses, ...state.deposits],
+				budgetTransactions,
 			};
 
 		case 'sort':
