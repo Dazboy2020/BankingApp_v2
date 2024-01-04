@@ -306,12 +306,12 @@ const editDeposit = async (req, res, next) => {
 const editBudget = async (req, res) => {
 	console.log('edit budget hit');
 	const { userId } = req.params;
-	const { budgetAmount } = req.body;
+	const { budgetAmount, budgetDate } = req.body;
 
 	try {
 		const user = await User.findByIdAndUpdate(
 			userId,
-			{ 'budget.amount': budgetAmount },
+			{ 'budget.amount': budgetAmount, 'budget.date': budgetDate },
 			{ new: true }
 		);
 

@@ -1,8 +1,6 @@
 import { useAppContext } from '../context/context';
 
 export default function useFilteredTransactions(type) {
-	console.log(type);
-
 	const { state } = useAppContext();
 
 	let transactions;
@@ -48,10 +46,6 @@ export default function useFilteredTransactions(type) {
 
 	if (type === 'budget') {
 		transactions = state.budgetTransactions;
-		// transactions =
-		// 	state.budgetTransactions?.length > 0
-		// 		? state.budgetTransactions
-		// 		: state.combinedTransactions;
 	}
 
 	return { transactions, type };
