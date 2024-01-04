@@ -1,6 +1,11 @@
 import { createContext, useContext, useReducer, useState } from 'react';
 import { sortArrayByDate } from '../utils/sortArray';
 import { filterExpensesForCurrentMonth } from '../utils/BudgetHelper';
+import dayjs from 'dayjs';
+
+const formatDateToString = (date) => {
+	return date ? dayjs(date).format('DD MMM YYYY') : ''; // Check if date is defined
+};
 
 const AppContext = createContext();
 
@@ -10,6 +15,7 @@ const inititalState = {
 	combinedTransactions: [{}],
 	budgetTransactions: [{}],
 	budget: null,
+	budgetCreation: null,
 	token: '',
 	isLoggedIn: false,
 	loggedInAccount: '',
@@ -53,6 +59,10 @@ function reducer(state, action) {
 			sortArrayByDate(arrayOfDeposits);
 			sortArrayByDate(arrayOfCombinedTransactions);
 
+			const budgetCreationDate = formatDateToString(
+				action.payload.user.budget.date
+			);
+
 			return {
 				...state,
 				loggedInAccount: action.payload.user,
@@ -68,7 +78,8 @@ function reducer(state, action) {
 				_id: action.payload.user._id,
 				filteredExpenses: null,
 				isActive: 0,
-				budget: action.payload.user.budget || null,
+				budget: action.payload.user.budget.amount || null,
+				budgetCreation: budgetCreationDate,
 				budgetTransactions: action.payload.user.budgetTransactions || [],
 			};
 		}

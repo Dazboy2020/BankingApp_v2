@@ -51,8 +51,14 @@ const userSchema = new Schema({
 		},
 	],
 	budget: {
-		type: Number,
-		default: null,
+		amount: {
+			type: Number,
+			default: null,
+		},
+		date: {
+			type: Date,
+			default: Date.now,
+		},
 	},
 });
 
