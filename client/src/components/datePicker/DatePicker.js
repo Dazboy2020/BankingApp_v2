@@ -5,6 +5,7 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 
 export default function DatePickerValue({ labelName }) {
 	const { isDarkMode } = useDarkMode();
+	const { pickerDate, setPickerDate } = useTransactionContext();
 
 	const pickerStyle = {
 		'& .MuiInputBase-root': {
@@ -50,8 +51,6 @@ export default function DatePickerValue({ labelName }) {
 		m: 1,
 		color: isDarkMode ? '#d6d3d1' : '#000',
 	};
-
-	const { pickerDate, setPickerDate } = useTransactionContext();
 
 	const datePickerSlotProps = {
 		day: {

@@ -37,7 +37,7 @@ function BudgetCard() {
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
 					>
-						Set your monthly budget
+						Set budget for the current month
 					</Typography>
 					<SavingsIcon
 						sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}

@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useState } from 'react';
 import { sortArrayByDate } from '../utils/sortArray';
+import { filterExpensesForCurrentMonth } from '../utils/BudgetHelper';
 
 const AppContext = createContext();
 
@@ -7,6 +8,7 @@ const inititalState = {
 	expenses: [{}],
 	deposits: [{}],
 	combinedTransactions: [{}],
+	budgetTransactions: [{}],
 	budget: null,
 	token: '',
 	isLoggedIn: false,
@@ -64,6 +66,7 @@ function reducer(state, action) {
 				filteredExpenses: null,
 				isActive: 0,
 				budget: action.payload.user.budget || null,
+				budgetTransactions: action.payload.user.budgetTransactions || [],
 			};
 		}
 
@@ -77,9 +80,13 @@ function reducer(state, action) {
 			};
 
 		case 'user/AddBudget':
+			const budgetTransactions = filterExpensesForCurrentMonth(
+				state.combinedTransactions
+			);
 			return {
 				...state,
 				budget: action.payload,
+				budgetTransactions: budgetTransactions,
 			};
 
 		case 'add/expense':

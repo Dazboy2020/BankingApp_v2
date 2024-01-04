@@ -66,7 +66,7 @@ function MainApp() {
 						<DepositItems /> */}
 					<Stack direction="column" sx={{ flexGrow: 1 }}>
 						{state.combinedTransactions.length > 0 && <FilterItems />}
-						<CombinedItems />
+						<CombinedItems type="combined" />
 					</Stack>
 				</MovementList>
 			</PageLayout>

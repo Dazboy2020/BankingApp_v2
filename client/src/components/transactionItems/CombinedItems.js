@@ -8,15 +8,15 @@ import classes from './Movements.module.css';
 import { containerVariants, exitAnimation } from './variants';
 import { sortArrayByDate } from '../../utils/sortArray';
 
-const CombinedItems = () => {
-	const { transactions } = useFilteredTransactions('combined');
+const CombinedItems = ({ type }) => {
+	const { transactions } = useFilteredTransactions(type);
 
 	let combinedTransactions = useMemo(() => {
 		return transactions;
 	}, [transactions]);
 
 	if (combinedTransactions.length === 0) {
-		return <NoDataCard type="Transaction" />;
+		return <NoDataCard type="transaction" />;
 	}
 
 	sortArrayByDate(combinedTransactions);

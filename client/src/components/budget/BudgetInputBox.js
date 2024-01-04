@@ -6,7 +6,7 @@ import ProgressBarComponent from '../ProgressBar/ProgressBar';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
 function BudgetInputBox() {
-	const { budget, dispatch } = useAppContext();
+	const { budget, dispatch, state } = useAppContext();
 	const { isDarkMode } = useDarkMode();
 	const { setOpenToast, message, setMessage } = useModalContext();
 	const [formBudget, setFormBudget] = useState(null);
@@ -60,6 +60,7 @@ function BudgetInputBox() {
 		dispatch({ type: 'user/AddBudget', payload: formBudget });
 		setMessage('Budget Successfully updated!');
 		setOpenToast(true, { message: message });
+		console.log(state.budgetTransactions);
 	}
 
 	function handleBudgetChange(e) {
@@ -68,7 +69,6 @@ function BudgetInputBox() {
 		if (isNaN(budgetInput)) {
 			setMessage('Budget must be an integer!');
 			setOpenToast(true, { message: message });
-			setFormBudget(null);
 			return;
 		}
 		setFormBudget(budgetInput);
@@ -105,7 +105,8 @@ function BudgetInputBox() {
 				<TextField
 					id="Monthly Budget"
 					label="Monthly Budget"
-					defaultValue={budget}
+					// defaultValue={budget}
+					value={budget}
 					color="secondary"
 					disabled={false}
 					onChange={handleBudgetChange}
