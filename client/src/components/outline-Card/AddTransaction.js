@@ -50,7 +50,7 @@ const AddTransaction = () => {
 	async function handleSubmitExpense(e) {
 		e.preventDefault();
 
-		if (+expenseAmount <= 0 || '' || expenseCategory === '') return;
+		if (+expenseAmount <= 0 || expenseCategory === '') return;
 
 		if (dayjs(pickerDate).isValid() === false) return;
 

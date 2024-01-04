@@ -80,7 +80,7 @@ function reducer(state, action) {
 				isActive: 0,
 				budget: action.payload.user.budget.amount || null,
 				budgetCreation: budgetCreationDate,
-				budgetTransactions: action.payload.user.budgetTransactions || [],
+				budgetTransactions,
 			};
 		}
 

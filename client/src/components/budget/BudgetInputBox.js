@@ -4,12 +4,14 @@ import { useModalContext } from '../../context/modalContext';
 import { Box, Button, FormControl, TextField } from '@mui/material';
 import ProgressBarComponent from '../ProgressBar/ProgressBar';
 import { useDarkMode } from '../../hooks/useDarkMode';
+import useAddBudget from '../../hooks/useAddBudget';
 
 function BudgetInputBox() {
 	const { budget, dispatch, state } = useAppContext();
 	const { isDarkMode } = useDarkMode();
 	const { setOpenToast, message, setMessage } = useModalContext();
 	const [formBudget, setFormBudget] = useState(null);
+	const { addBudget } = useAddBudget();
 
 	const formStyling = {
 		'& .MuiInputLabel-root': {
@@ -51,6 +53,8 @@ function BudgetInputBox() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
+		const userId = state._id;
+
 		if (formBudget === null || isNaN(formBudget) || formBudget <= 0) {
 			setMessage('Please enter a valid budget!');
 			setOpenToast(true, { message: message });
@@ -58,9 +62,8 @@ function BudgetInputBox() {
 		}
 
 		dispatch({ type: 'user/AddBudget', payload: formBudget });
-		setMessage('Budget Successfully updated!');
-		setOpenToast(true, { message: message });
-		console.log(state.budgetTransactions);
+
+		addBudget(userId, formBudget);
 	}
 
 	function handleBudgetChange(e) {
@@ -77,7 +80,7 @@ function BudgetInputBox() {
 	function displayProgressBar() {
 		if (+budget === null) return null;
 
-		if (+budget !== null) return <ProgressBarComponent />;
+		return <ProgressBarComponent />;
 	}
 
 	return (

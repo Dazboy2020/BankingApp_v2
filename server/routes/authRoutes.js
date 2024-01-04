@@ -21,6 +21,7 @@ const {
 	editDeposit,
 	forgotPassword,
 	resetPassword,
+	editBudget,
 } = require('../controllers/routeControllers');
 
 const app = express();
@@ -34,19 +35,6 @@ app.use(
 		origin: ['http://localhost:3000'],
 	})
 );
-
-// const oAuth2Client = new OAuth2Client(
-// 	process.env.CLIENT_ID,
-// 	process.env.CLIENT_SECRET,
-// 	'postmessage'
-// );
-
-// app.post('/auth/google', async (req, res) => {
-// 	const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
-// 	console.log(tokens);
-
-// 	res.json(tokens);
-// });
 
 router.get('/', test);
 
@@ -73,5 +61,7 @@ router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
 router.put('/editexpense/:userId/:expenseId', editExpense);
 
 router.put('/editdeposit/:userId/:depositId', editDeposit);
+
+router.put('/edit-budget/:userId/', editBudget);
 
 module.exports = router;

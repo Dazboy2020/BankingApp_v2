@@ -302,6 +302,25 @@ const editDeposit = async (req, res, next) => {
 	}
 };
 
+//! Edit Budget //
+const editBudget = async (req, res) => {
+	console.log('edit budget hit');
+	const { userId } = req.params;
+	const { budgetAmount } = req.body;
+
+	try {
+		const user = await User.findByIdAndUpdate(
+			userId,
+			{ 'budget.amount': budgetAmount },
+			{ new: true }
+		);
+
+		res.status(200).json(user);
+	} catch (error) {
+		res.status(500).json({ message: 'Error updating budget' });
+	}
+};
+
 //! Forgot password and send email link
 const forgotPassword = async (req, res, next) => {
 	const { email } = req.body;
@@ -414,6 +433,7 @@ module.exports = {
 	deleteDeposit,
 	editExpense,
 	editDeposit,
+	editBudget,
 	forgotPassword,
 	resetPassword,
 	sendToken,
