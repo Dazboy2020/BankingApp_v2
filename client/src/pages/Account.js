@@ -21,6 +21,9 @@ function Account() {
 		'& .MuiInputLabel-formControl': {
 			color: isDarkMode ? '#d6d3d1' : 'secondary',
 		},
+		'& .MuiInputLabel-root.Mui-disabled': {
+			color: isDarkMode ? '#d6d3d1' : 'secondary',
+		},
 	};
 
 	return (
