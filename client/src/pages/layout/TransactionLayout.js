@@ -3,10 +3,10 @@ import { Box, Stack } from '@mui/material';
 import AlertDialogSlide from '../../UI/AlertDialogue/AlertDialogue';
 import ResponsiveDrawer from '../../components/drawer/Draw';
 import FilterItems from '../../components/filter/Filter';
-import AddTransaction from '../../components/outline-Card/AddTransaction';
-import AvailbleFunds from '../../components/outline-Card/AvailableFunds';
+import AddTransaction from '../../components/summary-cards/AddTransaction';
+import AvailbleFunds from '../../components/summary-cards/AvailableFunds';
 import PageLayout from '../layout/PageLayout';
-import BudgetCard from '../../components/outline-Card/BudgetCard';
+import BudgetCard from '../../components/summary-cards/BudgetCard';
 
 const layout = {
 	mt: { xs: 5, md: 10 },

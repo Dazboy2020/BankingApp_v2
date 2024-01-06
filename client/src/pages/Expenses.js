@@ -1,4 +1,4 @@
-import ExpenseSummary from '../components/outline-Card/ExpenseSummary';
+import ExpenseSummary from '../components/summary-cards/ExpenseSummary';
 import ExpenseItems from '../components/transactionItems/ExpenseItems';
 
 import TransactionLayout from './layout/TransactionLayout';

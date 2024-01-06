@@ -1,4 +1,4 @@
-import Income from '../components/outline-Card/Income';
+import Income from '../components/summary-cards/Income';
 import DepositItems from '../components/transactionItems/DepositItems';
 import TransactionLayout from './layout/TransactionLayout';
 
