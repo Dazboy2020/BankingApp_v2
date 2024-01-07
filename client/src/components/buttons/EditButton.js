@@ -9,15 +9,15 @@ function EditButton(expense, type) {
 	function handleEditClick({ expense, type }) {
 		let itemToEdit;
 
-		type === 'deposit'
-			? (itemToEdit = state.deposits.filter((ex) => ex.id === expense))
-			: (itemToEdit = state.expenses.filter((ex) => ex.id === expense));
-
-		if (state.isActive === 1)
-			dispatch({ type: 'edit/expense', payload: itemToEdit });
-
-		if (state.isActive === 2)
+		if (type === 'deposit') {
+			itemToEdit = state.deposits.filter((ex) => ex.id === expense);
 			dispatch({ type: 'edit/deposit', payload: itemToEdit });
+		}
+
+		if (type === 'expense') {
+			itemToEdit = state.expenses.filter((ex) => ex.id === expense);
+			dispatch({ type: 'edit/expense', payload: itemToEdit });
+		}
 	}
 
 	return (

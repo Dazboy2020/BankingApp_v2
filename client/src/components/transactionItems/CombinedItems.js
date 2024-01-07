@@ -38,9 +38,9 @@ const CombinedItems = ({ type }) => {
 						custom={index}
 					>
 						{transaction.amount < 0 ? (
-							<ExpenseCard expense={transaction} />
+							<ExpenseCard expense={transaction} key={transaction.id} />
 						) : (
-							<DepositCard deposit={transaction} />
+							<DepositCard deposit={transaction} key={transaction.id} />
 						)}
 					</motion.li>
 				))}

@@ -65,7 +65,9 @@ function ExpenseCard({ expense }) {
 							<EditButton expense={expense.id} type="expense" />
 						)}
 
-						{state.isActive !== 0 && <DeleteButton expense={expense.id} />}
+						{state.isActive !== 0 && (
+							<DeleteButton expense={expense.id} type="expense" />
+						)}
 					</Box>
 					<Box
 						sx={{

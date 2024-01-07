@@ -64,7 +64,9 @@ function DepositCard({ deposit }) {
 						{state.isActive !== 0 && !state.isEditing && (
 							<EditButton expense={deposit.id} type="deposit" />
 						)}
-						{state.isActive !== 0 && <DeleteButton expense={deposit.id} />}
+						{state.isActive !== 0 && (
+							<DeleteButton expense={deposit.id} type="deposit" />
+						)}
 					</Box>
 					<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
 						<span

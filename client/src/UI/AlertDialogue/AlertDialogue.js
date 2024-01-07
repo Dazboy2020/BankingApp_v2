@@ -12,13 +12,16 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 import useDeleteExpense from '../../hooks/useDeleteExpense';
 import useDeleteDeposit from '../../hooks/useDeleteDeposit';
 import { useModalContext } from '../../context/modalContext';
+import { useTransactionContext } from '../../context/transactionContext';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide() {
-	const { dispatch, state, id } = useAppContext();
+export default function AlertDialogSlide(type) {
+	const { dispatch, id } = useAppContext();
+
+	const { expenseType } = useTransactionContext();
 
 	const { open, setOpen, modalTitle, modalMessage, modalAction } =
 		useModalContext();
@@ -42,9 +45,9 @@ export default function AlertDialogSlide() {
 
 			navigate('/');
 		} else {
-			if (state.isActive === 1) deleteExpense(id);
+			if (expenseType === 'deposit') deleteDeposit(id);
+			if (expenseType === 'expense') deleteExpense(id);
 
-			if (state.isActive === 2) deleteDeposit(id);
 			setOpen(false);
 		}
 	}
