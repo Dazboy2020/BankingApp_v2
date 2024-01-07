@@ -12,15 +12,15 @@ function EditButton(expense) {
 		let itemToEdit;
 
 		if (type === 'deposit') {
+			setExpenseType('deposit');
 			itemToEdit = state.deposits.filter((ex) => ex.id === expense);
 			dispatch({ type: 'edit/deposit', payload: itemToEdit });
-			setExpenseType('deposit');
 		}
 
 		if (type === 'expense') {
+			setExpenseType('expense');
 			itemToEdit = state.expenses.filter((ex) => ex.id === expense);
 			dispatch({ type: 'edit/expense', payload: itemToEdit });
-			setExpenseType('expense');
 		}
 	}
 

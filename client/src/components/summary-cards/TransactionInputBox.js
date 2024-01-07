@@ -4,19 +4,17 @@ import {
 	Box,
 	FormControl,
 	InputLabel,
-	MenuItem,
 	Select,
 	Stack,
 	TextField,
 } from '@mui/material';
 
-import { menuExpenseItems } from './menuExpenseItems';
-import { menuDepositItems } from './menuDepositItems';
 import useSwitchInputLabel from '../../hooks/useSwitchInputLabels';
 import { useModalContext } from '../../context/modalContext';
 
 function TransactionInputBox() {
 	const { setMessage } = useModalContext();
+	const { switchInputLabel } = useSwitchInputLabel();
 
 	const {
 		expenseType,
@@ -24,7 +22,6 @@ function TransactionInputBox() {
 		setExpenseAmount,
 		expenseCategory,
 		setExpenseCategory,
-		label,
 	} = useTransactionContext();
 
 	const { isDarkMode } = useDarkMode();
@@ -140,25 +137,7 @@ function TransactionInputBox() {
 							color="secondary"
 							sx={formStyling}
 						>
-							{label === 'expense'
-								? menuExpenseItems.map((option) => (
-										<MenuItem
-											key={option.value}
-											value={option.value}
-											sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-										>
-											{option.label}
-										</MenuItem>
-								  ))
-								: menuDepositItems.map((option) => (
-										<MenuItem
-											key={option.value}
-											value={option.value}
-											sx={{ color: isDarkMode ? '#d6d3d1' : '#000' }}
-										>
-											{option.label}
-										</MenuItem>
-								  ))}
+							{switchInputLabel()}
 						</Select>
 					</FormControl>
 				</Box>

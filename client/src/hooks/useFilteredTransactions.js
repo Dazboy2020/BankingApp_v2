@@ -1,7 +1,9 @@
 import { useAppContext } from '../context/context';
+import { useTransactionContext } from '../context/transactionContext';
 
 export default function useFilteredTransactions(type) {
 	const { state } = useAppContext();
+	const { expenseType } = useTransactionContext();
 
 	let transactions;
 
@@ -46,6 +48,10 @@ export default function useFilteredTransactions(type) {
 
 	if (type === 'budget') {
 		transactions = state.budgetTransactions;
+		if (state.isEditing && expenseType === 'deposit')
+			transactions = state.editingDeposit;
+		if (state.isEditing && expenseType === 'expense')
+			transactions = state.editingExpense;
 	}
 
 	return { transactions, type };
