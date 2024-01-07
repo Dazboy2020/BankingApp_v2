@@ -24,7 +24,7 @@ export default function CategoryMenu() {
 			if (state.isActive === 0) {
 				setExpenseType('All Transactions');
 
-				dispatch({ type: 'user/filterCombined', payload: expenseCategory });
+				dispatch({ type: 'user/filteredCombined', payload: expenseCategory });
 			}
 
 			if (state.isActive === 1) {

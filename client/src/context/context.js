@@ -315,7 +315,7 @@ function reducer(state, action) {
 				),
 			};
 		}
-		case 'user/filterCombined': {
+		case 'user/filteredCombined': {
 			if (action.payload === 'All Transactions') {
 				return {
 					...state,

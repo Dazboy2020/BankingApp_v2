@@ -18,7 +18,7 @@ function FilterInputBox() {
 				setExpenseType('combined');
 				setLabel('All Transactions');
 
-				dispatch({ type: 'user/filterCombined', payload: expenseCategory });
+				dispatch({ type: 'user/filteredCombined', payload: expenseCategory });
 			}
 
 			if (state.isActive === 1) {
