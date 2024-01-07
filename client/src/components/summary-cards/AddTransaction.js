@@ -126,7 +126,7 @@ const AddTransaction = () => {
 					/>
 				</Box>
 
-				<TransactionInputBox />
+				<TransactionInputBox expenseType={expenseType} />
 				<ButtonContainer
 					handleCancelEdit={handleCancelEdit}
 					handleSubmitExpense={handleSubmitExpense}

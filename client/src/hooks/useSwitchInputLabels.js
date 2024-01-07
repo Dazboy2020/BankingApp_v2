@@ -1,21 +1,19 @@
 import { useEffect } from 'react';
-import { useAppContext } from '../context/context';
 import { useTransactionContext } from '../context/transactionContext';
 
-export default function useSwitchInputLabel() {
-	const { state } = useAppContext();
+export default function useSwitchInputLabel(expenseType) {
 	const { setLabel, setExpenseCategory, setExpenseType, setExpenseAmount } =
 		useTransactionContext();
 
 	useEffect(
 		function () {
-			if (state.isActive === 1) {
+			if (expenseType === 'expense') {
 				setLabel('expense');
 				setExpenseCategory('');
 				setExpenseType('expense');
 				setExpenseAmount('');
 			}
-			if (state.isActive === 2) {
+			if (expenseType === 'deposit') {
 				setLabel('deposit');
 				setExpenseCategory('');
 				setExpenseType('deposit');
@@ -27,7 +25,7 @@ export default function useSwitchInputLabel() {
 			setExpenseAmount,
 			setExpenseCategory,
 			setExpenseType,
-			state.isActive,
+			expenseType,
 		]
 	);
 }

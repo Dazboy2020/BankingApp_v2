@@ -19,6 +19,7 @@ function TransactionInputBox() {
 	const { setMessage } = useModalContext();
 
 	const {
+		expenseType,
 		expenseAmount,
 		setExpenseAmount,
 		expenseCategory,
@@ -29,7 +30,7 @@ function TransactionInputBox() {
 	const { isDarkMode } = useDarkMode();
 
 	//! set expense type and input label //
-	useSwitchInputLabel();
+	useSwitchInputLabel(expenseType);
 
 	function handleReturn(e) {
 		e.preventDefault();

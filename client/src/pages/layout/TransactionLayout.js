@@ -7,6 +7,7 @@ import AddTransaction from '../../components/summary-cards/AddTransaction';
 import AvailbleFunds from '../../components/summary-cards/AvailableFunds';
 import PageLayout from '../layout/PageLayout';
 import BudgetCard from '../../components/summary-cards/BudgetCard';
+import { useTransactionContext } from '../../context/transactionContext';
 
 const layout = {
 	mt: { xs: 5, md: 10 },
@@ -14,6 +15,7 @@ const layout = {
 
 function TransactionLayout({ TransactionType, TransactionItems }) {
 	const { state } = useAppContext();
+	const { expenseType } = useTransactionContext();
 	return (
 		<>
 			<ResponsiveDrawer />
@@ -24,10 +26,11 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 					{TransactionType}
 					<AvailbleFunds />
 
-					{state.isActive === 1 || state.isActive === 2 ? (
-						<AddTransaction />
-					) : null}
-					{state.isActive === 4 ? <BudgetCard /> : null}
+					{state.isActive === 4 && !state.isEditing ? (
+						<BudgetCard />
+					) : (
+						<AddTransaction expenseType={expenseType} />
+					)}
 				</Stack>
 
 				<Box sx={layout}>
