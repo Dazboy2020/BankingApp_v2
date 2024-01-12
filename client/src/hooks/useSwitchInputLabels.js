@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTransactionContext } from '../context/transactionContext';
 import { menuExpenseItems } from '../components/summary-cards/menuExpenseItems';
 import { menuDepositItems } from '../components/summary-cards/menuDepositItems';
@@ -6,39 +5,9 @@ import { MenuItem } from '@mui/material';
 import { useDarkMode } from './useDarkMode';
 
 export default function useSwitchInputLabel(expenseType) {
-	const {
-		setLabel,
-		label,
-		setExpenseCategory,
-		setExpenseType,
-		setExpenseAmount,
-	} = useTransactionContext();
+	const { label } = useTransactionContext();
 
 	const { isDarkMode } = useDarkMode();
-
-	useEffect(
-		function () {
-			if (expenseType === 'expense') {
-				setLabel('expense');
-				setExpenseCategory('');
-				setExpenseType('expense');
-				setExpenseAmount('');
-			}
-			if (expenseType === 'deposit') {
-				setLabel('deposit');
-				setExpenseCategory('');
-				setExpenseType('deposit');
-				setExpenseAmount('');
-			}
-		},
-		[
-			setLabel,
-			setExpenseAmount,
-			setExpenseCategory,
-			setExpenseType,
-			expenseType,
-		]
-	);
 
 	function switchInputLabel() {
 		if (label === 'expense') {

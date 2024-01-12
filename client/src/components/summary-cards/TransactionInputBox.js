@@ -17,7 +17,6 @@ function TransactionInputBox() {
 	const { switchInputLabel } = useSwitchInputLabel();
 
 	const {
-		expenseType,
 		expenseAmount,
 		setExpenseAmount,
 		expenseCategory,
@@ -25,9 +24,6 @@ function TransactionInputBox() {
 	} = useTransactionContext();
 
 	const { isDarkMode } = useDarkMode();
-
-	//! set expense type and input label //
-	useSwitchInputLabel(expenseType);
 
 	function handleReturn(e) {
 		e.preventDefault();

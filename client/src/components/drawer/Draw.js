@@ -43,9 +43,30 @@ const ListNew = (props) => {
 		setModalAction,
 	} = useModalContext();
 
-	const { setPickerDate } = useTransactionContext();
+	const {
+		setPickerDate,
+		setLabel,
+		setExpenseCategory,
+		setExpenseType,
+		setExpenseAmount,
+	} = useTransactionContext();
 
 	const navigate = useNavigate();
+
+	React.useEffect(() => {
+		if (state.isActive === 1) {
+			setExpenseType('expense');
+			setLabel('expense');
+			setExpenseCategory('');
+			setExpenseAmount('');
+		}
+		if (state.isActive === 2) {
+			setExpenseType('deposit');
+			setLabel('deposit');
+			setExpenseCategory('');
+			setExpenseAmount('');
+		}
+	});
 
 	function handleClick() {
 		setModalMessage('Are you sure you want to exit Expensify?');
@@ -61,6 +82,7 @@ const ListNew = (props) => {
 
 		setPickerDate(null);
 		dispatch({ type: 'addActiveClass', payload: index });
+
 		navigate('/' + text);
 	}
 
@@ -241,7 +263,6 @@ function ResponsiveDrawer(props) {
 				component="main"
 				sx={{
 					flexGrow: 1,
-					// p: 3,
 					pb: 0,
 					width: {
 						sm: `calc(100% - ${drawerWidth}px)`,

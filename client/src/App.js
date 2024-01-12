@@ -1,17 +1,16 @@
+import { useDarkMode } from './hooks/useDarkMode';
 import React, { Suspense, lazy } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { AnimatePresence } from 'framer-motion';
 
-import { Routes, Route, useLocation } from 'react-router-dom';
 import SpinnerFullPage from './components/spinner/SpinnerFullPage';
-
 import ProtectedRoute from './pages/ProtectedRoute';
 
 import Toast from './UI/AlertDialogue/Toast';
 import { blue, purple } from '@mui/material/colors';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
-import { useDarkMode } from './hooks/useDarkMode';
 
 // import Homepage from './components/homepage/Homepage';
 // import SignIn from './pages/SignIn';
@@ -80,7 +79,7 @@ function App() {
 			MuiTypography: {
 				styleOverrides: {
 					root: {
-						// Set your desired font size
+						// Set  desired font size
 					},
 				},
 			},
