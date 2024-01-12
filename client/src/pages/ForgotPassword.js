@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
-import ResponsiveAppBar from '../components/navbar/NewNav';
+import ResponsiveAppBar from '../components/navbar/NavBar';
 
 import classes from './SignIn.module.css';
 import LinearWithValueLabel from '../UI/AlertDialogue/Progress';

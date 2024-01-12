@@ -14,7 +14,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import ResponsiveAppBar from '../components/navbar/NewNav';
+import ResponsiveAppBar from '../components/navbar/NavBar';
 
 import axios from 'axios';
 

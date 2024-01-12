@@ -8,11 +8,10 @@ import { Box, ListItem, Stack } from '@mui/material';
 import { AnimatePresence } from 'framer-motion';
 import LinkEffects from './LinkEffects';
 import smallpig from '../../assets/smallpig.svg';
-import LoginButton from '../buttons/LoginButton';
 
 const listItems = ['Home', 'Login', 'Register'];
 
-function ResponsiveAppBar() {
+function Navbar() {
 	const { navLink, setNavLink } = useAppContext();
 	const currentPath = window.location.pathname; // Retrieves the pathname (e.g., '/login')
 	const routeAfterPort = currentPath;
@@ -29,6 +28,49 @@ function ResponsiveAppBar() {
 		if (index === 1) navigate('/login');
 		if (index === 2) navigate('/signup');
 		setNavLink(index); // Set the active item index
+	}
+
+	function navbarLinks() {
+		return (
+			<ul
+				style={{
+					listStyle: 'none',
+					padding: 0,
+					margin: 0,
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					alignContent: 'center',
+					fontSize: '1.4rem',
+					fontFamily: 'monospace',
+					fontWeight: '500',
+					width: '100%',
+					textAlign: 'center',
+				}}
+			>
+				{listItems.map((item, index) => (
+					<ListItem
+						key={index}
+						sx={{
+							width: '100%',
+							justifyContent: 'center',
+							'&:hover': {
+								cursor: 'pointer',
+								color: navLink === index ? 'white' : '#f70776',
+								transition: 'color  0.3s ease-in-out',
+							},
+						}}
+						onClick={() => handleNavLink(index)}
+					>
+						{item}
+
+						<AnimatePresence mode="wait">
+							{navLink === index && <LinkEffects />}
+						</AnimatePresence>
+					</ListItem>
+				))}
+			</ul>
+		);
 	}
 
 	return (
@@ -65,61 +107,21 @@ function ResponsiveAppBar() {
 							Expensify
 						</Box>
 					</Stack>
-					<LoginButton />
 
 					<Box
 						sx={{
 							display: { xs: 'none', md: 'flex', alignItems: 'center' },
 							mr: 2,
 							width: { md: '40%', lg: '25%', xl: '20%' },
-
 							fontWeight: 700,
 							color: 'white',
 						}}
 					>
-						<ul
-							style={{
-								listStyle: 'none',
-								padding: 0,
-								margin: 0,
-								display: 'flex',
-								justifyContent: 'space-between',
-								alignItems: 'center',
-								alignContent: 'center',
-								fontSize: '1.4rem',
-								fontFamily: 'monospace',
-								fontWeight: '500',
-								width: '100%',
-								textAlign: 'center',
-								// minWidth: '100%',
-							}}
-						>
-							{listItems.map((item, index) => (
-								<ListItem
-									key={index}
-									sx={{
-										width: '100%',
-										justifyContent: 'center',
-										'&:hover': {
-											cursor: 'pointer',
-											color: navLink === index ? 'white' : '#f70776',
-											transition: 'color  0.3s ease-in-out',
-										},
-									}}
-									onClick={() => handleNavLink(index)}
-								>
-									{item}
-
-									<AnimatePresence mode="wait">
-										{navLink === index && <LinkEffects />}
-									</AnimatePresence>
-								</ListItem>
-							))}
-						</ul>
+						{navbarLinks()}
 					</Box>
 				</Toolbar>
 			</Container>
 		</AppBar>
 	);
 }
-export default ResponsiveAppBar;
+export default Navbar;

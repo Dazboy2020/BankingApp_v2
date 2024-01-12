@@ -7,7 +7,7 @@ import TestSection from '../lottie/TestSection';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 // import { lazy } from 'react';
 
-import ResponsiveAppBar from '../navbar/NewNav';
+import ResponsiveAppBar from '../navbar/NavBar';
 import CardGrid from './cardGrid/CardGrid';
 import GoogleLoginButton from '../buttons/GoogleLogin';
 import { buttonVariant, exitAnimation, subtitleVariant } from './variants';
