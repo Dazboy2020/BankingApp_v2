@@ -4,7 +4,6 @@ import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	// BarElement,
 	Title,
 	Tooltip,
 	Legend,
@@ -14,10 +13,8 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { groupArrayByDate } from '../../../utils/sortArray';
 import BarChartCard from './BarChartCard';
-// import { useEffect } from 'react';
 
 ChartJS.register(
-	// BarElement,
 	CategoryScale,
 	LinearScale,
 	PointElement,

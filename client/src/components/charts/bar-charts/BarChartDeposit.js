@@ -33,15 +33,12 @@ function BarChart() {
 
 	sortedMoves = groupArrayByDate(moves);
 
-	// let bgColor = isDarkMode ? '#212529' : '#495057';
 	let bgColor = isDarkMode
 		? ['#7C2D12', '#9A3412', '#B45309', '#D97706', '#f97316']
 		: ['#9ca3af', '#6b7280', '#4b5563', '#374151', '#1f2937'];
 	let label = sortedMoves.map((item) => item.date);
 	let dataSetLabel = 'Income';
 	let titleText = 'INCOME';
-
-	// ChartJS.defaults.color = isDarkMode ? '#fff' : '#000';
 
 	const userData = {
 		labels: label,
