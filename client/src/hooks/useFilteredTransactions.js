@@ -52,6 +52,10 @@ export default function useFilteredTransactions(type) {
 			transactions = state.editingDeposit;
 		if (state.isEditing && expenseType === 'expense')
 			transactions = state.editingExpense;
+
+		if (!transactions) {
+			transactions = [];
+		}
 	}
 
 	return { transactions, type };

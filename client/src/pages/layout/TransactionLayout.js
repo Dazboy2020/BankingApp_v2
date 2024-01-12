@@ -22,7 +22,15 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 			<AlertDialogSlide />
 
 			<PageLayout>
-				<Stack spacing={2} direction={{ md: 'column', lg: 'row' }}>
+				<Stack
+					component="section"
+					spacing={3}
+					direction={{ md: 'column', lg: 'row' }}
+					sx={{
+						justifyContent: 'space-between',
+						mt: { xs: 5, md: 10 },
+					}}
+				>
 					{TransactionType}
 					<AvailbleFunds />
 
