@@ -43,30 +43,9 @@ const ListNew = (props) => {
 		setModalAction,
 	} = useModalContext();
 
-	const {
-		setPickerDate,
-		setLabel,
-		setExpenseCategory,
-		setExpenseType,
-		setExpenseAmount,
-	} = useTransactionContext();
+	const { setPickerDate } = useTransactionContext();
 
 	const navigate = useNavigate();
-
-	React.useEffect(() => {
-		if (state.isActive === 1) {
-			setExpenseType('expense');
-			setLabel('expense');
-			setExpenseCategory('');
-			setExpenseAmount('');
-		}
-		if (state.isActive === 2) {
-			setExpenseType('deposit');
-			setLabel('deposit');
-			setExpenseCategory('');
-			setExpenseAmount('');
-		}
-	});
 
 	function handleClick() {
 		setModalMessage('Are you sure you want to exit Expensify?');

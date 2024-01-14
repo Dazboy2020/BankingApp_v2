@@ -28,16 +28,14 @@ export default function CategoryMenu() {
 			}
 
 			if (state.isActive === 1) {
-				setExpenseType('expense');
 				dispatch({ type: 'user/filteredExpenses', payload: expenseCategory });
 			}
 
 			if (state.isActive === 2) {
-				setExpenseType('deposit');
 				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
 			}
 		},
-		[expenseType, state.isActive, dispatch, expenseCategory, setExpenseType]
+		[state.isActive, dispatch, expenseCategory, setExpenseType]
 	);
 
 	const expenseLabelsInitial = state.expenses
