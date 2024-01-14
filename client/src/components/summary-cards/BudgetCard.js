@@ -3,8 +3,16 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 import BudgetInputBox from '../budget/BudgetInputBox';
 
 import SavingsIcon from '@mui/icons-material/Savings';
+import { useAppContext } from '../../context/context';
 function BudgetCard() {
 	const { isDarkMode } = useDarkMode();
+	const { state } = useAppContext();
+
+	let text;
+
+	state.budget === null
+		? (text = 'Please add a monthly budget')
+		: (text = `Your monthly budget is €${state.budget}`);
 
 	return (
 		<Card
@@ -37,7 +45,7 @@ function BudgetCard() {
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
 					>
-						Set budget for the current month
+						{text}
 					</Typography>
 					<SavingsIcon
 						sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
