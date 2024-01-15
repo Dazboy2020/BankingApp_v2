@@ -20,12 +20,15 @@ function DeleteButton({ expense, type }) {
 
 	function handleDelete(expense) {
 		console.log(expense, type);
-		setModalTitle('Warning! Deletion!');
-		setModalMessage('Are you sure you want to delete this item?');
-		setModalAction('delete');
-		setId(expense);
-		setExpenseType(type);
-		setOpen(true, modalMessage, modalTitle, modalAction, id);
+
+		if (type === 'deposit' || type === 'expense') {
+			setModalTitle('Warning! Deletion!');
+			setModalMessage('Are you sure you want to delete this item?');
+			setModalAction('delete');
+			setId(expense);
+			setExpenseType(type);
+			setOpen(true, modalMessage, modalTitle, modalAction, id);
+		}
 	}
 
 	return (

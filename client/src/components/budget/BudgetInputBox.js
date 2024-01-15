@@ -5,6 +5,7 @@ import { Box, Button, FormControl, TextField } from '@mui/material';
 import ProgressBarComponent from '../ProgressBar/ProgressBar';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import useAddBudget from '../../hooks/useAddBudget';
+import DeleteButton from '../buttons/DeleteButton';
 
 function BudgetInputBox() {
 	const { budget, dispatch, state } = useAppContext();
@@ -115,13 +116,16 @@ function BudgetInputBox() {
 					onChange={handleBudgetChange}
 					sx={formStyling}
 				/>
-				<Button
-					type="submit"
-					color="secondary"
-					onClick={(e) => handleSubmit(e)}
-				>
-					+
-				</Button>
+				<Box sx={{ display: 'flex' }}>
+					<Button
+						type="submit"
+						color="secondary"
+						onClick={(e) => handleSubmit(e)}
+					>
+						+
+					</Button>
+					<DeleteButton type="budget" />
+				</Box>
 			</FormControl>
 			{displayProgressBar()}
 		</Box>
