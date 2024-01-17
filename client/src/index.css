@@ -5,6 +5,15 @@
 
 :root {
 	background-color: #343a40;
+	--color-brand--1: #ffb545;
+	--color-brand--2: #00c46a;
+
+	--color-dark--0: #242a2e;
+	--color-dark--1: #2d3439;
+	--color-dark--2: #42484d;
+	--color-light--1: #aaa;
+	--color-light--2: #ececec;
+	--color-light--3: #d6dee0;
 }
 
 body::-webkit-scrollbar {

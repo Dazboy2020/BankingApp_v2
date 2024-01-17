@@ -16,7 +16,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/navbar/NavBar';
 
-import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
+// import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
+import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
 
 import useGetUserToken from '../hooks/useGetUserToken';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
@@ -78,11 +79,9 @@ export default function SignIn() {
 
 	return (
 		<>
-			<ResponsiveAppBar />
+			{!isLoading && <ResponsiveAppBar />}
 			{isLoading ? (
-				<>
-					<LinearWithValueLabel />
-				</>
+				<SpinnerFullPage />
 			) : (
 				<Box
 					component="main"
