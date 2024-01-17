@@ -65,6 +65,7 @@ function BudgetInputBox() {
 		dispatch({ type: 'user/AddBudget', payload: formBudget });
 
 		addBudget(userId, formBudget);
+		setFormBudget('');
 	}
 
 	function handleBudgetChange(e) {
@@ -110,7 +111,7 @@ function BudgetInputBox() {
 					id="Monthly Budget"
 					label="Monthly Budget"
 					// defaultValue={budget}
-					value={budget}
+					value={formBudget}
 					color="secondary"
 					disabled={false}
 					onChange={handleBudgetChange}
@@ -124,7 +125,12 @@ function BudgetInputBox() {
 					>
 						+
 					</Button>
-					<DeleteButton type="budget" />
+					<DeleteButton
+						type="budget"
+						userId={state._id}
+						formBudget={null}
+						setFormBudget={setFormBudget}
+					/>
 				</Box>
 			</FormControl>
 			{displayProgressBar()}

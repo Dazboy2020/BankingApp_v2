@@ -3,10 +3,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 import { useModalContext } from '../../context/modalContext';
 import { useTransactionContext } from '../../context/transactionContext';
+import useAddBudget from '../../hooks/useAddBudget';
 
-function DeleteButton({ expense, type }) {
-	const { id, setId } = useAppContext();
+function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
+	const { id, setId, dispatch } = useAppContext();
 	const { setExpenseType } = useTransactionContext();
+	const { addBudget } = useAddBudget();
 
 	const {
 		modalTitle,
@@ -19,7 +21,7 @@ function DeleteButton({ expense, type }) {
 	} = useModalContext();
 
 	function handleDelete(expense) {
-		console.log(expense, type);
+		console.log(formBudget);
 
 		if (type === 'deposit' || type === 'expense') {
 			setModalTitle('Warning! Deletion!');
@@ -28,6 +30,13 @@ function DeleteButton({ expense, type }) {
 			setId(expense);
 			setExpenseType(type);
 			setOpen(true, modalMessage, modalTitle, modalAction, id);
+			setFormBudget('');
+		}
+
+		if (type === 'budget') {
+			addBudget(userId, formBudget);
+			dispatch({ type: 'user/deleteBudget', payload: formBudget });
+			setFormBudget('');
 		}
 	}
 

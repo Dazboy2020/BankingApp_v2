@@ -7,15 +7,17 @@ import NoDataCard from './NoDataCard';
 import classes from './Movements.module.css';
 import { containerVariants, exitAnimation } from './variants';
 import { sortArrayByDate } from '../../utils/sortArray';
+import { useAppContext } from '../../context/context';
 
 const CombinedItems = ({ type }) => {
 	const { transactions } = useFilteredTransactions(type);
+	const { state } = useAppContext();
 
 	let combinedTransactions = useMemo(() => {
 		return transactions;
 	}, [transactions]);
 
-	if (combinedTransactions.length === 0) {
+	if (state.budget === null || combinedTransactions.length === 0) {
 		return <NoDataCard type="transaction" />;
 	}
 

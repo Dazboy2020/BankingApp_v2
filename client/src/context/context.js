@@ -99,6 +99,12 @@ function reducer(state, action) {
 				budget: action.payload,
 				budgetTransactions,
 			};
+		case 'user/deleteBudget':
+			return {
+				...state,
+				budget: null,
+				budgetTransactions: [{}],
+			};
 
 		case 'add/expense':
 			const sortedExpenses = [action.payload, ...state.expenses];
