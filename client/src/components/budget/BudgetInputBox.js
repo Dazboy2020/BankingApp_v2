@@ -11,7 +11,7 @@ function BudgetInputBox() {
 	const { budget, dispatch, state } = useAppContext();
 	const { isDarkMode } = useDarkMode();
 	const { setOpenToast, message, setMessage } = useModalContext();
-	const [formBudget, setFormBudget] = useState(null);
+	const [formBudget, setFormBudget] = useState('');
 	const { addBudget } = useAddBudget();
 
 	const formStyling = {

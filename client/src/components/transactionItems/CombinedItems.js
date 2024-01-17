@@ -17,7 +17,10 @@ const CombinedItems = ({ type }) => {
 		return transactions;
 	}, [transactions]);
 
-	if (state.budget === null || combinedTransactions.length === 0) {
+	if (
+		(state.budget === null && state.isActive !== 0) ||
+		combinedTransactions.length === 0
+	) {
 		return <NoDataCard type="transaction" />;
 	}
 
