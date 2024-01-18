@@ -9,7 +9,7 @@ export default function TotalDepositsCard() {
 
 	return (
 		<CustomCard
-			transactionType="Total Deposits"
+			TransactionTypeCard="Total Deposits"
 			transactionTotal={`€${totalIncome.toFixed(2)}`}
 			icon={
 				<PaidIcon

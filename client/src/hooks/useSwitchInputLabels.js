@@ -13,6 +13,7 @@ export default function useSwitchInputLabel() {
 		setLabel,
 		setExpenseAmount,
 		setExpenseCategory,
+		expenseType,
 	} = useTransactionContext();
 
 	const { state } = useAppContext();
@@ -32,12 +33,23 @@ export default function useSwitchInputLabel() {
 			setExpenseCategory('');
 			setExpenseAmount('');
 		}
+		if (state.isActive === 4 && expenseType === 'expense') {
+			setLabel('expense');
+			setExpenseCategory('');
+			setExpenseAmount('');
+		}
+		if (state.isActive === 4 && expenseType === 'deposit') {
+			setLabel('deposit');
+			setExpenseCategory('');
+			setExpenseAmount('');
+		}
 	}, [
 		state.isActive,
 		setExpenseType,
 		setLabel,
 		setExpenseCategory,
 		setExpenseAmount,
+		expenseType,
 	]);
 
 	function switchInputLabel() {

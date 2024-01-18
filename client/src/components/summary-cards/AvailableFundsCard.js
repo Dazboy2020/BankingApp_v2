@@ -5,14 +5,28 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomCard from './CustomCard';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-export default function AvailbleFundsCard() {
+export default function AvailbleFundsCard({ type }) {
 	const { isDarkMode } = useDarkMode();
-	const { totalExpenses, totalIncome } = useAppContext();
+	const {
+		totalExpenses,
+		totalIncome,
+		totalBudgetDeposits,
+		totalBudgetExpenses,
+	} = useAppContext();
 
+	function totalToDisplay(type) {
+		if (type === 'budget') {
+			return `€${Math.abs(totalBudgetDeposits + totalBudgetExpenses).toFixed(
+				2
+			)}`;
+		} else {
+			return `€${Math.abs(totalIncome + totalExpenses).toFixed(2)}`;
+		}
+	}
 	return (
 		<CustomCard
-			transactionType="Available Funds"
-			transactionTotal={`€${(totalIncome + totalExpenses).toFixed(2)}`}
+			TransactionTypeCard="Available Funds"
+			transactionTotal={totalToDisplay(type)}
 			icon={
 				<AccountBalanceIcon
 					sx={{

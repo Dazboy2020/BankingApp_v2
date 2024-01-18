@@ -5,7 +5,7 @@ import TransactionLayout from './layout/TransactionLayout';
 function Deposits({ children }) {
 	return (
 		<TransactionLayout
-			TransactionType={<TotalDepositsCard />}
+			TransactionTypeCard={<TotalDepositsCard />}
 			TransactionItems={<DepositItems />}
 		>
 			{children}

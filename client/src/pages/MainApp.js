@@ -62,8 +62,6 @@ function MainApp() {
 
 				{/* //!Movements */}
 				<MovementList>
-					{/* <ExpenseItems />
-						<DepositItems /> */}
 					<Stack direction="column" sx={{ flexGrow: 1 }}>
 						{state.combinedTransactions.length > 0 && <FilterItems />}
 						<CombinedItems type="combined" />

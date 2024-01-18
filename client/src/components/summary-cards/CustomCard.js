@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 
-function CustomCard({ transactionType, transactionTotal, icon }) {
+function CustomCard({ TransactionTypeCard, transactionTotal, icon }) {
 	const { isDarkMode } = useDarkMode();
 	return (
 		<Card
@@ -32,7 +32,7 @@ function CustomCard({ transactionType, transactionTotal, icon }) {
 							color: isDarkMode ? '#d6d3d1' : '#000',
 						}}
 					>
-						{transactionType}
+						{TransactionTypeCard}
 					</Typography>
 					{icon}
 				</Box>

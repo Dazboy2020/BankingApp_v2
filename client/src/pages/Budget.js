@@ -5,7 +5,7 @@ import CombinedItems from '../components/transactionItems/CombinedItems';
 function Budget({ children }) {
 	return (
 		<TransactionLayout
-			TransactionType={<TotalExpensesCard type="budget" />}
+			TransactionTypeCard={<TotalExpensesCard type="budget" />}
 			TransactionItems={<CombinedItems type="budget" />}
 		>
 			{children}

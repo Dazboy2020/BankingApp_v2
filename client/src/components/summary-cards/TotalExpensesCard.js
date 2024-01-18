@@ -4,18 +4,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CustomCard from './CustomCard';
 
 export default function TotalExpensesCard({ type }) {
-	const { totalExpenses, state } = useAppContext();
-
-	const totalBudgetDeposits = state.budgetTransactions?.reduce(
-		(accumulator, obj) => {
-			return accumulator + (obj.amount < 0 ? obj.amount : 0);
-		},
-		0
-	);
+	const { totalExpenses, totalBudgetExpenses } = useAppContext();
 
 	function totalToDisplay(type) {
 		if (type === 'budget') {
-			return `€${Math.abs(totalBudgetDeposits.toFixed(2))}`;
+			return `€${Math.abs(totalBudgetExpenses.toFixed(2))}`;
 		} else {
 			return `€${Math.abs(totalExpenses.toFixed(2))}`;
 		}
@@ -23,7 +16,7 @@ export default function TotalExpensesCard({ type }) {
 
 	return (
 		<CustomCard
-			transactionType="Total Expenses"
+			TransactionTypeCard="Total Expenses"
 			transactionTotal={totalToDisplay(type)}
 			icon={
 				<ShoppingCartIcon

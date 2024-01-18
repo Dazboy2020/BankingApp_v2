@@ -6,7 +6,7 @@ import TransactionLayout from './layout/TransactionLayout';
 function Expenses({ children }) {
 	return (
 		<TransactionLayout
-			TransactionType={<TotalExpensesCard />}
+			TransactionTypeCard={<TotalExpensesCard />}
 			TransactionItems={<ExpenseItems />}
 		>
 			{children}

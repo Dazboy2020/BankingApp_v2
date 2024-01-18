@@ -358,6 +358,19 @@ function ContextProvider({ children }) {
 		0
 	);
 
+	const totalBudgetExpenses = state.budgetTransactions?.reduce(
+		(accumulator, obj) => {
+			return accumulator + (obj.amount < 0 ? obj.amount : 0);
+		},
+		0
+	);
+	const totalBudgetDeposits = state.budgetTransactions?.reduce(
+		(accumulator, obj) => {
+			return accumulator + (obj.amount > 0 ? obj.amount : 0);
+		},
+		0
+	);
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -371,6 +384,9 @@ function ContextProvider({ children }) {
 
 				navLink,
 				setNavLink,
+
+				totalBudgetDeposits,
+				totalBudgetExpenses,
 			}}
 		>
 			{children}
