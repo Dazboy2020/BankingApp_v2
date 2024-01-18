@@ -1,4 +1,4 @@
-import ExpenseSummary from '../components/summary-cards/ExpenseSummary';
+import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import ExpenseItems from '../components/transactionItems/ExpenseItems';
 
 import TransactionLayout from './layout/TransactionLayout';
@@ -6,7 +6,7 @@ import TransactionLayout from './layout/TransactionLayout';
 function Expenses({ children }) {
 	return (
 		<TransactionLayout
-			TransactionType={<ExpenseSummary />}
+			TransactionType={<TotalExpensesCard />}
 			TransactionItems={<ExpenseItems />}
 		>
 			{children}

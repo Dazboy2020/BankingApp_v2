@@ -4,7 +4,7 @@ import { useAppContext } from '../../context/context';
 import PaidIcon from '@mui/icons-material/Paid';
 import CustomCard from './CustomCard';
 
-export default function Income() {
+export default function TotalDepositsCard() {
 	const { totalIncome } = useAppContext();
 
 	return (

@@ -3,7 +3,7 @@ import { useAppContext } from '../../context/context';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CustomCard from './CustomCard';
 
-export default function ExpenseSummary() {
+export default function TotalExpensesCard() {
 	const { totalExpenses } = useAppContext();
 
 	return (

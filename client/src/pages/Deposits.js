@@ -1,11 +1,11 @@
-import Income from '../components/summary-cards/Income';
+import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
 import DepositItems from '../components/transactionItems/DepositItems';
 import TransactionLayout from './layout/TransactionLayout';
 
 function Deposits({ children }) {
 	return (
 		<TransactionLayout
-			TransactionType={<Income />}
+			TransactionType={<TotalDepositsCard />}
 			TransactionItems={<DepositItems />}
 		>
 			{children}

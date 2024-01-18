@@ -4,10 +4,10 @@ import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
 import MovementList from '../components/transactionItems/MovementList';
-import ExpenseSummary from '../components/summary-cards/ExpenseSummary';
+import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import ResponsiveDrawer from '../components/drawer/Draw';
-import Income from '../components/summary-cards/Income';
-import AvailbleFunds from '../components/summary-cards/AvailableFunds';
+import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
+import AvailbleFundsCard from '../components/summary-cards/AvailableFundsCard';
 import PieExpenses from '../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
 import CombinedItems from '../components/transactionItems/CombinedItems';
@@ -44,9 +44,9 @@ function MainApp() {
 						mt: { xs: 5, md: 10 },
 					}}
 				>
-					<ExpenseSummary />
-					<Income />
-					<AvailbleFunds />
+					<TotalExpensesCard />
+					<TotalDepositsCard />
+					<AvailbleFundsCard />
 				</Stack>
 
 				{/* //! Charts */}

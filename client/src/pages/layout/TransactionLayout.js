@@ -4,7 +4,7 @@ import AlertDialogSlide from '../../UI/AlertDialogue/AlertDialogue';
 import ResponsiveDrawer from '../../components/drawer/Draw';
 import FilterItems from '../../components/filter/Filter';
 import AddTransaction from '../../components/summary-cards/AddTransaction';
-import AvailbleFunds from '../../components/summary-cards/AvailableFunds';
+import AvailbleFundsCard from '../../components/summary-cards/AvailableFundsCard';
 import PageLayout from '../layout/PageLayout';
 import BudgetCard from '../../components/summary-cards/BudgetCard';
 import { useTransactionContext } from '../../context/transactionContext';
@@ -32,7 +32,7 @@ function TransactionLayout({ TransactionType, TransactionItems }) {
 					}}
 				>
 					{TransactionType}
-					<AvailbleFunds />
+					<AvailbleFundsCard />
 
 					{state.isActive === 4 && !state.isEditing ? (
 						<BudgetCard />

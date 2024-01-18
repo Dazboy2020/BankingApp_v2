@@ -5,7 +5,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomCard from './CustomCard';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-export default function AvailbleFunds() {
+export default function AvailbleFundsCard() {
 	const { isDarkMode } = useDarkMode();
 	const { totalExpenses, totalIncome } = useAppContext();
 
