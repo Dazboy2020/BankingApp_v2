@@ -20,7 +20,6 @@ export default function useSwitchInputLabel() {
 	const { isDarkMode } = useDarkMode();
 
 	useEffect(() => {
-		console.log('switch input label');
 		if (state.isActive === 1) {
 			setExpenseType('expense');
 			setLabel('expense');
