@@ -9,13 +9,6 @@ import { containerVariants, exitAnimation } from './variants';
 import { sortArrayByDate } from '../../utils/sortArray';
 import { useAppContext } from '../../context/context';
 
-/**
- * CombinedItems component renders a list of transaction items.
- * It takes in a 'type' prop to determine which transactions to display.
- * Uses hooks to get filtered transactions and app context.
- * Sorts transactions by date, checks if there are transactions to show.
- * Conditionally renders ExpenseCard or DepositCard for each transaction.
- */
 const CombinedItems = ({ type }) => {
 	const { transactions } = useFilteredTransactions(type);
 	const { state } = useAppContext();
@@ -46,7 +39,7 @@ const CombinedItems = ({ type }) => {
 						initial="hidden"
 						animate="visible"
 						exit={exitAnimation}
-						key={transaction.id}
+						key={index + '-' + transaction.id}
 						custom={index}
 					>
 						{transaction.amount < 0 ? (
