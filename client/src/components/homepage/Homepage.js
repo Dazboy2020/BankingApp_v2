@@ -73,8 +73,8 @@ export default function Homepage() {
 										fontFamily: 'system-ui',
 										fontSize: {
 											xs: '1.2rem',
-											s: '1.5rem',
-											sm: '1.5rem',
+											s: '1.2rem',
+											sm: '1.2rem',
 											md: '2rem',
 										},
 										color: 'antiquewhite',

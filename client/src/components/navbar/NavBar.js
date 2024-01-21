@@ -29,7 +29,7 @@ function Navbar() {
 					}}
 				>
 					<Stack direction="row" sx={{ alignItems: 'center' }}>
-						<img width="75" height="75" src={smallpig} alt="logo" />
+						<img width="60" height="60" src={smallpig} alt="logo" />
 						<Box
 							sx={{
 								fontSize: { xs: '1.5em', sm: '2.2rem' },

@@ -7,7 +7,7 @@ const textStyles = {
 	fontSize: { xs: '1.25rem', s: '1.25rem', sm: '2rem', md: '2rem' },
 	color: 'antiquewhite',
 	textAlign: 'center',
-	mt: 1,
+	mt: 2,
 	letterSpacing: 1,
 	fontWeight: 400,
 };
@@ -26,15 +26,16 @@ function MainHeader() {
 				sx={{
 					fontFamily: 'poppins',
 					fontSize: {
-						xs: '3.5rem',
-						s: '3.5rem',
-						sm: '3.5rem',
+						xs: '3rem',
+						s: '3rem',
+						sm: '3rem',
 						md: '6rem',
 					},
 					color: 'antiquewhite',
 					textAlign: 'center',
 					letterSpacing: -1,
 					fontWeight: '300',
+					lineHeight: { xs: 1.1 },
 
 					mb: { xs: 1 },
 				}}
