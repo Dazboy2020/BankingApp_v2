@@ -14,7 +14,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
-import ResponsiveAppBar from '../components/navbar/NavBar';
 
 // import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
@@ -28,6 +27,7 @@ import {
 	containerVariants,
 	exitAnimation,
 } from './page-animations/login_register';
+import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
 
 function Copyright(props) {
 	return (
@@ -50,7 +50,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-	const { isLoading } = useAppContext();
+	const { state } = useAppContext();
 
 	const { getUserToken } = useGetUserToken();
 
@@ -79,19 +79,10 @@ export default function SignIn() {
 
 	return (
 		<>
-			{!isLoading && <ResponsiveAppBar />}
-			{isLoading ? (
+			{state.isLoading ? (
 				<SpinnerFullPage />
 			) : (
-				<Box
-					component="main"
-					sx={{
-						borderRadius: 3,
-						height: '100dvh',
-						backgroundImage:
-							'repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(0,0,0) 0px, rgb(0,0,0) 5px,rgb(0,0,0) 5px, rgb(0,0,0) 17px,rgb(0,0,0) 17px, rgb(0,0,0) 30px,rgb(0,0,0) 30px, rgb(0,0,0) 43px,rgb(0,0,0) 43px, rgb(0,0,0) 45px,rgb(0,0,0) 45px, rgb(0,0,0) 47px); background-size: 53px 53px',
-					}}
-				>
+				<UnprotectedPageLayout>
 					{!storagetoken && (
 						<motion.div
 							layout="true"
@@ -204,7 +195,7 @@ export default function SignIn() {
 							</ThemeProvider>
 						</motion.div>
 					)}
-				</Box>
+				</UnprotectedPageLayout>
 			)}
 		</>
 	);

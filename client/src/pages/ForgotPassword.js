@@ -3,6 +3,7 @@ import * as React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAppContext } from '../context/context';
+import { useModalContext } from '../context/modalContext';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,10 +18,15 @@ import { Login } from '@mui/icons-material';
 import ResponsiveAppBar from '../components/navbar/NavBar';
 
 import classes from './SignIn.module.css';
-import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 
 import axios from 'axios';
-import { useModalContext } from '../context/modalContext';
+import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
+import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
+import { motion } from 'framer-motion';
+import {
+	containerVariants,
+	exitAnimation,
+} from '../components/homepage/variants';
 
 function Copyright(props) {
 	return (
@@ -95,95 +101,100 @@ export default function ForgotPassword() {
 
 	return (
 		<>
-			{!isLoading && <ResponsiveAppBar />}
 			{isLoading ? (
-				<>
-					<LinearWithValueLabel />
-				</>
+				<SpinnerFullPage />
 			) : (
-				<Box className={classes.wrapper}>
+				<UnprotectedPageLayout>
 					<ThemeProvider theme={defaultTheme}>
-						<Container className={signInclass} component="main" maxWidth="xs">
-							<CssBaseline />
-							<Box
-								sx={{
-									backgroundColor: 'white',
-									marginTop: 8,
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'center',
-									border: 'solid 1px black',
-									padding: '3rem',
-									boxShadow:
-										'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-								}}
-							>
-								<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-									<LockOutlinedIcon />
-								</Avatar>
-								<Typography component="h1" variant="h5">
-									Forgot Password
-								</Typography>
-								<Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-									<TextField
-										margin="normal"
-										required
-										fullWidth
-										id="email"
-										label="email"
-										name="email"
-										autoComplete="email"
-										autoFocus
-										value={data.email}
-										onChange={onChange}
-										color="secondary"
-									/>
+						<motion.div
+							layout="true"
+							variants={containerVariants}
+							initial="hidden"
+							animate="visible"
+							exit={exitAnimation}
+						>
+							<Container className={signInclass} component="main" maxWidth="xs">
+								<CssBaseline />
+								<Box
+									sx={{
+										backgroundColor: 'white',
+										marginTop: 8,
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+										border: 'solid 1px black',
+										padding: '3rem',
+										boxShadow:
+											'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+									}}
+								>
+									<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+										<LockOutlinedIcon />
+									</Avatar>
+									<Typography component="h1" variant="h5">
+										Forgot Password
+									</Typography>
+									<Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+										<TextField
+											margin="normal"
+											required
+											fullWidth
+											id="email"
+											label="email"
+											name="email"
+											autoComplete="email"
+											autoFocus
+											value={data.email}
+											onChange={onChange}
+											color="secondary"
+										/>
 
-									{state.error ? (
-										<p style={{ color: 'red' }}>Something went wrong!</p>
-									) : (
-										<p style={{ color: 'white' }}>Something went wrong!</p>
-									)}
-									{/* <FormControlLabel
+										{state.error ? (
+											<p style={{ color: 'red' }}>Something went wrong!</p>
+										) : (
+											<p style={{ color: 'white' }}>Something went wrong!</p>
+										)}
+										{/* <FormControlLabel
 										sx={{ mt: 5 }}
 										control={<Checkbox value="remember" color="primary" />}
 										label="Remember me"
 									/> */}
-									<p style={{ textAlign: 'center', color: 'red' }}>{error}</p>
-									<Button
-										startIcon={<Login size="medium" />}
-										type="submit"
-										fullWidth
-										variant="contained"
-										sx={{ mt: 12, mb: 2 }}
-										color="secondary"
-									>
-										Request New Password
-									</Button>
-									<Box
-										sx={{
-											display: 'flex',
-											flexDirection: 'column',
-											height: '2rem',
-										}}
-									>
-										<div sx={{ mb: 10 }}>
-											<NavLink to="/SignUp" variant="body2">
-												{"Don't have an account? Sign Up"}
-											</NavLink>
-										</div>
-										<div>
-											<NavLink to="/login" variant="body2">
-												Login
-											</NavLink>
-										</div>
+										<p style={{ textAlign: 'center', color: 'red' }}>{error}</p>
+										<Button
+											startIcon={<Login size="medium" />}
+											type="submit"
+											fullWidth
+											variant="contained"
+											sx={{ mt: 12, mb: 2 }}
+											color="secondary"
+										>
+											Request New Password
+										</Button>
+										<Box
+											sx={{
+												display: 'flex',
+												flexDirection: 'column',
+												height: '2rem',
+											}}
+										>
+											<div sx={{ mb: 10 }}>
+												<NavLink to="/SignUp" variant="body2">
+													{"Don't have an account? Sign Up"}
+												</NavLink>
+											</div>
+											<div>
+												<NavLink to="/login" variant="body2">
+													Login
+												</NavLink>
+											</div>
+										</Box>
 									</Box>
+									<Copyright sx={{ mt: 4, mb: 0 }} />
 								</Box>
-								<Copyright sx={{ mt: 4, mb: 0 }} />
-							</Box>
-						</Container>
+							</Container>
+						</motion.div>
 					</ThemeProvider>
-				</Box>
+				</UnprotectedPageLayout>
 			)}
 		</>
 	);

@@ -7,15 +7,13 @@ import TestSection from '../lottie/TestSection';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 // import { lazy } from 'react';
 
-import ResponsiveAppBar from '../navbar/NavBar';
 import CardGrid from './cardGrid/CardGrid';
 import GoogleLoginButton from '../buttons/GoogleLogin';
 import { buttonVariant, exitAnimation, subtitleVariant } from './variants';
 import MainHeader from './MainHeader';
 import SubHeader from './SubHeader';
 import SpinnerFullPage from '../spinner/SpinnerFullPage';
-
-// import SpinnerFullPage from '../spinner/SpinnerFullPage';
+import UnprotectedPageLayout from '../../pages/layout/UnprotectedPageLayout';
 
 export default function Homepage() {
 	const { state } = useAppContext();
@@ -29,17 +27,7 @@ export default function Homepage() {
 		<SpinnerFullPage />
 	) : (
 		<>
-			<Box
-				component="main"
-				sx={{
-					minHeight: '100dvh',
-					minWidth: '100%',
-
-					backgroundImage:
-						'repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(0,0,0) 0px, rgb(0,0,0) 5px,rgb(0,0,0) 5px, rgb(0,0,0) 17px,rgb(0,0,0) 17px, rgb(0,0,0) 30px,rgb(0,0,0) 30px, rgb(0,0,0) 43px,rgb(0,0,0) 43px, rgb(0,0,0) 45px,rgb(0,0,0) 45px, rgb(0,0,0) 47px); background-size: 53px 53px',
-				}}
-			>
-				<ResponsiveAppBar />
+			<UnprotectedPageLayout>
 				<Box
 					component="section"
 					sx={{
@@ -109,7 +97,7 @@ export default function Homepage() {
 						<GoogleLoginButton height="4rem" width="15rem" padding={0} />
 					</Box>
 				</Box>
-			</Box>
+			</UnprotectedPageLayout>
 			<TestSection />
 		</>
 	);
