@@ -37,7 +37,7 @@ function NoDataCard({ type }) {
 								: classes.movements__type
 						}
 					>
-						{type}
+						{state.isActive === 4 ? 'Awaiting Data' : type}
 					</span>
 					<ErrorOutlineTwoToneIcon sx={{ fontSize: '40px', color: 'red' }} />
 				</Box>
@@ -45,9 +45,7 @@ function NoDataCard({ type }) {
 					className={
 						isDarkMode ? classes.movements__date__dark : classes.movements__date
 					}
-				>
-					{/* Awaiting Data */}
-				</span>
+				></span>
 				<span
 					className={
 						isDarkMode
@@ -55,7 +53,9 @@ function NoDataCard({ type }) {
 							: classes.movements__category
 					}
 				>
-					{`Please add your first ${type} `}
+					{state.isActive === 4
+						? 'Once you set a monthly budget, financial data for the current month will be displayed here.'
+						: `Please add your first ${type} `}
 				</span>
 				<Box
 					sx={{
