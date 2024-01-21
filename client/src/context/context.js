@@ -70,7 +70,6 @@ function reducer(state, action) {
 
 				username: action.payload.user.username,
 				user: action.payload.user.username,
-				token: action.payload.token,
 
 				expenses: arrayOfExpenses,
 				deposits: arrayOfDeposits,
@@ -93,12 +92,19 @@ function reducer(state, action) {
 				token: '',
 			};
 
+		case 'user/addToken':
+			return {
+				...state,
+				token: action.payload,
+			};
+
 		case 'user/AddBudget':
 			return {
 				...state,
 				budget: action.payload,
 				budgetTransactions,
 			};
+
 		case 'user/deleteBudget':
 			return {
 				...state,

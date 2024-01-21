@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import { Box, Stack } from '@mui/material';
 import smallpig from '../../assets/smallpig.svg';
 import NavbarLinks from './NavbarLinks';
+import LoginButton from '../buttons/LoginButton';
 
 function Navbar() {
 	return (
@@ -41,6 +42,7 @@ function Navbar() {
 							Expensify
 						</Box>
 					</Stack>
+					<LoginButton />
 					<NavbarLinks />
 				</Toolbar>
 			</Container>

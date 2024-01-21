@@ -30,6 +30,7 @@ export default function useGetUserToken() {
 				navigate('/overview');
 				setMessage('Welcome Back!');
 				setOpenToast(true, { message: message });
+				dispatch({ type: 'user/addToken', payload: userData.token });
 				console.log('getUserToken:', userData);
 			}
 		} catch (error) {
