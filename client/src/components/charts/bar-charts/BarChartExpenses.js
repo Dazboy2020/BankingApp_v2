@@ -13,6 +13,8 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { groupArrayByDate } from '../../../utils/sortArray';
 import BarChartCard from './BarChartCard';
+import NoData from '../pie-charts/NoData';
+import nodata from '../../../assets/nodata.png';
 
 ChartJS.register(
 	CategoryScale,
@@ -73,7 +75,11 @@ function BarChartExpenses() {
 
 	return (
 		<BarChartCard title="EXPENSES">
-			<Bar id="myChart" data={userData} options={options} />
+			{state.expenses.length > 0 ? (
+				<Bar id="myChart" data={userData} options={options} />
+			) : (
+				<NoData src={nodata} title="No Expenses Found.." />
+			)}
 		</BarChartCard>
 	);
 }
