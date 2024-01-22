@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useAppContext } from '../../context/context';
 import { motion } from 'framer-motion';
 import useFilteredTransactions from '../../hooks/useFilteredTransactions';
 import ExpenseCard from './ExpenseCard';
@@ -6,7 +7,6 @@ import DepositCard from './DepositCard';
 import NoDataCard from './NoDataCard';
 import classes from './Movements.module.css';
 import { sortArrayByDate } from '../../utils/sortArray';
-import { useAppContext } from '../../context/context';
 import AnimatedList from '../animated-list/AnimatedList';
 
 const CombinedItems = ({ type }) => {
