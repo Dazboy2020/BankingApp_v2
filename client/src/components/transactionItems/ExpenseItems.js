@@ -1,10 +1,11 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from './variants';
 import NoDataCard from './NoDataCard';
 import useFilteredTransactions from '../../hooks/useFilteredTransactions';
 import { useMemo } from 'react';
+import AnimatedList from '../animated-list/AnimatedList';
 
 const ExpenseItems = () => {
 	const { transactions } = useFilteredTransactions('expenses');
@@ -29,21 +30,9 @@ const ExpenseItems = () => {
 				</motion.li>
 			)}
 
-			<AnimatePresence>
-				{memoizedExpenses.map((expense, index) => (
-					<motion.li
-						layout="true"
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-						exit={exitAnimation}
-						key={expense.id}
-						custom={index}
-					>
-						<ExpenseCard expense={expense} />
-					</motion.li>
-				))}
-			</AnimatePresence>
+			<AnimatedList items={memoizedExpenses}>
+				{(expense) => <ExpenseCard expense={expense} />}
+			</AnimatedList>
 		</motion.ul>
 	);
 };

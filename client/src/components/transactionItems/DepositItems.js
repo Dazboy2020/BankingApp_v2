@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import classes from './Movements.module.css';
 import { containerVariants } from './variants';
 import { exitAnimation } from './variants';
 import DepositCard from './DepositCard';
 import NoDataCard from './NoDataCard';
 import useFilteredTransactions from '../../hooks/useFilteredTransactions';
+import AnimatedList from '../animated-list/AnimatedList';
 
 const DepositItems = () => {
 	const { transactions } = useFilteredTransactions('deposits');
@@ -30,21 +31,9 @@ const DepositItems = () => {
 				</motion.li>
 			)}
 
-			<AnimatePresence>
-				{memoizedDeposits.map((deposit, index) => (
-					<motion.li
-						layout="true"
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-						exit={exitAnimation}
-						key={deposit.id}
-						custom={index}
-					>
-						<DepositCard deposit={deposit} />
-					</motion.li>
-				))}
-			</AnimatePresence>
+			<AnimatedList items={memoizedDeposits}>
+				{(deposit) => <DepositCard deposit={deposit} />}
+			</AnimatedList>
 		</motion.ul>
 	);
 };
