@@ -54,7 +54,7 @@ function NoDataCard({ type }) {
 					}
 				>
 					{state.isActive === 4
-						? 'Once you set a monthly budget, financial data for the current month will be displayed here.'
+						? 'Once you set a monthly budget, financial data for the current month only will be displayed here.'
 						: `Please add your first ${type} `}
 				</span>
 				<Box

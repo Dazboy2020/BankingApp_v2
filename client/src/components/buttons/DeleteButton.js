@@ -21,8 +21,6 @@ function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
 	} = useModalContext();
 
 	function handleDelete(expense) {
-		console.log(formBudget);
-
 		if (type === 'deposit' || type === 'expense') {
 			setModalTitle('Warning! Deletion!');
 			setModalMessage('Are you sure you want to delete this item?');

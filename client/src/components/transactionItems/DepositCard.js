@@ -76,7 +76,7 @@ function DepositCard({ deposit }) {
 									: classes.movements__value
 							}
 						>
-							€{deposit.amount}
+							€{deposit.amount.toFixed(2)}
 						</span>
 					</Box>
 				</Box>

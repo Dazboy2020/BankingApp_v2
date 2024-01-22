@@ -82,7 +82,7 @@ function ExpenseCard({ expense }) {
 									: classes.movements__value
 							}
 						>
-							€{expense.amount}
+							€{expense.amount.toFixed(2)}
 						</span>
 					</Box>
 				</Box>
