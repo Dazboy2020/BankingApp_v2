@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppContext } from '../../../context/context';
+import { DepositCardContextProvider } from '../../../context/depositCardContext';
 import { Stack, Box } from '@mui/material';
 import classes from '../Movements.module.css';
 
@@ -24,18 +25,20 @@ function DepositCard({ deposit }) {
 	};
 
 	return (
-		<CardWrapper>
-			<Stack component="section" className={depositEditMode}>
-				<DepositCardTitle />
-				<DepositCardDate deposit={deposit} />
-				<DepositCardCategory deposit={deposit} />
+		<DepositCardContextProvider deposit={deposit}>
+			<CardWrapper>
+				<Stack component="section" className={depositEditMode}>
+					<DepositCardTitle />
+					<DepositCardDate />
+					<DepositCardCategory />
 
-				<Box sx={styling}>
-					<DepositCardButtons deposit={deposit} />
-					<DepositCardAmount deposit={deposit} />
-				</Box>
-			</Stack>
-		</CardWrapper>
+					<Box sx={styling}>
+						<DepositCardButtons />
+						<DepositCardAmount />
+					</Box>
+				</Stack>
+			</CardWrapper>
+		</DepositCardContextProvider>
 	);
 }
 

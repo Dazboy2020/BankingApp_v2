@@ -1,4 +1,5 @@
 import { useAppContext } from '../../../context/context';
+import { ExpenseCardContextProvider } from '../../../context/expenseCardContext';
 import { Stack, Box } from '@mui/material';
 import classes from '../Movements.module.css';
 
@@ -24,18 +25,20 @@ function ExpenseCard({ expense }) {
 		: classes.movements__row;
 
 	return (
-		<CardWrapper>
-			<Stack component="section" className={expenseEditMode}>
-				<ExpenseCardTitle />
-				<ExpenseCardDate expense={expense} />
-				<ExpenseCardCategory expense={expense} />
+		<ExpenseCardContextProvider expense={expense}>
+			<CardWrapper>
+				<Stack component="section" className={expenseEditMode}>
+					<ExpenseCardTitle />
+					<ExpenseCardDate />
+					<ExpenseCardCategory />
 
-				<Box sx={styling}>
-					<ExpenseCardButtons expense={expense} />
-					<ExpenseCardAmount expense={expense} />
-				</Box>
-			</Stack>
-		</CardWrapper>
+					<Box sx={styling}>
+						<ExpenseCardButtons />
+						<ExpenseCardAmount />
+					</Box>
+				</Stack>
+			</CardWrapper>
+		</ExpenseCardContextProvider>
 	);
 }
 

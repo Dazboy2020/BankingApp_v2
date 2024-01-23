@@ -2,9 +2,11 @@ import { useAppContext } from '../../../context/context';
 import { Box } from '@mui/material';
 import DeleteButton from '../../buttons/DeleteButton';
 import EditButton from '../../buttons/EditButton';
+import { useExpenseCardContext } from '../../../context/expenseCardContext';
 
-function ExpenseCardButtons({ expense }) {
+function ExpenseCardButtons() {
 	const { state } = useAppContext();
+	const { expense } = useExpenseCardContext();
 
 	return (
 		<Box sx={{ mt: '2rem' }}>

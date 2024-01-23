@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import classes from '../Movements.module.css';
 import ExpenseCard from './ExpenseCard';
@@ -9,6 +10,7 @@ import AnimatedList from '../../animated-list/AnimatedList';
 
 const ExpenseItems = () => {
 	const { transactions } = useFilteredTransactions('expenses');
+	const MemoizedExpenseCard = React.memo(ExpenseCard);
 
 	const memoizedExpenses = useMemo(() => {
 		return transactions;
@@ -31,7 +33,8 @@ const ExpenseItems = () => {
 			)}
 
 			<AnimatedList items={memoizedExpenses}>
-				{(expense) => <ExpenseCard expense={expense} />}
+				{(expense) => <MemoizedExpenseCard expense={expense} />}
+				{/* {(expense) => <ExpenseCard expense={expense} />} */}
 			</AnimatedList>
 		</motion.ul>
 	);
