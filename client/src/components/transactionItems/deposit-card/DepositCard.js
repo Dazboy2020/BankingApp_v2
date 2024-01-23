@@ -1,87 +1,41 @@
 import React from 'react';
-import { useDarkMode } from '../../../hooks/useDarkMode';
 import { useAppContext } from '../../../context/context';
-import { Paper, Stack, Box } from '@mui/material';
+import { Stack, Box } from '@mui/material';
 import classes from '../Movements.module.css';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
 
-import DeleteButton from '../../buttons/DeleteButton';
-import EditButton from '../../buttons/EditButton';
+import CardWrapper from '../CardWrapper';
+import DepositCardTitle from './DepositCardTitle';
+import DepositCardDate from './DepositCardDate';
+import DepositCardCategory from './DepositCardCategory';
+import DepositCardButtons from './DepositCardButtons';
+import DepositCardAmount from './DepositCardAmount';
 
 function DepositCard({ deposit }) {
 	const { state } = useAppContext();
-	const { isDarkMode } = useDarkMode();
 
 	const depositEditMode = state.isEditing
 		? classes.movements__row__edit
 		: classes.movements__row;
 
+	const styling = {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignContent: 'center',
+	};
+
 	return (
-		<Paper
-			className={classes.movements}
-			sx={{
-				border: state.isEditing ? '1px solid #f97316' : '',
-				borderRadius: '10px',
-			}}
-		>
+		<CardWrapper>
 			<Stack component="section" className={depositEditMode}>
-				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-					<span
-						className={
-							isDarkMode
-								? classes.movements__type__dark
-								: classes.movements__type
-						}
-					>
-						Income
-					</span>
-					<NorthEastIcon sx={{ fontSize: '40px', color: 'green' }} />
-				</Box>
-				<span
-					className={
-						isDarkMode ? classes.movements__date__dark : classes.movements__date
-					}
-				>
-					{deposit.date}
-				</span>
-				<span
-					className={
-						isDarkMode
-							? classes.movements__category__dark
-							: classes.movements__category
-					}
-				>
-					{deposit.category}
-				</span>
-				<Box
-					sx={{
-						display: 'flex',
-						justifyContent: 'space-between',
-						alignContent: 'center',
-					}}
-				>
-					<Box sx={{ mt: '2rem' }}>
-						{state.isActive !== 0 && !state.isEditing && (
-							<EditButton expense={deposit.id} type="deposit" />
-						)}
-						{state.isActive !== 0 && (
-							<DeleteButton expense={deposit.id} type="deposit" />
-						)}
-					</Box>
-					<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-						<span
-							className={
-								isDarkMode
-									? classes.movements__value__dark
-									: classes.movements__value
-							}
-						>
-							€{deposit.amount.toFixed(2)}
-						</span>
-					</Box>
+				<DepositCardTitle />
+				<DepositCardDate deposit={deposit} />
+				<DepositCardCategory deposit={deposit} />
+
+				<Box sx={styling}>
+					<DepositCardButtons deposit={deposit} />
+					<DepositCardAmount deposit={deposit} />
 				</Box>
 			</Stack>
-		</Paper>
+		</CardWrapper>
 	);
 }
 
