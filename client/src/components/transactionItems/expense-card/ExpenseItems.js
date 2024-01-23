@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import classes from './Movements.module.css';
+import classes from '../Movements.module.css';
 import ExpenseCard from './ExpenseCard';
-import { containerVariants, exitAnimation } from './variants';
-import NoDataCard from './NoDataCard';
-import useFilteredTransactions from '../../hooks/useFilteredTransactions';
+import { containerVariants, exitAnimation } from '../variants';
+import NoDataCard from '../NoDataCard';
+import useFilteredTransactions from '../../../hooks/useFilteredTransactions';
 import { useMemo } from 'react';
-import AnimatedList from '../animated-list/AnimatedList';
+import AnimatedList from '../../animated-list/AnimatedList';
 
 const ExpenseItems = () => {
 	const { transactions } = useFilteredTransactions('expenses');

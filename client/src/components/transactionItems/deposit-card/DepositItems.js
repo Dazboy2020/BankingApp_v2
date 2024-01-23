@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import classes from './Movements.module.css';
-import { containerVariants } from './variants';
-import { exitAnimation } from './variants';
+import classes from '../Movements.module.css';
+import { containerVariants } from '../variants';
+import { exitAnimation } from '../variants';
 import DepositCard from './DepositCard';
-import NoDataCard from './NoDataCard';
-import useFilteredTransactions from '../../hooks/useFilteredTransactions';
-import AnimatedList from '../animated-list/AnimatedList';
+import NoDataCard from '../NoDataCard';
+import useFilteredTransactions from '../../../hooks/useFilteredTransactions';
+import AnimatedList from '../../animated-list/AnimatedList';
 
 const DepositItems = () => {
 	const { transactions } = useFilteredTransactions('deposits');
