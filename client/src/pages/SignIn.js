@@ -178,9 +178,9 @@ export default function SignIn() {
 
 											<Grid container>
 												<Grid item xs>
-													<Link href="/forgotpassword" variant="body2">
+													<NavLink to="/forgotpassword" variant="body2">
 														Forgot password?
-													</Link>
+													</NavLink>
 												</Grid>
 												<Grid item>
 													<NavLink to="/signup" variant="body2">
