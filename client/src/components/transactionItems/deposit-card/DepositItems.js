@@ -4,7 +4,7 @@ import classes from '../Movements.module.css';
 import { containerVariants } from '../variants';
 import { exitAnimation } from '../variants';
 import DepositCard from './DepositCard';
-import NoDataCard from '../NoDataCard';
+import NoDataCard from '../noData-card/NoDataCard';
 import useFilteredTransactions from '../../../hooks/useFilteredTransactions';
 import AnimatedList from '../../animated-list/AnimatedList';
 

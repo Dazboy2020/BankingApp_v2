@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import classes from '../Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from '../variants';
-import NoDataCard from '../NoDataCard';
+import NoDataCard from '../noData-card/NoDataCard';
 import useFilteredTransactions from '../../../hooks/useFilteredTransactions';
 import { useMemo } from 'react';
 import AnimatedList from '../../animated-list/AnimatedList';

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import useFilteredTransactions from '../../hooks/useFilteredTransactions';
 import ExpenseCard from './expense-card/ExpenseCard';
 import DepositCard from './deposit-card/DepositCard';
-import NoDataCard from './NoDataCard';
+import NoDataCard from './noData-card/NoDataCard';
 import classes from './Movements.module.css';
 import { sortArrayByDate } from '../../utils/sortArray';
 import AnimatedList from '../animated-list/AnimatedList';
