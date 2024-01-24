@@ -10,6 +10,7 @@ function CardWrapper({ children }) {
 			sx={{
 				border: state.isEditing ? '1px solid #f97316' : '',
 				borderRadius: '10px',
+				mb: { xs: 2, sm: 3, md: 4 },
 			}}
 		>
 			{children}
