@@ -32,7 +32,7 @@ const DepositItems = () => {
 			)}
 
 			<AnimatedList items={memoizedDeposits}>
-				{(deposit) => <DepositCard deposit={deposit} />}
+				{useMemo(() => (deposit) => <DepositCard deposit={deposit} />, [])}
 			</AnimatedList>
 		</motion.ul>
 	);

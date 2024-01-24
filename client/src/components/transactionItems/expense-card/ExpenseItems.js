@@ -10,7 +10,6 @@ import AnimatedList from '../../animated-list/AnimatedList';
 
 const ExpenseItems = () => {
 	const { transactions } = useFilteredTransactions('expenses');
-	const MemoizedExpenseCard = React.memo(ExpenseCard);
 
 	const memoizedExpenses = useMemo(() => {
 		return transactions;
@@ -33,8 +32,7 @@ const ExpenseItems = () => {
 			)}
 
 			<AnimatedList items={memoizedExpenses}>
-				{(expense) => <MemoizedExpenseCard expense={expense} />}
-				{/* {(expense) => <ExpenseCard expense={expense} />} */}
+				{useMemo(() => (expense) => <ExpenseCard expense={expense} />, [])}
 			</AnimatedList>
 		</motion.ul>
 	);

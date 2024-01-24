@@ -13,7 +13,7 @@
 	flex-direction: column;
 	display: flex;
 	width: 100%;
-	/* animation: slideUp 0.25s 1 ease-in-out forwards; */
+	animation: slideUp 0.25s 1 ease-in-out forwards;
 }
 
 .movements__date {
