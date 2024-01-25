@@ -75,15 +75,13 @@ export default function SignIn() {
 		getUserToken(data);
 	};
 
-	const storagetoken = localStorage.getItem('authToken');
-
 	return (
 		<>
 			{state.isLoading ? (
 				<SpinnerFullPage />
 			) : (
 				<UnprotectedPageLayout>
-					{!storagetoken && (
+					{!state.token && (
 						<motion.div
 							layout="true"
 							variants={containerVariants}

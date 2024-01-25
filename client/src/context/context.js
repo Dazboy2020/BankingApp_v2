@@ -85,10 +85,7 @@ function reducer(state, action) {
 
 		case 'user/LoggedOut':
 			return {
-				...state,
-				isLoggedIn: false,
-				user: '',
-				filteredExpenses: null,
+				...inititalState,
 				token: '',
 			};
 
