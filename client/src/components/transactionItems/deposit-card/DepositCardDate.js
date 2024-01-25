@@ -1,8 +1,10 @@
+import { useDepositCardContext } from '../../../context/depositCardContext';
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import classes from '../Movements.module.css';
 
-function DepositCardDate({ deposit }) {
+function DepositCardDate() {
 	const { isDarkMode } = useDarkMode();
+	const { deposit } = useDepositCardContext();
 
 	return (
 		<span

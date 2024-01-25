@@ -1,9 +1,11 @@
 import { Box } from '@mui/material';
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import classes from '../Movements.module.css';
+import { useDepositCardContext } from '../../../context/depositCardContext';
 
-function DepositCardAmount({ deposit }) {
+function DepositCardAmount() {
 	const { isDarkMode } = useDarkMode();
+	const { deposit } = useDepositCardContext();
 	return (
 		<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
 			<span
@@ -11,7 +13,7 @@ function DepositCardAmount({ deposit }) {
 					isDarkMode ? classes.movements__value__dark : classes.movements__value
 				}
 			>
-				€{deposit.amount.toFixed(2)}
+				€{deposit.amount}
 			</span>
 		</Box>
 	);

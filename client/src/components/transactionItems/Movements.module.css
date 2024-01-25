@@ -98,7 +98,7 @@
 	flex-grow: 1;
 	flex-direction: column;
 	display: flex;
-	animation: slideUp 0.25s 1 ease-in-out forwards;
+	/* animation: slideUp 0.25s 1 ease-in-out forwards; */
 }
 
 ul {

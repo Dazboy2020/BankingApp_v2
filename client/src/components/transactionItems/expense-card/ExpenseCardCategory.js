@@ -1,8 +1,10 @@
+import { useExpenseCardContext } from '../../../context/expenseCardContext';
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import classes from '../Movements.module.css';
 
-function ExpenseCardCategory({ expense }) {
+function ExpenseCardCategory() {
 	const { isDarkMode } = useDarkMode();
+	const { expense } = useExpenseCardContext();
 
 	return (
 		<span

@@ -1,9 +1,11 @@
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import { Box } from '@mui/material';
 import classes from '../Movements.module.css';
+import { useExpenseCardContext } from '../../../context/expenseCardContext';
 
-function ExpenseCardAmount({ expense }) {
+function ExpenseCardAmount() {
 	const { isDarkMode } = useDarkMode();
+	const { expense } = useExpenseCardContext();
 
 	return (
 		<Box
@@ -17,7 +19,7 @@ function ExpenseCardAmount({ expense }) {
 					isDarkMode ? classes.movements__value__dark : classes.movements__value
 				}
 			>
-				€{expense.amount.toFixed(2)}
+				€{expense.amount}
 			</span>
 		</Box>
 	);

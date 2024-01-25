@@ -2,9 +2,11 @@ import { Box } from '@mui/material';
 import { useAppContext } from '../../../context/context';
 import EditButton from '../../buttons/EditButton';
 import DeleteButton from '../../buttons/DeleteButton';
+import { useDepositCardContext } from '../../../context/depositCardContext';
 
-function DepositCardButtons({ deposit }) {
+function DepositCardButtons() {
 	const { state } = useAppContext();
+	const { deposit } = useDepositCardContext();
 	return (
 		<Box sx={{ mt: '2rem' }}>
 			{state.isActive !== 0 && !state.isEditing && (

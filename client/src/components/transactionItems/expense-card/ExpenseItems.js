@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import classes from '../Movements.module.css';
 import ExpenseCard from './ExpenseCard';
@@ -31,7 +32,7 @@ const ExpenseItems = () => {
 			)}
 
 			<AnimatedList items={memoizedExpenses}>
-				{(expense) => <ExpenseCard expense={expense} />}
+				{useMemo(() => (expense) => <ExpenseCard expense={expense} />, [])}
 			</AnimatedList>
 		</motion.ul>
 	);
