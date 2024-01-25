@@ -13,7 +13,6 @@ import DepositCardAmount from './DepositCardAmount';
 
 function DepositCard({ deposit }) {
 	const { state } = useAppContext();
-	console.log('deposit card');
 
 	const depositEditMode = state.isEditing
 		? classes.movements__row__edit
