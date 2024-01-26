@@ -16,6 +16,7 @@ function DepositCardTitle() {
 		mb: '0.1rem',
 		borderRadius: '8px',
 		fontWeight: 600,
+		pl: 1,
 	};
 
 	return (

@@ -4,7 +4,6 @@
 	overflow-y: auto;
 	font-family: 'system-ui';
 	margin-top: 0.5rem;
-	/* margin-bottom: 0.75rem; */
 	padding: 0.5rem;
 }
 
@@ -14,71 +13,6 @@
 	display: flex;
 	width: 100%;
 	animation: slideUp 0.25s 1 ease-in-out forwards;
-}
-
-.movements__date {
-	font-size: 1rem;
-	text-transform: uppercase;
-	font-weight: 500;
-	margin-top: 5px;
-	/* color: #666; */
-}
-
-.movements__date__dark {
-	font-size: 1rem;
-	text-transform: uppercase;
-	font-weight: 500;
-	margin-top: 5px;
-	color: #d6d3d1;
-}
-
-.movements__type {
-	background-color: #495057;
-	font-size: 1.2rem;
-	text-transform: uppercase;
-	letter-spacing: 0.1rem;
-	color: #fff;
-	padding: 0.5rem;
-	width: 15rem;
-	margin-bottom: 0.1rem;
-	border-radius: 8px;
-	font-weight: 600;
-}
-.movements__type__dark {
-	background-color: #212529;
-	font-size: 1.2rem;
-	text-transform: uppercase;
-	letter-spacing: 0.1rem;
-	color: #fff;
-	padding: 0.5rem;
-	width: 15rem;
-	margin-bottom: 0.1rem;
-	border-radius: 8px;
-	font-weight: 600;
-}
-
-.movements__value {
-	font-size: 1.2rem;
-	margin-left: auto;
-	font-weight: bold;
-}
-
-.movements__value__dark {
-	font-size: 1.2rem;
-	margin-left: auto;
-	font-weight: bold;
-	color: #d6d3d1;
-}
-
-.movements__category {
-	font-family: 'system-ui';
-	font-size: 1.2rem;
-}
-
-.movements__category__dark {
-	font-family: 'system-ui';
-	font-size: 1.2rem;
-	color: #d6d3d1;
 }
 
 .movements__row__animate {

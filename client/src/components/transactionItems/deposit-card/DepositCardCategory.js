@@ -1,20 +1,21 @@
+import { Typography } from '@mui/material';
 import { useDepositCardContext } from '../../../context/depositCardContext';
 import { useDarkMode } from '../../../hooks/useDarkMode';
-import classes from '../layout/Movements.module.css';
 
 function DepositCardCategory() {
 	const { isDarkMode } = useDarkMode();
 	const { deposit } = useDepositCardContext();
 
+	const categoryStyling = {
+		fontFamily: 'system-ui',
+		fontSize: '1.2rem',
+		color: isDarkMode ? '#d6d3d1' : '#000',
+		pl: 0.5,
+	};
+
 	return (
-		<span
-			className={
-				isDarkMode
-					? classes.movements__category__dark
-					: classes.movements__category
-			}
-		>
-			{deposit.category}
+		<span>
+			<Typography sx={categoryStyling}>{deposit.category}</Typography>
 		</span>
 	);
 }

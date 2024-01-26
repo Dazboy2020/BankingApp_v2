@@ -1,11 +1,18 @@
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import { useExpenseCardContext } from '../../../context/expenseCardContext';
-import { Box } from '@mui/material';
-import classes from '../layout/Movements.module.css';
+import { Box, Typography } from '@mui/material';
 
 function ExpenseCardAmount() {
 	const { isDarkMode } = useDarkMode();
 	const { expense } = useExpenseCardContext();
+
+	const amountStyling = {
+		fontSize: '1.2rem',
+		ml: 'auto',
+		fontWeight: 'bold',
+		color: isDarkMode ? '#d6d3d1' : '#000',
+		pl: 0.5,
+	};
 
 	return (
 		<Box
@@ -14,12 +21,8 @@ function ExpenseCardAmount() {
 				alignItems: 'flex-end',
 			}}
 		>
-			<span
-				className={
-					isDarkMode ? classes.movements__value__dark : classes.movements__value
-				}
-			>
-				€{expense.amount}
+			<span>
+				<Typography sx={amountStyling}>€{expense.amount}</Typography>
 			</span>
 		</Box>
 	);

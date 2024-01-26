@@ -1,19 +1,23 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useDarkMode } from '../../../hooks/useDarkMode';
-import classes from '../layout/Movements.module.css';
 import { useDepositCardContext } from '../../../context/depositCardContext';
 
 function DepositCardAmount() {
 	const { isDarkMode } = useDarkMode();
 	const { deposit } = useDepositCardContext();
+
+	const amountStyling = {
+		fontSize: '1.2rem',
+		ml: 'auto',
+		fontWeight: 'bold',
+		color: isDarkMode ? '#d6d3d1' : '#000',
+		pl: 0.5,
+	};
+
 	return (
 		<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-			<span
-				className={
-					isDarkMode ? classes.movements__value__dark : classes.movements__value
-				}
-			>
-				€{deposit.amount}
+			<span>
+				<Typography sx={amountStyling}>€{deposit.amount}</Typography>
 			</span>
 		</Box>
 	);
