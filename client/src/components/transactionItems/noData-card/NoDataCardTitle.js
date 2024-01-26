@@ -1,7 +1,6 @@
 import { useAppContext } from '../../../context/context';
 import { useDarkMode } from '../../../hooks/useDarkMode';
-import { Box } from '@mui/material';
-import classes from '../layout/Movements.module.css';
+import { Box, Typography } from '@mui/material';
 import ErrorOutlineTwoToneIcon from '@mui/icons-material/ErrorOutlineTwoTone';
 
 function NoDataCardTitle({ type }) {
@@ -14,14 +13,27 @@ function NoDataCardTitle({ type }) {
 		mb: 3,
 		flexGrow: 1,
 	};
+
+	const titleStyling = {
+		backgroundColor: isDarkMode ? '#212529' : '#495057',
+		fontSize: '1.2rem',
+		textTransform: 'uppercase',
+		letterSpacing: '0.1rem',
+		color: ' #fff',
+		padding: '0.5rem',
+		width: '15rem',
+		mb: '0.1rem',
+		borderRadius: '8px',
+		fontWeight: 600,
+		pl: 1,
+	};
+
 	return (
 		<Box sx={styling}>
-			<span
-				className={
-					isDarkMode ? classes.movements__type__dark : classes.movements__type
-				}
-			>
-				{state.isActive === 4 ? 'Awaiting Data' : type}
+			<span>
+				<Typography sx={titleStyling}>
+					{state.isActive === 4 ? 'Awaiting Data' : type}
+				</Typography>
 			</span>
 			<ErrorOutlineTwoToneIcon sx={{ fontSize: '40px', color: 'red' }} />
 		</Box>

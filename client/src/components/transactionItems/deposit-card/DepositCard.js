@@ -1,8 +1,6 @@
 import React from 'react';
-import { useAppContext } from '../../../context/context';
 import { DepositCardContextProvider } from '../../../context/depositCardContext';
-import { Stack, Box } from '@mui/material';
-import classes from '../layout/Movements.module.css';
+import { Box } from '@mui/material';
 
 import CardWrapper from '../layout/CardWrapper';
 import DepositCardTitle from './DepositCardTitle';
@@ -12,12 +10,6 @@ import DepositCardButtons from './DepositCardButtons';
 import DepositCardAmount from './DepositCardAmount';
 
 function DepositCard({ deposit }) {
-	const { state } = useAppContext();
-
-	const depositEditMode = state.isEditing
-		? classes.movements__row__edit
-		: classes.movements__row;
-
 	const styling = {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -27,16 +19,14 @@ function DepositCard({ deposit }) {
 	return (
 		<DepositCardContextProvider deposit={deposit}>
 			<CardWrapper>
-				<Stack component="section" className={depositEditMode}>
-					<DepositCardTitle />
-					<DepositCardDate />
-					<DepositCardCategory />
+				<DepositCardTitle />
+				<DepositCardDate />
+				<DepositCardCategory />
 
-					<Box sx={styling}>
-						<DepositCardButtons />
-						<DepositCardAmount />
-					</Box>
-				</Stack>
+				<Box sx={styling}>
+					<DepositCardButtons />
+					<DepositCardAmount />
+				</Box>
 			</CardWrapper>
 		</DepositCardContextProvider>
 	);

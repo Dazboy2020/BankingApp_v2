@@ -16,12 +16,10 @@ const DepositItems = () => {
 	}, [transactions]);
 
 	return (
-		<motion.ul
-			style={{ listStyleType: 'none' }}
-			className={classes.movements__row}
-		>
+		<div className={classes.movements__row}>
 			{memoizedDeposits.length === 0 && (
 				<motion.li
+					style={{ listStyleType: 'none' }}
 					variants={containerVariants}
 					initial="hidden"
 					animate="visible"
@@ -34,7 +32,7 @@ const DepositItems = () => {
 			<AnimatedList items={memoizedDeposits}>
 				{useMemo(() => (deposit) => <DepositCard deposit={deposit} />, [])}
 			</AnimatedList>
-		</motion.ul>
+		</div>
 	);
 };
 

@@ -16,12 +16,10 @@ const ExpenseItems = () => {
 	}, [transactions]);
 
 	return (
-		<motion.ul
-			style={{ listStyleType: 'none' }}
-			className={classes.movements__row}
-		>
+		<div className={classes.movements__row}>
 			{memoizedExpenses.length === 0 && (
 				<motion.li
+					style={{ listStyleType: 'none' }}
 					variants={containerVariants}
 					initial="hidden"
 					animate="visible"
@@ -34,7 +32,7 @@ const ExpenseItems = () => {
 			<AnimatedList items={memoizedExpenses}>
 				{useMemo(() => (expense) => <ExpenseCard expense={expense} />, [])}
 			</AnimatedList>
-		</motion.ul>
+		</div>
 	);
 };
 

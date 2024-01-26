@@ -1,7 +1,5 @@
-import { useAppContext } from '../../../context/context';
 import { ExpenseCardContextProvider } from '../../../context/expenseCardContext';
-import { Stack, Box } from '@mui/material';
-import classes from '../layout/Movements.module.css';
+import { Box } from '@mui/material';
 
 import React from 'react';
 import ExpenseCardTitle from './ExpenseCardTitle';
@@ -12,31 +10,23 @@ import ExpenseCardAmount from './ExpenseCardAmount';
 import CardWrapper from '../layout/CardWrapper';
 
 function ExpenseCard({ expense }) {
-	const { state } = useAppContext();
-
 	const styling = {
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignContent: 'center',
 	};
 
-	const expenseEditMode = state.isEditing
-		? classes.movements__row__edit
-		: classes.movements__row;
-
 	return (
 		<ExpenseCardContextProvider expense={expense}>
 			<CardWrapper>
-				<Stack component="section" className={expenseEditMode}>
-					<ExpenseCardTitle />
-					<ExpenseCardDate />
-					<ExpenseCardCategory />
+				<ExpenseCardTitle />
+				<ExpenseCardDate />
+				<ExpenseCardCategory />
 
-					<Box sx={styling}>
-						<ExpenseCardButtons />
-						<ExpenseCardAmount />
-					</Box>
-				</Stack>
+				<Box sx={styling}>
+					<ExpenseCardButtons />
+					<ExpenseCardAmount />
+				</Box>
 			</CardWrapper>
 		</ExpenseCardContextProvider>
 	);

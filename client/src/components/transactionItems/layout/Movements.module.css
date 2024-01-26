@@ -1,11 +1,13 @@
 /* ?MOVEMENTS */
+
+/* 
 .movements {
 	display: flex;
 	overflow-y: auto;
 	font-family: 'system-ui';
 	margin-top: 0.5rem;
 	padding: 0.5rem;
-}
+} */
 
 .movements__row {
 	flex-grow: 1;
