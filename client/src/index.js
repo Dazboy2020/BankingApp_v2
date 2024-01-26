@@ -12,12 +12,14 @@ import { CssBaseline } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import './index.css';
 
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<GoogleOAuthProvider clientId="841090446655-o7mj2dl8hvgrm3nrga63s5924f033oea.apps.googleusercontent.com">
+			<GoogleOAuthProvider clientId={clientId}>
 				<ContextProvider>
 					<TransactionProvider>
 						<ModalContextProvider>
