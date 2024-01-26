@@ -5,7 +5,7 @@ import useFilteredTransactions from '../../hooks/useFilteredTransactions';
 import ExpenseCard from './expense-card/ExpenseCard';
 import DepositCard from './deposit-card/DepositCard';
 import NoDataCard from './noData-card/NoDataCard';
-import classes from './Movements.module.css';
+import classes from './layout/Movements.module.css';
 import { sortArrayByDate } from '../../utils/sortArray';
 import AnimatedList from '../animated-list/AnimatedList';
 

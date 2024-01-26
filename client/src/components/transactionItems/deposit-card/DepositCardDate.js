@@ -1,6 +1,6 @@
 import { useDepositCardContext } from '../../../context/depositCardContext';
 import { useDarkMode } from '../../../hooks/useDarkMode';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 
 function DepositCardDate() {
 	const { isDarkMode } = useDarkMode();

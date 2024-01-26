@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useDarkMode } from '../../../hooks/useDarkMode';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 import { useDepositCardContext } from '../../../context/depositCardContext';
 
 function DepositCardAmount() {

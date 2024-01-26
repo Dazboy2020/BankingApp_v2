@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 import { containerVariants } from '../variants';
 import { exitAnimation } from '../variants';
 import DepositCard from './DepositCard';

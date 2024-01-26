@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from '../variants';
 import NoDataCard from '../noData-card/NoDataCard';

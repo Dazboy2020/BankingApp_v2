@@ -1,7 +1,7 @@
 import { useDarkMode } from '../../../hooks/useDarkMode';
-import { Box } from '@mui/material';
-import classes from '../Movements.module.css';
 import { useExpenseCardContext } from '../../../context/expenseCardContext';
+import { Box } from '@mui/material';
+import classes from '../layout/Movements.module.css';
 
 function ExpenseCardAmount() {
 	const { isDarkMode } = useDarkMode();

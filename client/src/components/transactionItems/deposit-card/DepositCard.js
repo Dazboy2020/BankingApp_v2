@@ -2,9 +2,9 @@ import React from 'react';
 import { useAppContext } from '../../../context/context';
 import { DepositCardContextProvider } from '../../../context/depositCardContext';
 import { Stack, Box } from '@mui/material';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 
-import CardWrapper from '../CardWrapper';
+import CardWrapper from '../layout/CardWrapper';
 import DepositCardTitle from './DepositCardTitle';
 import DepositCardDate from './DepositCardDate';
 import DepositCardCategory from './DepositCardCategory';

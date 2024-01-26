@@ -1,6 +1,6 @@
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import { Box } from '@mui/material';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 function ExpenseCardTitle() {

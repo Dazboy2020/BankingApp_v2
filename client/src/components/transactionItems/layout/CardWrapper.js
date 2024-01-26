@@ -1,4 +1,4 @@
-import { useAppContext } from '../../context/context';
+import { useAppContext } from '../../../context/context';
 import { Paper } from '@mui/material';
 import classes from './Movements.module.css';
 

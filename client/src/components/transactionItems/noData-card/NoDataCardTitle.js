@@ -1,7 +1,7 @@
 import { useAppContext } from '../../../context/context';
 import { useDarkMode } from '../../../hooks/useDarkMode';
 import { Box } from '@mui/material';
-import classes from '../Movements.module.css';
+import classes from '../layout/Movements.module.css';
 import ErrorOutlineTwoToneIcon from '@mui/icons-material/ErrorOutlineTwoTone';
 
 function NoDataCardTitle({ type }) {

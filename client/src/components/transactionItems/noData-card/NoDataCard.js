@@ -1,7 +1,7 @@
 import { useAppContext } from '../../../context/context';
 import { Stack } from '@mui/material';
-import classes from '../Movements.module.css';
-import CardWrapper from '../CardWrapper';
+import classes from '../layout/Movements.module.css';
+import CardWrapper from '../layout/CardWrapper';
 import NoDataCardTitle from './NoDataCardTitle';
 import NoDataCardCategory from './NoDataCardCategory';
 
