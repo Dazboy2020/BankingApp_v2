@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import classes from '../layout/Movements.module.css';
 import { containerVariants } from '../variants';
 import { exitAnimation } from '../variants';
 import DepositCard from './DepositCard';
@@ -16,7 +15,8 @@ const DepositItems = () => {
 	}, [transactions]);
 
 	return (
-		<div className={classes.movements__row}>
+		// <div className={classes.movements__row}>
+		<>
 			{memoizedDeposits.length === 0 && (
 				<motion.li
 					style={{ listStyleType: 'none' }}
@@ -32,7 +32,9 @@ const DepositItems = () => {
 			<AnimatedList items={memoizedDeposits}>
 				{useMemo(() => (deposit) => <DepositCard deposit={deposit} />, [])}
 			</AnimatedList>
-		</div>
+		</>
+
+		// </div>
 	);
 };
 

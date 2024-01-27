@@ -12,6 +12,14 @@ function useDisplayFilterComponent() {
 		if (state.isActive === 2 && !state.isEditing && state.deposits.length > 0) {
 			return <FilterItems />;
 		}
+
+		if (
+			state.isActive === 4 &&
+			!state.isEditing &&
+			state.combinedTransactions.length > 0
+		) {
+			return <FilterItems />;
+		}
 	}
 
 	return { displayFilterComponent };

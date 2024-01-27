@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import classes from '../layout/Movements.module.css';
 import ExpenseCard from './ExpenseCard';
 import { containerVariants, exitAnimation } from '../variants';
 import NoDataCard from '../noData-card/NoDataCard';
@@ -16,7 +15,8 @@ const ExpenseItems = () => {
 	}, [transactions]);
 
 	return (
-		<div className={classes.movements__row}>
+		// <div className={classes.movements__row}>
+		<>
 			{memoizedExpenses.length === 0 && (
 				<motion.li
 					style={{ listStyleType: 'none' }}
@@ -32,7 +32,9 @@ const ExpenseItems = () => {
 			<AnimatedList items={memoizedExpenses}>
 				{useMemo(() => (expense) => <ExpenseCard expense={expense} />, [])}
 			</AnimatedList>
-		</div>
+		</>
+
+		// </div>
 	);
 };
 

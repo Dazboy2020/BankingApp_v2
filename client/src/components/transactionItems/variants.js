@@ -1,6 +1,10 @@
 export const containerVariants = {
-	hidden: {},
+	hidden: {
+		opacity: 0,
+		y: 200,
+	},
 	visible: (index) => ({
+		y: 0,
 		opacity: 1,
 		transition: {
 			opacity: { delay: 0.025 },

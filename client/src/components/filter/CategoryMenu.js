@@ -33,6 +33,12 @@ export default function CategoryMenu() {
 			if (state.isActive === 2) {
 				dispatch({ type: 'user/filteredDeposits', payload: expenseCategory });
 			}
+
+			if (state.isActive === 4) {
+				setExpenseType('budget');
+
+				dispatch({ type: 'user/filteredBudget', payload: expenseCategory });
+			}
 		},
 		[expenseType, state.isActive, dispatch, expenseCategory, setExpenseType]
 	);
@@ -46,6 +52,7 @@ export default function CategoryMenu() {
 	const handleClose = (e, value) => {
 		setAnchorEl(null);
 		setExpenseCategory(value);
+		console.log(expenseCategory);
 	};
 
 	return (

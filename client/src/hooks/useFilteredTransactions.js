@@ -53,6 +53,10 @@ export default function useFilteredTransactions(type) {
 		if (state.isEditing && expenseType === 'expense')
 			transactions = state.editingExpense;
 
+		if (state.filteredBudget?.length > 0) {
+			transactions = state.filteredBudget;
+		}
+
 		if (!transactions) {
 			transactions = [];
 		}

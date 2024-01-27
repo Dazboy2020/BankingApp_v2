@@ -22,9 +22,16 @@ function CategoryMenuItems({ handleClose, expenseType }) {
 
 	combinedLabelsInitial.unshift('All transactions');
 
+	const budgetLabelsInitial = state.budgetTransactions
+		.filter((transaction) => transaction.category)
+		.map((item) => item.category);
+
+	budgetLabelsInitial.unshift('All transactions');
+
 	const expenseLabels = [...new Set(expenseLabelsInitial)];
 	const depositLabels = [...new Set(depositLabelInitial)];
 	const combinedLabels = [...new Set(combinedLabelsInitial)];
+	const budgetLabels = [...new Set(budgetLabelsInitial)];
 
 	if (expenseType === 'expense') {
 		return expenseLabels.map((option) => (
@@ -52,6 +59,17 @@ function CategoryMenuItems({ handleClose, expenseType }) {
 
 	if (expenseType === 'All Transactions')
 		return combinedLabels.map((option) => (
+			<MenuItem
+				value={option}
+				key={option}
+				onClick={(e) => handleClose(e, option)}
+			>
+				{option}
+			</MenuItem>
+		));
+
+	if (expenseType === 'budget')
+		return budgetLabels.map((option) => (
 			<MenuItem
 				value={option}
 				key={option}

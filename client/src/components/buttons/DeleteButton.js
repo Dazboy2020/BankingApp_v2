@@ -28,6 +28,7 @@ function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
 			setId(expense);
 			setExpenseType(type);
 			setOpen(true, modalMessage, modalTitle, modalAction, id);
+			console.log(id);
 		}
 
 		if (type === 'budget') {

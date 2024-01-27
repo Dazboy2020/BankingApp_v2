@@ -45,6 +45,7 @@ export default function AlertDialogSlide(type) {
 
 			navigate('/');
 		} else {
+			console.log(expenseType);
 			if (expenseType === 'deposit') deleteDeposit(id);
 			if (expenseType === 'expense') deleteExpense(id);
 

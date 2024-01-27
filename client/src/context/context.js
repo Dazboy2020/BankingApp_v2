@@ -32,6 +32,7 @@ const inititalState = {
 	filteredExpenses: null,
 	filteredDeposits: null,
 	filteredCombined: null,
+	filteredBudget: null,
 	isLoading: false,
 };
 
@@ -340,6 +341,28 @@ function reducer(state, action) {
 				),
 			};
 		}
+
+		case 'user/filteredBudget':
+			let filteredBudgetTransactons = state.budgetTransactions;
+
+			if (action.payload === 'All Transactions') {
+				return {
+					...state,
+					filtering: false,
+					filteredBudget: filteredBudgetTransactons.filter(
+						(transaction) => transaction.category === action.payload
+					),
+				};
+			}
+
+			console.log(`Filtering: ${action.payload}`);
+			return {
+				...state,
+				filtering: true,
+				filteredBudget: filteredBudgetTransactons.filter(
+					(transaction) => transaction.category === action.payload
+				),
+			};
 
 		default:
 			return state;
