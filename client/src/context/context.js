@@ -355,7 +355,6 @@ function reducer(state, action) {
 				};
 			}
 
-			console.log(`Filtering: ${action.payload}`);
 			return {
 				...state,
 				filtering: true,
