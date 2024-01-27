@@ -15,7 +15,6 @@ const DepositItems = () => {
 	}, [transactions]);
 
 	return (
-		// <div className={classes.movements__row}>
 		<>
 			{memoizedDeposits.length === 0 && (
 				<motion.li
@@ -30,11 +29,9 @@ const DepositItems = () => {
 			)}
 
 			<AnimatedList items={memoizedDeposits}>
-				{useMemo(() => (deposit) => <DepositCard deposit={deposit} />, [])}
+				{(deposit) => <DepositCard deposit={deposit} />}
 			</AnimatedList>
 		</>
-
-		// </div>
 	);
 };
 

@@ -15,7 +15,6 @@ const ExpenseItems = () => {
 	}, [transactions]);
 
 	return (
-		// <div className={classes.movements__row}>
 		<>
 			{memoizedExpenses.length === 0 && (
 				<motion.li
@@ -30,11 +29,9 @@ const ExpenseItems = () => {
 			)}
 
 			<AnimatedList items={memoizedExpenses}>
-				{useMemo(() => (expense) => <ExpenseCard expense={expense} />, [])}
+				{(expense) => <ExpenseCard expense={expense} />}
 			</AnimatedList>
 		</>
-
-		// </div>
 	);
 };
 

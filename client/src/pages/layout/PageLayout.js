@@ -4,6 +4,7 @@ import classes from '../MainApp.module.css';
 
 function PageLayout({ children }) {
 	const { isDarkMode } = useDarkMode();
+
 	return (
 		<Box
 			className={isDarkMode ? classes.darkmode : classes.body}

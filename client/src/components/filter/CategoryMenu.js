@@ -50,7 +50,6 @@ export default function CategoryMenu() {
 	const handleClose = (e, value) => {
 		setAnchorEl(null);
 		setExpenseCategory(value);
-		console.log(expenseCategory);
 	};
 
 	return (
