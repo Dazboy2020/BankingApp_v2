@@ -35,6 +35,7 @@ export default function CategoryMenu() {
 			}
 
 			if (state.isActive === 4) {
+				setExpenseType('budget');
 				dispatch({ type: 'user/filteredBudget', payload: expenseCategory });
 			}
 		},

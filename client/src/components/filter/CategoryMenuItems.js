@@ -1,8 +1,10 @@
 import { MenuItem } from '@mui/material';
 import { useAppContext } from '../../context/context';
+// import { useTransactionContext } from '../../context/transactionContext';
 
-function CategoryMenuItems({ handleClose, expenseType }) {
+function CategoryMenuItems({ handleClose, expenseType, categoryLabel }) {
 	const { state } = useAppContext();
+	// const { categoryLabel } = useTransactionContext();
 
 	const expenseLabelsInitial = state.expenses
 		.filter((expense) => expense.category)
@@ -26,7 +28,7 @@ function CategoryMenuItems({ handleClose, expenseType }) {
 		.filter((transaction) => transaction.category)
 		.map((item) => item.category);
 
-	budgetLabelsInitial.unshift('All transactions');
+	budgetLabelsInitial.unshift('All Budget Items');
 
 	const expenseLabels = [...new Set(expenseLabelsInitial)];
 	const depositLabels = [...new Set(depositLabelInitial)];
