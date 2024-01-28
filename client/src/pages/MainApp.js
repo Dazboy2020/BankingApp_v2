@@ -3,7 +3,7 @@ import { Stack } from '@mui/system';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import Toast from '../UI/AlertDialogue/Toast';
-import MovementList from '../components/transactionItems/MovementList';
+import MovementList from '../components/transactionItems/layout/MovementList';
 import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
