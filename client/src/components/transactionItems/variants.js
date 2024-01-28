@@ -1,9 +1,9 @@
 export const containerVariants = {
-	hidden: {
+	initial: {
 		scale: 0,
 		opacity: 0,
 	},
-	visible: (index) => ({
+	animate: (index) => ({
 		scale: 1,
 		opacity: 1,
 		transition: {
@@ -17,7 +17,7 @@ export const exitAnimation = {
 	opacity: 0,
 	transition: {
 		type: 'spring',
-		bounce: 0.1,
+		bounce: 0.3,
 		opacity: { delay: 0.025 },
 	},
 };

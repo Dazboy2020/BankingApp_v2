@@ -3,24 +3,20 @@ import { containerVariants, exitAnimation } from '../transactionItems/variants';
 
 function AnimatedList({ items, children }) {
 	return (
-		<>
-			<AnimatePresence>
-				{items.map((item, index) => (
-					<motion.li
-						style={{ listStyleType: 'none' }}
-						layout="true"
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-						exit={exitAnimation}
-						key={`${item.id}-${index}`}
-						custom={index}
-					>
-						<AnimatePresence>{children(item)}</AnimatePresence>
-					</motion.li>
-				))}
-			</AnimatePresence>
-		</>
+		<AnimatePresence>
+			{items.map((item, index) => (
+				<motion.li
+					{...containerVariants}
+					style={{ listStyleType: 'none' }}
+					layout="true"
+					exit={exitAnimation}
+					key={`${item.id}-${index}`}
+					custom={index}
+				>
+					{children(item)}
+				</motion.li>
+			))}
+		</AnimatePresence>
 	);
 }
 

@@ -7,8 +7,6 @@ import NoDataCard from './noData-card/NoDataCard';
 import { sortArrayByDate } from '../../utils/sortArray';
 import AnimatedList from '../animated-list/AnimatedList';
 
-// import classes from './layout/Movements.module.css';
-
 const CombinedItems = ({ type }) => {
 	const { transactions } = useFilteredTransactions(type);
 	const { state } = useAppContext();
@@ -30,9 +28,9 @@ const CombinedItems = ({ type }) => {
 		<AnimatedList items={combinedTransactions}>
 			{(transaction) =>
 				transaction.amount < 0 ? (
-					<ExpenseCard expense={transaction} key={transaction.id} />
+					<ExpenseCard expense={transaction} />
 				) : (
-					<DepositCard deposit={transaction} key={transaction.id} />
+					<DepositCard deposit={transaction} />
 				)
 			}
 		</AnimatedList>

@@ -18,10 +18,8 @@ const DepositItems = () => {
 		<>
 			{memoizedDeposits.length === 0 && (
 				<motion.li
+					{...containerVariants}
 					style={{ listStyleType: 'none' }}
-					variants={containerVariants}
-					initial="hidden"
-					animate="visible"
 					exit={exitAnimation}
 				>
 					<NoDataCard type="Deposit" />
