@@ -1,17 +1,19 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { containerVariants, exitAnimation } from '../transactionItems/variants';
+import { containerVariants } from '../transactionItems/variants';
 
 function AnimatedList({ items, children }) {
 	return (
 		<AnimatePresence>
 			{items.map((item, index) => (
 				<motion.li
-					{...containerVariants}
 					style={{ listStyleType: 'none' }}
-					layout="true"
-					exit={exitAnimation}
 					key={`${item.id}-${index}`}
 					custom={index}
+					initial="initial"
+					animate="animate"
+					exit="exitAnimation"
+					variants={containerVariants}
+					layout
 				>
 					{children(item)}
 				</motion.li>

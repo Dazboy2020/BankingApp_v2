@@ -7,7 +7,7 @@ export const containerVariants = {
 		scale: 1,
 		opacity: 1,
 		transition: {
-			opacity: { delay: 0.025 },
+			// opacity: { delay: 0.025 },
 		},
 	}),
 };
@@ -18,6 +18,6 @@ export const exitAnimation = {
 	transition: {
 		type: 'spring',
 		bounce: 0.3,
-		opacity: { delay: 0.025 },
+		// opacity: { delay: 0.025 },
 	},
 };
