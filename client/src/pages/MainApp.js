@@ -1,28 +1,17 @@
 import { useAppContext } from '../context/context';
 import { Stack } from '@mui/system';
-import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
-import Toast from '../UI/AlertDialogue/Toast';
 import MovementList from '../components/transactionItems/layout/MovementList';
 import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
 import AvailbleFundsCard from '../components/summary-cards/AvailableFundsCard';
-import PieExpenses from '../components/charts/pie-charts/PieExpenses';
-import PieExpenseVDeposit from '../components/charts/pie-charts/PieExpenseVDeposit';
+
 import CombinedItems from '../components/transactionItems/CombinedItems';
 import FilterItems from '../components/filter/Filter';
 import PageLayout from './layout/PageLayout';
-// import ExpenseItems from '../components/movements/ExpenseItems';
-// import DepositItems from '../components/movements/DepositItems';
-
-const chartStyle = {
-	display: 'flex',
-	alignItems: 'centre',
-	justifyContent: 'space-around',
-	mb: { xs: 2, sm: 5, md: 8 },
-	mt: { xs: 2, sm: 5, md: 8 },
-};
+import PieChartSection from '../features/chart-section/PieChartSection';
+import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
 
 function MainApp() {
 	const { state } = useAppContext();
@@ -30,35 +19,17 @@ function MainApp() {
 	return (
 		<>
 			<ResponsiveDrawer />
-			<AlertDialogSlide />
 			<CloseAccountModal />
-			<Toast />
 			<PageLayout>
 				{/* //! Summary Cards */}
-				<Stack
-					component="section"
-					spacing={3}
-					direction={{ sm: 'column', md: 'row' }}
-					sx={{
-						justifyContent: 'space-between',
-						mt: { xs: 5, md: 10 },
-					}}
-				>
-					<TotalExpensesCard />
-					<TotalDepositsCard />
-					<AvailbleFundsCard />
-				</Stack>
+				<SummaryCardSection
+					TotalExpensesCard={<TotalExpensesCard />}
+					TotalDepositsCard={<TotalDepositsCard />}
+					AvailbleFundsCard={<AvailbleFundsCard />}
+				/>
 
 				{/* //! Charts */}
-				<Stack
-					component="section"
-					spacing={4}
-					direction={{ s: 'column', md: 'column', lg: 'row' }}
-					sx={chartStyle}
-				>
-					<PieExpenses />
-					<PieExpenseVDeposit />
-				</Stack>
+				<PieChartSection />
 
 				{/* //!Movements */}
 				<MovementList>
