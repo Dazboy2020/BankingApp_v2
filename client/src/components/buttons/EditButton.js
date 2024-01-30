@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 import CreateIcon from '@mui/icons-material/Create';
 import { useAppContext } from '../../context/context';
 import { useTransactionContext } from '../../context/transactionContext';
+import { motion } from 'framer-motion';
 
 function EditButton(expense) {
 	const { dispatch, state } = useAppContext();
@@ -26,6 +27,8 @@ function EditButton(expense) {
 
 	return (
 		<Button
+			component={motion.button}
+			whileTap={{ scale: 1.2 }}
 			variant="contained"
 			startIcon={
 				<CreateIcon

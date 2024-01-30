@@ -1,9 +1,10 @@
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppContext } from '../../context/context';
 import { useModalContext } from '../../context/modalContext';
 import { useTransactionContext } from '../../context/transactionContext';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 import useAddBudget from '../../hooks/useAddBudget';
+import { motion } from 'framer-motion';
 
 function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
 	const { id, setId, dispatch } = useAppContext();
@@ -39,6 +40,8 @@ function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
 
 	return (
 		<Button
+			component={motion.button}
+			whileTap={{ scale: 1.2 }}
 			sx={{ ml: '6px' }}
 			variant="contained"
 			startIcon={

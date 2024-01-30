@@ -2,6 +2,7 @@ import { Box, Button, useMediaQuery } from '@mui/material';
 import { useAppContext } from '../../context/context';
 import DatePickerValue from '../datePicker/DatePicker';
 import { useTheme } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 const buttonStyles = {
 	color: 'white',
@@ -23,6 +24,8 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 		>
 			<DatePickerValue labelName="Select Date" />
 			<Button
+				component={motion.button}
+				whileTap={{ scale: 1.2 }}
 				variant="contained"
 				sx={buttonStyles}
 				onClick={handleSubmitExpense}
@@ -31,6 +34,8 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 			</Button>
 			{state.isEditing && (
 				<Button
+					component={motion.button}
+					whileTap={{ scale: 1.1 }}
 					variant="contained"
 					sx={buttonStyles}
 					onClick={handleCancelEdit}

@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { containerVariants } from '../transactionItems/variants';
-import classes from '../transactionItems/layout/Movements.module.css';
+// import classes from '../transactionItems/layout/Movements.module.css';
 function AnimatedList({ items, children }) {
 	return (
 		<AnimatePresence>

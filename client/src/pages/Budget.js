@@ -11,7 +11,6 @@ import AvailbleFundsCard from '../components/summary-cards/AvailableFundsCard';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import { Box } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import { motion } from 'framer-motion';
 
 function Budget() {
 	const { state } = useAppContext();

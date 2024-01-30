@@ -2,11 +2,12 @@ import * as React from 'react';
 import { useAppContext } from '../../context/context';
 import { useEffect, useState } from 'react';
 import { useDarkMode } from '../../hooks/useDarkMode';
+import { useTransactionContext } from '../../context/transactionContext';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-import { useTransactionContext } from '../../context/transactionContext';
 import CategoryMenuItems from './CategoryMenuItems';
+import { motion } from 'framer-motion';
 
 export default function CategoryMenu() {
 	const { isDarkMode } = useDarkMode();
@@ -56,6 +57,8 @@ export default function CategoryMenu() {
 	return (
 		<div>
 			<Button
+				component={motion.button}
+				whileTap={{ scale: 1.1 }}
 				id="basic-button"
 				aria-controls={open ? 'basic-menu' : undefined}
 				aria-haspopup="true"

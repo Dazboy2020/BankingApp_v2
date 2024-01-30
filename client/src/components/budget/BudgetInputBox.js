@@ -6,6 +6,7 @@ import ProgressBarComponent from '../ProgressBar/ProgressBar';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import useAddBudget from '../../hooks/useAddBudget';
 import DeleteButton from '../buttons/DeleteButton';
+import { motion } from 'framer-motion';
 
 function BudgetInputBox() {
 	const { budget, dispatch, state } = useAppContext();
@@ -119,6 +120,8 @@ function BudgetInputBox() {
 				/>
 				<Box sx={{ display: 'flex' }}>
 					<Button
+						component={motion.button}
+						whileTap={{ scale: 1.2 }}
 						type="submit"
 						color="secondary"
 						onClick={(e) => handleSubmit(e)}
