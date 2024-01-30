@@ -8,6 +8,7 @@ import DepositItems from '../components/transactionItems/deposit-card/DepositIte
 import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
 import PageLayout from './layout/PageLayout';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
+import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
 function Deposits() {
 	const { expenseType } = useTransactionContext();
@@ -20,6 +21,7 @@ function Deposits() {
 	return (
 		<>
 			<ResponsiveDrawer />
+			<AlertDialogSlide />
 			<PageLayout>
 				<SummaryCardSection
 					TotalExpensesCard={<TotalDepositsCard />}

@@ -7,7 +7,11 @@ export const containerVariants = {
 		scale: 1,
 		opacity: 1,
 		transition: {
-			// opacity: { delay: 0.025 },
+			type: 'spring',
+			bounce: 0.3,
+			duration: 0.5,
+			// delayChildren: 0.3,
+			// staggerChildren: 0.05,
 		},
 	}),
 };

@@ -4,15 +4,16 @@ import { motion as m } from 'framer-motion';
 function LinkEffects() {
 	return (
 		<Box
+			layoutId="tab-indicator"
 			component={m.div}
-			initial={{ scale: 0 }}
+			initial={{ scale: 0, opacity: 0 }}
 			animate={{
 				opacity: 1,
-				scale: [0, 1],
+				scale: 1,
 				width: '75%',
 				transition: { delay: 0.3, duration: 0.1 },
 			}}
-			exit={{ scale: [1, 0] }}
+			exit={{ scale: 0, opacity: 0 }}
 			sx={{
 				height: '2px',
 				backgroundColor: '#f70776',

@@ -11,7 +11,7 @@ function SummaryCardSection({
 		<Stack
 			component="section"
 			spacing={3}
-			direction={{ sm: 'column', md: 'row' }}
+			direction={{ sm: 'column', lg: 'row' }}
 			sx={{
 				width: '100%',
 				justifyContent: 'space-between',

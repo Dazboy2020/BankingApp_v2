@@ -1,7 +1,7 @@
 import { useAppContext } from '../context/context';
 import { Stack } from '@mui/system';
 import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
-import MovementList from '../components/transactionItems/layout/MovementList';
+// import MovementList from '../components/transactionItems/layout/MovementList';
 import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
@@ -12,6 +12,7 @@ import FilterItems from '../components/filter/Filter';
 import PageLayout from './layout/PageLayout';
 import PieChartSection from '../features/chart-section/PieChartSection';
 import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
+import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
 function MainApp() {
 	const { state } = useAppContext();
@@ -20,8 +21,10 @@ function MainApp() {
 		<>
 			<ResponsiveDrawer />
 			<CloseAccountModal />
+			<AlertDialogSlide />
 			<PageLayout>
 				{/* //! Summary Cards */}
+
 				<SummaryCardSection
 					TotalExpensesCard={<TotalExpensesCard />}
 					TotalDepositsCard={<TotalDepositsCard />}
@@ -32,12 +35,10 @@ function MainApp() {
 				<PieChartSection />
 
 				{/* //!Movements */}
-				<MovementList>
-					<Stack direction="column" sx={{ flexGrow: 1 }}>
-						{state.combinedTransactions.length > 0 && <FilterItems />}
-						<CombinedItems type="combined" />
-					</Stack>
-				</MovementList>
+				<Stack direction="column" sx={{ flexGrow: 1 }}>
+					{state.combinedTransactions.length > 0 && <FilterItems />}
+					<CombinedItems type="combined" />
+				</Stack>
 			</PageLayout>
 		</>
 	);

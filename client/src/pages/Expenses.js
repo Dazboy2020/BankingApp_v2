@@ -8,6 +8,7 @@ import SummaryCardSection from '../features/summaryCard-section/SummaryCardSecti
 import PageLayout from './layout/PageLayout';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import { Box } from '@mui/material';
+import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
 function Expenses() {
 	const { expenseType } = useTransactionContext();
@@ -20,6 +21,8 @@ function Expenses() {
 	return (
 		<>
 			<ResponsiveDrawer />
+			<AlertDialogSlide />
+
 			<PageLayout>
 				<SummaryCardSection
 					TotalExpensesCard={<TotalExpensesCard />}
