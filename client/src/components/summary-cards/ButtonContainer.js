@@ -26,6 +26,7 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 			<Button
 				component={motion.button}
 				whileTap={{ scale: 1.2 }}
+				transition={{ type: 'spring', stiffness: 500 }}
 				variant="contained"
 				sx={buttonStyles}
 				onClick={handleSubmitExpense}
@@ -36,6 +37,7 @@ function ButtonContainer({ handleSubmitExpense, handleCancelEdit }) {
 				<Button
 					component={motion.button}
 					whileTap={{ scale: 1.1 }}
+					transition={{ type: 'spring', stiffness: 500 }}
 					variant="contained"
 					sx={buttonStyles}
 					onClick={handleCancelEdit}

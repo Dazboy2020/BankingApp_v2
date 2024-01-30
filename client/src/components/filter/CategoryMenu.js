@@ -59,6 +59,7 @@ export default function CategoryMenu() {
 			<Button
 				component={motion.button}
 				whileTap={{ scale: 1.1 }}
+				transition={{ type: 'spring', stiffness: 500 }}
 				id="basic-button"
 				aria-controls={open ? 'basic-menu' : undefined}
 				aria-haspopup="true"

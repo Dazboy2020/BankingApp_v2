@@ -29,6 +29,7 @@ function EditButton(expense) {
 		<Button
 			component={motion.button}
 			whileTap={{ scale: 1.2 }}
+			transition={{ type: 'spring', stiffness: 500 }}
 			variant="contained"
 			startIcon={
 				<CreateIcon

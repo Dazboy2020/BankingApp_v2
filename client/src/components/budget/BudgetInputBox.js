@@ -122,6 +122,7 @@ function BudgetInputBox() {
 					<Button
 						component={motion.button}
 						whileTap={{ scale: 1.2 }}
+						transition={{ type: 'spring', stiffness: 500 }}
 						type="submit"
 						color="secondary"
 						onClick={(e) => handleSubmit(e)}

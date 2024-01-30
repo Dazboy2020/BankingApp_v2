@@ -42,6 +42,7 @@ function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
 		<Button
 			component={motion.button}
 			whileTap={{ scale: 1.2 }}
+			transition={{ type: 'spring', stiffness: 500 }}
 			sx={{ ml: '6px' }}
 			variant="contained"
 			startIcon={
