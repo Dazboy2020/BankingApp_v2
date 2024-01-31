@@ -4,6 +4,7 @@ import { CardContent, Card, Box, CardMedia, TextField } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import { useAppContext } from '../context/context';
 import { useDarkMode } from '../hooks/useDarkMode';
+import FramerWrapper from './page-animations/FramerWrapper';
 
 function Account() {
 	const { state } = useAppContext();
@@ -32,96 +33,98 @@ function Account() {
 			<AlertDialogSlide />
 
 			<PageLayout>
-				<Card
-					component="main"
-					sx={{
-						width: '100%',
-						height: { xs: '100%', s: '100%', sm: '75%' },
-						justifyContent: 'center',
-						alignItems: 'center',
-					}}
-				>
-					<CardContent
+				<FramerWrapper>
+					<Card
+						component="main"
 						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							height: '75vh',
+							width: '100%',
+							height: { xs: '100%', s: '100%', sm: '75%' },
+							justifyContent: 'center',
+							alignItems: 'center',
 						}}
 					>
-						<CardMedia
-							sx={{ width: '120px', height: 'auto', mb: 3 }}
-							component="img"
-							src="/avatar-min.jpg"
-							alt="user avatar"
-						/>
-						<Box
-							component="form"
+						<CardContent
 							sx={{
-								'& .MuiTextField-root': {
-									m: 1,
-									width: { md: '80ch', sm: '45ch', s: '99%', xs: '99%' },
-									mt: 2,
-								},
+								display: 'flex',
+								flexDirection: 'column',
+								height: '75vh',
 							}}
-							noValidate
-							autoComplete="off"
 						>
-							<Box sx={{ textAlign: 'center' }}>
-								<TextField
-									id="outlined-firstname"
-									label="First Name"
-									defaultValue={state.user}
-									color="secondary"
-									sx={disabledStyles}
-									disabled={true}
-								/>
-								<TextField
-									id="outlined-secondname"
-									label="Second Name"
-									defaultValue={state.lastName}
-									color="secondary"
-									sx={disabledStyles}
-									disabled={true}
-								/>
-							</Box>
-							<Box sx={{ textAlign: 'center' }}>
-								<TextField
-									id="outlined-email"
-									label="Email"
-									defaultValue={state.loggedInAccount.email}
-									sx={disabledStyles}
-									disabled={true}
-								/>
-								<TextField
-									id="outlined-currency"
-									label="Currency "
-									defaultValue="€"
-									disabled={true}
-									sx={disabledStyles}
-								/>
-							</Box>
+							<CardMedia
+								sx={{ width: '120px', height: 'auto', mb: 3 }}
+								component="img"
+								src="/avatar-min.jpg"
+								alt="user avatar"
+							/>
 							<Box
+								component="form"
 								sx={{
-									position: 'absolute',
-									bottom: '1rem',
-									textDecoration: 'none',
-									'& a': {
-										color: 'gray',
-										textDecoration: 'none',
-										'&:hover': {
-											color: '#d6d3d1',
-										},
+									'& .MuiTextField-root': {
+										m: 1,
+										width: { md: '80ch', sm: '45ch', s: '99%', xs: '99%' },
+										mt: 2,
 									},
 								}}
+								noValidate
+								autoComplete="off"
 							>
-								<a href="https://www.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_7074311.htm#query=avatar&position=2&from_view=keyword&track=sph">
-									Image by pikisuperstar
-								</a>
-								on Freepik
+								<Box sx={{ textAlign: 'center' }}>
+									<TextField
+										id="outlined-firstname"
+										label="First Name"
+										defaultValue={state.user}
+										color="secondary"
+										sx={disabledStyles}
+										disabled={true}
+									/>
+									<TextField
+										id="outlined-secondname"
+										label="Second Name"
+										defaultValue={state.lastName}
+										color="secondary"
+										sx={disabledStyles}
+										disabled={true}
+									/>
+								</Box>
+								<Box sx={{ textAlign: 'center' }}>
+									<TextField
+										id="outlined-email"
+										label="Email"
+										defaultValue={state.loggedInAccount.email}
+										sx={disabledStyles}
+										disabled={true}
+									/>
+									<TextField
+										id="outlined-currency"
+										label="Currency "
+										defaultValue="€"
+										disabled={true}
+										sx={disabledStyles}
+									/>
+								</Box>
+								<Box
+									sx={{
+										position: 'absolute',
+										bottom: '1rem',
+										textDecoration: 'none',
+										'& a': {
+											color: 'gray',
+											textDecoration: 'none',
+											'&:hover': {
+												color: '#d6d3d1',
+											},
+										},
+									}}
+								>
+									<a href="https://www.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_7074311.htm#query=avatar&position=2&from_view=keyword&track=sph">
+										Image by pikisuperstar
+									</a>
+									on Freepik
+								</Box>
 							</Box>
-						</Box>
-					</CardContent>
-				</Card>
+						</CardContent>
+					</Card>
+				</FramerWrapper>
 			</PageLayout>
 		</Box>
 	);

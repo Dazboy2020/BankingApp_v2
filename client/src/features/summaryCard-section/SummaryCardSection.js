@@ -16,6 +16,8 @@ function SummaryCardSection({
 				width: '100%',
 				justifyContent: 'space-between',
 				mt: { xs: 5, md: 10 },
+				mb: { lg: 2 },
+				minHeight: { lg: '12rem' },
 			}}
 		>
 			{TotalExpensesCard && TotalExpensesCard}

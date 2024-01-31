@@ -34,7 +34,6 @@ function Budget() {
 		<>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
-
 			<PageLayout>
 				<SummaryCardSection
 					TotalExpensesCard={<TotalExpensesCard type="budget" />}
@@ -47,6 +46,7 @@ function Budget() {
 					<CombinedItems type="budget" />
 				</Box>
 			</PageLayout>
+			s
 		</>
 	);
 }

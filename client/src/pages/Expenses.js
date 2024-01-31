@@ -22,14 +22,12 @@ function Expenses() {
 		<>
 			<ResponsiveDrawer />
 			<AlertDialogSlide />
-
 			<PageLayout>
 				<SummaryCardSection
 					TotalExpensesCard={<TotalExpensesCard />}
 					AvailbleFundsCard={<AvailbleFundsCard />}
 					AddTransaction={<AddTransaction expenseType={expenseType} />}
 				/>
-
 				<Box sx={layout}>
 					{displayFilterComponent()}
 					<ExpenseItems />

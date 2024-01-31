@@ -28,7 +28,6 @@ function Deposits() {
 					AvailbleFundsCard={<AvailbleFundsCard />}
 					AddTransaction={<AddTransaction expenseType={expenseType} />}
 				/>
-
 				<Box sx={layout}>
 					{displayFilterComponent()}
 					<DepositItems />

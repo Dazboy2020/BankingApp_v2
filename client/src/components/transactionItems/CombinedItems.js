@@ -6,6 +6,7 @@ import DepositCard from './deposit-card/DepositCard';
 import NoDataCard from './noData-card/NoDataCard';
 import { sortArrayByDate } from '../../utils/sortArray';
 import AnimatedList from '../animated-list/AnimatedList';
+import classes from './layout/Movements.module.css';
 
 const CombinedItems = ({ type }) => {
 	const { transactions } = useFilteredTransactions(type);
@@ -19,7 +20,11 @@ const CombinedItems = ({ type }) => {
 		(state.budget === null && state.isActive !== 0) ||
 		combinedTransactions.length === 0
 	) {
-		return <NoDataCard type="transaction" />;
+		return (
+			<div className={classes.movements__row}>
+				<NoDataCard type="transaction" />
+			</div>
+		);
 	}
 
 	sortArrayByDate(combinedTransactions);

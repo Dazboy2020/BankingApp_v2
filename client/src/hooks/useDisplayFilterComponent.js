@@ -5,6 +5,14 @@ function useDisplayFilterComponent() {
 	const { state } = useAppContext();
 
 	function displayFilterComponent() {
+		if (
+			state.isActive === 0 &&
+			!state.isEditing &&
+			state.combinedTransactions.length > 0
+		) {
+			return <FilterItems />;
+		}
+
 		if (state.isActive === 1 && !state.isEditing && state.expenses.length > 0) {
 			return <FilterItems />;
 		}

@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { containerVariants } from '../transactionItems/variants';
-// import classes from '../transactionItems/layout/Movements.module.css';
 function AnimatedList({ items, children }) {
 	return (
 		<AnimatePresence>
@@ -11,7 +10,7 @@ function AnimatedList({ items, children }) {
 					custom={index}
 					initial="initial"
 					animate="animate"
-					exit={{ opacity: 0, scale: 0, height: 0 }}
+					exit={{ opacity: 0, scale: 0, height: 1 }}
 					variants={containerVariants}
 					layout
 				>
