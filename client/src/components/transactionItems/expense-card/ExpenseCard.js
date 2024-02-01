@@ -19,17 +19,23 @@ function ExpenseCard({ expense }) {
 	return (
 		<ExpenseCardContextProvider expense={expense}>
 			<CardWrapper>
-				<ExpenseCardTitle />
-				<ExpenseCardDate />
-				<ExpenseCardCategory />
+				<ExpenseCard.Title />
+				<ExpenseCard.Date />
+				<ExpenseCard.Category />
 
 				<Box sx={styling}>
-					<ExpenseCardButtons />
-					<ExpenseCardAmount />
+					<ExpenseCard.Buttons />
+					<ExpenseCard.Amount />
 				</Box>
 			</CardWrapper>
 		</ExpenseCardContextProvider>
 	);
 }
+
+ExpenseCard.Title = ExpenseCardTitle;
+ExpenseCard.Date = ExpenseCardDate;
+ExpenseCard.Category = ExpenseCardCategory;
+ExpenseCard.Buttons = ExpenseCardButtons;
+ExpenseCard.Amount = ExpenseCardAmount;
 
 export default ExpenseCard;

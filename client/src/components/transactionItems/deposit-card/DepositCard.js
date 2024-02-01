@@ -19,17 +19,23 @@ function DepositCard({ deposit }) {
 	return (
 		<DepositCardContextProvider deposit={deposit}>
 			<CardWrapper>
-				<DepositCardTitle />
-				<DepositCardDate />
-				<DepositCardCategory />
+				<DepositCard.Title />
+				<DepositCard.Date />
+				<DepositCard.Category />
 
 				<Box sx={styling}>
-					<DepositCardButtons />
-					<DepositCardAmount />
+					<DepositCard.Buttons />
+					<DepositCard.Amount />
 				</Box>
 			</CardWrapper>
 		</DepositCardContextProvider>
 	);
 }
+
+DepositCard.Title = DepositCardTitle;
+DepositCard.Date = DepositCardDate;
+DepositCard.Category = DepositCardCategory;
+DepositCard.Buttons = DepositCardButtons;
+DepositCard.Amount = DepositCardAmount;
 
 export default DepositCard;
