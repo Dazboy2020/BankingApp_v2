@@ -10,7 +10,7 @@ import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import { Box } from '@mui/material';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
-function Expenses() {
+function ExpensesPage() {
 	const { expenseType } = useTransactionContext();
 	const { displayFilterComponent } = useDisplayFilterComponent();
 
@@ -37,4 +37,4 @@ function Expenses() {
 	);
 }
 
-export default Expenses;
+export default ExpensesPage;

@@ -8,10 +8,9 @@ export const containerVariants = {
 		opacity: 1,
 		transition: {
 			type: 'spring',
-			bounce: 0.3,
+			bounce: 0.2,
 			opacity: { ease: 'linear' },
 			// layout: { duration: 0.3 },
-			// duration: 0.3,
 			// delayChildren: 0.3,
 			// staggerChildren: 0.05,
 		},

@@ -3,7 +3,6 @@ import TotalExpensesCard from '../../components/summary-cards/TotalExpensesCard'
 import TotalDepositsCard from '../../components/summary-cards/TotalDepositsCard';
 import AvailbleFundsCard from '../../components/summary-cards/AvailableFundsCard';
 import AddTransaction from '../../components/summary-cards/AddTransaction';
-import BudgetCard from '../../components/summary-cards/BudgetCard';
 
 function SummaryCardSection({
 	totalExpensesCard,
@@ -29,7 +28,7 @@ function SummaryCardSection({
 			{totalDepositsCard && <TotalDepositsCard />}
 			{availbleFundsCard && <AvailbleFundsCard />}
 			{addTransaction && <AddTransaction />}
-			{budgetCard && <BudgetCard />}
+			{budgetCard && budgetCard()}
 		</Stack>
 	);
 }

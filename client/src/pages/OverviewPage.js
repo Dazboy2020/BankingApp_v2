@@ -12,6 +12,7 @@ import SummaryCardSection from '../features/summaryCard-section/SummaryCardSecti
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import { Box } from '@mui/material';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
+import FramerWrapper from './page-animations/FramerWrapper';
 
 function MainApp() {
 	const { displayFilterComponent } = useDisplayFilterComponent();
@@ -27,7 +28,6 @@ function MainApp() {
 			<AlertDialogSlide />
 			<PageLayout>
 				{/* //! Summary Cards */}
-
 				<SummaryCardSection
 					totalExpensesCard={<TotalExpensesCard />}
 					totalDepositsCard={<TotalDepositsCard />}
@@ -35,10 +35,11 @@ function MainApp() {
 				/>
 
 				{/* //! Charts */}
-				<PieChartSection />
+				<FramerWrapper>
+					<PieChartSection />
+				</FramerWrapper>
 
 				{/* //!Movements */}
-
 				<Box sx={layout}>
 					{displayFilterComponent()}
 					<CombinedItems type="combined" />

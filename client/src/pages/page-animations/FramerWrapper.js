@@ -1,29 +1,40 @@
-import { LayoutGroup, easeInOut, motion } from 'framer-motion';
+import { AnimatePresence, easeOut, motion } from 'framer-motion';
 
 function FramerWrapper({ children }) {
 	const containerVariants = {
 		initial: {
-			y: '100%',
 			opacity: 0,
+			height: 0,
+			// scale: 0.9,
 		},
 		animate: (index) => ({
-			y: 0,
 			opacity: 1,
+			height: 'auto',
+			// scale: 1,
 			transition: {
 				type: 'tween',
 				opacity: { ease: 'linear' },
+				duration: 0.2,
 			},
 		}),
 	};
 	return (
-		<motion.div
-			variants={containerVariants}
-			initial="initial"
-			animate="animate"
-			exit={{ opacity: 0, y: '100%', transition: easeInOut }}
-		>
-			<LayoutGroup>{children}</LayoutGroup>
-		</motion.div>
+		<AnimatePresence key="wrapper">
+			<motion.div
+				variants={containerVariants}
+				initial="initial"
+				animate="animate"
+				exit={{
+					opacity: 1,
+					height: 0,
+					transition: { ease: easeOut, duration: 0.2 },
+				}}
+				key="wrapper-inner"
+				layout
+			>
+				{children}
+			</motion.div>
+		</AnimatePresence>
 	);
 }
 

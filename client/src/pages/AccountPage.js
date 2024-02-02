@@ -38,7 +38,7 @@ function Account() {
 						component="main"
 						sx={{
 							width: '100%',
-							height: { xs: '100%', s: '100%', sm: '75%' },
+							height: { xs: '100%', s: '100%', sm: '100%' },
 							justifyContent: 'center',
 							alignItems: 'center',
 						}}
@@ -61,7 +61,13 @@ function Account() {
 								sx={{
 									'& .MuiTextField-root': {
 										m: 1,
-										width: { md: '80ch', sm: '45ch', s: '99%', xs: '99%' },
+										width: {
+											xs: '99%',
+											s: '99%',
+											sm: '35ch',
+											md: '60ch',
+											lg: '60ch',
+										},
 										mt: 2,
 									},
 								}}

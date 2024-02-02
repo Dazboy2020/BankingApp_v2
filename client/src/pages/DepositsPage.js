@@ -10,7 +10,7 @@ import PageLayout from './layout/PageLayout';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
-function Deposits() {
+function DepositsPage() {
 	const { expenseType } = useTransactionContext();
 	const { displayFilterComponent } = useDisplayFilterComponent();
 
@@ -37,4 +37,4 @@ function Deposits() {
 	);
 }
 
-export default Deposits;
+export default DepositsPage;

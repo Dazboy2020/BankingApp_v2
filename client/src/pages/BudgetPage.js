@@ -38,7 +38,8 @@ function Budget() {
 				<SummaryCardSection
 					totalExpensesCard={<TotalExpensesCard type="budget" />}
 					availbleFundsCard={<AvailbleFundsCard type="budget" />}
-					addTransaction={budgetCardToDisplay()}
+					// addTransaction={budgetCardToDisplay()}
+					budgetCard={budgetCardToDisplay}
 				/>
 
 				<Box sx={layout}>
