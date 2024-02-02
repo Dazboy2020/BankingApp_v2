@@ -24,9 +24,9 @@ function Expenses() {
 			<AlertDialogSlide />
 			<PageLayout>
 				<SummaryCardSection
-					TotalExpensesCard={<TotalExpensesCard />}
-					AvailbleFundsCard={<AvailbleFundsCard />}
-					AddTransaction={<AddTransaction expenseType={expenseType} />}
+					totalExpensesCard={<TotalExpensesCard />}
+					availbleFundsCard={<AvailbleFundsCard />}
+					addTransaction={<AddTransaction expenseType={expenseType} />}
 				/>
 				<Box sx={layout}>
 					{displayFilterComponent()}

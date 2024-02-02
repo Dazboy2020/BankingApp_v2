@@ -1,11 +1,16 @@
 import { Stack } from '@mui/material';
+import TotalExpensesCard from '../../components/summary-cards/TotalExpensesCard';
+import TotalDepositsCard from '../../components/summary-cards/TotalDepositsCard';
+import AvailbleFundsCard from '../../components/summary-cards/AvailableFundsCard';
+import AddTransaction from '../../components/summary-cards/AddTransaction';
+import BudgetCard from '../../components/summary-cards/BudgetCard';
 
 function SummaryCardSection({
-	TotalExpensesCard,
-	TotalDepositsCard,
-	AvailbleFundsCard,
-	AddTransaction,
-	BudgetCard,
+	totalExpensesCard,
+	totalDepositsCard,
+	availbleFundsCard,
+	addTransaction,
+	budgetCard,
 }) {
 	return (
 		<Stack
@@ -20,11 +25,11 @@ function SummaryCardSection({
 				minHeight: { lg: '12rem' },
 			}}
 		>
-			{TotalExpensesCard && TotalExpensesCard}
-			{TotalDepositsCard && TotalDepositsCard}
-			{AvailbleFundsCard && AvailbleFundsCard}
-			{AddTransaction && AddTransaction}
-			{BudgetCard && BudgetCard}
+			{totalExpensesCard && <TotalExpensesCard />}
+			{totalDepositsCard && <TotalDepositsCard />}
+			{availbleFundsCard && <AvailbleFundsCard />}
+			{addTransaction && <AddTransaction />}
+			{budgetCard && <BudgetCard />}
 		</Stack>
 	);
 }

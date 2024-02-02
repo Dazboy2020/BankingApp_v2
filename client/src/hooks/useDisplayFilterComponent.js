@@ -6,7 +6,7 @@ function useDisplayFilterComponent() {
 
 	function displayFilterComponent() {
 		if (
-			state.isActive === 0 &&
+			(state.isActive === 0 || state.isActive === 4) &&
 			!state.isEditing &&
 			state.combinedTransactions.length > 0
 		) {
@@ -18,14 +18,6 @@ function useDisplayFilterComponent() {
 		}
 
 		if (state.isActive === 2 && !state.isEditing && state.deposits.length > 0) {
-			return <FilterItems />;
-		}
-
-		if (
-			state.isActive === 4 &&
-			!state.isEditing &&
-			state.combinedTransactions.length > 0
-		) {
 			return <FilterItems />;
 		}
 	}

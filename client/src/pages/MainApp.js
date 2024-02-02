@@ -1,5 +1,5 @@
-import { useAppContext } from '../context/context';
-import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
+// import { useAppContext } from '../context/context';
+// import CloseAccountModal from '../UI/AlertDialogue/CloseAccountModal';
 import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import ResponsiveDrawer from '../components/drawer/Draw';
 import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
@@ -10,13 +10,11 @@ import PageLayout from './layout/PageLayout';
 import PieChartSection from '../features/chart-section/PieChartSection';
 import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
 import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
-import FilterItems from '../components/filter/Filter';
 import { Box } from '@mui/material';
-import FramerWrapper from './page-animations/FramerWrapper';
+import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 
 function MainApp() {
-	const { state } = useAppContext();
-	// const { displayFilterComponent } = useDisplayFilterComponent();
+	const { displayFilterComponent } = useDisplayFilterComponent();
 
 	const layout = {
 		mt: { xs: 5, md: 10 },
@@ -25,28 +23,26 @@ function MainApp() {
 	return (
 		<>
 			<ResponsiveDrawer />
-			<CloseAccountModal />
+			{/* <CloseAccountModal /> */}
 			<AlertDialogSlide />
 			<PageLayout>
-				<FramerWrapper>
-					{/* //! Summary Cards */}
+				{/* //! Summary Cards */}
 
-					<SummaryCardSection
-						TotalExpensesCard={<TotalExpensesCard />}
-						TotalDepositsCard={<TotalDepositsCard />}
-						AvailbleFundsCard={<AvailbleFundsCard />}
-					/>
+				<SummaryCardSection
+					totalExpensesCard={<TotalExpensesCard />}
+					totalDepositsCard={<TotalDepositsCard />}
+					availbleFundsCard={<AvailbleFundsCard />}
+				/>
 
-					{/* //! Charts */}
-					<PieChartSection />
+				{/* //! Charts */}
+				<PieChartSection />
 
-					{/* //!Movements */}
+				{/* //!Movements */}
 
-					<Box sx={layout}>
-						{state.combinedTransactions.length > 0 && <FilterItems />}
-						<CombinedItems type="combined" />
-					</Box>
-				</FramerWrapper>
+				<Box sx={layout}>
+					{displayFilterComponent()}
+					<CombinedItems type="combined" />
+				</Box>
 			</PageLayout>
 		</>
 	);

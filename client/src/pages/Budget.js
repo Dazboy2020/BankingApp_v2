@@ -36,9 +36,9 @@ function Budget() {
 			<AlertDialogSlide />
 			<PageLayout>
 				<SummaryCardSection
-					TotalExpensesCard={<TotalExpensesCard type="budget" />}
-					AvailbleFundsCard={<AvailbleFundsCard type="budget" />}
-					AddTransaction={budgetCardToDisplay()}
+					totalExpensesCard={<TotalExpensesCard type="budget" />}
+					availbleFundsCard={<AvailbleFundsCard type="budget" />}
+					addTransaction={budgetCardToDisplay()}
 				/>
 
 				<Box sx={layout}>
