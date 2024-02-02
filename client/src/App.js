@@ -16,20 +16,20 @@ import { createTheme } from '@mui/material';
 // import SignIn from './pages/SignIn';
 // import SignUp from './pages/SignUp';
 
-const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 
-const SignIn = lazy(() => import('./pages/SignIn'));
-const SignUp = lazy(() => import('./pages/SignUp'));
+const SignInPage = lazy(() => import('./pages/SignInPage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 const Homepage = lazy(() => import('./components/homepage/Homepage'));
 
-const MainApp = lazy(() => import('./pages/MainApp'));
+const OverviewPage = lazy(() => import('./pages/OverviewPage'));
 const About = lazy(() => import('./pages/About'));
-const Expenses = lazy(() => import('./pages/Expenses'));
-const Deposits = lazy(() => import('./pages/Deposits'));
-const Account = lazy(() => import('./pages/Account'));
-const Charts = lazy(() => import('./pages/Charts'));
-const Budget = lazy(() => import('./pages/Budget'));
+const ExpensesPage = lazy(() => import('./pages/ExpensesPage'));
+const DepositsPage = lazy(() => import('./pages/DepositsPage'));
+const AccountPage = lazy(() => import('./pages/AccountPage'));
+const ChartsPage = lazy(() => import('./pages/ChartsPage'));
+const BudgetPage = lazy(() => import('./pages/BudgetPage'));
 
 axios.defaults.baseURL = 'http://localhost:5000';
 // axios.defaults.withCredentials = true;
@@ -157,9 +157,9 @@ function App() {
 					<Routes location={location} key={location.pathname}>
 						<Route index element={<Homepage />} />
 
-						<Route path="login" element={<SignIn />} />
-						<Route path="signup" element={<SignUp />} />
-						<Route path="forgotpassword" element={<ForgotPassword />} />
+						<Route path="login" element={<SignInPage />} />
+						<Route path="signup" element={<SignUpPage />} />
+						<Route path="forgotpassword" element={<ForgotPasswordPage />} />
 						<Route
 							path="resetpassword/:resetToken/"
 							element={<ResetPassword />}
@@ -167,12 +167,12 @@ function App() {
 
 						{/* //!ProtectedRoutes */}
 						<Route element={<ProtectedRoute />}>
-							<Route path="overview" element={<MainApp />} />
-							<Route path="expenses" element={<Expenses />} />
-							<Route path="deposits" element={<Deposits />} />
-							<Route path="charts" element={<Charts />} />
-							<Route path="budget" element={<Budget />} />
-							<Route path="account" element={<Account />} />
+							<Route path="overview" element={<OverviewPage />} />
+							<Route path="expenses" element={<ExpensesPage />} />
+							<Route path="deposits" element={<DepositsPage />} />
+							<Route path="charts" element={<ChartsPage />} />
+							<Route path="budget" element={<BudgetPage />} />
+							<Route path="account" element={<AccountPage />} />
 							<Route path="about" element={<About />} />
 						</Route>
 					</Routes>

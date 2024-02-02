@@ -1,7 +1,7 @@
 import { useAppContext } from '../context/context';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import SignIn from '../pages/SignIn';
+import SignIn from '../pages/SignInPage';
 import { useModalContext } from '../context/modalContext';
 
 export default function useGetUserToken() {
