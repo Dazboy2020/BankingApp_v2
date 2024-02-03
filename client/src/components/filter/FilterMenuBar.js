@@ -4,10 +4,8 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography, Stack } from '@mui/material';
-import CategoryMenu from './CategoryMenu';
-// import FilterInputBox from './FilterInputBox';
 
-const FilterItems = () => {
+const FilterMenuBar = ({ actionButton, text }) => {
 	const { isDarkMode } = useDarkMode();
 
 	return (
@@ -35,7 +33,7 @@ const FilterItems = () => {
 						color: isDarkMode ? '#d6d3d1' : '#000',
 					}}
 				>
-					Filter Items:
+					{text}
 				</Typography>
 				<Stack
 					direction={{ md: 'column', lg: 'row' }}
@@ -45,12 +43,11 @@ const FilterItems = () => {
 						alignItems: 'center',
 					}}
 				>
-					<CategoryMenu />
-					{/* <FilterInputBox /> */}
+					{actionButton}
 				</Stack>
 			</CardContent>
 		</Card>
 	);
 };
 
-export default FilterItems;
+export default FilterMenuBar;
