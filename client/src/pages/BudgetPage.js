@@ -2,7 +2,6 @@ import { useAppContext } from '../context/context';
 import { useTransactionContext } from '../context/transactionContext';
 import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import CombinedItems from '../components/transactionItems/CombinedItems';
-import ResponsiveDrawer from '../components/drawer/Draw';
 import PageLayout from './layout/PageLayout';
 import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
 import BudgetCard from '../components/summary-cards/BudgetCard';
@@ -10,9 +9,8 @@ import AddTransaction from '../components/summary-cards/AddTransaction';
 import AvailbleFundsCard from '../components/summary-cards/AvailableFundsCard';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import { Box } from '@mui/material';
-import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 
-function Budget() {
+function BudgetPage() {
 	const { state } = useAppContext();
 	const { expenseType } = useTransactionContext();
 
@@ -31,25 +29,20 @@ function Budget() {
 	};
 
 	return (
-		<>
-			<ResponsiveDrawer />
-			<AlertDialogSlide />
-			<PageLayout>
-				<SummaryCardSection
-					totalExpensesCard={<TotalExpensesCard type="budget" />}
-					availbleFundsCard={<AvailbleFundsCard type="budget" />}
-					// addTransaction={budgetCardToDisplay()}
-					budgetCard={budgetCardToDisplay}
-				/>
+		<PageLayout>
+			<SummaryCardSection
+				totalExpensesCard={<TotalExpensesCard type="budget" />}
+				availbleFundsCard={<AvailbleFundsCard type="budget" />}
+				// addTransaction={budgetCardToDisplay()}
+				budgetCard={budgetCardToDisplay}
+			/>
 
-				<Box sx={layout}>
-					{displayFilterComponent()}
-					<CombinedItems type="budget" />
-				</Box>
-			</PageLayout>
-			s
-		</>
+			<Box sx={layout}>
+				{displayFilterComponent()}
+				<CombinedItems type="budget" />
+			</Box>
+		</PageLayout>
 	);
 }
 
-export default Budget;
+export default BudgetPage;

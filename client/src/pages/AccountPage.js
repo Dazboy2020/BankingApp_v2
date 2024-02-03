@@ -1,7 +1,5 @@
-import ResponsiveDrawer from '../components/drawer/Draw';
 import PageLayout from './layout/PageLayout';
 import { CardContent, Card, Box, CardMedia, TextField } from '@mui/material';
-import AlertDialogSlide from '../UI/AlertDialogue/AlertDialogue';
 import { useAppContext } from '../context/context';
 import { useDarkMode } from '../hooks/useDarkMode';
 import FramerWrapper from './page-animations/FramerWrapper';
@@ -29,9 +27,6 @@ function Account() {
 
 	return (
 		<Box sx={{ backgroundColor: '#343a40' }}>
-			<ResponsiveDrawer />
-			<AlertDialogSlide />
-
 			<PageLayout>
 				<FramerWrapper>
 					<Card
