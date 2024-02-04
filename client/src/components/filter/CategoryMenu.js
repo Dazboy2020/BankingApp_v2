@@ -54,8 +54,17 @@ export default function CategoryMenu() {
 		setExpenseCategory(value);
 	};
 
+	const menuSX = {
+		'& .MuiInputBase-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+		'& .MuiMenuItem-root': {
+			color: isDarkMode ? '#d6d3d1' : '#000',
+		},
+	};
+
 	return (
-		<div>
+		<>
 			<Button
 				component={motion.button}
 				whileTap={{ scale: 1.1 }}
@@ -76,20 +85,13 @@ export default function CategoryMenu() {
 				MenuListProps={{
 					'aria-labelledby': 'basic-button',
 				}}
-				sx={{
-					'& .MuiInputBase-root': {
-						color: isDarkMode ? '#d6d3d1' : '#000',
-					},
-					'& .MuiMenuItem-root': {
-						color: isDarkMode ? '#d6d3d1' : '#000',
-					},
-				}}
+				sx={menuSX}
 			>
 				<CategoryMenuItems
 					handleClose={handleClose}
 					expenseType={expenseType}
 				/>
 			</Menu>
-		</div>
+		</>
 	);
 }

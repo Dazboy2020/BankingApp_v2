@@ -1,10 +1,8 @@
-import { MenuItem } from '@mui/material';
 import { useAppContext } from '../../context/context';
-// import { useTransactionContext } from '../../context/transactionContext';
+import { MenuItem } from '@mui/material';
 
-function CategoryMenuItems({ handleClose, expenseType, categoryLabel }) {
+function CategoryMenuItems({ handleClose, expenseType }) {
 	const { state } = useAppContext();
-	// const { categoryLabel } = useTransactionContext();
 
 	const expenseLabelsInitial = state.expenses
 		.filter((expense) => expense.category)

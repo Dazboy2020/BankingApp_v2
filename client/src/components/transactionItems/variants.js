@@ -1,3 +1,5 @@
+import { easeInOut } from 'framer-motion';
+
 export const containerVariants = {
 	initial: {
 		scale: 0,
@@ -9,7 +11,7 @@ export const containerVariants = {
 		transition: {
 			type: 'spring',
 			bounce: 0.2,
-			opacity: { ease: 'linear' },
+			opacity: { ease: easeInOut },
 			// layout: { duration: 0.3 },
 			// delayChildren: 0.3,
 			// staggerChildren: 0.05,

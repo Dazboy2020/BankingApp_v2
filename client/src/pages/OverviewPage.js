@@ -8,7 +8,6 @@ import PieChartSection from '../features/chart-section/PieChartSection';
 import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
 import { Box } from '@mui/material';
 import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
-import FramerWrapper from './page-animations/FramerWrapper';
 
 function MainApp() {
 	const { displayFilterComponent } = useDisplayFilterComponent();
@@ -27,11 +26,9 @@ function MainApp() {
 			/>
 
 			{/* //! Charts */}
-			<FramerWrapper>
-				<PieChartSection />
-			</FramerWrapper>
+			<PieChartSection />
 
-			{/* //!Movements */}
+			{/* //!Transactions*/}
 			<Box sx={layout}>
 				{displayFilterComponent()}
 				<CombinedItems type="combined" />
