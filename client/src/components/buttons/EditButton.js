@@ -28,7 +28,7 @@ function EditButton(expense) {
 	return (
 		<Button
 			component={motion.button}
-			whileTap={{ scale: 1.2 }}
+			whileTap={{ scale: 1.1 }}
 			transition={{ type: 'spring', stiffness: 500 }}
 			variant="contained"
 			startIcon={

@@ -32,7 +32,6 @@ function PageLayout({ children }) {
 					animate="animate"
 					exit={{ y: '5%', opacity: 0 }}
 					variants={containerVariants}
-					// layout
 					sx={{
 						minHeight: '100vh',
 						ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
