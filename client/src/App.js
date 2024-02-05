@@ -86,18 +86,16 @@ function App() {
 			MuiButton: {
 				styleOverrides: {
 					root: {
+						fontFamily: 'system-ui',
 						backgroundColor: '#52525b', // Set desired background color here
 						color: 'white',
-						fontSize: '1.1rem',
+						fontSize: { xs: '0.1rem', s: '0.1rem', md: '1.5rem', lg: '1.5rem' },
 						letterSpacing: '.1rem',
-						paddingRight: '.8rem',
+						// paddingRight: '.8rem',
 						mr: '10px',
 						fontWeight: '500',
 						mt: '.3rem',
-						pl: '1rem',
-						'&.css-ikss9a-MuiTypography-root': {
-							letterSpacing: '.1rem',
-						},
+
 						padding: { xs: '.6rem', s: '.5rem' },
 						'&:hover': {
 							backgroundColor: '#3f3f46',

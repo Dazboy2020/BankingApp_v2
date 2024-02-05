@@ -10,6 +10,7 @@ function SummaryCardSection({
 	availbleFundsCard,
 	addTransaction,
 	budgetCard,
+	...restProps
 }) {
 	return (
 		<Stack
@@ -19,7 +20,7 @@ function SummaryCardSection({
 			sx={{
 				width: '100%',
 				justifyContent: 'space-between',
-				mt: { xs: 5, md: 10 },
+				mt: { xs: 5, md: 5 },
 				mb: { lg: 2 },
 				minHeight: { lg: '12rem' },
 			}}

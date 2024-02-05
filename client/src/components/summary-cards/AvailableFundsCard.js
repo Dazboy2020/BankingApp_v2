@@ -12,10 +12,11 @@ export default function AvailbleFundsCard({ type }) {
 		totalIncome,
 		totalBudgetDeposits,
 		totalBudgetExpenses,
+		state,
 	} = useAppContext();
 
-	function totalToDisplay(type) {
-		if (type === 'budget') {
+	function totalToDisplay() {
+		if (state.isActive === 4) {
 			return `€${Math.abs(totalBudgetDeposits + totalBudgetExpenses).toFixed(
 				2
 			)}`;
@@ -26,7 +27,7 @@ export default function AvailbleFundsCard({ type }) {
 	return (
 		<CustomCard
 			TransactionTypeCard="Available Funds"
-			transactionTotal={totalToDisplay(type)}
+			transactionTotal={totalToDisplay()}
 			icon={
 				<AccountBalanceIcon
 					sx={{

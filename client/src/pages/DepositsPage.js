@@ -19,7 +19,7 @@ function DepositsPage() {
 	return (
 		<PageLayout>
 			<SummaryCardSection
-				totalExpensesCard={<TotalDepositsCard />}
+				totalDepositsCard={<TotalDepositsCard />}
 				availbleFundsCard={<AvailbleFundsCard />}
 				addTransaction={<AddTransaction expenseType={expenseType} />}
 			/>
