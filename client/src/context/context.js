@@ -370,7 +370,8 @@ function reducer(state, action) {
 
 function ContextProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, inititalState);
-	const [isExpanded, setIsExpanded] = useState(true);
+	const [isPieExpanded, setisPieExpanded] = useState(true);
+	const [isSummaryExpanded, setIsSummaryExpanded] = useState(true);
 
 	const [id, setId] = useState('');
 	const [navLink, setNavLink] = useState(0);
@@ -414,8 +415,10 @@ function ContextProvider({ children }) {
 				totalBudgetDeposits,
 				totalBudgetExpenses,
 
-				isExpanded,
-				setIsExpanded,
+				isPieExpanded,
+				setisPieExpanded,
+				isSummaryExpanded,
+				setIsSummaryExpanded,
 			}}
 		>
 			{children}

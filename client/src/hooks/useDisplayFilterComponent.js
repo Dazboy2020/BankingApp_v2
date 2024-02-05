@@ -14,7 +14,7 @@ function useDisplayFilterComponent() {
 			return (
 				<FilterMenuBar
 					actionButton={<CategoryMenu />}
-					text="Filter Items:"
+					text="Filter:"
 					type="chart"
 				/>
 			);
@@ -22,13 +22,21 @@ function useDisplayFilterComponent() {
 
 		if (state.isActive === 1 && !state.isEditing && state.expenses.length > 0) {
 			return (
-				<FilterMenuBar actionButton={<CategoryMenu />} text="Filter Items:" />
+				<FilterMenuBar
+					actionButton={<CategoryMenu />}
+					text="Filter:"
+					type="chart"
+				/>
 			);
 		}
 
 		if (state.isActive === 2 && !state.isEditing && state.deposits.length > 0) {
 			return (
-				<FilterMenuBar actionButton={<CategoryMenu />} text="Filter Items:" />
+				<FilterMenuBar
+					actionButton={<CategoryMenu />}
+					text="Filter:"
+					type="chart"
+				/>
 			);
 		}
 	}

@@ -3,16 +3,17 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Typography, Stack } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
-const FilterMenuBar = ({ actionButton, text, type }) => {
+const FilterMenuBar = ({ actionButton, text, actionButton2, type }) => {
 	const { isDarkMode } = useDarkMode();
+
+	const { ...otherProps } = actionButton2 ? actionButton2.props : {};
 
 	return (
 		<Card
 			component="article"
 			sx={{
-				display: 'flex',
 				mb: 2,
 				borderRadius: '10px',
 				p: 0,
@@ -22,7 +23,8 @@ const FilterMenuBar = ({ actionButton, text, type }) => {
 				sx={{
 					width: '100%',
 					display: 'flex',
-					alignItems: { xs: 'center', sm: 'center' },
+					flexGrow: 1,
+					flexDirection: 'row',
 					justifyContent: 'space-between',
 				}}
 			>
@@ -35,16 +37,20 @@ const FilterMenuBar = ({ actionButton, text, type }) => {
 				>
 					{text}
 				</Typography>
-				<Stack
-					direction={{ md: 'column', lg: 'row' }}
+				<Box
 					sx={{
 						display: 'flex',
-						justifyContent: 'space-between',
-						alignItems: 'center',
+						width: '100%',
+						flexGrow: 1,
+						justifyContent:
+							otherProps.type === 'card'
+								? { xs: 'space-between', md: 'flex-end' }
+								: 'flex-end',
 					}}
 				>
-					{actionButton}
-				</Stack>
+					<span>{actionButton2}</span>
+					<span>{actionButton}</span>
+				</Box>
 			</CardContent>
 		</Card>
 	);

@@ -11,10 +11,16 @@ import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import FilterMenuBar from '../components/filter/FilterMenuBar';
 import HidePieButton from '../components/buttons/HidePieButton';
 import { useAppContext } from '../context/context';
+import HideSummaryButton from '../components/buttons/HideSummaryButton';
 
 function MainApp() {
 	const { displayFilterComponent } = useDisplayFilterComponent();
-	const { isExpanded, setIsExpanded } = useAppContext();
+	const {
+		isPieExpanded,
+		setisPieExpanded,
+		isSummaryExpanded,
+		setIsSummaryExpanded,
+	} = useAppContext();
 
 	const layout = {
 		// mt: { xs: 5, md: 10 },
@@ -28,8 +34,16 @@ function MainApp() {
 			<FilterMenuBar
 				actionButton={
 					<HidePieButton
-						setIsExpanded={setIsExpanded}
-						isExpanded={isExpanded}
+						setisPieExpanded={setisPieExpanded}
+						isPieExpanded={isPieExpanded}
+						type="card"
+					/>
+				}
+				actionButton2={
+					<HideSummaryButton
+						isSummaryExpanded={isSummaryExpanded}
+						setIsSummaryExpanded={setIsSummaryExpanded}
+						type="card"
 					/>
 				}
 			/>

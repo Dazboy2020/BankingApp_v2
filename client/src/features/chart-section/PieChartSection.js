@@ -6,7 +6,7 @@ import { AnimatePresence, easeInOut, motion } from 'framer-motion';
 import { useAppContext } from '../../context/context';
 
 function PieChartSection() {
-	const { isExpanded } = useAppContext();
+	const { isPieExpanded } = useAppContext();
 
 	const chartStyle = {
 		display: 'flex',
@@ -17,7 +17,7 @@ function PieChartSection() {
 	return (
 		<Box sx={{ mt: { xs: 5, md: 10 } }}>
 			<AnimatePresence>
-				{isExpanded && (
+				{isPieExpanded && (
 					<Stack
 						component={motion.div}
 						initial={{ height: 0, opacity: 0 }}
@@ -25,8 +25,10 @@ function PieChartSection() {
 							height: 'auto',
 							opacity: 1,
 							transition: { ease: easeInOut },
+							y: [200, 0],
 						}}
 						exit={{
+							y: 200,
 							height: 0,
 							opacity: 0,
 							transition: { ease: easeInOut },
