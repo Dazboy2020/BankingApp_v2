@@ -2,7 +2,7 @@ import { Box, Stack } from '@mui/material';
 import PieExpenses from '../../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../../components/charts/pie-charts/PieExpenseVDeposit';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, easeInOut, motion } from 'framer-motion';
 import { useAppContext } from '../../context/context';
 
 function PieChartSection() {
@@ -21,8 +21,16 @@ function PieChartSection() {
 					<Stack
 						component={motion.div}
 						initial={{ height: 0, opacity: 0 }}
-						animate={{ height: 'auto', opacity: 1 }}
-						exit={{ height: 0, opacity: 0 }}
+						animate={{
+							height: 'auto',
+							opacity: 1,
+							transition: { ease: easeInOut },
+						}}
+						exit={{
+							height: 0,
+							opacity: 0,
+							transition: { ease: easeInOut },
+						}}
 						spacing={4}
 						direction={{ s: 'column', md: 'column', lg: 'row' }}
 						sx={chartStyle}

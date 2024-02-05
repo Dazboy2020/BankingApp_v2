@@ -12,7 +12,11 @@ function useDisplayFilterComponent() {
 			state.combinedTransactions.length > 0
 		) {
 			return (
-				<FilterMenuBar actionButton={<CategoryMenu />} text="Filter Items:" />
+				<FilterMenuBar
+					actionButton={<CategoryMenu />}
+					text="Filter Items:"
+					type="chart"
+				/>
 			);
 		}
 

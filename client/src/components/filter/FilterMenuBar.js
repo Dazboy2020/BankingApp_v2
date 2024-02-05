@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography, Stack } from '@mui/material';
 
-const FilterMenuBar = ({ actionButton, text }) => {
+const FilterMenuBar = ({ actionButton, text, type }) => {
 	const { isDarkMode } = useDarkMode();
 
 	return (

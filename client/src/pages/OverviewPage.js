@@ -17,7 +17,8 @@ function MainApp() {
 	const { isExpanded, setIsExpanded } = useAppContext();
 
 	const layout = {
-		mt: { xs: 5, md: 10 },
+		// mt: { xs: 5, md: 10 },
+		mt: 0,
 	};
 
 	return (
