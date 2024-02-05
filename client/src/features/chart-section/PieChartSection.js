@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import { Box, Stack } from '@mui/material';
 import PieExpenses from '../../components/charts/pie-charts/PieExpenses';
 import PieExpenseVDeposit from '../../components/charts/pie-charts/PieExpenseVDeposit';
 import FilterMenuBar from '../../components/filter/FilterMenuBar';
 import HidePieButton from '../../components/buttons/HidePieButton';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAppContext } from '../../context/context';
 
 function PieChartSection() {
-	const [isExpanded, setIsExpanded] = useState(true);
+	const { isExpanded, setIsExpanded } = useAppContext();
 
 	const chartStyle = {
 		display: 'flex',
