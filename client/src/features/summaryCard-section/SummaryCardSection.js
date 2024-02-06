@@ -37,7 +37,7 @@ function SummaryCardSection({
 				width: '100%',
 				justifyContent: 'space-between',
 				mt: { xs: 5, md: 5 },
-				mb: { lg: 2 },
+				mb: { xs: 6, s: 6, md: 10 },
 				minHeight: { lg: '12rem' },
 			}}
 		>

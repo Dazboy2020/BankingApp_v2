@@ -14,7 +14,7 @@ const FilterMenuBar = ({ actionButton, text, actionButton2 }) => {
 		<Card
 			component="article"
 			sx={{
-				mb: 2,
+				mb: otherProps.type === 'card' ? 6 : 3,
 				borderRadius: '10px',
 				p: 0,
 			}}
