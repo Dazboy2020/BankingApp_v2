@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useState } from 'react';
+import {
+	createContext,
+	useContext,
+	useMemo,
+	useReducer,
+	useState,
+} from 'react';
 import { sortArrayByDate } from '../utils/sortArray';
 import { filterExpensesForCurrentMonth } from '../utils/BudgetHelper';
 import dayjs from 'dayjs';
@@ -376,26 +382,30 @@ function ContextProvider({ children }) {
 	const [id, setId] = useState('');
 	const [navLink, setNavLink] = useState(0);
 
-	const totalIncome = +state.deposits?.reduce(
-		(acc, dep) => acc + dep.amount,
-		0
-	);
-	const totalExpenses = +state.expenses?.reduce(
-		(acc, ex) => acc + ex.amount,
-		0
+	const totalIncome = useMemo(
+		() => +state.deposits?.reduce((acc, dep) => acc + dep.amount, 0),
+		[state.deposits]
 	);
 
-	const totalBudgetExpenses = state.budgetTransactions?.reduce(
-		(accumulator, obj) => {
-			return accumulator + (obj.amount < 0 ? obj.amount : 0);
-		},
-		0
+	const totalExpenses = useMemo(
+		() => +state.expenses?.reduce((acc, ex) => acc + ex.amount, 0),
+		[state.expenses]
 	);
-	const totalBudgetDeposits = state.budgetTransactions?.reduce(
-		(accumulator, obj) => {
-			return accumulator + (obj.amount > 0 ? obj.amount : 0);
-		},
-		0
+
+	const totalBudgetExpenses = useMemo(
+		() =>
+			state.budgetTransactions?.reduce((accumulator, obj) => {
+				return accumulator + (obj.amount < 0 ? obj.amount : 0);
+			}, 0),
+		[state.budgetTransactions]
+	);
+
+	const totalBudgetDeposits = useMemo(
+		() =>
+			state.budgetTransactions?.reduce((accumulator, obj) => {
+				return accumulator + (obj.amount > 0 ? obj.amount : 0);
+			}, 0),
+		[state.budgetTransactions]
 	);
 
 	return (

@@ -17,11 +17,11 @@ export default function AvailbleFundsCard({ type }) {
 
 	function totalToDisplay() {
 		if (state.isActive === 4) {
-			return `€${Math.abs(totalBudgetDeposits + totalBudgetExpenses).toFixed(
-				2
-			)}`;
+			return `€${
+				totalBudgetDeposits - Math.abs(totalBudgetExpenses).toFixed(2)
+			}`;
 		} else {
-			return `€${Math.abs(totalIncome + totalExpenses).toFixed(2)}`;
+			return `€${totalIncome - Math.abs(totalExpenses).toFixed(2)}`;
 		}
 	}
 	return (
