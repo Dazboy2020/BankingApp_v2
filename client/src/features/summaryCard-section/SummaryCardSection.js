@@ -1,8 +1,11 @@
+import { easeInOut } from 'framer-motion';
 import { Stack } from '@mui/material';
 import TotalExpensesCard from '../../components/summary-cards/TotalExpensesCard';
 import TotalDepositsCard from '../../components/summary-cards/TotalDepositsCard';
 import AvailbleFundsCard from '../../components/summary-cards/AvailableFundsCard';
 import AddTransaction from '../../components/summary-cards/AddTransaction';
+
+import { motion } from 'framer-motion';
 
 function SummaryCardSection({
 	totalExpensesCard,
@@ -10,11 +13,24 @@ function SummaryCardSection({
 	availbleFundsCard,
 	addTransaction,
 	budgetCard,
-	...restProps
 }) {
 	return (
 		<Stack
-			component="section"
+			key="summary-card-section"
+			component={motion.div}
+			initial={{ height: 0, opacity: 0 }}
+			animate={{
+				height: 'auto',
+				opacity: 1,
+				transition: { ease: easeInOut },
+				y: [200, 0],
+			}}
+			exit={{
+				y: 200,
+				height: 0,
+				opacity: 0,
+				transition: { ease: easeInOut },
+			}}
 			spacing={3}
 			direction={{ sm: 'column', lg: 'row' }}
 			sx={{

@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Typography, Box } from '@mui/material';
 
-const FilterMenuBar = ({ actionButton, text, actionButton2, type }) => {
+const FilterMenuBar = ({ actionButton, text, actionButton2 }) => {
 	const { isDarkMode } = useDarkMode();
 
 	const { ...otherProps } = actionButton2 ? actionButton2.props : {};

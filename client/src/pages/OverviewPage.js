@@ -1,20 +1,18 @@
+import { useAppContext } from '../context/context';
 import TotalExpensesCard from '../components/summary-cards/TotalExpensesCard';
 import TotalDepositsCard from '../components/summary-cards/TotalDepositsCard';
 import AvailbleFundsCard from '../components/summary-cards/AvailableFundsCard';
 
-import CombinedItems from '../components/transactionItems/CombinedItems';
 import PageLayout from './layout/PageLayout';
 import PieChartSection from '../features/chart-section/PieChartSection';
 import SummaryCardSection from '../features/summaryCard-section/SummaryCardSection';
-import { Box } from '@mui/material';
-import useDisplayFilterComponent from '../hooks/useDisplayFilterComponent';
 import FilterMenuBar from '../components/filter/FilterMenuBar';
 import HidePieButton from '../components/buttons/HidePieButton';
-import { useAppContext } from '../context/context';
 import HideSummaryButton from '../components/buttons/HideSummaryButton';
+import { AnimatePresence } from 'framer-motion';
+import TransactionSection from '../features/transaction-section/TransactionSection';
 
 function MainApp() {
-	const { displayFilterComponent } = useDisplayFilterComponent();
 	const {
 		isPieExpanded,
 		setisPieExpanded,
@@ -22,15 +20,8 @@ function MainApp() {
 		setIsSummaryExpanded,
 	} = useAppContext();
 
-	const layout = {
-		// mt: { xs: 5, md: 10 },
-		mt: 0,
-	};
-
 	return (
 		<PageLayout>
-			{/* //! Summary Cards */}
-
 			<FilterMenuBar
 				actionButton={
 					<HidePieButton
@@ -47,20 +38,20 @@ function MainApp() {
 					/>
 				}
 			/>
-			<SummaryCardSection
-				totalExpensesCard={<TotalExpensesCard />}
-				totalDepositsCard={<TotalDepositsCard />}
-				availbleFundsCard={<AvailbleFundsCard />}
-			/>
+			<AnimatePresence>
+				{isSummaryExpanded && (
+					<SummaryCardSection
+						key="summary-card-section"
+						totalExpensesCard={<TotalExpensesCard />}
+						totalDepositsCard={<TotalDepositsCard />}
+						availbleFundsCard={<AvailbleFundsCard />}
+					/>
+				)}
 
-			{/* //! Charts */}
-			<PieChartSection />
+				{isPieExpanded && <PieChartSection key="pie-chart-section" />}
 
-			{/* //!Transactions*/}
-			<Box sx={layout}>
-				{displayFilterComponent()}
-				<CombinedItems type="combined" />
-			</Box>
+				<TransactionSection key="transaction-section" />
+			</AnimatePresence>
 		</PageLayout>
 	);
 }

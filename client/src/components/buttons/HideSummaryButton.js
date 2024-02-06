@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 function HideSummaryButton({ isSummaryExpanded, setIsSummaryExpanded }) {
 	function handleClick() {
 		setIsSummaryExpanded((prev) => (prev = !prev));
-
-		console.log(isSummaryExpanded);
 	}
 	return (
 		<Button
