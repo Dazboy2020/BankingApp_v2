@@ -32,7 +32,8 @@ function Navbar() {
 						<img width="60" height="60" src={smallpig} alt="logo" />
 						<Box
 							sx={{
-								fontSize: { xs: '1.5em', sm: '2.2rem' },
+								display: { xs: 'none', md: 'flex' },
+								fontSize: { sm: '2.2rem' },
 								fontFamily: 'monospace',
 								fontWeight: '500',
 								alignItems: 'center',
