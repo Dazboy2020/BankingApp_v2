@@ -17,7 +17,9 @@ function GridSection() {
 			>
 				<Typography
 					sx={{
-						fontFamily: 'system-ui',
+						// fontFamily: 'system-ui',
+						fontFamily: 'poppins',
+
 						fontSize: {
 							xs: '1.2rem',
 							s: '1.5rem',

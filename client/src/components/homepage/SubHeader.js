@@ -23,8 +23,8 @@ function SubHeader() {
 				src={expense_light}
 				alt="expense_light"
 				style={{
-					width: '90%',
-					height: '90%',
+					width: '80%',
+					height: '80%',
 					objectFit: 'contain',
 				}}
 			/>
