@@ -43,9 +43,8 @@ const inititalState = {
 };
 
 function reducer(state, action) {
-	let budgetTransactions = filterExpensesForCurrentMonth(
-		state.combinedTransactions
-	);
+	let budgetTransactions;
+
 	switch (action.type) {
 		case 'field': {
 			return {
@@ -65,6 +64,10 @@ function reducer(state, action) {
 			sortArrayByDate(arrayOfExpenses);
 			sortArrayByDate(arrayOfDeposits);
 			sortArrayByDate(arrayOfCombinedTransactions);
+
+			budgetTransactions = filterExpensesForCurrentMonth(
+				arrayOfCombinedTransactions
+			);
 
 			const budgetCreationDate = formatDateToString(
 				action.payload.user.budget.date
@@ -86,7 +89,7 @@ function reducer(state, action) {
 				isActive: 0,
 				budget: action.payload.user.budget.amount || null,
 				budgetCreation: budgetCreationDate,
-				budgetTransactions,
+				budgetTransactions: budgetTransactions,
 			};
 		}
 
