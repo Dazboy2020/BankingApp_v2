@@ -16,7 +16,8 @@ function Navbar() {
 				justifyContent: 'center',
 				alignContent: 'centre',
 				alignItems: 'center',
-				mt: { xs: 1, s: 3, sm: 3, md: 0 },
+				pt: { xs: 1, s: 1, sm: 1, md: 0 },
+				pb: { xs: 1, s: 1, sm: 1, md: 0 },
 				bgcolor: '#000',
 			}}
 		>

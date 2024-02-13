@@ -9,7 +9,7 @@ function HeroSection() {
 			spacing={2}
 			sx={{
 				alignItems: 'center',
-				mt: { xs: 4, sm: 3.5, md: 4 },
+				pt: { xs: 4, sm: 3.5, md: 4 },
 			}}
 		>
 			<MainHeader />

@@ -3,7 +3,7 @@ import useAutoLogin from '../../hooks/useAutoLogin';
 import { useAppContext } from '../../context/context';
 import { Box } from '@mui/material';
 import { motion as m } from 'framer-motion';
-import TestSection from '../lottie/TestSection';
+// import TestSection from '../lottie/TestSection';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 // import { lazy } from 'react';
 
@@ -25,38 +25,35 @@ export default function Homepage() {
 	return state.isLoading ? (
 		<SpinnerFullPage />
 	) : (
-		<>
-			<UnprotectedPageLayout>
+		<UnprotectedPageLayout>
+			<Box
+				component="section"
+				sx={{
+					ml: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
+					mr: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
+					// mt: 4,
+				}}
+			>
+				<HeroSection />
+				<GridSection />
+
 				<Box
-					component="section"
+					component={m.div}
+					layout="true"
+					initial="hidden"
+					variants={buttonVariant}
+					animate="visible"
+					exit={exitAnimation}
+					key="button"
 					sx={{
-						ml: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
-						mr: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
-						mt: 4,
+						display: 'flex',
+						justifyContent: 'center',
+						pb: 4,
 					}}
 				>
-					<HeroSection />
-					<GridSection />
-
-					<Box
-						component={m.div}
-						layout="true"
-						initial="hidden"
-						variants={buttonVariant}
-						animate="visible"
-						exit={exitAnimation}
-						key="button"
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							pb: 4,
-						}}
-					>
-						<GoogleLoginButton height="4rem" width="15rem" padding={0} />
-					</Box>
+					<GoogleLoginButton height="4rem" width="15rem" padding={0} />
 				</Box>
-			</UnprotectedPageLayout>
-			<TestSection />
-		</>
+			</Box>
+		</UnprotectedPageLayout>
 	);
 }
