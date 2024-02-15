@@ -20,6 +20,7 @@ import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
 
 import useGetUserToken from '../hooks/useGetUserToken';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
+import signin from '../assets/signin.png';
 
 import { motion } from 'framer-motion';
 
@@ -154,6 +155,7 @@ export default function SignIn() {
 											height="2.5rem"
 											width="75%"
 											padding={0}
+											image={signin}
 										/>
 									</Box>
 

@@ -22,6 +22,10 @@ import {
 } from './page-animations/login_register';
 import { useModalContext } from '../context/modalContext';
 import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
+import GoogleLoginButton from '../components/buttons/GoogleLogin';
+import signup from '../assets/signup.png';
+import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
+import { useAppContext } from '../context/context';
 
 function Copyright(props) {
 	return (
@@ -46,8 +50,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-	const navigate = useNavigate();
+	const { state } = useAppContext();
 	const { setOpenToast, message, setMessage } = useModalContext();
+	const navigate = useNavigate();
 
 	const [data, setData] = useState({
 		username: '',
@@ -102,122 +107,143 @@ export default function SignUp() {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
-	return (
+	return state.isLoading ? (
+		<SpinnerFullPage />
+	) : (
 		<UnprotectedPageLayout>
-			<motion.div
-				layout="true"
-				variants={containerVariants}
-				initial="hidden"
-				animate="visible"
-				exit={exitAnimation}
-			>
-				<ThemeProvider theme={defaultTheme}>
-					<Container
-						component="main"
-						sx={{
-							width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
-							pt: 10,
-						}}
-					>
-						<CssBaseline />
-						<Box
+			{!state.token && (
+				<motion.div
+					layout="true"
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					exit={exitAnimation}
+				>
+					<ThemeProvider theme={defaultTheme}>
+						<Container
+							component="main"
 							sx={{
-								backgroundColor: 'white',
-								marginTop: 8,
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								border: 'solid 1px black',
-								padding: '3rem',
-								boxShadow:
-									'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+								width: { xs: '100%', sm: '90%', md: '70%', lg: '40%' },
+								pt: 10,
 							}}
 						>
-							<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-								<LockOutlinedIcon />
-							</Avatar>
-							<Typography component="h1" variant="h5">
-								Sign up
-							</Typography>
+							<CssBaseline />
 							<Box
-								component="form"
-								noValidate
-								onSubmit={handleSubmit}
-								sx={{ mt: 3 }}
-								onChange={handleChange}
+								sx={{
+									backgroundColor: 'white',
+									marginTop: 8,
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+									border: 'solid 1px black',
+									padding: '3rem',
+									boxShadow:
+										'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+								}}
 							>
-								<Grid container spacing={2}>
-									<Grid item xs={12}>
-										<TextField
-											autoComplete="given-name"
-											name="username"
-											required
-											fullWidth
-											id="username"
-											label="username"
-											autoFocus
-											color="secondary"
-										/>
+								<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+									<LockOutlinedIcon />
+								</Avatar>
+								<Typography component="h1" variant="h5">
+									Sign up
+								</Typography>
+								<Box
+									component="form"
+									noValidate
+									onSubmit={handleSubmit}
+									sx={{ mt: 3 }}
+									onChange={handleChange}
+								>
+									<Grid container spacing={2}>
+										<Grid item xs={12}>
+											<TextField
+												autoComplete="given-name"
+												name="username"
+												required
+												fullWidth
+												id="username"
+												label="username"
+												autoFocus
+												color="secondary"
+											/>
+										</Grid>
+
+										<Grid item xs={12}>
+											<TextField
+												required
+												fullWidth
+												id="email"
+												label="Email Address"
+												name="email"
+												autoComplete="email"
+												color="secondary"
+											/>
+										</Grid>
+										<Grid item xs={12}>
+											<TextField
+												required
+												fullWidth
+												name="password"
+												label="Password"
+												type="password"
+												id="password"
+												autoComplete="new-password"
+												color="secondary"
+											/>
+										</Grid>
+										<Grid item xs={12}>
+											<TextField
+												required
+												fullWidth
+												name="confirmPassword"
+												label="Confirm Password"
+												type="password"
+												id="confirmPassword"
+												// autoComplete="new-password"
+												color="secondary"
+											/>
+										</Grid>
 									</Grid>
 
-									<Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											id="email"
-											label="Email Address"
-											name="email"
-											autoComplete="email"
-											color="secondary"
+									<Box
+										component="span"
+										sx={{
+											display: 'flex',
+											justifyContent: 'center',
+											mt: 5,
+										}}
+									>
+										<GoogleLoginButton
+											height="2.5rem"
+											width="75%"
+											padding={0}
+											image={signup}
 										/>
+									</Box>
+									<Button
+										type="submit"
+										fullWidth
+										variant="contained"
+										sx={{ mt: 3, mb: 2 }}
+										color="secondary"
+									>
+										Sign Up
+									</Button>
+									<Grid container justifyContent="flex-end">
+										<Grid item>
+											<NavLink to="/login" variant="body2">
+												Already have an account? Sign in
+											</NavLink>
+										</Grid>
 									</Grid>
-									<Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											name="password"
-											label="Password"
-											type="password"
-											id="password"
-											autoComplete="new-password"
-											color="secondary"
-										/>
-									</Grid>
-									<Grid item xs={12}>
-										<TextField
-											required
-											fullWidth
-											name="confirmPassword"
-											label="Confirm Password"
-											type="password"
-											id="confirmPassword"
-											// autoComplete="new-password"
-											color="secondary"
-										/>
-									</Grid>
-								</Grid>
-								<Button
-									type="submit"
-									fullWidth
-									variant="contained"
-									sx={{ mt: 3, mb: 2 }}
-									color="secondary"
-								>
-									Sign Up
-								</Button>
-								<Grid container justifyContent="flex-end">
-									<Grid item>
-										<NavLink to="/login" variant="body2">
-											Already have an account? Sign in
-										</NavLink>
-									</Grid>
-								</Grid>
+								</Box>
+
+								<Copyright sx={{ mt: 5 }} />
 							</Box>
-							<Copyright sx={{ mt: 5 }} />
-						</Box>
-					</Container>
-				</ThemeProvider>
-			</motion.div>
+						</Container>
+					</ThemeProvider>
+				</motion.div>
+			)}
 		</UnprotectedPageLayout>
 	);
 }

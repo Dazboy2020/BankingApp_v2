@@ -7,12 +7,13 @@ import { motion as m } from 'framer-motion';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 // import { lazy } from 'react';
 
-import GoogleLoginButton from '../buttons/GoogleLogin';
 import { buttonVariant, exitAnimation } from './variants';
 import SpinnerFullPage from '../spinner/SpinnerFullPage';
 import UnprotectedPageLayout from '../../pages/layout/UnprotectedPageLayout';
 import HeroSection from './HeroSection';
 import GridSection from './GridSection';
+import GoogleLoginButton from '../buttons/GoogleLogin';
+import continueImg from '../../assets/continue.png';
 
 export default function Homepage() {
 	const { state } = useAppContext();
@@ -50,7 +51,12 @@ export default function Homepage() {
 						pb: 4,
 					}}
 				>
-					<GoogleLoginButton height="4rem" width="15rem" padding={0} />
+					<GoogleLoginButton
+						height="4rem"
+						width="15rem"
+						padding={0}
+						image={continueImg}
+					/>
 				</Box>
 			</Box>
 		</UnprotectedPageLayout>

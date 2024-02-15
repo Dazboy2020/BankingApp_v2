@@ -1,9 +1,8 @@
 import { useAppContext } from '../../context/context';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from '@mui/material';
 import axios from 'axios';
-import google from '../../assets/google.png';
 
 const buttonStyles = {
 	margin: 0,
@@ -24,15 +23,9 @@ const buttonStyles = {
 	backgroundColor: 'transparent',
 };
 
-function GoogleLoginButton({ width, height, padding }) {
+function GoogleLoginButton({ width, height, padding, image }) {
 	const navigate = useNavigate();
 	const { dispatch } = useAppContext();
-
-	const location = useLocation();
-
-	const shouldApplyBorder = location.pathname === '/login';
-
-	const borderStyle = shouldApplyBorder ? '1px solid grey' : 'none';
 
 	const handleGoogle = useGoogleLogin({
 		onSuccess: async ({ code }) => {
@@ -89,7 +82,7 @@ function GoogleLoginButton({ width, height, padding }) {
 			}}
 			startIcon={
 				<img
-					src={google}
+					src={image}
 					alt="google button"
 					style={{
 						width: '100%',
@@ -99,7 +92,6 @@ function GoogleLoginButton({ width, height, padding }) {
 							backgroundColor: 'transparent',
 							cursor: 'pointer',
 						},
-						border: borderStyle,
 						borderRadius: 4,
 					}}
 					sx={{ m: 0, p: 0 }}
