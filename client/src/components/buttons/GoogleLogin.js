@@ -3,6 +3,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import google from '../../assets/google.png';
+import { useAppContext } from '../../context/context';
 
 const buttonStyles = {
 	margin: 0,
@@ -25,6 +26,7 @@ const buttonStyles = {
 
 function GoogleLoginButton({ width, height, padding }) {
 	const navigate = useNavigate();
+	const { dispatch } = useAppContext();
 
 	const location = useLocation();
 
@@ -32,9 +34,11 @@ function GoogleLoginButton({ width, height, padding }) {
 
 	const borderStyle = shouldApplyBorder ? '1px solid grey' : 'none';
 
-	const handleClick = useGoogleLogin({
+	const handleGoogle = useGoogleLogin({
 		onSuccess: async ({ code }) => {
 			try {
+				dispatch({ type: 'isLoading', payload: false });
+
 				const tokens = await axios.post('http://localhost:5000/google/auth', {
 					code,
 				});
@@ -50,13 +54,25 @@ function GoogleLoginButton({ width, height, padding }) {
 		},
 		onError: (error) => {
 			console.error(error);
+			dispatch({ type: 'isLoading', payload: false });
 		},
 
 		onCancel: (error) => {
 			console.error(error);
+			dispatch({ type: 'isLoading', payload: false });
+		},
+
+		onNonOAuthError: (error) => {
+			console.error(error.message);
+			dispatch({ type: 'isLoading', payload: false });
 		},
 		flow: 'auth-code',
 	});
+
+	const handleClick = () => {
+		dispatch({ type: 'isLoading', payload: true });
+		handleGoogle();
+	};
 
 	return (
 		<Button
