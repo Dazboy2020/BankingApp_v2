@@ -50,7 +50,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-	const { state } = useAppContext();
+	const { state, dispatch } = useAppContext();
 	const { setOpenToast, message, setMessage } = useModalContext();
 	const navigate = useNavigate();
 
@@ -81,6 +81,7 @@ export default function SignUp() {
 		}
 
 		try {
+			dispatch({ type: 'isLoading', payload: true });
 			const { data } = await axios.post('/register', {
 				username,
 				email,
@@ -91,15 +92,18 @@ export default function SignUp() {
 			if (data.error) {
 				setMessage(data.error);
 				setOpenToast(true, { message: message });
+				dispatch({ type: 'isLoading', payload: false });
 			} else {
 				setMessage('Account Created!');
 				setOpenToast(true, { message: message });
 				setData({});
+				dispatch({ type: 'isLoading', payload: false });
 				navigate('/login');
 			}
 		} catch (error) {
 			setMessage('Something went wrong, please try again later.');
 			setOpenToast(true, { message: message });
+			dispatch({ type: 'isLoading', payload: false });
 		}
 	};
 

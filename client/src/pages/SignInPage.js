@@ -15,7 +15,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Login } from '@mui/icons-material';
 
-// import LinearWithValueLabel from '../UI/AlertDialogue/Progress';
 import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
 
 import useGetUserToken from '../hooks/useGetUserToken';
