@@ -1,4 +1,9 @@
 import * as React from 'react';
+import { useModalContext } from '../../context/modalContext';
+import { useNavigate } from 'react-router';
+import { useAppContext } from '../../context/context';
+import { useDarkMode } from '../../hooks/useDarkMode';
+import { googleLogout } from '@react-oauth/google';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -6,12 +11,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-import { useNavigate } from 'react-router';
-import { useAppContext } from '../../context/context';
-import { useDarkMode } from '../../hooks/useDarkMode';
 import useDeleteExpense from '../../hooks/useDeleteExpense';
 import useDeleteDeposit from '../../hooks/useDeleteDeposit';
-import { useModalContext } from '../../context/modalContext';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -39,6 +40,7 @@ export default function AlertDialogSlide(type) {
 			setOpen(false);
 			dispatch({ type: 'user/LoggedOut' });
 			localStorage.removeItem('authToken');
+			googleLogout();
 
 			navigate('/');
 		} else {

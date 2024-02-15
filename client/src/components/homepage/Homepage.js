@@ -1,6 +1,6 @@
+import { useAppContext } from '../../context/context';
 import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import useAutoLogin from '../../hooks/useAutoLogin';
-import { useAppContext } from '../../context/context';
 import { Box } from '@mui/material';
 import { motion as m } from 'framer-motion';
 // import TestSection from '../lottie/TestSection';
@@ -31,7 +31,6 @@ export default function Homepage() {
 				sx={{
 					ml: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
 					mr: { xs: 5, s: 12, md: 12, lg: 16, xl: 30 },
-					// mt: 4,
 				}}
 			>
 				<HeroSection />

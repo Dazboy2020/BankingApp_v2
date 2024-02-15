@@ -12,11 +12,13 @@ export function useFetchPrivateUserData(url) {
 			const authToken = localStorage.getItem('authToken');
 
 			if (!authToken) return;
+			dispatch({ type: 'isLoading', payload: true });
 
 			const config = {
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+					// Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+					Authorization: `Bearer ${authToken}`,
 				},
 			};
 
@@ -35,6 +37,9 @@ export function useFetchPrivateUserData(url) {
 				});
 			} catch (error) {
 				localStorage.removeItem('authToken');
+				dispatch({ type: 'isLoading', payload: false });
+			} finally {
+				dispatch({ type: 'isLoading', payload: false });
 			}
 		};
 
