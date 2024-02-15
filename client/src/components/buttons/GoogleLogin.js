@@ -1,9 +1,9 @@
+import { useAppContext } from '../../context/context';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import google from '../../assets/google.png';
-import { useAppContext } from '../../context/context';
 
 const buttonStyles = {
 	margin: 0,
@@ -37,15 +37,17 @@ function GoogleLoginButton({ width, height, padding }) {
 	const handleGoogle = useGoogleLogin({
 		onSuccess: async ({ code }) => {
 			try {
-				dispatch({ type: 'isLoading', payload: false });
-
 				const tokens = await axios.post('http://localhost:5000/google/auth', {
 					code,
 				});
 
+				if (!tokens) return;
+
 				const { token } = tokens.data;
 
 				localStorage.setItem('authToken', token);
+				dispatch({ type: 'user/addToken', payload: token });
+				dispatch({ type: 'isLoading', payload: false });
 
 				navigate('/overview');
 			} catch (error) {
