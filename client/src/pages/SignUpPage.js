@@ -26,6 +26,7 @@ import GoogleLoginButton from '../components/buttons/GoogleLogin';
 import signup from '../assets/signup.png';
 import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
 import { useAppContext } from '../context/context';
+import useSignUpNewUser from '../hooks/useSignUpNewUser';
 
 function Copyright(props) {
 	return (
@@ -45,14 +46,19 @@ function Copyright(props) {
 	);
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-	const { state, dispatch } = useAppContext();
+	const { state } = useAppContext();
 	const { setOpenToast, message, setMessage } = useModalContext();
 	const navigate = useNavigate();
+	const { signUpNewUser } = useSignUpNewUser();
+
+	React.useEffect(() => {
+		if (message === 'Account Created!') {
+			navigate('/login');
+		}
+	}, [message, navigate]);
 
 	const [data, setData] = useState({
 		username: '',
@@ -80,31 +86,7 @@ export default function SignUp() {
 			return;
 		}
 
-		try {
-			dispatch({ type: 'isLoading', payload: true });
-			const { data } = await axios.post('/register', {
-				username,
-				email,
-				password,
-				confirmPassword,
-			});
-
-			if (data.error) {
-				setMessage(data.error);
-				setOpenToast(true, { message: message });
-				dispatch({ type: 'isLoading', payload: false });
-			} else {
-				setMessage('Account Created!');
-				setOpenToast(true, { message: message });
-				setData({});
-				dispatch({ type: 'isLoading', payload: false });
-				navigate('/login');
-			}
-		} catch (error) {
-			setMessage('Something went wrong, please try again later.');
-			setOpenToast(true, { message: message });
-			dispatch({ type: 'isLoading', payload: false });
-		}
+		signUpNewUser(username, email, password, confirmPassword);
 	};
 
 	function handleChange(e) {
