@@ -25,6 +25,7 @@ export default function useSignUpNewUser() {
 				setMessage('Account Created!');
 				setOpenToast(true, { message: message });
 				dispatch({ type: 'isLoading', payload: false });
+				return data;
 			}
 		} catch (error) {
 			setMessage('Something went wrong, please try again later.');

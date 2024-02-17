@@ -27,6 +27,7 @@ import {
 	containerVariants,
 	exitAnimation,
 } from './page-animations/login_register';
+
 import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
 
 function Copyright(props) {

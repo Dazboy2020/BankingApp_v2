@@ -14,8 +14,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import axios from 'axios';
-
 import {
 	containerVariants,
 	exitAnimation,
@@ -49,16 +47,17 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+	const [userstate, setUserState] = useState(false);
 	const { state } = useAppContext();
 	const { setOpenToast, message, setMessage } = useModalContext();
 	const navigate = useNavigate();
 	const { signUpNewUser } = useSignUpNewUser();
 
 	React.useEffect(() => {
-		if (message === 'Account Created!') {
+		if (userstate) {
 			navigate('/login');
 		}
-	}, [message, navigate]);
+	}, [navigate, userstate]);
 
 	const [data, setData] = useState({
 		username: '',
@@ -86,7 +85,16 @@ export default function SignUp() {
 			return;
 		}
 
-		signUpNewUser(username, email, password, confirmPassword);
+		const userdata = await signUpNewUser(
+			username,
+			email,
+			password,
+			confirmPassword
+		);
+
+		if (userdata) {
+			setUserState(true);
+		}
 	};
 
 	function handleChange(e) {
