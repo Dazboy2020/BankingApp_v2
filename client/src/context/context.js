@@ -109,7 +109,10 @@ function reducer(state, action) {
 			return {
 				...state,
 				budget: action.payload,
-				budgetTransactions,
+				budgetTransactions: filterExpensesForCurrentMonth([
+					...state.expenses,
+					...state.deposits,
+				]),
 			};
 
 		case 'user/deleteBudget':
@@ -395,21 +398,23 @@ function ContextProvider({ children }) {
 		[state.expenses]
 	);
 
-	const totalBudgetExpenses = useMemo(
-		() =>
-			state.budgetTransactions?.reduce((accumulator, obj) => {
-				return accumulator + (obj.amount < 0 ? obj.amount : 0);
-			}, 0),
-		[state.budgetTransactions]
-	);
+	const totalBudgetExpenses = useMemo(() => {
+		if (state.budgetTransactions) {
+			return state.budgetTransactions
+				.filter((obj) => obj.amount < 0)
+				.reduce((accumulator, obj) => accumulator + obj.amount, 0);
+		}
+		return 0;
+	}, [state.budgetTransactions]);
 
-	const totalBudgetDeposits = useMemo(
-		() =>
-			state.budgetTransactions?.reduce((accumulator, obj) => {
-				return accumulator + (obj.amount > 0 ? obj.amount : 0);
-			}, 0),
-		[state.budgetTransactions]
-	);
+	const totalBudgetDeposits = useMemo(() => {
+		if (state.budgetTransactions) {
+			return state.budgetTransactions
+				.filter((obj) => obj.amount > 0)
+				.reduce((accumulator, obj) => accumulator + obj.amount, 0);
+		}
+		return 0;
+	}, [state.budgetTransactions]);
 
 	return (
 		<AppContext.Provider
