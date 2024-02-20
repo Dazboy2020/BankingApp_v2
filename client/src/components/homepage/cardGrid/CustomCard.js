@@ -12,17 +12,21 @@ function CustomCard({ card, index }) {
 				animate="visible"
 				custom={index}
 				sx={{
-					borderRadius: '0px',
-					p: 2,
-					minHeight: '100%',
-					backgroundColor: '#000',
+					p: 3,
+					minHeight: { xs: '100%', md: '100%', lg: '15rem' },
+					backgroundColor: '#171413',
 					color: 'antiquewhite',
-					borderLeft: '1px solid #f70776',
+					// borderLeft: '1px solid #f70776',
+					border: '2px solid #f70776',
+					boxShadow: '0px 0px 10px 0px rgba(247, 7, 118)',
+					borderRadius: '10px',
 				}}
 			>
 				<CardContent>
 					<Box
-						sx={{ p: 0 }}
+						sx={{
+							p: 0,
+						}}
 						component={m.div}
 						initial="hidden"
 						variants={headerVariant}

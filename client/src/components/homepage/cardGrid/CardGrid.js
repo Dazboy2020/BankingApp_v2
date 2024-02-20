@@ -7,7 +7,7 @@ function CardGrid() {
 	return (
 		<Grid
 			container
-			rowSpacing={{ xs: 3, s: 3, sm: 3, md: 2, lg: 2 }}
+			rowSpacing={{ xs: 3, s: 3, sm: 3, md: 4, lg: 2 }}
 			columnSpacing={{ xs: 5, sm: 5, md: 5, lg: 5 }}
 			mt={{ xs: 0.1, sm: 2, md: 4, lg: 0 }}
 			pb={{ xs: 8, sm: 8, md: 6, lg: 6 }}
