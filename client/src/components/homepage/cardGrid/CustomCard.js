@@ -13,20 +13,27 @@ function CustomCard({ card, index }) {
 				custom={index}
 				sx={{
 					p: 3,
-					minHeight: { xs: '100%', md: '100%', lg: '15rem' },
+					minHeight: { xs: '15rem', md: '100%', lg: '15rem' },
 					backgroundColor: '#171413',
 					color: 'antiquewhite',
-					// borderLeft: '1px solid #f70776',
 					border: '2px solid #f70776',
 					boxShadow: '0px 0px 10px 0px rgba(247, 7, 118)',
 					borderRadius: '10px',
+					display: 'flex',
+					flexGrow: 1,
+					flexDirection: 'column',
+					alignItems: 'center',
+					justifyContent: 'center',
+					height: '100%',
 				}}
 			>
 				<CardContent>
 					<Box
-						sx={{
-							p: 0,
-						}}
+						sx={
+							{
+								// p: 3,
+							}
+						}
 						component={m.div}
 						initial="hidden"
 						variants={headerVariant}
@@ -37,6 +44,7 @@ function CustomCard({ card, index }) {
 								fontFamily: 'system-ui',
 								mb: 1,
 								minHeight: { xs: '1rem', md: '1.5rem', lg: '2rem' },
+								textAlign: 'center', // Center the header text
 							}}
 							variant="h6"
 						>
@@ -50,7 +58,9 @@ function CustomCard({ card, index }) {
 						animate="visible"
 						custom={index}
 					>
-						<Typography variant="h7">{card.text}</Typography>
+						<Typography variant="h7" sx={{ textAlign: 'center' }}>
+							{card.text}
+						</Typography>
 					</Box>
 				</CardContent>
 			</Card>

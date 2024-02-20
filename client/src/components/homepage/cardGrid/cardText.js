@@ -1,19 +1,19 @@
 export const cardTextContent = [
 	{
 		header: 'Create your account',
-		text: 'Create your free, secure account or sign-in with Google',
+		text: 'Create your free, secure account or sign-in with Google.',
 	},
 	{
 		header: 'Set spending budgets',
-		text: 'Take full control of your finances with user-defined spending budgets',
+		text: 'Take full control of your finances with the help of user-defined spending budgets.',
 	},
 	{
 		header: 'Track and monitor',
-		text: 'Easily analyze your finances with the help of insightful graphs and charts',
+		text: 'Easily analyze your finances with the help of insightful graphs and charts.',
 	},
 	{
 		header: 'Secure, encrypted data',
-		text: 'Sensitive user data is encrypted and stored securely',
+		text: 'Sensitive user data is encrypted and stored securely.',
 	},
 	// {
 	// 	header: 'This is a header 5',
