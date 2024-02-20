@@ -35,9 +35,11 @@ function Navbar() {
 							sx={{
 								display: { xs: 'none', md: 'flex' },
 								fontSize: { sm: '2.2rem' },
-								fontFamily: 'monospace',
+								fontFamily: 'poppins',
 								fontWeight: '500',
 								alignItems: 'center',
+								letterSpacing: 1.5,
+
 								ml: { xs: 3, md: 3.5 },
 							}}
 						>

@@ -31,6 +31,8 @@ function NavbarLinks() {
 		return (
 			<ul
 				style={{
+					fontFamily: 'poppins',
+					letterSpacing: 1.5,
 					listStyle: 'none',
 					padding: 0,
 					margin: 0,
@@ -38,8 +40,7 @@ function NavbarLinks() {
 					justifyContent: 'space-between',
 					alignItems: 'center',
 					alignContent: 'center',
-					fontSize: '1.4rem',
-					fontFamily: 'monospace',
+					fontSize: '1.5rem',
 					fontWeight: '500',
 					width: '100%',
 					textAlign: 'center',
@@ -62,7 +63,7 @@ function NavbarLinks() {
 						{item}
 
 						<AnimatePresence mode="wait">
-							{navLink === index && <LinkEffects />}
+							{navLink === index && <LinkEffects index={index} />}
 						</AnimatePresence>
 					</ListItem>
 				))}

@@ -1,7 +1,12 @@
 import { Box } from '@mui/system';
 import { motion as m } from 'framer-motion';
 
-function LinkEffects() {
+function LinkEffects({ index }) {
+	function underlineWidth() {
+		if (index === 0) return '70%';
+		if (index === 1) return '70%';
+		if (index === 2) return '85%';
+	}
 	return (
 		<Box
 			layoutId="tab-indicator"
@@ -10,7 +15,7 @@ function LinkEffects() {
 			animate={{
 				opacity: 1,
 				scale: 1,
-				width: '75%',
+				width: underlineWidth(),
 				transition: { delay: 0.3, duration: 0.1 },
 			}}
 			exit={{ scale: 0, opacity: 0 }}
