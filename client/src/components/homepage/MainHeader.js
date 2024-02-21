@@ -73,8 +73,6 @@ function MainHeader() {
 			Welcome to{' '}
 			<span
 				style={{
-					// color: '#f70776',
-
 					backgroundImage: `linear-gradient(0deg, #c75a90 0%, #f70776 100%)`,
 					backgroundClip: 'text',
 					WebkitBackgroundClip: 'text',

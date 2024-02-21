@@ -85,9 +85,12 @@ function GoogleLoginButton({ width, height, padding, image }) {
 					src={image}
 					alt="google button"
 					style={{
-						width: '100%',
-						height: '100%',
+						width: '14rem',
+						height: '5rem',
+						objectFit: 'contain',
+
 						padding: 0,
+
 						'&:hover': {
 							backgroundColor: 'transparent',
 							cursor: 'pointer',
