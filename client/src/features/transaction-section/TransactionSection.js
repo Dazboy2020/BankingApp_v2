@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 function TransactionSection() {
 	const { displayFilterComponent } = useDisplayFilterComponent();
 	const layout = {
-		// mt: { xs: 5, md: 10 },
 		mt: 0,
 	};
 	return (

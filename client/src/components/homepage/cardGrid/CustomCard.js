@@ -44,7 +44,7 @@ function CustomCard({ card, index }) {
 								fontFamily: 'system-ui',
 								mb: 1,
 								minHeight: { xs: '1rem', md: '1.5rem', lg: '2rem' },
-								textAlign: 'center', // Center the header text
+								textAlign: 'left', // Center the header text
 							}}
 							variant="h6"
 						>
