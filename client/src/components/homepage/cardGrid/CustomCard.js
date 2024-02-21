@@ -29,16 +29,12 @@ function CustomCard({ card, index }) {
 			>
 				<CardContent>
 					<Box
-						sx={
-							{
-								// p: 3,
-							}
-						}
 						component={m.div}
 						initial="hidden"
 						variants={headerVariant}
 						animate="visible"
 					>
+						<span>{card.icon}</span>
 						<Typography
 							sx={{
 								fontFamily: 'system-ui',
