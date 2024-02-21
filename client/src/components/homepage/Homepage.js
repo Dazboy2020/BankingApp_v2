@@ -2,18 +2,13 @@ import { useAppContext } from '../../context/context';
 import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import useAutoLogin from '../../hooks/useAutoLogin';
 import { Box } from '@mui/material';
-import { motion as m } from 'framer-motion';
-// import TestSection from '../lottie/TestSection';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 // import { lazy } from 'react';
 
-import { buttonVariant, exitAnimation } from './variants';
 import SpinnerFullPage from '../spinner/SpinnerFullPage';
 import UnprotectedPageLayout from '../../pages/layout/UnprotectedPageLayout';
 import HeroSection from './HeroSection';
 import GridSection from './GridSection';
-import GoogleLoginButton from '../buttons/GoogleLogin';
-import continueImg from '../../assets/continue.png';
 
 export default function Homepage() {
 	const { state } = useAppContext();
@@ -36,28 +31,6 @@ export default function Homepage() {
 			>
 				<HeroSection />
 				<GridSection />
-
-				<Box
-					component={m.div}
-					layout="true"
-					initial="hidden"
-					variants={buttonVariant}
-					animate="visible"
-					exit={exitAnimation}
-					key="button"
-					sx={{
-						display: 'flex',
-						justifyContent: 'center',
-						pb: 4,
-					}}
-				>
-					<GoogleLoginButton
-						height="4rem"
-						width="15rem"
-						padding={0}
-						image={continueImg}
-					/>
-				</Box>
 			</Box>
 		</UnprotectedPageLayout>
 	);

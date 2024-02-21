@@ -9,6 +9,8 @@ function HeroSection() {
 			spacing={2}
 			sx={{
 				alignItems: 'center',
+				display: 'flex',
+				justifyContent: 'space-between',
 				pt: { xs: 4, sm: 3.5, md: 4 },
 			}}
 		>

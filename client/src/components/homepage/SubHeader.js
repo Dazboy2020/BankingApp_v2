@@ -2,8 +2,11 @@ import { Box } from '@mui/material';
 import expense_light from '../../assets/expense_light.png';
 import { motion as m } from 'framer-motion';
 import { exitAnimation, subHeaderVariant } from './variants';
+import { useTheme } from '@emotion/react';
 
 function SubHeader() {
+	const theme = useTheme();
+
 	return (
 		<Box
 			component={m.div}
@@ -16,7 +19,10 @@ function SubHeader() {
 				maxWidth: '100%',
 				maxHeight: '100%',
 				display: 'flex',
-				justifyContent: 'center',
+				justifyContent: 'right',
+				[theme.breakpoints.down('lg')]: {
+					justifyContent: 'center',
+				},
 			}}
 		>
 			<img

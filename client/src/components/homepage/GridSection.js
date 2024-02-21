@@ -17,7 +17,7 @@ const typographyStyle = {
 	mt: { xs: '1.5rem', s: '1.5rem', sm: '1.5rem' },
 	fontWeight: '300',
 	pt: 2,
-	pb: 2,
+	pb: 0,
 };
 
 function GridSection() {
