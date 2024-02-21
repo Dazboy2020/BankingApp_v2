@@ -34,11 +34,11 @@ function Navbar() {
 						<Box
 							sx={{
 								display: { xs: 'none', md: 'flex' },
-								fontSize: { sm: '2.2rem' },
+								fontSize: '1.5rem',
 								fontFamily: 'poppins',
+								letterSpacing: 1.5,
 								fontWeight: '500',
 								alignItems: 'center',
-								letterSpacing: 1.5,
 
 								ml: { xs: 3, md: 3.5 },
 							}}

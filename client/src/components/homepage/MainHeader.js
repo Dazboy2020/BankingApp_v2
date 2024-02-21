@@ -70,7 +70,20 @@ function MainHeader() {
 			key="header"
 			sx={welcomeText}
 		>
-			Welcome to Expensify.
+			Welcome to{' '}
+			<span
+				style={{
+					// color: '#f70776',
+
+					backgroundImage: `linear-gradient(0deg, #c75a90 0%, #f70776 100%)`,
+					backgroundClip: 'text',
+					WebkitBackgroundClip: 'text',
+					WebkitTextFillColor: 'transparent',
+					color: 'transparent',
+				}}
+			>
+				Expensify
+			</span>
 			<Box
 				component={m.div}
 				layout="true"
