@@ -20,17 +20,21 @@ function SubHeader() {
 				maxHeight: '100%',
 				display: 'flex',
 				justifyContent: 'right',
+				alignItems: 'f;ex-start',
+				alignContent: 'flex-start',
 				[theme.breakpoints.down('lg')]: {
 					justifyContent: 'center',
 				},
+				width: '100%',
+				height: '100%',
 			}}
 		>
 			<img
 				src={expense_light}
 				alt="expense_light"
 				style={{
-					width: '80%',
-					height: '80%',
+					width: '100%',
+					height: '100%',
 					objectFit: 'contain',
 				}}
 			/>

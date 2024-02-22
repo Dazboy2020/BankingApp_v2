@@ -21,7 +21,7 @@ function MainHeader() {
 		letterSpacing: 1,
 		fontWeight: 400,
 		mt: { xs: 5, sm: 5, md: 3 },
-		[theme.breakpoints.down('lg')]: {
+		[theme.breakpoints.down('md')]: {
 			mb: 5,
 			textAlign: 'center',
 		},
@@ -41,7 +41,7 @@ function MainHeader() {
 		fontWeight: '300',
 		lineHeight: { xs: 1.1 },
 
-		[theme.breakpoints.down('lg')]: {
+		[theme.breakpoints.down('md')]: {
 			mb: 5,
 			textAlign: 'center',
 		},
@@ -52,8 +52,8 @@ function MainHeader() {
 		justifyContent: 'left',
 		pb: 4,
 		width: '100%',
-		mt: { lg: 4 },
-		[theme.breakpoints.down('lg')]: {
+		mt: { md: 2, lg: 5 },
+		[theme.breakpoints.down('md')]: {
 			display: 'flex',
 			justifyContent: 'center',
 		},

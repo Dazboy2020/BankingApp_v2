@@ -1,22 +1,33 @@
-import { Stack } from '@mui/material';
+import { Grid } from '@mui/material';
 import MainHeader from './MainHeader';
 import SubHeader from './SubHeader';
 
 function HeroSection() {
 	return (
-		<Stack
-			direction={{ xs: 'column', md: 'column', lg: 'row' }}
+		<Grid
+			container
 			spacing={2}
+			rowSpacing={10}
+			columnSpacing={3}
 			sx={{
-				alignItems: 'center',
-				display: 'flex',
-				justifyContent: 'space-between',
-				pt: { xs: 4, sm: 3.5, md: 4 },
+				pt: { xs: 10, sm: 10, md: 20, lg: 30 },
+				minHeight: { lg: '40rem' },
 			}}
 		>
-			<MainHeader />
-			<SubHeader />
-		</Stack>
+			<Grid
+				item
+				xs={12}
+				md={12}
+				lg={7}
+				sx={{ mt: { xs: 2, sm: 3, md: 5, lg: 8 } }}
+			>
+				<MainHeader />
+			</Grid>
+
+			<Grid item xs={12} md={12} lg={5} sx={{ p: 0 }}>
+				<SubHeader />
+			</Grid>
+		</Grid>
 	);
 }
 

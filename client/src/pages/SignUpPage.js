@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useModalContext } from '../context/modalContext';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,12 +14,12 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import ResponsiveAppBar from '../components/navbar/NavBar';
 
 import {
 	containerVariants,
 	exitAnimation,
 } from './page-animations/login_register';
-import { useModalContext } from '../context/modalContext';
 import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
 import signup from '../assets/signup.png';
@@ -104,7 +105,7 @@ export default function SignUp() {
 	return state.isLoading ? (
 		<SpinnerFullPage />
 	) : (
-		<UnprotectedPageLayout>
+		<UnprotectedPageLayout appBar={<ResponsiveAppBar />}>
 			{!state.token && (
 				<motion.div
 					layout="true"

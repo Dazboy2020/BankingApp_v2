@@ -14,10 +14,10 @@ const typographyStyle = {
 	},
 	color: 'antiquewhite',
 	textAlign: 'center',
-	mt: { xs: '1.5rem', s: '1.5rem', sm: '1.5rem' },
+	// mt: { xs: '1.5rem', s: '1.5rem', sm: '1.5rem' },
 	fontWeight: '300',
 	pt: 2,
-	pb: 0,
+	pb: 4,
 };
 
 function GridSection() {
@@ -25,7 +25,10 @@ function GridSection() {
 		<section>
 			<Box
 				sx={{
-					mt: { xs: 4, sm: 8, md: 10, lg: 15 },
+					// pt: { xs: 4, sm: 8, md: 15, lg: 20 },
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
 				}}
 				component={m.div}
 				layout="true"
