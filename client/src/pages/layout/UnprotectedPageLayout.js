@@ -3,7 +3,8 @@ import { Box } from '@mui/material';
 function UnprotectedPageLayout({
 	children,
 	appBar = null,
-	backgroundImage,
+	backgroundImage = null,
+	backgroundColor = null,
 	props,
 }) {
 	return (
@@ -16,6 +17,7 @@ function UnprotectedPageLayout({
 					minHeight: '100dvh',
 					minWidth: '100%',
 					backgroundImage: backgroundImage,
+					backgroundColor: backgroundColor,
 				}}
 			>
 				<Box

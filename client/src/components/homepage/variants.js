@@ -46,7 +46,7 @@ export const buttonVariant = {
 		transition: {
 			type: 'spring',
 			duration: 0.5,
-			delay: 4,
+			delay: 2,
 		},
 	},
 };
@@ -101,7 +101,7 @@ export const subHeaderVariant = {
 		transition: {
 			type: 'spring',
 			duration: 0.3,
-			delay: 5,
+			delay: 3,
 			mass: 0.8,
 			stiffness: 400,
 		},

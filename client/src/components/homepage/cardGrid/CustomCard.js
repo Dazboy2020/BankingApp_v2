@@ -9,7 +9,7 @@ function CustomCard({ card, index }) {
 		backgroundColor: '#171413',
 		color: 'antiquewhite',
 		border: '1px solid #f70776',
-		boxShadow: '0px 0px 5px 5px rgba(247, 7, 118)',
+		boxShadow: '0px 0px 3px 3px rgba(247, 7, 118)',
 		borderRadius: '10px',
 		display: 'flex',
 		flexGrow: 1,
@@ -20,7 +20,7 @@ function CustomCard({ card, index }) {
 		'&:hover': {
 			backgroundColor: '#0a0a0a',
 			borderRadius: 0,
-			boxShadow: '0px 0px 7px 7px rgba(247, 7, 100)',
+			boxShadow: '0px 0px 5px 5px rgba(247, 7, 100)',
 		},
 	};
 	return (

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useAppContext } from '../context/context';
 import { useModalContext } from '../context/modalContext';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -20,12 +21,13 @@ import {
 	containerVariants,
 	exitAnimation,
 } from './page-animations/login_register';
+
 import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
 import signup from '../assets/signup.png';
 import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
-import { useAppContext } from '../context/context';
 import useSignUpNewUser from '../hooks/useSignUpNewUser';
+import { heroBackground } from '../components/homepage/homepage-utils';
 
 function Copyright(props) {
 	return (
@@ -105,7 +107,10 @@ export default function SignUp() {
 	return state.isLoading ? (
 		<SpinnerFullPage />
 	) : (
-		<UnprotectedPageLayout appBar={<ResponsiveAppBar />}>
+		<UnprotectedPageLayout
+			appBar={<ResponsiveAppBar />}
+			backgroundImage={heroBackground}
+		>
 			{!state.token && (
 				<motion.div
 					layout="true"

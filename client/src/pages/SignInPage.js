@@ -21,6 +21,7 @@ import useGetUserToken from '../hooks/useGetUserToken';
 import GoogleLoginButton from '../components/buttons/GoogleLogin';
 import signin from '../assets/signin.png';
 import ResponsiveAppBar from '../components/navbar/NavBar';
+import { heroBackground } from '../components/homepage/homepage-utils';
 
 import { motion } from 'framer-motion';
 
@@ -80,7 +81,10 @@ export default function SignIn() {
 	return state.isLoading ? (
 		<SpinnerFullPage />
 	) : (
-		<UnprotectedPageLayout appBar={<ResponsiveAppBar />}>
+		<UnprotectedPageLayout
+			appBar={<ResponsiveAppBar />}
+			backgroundImage={heroBackground}
+		>
 			{!state.token && (
 				<motion.div
 					layout="true"

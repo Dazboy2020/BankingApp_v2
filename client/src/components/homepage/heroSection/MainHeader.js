@@ -33,7 +33,7 @@ function MainHeader() {
 			xs: '3rem',
 			s: '3rem',
 			sm: '4rem',
-			md: '5rem',
+			md: '6rem',
 		},
 		color: 'antiquewhite',
 		textAlign: 'left',
