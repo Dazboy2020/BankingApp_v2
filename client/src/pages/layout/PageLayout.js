@@ -2,7 +2,7 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 import { Box } from '@mui/material';
 import AlertDialogSlide from '../../UI/AlertDialogue/AlertDialogue';
 import ResponsiveDrawer from '../../components/drawer/Draw';
-import { AnimatePresence, easeInOut, motion } from 'framer-motion';
+import { LayoutGroup, backInOut, motion } from 'framer-motion';
 
 function PageLayout({ children }) {
 	const { isDarkMode } = useDarkMode();
@@ -13,9 +13,9 @@ function PageLayout({ children }) {
 		},
 		animate: (index) => ({
 			opacity: 1,
-			y: 0,
+
 			transition: {
-				opacity: { duration: 0.5, ease: easeInOut },
+				opacity: { duration: 0.25, ease: backInOut },
 			},
 		}),
 	};
@@ -24,13 +24,18 @@ function PageLayout({ children }) {
 		<>
 			<AlertDialogSlide />
 			<ResponsiveDrawer />
-			<AnimatePresence>
+			{/* <AnimatePresence> */}
+			<LayoutGroup>
 				<Box
 					key="pageLayout"
 					component={motion.div}
 					initial="initial"
 					animate="animate"
-					exit={{ y: '5%', opacity: 0 }}
+					exit={{
+						y: '2%',
+						opacity: 0,
+						transition: { duration: 0.25, ease: backInOut },
+					}}
 					variants={containerVariants}
 					sx={{
 						minHeight: '100vh',
@@ -53,7 +58,9 @@ function PageLayout({ children }) {
 						{children}
 					</Box>
 				</Box>
-			</AnimatePresence>
+			</LayoutGroup>
+
+			{/* </AnimatePresence> */}
 		</>
 	);
 }
