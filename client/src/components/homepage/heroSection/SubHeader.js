@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import expense_light from '../../assets/expense_light.png';
+import expense_light from '../../../assets/expense_light.png';
 import { motion as m } from 'framer-motion';
-import { exitAnimation, subHeaderVariant } from './variants';
+import { exitAnimation, subHeaderVariant } from '../variants';
 import { useTheme } from '@emotion/react';
 
 function SubHeader() {

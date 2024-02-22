@@ -5,10 +5,10 @@ import {
 	containerVariants,
 	exitAnimation,
 	titleVariant,
-} from './variants';
+} from '../variants';
 import { motion as m } from 'framer-motion';
-import GoogleLoginButton from '../buttons/GoogleLogin';
-import continueImg from '../../assets/continue.png';
+import GoogleLoginButton from '../../buttons/GoogleLogin';
+import continueImg from '../../../assets/continue.png';
 
 function MainHeader() {
 	const theme = useTheme();
