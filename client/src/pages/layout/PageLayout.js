@@ -42,17 +42,14 @@ function PageLayout({ children }) {
 						ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
 						mr: { lg: 0, sm: 0, m: 0 },
 						backgroundColor: isDarkMode ? ' #212529' : '#343a40',
-						overflowX: 'hidden',
-						overflowY: 'hidden',
+						// overflowX: 'hidden',
+						// overflowY: 'hidden',
 					}}
 				>
 					<Box
 						direction={{ sm: 'column', md: 'row' }}
 						sx={{
 							justifyContent: { sm: 'flex-start', md: 'center' },
-							ml: { xs: 3, sm: 6 },
-							mr: { xs: 3, sm: 6 },
-							mt: { xs: 5, md: 10 },
 						}}
 					>
 						{children}

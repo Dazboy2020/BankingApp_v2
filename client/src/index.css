@@ -25,4 +25,6 @@ body,
 html {
 	/* background-color: #2d3436; */
 	background-image: linear-gradient(315deg, #42484d 0%, #000000 74%);
+	scroll-behavior: smooth;
+	/* height: -webkit-fill-available; */
 }

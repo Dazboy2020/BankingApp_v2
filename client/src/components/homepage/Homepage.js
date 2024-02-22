@@ -21,7 +21,6 @@ export default function Homepage() {
 	useAutoLogin();
 
 	const gridComponentProps = {
-		minHeight: '100vh',
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',

@@ -20,7 +20,7 @@ function SubHeader() {
 				maxHeight: '100%',
 				display: 'flex',
 				justifyContent: 'right',
-				alignItems: 'f;ex-start',
+				alignItems: 'flex-start',
 				alignContent: 'flex-start',
 				[theme.breakpoints.down('lg')]: {
 					justifyContent: 'center',

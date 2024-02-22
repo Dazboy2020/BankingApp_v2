@@ -10,7 +10,7 @@ import LoginButton from '../buttons/LoginButton';
 function Navbar() {
 	return (
 		<AppBar
-			position="sticky"
+			position="fixed"
 			sx={{
 				height: { md: '6rem' },
 				justifyContent: 'center',

@@ -7,24 +7,18 @@ function HeroSection() {
 		<Grid
 			container
 			spacing={2}
-			rowSpacing={10}
+			rowSpacing={{ xs: 2, s: 2, sm: 2, md: 10, lg: 10 }}
 			columnSpacing={3}
 			sx={{
-				pt: { xs: 10, sm: 10, md: 20, lg: 30 },
-				minHeight: { lg: '40rem' },
+				minHeight: { xs: '100vh', md: 'calc(100vh + 6rem)' },
+				alignContent: 'center',
 			}}
 		>
-			<Grid
-				item
-				xs={12}
-				md={12}
-				lg={7}
-				sx={{ mt: { xs: 2, sm: 3, md: 5, lg: 8 } }}
-			>
+			<Grid item xs={12} md={12} lg={7}>
 				<MainHeader />
 			</Grid>
 
-			<Grid item xs={12} md={12} lg={5} sx={{ p: 0 }}>
+			<Grid item xs={12} md={12} lg={5}>
 				<SubHeader />
 			</Grid>
 		</Grid>

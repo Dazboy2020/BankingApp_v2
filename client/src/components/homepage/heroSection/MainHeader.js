@@ -50,7 +50,7 @@ function MainHeader() {
 	const googleButtonStyle = {
 		display: 'flex',
 		justifyContent: 'left',
-		pb: 4,
+		pb: { xs: 2, sm: 2, md: 2, lg: 4 },
 		width: '100%',
 		mt: { md: 2, lg: 5 },
 		[theme.breakpoints.down('md')]: {
