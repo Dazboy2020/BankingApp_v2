@@ -1,3 +1,5 @@
+import { easeInOut } from 'framer-motion';
+
 export const containerVariants = {
 	hidden: {
 		opacity: 0,
@@ -54,18 +56,17 @@ export const buttonVariant = {
 export const singleCard = {
 	hidden: {
 		opacity: 0,
-		// y: '-100%',
-		scaleY: 0,
+		y: '200%',
+		scale: 0,
 	},
 	visible: {
 		opacity: 1,
-		// y: 0,
-		scaleY: 1,
+		y: 0,
+		scale: 1,
 
 		transition: {
-			type: 'tween',
-			duration: 0.2,
-			delay: 2,
+			ease: easeInOut,
+			delay: 1,
 		},
 	},
 };
@@ -82,7 +83,7 @@ export const headerVariant = {
 		transition: {
 			type: 'spring',
 			duration: 0.3,
-			delay: 3,
+			delay: 1.5,
 			mass: 0.5,
 			stiffness: 300,
 		},
@@ -101,7 +102,7 @@ export const subHeaderVariant = {
 		transition: {
 			type: 'spring',
 			duration: 0.3,
-			delay: 3,
+			delay: 2.5,
 			mass: 0.8,
 			stiffness: 400,
 		},
@@ -111,14 +112,16 @@ export const subHeaderVariant = {
 export const subtitleVariant = {
 	hidden: {
 		opacity: 0,
+		y: '100%',
 	},
 	visible: {
 		opacity: 1,
+		y: 0,
 
 		transition: {
 			type: 'spring',
-			duration: 1,
-			delay: 4.5,
+			duration: 0.5,
+			delay: 0.5,
 		},
 	},
 };
@@ -135,9 +138,9 @@ export const cardContent = {
 		transition: {
 			type: 'spring',
 			duration: 0.3,
-			delay: 3.5,
-			mass: 0.5,
-			stiffness: 300,
+			delay: 2.5,
+			mass: 0.8,
+			stiffness: 400,
 		},
 	},
 };

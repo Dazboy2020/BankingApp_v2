@@ -1,8 +1,11 @@
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
 import { singleCard, headerVariant, cardContent } from '../variants';
+import { useState } from 'react';
 
 function CustomCard({ card, index }) {
+	const [isInView, setIsInView] = useState(false);
+
 	const cardStyle = {
 		p: 3,
 		minHeight: { xs: '15rem', md: '100%', lg: '15rem' },
@@ -20,22 +23,25 @@ function CustomCard({ card, index }) {
 			backgroundColor: '#0a0a0a',
 		},
 	};
+
 	return (
 		<Grid key={card.header} item xs={12} sm={6} md={6} lg={3} sx={{ pt: 0 }}>
 			<Card
 				component={m.div}
-				initial="hidden"
+				initial={false}
+				animate={isInView ? 'visible' : 'hidden'}
 				variants={singleCard}
-				animate="visible"
 				custom={index}
 				sx={cardStyle}
+				onViewportEnter={() => {
+					setIsInView(true);
+				}}
 			>
 				<CardContent>
 					<Box
-						component={m.div}
-						initial="hidden"
+						initial="false"
+						animate={isInView ? 'visible' : 'hidden'}
 						variants={headerVariant}
-						animate="visible"
 					>
 						<span>{card.icon}</span>
 						<Typography
@@ -52,9 +58,9 @@ function CustomCard({ card, index }) {
 					</Box>
 					<Box
 						component={m.div}
-						initial="hidden"
+						initial={false}
+						animate={isInView ? 'visible' : 'hidden'}
 						variants={cardContent}
-						animate="visible"
 						custom={index}
 					>
 						<Typography variant="h7" sx={{ textAlign: 'center' }}>

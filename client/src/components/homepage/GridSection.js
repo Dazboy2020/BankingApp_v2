@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
 import CardGrid from './cardGrid/CardGrid';
 import { subtitleVariant, exitAnimation } from './variants';
+import { useState } from 'react';
 
 const gettingStarted = {
 	fontFamily: 'poppins',
@@ -20,6 +21,8 @@ const gettingStarted = {
 };
 
 function GridSection() {
+	const [isInView, setIsInView] = useState(false);
+
 	return (
 		<section>
 			<Stack
@@ -30,11 +33,14 @@ function GridSection() {
 				}}
 			>
 				<Box
+					onViewportEnter={() => {
+						setIsInView(true);
+					}}
 					component={m.div}
 					layout="true"
-					initial="hidden"
+					initial={false}
+					animate={isInView ? 'visible' : 'hidden'}
 					variants={subtitleVariant}
-					animate="visible"
 					exit={exitAnimation}
 				>
 					<Typography sx={gettingStarted}>Getting started is easy.</Typography>
