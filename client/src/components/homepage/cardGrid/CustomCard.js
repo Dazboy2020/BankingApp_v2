@@ -1,11 +1,17 @@
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
-import { singleCard, headerVariant, cardContent } from '../variants';
-import { useState } from 'react';
+import {
+	singleCard,
+	headerVariant,
+	cardContent,
+	cardContentMobile,
+	singleCardMobile,
+} from '../variants';
+
+import { useTheme } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function CustomCard({ card, index }) {
-	const [isInView, setIsInView] = useState(false);
-
 	const cardStyle = {
 		p: 3,
 		minHeight: { xs: '15rem', md: '100%', lg: '15rem' },
@@ -24,25 +30,22 @@ function CustomCard({ card, index }) {
 		},
 	};
 
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
 	return (
 		<Grid key={card.header} item xs={12} sm={6} md={6} lg={3} sx={{ pt: 0 }}>
 			<Card
 				component={m.div}
-				initial={false}
-				animate={isInView ? 'visible' : 'hidden'}
-				variants={singleCard}
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true }}
+				variants={isMobile ? singleCardMobile : singleCard}
 				custom={index}
 				sx={cardStyle}
-				onViewportEnter={() => {
-					setIsInView(true);
-				}}
 			>
 				<CardContent>
-					<Box
-						initial="false"
-						animate={isInView ? 'visible' : 'hidden'}
-						variants={headerVariant}
-					>
+					<Box initial="false" animate="visible" variants={headerVariant}>
 						<span>{card.icon}</span>
 						<Typography
 							sx={{
@@ -58,9 +61,9 @@ function CustomCard({ card, index }) {
 					</Box>
 					<Box
 						component={m.div}
-						initial={false}
-						animate={isInView ? 'visible' : 'hidden'}
-						variants={cardContent}
+						initial="hidden"
+						whileInView="visible"
+						variants={isMobile ? cardContentMobile : cardContent}
 						custom={index}
 					>
 						<Typography variant="h7" sx={{ textAlign: 'center' }}>

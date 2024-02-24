@@ -40,9 +40,10 @@ function MainHeader() {
 		letterSpacing: -1,
 		fontWeight: '300',
 		lineHeight: { xs: 1.1 },
+		pt: { xs: 6, sm: 1, md: 1, lg: 1 },
 
 		[theme.breakpoints.down('md')]: {
-			mb: 5,
+			mb: { xs: 0, md: 5 },
 			textAlign: 'center',
 		},
 	};

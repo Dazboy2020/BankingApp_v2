@@ -56,17 +56,31 @@ export const buttonVariant = {
 export const singleCard = {
 	hidden: {
 		opacity: 0,
-		y: '200%',
 		scale: 0,
 	},
 	visible: {
 		opacity: 1,
-		y: 0,
 		scale: 1,
 
 		transition: {
 			ease: easeInOut,
 			delay: 1,
+		},
+	},
+};
+
+export const singleCardMobile = {
+	hidden: {
+		opacity: 0,
+		scale: 0,
+	},
+	visible: {
+		opacity: 1,
+		scale: 1,
+
+		transition: {
+			ease: easeInOut,
+			delay: 0,
 		},
 	},
 };
@@ -139,6 +153,24 @@ export const cardContent = {
 			type: 'spring',
 			duration: 0.3,
 			delay: 2.5,
+			mass: 0.8,
+			stiffness: 400,
+		},
+	},
+};
+export const cardContentMobile = {
+	hidden: {
+		opacity: 0,
+		y: '-100%',
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+
+		transition: {
+			type: 'spring',
+			duration: 0.3,
+			delay: 0.5,
 			mass: 0.8,
 			stiffness: 400,
 		},
