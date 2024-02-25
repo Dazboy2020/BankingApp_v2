@@ -32,7 +32,7 @@ export default function AvailbleFundsCard({ type }) {
 				<AccountBalanceIcon
 					sx={{
 						color: isDarkMode ? '#D1D5DB' : '#242a2e',
-						fontSize: { xs: '40px', sm: '50px' },
+						fontSize: { xs: '2rem', sm: '2.5rem' },
 					}}
 				/>
 			}

@@ -8,7 +8,8 @@ export const amountStyling = (isDarkMode) => ({
 
 export const categoryStyling = (isDarkMode) => ({
 	fontFamily: 'system-ui',
-	fontSize: '1.2rem',
+	fontSize: '1rem',
+	fontWeight: 500,
 	color: isDarkMode ? '#d6d3d1' : '#000',
 	pl: 0.5,
 });
@@ -17,7 +18,7 @@ export const dateStyling = (isDarkMode) => ({
 	fontFamily: 'system-ui',
 	fontSize: '1rem',
 	textTransform: 'uppercase',
-	fontWeight: 500,
+	// fontWeight: 500,
 	mt: '5px',
 	color: isDarkMode ? '#d6d3d1' : '#000',
 	pl: 0.5,
@@ -25,7 +26,7 @@ export const dateStyling = (isDarkMode) => ({
 
 export const titleStyling = (isDarkMode) => ({
 	backgroundColor: isDarkMode ? '#212529' : '#495057',
-	fontSize: '1.2rem',
+	fontSize: '1rem',
 	textTransform: 'uppercase',
 	letterSpacing: '0.1rem',
 	color: ' #fff',

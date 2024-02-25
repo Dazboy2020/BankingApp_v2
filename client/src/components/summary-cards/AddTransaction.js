@@ -122,7 +122,7 @@ const AddTransaction = () => {
 						{!state.isEditing ? 'Add a Transaction:' : 'Edit Mode'}
 					</Typography>
 					<PointOfSaleIcon
-						sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
+						sx={{ color: 'green', fontSize: { xs: '2rem', sm: '2.5rem' } }}
 					/>
 				</Box>
 

@@ -35,7 +35,7 @@ function EditButton(expense) {
 				<CreateIcon
 					sx={{
 						color: 'white',
-						ml: '6px',
+						ml: '10px',
 					}}
 				/>
 			}

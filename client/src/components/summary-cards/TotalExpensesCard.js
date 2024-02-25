@@ -20,7 +20,7 @@ export default function TotalExpensesCard() {
 			transactionTotal={totalToDisplay()}
 			icon={
 				<ShoppingCartIcon
-					sx={{ color: 'red', fontSize: { xs: '40px', sm: '50px' } }}
+					sx={{ color: 'red', fontSize: { xs: '2rem', sm: '2.5rem' } }}
 				/>
 			}
 		/>

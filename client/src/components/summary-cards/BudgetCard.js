@@ -48,7 +48,7 @@ function BudgetCard() {
 						{text}
 					</Typography>
 					<SavingsIcon
-						sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
+						sx={{ color: 'green', fontSize: { xs: '2rem', sm: '2.5rem' } }}
 					/>
 				</Box>
 				<BudgetInputBox />

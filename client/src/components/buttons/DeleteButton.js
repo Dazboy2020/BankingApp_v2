@@ -49,7 +49,7 @@ function DeleteButton({ expense, type, userId, formBudget, setFormBudget }) {
 				<DeleteIcon
 					sx={{
 						color: 'white',
-						ml: '6px',
+						ml: '10px',
 					}}
 				/>
 			}

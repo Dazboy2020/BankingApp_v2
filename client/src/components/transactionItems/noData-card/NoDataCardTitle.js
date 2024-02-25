@@ -16,7 +16,7 @@ function NoDataCardTitle({ type }) {
 
 	const titleStyling = {
 		backgroundColor: isDarkMode ? '#212529' : '#495057',
-		fontSize: '1.2rem',
+		fontSize: '1rem',
 		textTransform: 'uppercase',
 		letterSpacing: '0.1rem',
 		color: ' #fff',

@@ -13,7 +13,7 @@ export default function TotalDepositsCard() {
 			transactionTotal={`€${totalIncome.toFixed(2)}`}
 			icon={
 				<PaidIcon
-					sx={{ color: 'green', fontSize: { xs: '40px', sm: '50px' } }}
+					sx={{ color: 'green', fontSize: { xs: '2rem', sm: '2.5rem' } }}
 				/>
 			}
 		/>

@@ -51,31 +51,37 @@ const ListNew = (props) => {
 	const sideBarItems = [
 		{
 			text: 'Overview',
-			icon: <HouseIcon />,
+			icon: <HouseIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />,
 		},
 		{
 			text: 'Expenses',
-			icon: <ShoppingCartIcon />,
+			icon: (
+				<ShoppingCartIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+			),
 		},
 		{
 			text: 'Deposits',
-			icon: <EuroIcon />,
+			icon: <EuroIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />,
 		},
 		{
 			text: 'Charts',
-			icon: <PsychologyAltIcon />,
+			icon: (
+				<PsychologyAltIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+			),
 		},
 		{
 			text: 'Budget',
-			icon: <SavingsIcon />,
+			icon: <SavingsIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />,
 		},
 		{
 			text: 'Account',
-			icon: <AccountCircleIcon />,
+			icon: (
+				<AccountCircleIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+			),
 		},
 		{
 			text: 'Logout',
-			icon: <ExitToAppIcon />,
+			icon: <ExitToAppIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />,
 			onClick: handleClick,
 		},
 	];

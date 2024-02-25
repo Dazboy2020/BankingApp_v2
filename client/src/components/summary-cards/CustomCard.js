@@ -37,7 +37,7 @@ function CustomCard({ TransactionTypeCard, transactionTotal, icon }) {
 					{icon}
 				</Box>
 				<Typography
-					sx={{ fontSize: '2rem', color: isDarkMode ? '#fff' : '#000' }}
+					sx={{ fontSize: '1.5rem', color: isDarkMode ? '#fff' : '#000' }}
 				>
 					{transactionTotal}
 				</Typography>
