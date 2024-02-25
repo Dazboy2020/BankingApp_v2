@@ -34,7 +34,7 @@ function LoginButton() {
 				[theme.breakpoints.up('md')]: {
 					display: 'none',
 				},
-				fontSize: { xs: '.8rem', sm: '1.5rem' },
+				fontSize: { xs: '.8rem', sm: '1.2rem' },
 				'&:hover': {
 					backgroundColor: '#680747',
 					cursor: 'pointer',

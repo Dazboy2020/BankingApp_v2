@@ -3,9 +3,9 @@ import { motion as m } from 'framer-motion';
 
 function LinkEffects({ index }) {
 	function underlineWidth() {
-		if (index === 0) return '70%';
-		if (index === 1) return '70%';
-		if (index === 2) return '85%';
+		if (index === 0) return '60%';
+		if (index === 1) return '60%';
+		if (index === 2) return '75%';
 	}
 	return (
 		<Box

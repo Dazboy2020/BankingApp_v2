@@ -92,9 +92,10 @@ const ListNew = (props) => {
 	const styles = {
 		'& .MuiTypography-root': {
 			letterSpacing: '.1rem',
-			fontSize: '1.4rem',
-			fontWeight: 'bold',
+			fontSize: '1.2rem',
+			fontWeight: '600',
 			ml: '1rem',
+			fontFamily: 'Poppins',
 		},
 	};
 

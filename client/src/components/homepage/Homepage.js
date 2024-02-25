@@ -8,7 +8,7 @@ import ResponsiveAppBar from '../navbar/NavBar';
 import SpinnerFullPage from '../spinner/SpinnerFullPage';
 import UnprotectedPageLayout from '../../pages/layout/UnprotectedPageLayout';
 import HeroSection from './heroSection/HeroSection';
-import GridSection from './GridSection';
+import GridSection from './gridSection/GridSection';
 import { heroBackground } from './homepage-utils';
 import { gridBackground } from './homepage-utils';
 

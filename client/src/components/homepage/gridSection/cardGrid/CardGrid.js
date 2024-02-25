@@ -12,7 +12,7 @@ function CardGrid() {
 			pb={{ xs: 8, sm: 8, md: 6, lg: 6 }}
 		>
 			{cardTextContent.map((card, index) => (
-				<CustomCard key={index} card={card} index={index} />
+				<CustomCard key={index} card={card} />
 			))}
 		</Grid>
 	);

@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { motion as m } from 'framer-motion';
 import CardGrid from './cardGrid/CardGrid';
-import { subtitleVariant, exitAnimation } from './variants';
-import { useState } from 'react';
+import { subtitleVariant, exitAnimation } from '../variants';
+import GoogleLoginButton from '../../buttons/GoogleLogin';
+import continueImg from '../../../assets/continue.png';
 
 const gettingStarted = {
 	fontFamily: 'poppins',
@@ -46,6 +48,16 @@ function GridSection() {
 					<Typography sx={gettingStarted}>Getting started is easy.</Typography>
 				</Box>
 				<CardGrid />
+				<Box
+					component={m.div}
+					layout="true"
+					initial={false}
+					animate={isInView ? 'visible' : 'hidden'}
+					variants={subtitleVariant}
+					exit={exitAnimation}
+				>
+					<GoogleLoginButton height="4rem" padding={0} image={continueImg} />
+				</Box>
 			</Stack>
 		</section>
 	);

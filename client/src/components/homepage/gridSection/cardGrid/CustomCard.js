@@ -6,15 +6,15 @@ import {
 	cardContent,
 	cardContentMobile,
 	singleCardMobile,
-} from '../variants';
+} from '../../variants';
 
 import { useTheme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 function CustomCard({ card, index }) {
 	const cardStyle = {
-		p: 3,
-		minHeight: { xs: '15rem', md: '100%', lg: '15rem' },
+		p: { xs: 1, sm: 1, md: 3 },
+		minHeight: { xs: '13rem', md: '100%', lg: '15rem' },
 		backgroundColor: '#171413',
 		color: 'antiquewhite',
 		boxShadow: '0px 0px 20px 0px rgba(247, 7, 118)',
@@ -63,6 +63,7 @@ function CustomCard({ card, index }) {
 						component={m.div}
 						initial="hidden"
 						whileInView="visible"
+						viewport={{ once: true }}
 						variants={isMobile ? cardContentMobile : cardContent}
 						custom={index}
 					>

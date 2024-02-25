@@ -49,8 +49,8 @@ function PageLayout({ children }) {
 						direction={{ sm: 'column', md: 'row' }}
 						sx={{
 							// justifyContent: { sm: 'flex-start', md: 'center' },
-							ml: { xs: 3, sm: 6 },
-							mr: { xs: 3, sm: 6 },
+							ml: { xs: 3, sm: 6, lg: 10 },
+							mr: { xs: 3, sm: 6, lg: 10 },
 							mt: { xs: 5, md: 10 },
 						}}
 					>

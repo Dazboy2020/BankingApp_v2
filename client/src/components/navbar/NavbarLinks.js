@@ -32,7 +32,7 @@ function NavbarLinks() {
 			<ul
 				style={{
 					fontFamily: 'poppins',
-					letterSpacing: 1.5,
+					// letterSpacing: 1.2,
 					listStyle: 'none',
 					padding: 0,
 					margin: 0,
@@ -40,7 +40,7 @@ function NavbarLinks() {
 					justifyContent: 'space-between',
 					alignItems: 'center',
 					alignContent: 'center',
-					fontSize: '1.5rem',
+					fontSize: '1.2rem',
 					fontWeight: '500',
 					width: '100%',
 					textAlign: 'center',
@@ -76,7 +76,7 @@ function NavbarLinks() {
 			sx={{
 				display: { xs: 'none', md: 'flex', alignItems: 'center' },
 				mr: 2,
-				width: { md: '40%', lg: '25%', xl: '20%' },
+				width: { md: '30%', lg: '20%', xl: '15%' },
 				fontWeight: 700,
 				color: 'white',
 			}}
