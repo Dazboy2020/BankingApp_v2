@@ -2,9 +2,11 @@ import * as React from 'react';
 import { useAppContext } from '../../context/context';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CustomCard from './CustomCard';
+import dayjs from 'dayjs';
 
 export default function TotalExpensesCard() {
 	const { totalExpenses, totalBudgetExpenses, state } = useAppContext();
+	let currentMonthText = dayjs().format('MMMM');
 
 	function totalToDisplay() {
 		if (state.isActive === 4) {
@@ -14,9 +16,17 @@ export default function TotalExpensesCard() {
 		}
 	}
 
+	function textToDisplay() {
+		if (state.isActive === 4) {
+			return `Total ${currentMonthText} Expenses`;
+		} else {
+			return 'Total Expenses';
+		}
+	}
+
 	return (
 		<CustomCard
-			TransactionTypeCard="Total Expenses"
+			TransactionTypeCard={textToDisplay()}
 			transactionTotal={totalToDisplay()}
 			icon={
 				<ShoppingCartIcon

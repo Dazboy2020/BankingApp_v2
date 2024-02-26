@@ -1,18 +1,23 @@
+import { useAppContext } from '../../context/context';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import BudgetInputBox from '../budget/BudgetInputBox';
 
 import SavingsIcon from '@mui/icons-material/Savings';
-import { useAppContext } from '../../context/context';
+
+const dayjs = require('dayjs');
+
 function BudgetCard() {
 	const { isDarkMode } = useDarkMode();
 	const { state } = useAppContext();
 
 	let text;
 
+	let currentMonthText = dayjs().format('MMMM');
+
 	state.budget === null
 		? (text = 'Please add a monthly budget')
-		: (text = `Your monthly budget is €${state.budget}`);
+		: (text = `Your ${currentMonthText} budget is €${state.budget}`);
 
 	return (
 		<Card

@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 
 function CustomCard({ TransactionTypeCard, transactionTotal, icon }) {
 	const { isDarkMode } = useDarkMode();
+
 	return (
 		<Card
 			component="article"
