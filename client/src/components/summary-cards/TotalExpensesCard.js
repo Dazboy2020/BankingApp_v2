@@ -8,26 +8,28 @@ export default function TotalExpensesCard() {
 	const { totalExpenses, totalBudgetExpenses, state } = useAppContext();
 	let currentMonthText = dayjs().format('MMMM');
 
-	function totalToDisplay() {
+	const totalToDisplay = React.useMemo(() => {
 		if (state.isActive === 4) {
 			return `€${Math.abs(totalBudgetExpenses.toFixed(2))}`;
 		} else {
 			return `€${Math.abs(totalExpenses.toFixed(2))}`;
 		}
-	}
+	}, [totalExpenses, state.isActive, totalBudgetExpenses]);
 
-	function textToDisplay() {
+	const transactionTypeText = React.useMemo(() => {
 		if (state.isActive === 4) {
-			return `Total ${currentMonthText} Expenses`;
+			return `${currentMonthText
+				.charAt(0)
+				.toUpperCase()}${currentMonthText.slice(1)}'s Total Expenses`;
 		} else {
-			return 'Total Expenses';
+			return `Total Expenses`;
 		}
-	}
+	}, [state.isActive, currentMonthText]);
 
 	return (
 		<CustomCard
-			TransactionTypeCard={textToDisplay()}
-			transactionTotal={totalToDisplay()}
+			TransactionTypeCard={transactionTypeText}
+			transactionTotal={totalToDisplay}
 			icon={
 				<ShoppingCartIcon
 					sx={{ color: 'red', fontSize: { xs: '2rem', sm: '2.5rem' } }}

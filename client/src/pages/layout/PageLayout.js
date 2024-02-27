@@ -40,7 +40,9 @@ function PageLayout({ children }) {
 						minHeight: '100vh',
 						ml: { lg: '22rem', md: '22rem', sm: '19rem', xs: 0 },
 						mr: { lg: 0, sm: 0, m: 0 },
-						backgroundColor: isDarkMode ? ' #212529' : '#343a40',
+						backgroundColor: isDarkMode
+							? 'linear-gradient(177.9deg, rgb(58, 62, 88) 3.6%, rgb(119, 127, 148) 105.8%)'
+							: '#343a40',
 						overflowX: 'hidden',
 						overflowY: 'hidden',
 					}}

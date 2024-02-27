@@ -56,7 +56,8 @@ function ResponsiveDrawer(props) {
 					sx={{
 						height: '7rem',
 						padding: { xs: '.5rem', s: 0, sm: '1rem' },
-						bgcolor: isDarkMode ? '#212529' : '#343a40',
+						// bgcolor: isDarkMode ? '#212529' : '#343a40',
+						backgroundColor: isDarkMode ? 'black' : '#343a40',
 
 						borderBottom: '1px solid #f97316',
 					}}

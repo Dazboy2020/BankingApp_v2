@@ -1,9 +1,10 @@
 import * as React from 'react';
 
+import { useDarkMode } from '../../hooks/useDarkMode';
 import { useAppContext } from '../../context/context';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomCard from './CustomCard';
-import { useDarkMode } from '../../hooks/useDarkMode';
+import dayjs from 'dayjs';
 
 export default function AvailbleFundsCard({ type }) {
 	const { isDarkMode } = useDarkMode();
@@ -15,7 +16,7 @@ export default function AvailbleFundsCard({ type }) {
 		state,
 	} = useAppContext();
 
-	function totalToDisplay() {
+	const totalToDisplay = React.useMemo(() => {
 		if (state.isActive === 4) {
 			return `€${
 				totalBudgetDeposits - Math.abs(totalBudgetExpenses).toFixed(2)
@@ -23,11 +24,30 @@ export default function AvailbleFundsCard({ type }) {
 		} else {
 			return `€${totalIncome - Math.abs(totalExpenses).toFixed(2)}`;
 		}
-	}
+	}, [
+		state.isActive,
+		totalExpenses,
+		totalIncome,
+		totalBudgetExpenses,
+		totalBudgetDeposits,
+	]);
+
+	let currentMonthText = dayjs().format('MMMM');
+
+	const transactionTypeText = React.useMemo(() => {
+		if (state.isActive === 4) {
+			return `${currentMonthText
+				.charAt(0)
+				.toUpperCase()}${currentMonthText.slice(1)}'s Available Funds`;
+		} else {
+			return `Available Funds`;
+		}
+	}, [state.isActive, currentMonthText]);
+
 	return (
 		<CustomCard
-			TransactionTypeCard="Available Funds"
-			transactionTotal={totalToDisplay()}
+			TransactionTypeCard={transactionTypeText}
+			transactionTotal={totalToDisplay}
 			icon={
 				<AccountBalanceIcon
 					sx={{
