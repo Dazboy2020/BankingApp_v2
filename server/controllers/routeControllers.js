@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const asyncHandler = require('../middleware/asyncHandler');
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
@@ -7,319 +8,268 @@ const test = (req, res) => {
 };
 
 //! Register User //
-const registerUser = async (req, res, next) => {
-	try {
-		const { username, email, password, confirmPassword } = req.body;
+const registerUser = asyncHandler(async (req, res, next) => {
+	const { username, email, password, confirmPassword } = req.body;
 
-		if (!username || !email || !password || !confirmPassword) {
-			return res.status(200).json({
-				error: 'Please complete all fields',
-			});
-		}
-
-		const existingUser = await User.findOne({ $or: [{ username }, { email }] });
-
-		if (existingUser) {
-			// Check if the username or email already exists
-			if (existingUser.username === username) {
-				return res.status(200).json({ error: 'Username already exists' });
-			} else {
-				return res.status(200).json({ error: 'Email already exists' });
-			}
-		}
-
-		if (password !== confirmPassword) {
-			return res.status(200).json({ error: 'Passwords do not match!' });
-		}
-
-		if (password.length < 8) {
-			return res
-				.status(400)
-				.json({ error: 'Password must be min 8 characters!' });
-		}
-
-		const user = await User.create({
-			username,
-			email,
-			password,
-			confirmPassword,
-			expenses: [],
-			deposits: [],
-		});
-
-		// return res.json(user);
-		sendToken(user, 201, res);
-	} catch (error) {
-		res.status(500).json({
-			success: false,
-			error: error.msg,
-		});
+	if (!username || !email || !password || !confirmPassword) {
+		return next(new ErrorResponse(`Please provide all fields`, 400));
 	}
-};
+
+	const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+
+	if (existingUser) {
+		// Check if the username or email already exists
+		if (existingUser.username === username) {
+			return next(new ErrorResponse(`User already exists`, 400));
+		}
+		if (existingUser.email === email) {
+			return next(new ErrorResponse(`Email already exists`, 400));
+		}
+	}
+
+	if (password !== confirmPassword) {
+		return next(new ErrorResponse(`Passwords do not match`, 400));
+	}
+
+	if (password.length < 8) {
+		return next(
+			new ErrorResponse(`Password must be at least 8 characters`, 400)
+		);
+	}
+
+	const user = await User.create({
+		username,
+		email,
+		password,
+		confirmPassword,
+		expenses: [],
+		deposits: [],
+	});
+
+	// return res.json(user);
+	sendToken(user, 201, res);
+});
 
 //! Login User //
-const loginUser = async (req, res, next) => {
+const loginUser = asyncHandler(async (req, res, next) => {
 	const { email, password } = req.body;
 
 	if (!email || !password) {
-		return next(new ErrorResponse('Please provide an email and password', 400));
+		return next(new ErrorResponse(`Please provide an email and password`, 400));
 	}
 
-	try {
-		const user = await User.findOne({ email }).select('+password');
+	const user = await User.findOne({ email }).select('+password');
 
-		if (!user) {
-			return res.status(200).json({
-				success: false,
-				error: 'Invalid credentials',
-			});
-		}
-
-		const isMatch = await user.matchPasswords(password);
-
-		if (!isMatch) {
-			// return next(new ErrorResponse('Invalid credentials', 401));
-			return res.status(200).json({
-				success: false,
-				error: 'Invalid credentials',
-			});
-		}
-
-		if (isMatch) {
-			const token = user.getSignedToken();
-
-			// Send both user data and token in the response
-			res.status(200).json({
-				// user,
-				token,
-				success: 'success: token sent',
-			});
-		}
-
-		// sendToken(user, 200, res);
-	} catch (error) {
-		next(error);
-		// return res.status(500).json({ error: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`User not found`, 400));
 	}
-};
+
+	const isMatch = await user.matchPasswords(password);
+
+	if (!isMatch) {
+		return next(new ErrorResponse('Invalid credentials', 401));
+	}
+
+	if (isMatch) {
+		const token = user.getSignedToken();
+
+		// Send both user data and token in the response
+		res.status(200).json({
+			// user,
+			token,
+			success: 'success: token sent',
+		});
+	}
+
+	// sendToken(user, 200, res);
+});
 
 //! Add Expense
-const addExpense = async (req, res, next) => {
+const addExpense = asyncHandler(async (req, res, next) => {
 	const { amount, date, category, id, _id } = req.body;
-	// const _id = req.query._id;
-	try {
-		const user = await User.findById(_id);
+	const user = await User.findById(_id);
 
-		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
-		}
-
-		const newExpense = {
-			amount,
-			date,
-			category,
-			id,
-		};
-
-		user.expenses.unshift(newExpense);
-
-		await user.save();
-
-		console.log(`Expense added successfully for user with ID ${_id}`);
-
-		return res.status(200).json({ message: 'Expense added successfully' });
-	} catch (error) {
-		console.error(`Error adding expenses: ${error.message}`);
-		return res.status(500).json({ error: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`Expense not found with id of ${_id}`, 404));
 	}
-};
+
+	const newExpense = {
+		amount,
+		date,
+		category,
+		id,
+	};
+
+	user.expenses.unshift(newExpense);
+
+	await user.save();
+
+	console.log(`Expense added successfully for user with ID ${_id}`);
+
+	res.status(200).json({ message: 'Expense added successfully' });
+});
 
 //! Add Deposit //
-const addDeposit = async (req, res, next) => {
+const addDeposit = asyncHandler(async (req, res, next) => {
 	const { amount, date, category, id, _id } = req.body;
-	// const _id = req.query._id;
 
-	try {
-		const user = await User.findById(_id);
+	const user = await User.findById(_id);
 
-		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
-		}
-
-		const newExpense = {
-			amount,
-			date,
-			category,
-			id,
-		};
-
-		user.deposits.unshift(newExpense);
-		await user.save();
-
-		return res.status(200).json({ message: 'Deposit added successfully' });
-	} catch (error) {
-		console.error(`Error adding expenses: ${error.message}`);
-		return res.status(500).json({ error: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`User not found with id of ${_id}`, 404));
 	}
-};
+
+	const newExpense = {
+		amount,
+		date,
+		category,
+		id,
+	};
+
+	user.deposits.unshift(newExpense);
+	await user.save();
+
+	res.status(200).json({ message: 'Deposit added successfully' });
+});
 
 //! Delete Deposit
-const deleteDeposit = async (req, res, next) => {
-	try {
-		const { userId, depositId } = req.params;
-		console.log('Received DELETE_Deposit request:', userId, depositId);
+const deleteDeposit = asyncHandler(async (req, res, next) => {
+	const { userId, depositId } = req.params;
+	console.log('Received DELETE_Deposit request:', userId, depositId);
 
-		const user = await User.findById(userId);
+	const user = await User.findById(userId);
 
-		if (!user) {
-			return res.status(404).json({ message: 'User not found' });
-		}
-
-		const depositIndex = user.deposits.findIndex(
-			(deposit) => deposit.id === depositId
-		);
-
-		if (depositIndex === -1) {
-			return res.status(404).json({ message: 'Deposit not found' });
-		}
-
-		// Remove the expense from the expenses array
-		user.deposits.splice(depositIndex, 1);
-
-		// Save the updated user document
-		await user.save();
-
-		res.status(200).json({ message: 'Deposit deleted successfully' });
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ message: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`User not found with id of ${_id}`, 404));
 	}
-};
+
+	const depositIndex = user.deposits.findIndex(
+		(deposit) => deposit.id === depositId
+	);
+
+	if (depositIndex === -1) {
+		return next(
+			new ErrorResponse(`Deposit not found with id of ${depositId}`, 404)
+		);
+	}
+
+	// Remove the expense from the expenses array
+	user.deposits.splice(depositIndex, 1);
+
+	// Save the updated user document
+	await user.save();
+
+	res.status(200).json({ message: 'Deposit deleted successfully' });
+});
 
 //! Delete Expense
-const deleteExpense = async (req, res, next) => {
-	try {
-		const { userId, expenseId } = req.params;
-		console.log('Received DELETE-expense request:', userId, expenseId);
+const deleteExpense = asyncHandler(async (req, res, next) => {
+	const { userId, expenseId } = req.params;
+	console.log('Received DELETE-expense request:', userId, expenseId);
 
-		const user = await User.findById(userId);
+	const user = await User.findById(userId);
 
-		if (!user) {
-			return res.status(404).json({ message: 'User not found' });
-		}
-
-		const expenseIndex = user.expenses.findIndex(
-			(expense) => expense.id === expenseId
-		);
-
-		if (expenseIndex === -1) {
-			return res.status(404).json({ message: 'Expense not found' });
-		}
-
-		// Remove the expense from the expenses array
-		user.expenses.splice(expenseIndex, 1);
-
-		await user.save();
-
-		res.status(200).json({ message: 'Expense deleted successfully' });
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ message: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`User not found with id of ${userId}`, 404));
 	}
-};
+
+	const expenseIndex = user.expenses.findIndex(
+		(expense) => expense.id === expenseId
+	);
+
+	if (expenseIndex === -1) {
+		return next(
+			new ErrorResponse(`Expense not found with id of ${expenseId}`, 404)
+		);
+	}
+
+	// Remove the expense from the expenses array
+	user.expenses.splice(expenseIndex, 1);
+
+	await user.save();
+
+	res.status(200).json({ message: 'Expense deleted successfully' });
+});
 
 //! Edit Expense
-const editExpense = async (req, res, next) => {
-	console.log('API HIT');
-	try {
-		const { userId, expenseId } = req.params;
-		const updatedExpenseData = req.body;
+const editExpense = asyncHandler(async (req, res, next) => {
+	const { userId, expenseId } = req.params;
+	const updatedExpenseData = req.body;
 
-		const user = await User.findById(userId);
+	const user = await User.findById(userId);
 
-		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
-		}
-
-		const expense = user.expenses.find((exp) => exp.id === expenseId);
-
-		if (!expense) {
-			console.log('Expenses:', user.expenses);
-			return res.status(404).json({ error: 'Expense not found' });
-		}
-
-		// Update the expense properties
-		expense.amount = updatedExpenseData.amount;
-		expense.date = updatedExpenseData.date;
-		expense.category = updatedExpenseData.category;
-
-		const updatedUser = await user.save();
-
-		res.json(updatedUser); // Respond with the updated user document
-	} catch (error) {
-		console.error('Error updating expense:', error);
-		res.status(500).json({ error: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`User not found with id of ${_id}`, 404));
 	}
-};
+
+	const expense = user.expenses.find((exp) => exp.id === expenseId);
+
+	if (!expense) {
+		console.log('Expenses:', user.expenses);
+		return next(
+			new ErrorResponse(`Expense not found with id of ${expenseId}`, 404)
+		);
+	}
+
+	// Update the expense properties
+	expense.amount = updatedExpenseData.amount;
+	expense.date = updatedExpenseData.date;
+	expense.category = updatedExpenseData.category;
+
+	const updatedUser = await user.save();
+
+	res.json(updatedUser); // Respond with the updated user document
+});
 
 //! Edit Deposit //
 
-const editDeposit = async (req, res, next) => {
+const editDeposit = asyncHandler(async (req, res, next) => {
 	console.log('API HIT');
-	try {
-		const { userId, depositId } = req.params;
-		const updatedDepositData = req.body;
-		console.log(updatedDepositData);
+	const { userId, depositId } = req.params;
+	const updatedDepositData = req.body;
+	console.log(updatedDepositData);
 
-		const user = await User.findById(userId);
+	const user = await User.findById(userId);
 
-		if (!user) {
-			return res.status(404).json({ error: 'User not found' });
-		}
-
-		const deposit = user.deposits.find((exp) => exp.id === depositId);
-
-		console.log(user, deposit);
-
-		if (!deposit) {
-			console.log('Deposits:', user.deposits);
-			return res.status(404).json({ error: 'Deposit not found' });
-		}
-
-		// Update the expense properties
-		deposit.amount = updatedDepositData.amount;
-		deposit.date = updatedDepositData.date;
-		deposit.category = updatedDepositData.category;
-
-		// Save the updated user document
-		const updatedUser = await user.save();
-
-		res.json(updatedUser);
-		// Respond with the updated user document
-	} catch (error) {
-		console.error('Error updating expense:', error);
-		res.status(500).json({ error: 'Internal server error' });
+	if (!user) {
+		return next(new ErrorResponse(`User not found with id of ${userId}`, 404));
 	}
-};
+
+	const deposit = user.deposits.find((exp) => exp.id === depositId);
+
+	console.log(user, deposit);
+
+	if (!deposit) {
+		return next(
+			new ErrorResponse(`User not found with id of ${depositId}`, 404)
+		);
+	}
+
+	// Update the expense properties
+	deposit.amount = updatedDepositData.amount;
+	deposit.date = updatedDepositData.date;
+	deposit.category = updatedDepositData.category;
+
+	// Save the updated user document
+	const updatedUser = await user.save();
+
+	res.json(updatedUser);
+	// Respond with the updated user document
+});
 
 //! Edit Budget //
-const editBudget = async (req, res) => {
-	console.log('edit budget hit');
+const editBudget = asyncHandler(async (req, res) => {
 	const { userId } = req.params;
 	const { budgetAmount, budgetDate } = req.body;
 
-	try {
-		const user = await User.findByIdAndUpdate(
-			userId,
-			{ 'budget.amount': budgetAmount, 'budget.date': budgetDate },
-			{ new: true }
-		);
+	const user = await User.findByIdAndUpdate(
+		userId,
+		{ 'budget.amount': budgetAmount, 'budget.date': budgetDate },
+		{ new: true }
+	);
 
-		res.status(200).json(user);
-	} catch (error) {
-		res.status(500).json({ message: 'Error updating budget' });
-	}
-};
+	res.status(200).json(user);
+});
 
 //! Forgot password and send email link
 const forgotPassword = async (req, res, next) => {
