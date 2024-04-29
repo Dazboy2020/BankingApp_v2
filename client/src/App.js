@@ -91,7 +91,6 @@ function App() {
 						color: 'white',
 						fontSize: { xs: '0.1rem', s: '0.1rem', md: '1.5rem', lg: '1.5rem' },
 						letterSpacing: '.1rem',
-						// paddingRight: '.8rem',
 						mr: '10px',
 						fontWeight: '500',
 						mt: '.3rem',
@@ -117,7 +116,6 @@ function App() {
 				styleOverrides: {
 					root: {
 						'&:last-child': {
-							// paddingBottom: 1,
 							padding: 10,
 						},
 					},

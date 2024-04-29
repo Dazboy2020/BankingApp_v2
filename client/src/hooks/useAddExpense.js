@@ -1,7 +1,7 @@
+import { useModalContext } from '../context/modalContext';
 import { useAppContext } from '../context/context';
 import axios from 'axios';
 import { config } from './config';
-import { useModalContext } from '../context/modalContext';
 
 export default function useAddExpense() {
 	const { state, dispatch } = useAppContext();
