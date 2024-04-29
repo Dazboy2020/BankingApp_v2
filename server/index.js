@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
 const cors = require('cors');
 const path = require('path');
+const colors = require('colors');
 
 const app = express();
 
@@ -32,10 +33,10 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT, () =>
-	console.log(`Serving is running on ${PORT}`)
+	console.log(`Serving is running on ${PORT}`.bgMagenta.bold)
 );
 
 process.on('unhandledRejection', () => (error, promise) => {
-	console.log(`Logged Error: ${error}`);
+	console.log(`Logged Error: ${error}`.red.bold);
 	server.close(() => process.exit(1));
 });
