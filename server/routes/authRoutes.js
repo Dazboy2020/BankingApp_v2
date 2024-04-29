@@ -36,32 +36,20 @@ app.use(
 	})
 );
 
-router.get('/', test);
-
-router.post('/google/auth', googleAuth);
-
-router.post('/register', registerUser);
-
-router.post('/login', loginUser);
-
-router.post('/forgotpassword', forgotPassword);
-
-router.put('/resetpassword/:resetToken', resetPassword);
-
-router.use(protect);
-
-router.post('/addexpense', addExpense);
-
-router.post('/add-deposit', addDeposit);
-
-router.delete('/deletedeposit/:userId/:depositId', deleteDeposit);
-
-router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
-
-router.put('/editexpense/:userId/:expenseId', editExpense);
-
-router.put('/editdeposit/:userId/:depositId', editDeposit);
-
-router.put('/edit-budget/:userId/', editBudget);
+router
+	.get('/', test)
+	.post('/google/auth', googleAuth)
+	.post('/register', registerUser)
+	.post('/login', loginUser)
+	.post('/forgotpassword', forgotPassword)
+	.put('/resetpassword/:resetToken', resetPassword)
+	.use(protect)
+	.post('/addexpense', addExpense)
+	.post('/add-deposit', addDeposit)
+	.delete('/deletedeposit/:userId/:depositId', deleteDeposit)
+	.delete('/deleteexpense/:userId/:expenseId', deleteExpense)
+	.put('/editexpense/:userId/:expenseId', editExpense)
+	.put('/editdeposit/:userId/:depositId', editDeposit)
+	.put('/edit-budget/:userId/', editBudget);
 
 module.exports = router;

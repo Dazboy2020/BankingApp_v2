@@ -13,6 +13,9 @@ connectDB();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+const authRoutes = require('./routes/authRoutes');
+const getUserData = require('./routes/getUserData');
+
 //! Middleware
 app.use(express.json());
 
@@ -26,8 +29,8 @@ app.use(
 	})
 );
 
-app.use('/', require('./routes/authRoutes'));
-app.use('/', require('./routes/getUserData'));
+app.use('/', authRoutes);
+app.use('/', getUserData);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
