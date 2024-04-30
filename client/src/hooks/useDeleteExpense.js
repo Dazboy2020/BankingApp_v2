@@ -27,7 +27,8 @@ export default function useDeleteExpense(id) {
 		} catch (error) {
 			console.error('Error deleting expense:', error);
 			if (!error) return;
-			const message = error.message;
+			const message = error.response.data.error;
+
 			setMessage(message);
 			setOpenToast(true, { message: message });
 		}

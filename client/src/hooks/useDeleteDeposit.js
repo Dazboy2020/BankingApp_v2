@@ -25,11 +25,12 @@ export default function useDeleteDeposit(id) {
 			console.log('Deposit deleted successfully');
 		} catch (error) {
 			if (!error) return;
-			const message = error.message;
+			const message = error.response.data.error;
+
 			setMessage(message);
 			setOpenToast(true, { message: message });
 
-			console.error('Error deleting deposit:', error);
+			// console.error('Error deleting deposit:', error);
 		}
 
 		if (state.isEditing) dispatch({ type: 'edit/cancel' });

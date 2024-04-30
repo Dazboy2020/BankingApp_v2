@@ -38,11 +38,12 @@ export default function useAddExpense() {
 			console.log('New expense added successfully:', response.data);
 		} catch (error) {
 			if (!error) return;
-			const message = error.message;
+			const message = error.response.data.error;
+
 			setMessage(message);
 			setOpenToast(true, { message: message });
 
-			console.error('Error adding expense:', error);
+			// console.error('Error adding expense:', error);
 		}
 	};
 

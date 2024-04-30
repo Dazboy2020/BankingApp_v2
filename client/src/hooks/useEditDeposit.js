@@ -47,10 +47,11 @@ export default function useEditDeposit() {
 			console.log('Expense updated successfully:', response.data);
 		} catch (error) {
 			if (!error) return;
-			const message = error.message;
+			const message = error.response.data.error;
+
 			setMessage(message);
 			setOpenToast(true, { message: message });
-			console.error('Error updating expense:', error);
+			// console.error('Error updating expense:', error);
 		}
 	};
 
