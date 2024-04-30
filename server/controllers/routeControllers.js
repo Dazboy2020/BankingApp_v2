@@ -223,7 +223,7 @@ const editExpense = asyncHandler(async (req, res, next) => {
 
 //! Edit Deposit //
 
-const editDeposit = asyncHandler(async (req, res, next) => {
+const editDeposit = asyncHandler(async (err, req, res, next) => {
 	console.log('API HIT');
 	const { userId, depositId } = req.params;
 	const updatedDepositData = req.body;
@@ -232,7 +232,7 @@ const editDeposit = asyncHandler(async (req, res, next) => {
 	const user = await User.findById(userId);
 
 	if (!user) {
-		return next(new ErrorResponse(`User not found with id of ${userId}`, 404));
+		return next(new ErrorResponse(`User not found with id of ${userId}`, 401));
 	}
 
 	const deposit = user.deposits.find((exp) => exp.id === depositId);
@@ -319,7 +319,7 @@ const forgotPassword = async (req, res, next) => {
 	}
 };
 
-//! Reset passord
+//! Reset password
 const resetPassword = async (req, res, next) => {
 	const resetPasswordToken = crypto
 		.createHash('sha256')

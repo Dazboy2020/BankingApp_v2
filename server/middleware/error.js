@@ -5,19 +5,16 @@ const errorHandler = (err, req, res, next) => {
 
 	error.message = err.message;
 
-	if (err.code === 11000) {
-		const message = `Duplicate Field value entered`;
-		error = new ErrorResponse(message, 400);
+	console.log(error.name);
+
+	if (error.name === 'TokenExpiredError') {
+		const message = 'Session has expired';
+		error = new ErrorResponse(message, 401);
 	}
 
-	if (err.name === 'ValidationError') {
-		const message = Object.values(err.errors).map((val) => val.message);
-		error = new ErrorResponse(message, 400);
-	}
+	console.log(`ERROR:  ${err}`.bgRed);
 
-	console.log(error.message);
-
-	res.status(error.statusCode || 500).json({
+	return res.status(error.statusCode || 500).json({
 		success: false,
 		error: error.message || 'Server Error',
 	});
