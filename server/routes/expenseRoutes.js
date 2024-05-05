@@ -14,9 +14,6 @@ const {
 	registerUser,
 	loginUser,
 	addExpense,
-	// addDeposit,
-	// deleteDeposit,
-	// editDeposit,
 	deleteExpense,
 	editExpense,
 	forgotPassword,
@@ -45,9 +42,6 @@ router
 	.put('/resetpassword/:resetToken', resetPassword)
 	.use(protect)
 	.post('/addexpense', addExpense)
-	// .post('/add-deposit', addDeposit)
-	// .delete('/deletedeposit/:userId/:depositId', deleteDeposit)
-	// .put('/editdeposit/:userId/:depositId', editDeposit)
 	.delete('/deleteexpense/:userId/:expenseId', deleteExpense)
 	.put('/editexpense/:userId/:expenseId', editExpense)
 	.put('/edit-budget/:userId/', editBudget);
