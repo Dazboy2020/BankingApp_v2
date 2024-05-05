@@ -221,40 +221,42 @@ const editExpense = asyncHandler(async (req, res, next) => {
 	res.json(updatedUser); // Respond with the updated user document
 });
 
-//! Edit Deposit //
-
-const editDeposit = asyncHandler(async (err, req, res, next) => {
+const editDeposit = asyncHandler(async (req, res, next) => {
 	console.log('API HIT');
-	const { userId, depositId } = req.params;
-	const updatedDepositData = req.body;
-	console.log(updatedDepositData);
+	try {
+		const { userId, depositId } = req.params;
+		const updatedDepositData = req.body;
+		console.log(updatedDepositData);
 
-	const user = await User.findById(userId);
+		const user = await User.findById(userId);
 
-	if (!user) {
-		return next(new ErrorResponse(`User not found with id of ${userId}`, 401));
+		if (!user) {
+			return res.status(404).json({ error: 'User not found' });
+		}
+
+		const deposit = user.deposits.find((exp) => exp.id === depositId);
+
+		console.log(user, deposit);
+
+		if (!deposit) {
+			console.log('Deposits:', user.deposits);
+			return res.status(404).json({ error: 'Deposit not found' });
+		}
+
+		// Update the expense properties
+		deposit.amount = updatedDepositData.amount;
+		deposit.date = updatedDepositData.date;
+		deposit.category = updatedDepositData.category;
+
+		// Save the updated user document
+		const updatedUser = await user.save();
+
+		res.json(updatedUser);
+		// Respond with the updated user document
+	} catch (error) {
+		console.error('Error updating expense:', error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
-
-	const deposit = user.deposits.find((exp) => exp.id === depositId);
-
-	console.log(user, deposit);
-
-	if (!deposit) {
-		return next(
-			new ErrorResponse(`User not found with id of ${depositId}`, 404)
-		);
-	}
-
-	// Update the expense properties
-	deposit.amount = updatedDepositData.amount;
-	deposit.date = updatedDepositData.date;
-	deposit.category = updatedDepositData.category;
-
-	// Save the updated user document
-	const updatedUser = await user.save();
-
-	res.json(updatedUser);
-	// Respond with the updated user document
 });
 
 //! Edit Budget //

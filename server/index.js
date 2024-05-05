@@ -14,7 +14,8 @@ connectDB();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const authRoutes = require('./routes/authRoutes');
+const depositRoutes = require('./routes/depositRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 const getUserData = require('./routes/getUserData');
 
 //! Middleware
@@ -35,7 +36,8 @@ app.use(
 	})
 );
 
-app.use('/', authRoutes);
+app.use('/', expenseRoutes);
+app.use('/', depositRoutes);
 app.use('/', getUserData);
 app.use(errorHandler);
 
