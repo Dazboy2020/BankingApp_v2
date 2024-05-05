@@ -4,14 +4,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
-
-const { protect } = require('../middleware/auth');
+const { googleAuth } = require('../controllers/googleAuth');
 
 const {
-	addExpense,
-	deleteExpense,
-	editExpense,
-	editBudget,
+	test,
+	registerUser,
+	loginUser,
+	forgotPassword,
+	resetPassword,
 } = require('../controllers/routeControllers');
 
 const app = express();
@@ -27,10 +27,11 @@ app.use(
 );
 
 router
-	.use(protect)
-	.post('/addexpense', addExpense)
-	.delete('/deleteexpense/:userId/:expenseId', deleteExpense)
-	.put('/editexpense/:userId/:expenseId', editExpense)
-	.put('/edit-budget/:userId/', editBudget);
+	.get('/', test)
+	.post('/google/auth', googleAuth)
+	.post('/register', registerUser)
+	.post('/login', loginUser)
+	.post('/forgotpassword', forgotPassword)
+	.put('/resetpassword/:resetToken', resetPassword);
 
 module.exports = router;

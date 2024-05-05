@@ -14,6 +14,7 @@ connectDB();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+const userRoutes = require('./routes/userRoutes');
 const depositRoutes = require('./routes/depositRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
 const getUserData = require('./routes/getUserData');
@@ -36,6 +37,7 @@ app.use(
 	})
 );
 
+app.use('/', userRoutes);
 app.use('/', expenseRoutes);
 app.use('/', depositRoutes);
 app.use('/', getUserData);
