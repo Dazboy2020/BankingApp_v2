@@ -11,14 +11,14 @@ const test = (req, res) => {
 const registerUser = asyncHandler(async (req, res, next) => {
 	const { username, email, password, confirmPassword } = req.body;
 
-	if (!username || !email || !password || !confirmPassword) {
-		return next(new ErrorResponse(`Please provide all fields`, 400));
+	if ((!username, !email, !password, !confirmPassword)) {
+		return next(new ErrorResponse(`Please complete all fields`, 400));
 	}
 
 	const existingUser = await User.findOne({ $or: [{ username }, { email }] });
 
 	if (existingUser) {
-		// Check if the username or email already exists
+		//* Check if the username or email already exists
 		if (existingUser.username === username) {
 			return next(new ErrorResponse(`User already exists`, 400));
 		}

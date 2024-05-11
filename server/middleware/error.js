@@ -5,10 +5,26 @@ const errorHandler = (err, req, res, next) => {
 
 	error.message = err.message;
 
-	console.log(error.name);
+	console.log(error.message);
 
 	if (error.name === 'TokenExpiredError') {
 		const message = 'Session has expired';
+		error = new ErrorResponse(message, 401);
+	}
+
+	if (
+		error.message ===
+		'User validation failed: email: Please provide an email address'
+	) {
+		const message = 'Please provide a valid email address';
+		error = new ErrorResponse(message, 401);
+	}
+
+	if (
+		error.message ===
+		'User validation failed: username: Please provide a username'
+	) {
+		const message = 'Please provide a username';
 		error = new ErrorResponse(message, 401);
 	}
 

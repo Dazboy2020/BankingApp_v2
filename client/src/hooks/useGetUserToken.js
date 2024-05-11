@@ -18,6 +18,7 @@ export default function useGetUserToken() {
 			const { data: userData } = await axios.post('/login', data);
 
 			if (userData.error) {
+				console.log(userData.response);
 				setMessage(userData.error);
 				setOpenToast(true, { message: userData.error });
 				dispatch({ type: 'isLoading', payload: false });
@@ -37,11 +38,9 @@ export default function useGetUserToken() {
 			dispatch({ type: 'isLoading', payload: false });
 
 			if (error) {
-				setMessage(error.message ?? 'An error occurred');
+				setMessage(error?.response.data.error);
 				setOpenToast(true, { message: message });
 			}
-
-			console.log(error);
 		}
 	};
 

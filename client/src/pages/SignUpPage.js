@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useAppContext } from '../context/context';
-import { useModalContext } from '../context/modalContext';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -50,17 +49,16 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-	const [userstate, setUserState] = useState(false);
+	const [successfullSignUp, setSuccessfullSignUp] = useState(false);
 	const { state } = useAppContext();
-	const { setOpenToast, message, setMessage } = useModalContext();
 	const navigate = useNavigate();
 	const { signUpNewUser } = useSignUpNewUser();
 
 	React.useEffect(() => {
-		if (userstate) {
+		if (successfullSignUp) {
 			navigate('/login');
 		}
-	}, [navigate, userstate]);
+	}, [navigate, successfullSignUp]);
 
 	const [data, setData] = useState({
 		username: '',
@@ -73,20 +71,6 @@ export default function SignUp() {
 		event.preventDefault();
 
 		const { username, email, password, confirmPassword } = data;
-		setMessage('');
-
-		if (!username || !email || !password || !confirmPassword) {
-			setMessage('Please fill out all fields');
-			setOpenToast(true, { message: message });
-			return;
-		}
-
-		if (password !== confirmPassword) {
-			setMessage('Passwords do not match');
-			setOpenToast(true, { message: message });
-
-			return;
-		}
 
 		const userdata = await signUpNewUser(
 			username,
@@ -96,7 +80,14 @@ export default function SignUp() {
 		);
 
 		if (userdata) {
-			setUserState(true);
+			setSuccessfullSignUp(true);
+		} else {
+			setData({
+				username: '',
+				email: '',
+				password: '',
+				confirmPassword: '',
+			});
 		}
 	};
 

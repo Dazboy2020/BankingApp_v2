@@ -17,6 +17,7 @@ export default function useSignUpNewUser() {
 				confirmPassword,
 			});
 
+			console.log(data);
 			if (data.error) {
 				setMessage(data.error);
 				setOpenToast(true, { message: message });
@@ -28,7 +29,8 @@ export default function useSignUpNewUser() {
 				return data;
 			}
 		} catch (error) {
-			setMessage('Something went wrong, please try again later.');
+			console.log(error);
+			setMessage(error?.response.data.error);
 			setOpenToast(true, { message: message });
 			dispatch({ type: 'isLoading', payload: false });
 		}
