@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from '@mui/material';
 import axios from 'axios';
+import { getErrorMessage } from '../../utils/errorUtils';
+import { useModalContext } from '../../context/modalContext';
 
 const buttonStyles = {
 	margin: 0,
@@ -26,6 +28,7 @@ const buttonStyles = {
 function GoogleLoginButton({ width, height, padding, image }) {
 	const navigate = useNavigate();
 	const { dispatch } = useAppContext();
+	const { setOpenToast, setMessage } = useModalContext();
 
 	const handleGoogle = useGoogleLogin({
 		onSuccess: async ({ code }) => {
@@ -45,6 +48,10 @@ function GoogleLoginButton({ width, height, padding, image }) {
 				navigate('/overview');
 			} catch (error) {
 				console.error(error);
+				const errorMessage = getErrorMessage(error);
+				setMessage(errorMessage);
+				setOpenToast(true, { message: errorMessage });
+				dispatch({ type: 'isLoading', payload: false });
 			}
 		},
 		onError: (error) => {
