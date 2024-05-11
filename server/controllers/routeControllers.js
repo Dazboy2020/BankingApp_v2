@@ -221,6 +221,7 @@ const editExpense = asyncHandler(async (req, res, next) => {
 	res.json(updatedUser); // Respond with the updated user document
 });
 
+//! Edit deposit
 const editDeposit = asyncHandler(async (req, res, next) => {
 	console.log('API HIT');
 	try {

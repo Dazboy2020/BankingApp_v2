@@ -53,6 +53,7 @@ function reducer(state, action) {
 				error: false,
 			};
 		}
+		//!Log in user
 		case 'user/MongoLoggedIn': {
 			const arrayOfExpenses = action.payload.user.expenses;
 			const arrayOfDeposits = action.payload.user.deposits;
@@ -92,19 +93,19 @@ function reducer(state, action) {
 				budgetTransactions: budgetTransactions,
 			};
 		}
-
+		//!Log out user
 		case 'user/LoggedOut':
 			return {
 				...inititalState,
 				token: '',
 			};
-
+		//!Add token
 		case 'user/addToken':
 			return {
 				...state,
 				token: action.payload,
 			};
-
+		//!Add budget
 		case 'user/AddBudget':
 			return {
 				...state,
@@ -114,14 +115,14 @@ function reducer(state, action) {
 					...state.deposits,
 				]),
 			};
-
+		//!Delete budget
 		case 'user/deleteBudget':
 			return {
 				...state,
 				budget: null,
 				budgetTransactions: [{}],
 			};
-
+		//!Add expense
 		case 'add/expense':
 			const sortedExpenses = [action.payload, ...state.expenses];
 			sortArrayByDate(sortedExpenses);
@@ -137,7 +138,7 @@ function reducer(state, action) {
 				combinedTransactions: [...sortedExpenses, ...state.deposits],
 				budgetTransactions,
 			};
-
+		//!Add deposit
 		case 'add/deposit':
 			const sortedDeposits = [action.payload, ...state.deposits];
 			sortArrayByDate(sortedDeposits);
@@ -153,7 +154,7 @@ function reducer(state, action) {
 				combinedTransactions: [...sortedDeposits, ...state.expenses],
 				budgetTransactions,
 			};
-
+		//! Enter edit mode: expense
 		case 'edit/expense': {
 			return {
 				...state,
@@ -161,7 +162,7 @@ function reducer(state, action) {
 				editingExpense: action.payload,
 			};
 		}
-
+		//! Enter edit mode: deposit
 		case 'edit/deposit': {
 			return {
 				...state,
@@ -169,7 +170,7 @@ function reducer(state, action) {
 				editingDeposit: action.payload,
 			};
 		}
-
+		//! Edit expense
 		case 'add/editedExpense': {
 			const updatedExpenses = state.expenses.map((expense) => {
 				if (expense.id === action.payload.id) {
@@ -198,7 +199,7 @@ function reducer(state, action) {
 				budgetTransactions,
 			};
 		}
-
+		//! Edit deposit
 		case 'add/editedDeposit': {
 			const updatedDeposits = state.deposits.map((deposit) => {
 				if (deposit.id === action.payload.id) {
@@ -227,6 +228,7 @@ function reducer(state, action) {
 			};
 		}
 
+		//!Delete deposit
 		case 'delete/deposit':
 			const updatedDeletedDeposits = state.deposits.filter(
 				(ex) => ex.id !== action.payload
@@ -244,7 +246,7 @@ function reducer(state, action) {
 				combinedTransactions: [...updatedDeletedDeposits, ...state.expenses],
 				budgetTransactions,
 			};
-
+		//!Delete expense
 		case 'delete/expense':
 			const updatedDeletedExpenses = state.expenses.filter(
 				(ex) => ex.id !== action.payload
@@ -263,12 +265,14 @@ function reducer(state, action) {
 				budgetTransactions,
 			};
 
+		//!Sort
 		case 'sort':
 			return {
 				...state,
 				sort: state.sort === true ? false : true,
 			};
 
+		//! Add active class
 		case 'addActiveClass': {
 			if (action.payload === 0) {
 				return {
@@ -284,6 +288,7 @@ function reducer(state, action) {
 			};
 		}
 
+		//!Is loading
 		case 'isLoading': {
 			return {
 				...state,
@@ -291,6 +296,7 @@ function reducer(state, action) {
 			};
 		}
 
+		//! Edit cancel
 		case 'edit/cancel': {
 			return {
 				...state,
@@ -299,12 +305,14 @@ function reducer(state, action) {
 			};
 		}
 
+		//! Reset editing
 		case 'reset/editing':
 			return {
 				...state,
 				isEditing: false,
 			};
 
+		//! Filter expenses
 		case 'user/filteredExpenses': {
 			if (action.payload === 'All Expenses')
 				return {
@@ -321,6 +329,8 @@ function reducer(state, action) {
 				),
 			};
 		}
+
+		//! Filter deposits
 		case 'user/filteredDeposits': {
 			if (action.payload === 'All Deposits') {
 				return {
@@ -337,6 +347,8 @@ function reducer(state, action) {
 				),
 			};
 		}
+
+		//! Filter combined
 		case 'user/filteredCombined': {
 			if (action.payload === 'All Transactions') {
 				return {
@@ -354,6 +366,7 @@ function reducer(state, action) {
 			};
 		}
 
+		//! Filter budget
 		case 'user/filteredBudget':
 			let filteredBudgetTransactons = state.budgetTransactions;
 
