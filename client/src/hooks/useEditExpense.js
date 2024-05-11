@@ -1,7 +1,9 @@
 import { useAppContext } from '../context/context';
-import axios from 'axios';
-import { config } from './config';
 import { useModalContext } from '../context/modalContext';
+import { config } from './config';
+import axios from 'axios';
+
+import { getErrorMessage } from '../utils/errorUtils';
 
 export default function useEditExpense() {
 	const { state, dispatch } = useAppContext();
@@ -47,14 +49,9 @@ export default function useEditExpense() {
 
 			console.log('Expense updated successfully:', response.data);
 		} catch (error) {
-			if (!error) return;
-			const message = error.response.data.error;
-			console.log(error.response.data.error);
-
-			setMessage(message);
-			setOpenToast(true, { message: message });
-
-			// console.error('Error updating expense:', error);
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 		}
 	};
 

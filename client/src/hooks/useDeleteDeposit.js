@@ -1,7 +1,8 @@
 import { useAppContext } from '../context/context';
-import axios from 'axios';
-import { config } from './config';
 import { useModalContext } from '../context/modalContext';
+import { config } from './config';
+import axios from 'axios';
+import { getErrorMessage } from '../utils/errorUtils';
 
 export default function useDeleteDeposit(id) {
 	const { state, dispatch } = useAppContext();
@@ -24,13 +25,9 @@ export default function useDeleteDeposit(id) {
 
 			console.log('Deposit deleted successfully');
 		} catch (error) {
-			if (!error) return;
-			const message = error.response.data.error;
-
-			setMessage(message);
-			setOpenToast(true, { message: message });
-
-			// console.error('Error deleting deposit:', error);
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 		}
 
 		if (state.isEditing) dispatch({ type: 'edit/cancel' });

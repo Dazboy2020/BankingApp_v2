@@ -1,6 +1,8 @@
-import axios from 'axios';
-import { config } from './config';
 import { useModalContext } from '../context/modalContext';
+import { config } from './config';
+import axios from 'axios';
+
+import { getErrorMessage } from '../utils/errorUtils';
 
 export default function useAddBudget() {
 	const { setOpenToast, message, setMessage } = useModalContext();
@@ -26,8 +28,9 @@ export default function useAddBudget() {
 
 			console.log('Budget updated successfully:', response.data);
 		} catch (error) {
-			setMessage('Something went wrong!');
-			setOpenToast(true, { message: message });
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 		}
 	};
 
