@@ -1,8 +1,9 @@
 import { useAppContext } from '../context/context';
+import { useModalContext } from '../context/modalContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getErrorMessage } from '../utils/errorUtils';
 import SignIn from '../pages/SignInPage';
-import { useModalContext } from '../context/modalContext';
 
 export default function useGetUserToken() {
 	const { dispatch } = useAppContext();
@@ -17,30 +18,22 @@ export default function useGetUserToken() {
 
 			const { data: userData } = await axios.post('/login', data);
 
-			if (userData.error) {
-				console.log(userData.response);
-				setMessage(userData.error);
-				setOpenToast(true, { message: userData.error });
-				dispatch({ type: 'isLoading', payload: false });
-
-				return <SignIn />;
-			} else {
-				dispatch({ type: 'isLoading', payload: false });
-
-				localStorage.setItem('authToken', userData.token);
-				navigate('/overview');
-				setMessage('Welcome Back!');
-				setOpenToast(true, { message: message });
-				dispatch({ type: 'user/addToken', payload: userData.token });
-				console.log('getUserToken:', userData);
-			}
-		} catch (error) {
 			dispatch({ type: 'isLoading', payload: false });
 
-			if (error) {
-				setMessage(error?.response.data.error);
-				setOpenToast(true, { message: message });
-			}
+			localStorage.setItem('authToken', userData.token);
+			navigate('/overview');
+			setMessage('Welcome Back!');
+			setOpenToast(true, { message: message });
+			dispatch({ type: 'user/addToken', payload: userData.token });
+			console.log('getUserToken:', userData);
+		} catch (error) {
+			dispatch({ type: 'isLoading', payload: false });
+			console.log(error);
+
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
+			return <SignIn />;
 		}
 	};
 

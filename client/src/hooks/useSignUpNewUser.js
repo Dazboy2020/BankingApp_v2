@@ -3,6 +3,8 @@ import { useModalContext } from '../context/modalContext';
 
 import axios from 'axios';
 
+import { getErrorMessage } from '../utils/errorUtils';
+
 export default function useSignUpNewUser() {
 	const { dispatch } = useAppContext();
 	const { setOpenToast, message, setMessage } = useModalContext();
@@ -18,21 +20,15 @@ export default function useSignUpNewUser() {
 			});
 
 			console.log(data);
-			if (data.error) {
-				setMessage(data.error);
-				setOpenToast(true, { message: message });
-				dispatch({ type: 'isLoading', payload: false });
-			} else {
-				setMessage('Account Created!');
-				setOpenToast(true, { message: message });
-				dispatch({ type: 'isLoading', payload: false });
-				return data;
-			}
-		} catch (error) {
-			console.log(error);
-			setMessage(error?.response.data.error);
+			setMessage('Account Created!');
 			setOpenToast(true, { message: message });
 			dispatch({ type: 'isLoading', payload: false });
+			return data;
+		} catch (error) {
+			dispatch({ type: 'isLoading', payload: false });
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 		}
 	};
 
