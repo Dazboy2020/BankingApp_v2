@@ -126,6 +126,8 @@ const addDeposit = asyncHandler(async (req, res, next) => {
 		id,
 	};
 
+	console.log(newExpense);
+
 	user.deposits.unshift(newExpense);
 	await user.save();
 

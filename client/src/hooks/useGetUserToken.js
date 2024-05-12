@@ -3,7 +3,6 @@ import { useModalContext } from '../context/modalContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getErrorMessage } from '../utils/errorUtils';
-import SignIn from '../pages/SignInPage';
 
 export default function useGetUserToken() {
 	const { dispatch } = useAppContext();
@@ -33,7 +32,6 @@ export default function useGetUserToken() {
 			const errorMessage = getErrorMessage(error);
 			setMessage(errorMessage);
 			setOpenToast(true, { message: errorMessage });
-			return <SignIn />;
 		}
 	};
 
