@@ -5,6 +5,18 @@ const jwt = require('jsonwebtoken');
 
 const { Schema } = mongoose;
 
+// Custom validator function to check for the number of decimal places
+const validateDecimalPlaces = function (value) {
+	// Convert the number to a string
+	const valueString = value.toString();
+
+	// Use regular expression to match the decimal part
+	const decimalMatch = valueString.match(/\.\d{3,}/);
+
+	// If there's a match, it means the number has more than two decimal places
+	return decimalMatch === null;
+};
+
 const userSchema = new Schema({
 	username: {
 		type: String,
@@ -37,7 +49,13 @@ const userSchema = new Schema({
 	expenses: [
 		{
 			id: String,
-			amount: Number,
+			amount: {
+				type: Number,
+				validate: [
+					validateDecimalPlaces,
+					'Amount must have at most two decimal places',
+				],
+			},
 			date: String,
 			category: String,
 		},
@@ -45,7 +63,13 @@ const userSchema = new Schema({
 	deposits: [
 		{
 			id: String,
-			amount: Number,
+			amount: {
+				type: Number,
+				validate: [
+					validateDecimalPlaces,
+					'Amount must have at most two decimal places',
+				],
+			},
 			date: String,
 			category: String,
 		},

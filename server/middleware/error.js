@@ -28,6 +28,15 @@ const errorHandler = (err, req, res, next) => {
 		error = new ErrorResponse(message, 401);
 	}
 
+	if (
+		error.message ===
+			'User validation failed: expenses.0.amount: Amount must have at most two decimal places' ||
+		'User validation failed: deposits.0.amount: Amount must have at most two decimal places'
+	) {
+		const message = 'Amount must have at most two decimal places';
+		error = new ErrorResponse(message, 401);
+	}
+
 	console.log(`ERROR:  ${err}`.bgRed);
 
 	return res.status(error.statusCode || 500).json({

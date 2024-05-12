@@ -56,17 +56,27 @@ function GoogleLoginButton({ width, height, padding, image }) {
 		},
 		onError: (error) => {
 			console.error(error);
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 			dispatch({ type: 'isLoading', payload: false });
 		},
 
 		onCancel: (error) => {
 			console.error(error);
+
 			dispatch({ type: 'isLoading', payload: false });
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 		},
 
 		onNonOAuthError: (error) => {
 			console.error(error.message);
 			dispatch({ type: 'isLoading', payload: false });
+			const errorMessage = getErrorMessage(error);
+			setMessage(errorMessage);
+			setOpenToast(true, { message: errorMessage });
 		},
 		flow: 'auth-code',
 	});
