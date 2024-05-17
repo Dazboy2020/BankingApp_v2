@@ -37,6 +37,7 @@ app.use(
 	})
 );
 
+//* Mount routes
 app.use('/', userRoutes);
 app.use('/', expenseRoutes);
 app.use('/', depositRoutes);

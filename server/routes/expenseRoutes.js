@@ -26,11 +26,12 @@ app.use(
 	})
 );
 
-router
-	.use(protect)
-	.post('/addexpense', addExpense)
-	.delete('/deleteexpense/:userId/:expenseId', deleteExpense)
-	.put('/editexpense/:userId/:expenseId', editExpense)
-	.put('/edit-budget/:userId/', editBudget);
+//* Apply protect middleware to all routes
+router.use(protect);
+
+router.post('/addexpense', addExpense);
+router.delete('/deleteexpense/:userId/:expenseId', deleteExpense);
+router.put('/editexpense/:userId/:expenseId', editExpense);
+router.put('/edit-budget/:userId/', editBudget);
 
 module.exports = router;

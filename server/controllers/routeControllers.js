@@ -90,7 +90,7 @@ const addExpense = asyncHandler(async (req, res, next) => {
 	const user = await User.findById(_id);
 
 	if (!user) {
-		return next(new ErrorResponse(`Expense not found with id of ${_id}`, 404));
+		return next(new ErrorResponse(`User not found with id of ${_id}`, 404));
 	}
 
 	const newExpense = {

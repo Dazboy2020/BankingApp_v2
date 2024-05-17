@@ -12,13 +12,18 @@ exports.protect = async (req, res, next) => {
 	) {
 		token = req.headers.authorization.split(' ')[1];
 	}
-
 	if (!token) {
 		return next(new ErrorResponse('Not authorized to access this route', 401));
 	}
 
 	try {
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+		if (!decoded) {
+			return next(
+				new ErrorResponse('Not authorized to access this route', 401)
+			);
+		}
 
 		const user = await User.findById(decoded.id).select('_id');
 
@@ -28,11 +33,8 @@ exports.protect = async (req, res, next) => {
 
 		req.user = user;
 		console.log('success: private route');
-
 		next();
 	} catch (error) {
-		// console.log(error.message);
-		// return next(new errorResponse('Not authorized to access this route', 401));
-		next(error);
+		return next(new ErrorResponse('Not authorized to access this route', 401));
 	}
 };

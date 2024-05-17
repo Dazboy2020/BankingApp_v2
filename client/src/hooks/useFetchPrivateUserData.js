@@ -1,6 +1,7 @@
+import { useAppContext } from '../context/context';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { useAppContext } from '../context/context';
+import { config } from './config';
 
 export function useFetchPrivateUserData(url) {
 	const { dispatch } = useAppContext();
@@ -14,31 +15,23 @@ export function useFetchPrivateUserData(url) {
 			if (!authToken) return;
 			dispatch({ type: 'isLoading', payload: true });
 
-			const config = {
-				headers: {
-					'Content-Type': 'application/json',
-					// Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-					Authorization: `Bearer ${authToken}`,
-				},
-			};
-
 			try {
 				const { data: userData } = await axios.get(url, config);
 
 				if (!userData) return;
 
 				console.log('fetch private data:', userData);
+
 				dispatch({
 					type: 'user/MongoLoggedIn',
 					payload: {
 						user: userData.user,
-						// token: userData.token,
+						token: userData.token,
 					},
 				});
 			} catch (error) {
+				console.log(error);
 				localStorage.removeItem('authToken');
-				dispatch({ type: 'isLoading', payload: false });
-			} finally {
 				dispatch({ type: 'isLoading', payload: false });
 			}
 		};

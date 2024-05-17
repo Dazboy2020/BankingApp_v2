@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { protect } = require('../middleware/auth');
@@ -12,6 +11,8 @@ const {
 
 const app = express();
 
+const router = express.Router();
+
 router.use(bodyParser.json());
 
 //! middleware
@@ -22,12 +23,12 @@ app.use(
 	})
 );
 
-//! Routes
-router
-	.use(protect)
-	.post('/add-deposit', addDeposit)
-	.delete('/deletedeposit/:userId/:depositId', deleteDeposit)
-	.put(editDeposit)
-	.put('/editdeposit/:userId/:depositId', editDeposit);
+//* Apply protect middleware to all routes
+router.use(protect);
+
+//* Define routes
+router.post('/add-deposit', addDeposit);
+router.delete('/deletedeposit/:userId/:depositId', deleteDeposit);
+router.put('/editdeposit/:userId/:depositId', editDeposit);
 
 module.exports = router;
