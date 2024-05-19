@@ -1,6 +1,8 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const helmet = require('helmet');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
@@ -25,6 +27,12 @@ app.use(express.json());
 
 //! Sanitize data
 app.use(mongoSanitize());
+
+//! Data sanitization against XSS
+app.use(xss());
+
+//! Set security headers
+app.use(helmet());
 
 //! Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
