@@ -18,14 +18,6 @@ export default function AvailbleFundsCard({ type }) {
 	} = useAppContext();
 
 	const totalToDisplay = React.useMemo(() => {
-		// if (state.isActive === 4) {
-		// 	return `€${
-		// 		totalBudgetDeposits - Math.abs(totalBudgetExpenses).toFixed(2)
-		// 	}`;
-		// } else {
-		// 	return `€${totalIncome - Math.abs(totalExpenses).toFixed(2)}`;
-		// }
-
 		if (state.isActive === 4) {
 			const result = totalBudgetDeposits - Math.abs(totalBudgetExpenses);
 			return `€${formatToTwoDecimalPlaces(result)}`;
