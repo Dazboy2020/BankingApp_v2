@@ -3,6 +3,8 @@ const express = require('express');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
@@ -33,6 +35,16 @@ app.use(xss());
 
 //! Set security headers
 app.use(helmet());
+
+//! Prevent parameter pollution
+app.use(hpp());
+
+//! Rate limit
+const limiter = rateLimit({
+	windowMs: 10 * 60 * 1000, // 10 minutes
+	max: 100,
+});
+app.use(limiter);
 
 //! Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
