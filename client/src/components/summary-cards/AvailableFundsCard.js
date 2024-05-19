@@ -5,6 +5,7 @@ import { useAppContext } from '../../context/context';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CustomCard from './CustomCard';
 import dayjs from 'dayjs';
+import { formatToTwoDecimalPlaces } from '../../utils/formatTwoDecimalPlaces';
 
 export default function AvailbleFundsCard({ type }) {
 	const { isDarkMode } = useDarkMode();
@@ -17,12 +18,20 @@ export default function AvailbleFundsCard({ type }) {
 	} = useAppContext();
 
 	const totalToDisplay = React.useMemo(() => {
+		// if (state.isActive === 4) {
+		// 	return `€${
+		// 		totalBudgetDeposits - Math.abs(totalBudgetExpenses).toFixed(2)
+		// 	}`;
+		// } else {
+		// 	return `€${totalIncome - Math.abs(totalExpenses).toFixed(2)}`;
+		// }
+
 		if (state.isActive === 4) {
-			return `€${
-				totalBudgetDeposits - Math.abs(totalBudgetExpenses).toFixed(2)
-			}`;
+			const result = totalBudgetDeposits - Math.abs(totalBudgetExpenses);
+			return `€${formatToTwoDecimalPlaces(result)}`;
 		} else {
-			return `€${totalIncome - Math.abs(totalExpenses).toFixed(2)}`;
+			const result = totalIncome - Math.abs(totalExpenses);
+			return `€${formatToTwoDecimalPlaces(result)}`;
 		}
 	}, [
 		state.isActive,

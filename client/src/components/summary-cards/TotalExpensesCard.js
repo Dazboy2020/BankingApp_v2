@@ -3,6 +3,7 @@ import { useAppContext } from '../../context/context';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CustomCard from './CustomCard';
 import dayjs from 'dayjs';
+import { formatToTwoDecimalPlaces } from '../../utils/formatTwoDecimalPlaces';
 
 export default function TotalExpensesCard() {
 	const { totalExpenses, totalBudgetExpenses, state } = useAppContext();
@@ -10,9 +11,9 @@ export default function TotalExpensesCard() {
 
 	const totalToDisplay = React.useMemo(() => {
 		if (state.isActive === 4) {
-			return `€${Math.abs(totalBudgetExpenses.toFixed(2))}`;
+			return `€${formatToTwoDecimalPlaces(Math.abs(totalBudgetExpenses))}`;
 		} else {
-			return `€${Math.abs(totalExpenses.toFixed(2))}`;
+			return `€${formatToTwoDecimalPlaces(Math.abs(totalExpenses))}`;
 		}
 	}, [totalExpenses, state.isActive, totalBudgetExpenses]);
 
