@@ -1,5 +1,6 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
+const mongoSanitize = require('express-mongo-sanitize');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
@@ -21,6 +22,9 @@ const getUserData = require('./routes/getUserData');
 
 //! Middleware
 app.use(express.json());
+
+//! Sanitize data
+app.use(mongoSanitize());
 
 //! Dev logging middleware
 if (process.env.NODE_ENV === 'development') {

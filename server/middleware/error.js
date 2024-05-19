@@ -8,6 +8,12 @@ const errorHandler = (err, req, res, next) => {
 
 	console.log(`ERROR MESSAGE: ${error.message}`.red);
 
+	//* Handle cast errors
+	if (error.name === 'CastError') {
+		const message = `Resource not found`;
+		error = new ErrorResponse(message, 404);
+	}
+
 	//* Handle specific errors
 	if (error.name === 'TokenExpiredError') {
 		const message = 'Session has expired';
