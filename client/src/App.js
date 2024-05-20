@@ -11,6 +11,8 @@ import Toast from './UI/AlertDialogue/Toast';
 import { blue, purple } from '@mui/material/colors';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
+import useAutoLogin from './hooks/useAutoLogin';
+import { useFetchPrivateUserData } from './hooks/useFetchPrivateUserData';
 
 // import Homepage from './components/homepage/Homepage';
 // import SignIn from './pages/SignIn';
@@ -144,6 +146,9 @@ function App() {
 			},
 		},
 	});
+
+	useFetchPrivateUserData('/userdata');
+	useAutoLogin();
 
 	return (
 		<ThemeProvider theme={theme}>

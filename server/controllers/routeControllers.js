@@ -74,8 +74,8 @@ const loginUser = asyncHandler(async (req, res, next) => {
 		const token = user.getSignedToken();
 
 		// Send both user data and token in the response
-		res.status(200).json({
-			// user,
+		return res.status(200).json({
+			user,
 			token,
 			success: 'success: token sent',
 		});

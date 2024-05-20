@@ -15,10 +15,10 @@ import { gridBackground } from './homepage-utils';
 export default function Homepage() {
 	const { state } = useAppContext();
 	//? Checks to see if JWT token and if so, fetches data via middleware Protected Route
-	useFetchPrivateUserData('/userdata');
+	// useFetchPrivateUserData('/userdata');
 
 	//? if user is in state then redirects to /overview
-	useAutoLogin();
+	// useAutoLogin();
 
 	const gridComponentProps = {
 		display: 'flex',

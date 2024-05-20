@@ -10,7 +10,7 @@ function useAutoLogin() {
 	useEffect(
 		function () {
 			if (!state.user) {
-				console.log('NO USER FOUND => NO AUTO LOGIN');
+				console.log('NO USER FOUND => NO AUTO LOGIN', state.user);
 				return;
 			}
 

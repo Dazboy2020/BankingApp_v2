@@ -55,8 +55,10 @@ function reducer(state, action) {
 		}
 		//!Log in user
 		case 'user/MongoLoggedIn': {
-			const arrayOfExpenses = action.payload.user.expenses;
-			const arrayOfDeposits = action.payload.user.deposits;
+			console.log('useReducer: MongoLoggedIn');
+			const { user } = action.payload;
+			const arrayOfExpenses = user.expenses;
+			const arrayOfDeposits = user.deposits;
 			const arrayOfCombinedTransactions = [
 				...arrayOfExpenses,
 				...arrayOfDeposits,
@@ -70,27 +72,24 @@ function reducer(state, action) {
 				arrayOfCombinedTransactions
 			);
 
-			const budgetCreationDate = formatDateToString(
-				action.payload.user.budget.date
-			);
+			const budgetCreationDate = formatDateToString(user.budget.date);
 
 			return {
 				...state,
-				loggedInAccount: action.payload.user,
+				token: user.token,
+				loggedInAccount: user.username,
 				isLoggedIn: true,
-
-				username: action.payload.user.username,
-				user: action.payload.user.username,
-
+				username: user.username,
+				user: user.username,
 				expenses: arrayOfExpenses,
 				deposits: arrayOfDeposits,
 				combinedTransactions: arrayOfCombinedTransactions,
-				_id: action.payload.user._id,
+				_id: user._id,
 				filteredExpenses: null,
 				isActive: 0,
-				budget: action.payload.user.budget.amount || null,
+				budget: user.budget?.amount || null,
 				budgetCreation: budgetCreationDate,
-				budgetTransactions: budgetTransactions,
+				budgetTransactions,
 			};
 		}
 		//!Log out user
@@ -105,6 +104,7 @@ function reducer(state, action) {
 				...state,
 				token: action.payload,
 			};
+
 		//!Add budget
 		case 'user/AddBudget':
 			return {

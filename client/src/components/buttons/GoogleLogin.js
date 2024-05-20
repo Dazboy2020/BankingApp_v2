@@ -54,7 +54,7 @@ function GoogleLoginButton({ width, height, padding, image }) {
 					},
 				});
 
-				navigate('/overview');
+				// navigate('/overview');
 			} catch (error) {
 				console.error(error);
 				const errorMessage = getErrorMessage(error);

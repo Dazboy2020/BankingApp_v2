@@ -15,16 +15,26 @@ export default function useGetUserToken() {
 		try {
 			dispatch({ type: 'isLoading', payload: true });
 
-			const { data: userData } = await axios.post('/login', data);
+			const response = await axios.post('/login', data);
+			const { user, token } = response.data;
+			console.log('GET USER TOKEN:', user, token);
 
 			dispatch({ type: 'isLoading', payload: false });
 
-			localStorage.setItem('authToken', userData.token);
+			dispatch({
+				type: 'user/MongoLoggedIn',
+				payload: {
+					user: user,
+					token: token,
+				},
+			});
+
+			localStorage.setItem('authToken', token);
 			navigate('/overview');
 			setMessage('Welcome Back!');
 			setOpenToast(true, { message: message });
-			dispatch({ type: 'user/addToken', payload: userData.token });
-			console.log('getUserToken:', userData);
+			dispatch({ type: 'user/addToken', payload: token });
+			console.log('getUserToken:', token);
 		} catch (error) {
 			dispatch({ type: 'isLoading', payload: false });
 			console.log(error);
