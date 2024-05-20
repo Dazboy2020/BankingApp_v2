@@ -9,7 +9,13 @@ function useAutoLogin() {
 
 	useEffect(
 		function () {
+			if (!state.user) {
+				console.log('NO USER FOUND => NO AUTO LOGIN');
+				return;
+			}
+
 			if (state.user) {
+				console.log('AUTO LOGIN: USER FOUND =>', state.user);
 				navigate('/overview');
 			}
 		},

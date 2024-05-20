@@ -26,6 +26,9 @@ exports.googleAuth = async (req, res, next) => {
 		if (existingUser) {
 			const token = existingUser.getSignedToken();
 
+			// console.log(`existingUser: ${existingUser}`);
+			console.log(`token: ${token}`);
+
 			return res.status(201).json({ success: true, user: existingUser, token });
 		} else {
 			// Create a new user with Google OAuth and null password

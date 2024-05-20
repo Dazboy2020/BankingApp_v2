@@ -39,11 +39,20 @@ function GoogleLoginButton({ width, height, padding, image }) {
 
 				if (!tokens) return;
 
-				const { token } = tokens.data;
+				const { token, user } = tokens.data;
+
+				console.log(user);
 
 				localStorage.setItem('authToken', token);
 				dispatch({ type: 'user/addToken', payload: token });
 				dispatch({ type: 'isLoading', payload: false });
+				dispatch({
+					type: 'user/MongoLoggedIn',
+					payload: {
+						user,
+						token,
+					},
+				});
 
 				navigate('/overview');
 			} catch (error) {

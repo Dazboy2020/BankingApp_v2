@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const errorResponse = require('../utils/errorResponse');
 const ErrorResponse = require('../utils/errorResponse');
+const colors = require('colors');
 
 exports.protect = async (req, res, next) => {
 	let token;
@@ -32,7 +33,9 @@ exports.protect = async (req, res, next) => {
 		}
 
 		req.user = user;
-		console.log('success: private route');
+		console.log(
+			'MIDDLEWARE: private route authentication successful'.bgCyan.bold
+		);
 		next();
 	} catch (error) {
 		return next(new ErrorResponse('Not authorized to access this route', 401));

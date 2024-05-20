@@ -2,7 +2,7 @@ const asyncHandler = require('../middleware/asyncHandler');
 const User = require('../models/user');
 
 exports.getUserProtectedRoute = asyncHandler(async (req, res, next) => {
-	console.log('backend: getUserToken', req.user);
+	console.log('PROTECTED ROUTE: send USER', req.user);
 	const userId = req.user._id;
 
 	let user;
