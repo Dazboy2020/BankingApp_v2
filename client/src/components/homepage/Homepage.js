@@ -1,5 +1,4 @@
 import { useAppContext } from '../../context/context';
-import { useFetchPrivateUserData } from '../../hooks/useFetchPrivateUserData';
 import useAutoLogin from '../../hooks/useAutoLogin';
 // const ResponsiveAppBar = lazy(() => import('../navbar/NewNav'));
 // import { lazy } from 'react';
@@ -14,11 +13,9 @@ import { gridBackground } from './homepage-utils';
 
 export default function Homepage() {
 	const { state } = useAppContext();
-	//? Checks to see if JWT token and if so, fetches data via middleware Protected Route
-	// useFetchPrivateUserData('/userdata');
 
-	//? if user is in state then redirects to /overview
-	// useAutoLogin();
+	//* if user is in state then redirects to /overview
+	useAutoLogin();
 
 	const gridComponentProps = {
 		display: 'flex',

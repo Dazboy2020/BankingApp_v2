@@ -31,6 +31,7 @@ import {
 } from './page-animations/login_register';
 
 import UnprotectedPageLayout from './layout/UnprotectedPageLayout';
+import useAutoLogin from '../hooks/useAutoLogin';
 
 function Copyright(props) {
 	return (
@@ -61,6 +62,8 @@ export default function SignIn() {
 		email: '',
 		password: '',
 	});
+
+	useAutoLogin();
 
 	function onChange(e) {
 		setData({ ...data, [e.target.name]: e.target.value });

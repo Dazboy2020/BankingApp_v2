@@ -1,8 +1,9 @@
-import { useDarkMode } from './hooks/useDarkMode';
 import React, { Suspense, lazy } from 'react';
+import { useFetchPrivateUserData } from './hooks/useFetchPrivateUserData';
+import { AnimatePresence } from 'framer-motion';
+import { useDarkMode } from './hooks/useDarkMode';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { AnimatePresence } from 'framer-motion';
 
 import SpinnerFullPage from './components/spinner/SpinnerFullPage';
 import ProtectedRoute from './pages/ProtectedRoute';
@@ -11,12 +12,6 @@ import Toast from './UI/AlertDialogue/Toast';
 import { blue, purple } from '@mui/material/colors';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
-import useAutoLogin from './hooks/useAutoLogin';
-import { useFetchPrivateUserData } from './hooks/useFetchPrivateUserData';
-
-// import Homepage from './components/homepage/Homepage';
-// import SignIn from './pages/SignIn';
-// import SignUp from './pages/SignUp';
 
 const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
@@ -148,7 +143,6 @@ function App() {
 	});
 
 	useFetchPrivateUserData('/userdata');
-	useAutoLogin();
 
 	return (
 		<ThemeProvider theme={theme}>

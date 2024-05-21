@@ -1,10 +1,9 @@
 import { useAppContext } from '../../context/context';
-import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
-import { Button } from '@mui/material';
-import axios from 'axios';
-import { getErrorMessage } from '../../utils/errorUtils';
 import { useModalContext } from '../../context/modalContext';
+import { Button } from '@mui/material';
+import { getErrorMessage } from '../../utils/errorUtils';
+import axios from 'axios';
 
 const buttonStyles = {
 	margin: 0,
@@ -26,7 +25,6 @@ const buttonStyles = {
 };
 
 function GoogleLoginButton({ width, height, padding, image }) {
-	const navigate = useNavigate();
 	const { dispatch } = useAppContext();
 	const { setOpenToast, setMessage } = useModalContext();
 
@@ -53,8 +51,6 @@ function GoogleLoginButton({ width, height, padding, image }) {
 						token,
 					},
 				});
-
-				// navigate('/overview');
 			} catch (error) {
 				console.error(error);
 				const errorMessage = getErrorMessage(error);

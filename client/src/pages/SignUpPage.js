@@ -27,6 +27,7 @@ import signup from '../assets/signup.png';
 import SpinnerFullPage from '../components/spinner/SpinnerFullPage';
 import useSignUpNewUser from '../hooks/useSignUpNewUser';
 import { heroBackground } from '../components/homepage/homepage-utils';
+import useAutoLogin from '../hooks/useAutoLogin';
 
 function Copyright(props) {
 	return (
@@ -53,6 +54,8 @@ export default function SignUp() {
 	const { state } = useAppContext();
 	const navigate = useNavigate();
 	const { signUpNewUser } = useSignUpNewUser();
+
+	useAutoLogin();
 
 	React.useEffect(() => {
 		if (successfullSignUp) {
